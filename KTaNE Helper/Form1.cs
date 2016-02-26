@@ -984,7 +984,7 @@ namespace KTaNE_Helper
                         e.Graphics.FillRectangle(new SolidBrush(Color.DarkSlateGray), (j * 47) + 18, (i * 47) + 18, 10, 10);
                     }
                 }
-                
+                mazeOutput.Text = "";
                 rbGreenCircle.Checked = true;
                 return;
             }
@@ -1024,6 +1024,63 @@ namespace KTaNE_Helper
             x--;
             y--;
             e.Graphics.FillRectangle(new SolidBrush(Color.Red), (x * 47) + 15, (y * 47) + 15, 16, 16);
+            mazeOutput.Text = "";
+            if (!GenerateMazeSolution(_mazeStartXY-11, _mazeEndXY-11, new bool[6, 6])) return;
+            for (var i=_mazeStack.Count; i > 0; i--)
+            {
+                if (mazeOutput.Text != "")
+                    mazeOutput.Text += @", ";
+                mazeOutput.Text += _mazeStack.Pop();
+            }
+        }
+
+        private readonly Stack<string> _mazeStack = new Stack<string>(); 
+        private bool GenerateMazeSolution(int startXY, int endXY, bool [,] explored)
+        {
+            var mazes = (_manualVersion == 0 ? _manual241Mazes : _manual724Mazes);
+            var maze = _mazeSelection;
+            var x = startXY % 10;
+            var y = startXY / 10;
+            if ((x > 5) || (y > 5) || (maze == -1) || (endXY == 66)) return false;
+            Debug.Assert(x >= 0);
+            Debug.Assert(y >= 0);
+            Debug.Assert(maze < 9);
+
+            if (explored[x, y]) return false;
+
+            if (startXY == endXY) return true;
+            explored[x,y] = true;
+
+            var directions = mazes[maze, y, x];
+
+            if (directions.Contains("u"))
+            {
+                if (GenerateMazeSolution(startXY - 10, endXY, explored))
+                {
+                    _mazeStack.Push("Up");
+                    return true;
+                }
+            }
+            if (directions.Contains("d"))
+            {
+                if (GenerateMazeSolution(startXY + 10, endXY, explored))
+                {
+                    _mazeStack.Push("Down");
+                    return true;
+                }
+            }
+            if (directions.Contains("l"))
+            {
+                if (GenerateMazeSolution(startXY - 1, endXY, explored))
+                {
+                    _mazeStack.Push("Left");
+                    return true;
+                }
+            }
+            if (!directions.Contains("r")) return false;
+            if (!GenerateMazeSolution(startXY + 1, endXY, explored)) return false;
+            _mazeStack.Push("Right");
+            return true;
         }
 
         private void pbMaze_Click(object sender, EventArgs e)

@@ -115,6 +115,7 @@
             this.Num2 = new System.Windows.Forms.Button();
             this.Num1 = new System.Windows.Forms.Button();
             this.tpMaze = new System.Windows.Forms.TabPage();
+            this.mazeOutput = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cbAutoAdvance = new System.Windows.Forms.CheckBox();
             this.rbEnd = new System.Windows.Forms.RadioButton();
@@ -1210,6 +1211,7 @@
             // 
             // tpMaze
             // 
+            this.tpMaze.Controls.Add(this.mazeOutput);
             this.tpMaze.Controls.Add(this.groupBox2);
             this.tpMaze.Controls.Add(this.label4);
             this.tpMaze.Controls.Add(this.label3);
@@ -1224,6 +1226,14 @@
             this.tpMaze.TabIndex = 12;
             this.tpMaze.Text = "Mazes";
             this.tpMaze.UseVisualStyleBackColor = true;
+            // 
+            // mazeOutput
+            // 
+            this.mazeOutput.Location = new System.Drawing.Point(289, 78);
+            this.mazeOutput.Multiline = true;
+            this.mazeOutput.Name = "mazeOutput";
+            this.mazeOutput.Size = new System.Drawing.Size(187, 207);
+            this.mazeOutput.TabIndex = 8;
             // 
             // groupBox2
             // 
@@ -2401,6 +2411,7 @@
         private System.Windows.Forms.ComboBox facts_strike;
         private System.Windows.Forms.CheckBox facts_FRK;
         private System.Windows.Forms.CheckBox facts_CAR;
+        private System.Windows.Forms.TextBox mazeOutput;
     }
 }
 
