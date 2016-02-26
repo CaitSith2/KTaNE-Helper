@@ -395,11 +395,13 @@ namespace KTaNE_Helper
             wireReset_Click(sender, e);
             PasswordClear_Click(sender, e);
 
-            ToolTip tt = new ToolTip();
-            tt.AutoPopDelay = 30000;
-            tt.InitialDelay = 1000;
-            tt.ReshowDelay = 500;
-            tt.ShowAlways = true;
+            var tt = new ToolTip
+            {
+                AutoPopDelay = 30000,
+                InitialDelay = 1000,
+                ReshowDelay = 500,
+                ShowAlways = true
+            };
 
             tt.SetToolTip(cw_input, "Each wire is seperated by spaces, each group by a backslash" + Environment.NewLine +
                       "R for Red, B for Blue, L for Light, S for Star" + Environment.NewLine +
