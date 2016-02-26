@@ -1408,6 +1408,8 @@
             this.cw_input.Size = new System.Drawing.Size(445, 20);
             this.cw_input.TabIndex = 8;
             this.cw_input.TextChanged += new System.EventHandler(this.Complicated_Wires_Event);
+            this.cw_input.MouseEnter += new System.EventHandler(this.cw_input_MouseEnter);
+            this.cw_input.MouseLeave += new System.EventHandler(this.cw_input_MouseLeave);
             // 
             // cw_label
             // 

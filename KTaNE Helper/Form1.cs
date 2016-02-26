@@ -394,6 +394,37 @@ namespace KTaNE_Helper
             ManualVersionSelect_SelectedIndexChanged(sender, e);
             wireReset_Click(sender, e);
             PasswordClear_Click(sender, e);
+
+            ToolTip tt = new ToolTip();
+            tt.AutoPopDelay = 30000;
+            tt.InitialDelay = 1000;
+            tt.ReshowDelay = 500;
+            tt.ShowAlways = true;
+
+            tt.SetToolTip(cw_input, "Each wire is seperated by spaces, each group by a backslash" + Environment.NewLine +
+                      "R for Red, B for Blue, L for Light, S for Star" + Environment.NewLine +
+                      "Example: RS RBSL WS WSL B BS \\ W WS WL RS");
+
+            tt.SetToolTip(wires_input, "Enter from these letters in the order the wires appear" + Environment.NewLine + 
+                "R for Red, B for Blue, Y for Yellow, W for White, K for Black");
+
+            tt.SetToolTip(ws_input, "Each Wire is seperated by a space. Enter in the form of Color, then Letter." + Environment.NewLine + 
+                "Colors: R for Red, B for Blue, K for Black." + Environment.NewLine + 
+                "Example: RB BC BC KA KC BA RC KB KC BB");
+
+            tt.SetToolTip(MorseCodeInput, "Enter in the morse code here, in the form of - for dash (dah), . for dot (dit)" + Environment.NewLine + 
+                "Example: -... .-. .. -.-. -.-" + Environment.NewLine + 
+                "If you enter in |, that signifies beginning of word." + Environment.NewLine + 
+                "If the defuser knows morse code, and gives you the letters directly, you can also enter them.  (Example: brick)");
+
+            tt.SetToolTip(pass1, "Enter the 6 letters from the first password column here");
+            tt.SetToolTip(pass2, "Enter the 6 letters from the second password column here");
+            tt.SetToolTip(pass3, "Enter the 6 letters from the third password column here");
+            tt.SetToolTip(pass4, "Enter the 6 letters from the fourth password column here");
+            tt.SetToolTip(pass5, "Enter the 6 letters from the fifth password column here");
+
+
+
         }
 
         private void wireReset_Click(object sender, EventArgs e)
@@ -1137,6 +1168,14 @@ namespace KTaNE_Helper
         private void facts_FRK_CheckedChanged(object sender, EventArgs e)
         {
             button_frk.Checked = facts_FRK.Checked;
+        }
+
+        private void cw_input_MouseEnter(object sender, EventArgs e)
+        {
+        }
+
+        private void cw_input_MouseLeave(object sender, EventArgs e)
+        {
         }
     }
 
