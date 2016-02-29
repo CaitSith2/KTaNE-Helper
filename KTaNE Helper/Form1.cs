@@ -110,10 +110,10 @@ namespace KTaNE_Helper
         private readonly int[] _complicatedWires724 = { 0, 1, 2, 1, 3, 3, 1, 0, 0, 3, 0, 4, 4, 2, 4, 0 };
 
         private readonly string[] _keypadOrder241 = { "ϘѦƛϞѬϗϿ", "ӬϘϿҨ☆ϗ¿", "©ѼҨҖԆƛ☆", "Ϭ¶ѣѬҖ¿ټ", "ΨټѣϾ¶ѯ★", "ϬӬ҂ӕΨҊΩ" };
-        private readonly string[] _keypadOrder724 = { "ϬҨҖ☆¶Ͽζ", "ҨҊƛѦϫ¶Җ", "ѬϬϗζΨƛѼ", "Ѭټ҈©ϞϿϗ", "Ϙ©¿Ѫ☆★ϫ", "ӕԆӬѪѣѼΨ" };
+        private readonly string[] _keypadOrder724 = { "ϬҨҖ☆¶Ͽζ", "ҨҊƛѦϫ¶Җ", "ѬϬϗζΨƛѼ", "Ѭټ◌©ϞϿϗ", "Ϙ©¿Ѫ☆★ϫ", "ӕԆӬѪѣѼΨ" };
 
-        private readonly string _keypadSymbols241 = "¿©¶☆★҂ƛϾϿΨΩϞϘϗϬҖҊҨӬѣѦѬѯѼӕԆټ";
-        private readonly string _keypadSymbols724 = "¿©¶☆★҈ƛζϿΨϞϘϗϫϬҖҊҨӬѣѦѪѬѼӕԆټ";
+        private readonly string[] _keypadSymbols241 = { "¿","©","¶","☆","★","҂","ƛ","Ͼ","Ͽ","Ψ","Ω","Ϟ","Ϙ","ϗ","Ϭ","Җ","Ҋ","Ҩ","Ӭ","ѣ","Ѧ","Ѭ","ѯ","Ѽ","ӕ","Ԇ","ټ"};
+        private readonly string[] _keypadSymbols724 = { "¿","©","¶","☆","★","◌","ƛ","ζ","Ͽ","Ψ","Ϟ","Ϙ","ϗ","ϫ","Ϭ","Җ","Ҋ","Ҩ","Ӭ","ѣ","Ѧ","Ѫ","Ѭ","Ѽ","ӕ","Ԇ","ټ"};
 
         int _manualVersion;
 
@@ -1229,7 +1229,7 @@ namespace KTaNE_Helper
 
             for (var i = 0; i < 27; i++)
             {
-                ((Button) fpKeypadSymbols.Controls[i]).Text = keypadsymbols.Substring(i, 1);
+                ((Button) fpKeypadSymbols.Controls[i]).Text = keypadsymbols[i];
             }
 
             for (var i = 0; i < 4; i++)
