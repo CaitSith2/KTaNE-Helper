@@ -109,17 +109,18 @@ namespace KTaNE_Helper
         private readonly int[] _complicatedWires241 = { 0, 1, 1, 1, 2, 3, 4, 1, 0, 0, 2, 4, 3, 3, 4, 2 };
         private readonly int[] _complicatedWires724 = { 0, 1, 2, 1, 3, 3, 1, 0, 0, 3, 0, 4, 4, 2, 4, 0 };
 
+        private readonly string[] _keypadOrder241 = { "ϘѦƛϞѬϗϿ", "ӬϘϿҨ☆ϗ¿", "©ѼҨҖԆƛ☆", "Ϭ¶ѣѬҖ¿ټ", "ΨټѣϾ¶ѯ★", "ϬӬ҂ӕΨҊΩ" };
+        private readonly string[] _keypadOrder724 = { "ϬҨҖ☆¶Ͽζ", "ҨҊƛѦϫ¶Җ", "ѬϬϗζΨƛѼ", "Ѭټ҈©ϞϿϗ", "Ϙ©¿Ѫ☆★ϫ", "ӕԆӬѪѣѼΨ" };
+
+        private readonly string _keypadSymbols241 = "¿©¶☆★҂ƛϾϿΨΩϞϘϗϬҖҊҨӬѣѦѬѯѼӕԆټ";
+        private readonly string _keypadSymbols724 = "¿©¶☆★҈ƛζϿΨϞϘϗϫϬҖҊҨӬѣѦѪѬѼӕԆټ";
+
         int _manualVersion;
 
 
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void wsReset_Click(object sender, EventArgs e)
@@ -346,8 +347,6 @@ namespace KTaNE_Helper
             if (_manualVersion == 0)
             {
                 facts_serial_starts_with_letter.Visible = false;
-                pbKeypad241.Visible = true;
-                pbKeypad724.Visible = false;
                 linkLabel1.Text = @"http://www.bombmanual.com";
                 button_frk.Visible = true;
                 button_name.Visible = true;
@@ -360,8 +359,6 @@ namespace KTaNE_Helper
             else
             {
                 facts_serial_starts_with_letter.Visible = true;
-                pbKeypad724.Visible = true;
-                pbKeypad241.Visible = false;
                 linkLabel1.Text = @"http://www.lthummus.com/";
                 button_frk.Visible = false;
                 button_name.Visible = false;
@@ -372,6 +369,7 @@ namespace KTaNE_Helper
                 otherstrip.Text = @"Other - 4";
             }
 
+            keypadReset_Click(sender, e);
             Needy_Knob_CheckedChanged(sender, e);
             Simon_Says_Event(sender, e);
             Button_Event(sender, e);
@@ -1014,79 +1012,72 @@ namespace KTaNE_Helper
                 e.Graphics.DrawEllipse(new Pen(Color.Green,3f),(x*47)+10,(y*47)+10,47-20,47-20 );
             }
 
-            x = _mazeStartXY%10;
-            y = _mazeStartXY/10;
-            x--;
-            y--;
-            e.Graphics.FillRectangle(new SolidBrush(Color.White),(x*47)+15,(y*47)+15,16,16 );
             x = _mazeEndXY % 10;
             y = _mazeEndXY / 10;
             x--;
             y--;
             e.Graphics.FillRectangle(new SolidBrush(Color.Red), (x * 47) + 15, (y * 47) + 15, 16, 16);
+            x = _mazeStartXY % 10;
+            y = _mazeStartXY / 10;
+            x--;
+            y--;
+            e.Graphics.FillRectangle(new SolidBrush(Color.White), (x * 47) + 15, (y * 47) + 15, 16, 16);
+
+
             mazeOutput.Text = "";
-            if (!GenerateMazeSolution(_mazeStartXY-11, _mazeEndXY-11, new bool[6, 6])) return;
+            _explored = new bool[60];
+            _endXY = _mazeEndXY - 11;
+
+            if (!GenerateMazeSolution(_mazeStartXY-11)) return;
+            var count = _mazeStack.Count;
             for (var i=_mazeStack.Count; i > 0; i--)
             {
                 if (mazeOutput.Text != "")
                     mazeOutput.Text += @", ";
                 mazeOutput.Text += _mazeStack.Pop();
             }
+            if (mazeOutput.Text == "") return;
+            mazeOutput.Text += Environment.NewLine + Environment.NewLine +
+                               @"Total Steps: " + count;
+
         }
 
         private readonly Stack<string> _mazeStack = new Stack<string>(); 
-        private bool GenerateMazeSolution(int startXY, int endXY, bool [,] explored)
+        private bool [] _explored = new bool[60];
+        private int _endXY;
+        private bool GenerateMazeSolution(int startXY)
         {
             var mazes = (_manualVersion == 0 ? _manual241Mazes : _manual724Mazes);
             var maze = _mazeSelection;
-            var x = startXY % 10;
-            var y = startXY / 10;
-            if ((x > 5) || (y > 5) || (maze == -1) || (endXY == 66)) return false;
-            Debug.Assert(x >= 0);
-            Debug.Assert(y >= 0);
-            Debug.Assert(maze < 9);
+            var x = startXY%10;
+            var y = startXY/10;
 
-            if (explored[x, y]) return false;
-
-            if (startXY == endXY) return true;
-            explored[x,y] = true;
-
+            if ((x > 5) || (y > 5) || (maze == -1) || (_endXY == 66)) return false;
             var directions = mazes[maze, y, x];
+            if (startXY == _endXY) return true;
+            _explored[startXY] = true;
 
-            if (directions.Contains("u"))
+
+            var directionLetter = new[] {"u", "d", "l", "r"};
+            var directionInt = new[] {-10, 10, -1, 1};
+            var directionReturn = new[] {"Up", "Down", "Left", "Right"};
+
+            for (var i = 0; i < 4; i++)
             {
-                if (GenerateMazeSolution(startXY - 10, endXY, explored))
-                {
-                    _mazeStack.Push("Up");
-                    return true;
-                }
+                if (!directions.Contains(directionLetter[i])) continue;
+                if (_explored[startXY + directionInt[i]]) continue;
+                if (!GenerateMazeSolution(startXY + directionInt[i])) continue;
+                _mazeStack.Push(directionReturn[i]);
+                return true;
             }
-            if (directions.Contains("d"))
-            {
-                if (GenerateMazeSolution(startXY + 10, endXY, explored))
-                {
-                    _mazeStack.Push("Down");
-                    return true;
-                }
-            }
-            if (directions.Contains("l"))
-            {
-                if (GenerateMazeSolution(startXY - 1, endXY, explored))
-                {
-                    _mazeStack.Push("Left");
-                    return true;
-                }
-            }
-            if (!directions.Contains("r")) return false;
-            if (!GenerateMazeSolution(startXY + 1, endXY, explored)) return false;
-            _mazeStack.Push("Right");
-            return true;
+
+            return false;
         }
 
         private void pbMaze_Click(object sender, EventArgs e)
         {
-            MouseEventArgs me = (MouseEventArgs) e;
-            Point coordinates = me.Location;
+            var me = (MouseEventArgs) e;
+            var coordinates = me.Location;
             var x = coordinates.X/47;
             var y = coordinates.Y/47;
             x++;
@@ -1229,12 +1220,98 @@ namespace KTaNE_Helper
             button_frk.Checked = facts_FRK.Checked;
         }
 
-        private void cw_input_MouseEnter(object sender, EventArgs e)
+        readonly string[] _keypadSelection = {"","","",""};
+
+        private void keypadReset_Click(object sender, EventArgs e)
         {
+            var keypadsymbols = (_manualVersion == 0 ? _keypadSymbols241 : _keypadSymbols724);
+            
+
+            for (var i = 0; i < 27; i++)
+            {
+                ((Button) fpKeypadSymbols.Controls[i]).Text = keypadsymbols.Substring(i, 1);
+            }
+
+            for (var i = 0; i < 4; i++)
+            {
+                ((Button) fpKeypadSelection.Controls[i]).Text = _keypadSelection[i] = "";
+                ((Button) fpKeypadOrder.Controls[i]).Visible = false;
+            }
+            fpKeypadLabel.Visible = false;
         }
 
-        private void cw_input_MouseLeave(object sender, EventArgs e)
+        
+
+        private void KeypadSymbol_Click(object sender, EventArgs e)
         {
+            var keypadorder = (_manualVersion == 0 ? _keypadOrder241 : _keypadOrder724);
+
+            for (var i = 0; i < 4; i++)
+                if (((Button) sender).Text == _keypadSelection[i]) return;
+
+            for (var i = 3; i > 0; i--)
+                _keypadSelection[i] = _keypadSelection[i - 1];
+
+            _keypadSelection[0] = ((Button) sender).Text;
+
+            for (var i = 0; i < 4; i++)
+                ((Button) fpKeypadSelection.Controls[i]).Text = _keypadSelection[i];
+            
+
+            if (_keypadSelection[3] == "") return;
+            var keypadFound = true;
+            for (var i = 0; i < 6; i++)
+            {
+                keypadFound = true;
+                for (var j = 0; keypadFound && j < 4; j++)
+                {
+                    keypadFound = keypadorder[i].Contains(_keypadSelection[j]);
+                }
+                if (!keypadFound) continue;
+                var order = new Dictionary<int, string>();
+                for (var j = 0; j < 4; j++)
+                {
+                    order.Add(keypadorder[i].IndexOf(_keypadSelection[j], StringComparison.Ordinal), _keypadSelection[j]);
+                }
+                var k = 0;
+                for (var j = 0; j < 7 && k < 4; j++)
+                {
+                    string result;
+                    if (!order.TryGetValue(j, out result)) continue;
+                    ((Button) fpKeypadOrder.Controls[k]).Visible = true;
+                    ((Button) fpKeypadOrder.Controls[k++]).Text = result;
+                }
+                break;
+            }
+            if (keypadFound) return;
+            for (var i = 0; i < 4; i++)
+            {
+                ((Button)fpKeypadOrder.Controls[i]).Visible = false;
+            }
+            fpKeypadLabel.Visible = false;
+        }
+
+        private void keypadOrder_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void keypadSelection_Click(object sender, EventArgs e)
+        {
+            var i = 0;
+            var selection = new string[3];
+            for (var j=0;j<4;j++)
+                if (_keypadSelection[j] != ((Button) sender).Text)
+                    selection[i++] = _keypadSelection[j];
+            for (var j = 0; j < 3; j++)
+                _keypadSelection[j] = selection[j];
+            _keypadSelection[3] = "";
+            for (var j = 0; j < 4; j++)
+            {
+                ((Button) fpKeypadSelection.Controls[j]).Text = _keypadSelection[j];
+                ((Button) fpKeypadOrder.Controls[j]).Visible = false;
+            }
+            fpKeypadLabel.Visible = false;
         }
     }
 
