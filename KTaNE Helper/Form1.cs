@@ -369,6 +369,7 @@ namespace KTaNE_Helper
                 otherstrip.Text = @"Other - 4";
             }
 
+            _initLettersNotPresent = false;
             keypadReset_Click(sender, e);
             Needy_Knob_CheckedChanged(sender, e);
             Simon_Says_Event(sender, e);
@@ -575,6 +576,7 @@ namespace KTaNE_Helper
 
         }
 
+        private bool _initLettersNotPresent = false;
         private void Password_TextChanged(object sender, EventArgs e)
         {
             var passwords = new List<string>
@@ -596,6 +598,30 @@ namespace KTaNE_Helper
                     "those","toons","tunes","walks","weird","wodar","words"
                 };
             }
+
+            const string letters = "abcdefghijklmnopqrstuvwxyz";
+
+            if (!_initLettersNotPresent)
+            {
+                for (var i = 0; i < 5; i++)
+                {
+                    ((Label) fpPasswordLettersNotPresent.Controls[i]).Text = "";
+                    for (var j = 0; j < 26; j++)
+                    {
+                        var found = false;
+                        for (var k = 0; k < 35 && !found; k++)
+                        {
+                            found = passwords[k].Substring(i, 1) == letters.Substring(j, 1);
+                        }
+                        if (found) continue;
+                        if (((Label) fpPasswordLettersNotPresent.Controls[i]).Text != "")
+                            ((Label) fpPasswordLettersNotPresent.Controls[i]).Text += @"";
+                        ((Label) fpPasswordLettersNotPresent.Controls[i]).Text += letters.Substring(j, 1).ToUpper();
+                    }
+                }
+                _initLettersNotPresent = true;
+            }
+
 
             var result = new List<string>();
 

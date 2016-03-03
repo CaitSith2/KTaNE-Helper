@@ -208,6 +208,13 @@
             this.MorseCodeOutput = new System.Windows.Forms.TextBox();
             this.MorseCodeInput = new System.Windows.Forms.TextBox();
             this.tpPassword = new System.Windows.Forms.TabPage();
+            this.label15 = new System.Windows.Forms.Label();
+            this.fpPasswordLettersNotPresent = new System.Windows.Forms.FlowLayoutPanel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.fpPassword = new System.Windows.Forms.FlowLayoutPanel();
             this.pass1 = new System.Windows.Forms.TextBox();
             this.pass2 = new System.Windows.Forms.TextBox();
@@ -262,6 +269,7 @@
             this.fpWires.SuspendLayout();
             this.tpMorseCode.SuspendLayout();
             this.tpPassword.SuspendLayout();
+            this.fpPasswordLettersNotPresent.SuspendLayout();
             this.fpPassword.SuspendLayout();
             this.tpNeedyKnobV1.SuspendLayout();
             this.fpKnob.SuspendLayout();
@@ -2325,8 +2333,10 @@
             // 
             // tpPassword
             // 
-            this.tpPassword.Controls.Add(this.fpPassword);
             this.tpPassword.Controls.Add(this.passwordClear);
+            this.tpPassword.Controls.Add(this.label15);
+            this.tpPassword.Controls.Add(this.fpPasswordLettersNotPresent);
+            this.tpPassword.Controls.Add(this.fpPassword);
             this.tpPassword.Controls.Add(this.passResults);
             this.tpPassword.Location = new System.Drawing.Point(4, 40);
             this.tpPassword.Name = "tpPassword";
@@ -2334,6 +2344,78 @@
             this.tpPassword.TabIndex = 8;
             this.tpPassword.Text = "Passwords";
             this.tpPassword.UseVisualStyleBackColor = true;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(196, 4);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(181, 13);
+            this.label15.TabIndex = 10;
+            this.label15.Text = "Letters Never present in that column:";
+            // 
+            // fpPasswordLettersNotPresent
+            // 
+            this.fpPasswordLettersNotPresent.Controls.Add(this.label10);
+            this.fpPasswordLettersNotPresent.Controls.Add(this.label11);
+            this.fpPasswordLettersNotPresent.Controls.Add(this.label12);
+            this.fpPasswordLettersNotPresent.Controls.Add(this.label13);
+            this.fpPasswordLettersNotPresent.Controls.Add(this.label14);
+            this.fpPasswordLettersNotPresent.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.fpPasswordLettersNotPresent.Location = new System.Drawing.Point(191, 20);
+            this.fpPasswordLettersNotPresent.Name = "fpPasswordLettersNotPresent";
+            this.fpPasswordLettersNotPresent.Size = new System.Drawing.Size(280, 128);
+            this.fpPasswordLettersNotPresent.TabIndex = 9;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(3, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(82, 25);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "label10";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(3, 25);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(82, 25);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "label11";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(3, 50);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(82, 25);
+            this.label12.TabIndex = 10;
+            this.label12.Text = "label12";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(3, 75);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(82, 25);
+            this.label13.TabIndex = 11;
+            this.label13.Text = "label13";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(3, 100);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(82, 25);
+            this.label14.TabIndex = 12;
+            this.label14.Text = "label14";
             // 
             // fpPassword
             // 
@@ -2389,9 +2471,9 @@
             // 
             // passwordClear
             // 
-            this.passwordClear.Location = new System.Drawing.Point(241, 24);
+            this.passwordClear.Location = new System.Drawing.Point(395, 4);
             this.passwordClear.Name = "passwordClear";
-            this.passwordClear.Size = new System.Drawing.Size(46, 20);
+            this.passwordClear.Size = new System.Drawing.Size(76, 26);
             this.passwordClear.TabIndex = 6;
             this.passwordClear.Text = "Clear";
             this.passwordClear.UseVisualStyleBackColor = true;
@@ -2705,6 +2787,8 @@
             this.tpMorseCode.PerformLayout();
             this.tpPassword.ResumeLayout(false);
             this.tpPassword.PerformLayout();
+            this.fpPasswordLettersNotPresent.ResumeLayout(false);
+            this.fpPasswordLettersNotPresent.PerformLayout();
             this.fpPassword.ResumeLayout(false);
             this.fpPassword.PerformLayout();
             this.tpNeedyKnobV1.ResumeLayout(false);
@@ -2928,6 +3012,13 @@
         private System.Windows.Forms.Button button33;
         private System.Windows.Forms.Button button34;
         private System.Windows.Forms.Button button35;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.FlowLayoutPanel fpPasswordLettersNotPresent;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
     }
 }
 
