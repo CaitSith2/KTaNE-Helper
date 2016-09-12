@@ -34,11 +34,11 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tpButtonV1 = new System.Windows.Forms.TabPage();
+            this.lblButtonQuery = new System.Windows.Forms.Label();
+            this.label61 = new System.Windows.Forms.Label();
+            this.label60 = new System.Windows.Forms.Label();
             this.whitestrip = new System.Windows.Forms.Label();
             this.button_name = new System.Windows.Forms.ComboBox();
-            this.button_battery = new System.Windows.Forms.ComboBox();
-            this.button_frk = new System.Windows.Forms.CheckBox();
-            this.button_car = new System.Windows.Forms.CheckBox();
             this.button_color = new System.Windows.Forms.ComboBox();
             this.otherstrip = new System.Windows.Forms.Label();
             this.yellowstrip = new System.Windows.Forms.Label();
@@ -51,12 +51,18 @@
             this.button33 = new System.Windows.Forms.Button();
             this.button34 = new System.Windows.Forms.Button();
             this.button35 = new System.Windows.Forms.Button();
+            this.button36 = new System.Windows.Forms.Button();
+            this.button37 = new System.Windows.Forms.Button();
+            this.button38 = new System.Windows.Forms.Button();
+            this.button39 = new System.Windows.Forms.Button();
             this.keypadReset = new System.Windows.Forms.Button();
             this.fpKeypadOrder = new System.Windows.Forms.FlowLayoutPanel();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.button40 = new System.Windows.Forms.Button();
+            this.button41 = new System.Windows.Forms.Button();
             this.fpKeypadSymbols = new System.Windows.Forms.FlowLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -86,6 +92,8 @@
             this.button30 = new System.Windows.Forms.Button();
             this.button31 = new System.Windows.Forms.Button();
             this.tpSimonSays = new System.Windows.Forms.TabPage();
+            this.label58 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -94,8 +102,6 @@
             this.ss_yellow = new System.Windows.Forms.Label();
             this.ss_green = new System.Windows.Forms.Label();
             this.ss_blue = new System.Windows.Forms.Label();
-            this.SimonSaysStrikes = new System.Windows.Forms.ComboBox();
-            this.ss_vowels = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
             this.tpWhosOnFirst = new System.Windows.Forms.TabPage();
             this.wofStep1Label = new System.Windows.Forms.Label();
@@ -166,32 +172,23 @@
             this.mazeSelection = new System.Windows.Forms.TextBox();
             this.mazeEnd = new System.Windows.Forms.TextBox();
             this.pbMaze = new System.Windows.Forms.PictureBox();
-            this.tpComplicatedWires = new System.Windows.Forms.TabPage();
             this.cw_all_wires = new System.Windows.Forms.Button();
             this.cw_reset = new System.Windows.Forms.Button();
             this.cw_output = new System.Windows.Forms.TextBox();
             this.cw_input = new System.Windows.Forms.TextBox();
-            this.cw_label = new System.Windows.Forms.Label();
-            this.cw_star = new System.Windows.Forms.CheckBox();
-            this.cw_led = new System.Windows.Forms.CheckBox();
-            this.cw_blue = new System.Windows.Forms.CheckBox();
-            this.cw_red = new System.Windows.Forms.CheckBox();
-            this.cw_batt = new System.Windows.Forms.CheckBox();
-            this.cw_pp = new System.Windows.Forms.CheckBox();
-            this.cw_serial = new System.Windows.Forms.CheckBox();
-            this.tpWireSequence = new System.Windows.Forms.TabPage();
-            this.ws_output = new System.Windows.Forms.TextBox();
-            this.ws_input = new System.Windows.Forms.TextBox();
-            this.wsBlackButton = new System.Windows.Forms.Button();
-            this.wsBlueButton = new System.Windows.Forms.Button();
-            this.wsRedButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.ws_C = new System.Windows.Forms.RadioButton();
-            this.ws_B = new System.Windows.Forms.RadioButton();
-            this.ws_A = new System.Windows.Forms.RadioButton();
-            this.wsReset = new System.Windows.Forms.Button();
             this.tpWires = new System.Windows.Forms.TabPage();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.txtSimpleWireOutput = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.wires_input = new System.Windows.Forms.TextBox();
+            this.wireReset = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.wsReset = new System.Windows.Forms.Button();
+            this.ws_input = new System.Windows.Forms.TextBox();
+            this.ws_output = new System.Windows.Forms.TextBox();
             this.fpWires = new System.Windows.Forms.FlowLayoutPanel();
             this.wire1 = new System.Windows.Forms.ComboBox();
             this.wire2 = new System.Windows.Forms.ComboBox();
@@ -199,15 +196,11 @@
             this.wire4 = new System.Windows.Forms.ComboBox();
             this.wire5 = new System.Windows.Forms.ComboBox();
             this.wire6 = new System.Windows.Forms.ComboBox();
-            this.wires_serial_letter = new System.Windows.Forms.CheckBox();
-            this.wires_input = new System.Windows.Forms.TextBox();
-            this.wires_serial_odd = new System.Windows.Forms.CheckBox();
-            this.wires_label = new System.Windows.Forms.Label();
-            this.wireReset = new System.Windows.Forms.Button();
             this.tpMorseCode = new System.Windows.Forms.TabPage();
             this.MorseCodeOutput = new System.Windows.Forms.TextBox();
             this.MorseCodeInput = new System.Windows.Forms.TextBox();
             this.tpPassword = new System.Windows.Forms.TabPage();
+            this.passwordClear = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.fpPasswordLettersNotPresent = new System.Windows.Forms.FlowLayoutPanel();
             this.label10 = new System.Windows.Forms.Label();
@@ -221,7 +214,6 @@
             this.pass3 = new System.Windows.Forms.TextBox();
             this.pass4 = new System.Windows.Forms.TextBox();
             this.pass5 = new System.Windows.Forms.TextBox();
-            this.passwordClear = new System.Windows.Forms.Button();
             this.passResults = new System.Windows.Forms.TextBox();
             this.tpNeedyKnobV1 = new System.Windows.Forms.TabPage();
             this.fpKnob = new System.Windows.Forms.FlowLayoutPanel();
@@ -233,17 +225,122 @@
             this.nk32 = new System.Windows.Forms.CheckBox();
             this.nk64 = new System.Windows.Forms.CheckBox();
             this.nn_label = new System.Windows.Forms.Label();
+            this.tpForgetMeNot = new System.Windows.Forms.TabPage();
+            this.label59 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
+            this.label56 = new System.Windows.Forms.Label();
+            this.label55 = new System.Windows.Forms.Label();
+            this.tbFMNSolution = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tpModCollection1 = new System.Windows.Forms.TabPage();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.txtConnectionCheckOut = new System.Windows.Forms.TextBox();
+            this.txtConnections = new System.Windows.Forms.TextBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label67 = new System.Windows.Forms.Label();
+            this.label66 = new System.Windows.Forms.Label();
+            this.cbPlumbingRedIn = new System.Windows.Forms.CheckBox();
+            this.cbPlumbingBlueOut = new System.Windows.Forms.CheckBox();
+            this.cbPlumbingGreenIn = new System.Windows.Forms.CheckBox();
+            this.cbPlumbingBlueIn = new System.Windows.Forms.CheckBox();
+            this.cbPlumbingRedOut = new System.Windows.Forms.CheckBox();
+            this.cbPlumbingGreenOut = new System.Windows.Forms.CheckBox();
+            this.cbPlumbingYellowOut = new System.Windows.Forms.CheckBox();
+            this.cbPlumbingYellowIn = new System.Windows.Forms.CheckBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label62 = new System.Windows.Forms.Label();
+            this.label54 = new System.Windows.Forms.Label();
+            this.txtLogicOR = new System.Windows.Forms.TextBox();
+            this.txtLogicAND = new System.Windows.Forms.TextBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.txtChessInput = new System.Windows.Forms.TextBox();
+            this.label64 = new System.Windows.Forms.Label();
+            this.txtChessSolution = new System.Windows.Forms.TextBox();
+            this.label65 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtSerialNumber = new System.Windows.Forms.TextBox();
             this.ManualVersionSelect = new System.Windows.Forms.ComboBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.facts_serial_has_vowel = new System.Windows.Forms.CheckBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.facts_FRK = new System.Windows.Forms.CheckBox();
-            this.facts_CAR = new System.Windows.Forms.CheckBox();
-            this.facts_serial_last_digit = new System.Windows.Forms.ComboBox();
-            this.facts_has_pp = new System.Windows.Forms.CheckBox();
-            this.facts_serial_starts_with_letter = new System.Windows.Forms.CheckBox();
-            this.facts_battery = new System.Windows.Forms.ComboBox();
+            this.button42 = new System.Windows.Forms.Button();
+            this.gbBatteries = new System.Windows.Forms.GroupBox();
+            this.label53 = new System.Windows.Forms.Label();
+            this.nudBatteryHolders = new System.Windows.Forms.NumericUpDown();
+            this.label50 = new System.Windows.Forms.Label();
+            this.nudBatteriesD = new System.Windows.Forms.NumericUpDown();
+            this.label49 = new System.Windows.Forms.Label();
+            this.nudBatteriesAA = new System.Windows.Forms.NumericUpDown();
+            this.gbPorts = new System.Windows.Forms.GroupBox();
+            this.label47 = new System.Windows.Forms.Label();
+            this.nudPortRCA = new System.Windows.Forms.NumericUpDown();
+            this.label46 = new System.Windows.Forms.Label();
+            this.nudPortSerial = new System.Windows.Forms.NumericUpDown();
+            this.label45 = new System.Windows.Forms.Label();
+            this.nudPortRJ45 = new System.Windows.Forms.NumericUpDown();
+            this.label44 = new System.Windows.Forms.Label();
+            this.nudPortPS2 = new System.Windows.Forms.NumericUpDown();
+            this.label43 = new System.Windows.Forms.Label();
+            this.nudPortParallel = new System.Windows.Forms.NumericUpDown();
+            this.label42 = new System.Windows.Forms.Label();
+            this.nudPortDVID = new System.Windows.Forms.NumericUpDown();
+            this.label41 = new System.Windows.Forms.Label();
+            this.nudPortPlates = new System.Windows.Forms.NumericUpDown();
+            this.gbIndicators = new System.Windows.Forms.GroupBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.nudUnlitTRN = new System.Windows.Forms.NumericUpDown();
+            this.nudLitTRN = new System.Windows.Forms.NumericUpDown();
+            this.label39 = new System.Windows.Forms.Label();
+            this.nudUnlitSND = new System.Windows.Forms.NumericUpDown();
+            this.nudLitSND = new System.Windows.Forms.NumericUpDown();
+            this.label38 = new System.Windows.Forms.Label();
+            this.nudUnlitSIG = new System.Windows.Forms.NumericUpDown();
+            this.nudLitSIG = new System.Windows.Forms.NumericUpDown();
+            this.label37 = new System.Windows.Forms.Label();
+            this.nudUnlitNSA = new System.Windows.Forms.NumericUpDown();
+            this.nudLitNSA = new System.Windows.Forms.NumericUpDown();
+            this.label36 = new System.Windows.Forms.Label();
+            this.nudUnlitMSA = new System.Windows.Forms.NumericUpDown();
+            this.nudLitMSA = new System.Windows.Forms.NumericUpDown();
+            this.label35 = new System.Windows.Forms.Label();
+            this.nudUnlitIND = new System.Windows.Forms.NumericUpDown();
+            this.nudLitIND = new System.Windows.Forms.NumericUpDown();
+            this.label34 = new System.Windows.Forms.Label();
+            this.nudUnlitFRQ = new System.Windows.Forms.NumericUpDown();
+            this.nudLitFRQ = new System.Windows.Forms.NumericUpDown();
+            this.label33 = new System.Windows.Forms.Label();
+            this.nudUnlitFRK = new System.Windows.Forms.NumericUpDown();
+            this.nudLitFRK = new System.Windows.Forms.NumericUpDown();
+            this.label32 = new System.Windows.Forms.Label();
+            this.nudUnlitCLR = new System.Windows.Forms.NumericUpDown();
+            this.nudLitCLR = new System.Windows.Forms.NumericUpDown();
+            this.label31 = new System.Windows.Forms.Label();
+            this.nudUnlitCAR = new System.Windows.Forms.NumericUpDown();
+            this.nudLitCAR = new System.Windows.Forms.NumericUpDown();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.nudUnlitBOB = new System.Windows.Forms.NumericUpDown();
+            this.nudLitBOB = new System.Windows.Forms.NumericUpDown();
             this.facts_strike = new System.Windows.Forms.ComboBox();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label52 = new System.Windows.Forms.Label();
+            this.label63 = new System.Windows.Forms.Label();
+            this.label68 = new System.Windows.Forms.Label();
+            this.label69 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tpAbout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -262,10 +359,9 @@
             this.tpMaze.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaze)).BeginInit();
-            this.tpComplicatedWires.SuspendLayout();
-            this.tpWireSequence.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.tpWires.SuspendLayout();
+            this.groupBox11.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.fpWires.SuspendLayout();
             this.tpMorseCode.SuspendLayout();
             this.tpPassword.SuspendLayout();
@@ -273,7 +369,54 @@
             this.fpPassword.SuspendLayout();
             this.tpNeedyKnobV1.SuspendLayout();
             this.fpKnob.SuspendLayout();
+            this.tpForgetMeNot.SuspendLayout();
+            this.tpModCollection1.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.gbBatteries.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBatteryHolders)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBatteriesD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBatteriesAA)).BeginInit();
+            this.gbPorts.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPortRCA)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPortSerial)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPortRJ45)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPortPS2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPortParallel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPortDVID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPortPlates)).BeginInit();
+            this.gbIndicators.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUnlitTRN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLitTRN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUnlitSND)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLitSND)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUnlitSIG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLitSIG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUnlitNSA)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLitNSA)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUnlitMSA)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLitMSA)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUnlitIND)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLitIND)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUnlitFRQ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLitFRQ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUnlitFRK)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLitFRK)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUnlitCLR)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLitCLR)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUnlitCAR)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLitCAR)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUnlitBOB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLitBOB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            this.groupBox12.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -285,18 +428,18 @@
             this.tabControl1.Controls.Add(this.tpWhosOnFirst);
             this.tabControl1.Controls.Add(this.tpMemory);
             this.tabControl1.Controls.Add(this.tpMaze);
-            this.tabControl1.Controls.Add(this.tpComplicatedWires);
-            this.tabControl1.Controls.Add(this.tpWireSequence);
             this.tabControl1.Controls.Add(this.tpWires);
             this.tabControl1.Controls.Add(this.tpMorseCode);
             this.tabControl1.Controls.Add(this.tpPassword);
             this.tabControl1.Controls.Add(this.tpNeedyKnobV1);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tabControl1.Controls.Add(this.tpForgetMeNot);
+            this.tabControl1.Controls.Add(this.tpModCollection1);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(487, 335);
+            this.tabControl1.Size = new System.Drawing.Size(656, 509);
             this.tabControl1.TabIndex = 0;
             // 
             // tpAbout
@@ -305,7 +448,7 @@
             this.tpAbout.Controls.Add(this.pictureBox1);
             this.tpAbout.Location = new System.Drawing.Point(4, 40);
             this.tpAbout.Name = "tpAbout";
-            this.tpAbout.Size = new System.Drawing.Size(479, 291);
+            this.tpAbout.Size = new System.Drawing.Size(648, 465);
             this.tpAbout.TabIndex = 11;
             this.tpAbout.Text = "About";
             this.tpAbout.UseVisualStyleBackColor = true;
@@ -335,22 +478,52 @@
             // 
             // tpButtonV1
             // 
+            this.tpButtonV1.Controls.Add(this.lblButtonQuery);
+            this.tpButtonV1.Controls.Add(this.label61);
+            this.tpButtonV1.Controls.Add(this.label60);
             this.tpButtonV1.Controls.Add(this.whitestrip);
             this.tpButtonV1.Controls.Add(this.button_name);
-            this.tpButtonV1.Controls.Add(this.button_battery);
-            this.tpButtonV1.Controls.Add(this.button_frk);
-            this.tpButtonV1.Controls.Add(this.button_car);
             this.tpButtonV1.Controls.Add(this.button_color);
             this.tpButtonV1.Controls.Add(this.otherstrip);
             this.tpButtonV1.Controls.Add(this.yellowstrip);
             this.tpButtonV1.Controls.Add(this.bluestrip);
             this.tpButtonV1.Controls.Add(this.button_label);
-            this.tpButtonV1.Location = new System.Drawing.Point(4, 40);
+            this.tpButtonV1.Location = new System.Drawing.Point(4, 22);
             this.tpButtonV1.Name = "tpButtonV1";
-            this.tpButtonV1.Size = new System.Drawing.Size(479, 291);
+            this.tpButtonV1.Size = new System.Drawing.Size(648, 483);
             this.tpButtonV1.TabIndex = 4;
             this.tpButtonV1.Text = "The Button";
             this.tpButtonV1.UseVisualStyleBackColor = true;
+            // 
+            // lblButtonQuery
+            // 
+            this.lblButtonQuery.AutoSize = true;
+            this.lblButtonQuery.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblButtonQuery.Location = new System.Drawing.Point(195, 106);
+            this.lblButtonQuery.Name = "lblButtonQuery";
+            this.lblButtonQuery.Size = new System.Drawing.Size(406, 25);
+            this.lblButtonQuery.TabIndex = 22;
+            this.lblButtonQuery.Text = "Need to know the number of batteries";
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label61.Location = new System.Drawing.Point(8, 352);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(406, 25);
+            this.label61.TabIndex = 21;
+            this.label61.Text = "Need to know the number of batteries";
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label60.Location = new System.Drawing.Point(8, 326);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(593, 25);
+            this.label60.TabIndex = 20;
+            this.label60.Text = "Need to know the indicators present, (Lit CAR, Lit FRK)";
             // 
             // whitestrip
             // 
@@ -377,42 +550,6 @@
             this.button_name.TabIndex = 18;
             this.button_name.Text = "Abort";
             this.button_name.SelectedIndexChanged += new System.EventHandler(this.Button_Event);
-            // 
-            // button_battery
-            // 
-            this.button_battery.FormattingEnabled = true;
-            this.button_battery.Items.AddRange(new object[] {
-            "Less than 2 Batteries",
-            "2 Batteries",
-            "3 or more Batteries"});
-            this.button_battery.Location = new System.Drawing.Point(308, 12);
-            this.button_battery.Name = "button_battery";
-            this.button_battery.Size = new System.Drawing.Size(131, 21);
-            this.button_battery.TabIndex = 17;
-            this.button_battery.Text = "Less than 2 Batteries";
-            this.button_battery.SelectedIndexChanged += new System.EventHandler(this.Button_Event);
-            // 
-            // button_frk
-            // 
-            this.button_frk.AutoSize = true;
-            this.button_frk.Location = new System.Drawing.Point(255, 16);
-            this.button_frk.Name = "button_frk";
-            this.button_frk.Size = new System.Drawing.Size(47, 17);
-            this.button_frk.TabIndex = 16;
-            this.button_frk.Text = "FRK";
-            this.button_frk.UseVisualStyleBackColor = true;
-            this.button_frk.CheckedChanged += new System.EventHandler(this.Button_Event);
-            // 
-            // button_car
-            // 
-            this.button_car.AutoSize = true;
-            this.button_car.Location = new System.Drawing.Point(201, 16);
-            this.button_car.Name = "button_car";
-            this.button_car.Size = new System.Drawing.Size(48, 17);
-            this.button_car.TabIndex = 15;
-            this.button_car.Text = "CAR";
-            this.button_car.UseVisualStyleBackColor = true;
-            this.button_car.CheckedChanged += new System.EventHandler(this.Button_Event);
             // 
             // button_color
             // 
@@ -477,9 +614,9 @@
             this.tpKeypads.Controls.Add(this.keypadReset);
             this.tpKeypads.Controls.Add(this.fpKeypadOrder);
             this.tpKeypads.Controls.Add(this.fpKeypadSymbols);
-            this.tpKeypads.Location = new System.Drawing.Point(4, 40);
+            this.tpKeypads.Location = new System.Drawing.Point(4, 22);
             this.tpKeypads.Name = "tpKeypads";
-            this.tpKeypads.Size = new System.Drawing.Size(479, 291);
+            this.tpKeypads.Size = new System.Drawing.Size(648, 483);
             this.tpKeypads.TabIndex = 14;
             this.tpKeypads.Text = "Keypads";
             this.tpKeypads.UseVisualStyleBackColor = true;
@@ -488,7 +625,7 @@
             // 
             this.fpKeypadLabel.AutoSize = true;
             this.fpKeypadLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fpKeypadLabel.Location = new System.Drawing.Point(146, 215);
+            this.fpKeypadLabel.Location = new System.Drawing.Point(2, 215);
             this.fpKeypadLabel.Name = "fpKeypadLabel";
             this.fpKeypadLabel.Size = new System.Drawing.Size(247, 20);
             this.fpKeypadLabel.TabIndex = 6;
@@ -500,9 +637,13 @@
             this.fpKeypadSelection.Controls.Add(this.button33);
             this.fpKeypadSelection.Controls.Add(this.button34);
             this.fpKeypadSelection.Controls.Add(this.button35);
+            this.fpKeypadSelection.Controls.Add(this.button36);
+            this.fpKeypadSelection.Controls.Add(this.button37);
+            this.fpKeypadSelection.Controls.Add(this.button38);
+            this.fpKeypadSelection.Controls.Add(this.button39);
             this.fpKeypadSelection.Location = new System.Drawing.Point(412, 3);
             this.fpKeypadSelection.Name = "fpKeypadSelection";
-            this.fpKeypadSelection.Size = new System.Drawing.Size(59, 196);
+            this.fpKeypadSelection.Size = new System.Drawing.Size(112, 196);
             this.fpKeypadSelection.TabIndex = 5;
             // 
             // button32
@@ -518,7 +659,7 @@
             // button33
             // 
             this.button33.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button33.Location = new System.Drawing.Point(3, 52);
+            this.button33.Location = new System.Drawing.Point(57, 3);
             this.button33.Name = "button33";
             this.button33.Size = new System.Drawing.Size(48, 43);
             this.button33.TabIndex = 2;
@@ -528,7 +669,7 @@
             // button34
             // 
             this.button34.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button34.Location = new System.Drawing.Point(3, 101);
+            this.button34.Location = new System.Drawing.Point(3, 52);
             this.button34.Name = "button34";
             this.button34.Size = new System.Drawing.Size(48, 43);
             this.button34.TabIndex = 3;
@@ -538,16 +679,56 @@
             // button35
             // 
             this.button35.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button35.Location = new System.Drawing.Point(3, 150);
+            this.button35.Location = new System.Drawing.Point(57, 52);
             this.button35.Name = "button35";
             this.button35.Size = new System.Drawing.Size(48, 43);
             this.button35.TabIndex = 4;
             this.button35.UseVisualStyleBackColor = true;
             this.button35.Click += new System.EventHandler(this.keypadSelection_Click);
             // 
+            // button36
+            // 
+            this.button36.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button36.Location = new System.Drawing.Point(3, 101);
+            this.button36.Name = "button36";
+            this.button36.Size = new System.Drawing.Size(48, 43);
+            this.button36.TabIndex = 5;
+            this.button36.UseVisualStyleBackColor = true;
+            this.button36.Click += new System.EventHandler(this.keypadSelection_Click);
+            // 
+            // button37
+            // 
+            this.button37.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button37.Location = new System.Drawing.Point(57, 101);
+            this.button37.Name = "button37";
+            this.button37.Size = new System.Drawing.Size(48, 43);
+            this.button37.TabIndex = 6;
+            this.button37.UseVisualStyleBackColor = true;
+            this.button37.Click += new System.EventHandler(this.keypadSelection_Click);
+            // 
+            // button38
+            // 
+            this.button38.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button38.Location = new System.Drawing.Point(3, 150);
+            this.button38.Name = "button38";
+            this.button38.Size = new System.Drawing.Size(48, 43);
+            this.button38.TabIndex = 7;
+            this.button38.UseVisualStyleBackColor = true;
+            this.button38.Click += new System.EventHandler(this.keypadSelection_Click);
+            // 
+            // button39
+            // 
+            this.button39.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button39.Location = new System.Drawing.Point(57, 150);
+            this.button39.Name = "button39";
+            this.button39.Size = new System.Drawing.Size(48, 43);
+            this.button39.TabIndex = 8;
+            this.button39.UseVisualStyleBackColor = true;
+            this.button39.Click += new System.EventHandler(this.keypadSelection_Click);
+            // 
             // keypadReset
             // 
-            this.keypadReset.Location = new System.Drawing.Point(15, 208);
+            this.keypadReset.Location = new System.Drawing.Point(286, 207);
             this.keypadReset.Name = "keypadReset";
             this.keypadReset.Size = new System.Drawing.Size(92, 28);
             this.keypadReset.TabIndex = 4;
@@ -561,9 +742,11 @@
             this.fpKeypadOrder.Controls.Add(this.button3);
             this.fpKeypadOrder.Controls.Add(this.button4);
             this.fpKeypadOrder.Controls.Add(this.button5);
-            this.fpKeypadOrder.Location = new System.Drawing.Point(162, 238);
+            this.fpKeypadOrder.Controls.Add(this.button40);
+            this.fpKeypadOrder.Controls.Add(this.button41);
+            this.fpKeypadOrder.Location = new System.Drawing.Point(3, 238);
             this.fpKeypadOrder.Name = "fpKeypadOrder";
-            this.fpKeypadOrder.Size = new System.Drawing.Size(216, 50);
+            this.fpKeypadOrder.Size = new System.Drawing.Size(330, 50);
             this.fpKeypadOrder.TabIndex = 3;
             // 
             // button2
@@ -609,6 +792,28 @@
             this.button5.Text = "Ѭ";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.keypadOrder_Click);
+            // 
+            // button40
+            // 
+            this.button40.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button40.Location = new System.Drawing.Point(219, 3);
+            this.button40.Name = "button40";
+            this.button40.Size = new System.Drawing.Size(48, 43);
+            this.button40.TabIndex = 5;
+            this.button40.Text = "Ѭ";
+            this.button40.UseVisualStyleBackColor = true;
+            this.button40.Click += new System.EventHandler(this.keypadOrder_Click);
+            // 
+            // button41
+            // 
+            this.button41.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button41.Location = new System.Drawing.Point(273, 3);
+            this.button41.Name = "button41";
+            this.button41.Size = new System.Drawing.Size(48, 43);
+            this.button41.TabIndex = 6;
+            this.button41.Text = "Ѭ";
+            this.button41.UseVisualStyleBackColor = true;
+            this.button41.Click += new System.EventHandler(this.keypadOrder_Click);
             // 
             // fpKeypadSymbols
             // 
@@ -943,6 +1148,8 @@
             // 
             // tpSimonSays
             // 
+            this.tpSimonSays.Controls.Add(this.label58);
+            this.tpSimonSays.Controls.Add(this.label18);
             this.tpSimonSays.Controls.Add(this.label8);
             this.tpSimonSays.Controls.Add(this.label7);
             this.tpSimonSays.Controls.Add(this.label6);
@@ -951,15 +1158,33 @@
             this.tpSimonSays.Controls.Add(this.ss_yellow);
             this.tpSimonSays.Controls.Add(this.ss_green);
             this.tpSimonSays.Controls.Add(this.ss_blue);
-            this.tpSimonSays.Controls.Add(this.SimonSaysStrikes);
-            this.tpSimonSays.Controls.Add(this.ss_vowels);
             this.tpSimonSays.Controls.Add(this.label9);
-            this.tpSimonSays.Location = new System.Drawing.Point(4, 40);
+            this.tpSimonSays.Location = new System.Drawing.Point(4, 22);
             this.tpSimonSays.Name = "tpSimonSays";
-            this.tpSimonSays.Size = new System.Drawing.Size(479, 291);
+            this.tpSimonSays.Size = new System.Drawing.Size(648, 483);
             this.tpSimonSays.TabIndex = 3;
             this.tpSimonSays.Text = "Simon Says";
             this.tpSimonSays.UseVisualStyleBackColor = true;
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label58.Location = new System.Drawing.Point(8, 213);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(387, 25);
+            this.label58.TabIndex = 19;
+            this.label58.Text = "Need to know the number of Strikes";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(6, 188);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(317, 25);
+            this.label18.TabIndex = 18;
+            this.label18.Text = "Need to if Serial has a Vowel";
             // 
             // label8
             // 
@@ -967,7 +1192,7 @@
             this.label8.BackColor = System.Drawing.Color.Black;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Yellow;
-            this.label8.Location = new System.Drawing.Point(7, 154);
+            this.label8.Location = new System.Drawing.Point(10, 130);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(261, 37);
             this.label8.TabIndex = 16;
@@ -979,7 +1204,7 @@
             this.label7.BackColor = System.Drawing.Color.Black;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Green;
-            this.label7.Location = new System.Drawing.Point(14, 117);
+            this.label7.Location = new System.Drawing.Point(17, 93);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(254, 37);
             this.label7.TabIndex = 15;
@@ -991,7 +1216,7 @@
             this.label6.BackColor = System.Drawing.Color.Black;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label6.Location = new System.Drawing.Point(40, 80);
+            this.label6.Location = new System.Drawing.Point(43, 56);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(228, 37);
             this.label6.TabIndex = 14;
@@ -1003,7 +1228,7 @@
             this.ss_red.BackColor = System.Drawing.Color.Black;
             this.ss_red.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ss_red.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.ss_red.Location = new System.Drawing.Point(262, 43);
+            this.ss_red.Location = new System.Drawing.Point(265, 19);
             this.ss_red.Name = "ss_red";
             this.ss_red.Size = new System.Drawing.Size(84, 37);
             this.ss_red.TabIndex = 9;
@@ -1015,7 +1240,7 @@
             this.label5.BackColor = System.Drawing.Color.Black;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(47, 43);
+            this.label5.Location = new System.Drawing.Point(50, 19);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(221, 37);
             this.label5.TabIndex = 13;
@@ -1027,7 +1252,7 @@
             this.ss_yellow.BackColor = System.Drawing.Color.Black;
             this.ss_yellow.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ss_yellow.ForeColor = System.Drawing.Color.Red;
-            this.ss_yellow.Location = new System.Drawing.Point(262, 154);
+            this.ss_yellow.Location = new System.Drawing.Point(265, 130);
             this.ss_yellow.Name = "ss_yellow";
             this.ss_yellow.Size = new System.Drawing.Size(77, 37);
             this.ss_yellow.TabIndex = 12;
@@ -1039,7 +1264,7 @@
             this.ss_green.BackColor = System.Drawing.Color.Black;
             this.ss_green.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ss_green.ForeColor = System.Drawing.Color.Green;
-            this.ss_green.Location = new System.Drawing.Point(262, 117);
+            this.ss_green.Location = new System.Drawing.Point(265, 93);
             this.ss_green.Name = "ss_green";
             this.ss_green.Size = new System.Drawing.Size(110, 37);
             this.ss_green.TabIndex = 11;
@@ -1051,41 +1276,16 @@
             this.ss_blue.BackColor = System.Drawing.Color.Black;
             this.ss_blue.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ss_blue.ForeColor = System.Drawing.Color.Yellow;
-            this.ss_blue.Location = new System.Drawing.Point(262, 80);
+            this.ss_blue.Location = new System.Drawing.Point(265, 56);
             this.ss_blue.Name = "ss_blue";
             this.ss_blue.Size = new System.Drawing.Size(117, 37);
             this.ss_blue.TabIndex = 10;
             this.ss_blue.Text = "Yellow";
             // 
-            // SimonSaysStrikes
-            // 
-            this.SimonSaysStrikes.FormattingEnabled = true;
-            this.SimonSaysStrikes.Items.AddRange(new object[] {
-            "0 Strikes",
-            "1 Strike",
-            "2 Strikes"});
-            this.SimonSaysStrikes.Location = new System.Drawing.Point(138, 10);
-            this.SimonSaysStrikes.Name = "SimonSaysStrikes";
-            this.SimonSaysStrikes.Size = new System.Drawing.Size(109, 21);
-            this.SimonSaysStrikes.TabIndex = 1;
-            this.SimonSaysStrikes.Text = "0 Strikes";
-            this.SimonSaysStrikes.SelectedIndexChanged += new System.EventHandler(this.Simon_Says_Event);
-            // 
-            // ss_vowels
-            // 
-            this.ss_vowels.AutoSize = true;
-            this.ss_vowels.Location = new System.Drawing.Point(8, 16);
-            this.ss_vowels.Name = "ss_vowels";
-            this.ss_vowels.Size = new System.Drawing.Size(116, 17);
-            this.ss_vowels.TabIndex = 0;
-            this.ss_vowels.Text = "Serial# has Vowels";
-            this.ss_vowels.UseVisualStyleBackColor = true;
-            this.ss_vowels.CheckedChanged += new System.EventHandler(this.Simon_Says_Event);
-            // 
             // label9
             // 
             this.label9.BackColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(5, 34);
+            this.label9.Location = new System.Drawing.Point(8, 10);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(466, 167);
             this.label9.TabIndex = 17;
@@ -1098,9 +1298,9 @@
             this.tpWhosOnFirst.Controls.Add(this.groupBox4);
             this.tpWhosOnFirst.Controls.Add(this.groupBox3);
             this.tpWhosOnFirst.Controls.Add(this.wofButtons);
-            this.tpWhosOnFirst.Location = new System.Drawing.Point(4, 40);
+            this.tpWhosOnFirst.Location = new System.Drawing.Point(4, 22);
             this.tpWhosOnFirst.Name = "tpWhosOnFirst";
-            this.tpWhosOnFirst.Size = new System.Drawing.Size(479, 291);
+            this.tpWhosOnFirst.Size = new System.Drawing.Size(648, 483);
             this.tpWhosOnFirst.TabIndex = 13;
             this.tpWhosOnFirst.Text = "Who\'s on First";
             this.tpWhosOnFirst.UseVisualStyleBackColor = true;
@@ -1590,9 +1790,9 @@
             this.tpMemory.Controls.Add(this.Num3);
             this.tpMemory.Controls.Add(this.Num2);
             this.tpMemory.Controls.Add(this.Num1);
-            this.tpMemory.Location = new System.Drawing.Point(4, 40);
+            this.tpMemory.Location = new System.Drawing.Point(4, 22);
             this.tpMemory.Name = "tpMemory";
-            this.tpMemory.Size = new System.Drawing.Size(479, 291);
+            this.tpMemory.Size = new System.Drawing.Size(648, 483);
             this.tpMemory.TabIndex = 9;
             this.tpMemory.Text = "Memory";
             this.tpMemory.UseVisualStyleBackColor = true;
@@ -1707,9 +1907,9 @@
             this.tpMaze.Controls.Add(this.mazeSelection);
             this.tpMaze.Controls.Add(this.mazeEnd);
             this.tpMaze.Controls.Add(this.pbMaze);
-            this.tpMaze.Location = new System.Drawing.Point(4, 40);
+            this.tpMaze.Location = new System.Drawing.Point(4, 22);
             this.tpMaze.Name = "tpMaze";
-            this.tpMaze.Size = new System.Drawing.Size(479, 291);
+            this.tpMaze.Size = new System.Drawing.Size(648, 483);
             this.tpMaze.TabIndex = 12;
             this.tpMaze.Text = "Mazes";
             this.tpMaze.UseVisualStyleBackColor = true;
@@ -1848,33 +2048,11 @@
             this.pbMaze.Click += new System.EventHandler(this.pbMaze_Click);
             this.pbMaze.Paint += new System.Windows.Forms.PaintEventHandler(this.pbMaze_Paint);
             // 
-            // tpComplicatedWires
-            // 
-            this.tpComplicatedWires.Controls.Add(this.cw_all_wires);
-            this.tpComplicatedWires.Controls.Add(this.cw_reset);
-            this.tpComplicatedWires.Controls.Add(this.cw_output);
-            this.tpComplicatedWires.Controls.Add(this.cw_input);
-            this.tpComplicatedWires.Controls.Add(this.cw_label);
-            this.tpComplicatedWires.Controls.Add(this.cw_star);
-            this.tpComplicatedWires.Controls.Add(this.cw_led);
-            this.tpComplicatedWires.Controls.Add(this.cw_blue);
-            this.tpComplicatedWires.Controls.Add(this.cw_red);
-            this.tpComplicatedWires.Controls.Add(this.cw_batt);
-            this.tpComplicatedWires.Controls.Add(this.cw_pp);
-            this.tpComplicatedWires.Controls.Add(this.cw_serial);
-            this.tpComplicatedWires.Location = new System.Drawing.Point(4, 40);
-            this.tpComplicatedWires.Name = "tpComplicatedWires";
-            this.tpComplicatedWires.Padding = new System.Windows.Forms.Padding(3);
-            this.tpComplicatedWires.Size = new System.Drawing.Size(479, 291);
-            this.tpComplicatedWires.TabIndex = 1;
-            this.tpComplicatedWires.Text = "Complicated Wire";
-            this.tpComplicatedWires.UseVisualStyleBackColor = true;
-            // 
             // cw_all_wires
             // 
-            this.cw_all_wires.Location = new System.Drawing.Point(308, 42);
+            this.cw_all_wires.Location = new System.Drawing.Point(392, 168);
             this.cw_all_wires.Name = "cw_all_wires";
-            this.cw_all_wires.Size = new System.Drawing.Size(133, 25);
+            this.cw_all_wires.Size = new System.Drawing.Size(106, 25);
             this.cw_all_wires.TabIndex = 11;
             this.cw_all_wires.Text = "Set All wire types";
             this.cw_all_wires.UseVisualStyleBackColor = true;
@@ -1882,9 +2060,9 @@
             // 
             // cw_reset
             // 
-            this.cw_reset.Location = new System.Drawing.Point(308, 12);
+            this.cw_reset.Location = new System.Drawing.Point(392, 204);
             this.cw_reset.Name = "cw_reset";
-            this.cw_reset.Size = new System.Drawing.Size(135, 25);
+            this.cw_reset.Size = new System.Drawing.Size(108, 25);
             this.cw_reset.TabIndex = 10;
             this.cw_reset.Text = "Reset";
             this.cw_reset.UseVisualStyleBackColor = true;
@@ -1892,254 +2070,152 @@
             // 
             // cw_output
             // 
-            this.cw_output.Location = new System.Drawing.Point(13, 181);
+            this.cw_output.Location = new System.Drawing.Point(53, 53);
             this.cw_output.Multiline = true;
             this.cw_output.Name = "cw_output";
-            this.cw_output.Size = new System.Drawing.Size(445, 104);
+            this.cw_output.Size = new System.Drawing.Size(559, 104);
             this.cw_output.TabIndex = 9;
             // 
             // cw_input
             // 
-            this.cw_input.Location = new System.Drawing.Point(13, 155);
+            this.cw_input.Location = new System.Drawing.Point(53, 23);
             this.cw_input.Name = "cw_input";
-            this.cw_input.Size = new System.Drawing.Size(445, 20);
+            this.cw_input.Size = new System.Drawing.Size(559, 20);
             this.cw_input.TabIndex = 8;
             this.cw_input.TextChanged += new System.EventHandler(this.Complicated_Wires_Event);
             // 
-            // cw_label
+            // tpWires
             // 
-            this.cw_label.AutoSize = true;
-            this.cw_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cw_label.Location = new System.Drawing.Point(100, 50);
-            this.cw_label.Name = "cw_label";
-            this.cw_label.Size = new System.Drawing.Size(86, 37);
-            this.cw_label.TabIndex = 7;
-            this.cw_label.Text = "CUT";
+            this.tpWires.Controls.Add(this.groupBox12);
+            this.tpWires.Controls.Add(this.groupBox11);
+            this.tpWires.Controls.Add(this.groupBox1);
+            this.tpWires.Location = new System.Drawing.Point(4, 40);
+            this.tpWires.Name = "tpWires";
+            this.tpWires.Padding = new System.Windows.Forms.Padding(3);
+            this.tpWires.Size = new System.Drawing.Size(648, 465);
+            this.tpWires.TabIndex = 0;
+            this.tpWires.Text = "Simple Wires, Complicated Wires, Wire Sequences";
+            this.tpWires.UseVisualStyleBackColor = true;
             // 
-            // cw_star
+            // groupBox11
             // 
-            this.cw_star.AutoSize = true;
-            this.cw_star.Location = new System.Drawing.Point(13, 119);
-            this.cw_star.Name = "cw_star";
-            this.cw_star.Size = new System.Drawing.Size(45, 17);
-            this.cw_star.TabIndex = 6;
-            this.cw_star.Text = "Star";
-            this.cw_star.UseVisualStyleBackColor = true;
-            this.cw_star.CheckedChanged += new System.EventHandler(this.Complicated_Wires_Event);
+            this.groupBox11.Controls.Add(this.label68);
+            this.groupBox11.Controls.Add(this.txtSimpleWireOutput);
+            this.groupBox11.Controls.Add(this.label1);
+            this.groupBox11.Controls.Add(this.wireReset);
+            this.groupBox11.Controls.Add(this.fpWires);
+            this.groupBox11.Controls.Add(this.label23);
+            this.groupBox11.Controls.Add(this.wires_input);
+            this.groupBox11.Location = new System.Drawing.Point(8, 16);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(618, 96);
+            this.groupBox11.TabIndex = 9;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Simple Wires";
             // 
-            // cw_led
+            // txtSimpleWireOutput
             // 
-            this.cw_led.AutoSize = true;
-            this.cw_led.Location = new System.Drawing.Point(13, 96);
-            this.cw_led.Name = "cw_led";
-            this.cw_led.Size = new System.Drawing.Size(47, 17);
-            this.cw_led.TabIndex = 5;
-            this.cw_led.Text = "LED";
-            this.cw_led.UseVisualStyleBackColor = true;
-            this.cw_led.CheckedChanged += new System.EventHandler(this.Complicated_Wires_Event);
-            // 
-            // cw_blue
-            // 
-            this.cw_blue.AutoSize = true;
-            this.cw_blue.Location = new System.Drawing.Point(14, 73);
-            this.cw_blue.Name = "cw_blue";
-            this.cw_blue.Size = new System.Drawing.Size(47, 17);
-            this.cw_blue.TabIndex = 4;
-            this.cw_blue.Text = "Blue";
-            this.cw_blue.UseVisualStyleBackColor = true;
-            this.cw_blue.CheckedChanged += new System.EventHandler(this.Complicated_Wires_Event);
-            // 
-            // cw_red
-            // 
-            this.cw_red.AutoSize = true;
-            this.cw_red.Location = new System.Drawing.Point(14, 50);
-            this.cw_red.Name = "cw_red";
-            this.cw_red.Size = new System.Drawing.Size(46, 17);
-            this.cw_red.TabIndex = 3;
-            this.cw_red.Text = "Red";
-            this.cw_red.UseVisualStyleBackColor = true;
-            this.cw_red.CheckedChanged += new System.EventHandler(this.Complicated_Wires_Event);
-            // 
-            // cw_batt
-            // 
-            this.cw_batt.AutoSize = true;
-            this.cw_batt.Location = new System.Drawing.Point(195, 12);
-            this.cw_batt.Name = "cw_batt";
-            this.cw_batt.Size = new System.Drawing.Size(82, 17);
-            this.cw_batt.TabIndex = 2;
-            this.cw_batt.Text = "2+ Batteries";
-            this.cw_batt.UseVisualStyleBackColor = true;
-            this.cw_batt.Visible = false;
-            this.cw_batt.CheckedChanged += new System.EventHandler(this.Complicated_Wires_Event);
-            // 
-            // cw_pp
-            // 
-            this.cw_pp.AutoSize = true;
-            this.cw_pp.Location = new System.Drawing.Point(107, 12);
-            this.cw_pp.Name = "cw_pp";
-            this.cw_pp.Size = new System.Drawing.Size(82, 17);
-            this.cw_pp.TabIndex = 1;
-            this.cw_pp.Text = "Parallel Port";
-            this.cw_pp.UseVisualStyleBackColor = true;
-            this.cw_pp.Visible = false;
-            this.cw_pp.CheckedChanged += new System.EventHandler(this.Complicated_Wires_Event);
-            // 
-            // cw_serial
-            // 
-            this.cw_serial.AutoSize = true;
-            this.cw_serial.Location = new System.Drawing.Point(14, 12);
-            this.cw_serial.Name = "cw_serial";
-            this.cw_serial.Size = new System.Drawing.Size(87, 17);
-            this.cw_serial.TabIndex = 0;
-            this.cw_serial.Text = "Serial# Even";
-            this.cw_serial.UseVisualStyleBackColor = true;
-            this.cw_serial.Visible = false;
-            this.cw_serial.CheckedChanged += new System.EventHandler(this.Complicated_Wires_Event);
-            // 
-            // tpWireSequence
-            // 
-            this.tpWireSequence.Controls.Add(this.ws_output);
-            this.tpWireSequence.Controls.Add(this.ws_input);
-            this.tpWireSequence.Controls.Add(this.wsBlackButton);
-            this.tpWireSequence.Controls.Add(this.wsBlueButton);
-            this.tpWireSequence.Controls.Add(this.wsRedButton);
-            this.tpWireSequence.Controls.Add(this.label1);
-            this.tpWireSequence.Controls.Add(this.groupBox1);
-            this.tpWireSequence.Controls.Add(this.wsReset);
-            this.tpWireSequence.Location = new System.Drawing.Point(4, 40);
-            this.tpWireSequence.Name = "tpWireSequence";
-            this.tpWireSequence.Padding = new System.Windows.Forms.Padding(3);
-            this.tpWireSequence.Size = new System.Drawing.Size(479, 291);
-            this.tpWireSequence.TabIndex = 0;
-            this.tpWireSequence.Text = "Wire Sequence";
-            this.tpWireSequence.UseVisualStyleBackColor = true;
-            // 
-            // ws_output
-            // 
-            this.ws_output.Location = new System.Drawing.Point(11, 151);
-            this.ws_output.Name = "ws_output";
-            this.ws_output.Size = new System.Drawing.Size(447, 20);
-            this.ws_output.TabIndex = 7;
-            // 
-            // ws_input
-            // 
-            this.ws_input.Location = new System.Drawing.Point(11, 125);
-            this.ws_input.MaxLength = 36;
-            this.ws_input.Name = "ws_input";
-            this.ws_input.Size = new System.Drawing.Size(447, 20);
-            this.ws_input.TabIndex = 6;
-            this.ws_input.TextChanged += new System.EventHandler(this.ws_input_TextChanged);
-            // 
-            // wsBlackButton
-            // 
-            this.wsBlackButton.Location = new System.Drawing.Point(149, 93);
-            this.wsBlackButton.Name = "wsBlackButton";
-            this.wsBlackButton.Size = new System.Drawing.Size(66, 25);
-            this.wsBlackButton.TabIndex = 5;
-            this.wsBlackButton.Text = "Black: 0";
-            this.wsBlackButton.UseVisualStyleBackColor = true;
-            this.wsBlackButton.Click += new System.EventHandler(this.wsBlackButton_Click);
-            // 
-            // wsBlueButton
-            // 
-            this.wsBlueButton.Location = new System.Drawing.Point(83, 93);
-            this.wsBlueButton.Name = "wsBlueButton";
-            this.wsBlueButton.Size = new System.Drawing.Size(60, 25);
-            this.wsBlueButton.TabIndex = 4;
-            this.wsBlueButton.Text = "Blue: 0";
-            this.wsBlueButton.UseVisualStyleBackColor = true;
-            this.wsBlueButton.Click += new System.EventHandler(this.wsBlueButton_Click);
-            // 
-            // wsRedButton
-            // 
-            this.wsRedButton.Location = new System.Drawing.Point(3, 93);
-            this.wsRedButton.Name = "wsRedButton";
-            this.wsRedButton.Size = new System.Drawing.Size(75, 25);
-            this.wsRedButton.TabIndex = 3;
-            this.wsRedButton.Text = "Red: 0";
-            this.wsRedButton.UseVisualStyleBackColor = true;
-            this.wsRedButton.Click += new System.EventHandler(this.wsRedButton_Click);
+            this.txtSimpleWireOutput.Location = new System.Drawing.Point(51, 45);
+            this.txtSimpleWireOutput.Name = "txtSimpleWireOutput";
+            this.txtSimpleWireOutput.Size = new System.Drawing.Size(563, 20);
+            this.txtSimpleWireOutput.TabIndex = 12;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(174, 6);
+            this.label1.Location = new System.Drawing.Point(6, 46);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 37);
-            this.label1.TabIndex = 2;
+            this.label1.Size = new System.Drawing.Size(39, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Output";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(6, 22);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(31, 13);
+            this.label23.TabIndex = 10;
+            this.label23.Text = "Input";
+            // 
+            // wires_input
+            // 
+            this.wires_input.Location = new System.Drawing.Point(51, 19);
+            this.wires_input.MaxLength = 6;
+            this.wires_input.Name = "wires_input";
+            this.wires_input.Size = new System.Drawing.Size(149, 20);
+            this.wires_input.TabIndex = 10;
+            this.wires_input.TextChanged += new System.EventHandler(this.wires_Input_TextChanged);
+            // 
+            // wireReset
+            // 
+            this.wireReset.Location = new System.Drawing.Point(390, 19);
+            this.wireReset.Name = "wireReset";
+            this.wireReset.Size = new System.Drawing.Size(108, 21);
+            this.wireReset.TabIndex = 6;
+            this.wireReset.Text = "Reset";
+            this.wireReset.UseVisualStyleBackColor = true;
+            this.wireReset.Click += new System.EventHandler(this.wireReset_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.ws_C);
-            this.groupBox1.Controls.Add(this.ws_B);
-            this.groupBox1.Controls.Add(this.ws_A);
-            this.groupBox1.Location = new System.Drawing.Point(3, 35);
+            this.groupBox1.Controls.Add(this.label63);
+            this.groupBox1.Controls.Add(this.label22);
+            this.groupBox1.Controls.Add(this.label17);
+            this.groupBox1.Controls.Add(this.wsReset);
+            this.groupBox1.Controls.Add(this.ws_input);
+            this.groupBox1.Controls.Add(this.ws_output);
+            this.groupBox1.Location = new System.Drawing.Point(10, 382);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(140, 52);
-            this.groupBox1.TabIndex = 1;
+            this.groupBox1.Size = new System.Drawing.Size(618, 74);
+            this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Wire Sequence";
             // 
-            // ws_C
+            // label22
             // 
-            this.ws_C.AutoSize = true;
-            this.ws_C.Location = new System.Drawing.Point(92, 19);
-            this.ws_C.Name = "ws_C";
-            this.ws_C.Size = new System.Drawing.Size(32, 17);
-            this.ws_C.TabIndex = 2;
-            this.ws_C.Text = "C";
-            this.ws_C.UseVisualStyleBackColor = true;
-            this.ws_C.CheckedChanged += new System.EventHandler(this.ws_C_CheckedChanged);
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(6, 46);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(39, 13);
+            this.label22.TabIndex = 9;
+            this.label22.Text = "Output";
             // 
-            // ws_B
+            // label17
             // 
-            this.ws_B.AutoSize = true;
-            this.ws_B.Location = new System.Drawing.Point(54, 19);
-            this.ws_B.Name = "ws_B";
-            this.ws_B.Size = new System.Drawing.Size(32, 17);
-            this.ws_B.TabIndex = 1;
-            this.ws_B.Text = "B";
-            this.ws_B.UseVisualStyleBackColor = true;
-            this.ws_B.CheckedChanged += new System.EventHandler(this.ws_B_CheckedChanged);
-            // 
-            // ws_A
-            // 
-            this.ws_A.AutoSize = true;
-            this.ws_A.Checked = true;
-            this.ws_A.Location = new System.Drawing.Point(16, 19);
-            this.ws_A.Name = "ws_A";
-            this.ws_A.Size = new System.Drawing.Size(32, 17);
-            this.ws_A.TabIndex = 0;
-            this.ws_A.TabStop = true;
-            this.ws_A.Text = "A";
-            this.ws_A.UseVisualStyleBackColor = true;
-            this.ws_A.CheckedChanged += new System.EventHandler(this.ws_A_CheckedChanged);
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 22);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(31, 13);
+            this.label17.TabIndex = 8;
+            this.label17.Text = "Input";
             // 
             // wsReset
             // 
             this.wsReset.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.wsReset.Location = new System.Drawing.Point(3, 6);
+            this.wsReset.Location = new System.Drawing.Point(312, 20);
             this.wsReset.Name = "wsReset";
-            this.wsReset.Size = new System.Drawing.Size(75, 23);
+            this.wsReset.Size = new System.Drawing.Size(108, 21);
             this.wsReset.TabIndex = 0;
             this.wsReset.Text = "Reset";
             this.wsReset.UseVisualStyleBackColor = true;
             this.wsReset.Click += new System.EventHandler(this.wsReset_Click);
             // 
-            // tpWires
+            // ws_input
             // 
-            this.tpWires.Controls.Add(this.fpWires);
-            this.tpWires.Controls.Add(this.wires_serial_letter);
-            this.tpWires.Controls.Add(this.wires_input);
-            this.tpWires.Controls.Add(this.wires_serial_odd);
-            this.tpWires.Controls.Add(this.wires_label);
-            this.tpWires.Controls.Add(this.wireReset);
-            this.tpWires.Location = new System.Drawing.Point(4, 40);
-            this.tpWires.Name = "tpWires";
-            this.tpWires.Size = new System.Drawing.Size(479, 291);
-            this.tpWires.TabIndex = 7;
-            this.tpWires.Text = "Simple Wires";
-            this.tpWires.UseVisualStyleBackColor = true;
+            this.ws_input.Location = new System.Drawing.Point(51, 20);
+            this.ws_input.MaxLength = 36;
+            this.ws_input.Name = "ws_input";
+            this.ws_input.Size = new System.Drawing.Size(255, 20);
+            this.ws_input.TabIndex = 6;
+            this.ws_input.TextChanged += new System.EventHandler(this.ws_input_TextChanged);
+            // 
+            // ws_output
+            // 
+            this.ws_output.Location = new System.Drawing.Point(51, 46);
+            this.ws_output.Name = "ws_output";
+            this.ws_output.Size = new System.Drawing.Size(561, 20);
+            this.ws_output.TabIndex = 7;
             // 
             // fpWires
             // 
@@ -2149,10 +2225,11 @@
             this.fpWires.Controls.Add(this.wire4);
             this.fpWires.Controls.Add(this.wire5);
             this.fpWires.Controls.Add(this.wire6);
-            this.fpWires.Location = new System.Drawing.Point(40, 54);
+            this.fpWires.Location = new System.Drawing.Point(504, 20);
             this.fpWires.Name = "fpWires";
-            this.fpWires.Size = new System.Drawing.Size(154, 163);
+            this.fpWires.Size = new System.Drawing.Size(108, 20);
             this.fpWires.TabIndex = 12;
+            this.fpWires.Visible = false;
             // 
             // wire1
             // 
@@ -2166,7 +2243,7 @@
             "Yellow"});
             this.wire1.Location = new System.Drawing.Point(3, 3);
             this.wire1.Name = "wire1";
-            this.wire1.Size = new System.Drawing.Size(149, 21);
+            this.wire1.Size = new System.Drawing.Size(10, 21);
             this.wire1.TabIndex = 1;
             this.wire1.SelectedIndexChanged += new System.EventHandler(this.simpleWires_Event);
             // 
@@ -2180,9 +2257,9 @@
             "Black",
             "Blue",
             "Yellow"});
-            this.wire2.Location = new System.Drawing.Point(3, 30);
+            this.wire2.Location = new System.Drawing.Point(19, 3);
             this.wire2.Name = "wire2";
-            this.wire2.Size = new System.Drawing.Size(149, 21);
+            this.wire2.Size = new System.Drawing.Size(17, 21);
             this.wire2.TabIndex = 2;
             this.wire2.SelectedIndexChanged += new System.EventHandler(this.simpleWires_Event);
             // 
@@ -2196,9 +2273,9 @@
             "Black",
             "Blue",
             "Yellow"});
-            this.wire3.Location = new System.Drawing.Point(3, 57);
+            this.wire3.Location = new System.Drawing.Point(42, 3);
             this.wire3.Name = "wire3";
-            this.wire3.Size = new System.Drawing.Size(149, 21);
+            this.wire3.Size = new System.Drawing.Size(18, 21);
             this.wire3.TabIndex = 3;
             this.wire3.SelectedIndexChanged += new System.EventHandler(this.simpleWires_Event);
             // 
@@ -2212,9 +2289,9 @@
             "Black",
             "Blue",
             "Yellow"});
-            this.wire4.Location = new System.Drawing.Point(3, 84);
+            this.wire4.Location = new System.Drawing.Point(66, 3);
             this.wire4.Name = "wire4";
-            this.wire4.Size = new System.Drawing.Size(149, 21);
+            this.wire4.Size = new System.Drawing.Size(17, 21);
             this.wire4.TabIndex = 4;
             this.wire4.SelectedIndexChanged += new System.EventHandler(this.simpleWires_Event);
             // 
@@ -2228,9 +2305,9 @@
             "Black",
             "Blue",
             "Yellow"});
-            this.wire5.Location = new System.Drawing.Point(3, 111);
+            this.wire5.Location = new System.Drawing.Point(3, 30);
             this.wire5.Name = "wire5";
-            this.wire5.Size = new System.Drawing.Size(149, 21);
+            this.wire5.Size = new System.Drawing.Size(17, 21);
             this.wire5.TabIndex = 5;
             this.wire5.SelectedIndexChanged += new System.EventHandler(this.simpleWires_Event);
             // 
@@ -2244,63 +2321,11 @@
             "Black",
             "Blue",
             "Yellow"});
-            this.wire6.Location = new System.Drawing.Point(3, 138);
+            this.wire6.Location = new System.Drawing.Point(26, 30);
             this.wire6.Name = "wire6";
-            this.wire6.Size = new System.Drawing.Size(149, 21);
+            this.wire6.Size = new System.Drawing.Size(18, 21);
             this.wire6.TabIndex = 0;
             this.wire6.SelectedIndexChanged += new System.EventHandler(this.simpleWires_Event);
-            // 
-            // wires_serial_letter
-            // 
-            this.wires_serial_letter.AutoSize = true;
-            this.wires_serial_letter.Location = new System.Drawing.Point(208, 19);
-            this.wires_serial_letter.Name = "wires_serial_letter";
-            this.wires_serial_letter.Size = new System.Drawing.Size(185, 17);
-            this.wires_serial_letter.TabIndex = 11;
-            this.wires_serial_letter.Text = "Serial number starts with a Letter?";
-            this.wires_serial_letter.UseVisualStyleBackColor = true;
-            this.wires_serial_letter.Visible = false;
-            this.wires_serial_letter.CheckedChanged += new System.EventHandler(this.simpleWires_Event);
-            // 
-            // wires_input
-            // 
-            this.wires_input.Location = new System.Drawing.Point(43, 268);
-            this.wires_input.MaxLength = 6;
-            this.wires_input.Name = "wires_input";
-            this.wires_input.Size = new System.Drawing.Size(149, 20);
-            this.wires_input.TabIndex = 10;
-            this.wires_input.TextChanged += new System.EventHandler(this.wires_Input_TextChanged);
-            // 
-            // wires_serial_odd
-            // 
-            this.wires_serial_odd.AutoSize = true;
-            this.wires_serial_odd.Location = new System.Drawing.Point(208, 19);
-            this.wires_serial_odd.Name = "wires_serial_odd";
-            this.wires_serial_odd.Size = new System.Drawing.Size(178, 17);
-            this.wires_serial_odd.TabIndex = 9;
-            this.wires_serial_odd.Text = "Last digit of Serial Number Odd?";
-            this.wires_serial_odd.UseVisualStyleBackColor = true;
-            this.wires_serial_odd.Visible = false;
-            this.wires_serial_odd.CheckedChanged += new System.EventHandler(this.simpleWires_Event);
-            // 
-            // wires_label
-            // 
-            this.wires_label.AutoSize = true;
-            this.wires_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wires_label.Location = new System.Drawing.Point(36, 213);
-            this.wires_label.Name = "wires_label";
-            this.wires_label.Size = new System.Drawing.Size(0, 37);
-            this.wires_label.TabIndex = 8;
-            // 
-            // wireReset
-            // 
-            this.wireReset.Location = new System.Drawing.Point(43, 19);
-            this.wireReset.Name = "wireReset";
-            this.wireReset.Size = new System.Drawing.Size(149, 29);
-            this.wireReset.TabIndex = 6;
-            this.wireReset.Text = "Reset";
-            this.wireReset.UseVisualStyleBackColor = true;
-            this.wireReset.Click += new System.EventHandler(this.wireReset_Click);
             // 
             // tpMorseCode
             // 
@@ -2308,7 +2333,7 @@
             this.tpMorseCode.Controls.Add(this.MorseCodeInput);
             this.tpMorseCode.Location = new System.Drawing.Point(4, 40);
             this.tpMorseCode.Name = "tpMorseCode";
-            this.tpMorseCode.Size = new System.Drawing.Size(479, 291);
+            this.tpMorseCode.Size = new System.Drawing.Size(648, 465);
             this.tpMorseCode.TabIndex = 10;
             this.tpMorseCode.Text = "Morse Code";
             this.tpMorseCode.UseVisualStyleBackColor = true;
@@ -2340,10 +2365,20 @@
             this.tpPassword.Controls.Add(this.passResults);
             this.tpPassword.Location = new System.Drawing.Point(4, 40);
             this.tpPassword.Name = "tpPassword";
-            this.tpPassword.Size = new System.Drawing.Size(479, 291);
+            this.tpPassword.Size = new System.Drawing.Size(648, 465);
             this.tpPassword.TabIndex = 8;
             this.tpPassword.Text = "Passwords";
             this.tpPassword.UseVisualStyleBackColor = true;
+            // 
+            // passwordClear
+            // 
+            this.passwordClear.Location = new System.Drawing.Point(395, 4);
+            this.passwordClear.Name = "passwordClear";
+            this.passwordClear.Size = new System.Drawing.Size(76, 26);
+            this.passwordClear.TabIndex = 6;
+            this.passwordClear.Text = "Clear";
+            this.passwordClear.UseVisualStyleBackColor = true;
+            this.passwordClear.Click += new System.EventHandler(this.PasswordClear_Click);
             // 
             // label15
             // 
@@ -2469,16 +2504,6 @@
             this.pass5.TabIndex = 4;
             this.pass5.TextChanged += new System.EventHandler(this.Password_TextChanged);
             // 
-            // passwordClear
-            // 
-            this.passwordClear.Location = new System.Drawing.Point(395, 4);
-            this.passwordClear.Name = "passwordClear";
-            this.passwordClear.Size = new System.Drawing.Size(76, 26);
-            this.passwordClear.TabIndex = 6;
-            this.passwordClear.Text = "Clear";
-            this.passwordClear.UseVisualStyleBackColor = true;
-            this.passwordClear.Click += new System.EventHandler(this.PasswordClear_Click);
-            // 
             // passResults
             // 
             this.passResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2495,7 +2520,7 @@
             this.tpNeedyKnobV1.Controls.Add(this.nn_label);
             this.tpNeedyKnobV1.Location = new System.Drawing.Point(4, 40);
             this.tpNeedyKnobV1.Name = "tpNeedyKnobV1";
-            this.tpNeedyKnobV1.Size = new System.Drawing.Size(479, 291);
+            this.tpNeedyKnobV1.Size = new System.Drawing.Size(648, 465);
             this.tpNeedyKnobV1.TabIndex = 2;
             this.tpNeedyKnobV1.Text = "Knobs";
             this.tpNeedyKnobV1.UseVisualStyleBackColor = true;
@@ -2593,13 +2618,468 @@
             this.nn_label.Size = new System.Drawing.Size(0, 37);
             this.nn_label.TabIndex = 8;
             // 
+            // tpForgetMeNot
+            // 
+            this.tpForgetMeNot.Controls.Add(this.label59);
+            this.tpForgetMeNot.Controls.Add(this.label57);
+            this.tpForgetMeNot.Controls.Add(this.label56);
+            this.tpForgetMeNot.Controls.Add(this.label55);
+            this.tpForgetMeNot.Controls.Add(this.tbFMNSolution);
+            this.tpForgetMeNot.Controls.Add(this.textBox1);
+            this.tpForgetMeNot.Location = new System.Drawing.Point(4, 40);
+            this.tpForgetMeNot.Name = "tpForgetMeNot";
+            this.tpForgetMeNot.Padding = new System.Windows.Forms.Padding(3);
+            this.tpForgetMeNot.Size = new System.Drawing.Size(648, 465);
+            this.tpForgetMeNot.TabIndex = 15;
+            this.tpForgetMeNot.Text = "(mod) Forget Me Not";
+            this.tpForgetMeNot.UseVisualStyleBackColor = true;
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label59.Location = new System.Drawing.Point(8, 406);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(471, 25);
+            this.label59.TabIndex = 17;
+            this.label59.Text = "Impossible to solve if a digit is not recorded";
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label57.Location = new System.Drawing.Point(8, 370);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(422, 25);
+            this.label57.TabIndex = 16;
+            this.label57.Text = "Need to know if a Serial port is present";
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label56.Location = new System.Drawing.Point(8, 344);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(611, 25);
+            this.label56.TabIndex = 15;
+            this.label56.Text = "Need to know # of Lit/Unlit Indicators including Unlit CAR";
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label55.Location = new System.Drawing.Point(6, 318);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(390, 25);
+            this.label55.TabIndex = 14;
+            this.label55.Text = "Need to know the full Serial Number";
+            // 
+            // tbFMNSolution
+            // 
+            this.tbFMNSolution.Location = new System.Drawing.Point(183, 6);
+            this.tbFMNSolution.Multiline = true;
+            this.tbFMNSolution.Name = "tbFMNSolution";
+            this.tbFMNSolution.Size = new System.Drawing.Size(258, 299);
+            this.tbFMNSolution.TabIndex = 1;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(10, 6);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(167, 299);
+            this.textBox1.TabIndex = 0;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // tpModCollection1
+            // 
+            this.tpModCollection1.Controls.Add(this.groupBox10);
+            this.tpModCollection1.Controls.Add(this.label24);
+            this.tpModCollection1.Controls.Add(this.groupBox9);
+            this.tpModCollection1.Controls.Add(this.groupBox8);
+            this.tpModCollection1.Controls.Add(this.groupBox7);
+            this.tpModCollection1.Controls.Add(this.groupBox6);
+            this.tpModCollection1.Location = new System.Drawing.Point(4, 40);
+            this.tpModCollection1.Name = "tpModCollection1";
+            this.tpModCollection1.Padding = new System.Windows.Forms.Padding(3);
+            this.tpModCollection1.Size = new System.Drawing.Size(648, 465);
+            this.tpModCollection1.TabIndex = 20;
+            this.tpModCollection1.Text = "Chess, Connection Check, Logic, Plumbing, Two Bits";
+            this.tpModCollection1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.label21);
+            this.groupBox10.Controls.Add(this.textBox2);
+            this.groupBox10.Controls.Add(this.textBox4);
+            this.groupBox10.Controls.Add(this.textBox5);
+            this.groupBox10.Controls.Add(this.label19);
+            this.groupBox10.Controls.Add(this.label20);
+            this.groupBox10.Location = new System.Drawing.Point(351, 16);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(249, 169);
+            this.groupBox10.TabIndex = 21;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Two Bits";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(10, 24);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(138, 25);
+            this.label21.TabIndex = 4;
+            this.label21.Text = "Initial Code:";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(154, 59);
+            this.textBox2.MaxLength = 2;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(72, 38);
+            this.textBox2.TabIndex = 0;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // textBox4
+            // 
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.Location = new System.Drawing.Point(154, 103);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
+            this.textBox4.Size = new System.Drawing.Size(72, 38);
+            this.textBox4.TabIndex = 1;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox5.Location = new System.Drawing.Point(154, 15);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(72, 38);
+            this.textBox5.TabIndex = 5;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(-1, 68);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(149, 25);
+            this.label19.TabIndex = 2;
+            this.label19.Text = "2 Digit Code:";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(24, 112);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(124, 25);
+            this.label20.TabIndex = 3;
+            this.label20.Text = "Response:";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(6, 409);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(607, 25);
+            this.label24.TabIndex = 20;
+            this.label24.Text = "Need to know about everything on the sides of the Bomb";
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.label27);
+            this.groupBox9.Controls.Add(this.label26);
+            this.groupBox9.Controls.Add(this.txtConnectionCheckOut);
+            this.groupBox9.Controls.Add(this.txtConnections);
+            this.groupBox9.Location = new System.Drawing.Point(8, 198);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(205, 91);
+            this.groupBox9.TabIndex = 19;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Connection Check";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(9, 28);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(31, 13);
+            this.label27.TabIndex = 17;
+            this.label27.Text = "Input";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(9, 54);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(39, 13);
+            this.label26.TabIndex = 16;
+            this.label26.Text = "Output";
+            // 
+            // txtConnectionCheckOut
+            // 
+            this.txtConnectionCheckOut.Enabled = false;
+            this.txtConnectionCheckOut.Location = new System.Drawing.Point(59, 51);
+            this.txtConnectionCheckOut.MaxLength = 11;
+            this.txtConnectionCheckOut.Name = "txtConnectionCheckOut";
+            this.txtConnectionCheckOut.Size = new System.Drawing.Size(128, 20);
+            this.txtConnectionCheckOut.TabIndex = 15;
+            // 
+            // txtConnections
+            // 
+            this.txtConnections.Location = new System.Drawing.Point(59, 25);
+            this.txtConnections.MaxLength = 11;
+            this.txtConnections.Name = "txtConnections";
+            this.txtConnections.Size = new System.Drawing.Size(128, 20);
+            this.txtConnections.TabIndex = 14;
+            this.txtConnections.TextChanged += new System.EventHandler(this.txtConnections_TextChanged);
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.label67);
+            this.groupBox8.Controls.Add(this.label66);
+            this.groupBox8.Controls.Add(this.cbPlumbingRedIn);
+            this.groupBox8.Controls.Add(this.cbPlumbingBlueOut);
+            this.groupBox8.Controls.Add(this.cbPlumbingGreenIn);
+            this.groupBox8.Controls.Add(this.cbPlumbingBlueIn);
+            this.groupBox8.Controls.Add(this.cbPlumbingRedOut);
+            this.groupBox8.Controls.Add(this.cbPlumbingGreenOut);
+            this.groupBox8.Controls.Add(this.cbPlumbingYellowOut);
+            this.groupBox8.Controls.Add(this.cbPlumbingYellowIn);
+            this.groupBox8.Location = new System.Drawing.Point(228, 16);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(104, 169);
+            this.groupBox8.TabIndex = 18;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Plumbing";
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Location = new System.Drawing.Point(73, 34);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(24, 13);
+            this.label67.TabIndex = 17;
+            this.label67.Text = "Out";
+            // 
+            // label66
+            // 
+            this.label66.AutoSize = true;
+            this.label66.Location = new System.Drawing.Point(12, 34);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(16, 13);
+            this.label66.TabIndex = 16;
+            this.label66.Text = "In";
+            // 
+            // cbPlumbingRedIn
+            // 
+            this.cbPlumbingRedIn.AutoSize = true;
+            this.cbPlumbingRedIn.Enabled = false;
+            this.cbPlumbingRedIn.Location = new System.Drawing.Point(15, 50);
+            this.cbPlumbingRedIn.Name = "cbPlumbingRedIn";
+            this.cbPlumbingRedIn.Size = new System.Drawing.Size(46, 17);
+            this.cbPlumbingRedIn.TabIndex = 8;
+            this.cbPlumbingRedIn.Text = "Red";
+            this.cbPlumbingRedIn.UseVisualStyleBackColor = true;
+            // 
+            // cbPlumbingBlueOut
+            // 
+            this.cbPlumbingBlueOut.AutoSize = true;
+            this.cbPlumbingBlueOut.Enabled = false;
+            this.cbPlumbingBlueOut.Location = new System.Drawing.Point(76, 120);
+            this.cbPlumbingBlueOut.Name = "cbPlumbingBlueOut";
+            this.cbPlumbingBlueOut.Size = new System.Drawing.Size(15, 14);
+            this.cbPlumbingBlueOut.TabIndex = 15;
+            this.cbPlumbingBlueOut.UseVisualStyleBackColor = true;
+            // 
+            // cbPlumbingGreenIn
+            // 
+            this.cbPlumbingGreenIn.AutoSize = true;
+            this.cbPlumbingGreenIn.Enabled = false;
+            this.cbPlumbingGreenIn.Location = new System.Drawing.Point(15, 73);
+            this.cbPlumbingGreenIn.Name = "cbPlumbingGreenIn";
+            this.cbPlumbingGreenIn.Size = new System.Drawing.Size(55, 17);
+            this.cbPlumbingGreenIn.TabIndex = 10;
+            this.cbPlumbingGreenIn.Text = "Green";
+            this.cbPlumbingGreenIn.UseVisualStyleBackColor = true;
+            // 
+            // cbPlumbingBlueIn
+            // 
+            this.cbPlumbingBlueIn.AutoSize = true;
+            this.cbPlumbingBlueIn.Enabled = false;
+            this.cbPlumbingBlueIn.Location = new System.Drawing.Point(15, 119);
+            this.cbPlumbingBlueIn.Name = "cbPlumbingBlueIn";
+            this.cbPlumbingBlueIn.Size = new System.Drawing.Size(47, 17);
+            this.cbPlumbingBlueIn.TabIndex = 14;
+            this.cbPlumbingBlueIn.Text = "Blue";
+            this.cbPlumbingBlueIn.UseVisualStyleBackColor = true;
+            // 
+            // cbPlumbingRedOut
+            // 
+            this.cbPlumbingRedOut.AutoSize = true;
+            this.cbPlumbingRedOut.Enabled = false;
+            this.cbPlumbingRedOut.Location = new System.Drawing.Point(76, 51);
+            this.cbPlumbingRedOut.Name = "cbPlumbingRedOut";
+            this.cbPlumbingRedOut.Size = new System.Drawing.Size(15, 14);
+            this.cbPlumbingRedOut.TabIndex = 9;
+            this.cbPlumbingRedOut.UseVisualStyleBackColor = true;
+            // 
+            // cbPlumbingGreenOut
+            // 
+            this.cbPlumbingGreenOut.AutoSize = true;
+            this.cbPlumbingGreenOut.Enabled = false;
+            this.cbPlumbingGreenOut.Location = new System.Drawing.Point(76, 74);
+            this.cbPlumbingGreenOut.Name = "cbPlumbingGreenOut";
+            this.cbPlumbingGreenOut.Size = new System.Drawing.Size(15, 14);
+            this.cbPlumbingGreenOut.TabIndex = 11;
+            this.cbPlumbingGreenOut.UseVisualStyleBackColor = true;
+            // 
+            // cbPlumbingYellowOut
+            // 
+            this.cbPlumbingYellowOut.AutoSize = true;
+            this.cbPlumbingYellowOut.Enabled = false;
+            this.cbPlumbingYellowOut.Location = new System.Drawing.Point(76, 97);
+            this.cbPlumbingYellowOut.Name = "cbPlumbingYellowOut";
+            this.cbPlumbingYellowOut.Size = new System.Drawing.Size(15, 14);
+            this.cbPlumbingYellowOut.TabIndex = 13;
+            this.cbPlumbingYellowOut.UseVisualStyleBackColor = true;
+            // 
+            // cbPlumbingYellowIn
+            // 
+            this.cbPlumbingYellowIn.AutoSize = true;
+            this.cbPlumbingYellowIn.Enabled = false;
+            this.cbPlumbingYellowIn.Location = new System.Drawing.Point(15, 96);
+            this.cbPlumbingYellowIn.Name = "cbPlumbingYellowIn";
+            this.cbPlumbingYellowIn.Size = new System.Drawing.Size(57, 17);
+            this.cbPlumbingYellowIn.TabIndex = 12;
+            this.cbPlumbingYellowIn.Text = "Yellow";
+            this.cbPlumbingYellowIn.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.label62);
+            this.groupBox7.Controls.Add(this.label54);
+            this.groupBox7.Controls.Add(this.txtLogicOR);
+            this.groupBox7.Controls.Add(this.txtLogicAND);
+            this.groupBox7.Location = new System.Drawing.Point(8, 108);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(204, 77);
+            this.groupBox7.TabIndex = 17;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Logic";
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Location = new System.Drawing.Point(9, 43);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(106, 13);
+            this.label62.TabIndex = 7;
+            this.label62.Text = "ANY letters are True:";
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(9, 17);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(103, 13);
+            this.label54.TabIndex = 6;
+            this.label54.Text = "ALL letters are True:";
+            // 
+            // txtLogicOR
+            // 
+            this.txtLogicOR.Location = new System.Drawing.Point(118, 40);
+            this.txtLogicOR.MaxLength = 3;
+            this.txtLogicOR.Name = "txtLogicOR";
+            this.txtLogicOR.Size = new System.Drawing.Size(67, 20);
+            this.txtLogicOR.TabIndex = 5;
+            this.txtLogicOR.TextChanged += new System.EventHandler(this.txtLogicOR_TextChanged);
+            // 
+            // txtLogicAND
+            // 
+            this.txtLogicAND.Location = new System.Drawing.Point(118, 14);
+            this.txtLogicAND.MaxLength = 3;
+            this.txtLogicAND.Name = "txtLogicAND";
+            this.txtLogicAND.Size = new System.Drawing.Size(67, 20);
+            this.txtLogicAND.TabIndex = 4;
+            this.txtLogicAND.TextChanged += new System.EventHandler(this.txtLogicAND_TextChanged);
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.txtChessInput);
+            this.groupBox6.Controls.Add(this.label64);
+            this.groupBox6.Controls.Add(this.txtChessSolution);
+            this.groupBox6.Controls.Add(this.label65);
+            this.groupBox6.Location = new System.Drawing.Point(8, 16);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(205, 81);
+            this.groupBox6.TabIndex = 16;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Chess";
+            // 
+            // txtChessInput
+            // 
+            this.txtChessInput.Location = new System.Drawing.Point(59, 19);
+            this.txtChessInput.Name = "txtChessInput";
+            this.txtChessInput.Size = new System.Drawing.Size(128, 20);
+            this.txtChessInput.TabIndex = 0;
+            this.txtChessInput.TextChanged += new System.EventHandler(this.txtChessInput_TextChanged);
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Location = new System.Drawing.Point(9, 22);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(31, 13);
+            this.label64.TabIndex = 15;
+            this.label64.Text = "Input";
+            // 
+            // txtChessSolution
+            // 
+            this.txtChessSolution.Enabled = false;
+            this.txtChessSolution.Location = new System.Drawing.Point(59, 45);
+            this.txtChessSolution.Name = "txtChessSolution";
+            this.txtChessSolution.Size = new System.Drawing.Size(128, 20);
+            this.txtChessSolution.TabIndex = 1;
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Location = new System.Drawing.Point(9, 48);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(39, 13);
+            this.label65.TabIndex = 14;
+            this.label65.Text = "Output";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(0, 23);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(46, 13);
+            this.label16.TabIndex = 4;
+            this.label16.Text = "Serial #:";
+            // 
+            // txtSerialNumber
+            // 
+            this.txtSerialNumber.Location = new System.Drawing.Point(50, 20);
+            this.txtSerialNumber.Name = "txtSerialNumber";
+            this.txtSerialNumber.Size = new System.Drawing.Size(133, 20);
+            this.txtSerialNumber.TabIndex = 3;
+            this.txtSerialNumber.TextChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
             // ManualVersionSelect
             // 
             this.ManualVersionSelect.FormattingEnabled = true;
             this.ManualVersionSelect.Items.AddRange(new object[] {
             "Manual Version 1 (Official) - Verification Code 241",
             "Manual Version 990 (Unofficial) - Verification Code 724"});
-            this.ManualVersionSelect.Location = new System.Drawing.Point(4, 432);
+            this.ManualVersionSelect.Location = new System.Drawing.Point(4, 509);
             this.ManualVersionSelect.Name = "ManualVersionSelect";
             this.ManualVersionSelect.Size = new System.Drawing.Size(314, 21);
             this.ManualVersionSelect.TabIndex = 1;
@@ -2609,7 +3089,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(324, 435);
+            this.linkLabel1.Location = new System.Drawing.Point(321, 512);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(63, 13);
             this.linkLabel1.TabIndex = 2;
@@ -2617,105 +3097,576 @@
             this.linkLabel1.Text = "manualURL";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // facts_serial_has_vowel
-            // 
-            this.facts_serial_has_vowel.AutoSize = true;
-            this.facts_serial_has_vowel.Location = new System.Drawing.Point(14, 40);
-            this.facts_serial_has_vowel.Name = "facts_serial_has_vowel";
-            this.facts_serial_has_vowel.Size = new System.Drawing.Size(116, 17);
-            this.facts_serial_has_vowel.TabIndex = 3;
-            this.facts_serial_has_vowel.Text = "Serial# has Vowels";
-            this.facts_serial_has_vowel.UseVisualStyleBackColor = true;
-            this.facts_serial_has_vowel.CheckedChanged += new System.EventHandler(this.facts_serial_has_vowel_CheckedChanged);
-            // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.facts_FRK);
-            this.groupBox5.Controls.Add(this.facts_CAR);
-            this.groupBox5.Controls.Add(this.facts_serial_last_digit);
-            this.groupBox5.Controls.Add(this.facts_has_pp);
-            this.groupBox5.Controls.Add(this.facts_serial_starts_with_letter);
-            this.groupBox5.Controls.Add(this.facts_battery);
+            this.groupBox5.Controls.Add(this.button42);
+            this.groupBox5.Controls.Add(this.gbBatteries);
+            this.groupBox5.Controls.Add(this.gbPorts);
+            this.groupBox5.Controls.Add(this.gbIndicators);
+            this.groupBox5.Controls.Add(this.label16);
+            this.groupBox5.Controls.Add(this.txtSerialNumber);
             this.groupBox5.Controls.Add(this.facts_strike);
-            this.groupBox5.Controls.Add(this.facts_serial_has_vowel);
-            this.groupBox5.Location = new System.Drawing.Point(0, 341);
+            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox5.Location = new System.Drawing.Point(0, 0);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(487, 85);
+            this.groupBox5.Size = new System.Drawing.Size(327, 509);
             this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Facts";
+            this.groupBox5.Text = "Bomb Information";
             // 
-            // facts_FRK
+            // button42
             // 
-            this.facts_FRK.AutoSize = true;
-            this.facts_FRK.Location = new System.Drawing.Point(324, 40);
-            this.facts_FRK.Name = "facts_FRK";
-            this.facts_FRK.Size = new System.Drawing.Size(47, 17);
-            this.facts_FRK.TabIndex = 24;
-            this.facts_FRK.Text = "FRK";
-            this.facts_FRK.UseVisualStyleBackColor = true;
-            this.facts_FRK.CheckedChanged += new System.EventHandler(this.facts_FRK_CheckedChanged);
+            this.button42.Location = new System.Drawing.Point(156, 139);
+            this.button42.Name = "button42";
+            this.button42.Size = new System.Drawing.Size(139, 33);
+            this.button42.TabIndex = 26;
+            this.button42.Text = "Reset Bomb Information";
+            this.button42.UseVisualStyleBackColor = true;
+            this.button42.Click += new System.EventHandler(this.button42_Click);
             // 
-            // facts_CAR
+            // gbBatteries
             // 
-            this.facts_CAR.AutoSize = true;
-            this.facts_CAR.Location = new System.Drawing.Point(270, 40);
-            this.facts_CAR.Name = "facts_CAR";
-            this.facts_CAR.Size = new System.Drawing.Size(48, 17);
-            this.facts_CAR.TabIndex = 23;
-            this.facts_CAR.Text = "CAR";
-            this.facts_CAR.UseVisualStyleBackColor = true;
-            this.facts_CAR.CheckedChanged += new System.EventHandler(this.facts_CAR_CheckedChanged);
+            this.gbBatteries.Controls.Add(this.label53);
+            this.gbBatteries.Controls.Add(this.nudBatteryHolders);
+            this.gbBatteries.Controls.Add(this.label50);
+            this.gbBatteries.Controls.Add(this.nudBatteriesD);
+            this.gbBatteries.Controls.Add(this.label49);
+            this.gbBatteries.Controls.Add(this.nudBatteriesAA);
+            this.gbBatteries.Location = new System.Drawing.Point(156, 399);
+            this.gbBatteries.Name = "gbBatteries";
+            this.gbBatteries.Size = new System.Drawing.Size(142, 104);
+            this.gbBatteries.TabIndex = 25;
+            this.gbBatteries.TabStop = false;
+            this.gbBatteries.Text = "Batteries";
             // 
-            // facts_serial_last_digit
+            // label53
             // 
-            this.facts_serial_last_digit.FormattingEnabled = true;
-            this.facts_serial_last_digit.Items.AddRange(new object[] {
-            "Serial last digit Odd",
-            "Serial Last digit Even"});
-            this.facts_serial_last_digit.Location = new System.Drawing.Point(129, 15);
-            this.facts_serial_last_digit.Name = "facts_serial_last_digit";
-            this.facts_serial_last_digit.Size = new System.Drawing.Size(131, 21);
-            this.facts_serial_last_digit.TabIndex = 22;
-            this.facts_serial_last_digit.Text = "Serial last digit Odd";
-            this.facts_serial_last_digit.SelectedIndexChanged += new System.EventHandler(this.facts_serial_last_digit_SelectedIndexChanged);
+            this.label53.AutoSize = true;
+            this.label53.Location = new System.Drawing.Point(7, 75);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(43, 13);
+            this.label53.TabIndex = 36;
+            this.label53.Text = "Holders";
             // 
-            // facts_has_pp
+            // nudBatteryHolders
             // 
-            this.facts_has_pp.AutoSize = true;
-            this.facts_has_pp.Location = new System.Drawing.Point(399, 17);
-            this.facts_has_pp.Name = "facts_has_pp";
-            this.facts_has_pp.Size = new System.Drawing.Size(82, 17);
-            this.facts_has_pp.TabIndex = 21;
-            this.facts_has_pp.Text = "Parallel Port";
-            this.facts_has_pp.UseVisualStyleBackColor = true;
-            this.facts_has_pp.CheckedChanged += new System.EventHandler(this.facts_has_pp_CheckedChanged);
+            this.nudBatteryHolders.Location = new System.Drawing.Point(90, 73);
+            this.nudBatteryHolders.Name = "nudBatteryHolders";
+            this.nudBatteryHolders.Size = new System.Drawing.Size(40, 20);
+            this.nudBatteryHolders.TabIndex = 35;
             // 
-            // facts_serial_starts_with_letter
+            // label50
             // 
-            this.facts_serial_starts_with_letter.AutoSize = true;
-            this.facts_serial_starts_with_letter.Location = new System.Drawing.Point(14, 62);
-            this.facts_serial_starts_with_letter.Name = "facts_serial_starts_with_letter";
-            this.facts_serial_starts_with_letter.Size = new System.Drawing.Size(185, 17);
-            this.facts_serial_starts_with_letter.TabIndex = 19;
-            this.facts_serial_starts_with_letter.Text = "Serial number starts with a Letter?";
-            this.facts_serial_starts_with_letter.UseVisualStyleBackColor = true;
-            this.facts_serial_starts_with_letter.Visible = false;
-            this.facts_serial_starts_with_letter.CheckedChanged += new System.EventHandler(this.facts_serial_starts_with_letter_CheckedChanged);
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(7, 49);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(15, 13);
+            this.label50.TabIndex = 34;
+            this.label50.Text = "D";
             // 
-            // facts_battery
+            // nudBatteriesD
             // 
-            this.facts_battery.FormattingEnabled = true;
-            this.facts_battery.Items.AddRange(new object[] {
-            "Less than 2 Batteries",
-            "2 Batteries",
-            "3 or more Batteries"});
-            this.facts_battery.Location = new System.Drawing.Point(266, 15);
-            this.facts_battery.Name = "facts_battery";
-            this.facts_battery.Size = new System.Drawing.Size(131, 21);
-            this.facts_battery.TabIndex = 18;
-            this.facts_battery.Text = "Less than 2 Batteries";
-            this.facts_battery.SelectedIndexChanged += new System.EventHandler(this.facts_battery_SelectedIndexChanged);
+            this.nudBatteriesD.Location = new System.Drawing.Point(90, 47);
+            this.nudBatteriesD.Name = "nudBatteriesD";
+            this.nudBatteriesD.Size = new System.Drawing.Size(40, 20);
+            this.nudBatteriesD.TabIndex = 33;
+            this.nudBatteriesD.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(7, 23);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(21, 13);
+            this.label49.TabIndex = 32;
+            this.label49.Text = "AA";
+            // 
+            // nudBatteriesAA
+            // 
+            this.nudBatteriesAA.Location = new System.Drawing.Point(90, 21);
+            this.nudBatteriesAA.Name = "nudBatteriesAA";
+            this.nudBatteriesAA.Size = new System.Drawing.Size(40, 20);
+            this.nudBatteriesAA.TabIndex = 31;
+            this.nudBatteriesAA.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // gbPorts
+            // 
+            this.gbPorts.Controls.Add(this.label47);
+            this.gbPorts.Controls.Add(this.nudPortRCA);
+            this.gbPorts.Controls.Add(this.label46);
+            this.gbPorts.Controls.Add(this.nudPortSerial);
+            this.gbPorts.Controls.Add(this.label45);
+            this.gbPorts.Controls.Add(this.nudPortRJ45);
+            this.gbPorts.Controls.Add(this.label44);
+            this.gbPorts.Controls.Add(this.nudPortPS2);
+            this.gbPorts.Controls.Add(this.label43);
+            this.gbPorts.Controls.Add(this.nudPortParallel);
+            this.gbPorts.Controls.Add(this.label42);
+            this.gbPorts.Controls.Add(this.nudPortDVID);
+            this.gbPorts.Controls.Add(this.label41);
+            this.gbPorts.Controls.Add(this.nudPortPlates);
+            this.gbPorts.Location = new System.Drawing.Point(150, 183);
+            this.gbPorts.Name = "gbPorts";
+            this.gbPorts.Size = new System.Drawing.Size(148, 210);
+            this.gbPorts.TabIndex = 24;
+            this.gbPorts.TabStop = false;
+            this.gbPorts.Text = "Ports";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(12, 177);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(63, 13);
+            this.label47.TabIndex = 28;
+            this.label47.Text = "Stereo RCA";
+            // 
+            // nudPortRCA
+            // 
+            this.nudPortRCA.Location = new System.Drawing.Point(96, 175);
+            this.nudPortRCA.Name = "nudPortRCA";
+            this.nudPortRCA.Size = new System.Drawing.Size(40, 20);
+            this.nudPortRCA.TabIndex = 27;
+            this.nudPortRCA.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(12, 151);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(33, 13);
+            this.label46.TabIndex = 26;
+            this.label46.Text = "Serial";
+            // 
+            // nudPortSerial
+            // 
+            this.nudPortSerial.Location = new System.Drawing.Point(96, 149);
+            this.nudPortSerial.Name = "nudPortSerial";
+            this.nudPortSerial.Size = new System.Drawing.Size(40, 20);
+            this.nudPortSerial.TabIndex = 25;
+            this.nudPortSerial.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(12, 125);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(35, 13);
+            this.label45.TabIndex = 24;
+            this.label45.Text = "RJ-45";
+            // 
+            // nudPortRJ45
+            // 
+            this.nudPortRJ45.Location = new System.Drawing.Point(97, 125);
+            this.nudPortRJ45.Name = "nudPortRJ45";
+            this.nudPortRJ45.Size = new System.Drawing.Size(40, 20);
+            this.nudPortRJ45.TabIndex = 23;
+            this.nudPortRJ45.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(12, 99);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(32, 13);
+            this.label44.TabIndex = 22;
+            this.label44.Text = "PS/2";
+            // 
+            // nudPortPS2
+            // 
+            this.nudPortPS2.Location = new System.Drawing.Point(97, 99);
+            this.nudPortPS2.Name = "nudPortPS2";
+            this.nudPortPS2.Size = new System.Drawing.Size(40, 20);
+            this.nudPortPS2.TabIndex = 21;
+            this.nudPortPS2.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(12, 73);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(41, 13);
+            this.label43.TabIndex = 20;
+            this.label43.Text = "Parallel";
+            // 
+            // nudPortParallel
+            // 
+            this.nudPortParallel.Location = new System.Drawing.Point(97, 73);
+            this.nudPortParallel.Name = "nudPortParallel";
+            this.nudPortParallel.Size = new System.Drawing.Size(40, 20);
+            this.nudPortParallel.TabIndex = 19;
+            this.nudPortParallel.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(12, 47);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(36, 13);
+            this.label42.TabIndex = 18;
+            this.label42.Text = "DVI-D";
+            // 
+            // nudPortDVID
+            // 
+            this.nudPortDVID.Location = new System.Drawing.Point(97, 45);
+            this.nudPortDVID.Name = "nudPortDVID";
+            this.nudPortDVID.Size = new System.Drawing.Size(40, 20);
+            this.nudPortDVID.TabIndex = 17;
+            this.nudPortDVID.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(12, 21);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(57, 13);
+            this.label41.TabIndex = 16;
+            this.label41.Text = "Port plates";
+            // 
+            // nudPortPlates
+            // 
+            this.nudPortPlates.Location = new System.Drawing.Point(97, 19);
+            this.nudPortPlates.Name = "nudPortPlates";
+            this.nudPortPlates.Size = new System.Drawing.Size(40, 20);
+            this.nudPortPlates.TabIndex = 15;
+            this.nudPortPlates.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // gbIndicators
+            // 
+            this.gbIndicators.Controls.Add(this.label40);
+            this.gbIndicators.Controls.Add(this.nudUnlitTRN);
+            this.gbIndicators.Controls.Add(this.nudLitTRN);
+            this.gbIndicators.Controls.Add(this.label39);
+            this.gbIndicators.Controls.Add(this.nudUnlitSND);
+            this.gbIndicators.Controls.Add(this.nudLitSND);
+            this.gbIndicators.Controls.Add(this.label38);
+            this.gbIndicators.Controls.Add(this.nudUnlitSIG);
+            this.gbIndicators.Controls.Add(this.nudLitSIG);
+            this.gbIndicators.Controls.Add(this.label37);
+            this.gbIndicators.Controls.Add(this.nudUnlitNSA);
+            this.gbIndicators.Controls.Add(this.nudLitNSA);
+            this.gbIndicators.Controls.Add(this.label36);
+            this.gbIndicators.Controls.Add(this.nudUnlitMSA);
+            this.gbIndicators.Controls.Add(this.nudLitMSA);
+            this.gbIndicators.Controls.Add(this.label35);
+            this.gbIndicators.Controls.Add(this.nudUnlitIND);
+            this.gbIndicators.Controls.Add(this.nudLitIND);
+            this.gbIndicators.Controls.Add(this.label34);
+            this.gbIndicators.Controls.Add(this.nudUnlitFRQ);
+            this.gbIndicators.Controls.Add(this.nudLitFRQ);
+            this.gbIndicators.Controls.Add(this.label33);
+            this.gbIndicators.Controls.Add(this.nudUnlitFRK);
+            this.gbIndicators.Controls.Add(this.nudLitFRK);
+            this.gbIndicators.Controls.Add(this.label32);
+            this.gbIndicators.Controls.Add(this.nudUnlitCLR);
+            this.gbIndicators.Controls.Add(this.nudLitCLR);
+            this.gbIndicators.Controls.Add(this.label31);
+            this.gbIndicators.Controls.Add(this.nudUnlitCAR);
+            this.gbIndicators.Controls.Add(this.nudLitCAR);
+            this.gbIndicators.Controls.Add(this.label30);
+            this.gbIndicators.Controls.Add(this.label29);
+            this.gbIndicators.Controls.Add(this.label28);
+            this.gbIndicators.Controls.Add(this.nudUnlitBOB);
+            this.gbIndicators.Controls.Add(this.nudLitBOB);
+            this.gbIndicators.Location = new System.Drawing.Point(6, 183);
+            this.gbIndicators.Name = "gbIndicators";
+            this.gbIndicators.Size = new System.Drawing.Size(138, 320);
+            this.gbIndicators.TabIndex = 23;
+            this.gbIndicators.TabStop = false;
+            this.gbIndicators.Text = "Indicators";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(7, 291);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(30, 13);
+            this.label40.TabIndex = 44;
+            this.label40.Text = "TRN";
+            // 
+            // nudUnlitTRN
+            // 
+            this.nudUnlitTRN.Location = new System.Drawing.Point(88, 289);
+            this.nudUnlitTRN.Name = "nudUnlitTRN";
+            this.nudUnlitTRN.Size = new System.Drawing.Size(40, 20);
+            this.nudUnlitTRN.TabIndex = 43;
+            this.nudUnlitTRN.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // nudLitTRN
+            // 
+            this.nudLitTRN.Location = new System.Drawing.Point(42, 289);
+            this.nudLitTRN.Name = "nudLitTRN";
+            this.nudLitTRN.Size = new System.Drawing.Size(40, 20);
+            this.nudLitTRN.TabIndex = 42;
+            this.nudLitTRN.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(7, 265);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(30, 13);
+            this.label39.TabIndex = 41;
+            this.label39.Text = "SND";
+            // 
+            // nudUnlitSND
+            // 
+            this.nudUnlitSND.Location = new System.Drawing.Point(88, 263);
+            this.nudUnlitSND.Name = "nudUnlitSND";
+            this.nudUnlitSND.Size = new System.Drawing.Size(40, 20);
+            this.nudUnlitSND.TabIndex = 40;
+            this.nudUnlitSND.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // nudLitSND
+            // 
+            this.nudLitSND.Location = new System.Drawing.Point(42, 263);
+            this.nudLitSND.Name = "nudLitSND";
+            this.nudLitSND.Size = new System.Drawing.Size(40, 20);
+            this.nudLitSND.TabIndex = 39;
+            this.nudLitSND.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(7, 239);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(25, 13);
+            this.label38.TabIndex = 38;
+            this.label38.Text = "SIG";
+            // 
+            // nudUnlitSIG
+            // 
+            this.nudUnlitSIG.Location = new System.Drawing.Point(88, 237);
+            this.nudUnlitSIG.Name = "nudUnlitSIG";
+            this.nudUnlitSIG.Size = new System.Drawing.Size(40, 20);
+            this.nudUnlitSIG.TabIndex = 37;
+            this.nudUnlitSIG.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // nudLitSIG
+            // 
+            this.nudLitSIG.Location = new System.Drawing.Point(42, 237);
+            this.nudLitSIG.Name = "nudLitSIG";
+            this.nudLitSIG.Size = new System.Drawing.Size(40, 20);
+            this.nudLitSIG.TabIndex = 36;
+            this.nudLitSIG.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(7, 213);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(29, 13);
+            this.label37.TabIndex = 35;
+            this.label37.Text = "NSA";
+            // 
+            // nudUnlitNSA
+            // 
+            this.nudUnlitNSA.Location = new System.Drawing.Point(88, 211);
+            this.nudUnlitNSA.Name = "nudUnlitNSA";
+            this.nudUnlitNSA.Size = new System.Drawing.Size(40, 20);
+            this.nudUnlitNSA.TabIndex = 34;
+            this.nudUnlitNSA.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // nudLitNSA
+            // 
+            this.nudLitNSA.Location = new System.Drawing.Point(42, 211);
+            this.nudLitNSA.Name = "nudLitNSA";
+            this.nudLitNSA.Size = new System.Drawing.Size(40, 20);
+            this.nudLitNSA.TabIndex = 33;
+            this.nudLitNSA.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(7, 187);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(30, 13);
+            this.label36.TabIndex = 32;
+            this.label36.Text = "MSA";
+            // 
+            // nudUnlitMSA
+            // 
+            this.nudUnlitMSA.Location = new System.Drawing.Point(88, 185);
+            this.nudUnlitMSA.Name = "nudUnlitMSA";
+            this.nudUnlitMSA.Size = new System.Drawing.Size(40, 20);
+            this.nudUnlitMSA.TabIndex = 31;
+            this.nudUnlitMSA.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // nudLitMSA
+            // 
+            this.nudLitMSA.Location = new System.Drawing.Point(42, 185);
+            this.nudLitMSA.Name = "nudLitMSA";
+            this.nudLitMSA.Size = new System.Drawing.Size(40, 20);
+            this.nudLitMSA.TabIndex = 30;
+            this.nudLitMSA.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(7, 161);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(26, 13);
+            this.label35.TabIndex = 29;
+            this.label35.Text = "IND";
+            // 
+            // nudUnlitIND
+            // 
+            this.nudUnlitIND.Location = new System.Drawing.Point(88, 159);
+            this.nudUnlitIND.Name = "nudUnlitIND";
+            this.nudUnlitIND.Size = new System.Drawing.Size(40, 20);
+            this.nudUnlitIND.TabIndex = 28;
+            this.nudUnlitIND.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // nudLitIND
+            // 
+            this.nudLitIND.Location = new System.Drawing.Point(42, 159);
+            this.nudLitIND.Name = "nudLitIND";
+            this.nudLitIND.Size = new System.Drawing.Size(40, 20);
+            this.nudLitIND.TabIndex = 27;
+            this.nudLitIND.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(7, 135);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(29, 13);
+            this.label34.TabIndex = 26;
+            this.label34.Text = "FRQ";
+            // 
+            // nudUnlitFRQ
+            // 
+            this.nudUnlitFRQ.Location = new System.Drawing.Point(88, 133);
+            this.nudUnlitFRQ.Name = "nudUnlitFRQ";
+            this.nudUnlitFRQ.Size = new System.Drawing.Size(40, 20);
+            this.nudUnlitFRQ.TabIndex = 25;
+            this.nudUnlitFRQ.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // nudLitFRQ
+            // 
+            this.nudLitFRQ.Location = new System.Drawing.Point(42, 133);
+            this.nudLitFRQ.Name = "nudLitFRQ";
+            this.nudLitFRQ.Size = new System.Drawing.Size(40, 20);
+            this.nudLitFRQ.TabIndex = 24;
+            this.nudLitFRQ.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(7, 109);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(28, 13);
+            this.label33.TabIndex = 23;
+            this.label33.Text = "FRK";
+            // 
+            // nudUnlitFRK
+            // 
+            this.nudUnlitFRK.Location = new System.Drawing.Point(88, 107);
+            this.nudUnlitFRK.Name = "nudUnlitFRK";
+            this.nudUnlitFRK.Size = new System.Drawing.Size(40, 20);
+            this.nudUnlitFRK.TabIndex = 22;
+            this.nudUnlitFRK.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // nudLitFRK
+            // 
+            this.nudLitFRK.Location = new System.Drawing.Point(42, 107);
+            this.nudLitFRK.Name = "nudLitFRK";
+            this.nudLitFRK.Size = new System.Drawing.Size(40, 20);
+            this.nudLitFRK.TabIndex = 21;
+            this.nudLitFRK.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(7, 83);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(28, 13);
+            this.label32.TabIndex = 20;
+            this.label32.Text = "CLR";
+            // 
+            // nudUnlitCLR
+            // 
+            this.nudUnlitCLR.Location = new System.Drawing.Point(88, 81);
+            this.nudUnlitCLR.Name = "nudUnlitCLR";
+            this.nudUnlitCLR.Size = new System.Drawing.Size(40, 20);
+            this.nudUnlitCLR.TabIndex = 19;
+            this.nudUnlitCLR.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // nudLitCLR
+            // 
+            this.nudLitCLR.Location = new System.Drawing.Point(42, 81);
+            this.nudLitCLR.Name = "nudLitCLR";
+            this.nudLitCLR.Size = new System.Drawing.Size(40, 20);
+            this.nudLitCLR.TabIndex = 18;
+            this.nudLitCLR.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(7, 57);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(29, 13);
+            this.label31.TabIndex = 17;
+            this.label31.Text = "CAR";
+            // 
+            // nudUnlitCAR
+            // 
+            this.nudUnlitCAR.Location = new System.Drawing.Point(88, 55);
+            this.nudUnlitCAR.Name = "nudUnlitCAR";
+            this.nudUnlitCAR.Size = new System.Drawing.Size(40, 20);
+            this.nudUnlitCAR.TabIndex = 16;
+            this.nudUnlitCAR.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // nudLitCAR
+            // 
+            this.nudLitCAR.Location = new System.Drawing.Point(42, 55);
+            this.nudLitCAR.Name = "nudLitCAR";
+            this.nudLitCAR.Size = new System.Drawing.Size(40, 20);
+            this.nudLitCAR.TabIndex = 15;
+            this.nudLitCAR.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(7, 31);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(29, 13);
+            this.label30.TabIndex = 14;
+            this.label30.Text = "BOB";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(94, 13);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(28, 13);
+            this.label29.TabIndex = 13;
+            this.label29.Text = "Unlit";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(51, 13);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(18, 13);
+            this.label28.TabIndex = 12;
+            this.label28.Text = "Lit";
+            // 
+            // nudUnlitBOB
+            // 
+            this.nudUnlitBOB.Location = new System.Drawing.Point(88, 29);
+            this.nudUnlitBOB.Name = "nudUnlitBOB";
+            this.nudUnlitBOB.Size = new System.Drawing.Size(40, 20);
+            this.nudUnlitBOB.TabIndex = 11;
+            this.nudUnlitBOB.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // nudLitBOB
+            // 
+            this.nudLitBOB.Location = new System.Drawing.Point(42, 29);
+            this.nudLitBOB.Name = "nudLitBOB";
+            this.nudLitBOB.Size = new System.Drawing.Size(40, 20);
+            this.nudLitBOB.TabIndex = 10;
+            this.nudLitBOB.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // facts_strike
             // 
@@ -2724,22 +3675,123 @@
             "0 Strikes",
             "1 Strike",
             "2 Strikes"});
-            this.facts_strike.Location = new System.Drawing.Point(14, 15);
+            this.facts_strike.Location = new System.Drawing.Point(189, 19);
             this.facts_strike.Name = "facts_strike";
             this.facts_strike.Size = new System.Drawing.Size(109, 21);
             this.facts_strike.TabIndex = 4;
             this.facts_strike.Text = "0 Strikes";
-            this.facts_strike.SelectedIndexChanged += new System.EventHandler(this.facts_strike_SelectedIndexChanged);
+            this.facts_strike.SelectedIndexChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.tabControl1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.groupBox5);
+            this.splitContainer1.Size = new System.Drawing.Size(987, 509);
+            this.splitContainer1.SplitterDistance = 656;
+            this.splitContainer1.TabIndex = 4;
+            // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.label69);
+            this.groupBox12.Controls.Add(this.label51);
+            this.groupBox12.Controls.Add(this.label52);
+            this.groupBox12.Controls.Add(this.label48);
+            this.groupBox12.Controls.Add(this.label25);
+            this.groupBox12.Controls.Add(this.cw_input);
+            this.groupBox12.Controls.Add(this.cw_output);
+            this.groupBox12.Controls.Add(this.cw_reset);
+            this.groupBox12.Controls.Add(this.cw_all_wires);
+            this.groupBox12.Location = new System.Drawing.Point(10, 118);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(618, 259);
+            this.groupBox12.TabIndex = 10;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "Complicated Wires";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(6, 163);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(162, 91);
+            this.label25.TabIndex = 12;
+            this.label25.Text = "R = Red\r\nB = Blue\r\nW = White\r\nL = LED / Light\r\nS = Star / Symbol\r\n/ = New Wire Se" +
+    "quence Panel\r\nSeperate each wire with a space";
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(174, 163);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(185, 65);
+            this.label48.TabIndex = 13;
+            this.label48.Text = "C = Cut\r\nD = Don\'t Cut\r\nS = Cut if Last digit of Serial is Even\r\nB = Cut if there" +
+    " are 2 or more batteries\r\nP = Cut if there is a Parallel Port";
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(6, 56);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(39, 13);
+            this.label51.TabIndex = 15;
+            this.label51.Text = "Output";
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(6, 26);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(31, 13);
+            this.label52.TabIndex = 14;
+            this.label52.Text = "Input";
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Location = new System.Drawing.Point(426, 16);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(162, 26);
+            this.label63.TabIndex = 10;
+            this.label63.Text = "R = Red, B = Blue, K = Black\r\nEnter as pairs of Colors to Letters";
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.Location = new System.Drawing.Point(48, 68);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(458, 13);
+            this.label68.TabIndex = 13;
+            this.label68.Text = "R = Red, B = Blue, K = Black, W = White, Y = Yellow    Enter between 3 to 6 Wire " +
+    "color Letters.";
+            // 
+            // label69
+            // 
+            this.label69.AutoSize = true;
+            this.label69.Location = new System.Drawing.Point(176, 230);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(339, 26);
+            this.label69.TabIndex = 16;
+            this.label69.Text = "Enter in the Letters RBWLS based on what each wire has as a group. \r\n(You can ign" +
+    "ore White, if there is Red or Blue Coloring.)";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(487, 458);
-            this.Controls.Add(this.groupBox5);
+            this.ClientSize = new System.Drawing.Size(987, 542);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.ManualVersionSelect);
-            this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -2774,14 +3826,11 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaze)).EndInit();
-            this.tpComplicatedWires.ResumeLayout(false);
-            this.tpComplicatedWires.PerformLayout();
-            this.tpWireSequence.ResumeLayout(false);
-            this.tpWireSequence.PerformLayout();
+            this.tpWires.ResumeLayout(false);
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.tpWires.ResumeLayout(false);
-            this.tpWires.PerformLayout();
             this.fpWires.ResumeLayout(false);
             this.tpMorseCode.ResumeLayout(false);
             this.tpMorseCode.PerformLayout();
@@ -2795,8 +3844,66 @@
             this.tpNeedyKnobV1.PerformLayout();
             this.fpKnob.ResumeLayout(false);
             this.fpKnob.PerformLayout();
+            this.tpForgetMeNot.ResumeLayout(false);
+            this.tpForgetMeNot.PerformLayout();
+            this.tpModCollection1.ResumeLayout(false);
+            this.tpModCollection1.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.gbBatteries.ResumeLayout(false);
+            this.gbBatteries.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBatteryHolders)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBatteriesD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBatteriesAA)).EndInit();
+            this.gbPorts.ResumeLayout(false);
+            this.gbPorts.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPortRCA)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPortSerial)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPortRJ45)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPortPS2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPortParallel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPortDVID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPortPlates)).EndInit();
+            this.gbIndicators.ResumeLayout(false);
+            this.gbIndicators.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUnlitTRN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLitTRN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUnlitSND)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLitSND)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUnlitSIG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLitSIG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUnlitNSA)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLitNSA)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUnlitMSA)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLitMSA)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUnlitIND)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLitIND)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUnlitFRQ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLitFRQ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUnlitFRK)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLitFRK)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUnlitCLR)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLitCLR)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUnlitCAR)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLitCAR)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUnlitBOB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLitBOB)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2805,28 +3912,9 @@
         #endregion
 
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tpWireSequence;
-        private System.Windows.Forms.TabPage tpComplicatedWires;
+        private System.Windows.Forms.TabPage tpWires;
         private System.Windows.Forms.Button wsReset;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton ws_C;
-        private System.Windows.Forms.RadioButton ws_B;
-        private System.Windows.Forms.RadioButton ws_A;
-        private System.Windows.Forms.Button wsBlackButton;
-        private System.Windows.Forms.Button wsBlueButton;
-        private System.Windows.Forms.Button wsRedButton;
-        private System.Windows.Forms.CheckBox cw_star;
-        private System.Windows.Forms.CheckBox cw_led;
-        private System.Windows.Forms.CheckBox cw_blue;
-        private System.Windows.Forms.CheckBox cw_red;
-        private System.Windows.Forms.CheckBox cw_batt;
-        private System.Windows.Forms.CheckBox cw_pp;
-        private System.Windows.Forms.CheckBox cw_serial;
-        private System.Windows.Forms.Label cw_label;
         private System.Windows.Forms.TabPage tpSimonSays;
-        private System.Windows.Forms.ComboBox SimonSaysStrikes;
-        private System.Windows.Forms.CheckBox ss_vowels;
         private System.Windows.Forms.Label ss_yellow;
         private System.Windows.Forms.Label ss_green;
         private System.Windows.Forms.Label ss_blue;
@@ -2837,12 +3925,8 @@
         private System.Windows.Forms.Label yellowstrip;
         private System.Windows.Forms.Label bluestrip;
         private System.Windows.Forms.Label button_label;
-        private System.Windows.Forms.ComboBox button_battery;
-        private System.Windows.Forms.CheckBox button_frk;
-        private System.Windows.Forms.CheckBox button_car;
         private System.Windows.Forms.ComboBox button_name;
         private System.Windows.Forms.ComboBox ManualVersionSelect;
-        private System.Windows.Forms.TabPage tpWires;
         private System.Windows.Forms.Button wireReset;
         private System.Windows.Forms.ComboBox wire5;
         private System.Windows.Forms.ComboBox wire4;
@@ -2850,8 +3934,6 @@
         private System.Windows.Forms.ComboBox wire2;
         private System.Windows.Forms.ComboBox wire1;
         private System.Windows.Forms.ComboBox wire6;
-        private System.Windows.Forms.Label wires_label;
-        private System.Windows.Forms.CheckBox wires_serial_odd;
         private System.Windows.Forms.TabPage tpPassword;
         private System.Windows.Forms.TextBox pass1;
         private System.Windows.Forms.TextBox pass5;
@@ -2878,7 +3960,6 @@
         private System.Windows.Forms.TextBox cw_output;
         private System.Windows.Forms.TextBox cw_input;
         private System.Windows.Forms.TextBox wires_input;
-        private System.Windows.Forms.CheckBox wires_serial_letter;
         private System.Windows.Forms.TextBox ws_output;
         private System.Windows.Forms.TextBox ws_input;
         private System.Windows.Forms.TabPage tpAbout;
@@ -2962,15 +4043,8 @@
         private System.Windows.Forms.FlowLayoutPanel fpWires;
         private System.Windows.Forms.Button cw_all_wires;
         private System.Windows.Forms.Button cw_reset;
-        private System.Windows.Forms.CheckBox facts_serial_has_vowel;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.ComboBox facts_serial_last_digit;
-        private System.Windows.Forms.CheckBox facts_has_pp;
-        private System.Windows.Forms.CheckBox facts_serial_starts_with_letter;
-        private System.Windows.Forms.ComboBox facts_battery;
         private System.Windows.Forms.ComboBox facts_strike;
-        private System.Windows.Forms.CheckBox facts_FRK;
-        private System.Windows.Forms.CheckBox facts_CAR;
         private System.Windows.Forms.TextBox mazeOutput;
         private System.Windows.Forms.FlowLayoutPanel fpKeypadOrder;
         private System.Windows.Forms.FlowLayoutPanel fpKeypadSymbols;
@@ -3019,6 +4093,136 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button button36;
+        private System.Windows.Forms.Button button37;
+        private System.Windows.Forms.Button button38;
+        private System.Windows.Forms.Button button39;
+        private System.Windows.Forms.Button button40;
+        private System.Windows.Forms.Button button41;
+        private System.Windows.Forms.TabPage tpForgetMeNot;
+        private System.Windows.Forms.TextBox tbFMNSolution;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtSerialNumber;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.GroupBox gbBatteries;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.NumericUpDown nudBatteriesD;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.NumericUpDown nudBatteriesAA;
+        private System.Windows.Forms.GroupBox gbPorts;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.NumericUpDown nudPortRCA;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.NumericUpDown nudPortSerial;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.NumericUpDown nudPortRJ45;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.NumericUpDown nudPortPS2;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.NumericUpDown nudPortParallel;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.NumericUpDown nudPortDVID;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.NumericUpDown nudPortPlates;
+        private System.Windows.Forms.GroupBox gbIndicators;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.NumericUpDown nudUnlitTRN;
+        private System.Windows.Forms.NumericUpDown nudLitTRN;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.NumericUpDown nudUnlitSND;
+        private System.Windows.Forms.NumericUpDown nudLitSND;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.NumericUpDown nudUnlitSIG;
+        private System.Windows.Forms.NumericUpDown nudLitSIG;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.NumericUpDown nudUnlitNSA;
+        private System.Windows.Forms.NumericUpDown nudLitNSA;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.NumericUpDown nudUnlitMSA;
+        private System.Windows.Forms.NumericUpDown nudLitMSA;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.NumericUpDown nudUnlitIND;
+        private System.Windows.Forms.NumericUpDown nudLitIND;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.NumericUpDown nudUnlitFRQ;
+        private System.Windows.Forms.NumericUpDown nudLitFRQ;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.NumericUpDown nudUnlitFRK;
+        private System.Windows.Forms.NumericUpDown nudLitFRK;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.NumericUpDown nudUnlitCLR;
+        private System.Windows.Forms.NumericUpDown nudLitCLR;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.NumericUpDown nudUnlitCAR;
+        private System.Windows.Forms.NumericUpDown nudLitCAR;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.NumericUpDown nudUnlitBOB;
+        private System.Windows.Forms.NumericUpDown nudLitBOB;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.NumericUpDown nudBatteryHolders;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.Label label61;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.Button button42;
+        private System.Windows.Forms.Label lblButtonQuery;
+        private System.Windows.Forms.TabPage tpModCollection1;
+        private System.Windows.Forms.Label label64;
+        private System.Windows.Forms.Label label65;
+        private System.Windows.Forms.TextBox txtChessSolution;
+        private System.Windows.Forms.TextBox txtChessInput;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox txtConnectionCheckOut;
+        private System.Windows.Forms.TextBox txtConnections;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Label label67;
+        private System.Windows.Forms.Label label66;
+        private System.Windows.Forms.CheckBox cbPlumbingRedIn;
+        private System.Windows.Forms.CheckBox cbPlumbingBlueOut;
+        private System.Windows.Forms.CheckBox cbPlumbingGreenIn;
+        private System.Windows.Forms.CheckBox cbPlumbingBlueIn;
+        private System.Windows.Forms.CheckBox cbPlumbingRedOut;
+        private System.Windows.Forms.CheckBox cbPlumbingGreenOut;
+        private System.Windows.Forms.CheckBox cbPlumbingYellowOut;
+        private System.Windows.Forms.CheckBox cbPlumbingYellowIn;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.TextBox txtLogicOR;
+        private System.Windows.Forms.TextBox txtLogicAND;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.TextBox txtSimpleWireOutput;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.Label label69;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label68;
+        private System.Windows.Forms.Label label63;
     }
 }
 
