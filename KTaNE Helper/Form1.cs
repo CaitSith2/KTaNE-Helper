@@ -111,6 +111,9 @@ namespace KTaNE_Helper
 
         int _manualVersion;
 
+        private readonly List<TabPage> _allPages = new List<TabPage>();
+        private readonly List<TabPage> _noModPages = new List<TabPage>();
+
 
         public Form1()
         {
@@ -326,6 +329,15 @@ namespace KTaNE_Helper
 
             UpdateBombSolution(null,null);
 
+            foreach (TabPage p in tcTabs.TabPages)
+            {
+                if ((string) p?.Tag != "mods")
+                    _noModPages.Add(p);
+                _allPages.Add(p);
+            }
+
+            if(!checkBox1.Checked)
+                checkBox1_CheckedChanged(null, null);
         }
 
         private void wireReset_Click(object sender, EventArgs e)
@@ -1129,17 +1141,22 @@ namespace KTaNE_Helper
 
         private void KeypadSymbol_Click(object sender, EventArgs e)
         {
+            var max = checkBox1.Checked ? 8 : 4;
             var keypadorder = (_manualVersion == 0 ? _keypadOrder241 : _keypadOrder724);
 
-            for (var i = 0; i < 8; i++)
-                if (((Button) sender).Text == _keypadSelection[i]) return;
+            for (var i = 0; i < max; i++)
+                if (((Button) sender).Text == _keypadSelection[i])
+                {
+                    keypadSelection_Click(fpKeypadSelection.Controls[i], e);
+                    break;
+                }
 
-            for (var i = 7; i > 0; i--)
+            for (var i = max - 1; i > 0; i--)
                 _keypadSelection[i] = _keypadSelection[i - 1];
 
             _keypadSelection[0] = ((Button) sender).Text;
 
-            for (var i = 0; i < 8; i++)
+            for (var i = 0; i < max; i++)
                 ((Button) fpKeypadSelection.Controls[i]).Text = _keypadSelection[i];
             
 
@@ -1182,6 +1199,7 @@ namespace KTaNE_Helper
             }
             else
             {
+                if (!checkBox1.Checked) return;
                 if (_keypadSelection[7] == "") return;
                 fpKeypadLabel.Visible = true;
                 fpKeypadLabel.Text = @"Push the following keys";
@@ -1864,6 +1882,58 @@ namespace KTaNE_Helper
                     if (chessboard[i, j] == 0)
                         txtChessSolution.Text += positionsLetters.Substring(i, 1)+positionNumbers.Substring(j, 1);
 
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (var d in gbBombInformation.Controls)
+            {
+                if (d.GetType() != typeof(GroupBox)) continue;
+                var f = (GroupBox) d;
+                foreach (var c in f.Controls)
+                {
+                    if (c.GetType() == typeof(Label))
+                    {
+                        var l = (Label) c;
+                        if ((string)l.Tag == "mods")
+                            l.Visible = checkBox1.Checked;
+                    }
+                    else if (c.GetType() == typeof(NumericUpDown))
+                    {
+                        var n = (NumericUpDown) c;
+                        if ((string)n.Tag == "mods")
+                            n.Visible = checkBox1.Checked;
+                    }
+                }
+            }
+            var list = checkBox1.Checked ? _allPages : _noModPages;
+            tcTabs.TabPages.Clear();
+            foreach (var p in list)
+                tcTabs.TabPages.Add(p);
+
+            //Keypad specific mod
+            for (var i = 4; i < 8; i++)
+                ((Button) fpKeypadSelection.Controls[i]).Visible = checkBox1.Checked;
+            while (_keypadSelection[4] != "")
+                keypadSelection_Click(fpKeypadLabel.Controls[4], e);
+
+        }
+
+        private void txtLetteredKeysIn_TextChanged(object sender, EventArgs e)
+        {
+            txtLetteredKeysOut.Text = "";
+            var num = GetDigitFromCharacter(txtLetteredKeysIn.Text);
+            var batts = nudBatteriesD.Value + nudBatteriesAA.Value;
+            if (num == -1) return;
+
+            if (num == 69) txtLetteredKeysOut.Text = @"D";
+            else if ((num%6) == 0) txtLetteredKeysOut.Text = @"A";
+            else if (batts >= 2 && (num%3) == 0) txtLetteredKeysOut.Text = @"B";
+            else if (txtSerialNumber.Text.Contains("C")
+                     || txtSerialNumber.Text.Contains("E")
+                     || txtSerialNumber.Text.Contains("3"))
+                txtLetteredKeysOut.Text = num >= 22 && num <= 79 ? "B" : "C";
+            else txtLetteredKeysOut.Text = num < 46 ? "D" : "A";
         }
     }
 

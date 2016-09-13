@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tcTabs = new System.Windows.Forms.TabControl();
             this.tpAbout = new System.Windows.Forms.TabPage();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -172,23 +172,22 @@
             this.mazeSelection = new System.Windows.Forms.TextBox();
             this.mazeEnd = new System.Windows.Forms.TextBox();
             this.pbMaze = new System.Windows.Forms.PictureBox();
-            this.cw_all_wires = new System.Windows.Forms.Button();
-            this.cw_reset = new System.Windows.Forms.Button();
-            this.cw_output = new System.Windows.Forms.TextBox();
-            this.cw_input = new System.Windows.Forms.TextBox();
             this.tpWires = new System.Windows.Forms.TabPage();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.label69 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label52 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.cw_input = new System.Windows.Forms.TextBox();
+            this.cw_output = new System.Windows.Forms.TextBox();
+            this.cw_reset = new System.Windows.Forms.Button();
+            this.cw_all_wires = new System.Windows.Forms.Button();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.label68 = new System.Windows.Forms.Label();
             this.txtSimpleWireOutput = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.wires_input = new System.Windows.Forms.TextBox();
             this.wireReset = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.wsReset = new System.Windows.Forms.Button();
-            this.ws_input = new System.Windows.Forms.TextBox();
-            this.ws_output = new System.Windows.Forms.TextBox();
             this.fpWires = new System.Windows.Forms.FlowLayoutPanel();
             this.wire1 = new System.Windows.Forms.ComboBox();
             this.wire2 = new System.Windows.Forms.ComboBox();
@@ -196,25 +195,35 @@
             this.wire4 = new System.Windows.Forms.ComboBox();
             this.wire5 = new System.Windows.Forms.ComboBox();
             this.wire6 = new System.Windows.Forms.ComboBox();
-            this.tpMorseCode = new System.Windows.Forms.TabPage();
-            this.MorseCodeOutput = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.wires_input = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label63 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.wsReset = new System.Windows.Forms.Button();
+            this.ws_input = new System.Windows.Forms.TextBox();
+            this.ws_output = new System.Windows.Forms.TextBox();
+            this.tpPasswordMorseCode = new System.Windows.Forms.TabPage();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.MorseCodeInput = new System.Windows.Forms.TextBox();
-            this.tpPassword = new System.Windows.Forms.TabPage();
+            this.MorseCodeOutput = new System.Windows.Forms.TextBox();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.passwordClear = new System.Windows.Forms.Button();
+            this.passResults = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.fpPasswordLettersNotPresent = new System.Windows.Forms.FlowLayoutPanel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.fpPassword = new System.Windows.Forms.FlowLayoutPanel();
             this.pass1 = new System.Windows.Forms.TextBox();
             this.pass2 = new System.Windows.Forms.TextBox();
             this.pass3 = new System.Windows.Forms.TextBox();
             this.pass4 = new System.Windows.Forms.TextBox();
             this.pass5 = new System.Windows.Forms.TextBox();
-            this.passResults = new System.Windows.Forms.TextBox();
+            this.fpPasswordLettersNotPresent = new System.Windows.Forms.FlowLayoutPanel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.tpNeedyKnobV1 = new System.Windows.Forms.TabPage();
             this.fpKnob = new System.Windows.Forms.FlowLayoutPanel();
             this.nk1 = new System.Windows.Forms.CheckBox();
@@ -233,6 +242,11 @@
             this.tbFMNSolution = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tpModCollection1 = new System.Windows.Forms.TabPage();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label83 = new System.Windows.Forms.Label();
+            this.label84 = new System.Windows.Forms.Label();
+            this.txtLetteredKeysOut = new System.Windows.Forms.TextBox();
+            this.txtLetteredKeysIn = new System.Windows.Forms.TextBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.label21 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -271,7 +285,8 @@
             this.txtSerialNumber = new System.Windows.Forms.TextBox();
             this.ManualVersionSelect = new System.Windows.Forms.ComboBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.gbBombInformation = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button42 = new System.Windows.Forms.Button();
             this.gbBatteries = new System.Windows.Forms.GroupBox();
             this.label53 = new System.Windows.Forms.Label();
@@ -295,6 +310,42 @@
             this.nudPortDVID = new System.Windows.Forms.NumericUpDown();
             this.label41 = new System.Windows.Forms.Label();
             this.nudPortPlates = new System.Windows.Forms.NumericUpDown();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.label70 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.label71 = new System.Windows.Forms.Label();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.label72 = new System.Windows.Forms.Label();
+            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
+            this.label73 = new System.Windows.Forms.Label();
+            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
+            this.label74 = new System.Windows.Forms.Label();
+            this.numericUpDown9 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown10 = new System.Windows.Forms.NumericUpDown();
+            this.label75 = new System.Windows.Forms.Label();
+            this.numericUpDown11 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown12 = new System.Windows.Forms.NumericUpDown();
+            this.label76 = new System.Windows.Forms.Label();
+            this.numericUpDown13 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown14 = new System.Windows.Forms.NumericUpDown();
+            this.label77 = new System.Windows.Forms.Label();
+            this.numericUpDown15 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown16 = new System.Windows.Forms.NumericUpDown();
+            this.label78 = new System.Windows.Forms.Label();
+            this.numericUpDown17 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown18 = new System.Windows.Forms.NumericUpDown();
+            this.label79 = new System.Windows.Forms.Label();
+            this.numericUpDown19 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown20 = new System.Windows.Forms.NumericUpDown();
+            this.label80 = new System.Windows.Forms.Label();
+            this.label81 = new System.Windows.Forms.Label();
+            this.label82 = new System.Windows.Forms.Label();
+            this.numericUpDown21 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown22 = new System.Windows.Forms.NumericUpDown();
             this.gbIndicators = new System.Windows.Forms.GroupBox();
             this.label40 = new System.Windows.Forms.Label();
             this.nudUnlitTRN = new System.Windows.Forms.NumericUpDown();
@@ -333,15 +384,7 @@
             this.nudLitBOB = new System.Windows.Forms.NumericUpDown();
             this.facts_strike = new System.Windows.Forms.ComboBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.label51 = new System.Windows.Forms.Label();
-            this.label52 = new System.Windows.Forms.Label();
-            this.label63 = new System.Windows.Forms.Label();
-            this.label68 = new System.Windows.Forms.Label();
-            this.label69 = new System.Windows.Forms.Label();
-            this.tabControl1.SuspendLayout();
+            this.tcTabs.SuspendLayout();
             this.tpAbout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tpButtonV1.SuspendLayout();
@@ -360,23 +403,26 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaze)).BeginInit();
             this.tpWires.SuspendLayout();
+            this.groupBox12.SuspendLayout();
             this.groupBox11.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.fpWires.SuspendLayout();
-            this.tpMorseCode.SuspendLayout();
-            this.tpPassword.SuspendLayout();
-            this.fpPasswordLettersNotPresent.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.tpPasswordMorseCode.SuspendLayout();
+            this.groupBox14.SuspendLayout();
+            this.groupBox13.SuspendLayout();
             this.fpPassword.SuspendLayout();
+            this.fpPasswordLettersNotPresent.SuspendLayout();
             this.tpNeedyKnobV1.SuspendLayout();
             this.fpKnob.SuspendLayout();
             this.tpForgetMeNot.SuspendLayout();
             this.tpModCollection1.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            this.groupBox5.SuspendLayout();
+            this.gbBombInformation.SuspendLayout();
             this.gbBatteries.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudBatteryHolders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBatteriesD)).BeginInit();
@@ -389,6 +435,29 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudPortParallel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPortDVID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPortPlates)).BeginInit();
+            this.groupBox15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown18)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown19)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown20)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown22)).BeginInit();
             this.gbIndicators.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudUnlitTRN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudLitTRN)).BeginInit();
@@ -416,31 +485,29 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.groupBox12.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // tcTabs
             // 
-            this.tabControl1.Controls.Add(this.tpAbout);
-            this.tabControl1.Controls.Add(this.tpButtonV1);
-            this.tabControl1.Controls.Add(this.tpKeypads);
-            this.tabControl1.Controls.Add(this.tpSimonSays);
-            this.tabControl1.Controls.Add(this.tpWhosOnFirst);
-            this.tabControl1.Controls.Add(this.tpMemory);
-            this.tabControl1.Controls.Add(this.tpMaze);
-            this.tabControl1.Controls.Add(this.tpWires);
-            this.tabControl1.Controls.Add(this.tpMorseCode);
-            this.tabControl1.Controls.Add(this.tpPassword);
-            this.tabControl1.Controls.Add(this.tpNeedyKnobV1);
-            this.tabControl1.Controls.Add(this.tpForgetMeNot);
-            this.tabControl1.Controls.Add(this.tpModCollection1);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Multiline = true;
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(656, 509);
-            this.tabControl1.TabIndex = 0;
+            this.tcTabs.Controls.Add(this.tpAbout);
+            this.tcTabs.Controls.Add(this.tpButtonV1);
+            this.tcTabs.Controls.Add(this.tpKeypads);
+            this.tcTabs.Controls.Add(this.tpSimonSays);
+            this.tcTabs.Controls.Add(this.tpWhosOnFirst);
+            this.tcTabs.Controls.Add(this.tpMemory);
+            this.tcTabs.Controls.Add(this.tpMaze);
+            this.tcTabs.Controls.Add(this.tpWires);
+            this.tcTabs.Controls.Add(this.tpPasswordMorseCode);
+            this.tcTabs.Controls.Add(this.tpNeedyKnobV1);
+            this.tcTabs.Controls.Add(this.tpForgetMeNot);
+            this.tcTabs.Controls.Add(this.tpModCollection1);
+            this.tcTabs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tcTabs.Location = new System.Drawing.Point(0, 0);
+            this.tcTabs.Multiline = true;
+            this.tcTabs.Name = "tcTabs";
+            this.tcTabs.SelectedIndex = 0;
+            this.tcTabs.Size = new System.Drawing.Size(656, 509);
+            this.tcTabs.TabIndex = 0;
             // 
             // tpAbout
             // 
@@ -488,9 +555,9 @@
             this.tpButtonV1.Controls.Add(this.yellowstrip);
             this.tpButtonV1.Controls.Add(this.bluestrip);
             this.tpButtonV1.Controls.Add(this.button_label);
-            this.tpButtonV1.Location = new System.Drawing.Point(4, 22);
+            this.tpButtonV1.Location = new System.Drawing.Point(4, 40);
             this.tpButtonV1.Name = "tpButtonV1";
-            this.tpButtonV1.Size = new System.Drawing.Size(648, 483);
+            this.tpButtonV1.Size = new System.Drawing.Size(648, 465);
             this.tpButtonV1.TabIndex = 4;
             this.tpButtonV1.Text = "The Button";
             this.tpButtonV1.UseVisualStyleBackColor = true;
@@ -614,9 +681,9 @@
             this.tpKeypads.Controls.Add(this.keypadReset);
             this.tpKeypads.Controls.Add(this.fpKeypadOrder);
             this.tpKeypads.Controls.Add(this.fpKeypadSymbols);
-            this.tpKeypads.Location = new System.Drawing.Point(4, 22);
+            this.tpKeypads.Location = new System.Drawing.Point(4, 40);
             this.tpKeypads.Name = "tpKeypads";
-            this.tpKeypads.Size = new System.Drawing.Size(648, 483);
+            this.tpKeypads.Size = new System.Drawing.Size(648, 465);
             this.tpKeypads.TabIndex = 14;
             this.tpKeypads.Text = "Keypads";
             this.tpKeypads.UseVisualStyleBackColor = true;
@@ -1159,9 +1226,9 @@
             this.tpSimonSays.Controls.Add(this.ss_green);
             this.tpSimonSays.Controls.Add(this.ss_blue);
             this.tpSimonSays.Controls.Add(this.label9);
-            this.tpSimonSays.Location = new System.Drawing.Point(4, 22);
+            this.tpSimonSays.Location = new System.Drawing.Point(4, 40);
             this.tpSimonSays.Name = "tpSimonSays";
-            this.tpSimonSays.Size = new System.Drawing.Size(648, 483);
+            this.tpSimonSays.Size = new System.Drawing.Size(648, 465);
             this.tpSimonSays.TabIndex = 3;
             this.tpSimonSays.Text = "Simon Says";
             this.tpSimonSays.UseVisualStyleBackColor = true;
@@ -1298,9 +1365,9 @@
             this.tpWhosOnFirst.Controls.Add(this.groupBox4);
             this.tpWhosOnFirst.Controls.Add(this.groupBox3);
             this.tpWhosOnFirst.Controls.Add(this.wofButtons);
-            this.tpWhosOnFirst.Location = new System.Drawing.Point(4, 22);
+            this.tpWhosOnFirst.Location = new System.Drawing.Point(4, 40);
             this.tpWhosOnFirst.Name = "tpWhosOnFirst";
-            this.tpWhosOnFirst.Size = new System.Drawing.Size(648, 483);
+            this.tpWhosOnFirst.Size = new System.Drawing.Size(648, 465);
             this.tpWhosOnFirst.TabIndex = 13;
             this.tpWhosOnFirst.Text = "Who\'s on First";
             this.tpWhosOnFirst.UseVisualStyleBackColor = true;
@@ -1790,9 +1857,9 @@
             this.tpMemory.Controls.Add(this.Num3);
             this.tpMemory.Controls.Add(this.Num2);
             this.tpMemory.Controls.Add(this.Num1);
-            this.tpMemory.Location = new System.Drawing.Point(4, 22);
+            this.tpMemory.Location = new System.Drawing.Point(4, 40);
             this.tpMemory.Name = "tpMemory";
-            this.tpMemory.Size = new System.Drawing.Size(648, 483);
+            this.tpMemory.Size = new System.Drawing.Size(648, 465);
             this.tpMemory.TabIndex = 9;
             this.tpMemory.Text = "Memory";
             this.tpMemory.UseVisualStyleBackColor = true;
@@ -1907,9 +1974,9 @@
             this.tpMaze.Controls.Add(this.mazeSelection);
             this.tpMaze.Controls.Add(this.mazeEnd);
             this.tpMaze.Controls.Add(this.pbMaze);
-            this.tpMaze.Location = new System.Drawing.Point(4, 22);
+            this.tpMaze.Location = new System.Drawing.Point(4, 40);
             this.tpMaze.Name = "tpMaze";
-            this.tpMaze.Size = new System.Drawing.Size(648, 483);
+            this.tpMaze.Size = new System.Drawing.Size(648, 465);
             this.tpMaze.TabIndex = 12;
             this.tpMaze.Text = "Mazes";
             this.tpMaze.UseVisualStyleBackColor = true;
@@ -2048,42 +2115,6 @@
             this.pbMaze.Click += new System.EventHandler(this.pbMaze_Click);
             this.pbMaze.Paint += new System.Windows.Forms.PaintEventHandler(this.pbMaze_Paint);
             // 
-            // cw_all_wires
-            // 
-            this.cw_all_wires.Location = new System.Drawing.Point(392, 168);
-            this.cw_all_wires.Name = "cw_all_wires";
-            this.cw_all_wires.Size = new System.Drawing.Size(106, 25);
-            this.cw_all_wires.TabIndex = 11;
-            this.cw_all_wires.Text = "Set All wire types";
-            this.cw_all_wires.UseVisualStyleBackColor = true;
-            this.cw_all_wires.Click += new System.EventHandler(this.cw_all_wires_Click);
-            // 
-            // cw_reset
-            // 
-            this.cw_reset.Location = new System.Drawing.Point(392, 204);
-            this.cw_reset.Name = "cw_reset";
-            this.cw_reset.Size = new System.Drawing.Size(108, 25);
-            this.cw_reset.TabIndex = 10;
-            this.cw_reset.Text = "Reset";
-            this.cw_reset.UseVisualStyleBackColor = true;
-            this.cw_reset.Click += new System.EventHandler(this.cw_reset_Click);
-            // 
-            // cw_output
-            // 
-            this.cw_output.Location = new System.Drawing.Point(53, 53);
-            this.cw_output.Multiline = true;
-            this.cw_output.Name = "cw_output";
-            this.cw_output.Size = new System.Drawing.Size(559, 104);
-            this.cw_output.TabIndex = 9;
-            // 
-            // cw_input
-            // 
-            this.cw_input.Location = new System.Drawing.Point(53, 23);
-            this.cw_input.Name = "cw_input";
-            this.cw_input.Size = new System.Drawing.Size(559, 20);
-            this.cw_input.TabIndex = 8;
-            this.cw_input.TextChanged += new System.EventHandler(this.Complicated_Wires_Event);
-            // 
             // tpWires
             // 
             this.tpWires.Controls.Add(this.groupBox12);
@@ -2096,6 +2127,108 @@
             this.tpWires.TabIndex = 0;
             this.tpWires.Text = "Simple Wires, Complicated Wires, Wire Sequences";
             this.tpWires.UseVisualStyleBackColor = true;
+            // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.label69);
+            this.groupBox12.Controls.Add(this.label51);
+            this.groupBox12.Controls.Add(this.label52);
+            this.groupBox12.Controls.Add(this.label48);
+            this.groupBox12.Controls.Add(this.label25);
+            this.groupBox12.Controls.Add(this.cw_input);
+            this.groupBox12.Controls.Add(this.cw_output);
+            this.groupBox12.Controls.Add(this.cw_reset);
+            this.groupBox12.Controls.Add(this.cw_all_wires);
+            this.groupBox12.Location = new System.Drawing.Point(10, 118);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(618, 259);
+            this.groupBox12.TabIndex = 10;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "Complicated Wires";
+            // 
+            // label69
+            // 
+            this.label69.AutoSize = true;
+            this.label69.Location = new System.Drawing.Point(176, 230);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(339, 26);
+            this.label69.TabIndex = 16;
+            this.label69.Text = "Enter in the Letters RBWLS based on what each wire has as a group. \r\n(You can ign" +
+    "ore White, if there is Red or Blue Coloring.)";
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(6, 56);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(39, 13);
+            this.label51.TabIndex = 15;
+            this.label51.Text = "Output";
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(6, 26);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(31, 13);
+            this.label52.TabIndex = 14;
+            this.label52.Text = "Input";
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(174, 163);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(185, 65);
+            this.label48.TabIndex = 13;
+            this.label48.Text = "C = Cut\r\nD = Don\'t Cut\r\nS = Cut if Last digit of Serial is Even\r\nB = Cut if there" +
+    " are 2 or more batteries\r\nP = Cut if there is a Parallel Port";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(6, 163);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(162, 91);
+            this.label25.TabIndex = 12;
+            this.label25.Text = "R = Red\r\nB = Blue\r\nW = White\r\nL = LED / Light\r\nS = Star / Symbol\r\n/ = New Wire Se" +
+    "quence Panel\r\nSeperate each wire with a space";
+            // 
+            // cw_input
+            // 
+            this.cw_input.Location = new System.Drawing.Point(53, 23);
+            this.cw_input.Name = "cw_input";
+            this.cw_input.Size = new System.Drawing.Size(559, 20);
+            this.cw_input.TabIndex = 8;
+            this.cw_input.TextChanged += new System.EventHandler(this.Complicated_Wires_Event);
+            // 
+            // cw_output
+            // 
+            this.cw_output.Location = new System.Drawing.Point(53, 53);
+            this.cw_output.Multiline = true;
+            this.cw_output.Name = "cw_output";
+            this.cw_output.Size = new System.Drawing.Size(559, 104);
+            this.cw_output.TabIndex = 9;
+            // 
+            // cw_reset
+            // 
+            this.cw_reset.Location = new System.Drawing.Point(392, 204);
+            this.cw_reset.Name = "cw_reset";
+            this.cw_reset.Size = new System.Drawing.Size(108, 25);
+            this.cw_reset.TabIndex = 10;
+            this.cw_reset.Text = "Reset";
+            this.cw_reset.UseVisualStyleBackColor = true;
+            this.cw_reset.Click += new System.EventHandler(this.cw_reset_Click);
+            // 
+            // cw_all_wires
+            // 
+            this.cw_all_wires.Location = new System.Drawing.Point(392, 168);
+            this.cw_all_wires.Name = "cw_all_wires";
+            this.cw_all_wires.Size = new System.Drawing.Size(106, 25);
+            this.cw_all_wires.TabIndex = 11;
+            this.cw_all_wires.Text = "Set All wire types";
+            this.cw_all_wires.UseVisualStyleBackColor = true;
+            this.cw_all_wires.Click += new System.EventHandler(this.cw_all_wires_Click);
             // 
             // groupBox11
             // 
@@ -2113,6 +2246,16 @@
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Simple Wires";
             // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.Location = new System.Drawing.Point(48, 68);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(458, 13);
+            this.label68.TabIndex = 13;
+            this.label68.Text = "R = Red, B = Blue, K = Black, W = White, Y = Yellow    Enter between 3 to 6 Wire " +
+    "color Letters.";
+            // 
             // txtSimpleWireOutput
             // 
             this.txtSimpleWireOutput.Location = new System.Drawing.Point(51, 45);
@@ -2129,24 +2272,6 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Output";
             // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(6, 22);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(31, 13);
-            this.label23.TabIndex = 10;
-            this.label23.Text = "Input";
-            // 
-            // wires_input
-            // 
-            this.wires_input.Location = new System.Drawing.Point(51, 19);
-            this.wires_input.MaxLength = 6;
-            this.wires_input.Name = "wires_input";
-            this.wires_input.Size = new System.Drawing.Size(149, 20);
-            this.wires_input.TabIndex = 10;
-            this.wires_input.TextChanged += new System.EventHandler(this.wires_Input_TextChanged);
-            // 
             // wireReset
             // 
             this.wireReset.Location = new System.Drawing.Point(390, 19);
@@ -2156,66 +2281,6 @@
             this.wireReset.Text = "Reset";
             this.wireReset.UseVisualStyleBackColor = true;
             this.wireReset.Click += new System.EventHandler(this.wireReset_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label63);
-            this.groupBox1.Controls.Add(this.label22);
-            this.groupBox1.Controls.Add(this.label17);
-            this.groupBox1.Controls.Add(this.wsReset);
-            this.groupBox1.Controls.Add(this.ws_input);
-            this.groupBox1.Controls.Add(this.ws_output);
-            this.groupBox1.Location = new System.Drawing.Point(10, 382);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(618, 74);
-            this.groupBox1.TabIndex = 8;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Wire Sequence";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(6, 46);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(39, 13);
-            this.label22.TabIndex = 9;
-            this.label22.Text = "Output";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 22);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(31, 13);
-            this.label17.TabIndex = 8;
-            this.label17.Text = "Input";
-            // 
-            // wsReset
-            // 
-            this.wsReset.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.wsReset.Location = new System.Drawing.Point(312, 20);
-            this.wsReset.Name = "wsReset";
-            this.wsReset.Size = new System.Drawing.Size(108, 21);
-            this.wsReset.TabIndex = 0;
-            this.wsReset.Text = "Reset";
-            this.wsReset.UseVisualStyleBackColor = true;
-            this.wsReset.Click += new System.EventHandler(this.wsReset_Click);
-            // 
-            // ws_input
-            // 
-            this.ws_input.Location = new System.Drawing.Point(51, 20);
-            this.ws_input.MaxLength = 36;
-            this.ws_input.Name = "ws_input";
-            this.ws_input.Size = new System.Drawing.Size(255, 20);
-            this.ws_input.TabIndex = 6;
-            this.ws_input.TextChanged += new System.EventHandler(this.ws_input_TextChanged);
-            // 
-            // ws_output
-            // 
-            this.ws_output.Location = new System.Drawing.Point(51, 46);
-            this.ws_output.Name = "ws_output";
-            this.ws_output.Size = new System.Drawing.Size(561, 20);
-            this.ws_output.TabIndex = 7;
             // 
             // fpWires
             // 
@@ -2327,52 +2392,150 @@
             this.wire6.TabIndex = 0;
             this.wire6.SelectedIndexChanged += new System.EventHandler(this.simpleWires_Event);
             // 
-            // tpMorseCode
+            // label23
             // 
-            this.tpMorseCode.Controls.Add(this.MorseCodeOutput);
-            this.tpMorseCode.Controls.Add(this.MorseCodeInput);
-            this.tpMorseCode.Location = new System.Drawing.Point(4, 40);
-            this.tpMorseCode.Name = "tpMorseCode";
-            this.tpMorseCode.Size = new System.Drawing.Size(648, 465);
-            this.tpMorseCode.TabIndex = 10;
-            this.tpMorseCode.Text = "Morse Code";
-            this.tpMorseCode.UseVisualStyleBackColor = true;
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(6, 22);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(31, 13);
+            this.label23.TabIndex = 10;
+            this.label23.Text = "Input";
             // 
-            // MorseCodeOutput
+            // wires_input
             // 
-            this.MorseCodeOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MorseCodeOutput.Location = new System.Drawing.Point(11, 40);
-            this.MorseCodeOutput.Multiline = true;
-            this.MorseCodeOutput.Name = "MorseCodeOutput";
-            this.MorseCodeOutput.Size = new System.Drawing.Size(460, 248);
-            this.MorseCodeOutput.TabIndex = 1;
+            this.wires_input.Location = new System.Drawing.Point(51, 19);
+            this.wires_input.MaxLength = 6;
+            this.wires_input.Name = "wires_input";
+            this.wires_input.Size = new System.Drawing.Size(149, 20);
+            this.wires_input.TabIndex = 10;
+            this.wires_input.TextChanged += new System.EventHandler(this.wires_Input_TextChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label63);
+            this.groupBox1.Controls.Add(this.label22);
+            this.groupBox1.Controls.Add(this.label17);
+            this.groupBox1.Controls.Add(this.wsReset);
+            this.groupBox1.Controls.Add(this.ws_input);
+            this.groupBox1.Controls.Add(this.ws_output);
+            this.groupBox1.Location = new System.Drawing.Point(10, 382);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(618, 74);
+            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Wire Sequence";
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Location = new System.Drawing.Point(426, 16);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(162, 26);
+            this.label63.TabIndex = 10;
+            this.label63.Text = "R = Red, B = Blue, K = Black\r\nEnter as pairs of Colors to Letters";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(6, 46);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(39, 13);
+            this.label22.TabIndex = 9;
+            this.label22.Text = "Output";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 22);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(31, 13);
+            this.label17.TabIndex = 8;
+            this.label17.Text = "Input";
+            // 
+            // wsReset
+            // 
+            this.wsReset.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.wsReset.Location = new System.Drawing.Point(312, 20);
+            this.wsReset.Name = "wsReset";
+            this.wsReset.Size = new System.Drawing.Size(108, 21);
+            this.wsReset.TabIndex = 0;
+            this.wsReset.Text = "Reset";
+            this.wsReset.UseVisualStyleBackColor = true;
+            this.wsReset.Click += new System.EventHandler(this.wsReset_Click);
+            // 
+            // ws_input
+            // 
+            this.ws_input.Location = new System.Drawing.Point(51, 20);
+            this.ws_input.MaxLength = 36;
+            this.ws_input.Name = "ws_input";
+            this.ws_input.Size = new System.Drawing.Size(255, 20);
+            this.ws_input.TabIndex = 6;
+            this.ws_input.TextChanged += new System.EventHandler(this.ws_input_TextChanged);
+            // 
+            // ws_output
+            // 
+            this.ws_output.Location = new System.Drawing.Point(51, 46);
+            this.ws_output.Name = "ws_output";
+            this.ws_output.Size = new System.Drawing.Size(561, 20);
+            this.ws_output.TabIndex = 7;
+            // 
+            // tpPasswordMorseCode
+            // 
+            this.tpPasswordMorseCode.Controls.Add(this.groupBox14);
+            this.tpPasswordMorseCode.Controls.Add(this.groupBox13);
+            this.tpPasswordMorseCode.Location = new System.Drawing.Point(4, 40);
+            this.tpPasswordMorseCode.Name = "tpPasswordMorseCode";
+            this.tpPasswordMorseCode.Size = new System.Drawing.Size(648, 465);
+            this.tpPasswordMorseCode.TabIndex = 8;
+            this.tpPasswordMorseCode.Text = "Passwords, Morse Code";
+            this.tpPasswordMorseCode.UseVisualStyleBackColor = true;
+            // 
+            // groupBox14
+            // 
+            this.groupBox14.Controls.Add(this.MorseCodeInput);
+            this.groupBox14.Controls.Add(this.MorseCodeOutput);
+            this.groupBox14.Location = new System.Drawing.Point(3, 280);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(484, 183);
+            this.groupBox14.TabIndex = 2;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "Morse Code";
             // 
             // MorseCodeInput
             // 
             this.MorseCodeInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MorseCodeInput.Location = new System.Drawing.Point(11, 3);
+            this.MorseCodeInput.Location = new System.Drawing.Point(6, 19);
             this.MorseCodeInput.Name = "MorseCodeInput";
             this.MorseCodeInput.Size = new System.Drawing.Size(460, 31);
             this.MorseCodeInput.TabIndex = 0;
             this.MorseCodeInput.TextChanged += new System.EventHandler(this.MorseCodeInput_TextChanged);
             // 
-            // tpPassword
+            // MorseCodeOutput
             // 
-            this.tpPassword.Controls.Add(this.passwordClear);
-            this.tpPassword.Controls.Add(this.label15);
-            this.tpPassword.Controls.Add(this.fpPasswordLettersNotPresent);
-            this.tpPassword.Controls.Add(this.fpPassword);
-            this.tpPassword.Controls.Add(this.passResults);
-            this.tpPassword.Location = new System.Drawing.Point(4, 40);
-            this.tpPassword.Name = "tpPassword";
-            this.tpPassword.Size = new System.Drawing.Size(648, 465);
-            this.tpPassword.TabIndex = 8;
-            this.tpPassword.Text = "Passwords";
-            this.tpPassword.UseVisualStyleBackColor = true;
+            this.MorseCodeOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MorseCodeOutput.Location = new System.Drawing.Point(6, 56);
+            this.MorseCodeOutput.Multiline = true;
+            this.MorseCodeOutput.Name = "MorseCodeOutput";
+            this.MorseCodeOutput.Size = new System.Drawing.Size(460, 117);
+            this.MorseCodeOutput.TabIndex = 1;
+            // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.passwordClear);
+            this.groupBox13.Controls.Add(this.passResults);
+            this.groupBox13.Controls.Add(this.label15);
+            this.groupBox13.Controls.Add(this.fpPassword);
+            this.groupBox13.Controls.Add(this.fpPasswordLettersNotPresent);
+            this.groupBox13.Location = new System.Drawing.Point(3, 3);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(484, 278);
+            this.groupBox13.TabIndex = 11;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "Password";
             // 
             // passwordClear
             // 
-            this.passwordClear.Location = new System.Drawing.Point(395, 4);
+            this.passwordClear.Location = new System.Drawing.Point(393, 10);
             this.passwordClear.Name = "passwordClear";
             this.passwordClear.Size = new System.Drawing.Size(76, 26);
             this.passwordClear.TabIndex = 6;
@@ -2380,14 +2543,75 @@
             this.passwordClear.UseVisualStyleBackColor = true;
             this.passwordClear.Click += new System.EventHandler(this.PasswordClear_Click);
             // 
+            // passResults
+            // 
+            this.passResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passResults.Location = new System.Drawing.Point(6, 160);
+            this.passResults.Multiline = true;
+            this.passResults.Name = "passResults";
+            this.passResults.Size = new System.Drawing.Size(463, 108);
+            this.passResults.TabIndex = 5;
+            // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(196, 4);
+            this.label15.Location = new System.Drawing.Point(194, 10);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(181, 13);
             this.label15.TabIndex = 10;
             this.label15.Text = "Letters Never present in that column:";
+            // 
+            // fpPassword
+            // 
+            this.fpPassword.Controls.Add(this.pass1);
+            this.fpPassword.Controls.Add(this.pass2);
+            this.fpPassword.Controls.Add(this.pass3);
+            this.fpPassword.Controls.Add(this.pass4);
+            this.fpPassword.Controls.Add(this.pass5);
+            this.fpPassword.Location = new System.Drawing.Point(6, 23);
+            this.fpPassword.Name = "fpPassword";
+            this.fpPassword.Size = new System.Drawing.Size(177, 131);
+            this.fpPassword.TabIndex = 7;
+            // 
+            // pass1
+            // 
+            this.pass1.Location = new System.Drawing.Point(3, 3);
+            this.pass1.Name = "pass1";
+            this.pass1.Size = new System.Drawing.Size(169, 20);
+            this.pass1.TabIndex = 0;
+            this.pass1.TextChanged += new System.EventHandler(this.Password_TextChanged);
+            // 
+            // pass2
+            // 
+            this.pass2.Location = new System.Drawing.Point(3, 29);
+            this.pass2.Name = "pass2";
+            this.pass2.Size = new System.Drawing.Size(169, 20);
+            this.pass2.TabIndex = 1;
+            this.pass2.TextChanged += new System.EventHandler(this.Password_TextChanged);
+            // 
+            // pass3
+            // 
+            this.pass3.Location = new System.Drawing.Point(3, 55);
+            this.pass3.Name = "pass3";
+            this.pass3.Size = new System.Drawing.Size(169, 20);
+            this.pass3.TabIndex = 2;
+            this.pass3.TextChanged += new System.EventHandler(this.Password_TextChanged);
+            // 
+            // pass4
+            // 
+            this.pass4.Location = new System.Drawing.Point(3, 81);
+            this.pass4.Name = "pass4";
+            this.pass4.Size = new System.Drawing.Size(169, 20);
+            this.pass4.TabIndex = 3;
+            this.pass4.TextChanged += new System.EventHandler(this.Password_TextChanged);
+            // 
+            // pass5
+            // 
+            this.pass5.Location = new System.Drawing.Point(3, 107);
+            this.pass5.Name = "pass5";
+            this.pass5.Size = new System.Drawing.Size(169, 20);
+            this.pass5.TabIndex = 4;
+            this.pass5.TextChanged += new System.EventHandler(this.Password_TextChanged);
             // 
             // fpPasswordLettersNotPresent
             // 
@@ -2397,7 +2621,7 @@
             this.fpPasswordLettersNotPresent.Controls.Add(this.label13);
             this.fpPasswordLettersNotPresent.Controls.Add(this.label14);
             this.fpPasswordLettersNotPresent.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.fpPasswordLettersNotPresent.Location = new System.Drawing.Point(191, 20);
+            this.fpPasswordLettersNotPresent.Location = new System.Drawing.Point(189, 26);
             this.fpPasswordLettersNotPresent.Name = "fpPasswordLettersNotPresent";
             this.fpPasswordLettersNotPresent.Size = new System.Drawing.Size(280, 128);
             this.fpPasswordLettersNotPresent.TabIndex = 9;
@@ -2451,67 +2675,6 @@
             this.label14.Size = new System.Drawing.Size(82, 25);
             this.label14.TabIndex = 12;
             this.label14.Text = "label14";
-            // 
-            // fpPassword
-            // 
-            this.fpPassword.Controls.Add(this.pass1);
-            this.fpPassword.Controls.Add(this.pass2);
-            this.fpPassword.Controls.Add(this.pass3);
-            this.fpPassword.Controls.Add(this.pass4);
-            this.fpPassword.Controls.Add(this.pass5);
-            this.fpPassword.Location = new System.Drawing.Point(8, 17);
-            this.fpPassword.Name = "fpPassword";
-            this.fpPassword.Size = new System.Drawing.Size(177, 131);
-            this.fpPassword.TabIndex = 7;
-            // 
-            // pass1
-            // 
-            this.pass1.Location = new System.Drawing.Point(3, 3);
-            this.pass1.Name = "pass1";
-            this.pass1.Size = new System.Drawing.Size(169, 20);
-            this.pass1.TabIndex = 0;
-            this.pass1.TextChanged += new System.EventHandler(this.Password_TextChanged);
-            // 
-            // pass2
-            // 
-            this.pass2.Location = new System.Drawing.Point(3, 29);
-            this.pass2.Name = "pass2";
-            this.pass2.Size = new System.Drawing.Size(169, 20);
-            this.pass2.TabIndex = 1;
-            this.pass2.TextChanged += new System.EventHandler(this.Password_TextChanged);
-            // 
-            // pass3
-            // 
-            this.pass3.Location = new System.Drawing.Point(3, 55);
-            this.pass3.Name = "pass3";
-            this.pass3.Size = new System.Drawing.Size(169, 20);
-            this.pass3.TabIndex = 2;
-            this.pass3.TextChanged += new System.EventHandler(this.Password_TextChanged);
-            // 
-            // pass4
-            // 
-            this.pass4.Location = new System.Drawing.Point(3, 81);
-            this.pass4.Name = "pass4";
-            this.pass4.Size = new System.Drawing.Size(169, 20);
-            this.pass4.TabIndex = 3;
-            this.pass4.TextChanged += new System.EventHandler(this.Password_TextChanged);
-            // 
-            // pass5
-            // 
-            this.pass5.Location = new System.Drawing.Point(3, 107);
-            this.pass5.Name = "pass5";
-            this.pass5.Size = new System.Drawing.Size(169, 20);
-            this.pass5.TabIndex = 4;
-            this.pass5.TextChanged += new System.EventHandler(this.Password_TextChanged);
-            // 
-            // passResults
-            // 
-            this.passResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passResults.Location = new System.Drawing.Point(8, 154);
-            this.passResults.Multiline = true;
-            this.passResults.Name = "passResults";
-            this.passResults.Size = new System.Drawing.Size(463, 134);
-            this.passResults.TabIndex = 5;
             // 
             // tpNeedyKnobV1
             // 
@@ -2631,6 +2794,7 @@
             this.tpForgetMeNot.Padding = new System.Windows.Forms.Padding(3);
             this.tpForgetMeNot.Size = new System.Drawing.Size(648, 465);
             this.tpForgetMeNot.TabIndex = 15;
+            this.tpForgetMeNot.Tag = "mods";
             this.tpForgetMeNot.Text = "(mod) Forget Me Not";
             this.tpForgetMeNot.UseVisualStyleBackColor = true;
             // 
@@ -2693,6 +2857,7 @@
             // 
             // tpModCollection1
             // 
+            this.tpModCollection1.Controls.Add(this.groupBox5);
             this.tpModCollection1.Controls.Add(this.groupBox10);
             this.tpModCollection1.Controls.Add(this.label24);
             this.tpModCollection1.Controls.Add(this.groupBox9);
@@ -2704,8 +2869,58 @@
             this.tpModCollection1.Padding = new System.Windows.Forms.Padding(3);
             this.tpModCollection1.Size = new System.Drawing.Size(648, 465);
             this.tpModCollection1.TabIndex = 20;
+            this.tpModCollection1.Tag = "mods";
             this.tpModCollection1.Text = "Chess, Connection Check, Logic, Plumbing, Two Bits";
             this.tpModCollection1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.label83);
+            this.groupBox5.Controls.Add(this.label84);
+            this.groupBox5.Controls.Add(this.txtLetteredKeysOut);
+            this.groupBox5.Controls.Add(this.txtLetteredKeysIn);
+            this.groupBox5.Location = new System.Drawing.Point(224, 198);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(108, 91);
+            this.groupBox5.TabIndex = 22;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Lettered Keys";
+            // 
+            // label83
+            // 
+            this.label83.AutoSize = true;
+            this.label83.Location = new System.Drawing.Point(6, 24);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(31, 13);
+            this.label83.TabIndex = 21;
+            this.label83.Text = "Input";
+            // 
+            // label84
+            // 
+            this.label84.AutoSize = true;
+            this.label84.Location = new System.Drawing.Point(6, 50);
+            this.label84.Name = "label84";
+            this.label84.Size = new System.Drawing.Size(39, 13);
+            this.label84.TabIndex = 20;
+            this.label84.Text = "Output";
+            // 
+            // txtLetteredKeysOut
+            // 
+            this.txtLetteredKeysOut.Enabled = false;
+            this.txtLetteredKeysOut.Location = new System.Drawing.Point(56, 47);
+            this.txtLetteredKeysOut.MaxLength = 11;
+            this.txtLetteredKeysOut.Name = "txtLetteredKeysOut";
+            this.txtLetteredKeysOut.Size = new System.Drawing.Size(39, 20);
+            this.txtLetteredKeysOut.TabIndex = 19;
+            // 
+            // txtLetteredKeysIn
+            // 
+            this.txtLetteredKeysIn.Location = new System.Drawing.Point(56, 21);
+            this.txtLetteredKeysIn.MaxLength = 11;
+            this.txtLetteredKeysIn.Name = "txtLetteredKeysIn";
+            this.txtLetteredKeysIn.Size = new System.Drawing.Size(39, 20);
+            this.txtLetteredKeysIn.TabIndex = 18;
+            this.txtLetteredKeysIn.TextChanged += new System.EventHandler(this.txtLetteredKeysIn_TextChanged);
             // 
             // groupBox10
             // 
@@ -3097,22 +3312,37 @@
             this.linkLabel1.Text = "manualURL";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // groupBox5
+            // gbBombInformation
             // 
-            this.groupBox5.Controls.Add(this.button42);
-            this.groupBox5.Controls.Add(this.gbBatteries);
-            this.groupBox5.Controls.Add(this.gbPorts);
-            this.groupBox5.Controls.Add(this.gbIndicators);
-            this.groupBox5.Controls.Add(this.label16);
-            this.groupBox5.Controls.Add(this.txtSerialNumber);
-            this.groupBox5.Controls.Add(this.facts_strike);
-            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox5.Location = new System.Drawing.Point(0, 0);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(327, 509);
-            this.groupBox5.TabIndex = 3;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Bomb Information";
+            this.gbBombInformation.Controls.Add(this.checkBox1);
+            this.gbBombInformation.Controls.Add(this.button42);
+            this.gbBombInformation.Controls.Add(this.gbBatteries);
+            this.gbBombInformation.Controls.Add(this.gbPorts);
+            this.gbBombInformation.Controls.Add(this.groupBox15);
+            this.gbBombInformation.Controls.Add(this.gbIndicators);
+            this.gbBombInformation.Controls.Add(this.label16);
+            this.gbBombInformation.Controls.Add(this.txtSerialNumber);
+            this.gbBombInformation.Controls.Add(this.facts_strike);
+            this.gbBombInformation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbBombInformation.Location = new System.Drawing.Point(0, 0);
+            this.gbBombInformation.Name = "gbBombInformation";
+            this.gbBombInformation.Size = new System.Drawing.Size(327, 509);
+            this.gbBombInformation.TabIndex = 3;
+            this.gbBombInformation.TabStop = false;
+            this.gbBombInformation.Text = "Bomb Information";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(6, 46);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(82, 17);
+            this.checkBox1.TabIndex = 27;
+            this.checkBox1.Text = "Show Mods";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // button42
             // 
@@ -3146,6 +3376,7 @@
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(43, 13);
             this.label53.TabIndex = 36;
+            this.label53.Tag = "mods";
             this.label53.Text = "Holders";
             // 
             // nudBatteryHolders
@@ -3154,6 +3385,7 @@
             this.nudBatteryHolders.Name = "nudBatteryHolders";
             this.nudBatteryHolders.Size = new System.Drawing.Size(40, 20);
             this.nudBatteryHolders.TabIndex = 35;
+            this.nudBatteryHolders.Tag = "mods";
             // 
             // label50
             // 
@@ -3162,6 +3394,7 @@
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(15, 13);
             this.label50.TabIndex = 34;
+            this.label50.Tag = "mods";
             this.label50.Text = "D";
             // 
             // nudBatteriesD
@@ -3170,6 +3403,7 @@
             this.nudBatteriesD.Name = "nudBatteriesD";
             this.nudBatteriesD.Size = new System.Drawing.Size(40, 20);
             this.nudBatteriesD.TabIndex = 33;
+            this.nudBatteriesD.Tag = "mods";
             this.nudBatteriesD.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // label49
@@ -3219,6 +3453,7 @@
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(63, 13);
             this.label47.TabIndex = 28;
+            this.label47.Tag = "mods";
             this.label47.Text = "Stereo RCA";
             // 
             // nudPortRCA
@@ -3227,6 +3462,7 @@
             this.nudPortRCA.Name = "nudPortRCA";
             this.nudPortRCA.Size = new System.Drawing.Size(40, 20);
             this.nudPortRCA.TabIndex = 27;
+            this.nudPortRCA.Tag = "mods";
             this.nudPortRCA.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // label46
@@ -3236,6 +3472,7 @@
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(33, 13);
             this.label46.TabIndex = 26;
+            this.label46.Tag = "mods";
             this.label46.Text = "Serial";
             // 
             // nudPortSerial
@@ -3244,6 +3481,7 @@
             this.nudPortSerial.Name = "nudPortSerial";
             this.nudPortSerial.Size = new System.Drawing.Size(40, 20);
             this.nudPortSerial.TabIndex = 25;
+            this.nudPortSerial.Tag = "mods";
             this.nudPortSerial.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // label45
@@ -3253,6 +3491,7 @@
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(35, 13);
             this.label45.TabIndex = 24;
+            this.label45.Tag = "mods";
             this.label45.Text = "RJ-45";
             // 
             // nudPortRJ45
@@ -3261,6 +3500,7 @@
             this.nudPortRJ45.Name = "nudPortRJ45";
             this.nudPortRJ45.Size = new System.Drawing.Size(40, 20);
             this.nudPortRJ45.TabIndex = 23;
+            this.nudPortRJ45.Tag = "mods";
             this.nudPortRJ45.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // label44
@@ -3270,6 +3510,7 @@
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(32, 13);
             this.label44.TabIndex = 22;
+            this.label44.Tag = "mods";
             this.label44.Text = "PS/2";
             // 
             // nudPortPS2
@@ -3278,6 +3519,7 @@
             this.nudPortPS2.Name = "nudPortPS2";
             this.nudPortPS2.Size = new System.Drawing.Size(40, 20);
             this.nudPortPS2.TabIndex = 21;
+            this.nudPortPS2.Tag = "mods";
             this.nudPortPS2.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // label43
@@ -3304,6 +3546,7 @@
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(36, 13);
             this.label42.TabIndex = 18;
+            this.label42.Tag = "mods";
             this.label42.Text = "DVI-D";
             // 
             // nudPortDVID
@@ -3312,6 +3555,7 @@
             this.nudPortDVID.Name = "nudPortDVID";
             this.nudPortDVID.Size = new System.Drawing.Size(40, 20);
             this.nudPortDVID.TabIndex = 17;
+            this.nudPortDVID.Tag = "mods";
             this.nudPortDVID.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // label41
@@ -3321,6 +3565,7 @@
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(57, 13);
             this.label41.TabIndex = 16;
+            this.label41.Tag = "mods";
             this.label41.Text = "Port plates";
             // 
             // nudPortPlates
@@ -3329,7 +3574,375 @@
             this.nudPortPlates.Name = "nudPortPlates";
             this.nudPortPlates.Size = new System.Drawing.Size(40, 20);
             this.nudPortPlates.TabIndex = 15;
+            this.nudPortPlates.Tag = "mods";
             this.nudPortPlates.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // groupBox15
+            // 
+            this.groupBox15.Controls.Add(this.label70);
+            this.groupBox15.Controls.Add(this.numericUpDown1);
+            this.groupBox15.Controls.Add(this.numericUpDown2);
+            this.groupBox15.Controls.Add(this.label71);
+            this.groupBox15.Controls.Add(this.numericUpDown3);
+            this.groupBox15.Controls.Add(this.numericUpDown4);
+            this.groupBox15.Controls.Add(this.label72);
+            this.groupBox15.Controls.Add(this.numericUpDown5);
+            this.groupBox15.Controls.Add(this.numericUpDown6);
+            this.groupBox15.Controls.Add(this.label73);
+            this.groupBox15.Controls.Add(this.numericUpDown7);
+            this.groupBox15.Controls.Add(this.numericUpDown8);
+            this.groupBox15.Controls.Add(this.label74);
+            this.groupBox15.Controls.Add(this.numericUpDown9);
+            this.groupBox15.Controls.Add(this.numericUpDown10);
+            this.groupBox15.Controls.Add(this.label75);
+            this.groupBox15.Controls.Add(this.numericUpDown11);
+            this.groupBox15.Controls.Add(this.numericUpDown12);
+            this.groupBox15.Controls.Add(this.label76);
+            this.groupBox15.Controls.Add(this.numericUpDown13);
+            this.groupBox15.Controls.Add(this.numericUpDown14);
+            this.groupBox15.Controls.Add(this.label77);
+            this.groupBox15.Controls.Add(this.numericUpDown15);
+            this.groupBox15.Controls.Add(this.numericUpDown16);
+            this.groupBox15.Controls.Add(this.label78);
+            this.groupBox15.Controls.Add(this.numericUpDown17);
+            this.groupBox15.Controls.Add(this.numericUpDown18);
+            this.groupBox15.Controls.Add(this.label79);
+            this.groupBox15.Controls.Add(this.numericUpDown19);
+            this.groupBox15.Controls.Add(this.numericUpDown20);
+            this.groupBox15.Controls.Add(this.label80);
+            this.groupBox15.Controls.Add(this.label81);
+            this.groupBox15.Controls.Add(this.label82);
+            this.groupBox15.Controls.Add(this.numericUpDown21);
+            this.groupBox15.Controls.Add(this.numericUpDown22);
+            this.groupBox15.Location = new System.Drawing.Point(6, 183);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(138, 320);
+            this.groupBox15.TabIndex = 23;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "Indicators";
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Location = new System.Drawing.Point(7, 291);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(30, 13);
+            this.label70.TabIndex = 44;
+            this.label70.Tag = "mods";
+            this.label70.Text = "TRN";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(88, 289);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(40, 20);
+            this.numericUpDown1.TabIndex = 43;
+            this.numericUpDown1.Tag = "mods";
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Location = new System.Drawing.Point(42, 289);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(40, 20);
+            this.numericUpDown2.TabIndex = 42;
+            this.numericUpDown2.Tag = "mods";
+            this.numericUpDown2.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Location = new System.Drawing.Point(7, 265);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(30, 13);
+            this.label71.TabIndex = 41;
+            this.label71.Tag = "mods";
+            this.label71.Text = "SND";
+            // 
+            // numericUpDown3
+            // 
+            this.numericUpDown3.Location = new System.Drawing.Point(88, 263);
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(40, 20);
+            this.numericUpDown3.TabIndex = 40;
+            this.numericUpDown3.Tag = "mods";
+            this.numericUpDown3.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // numericUpDown4
+            // 
+            this.numericUpDown4.Location = new System.Drawing.Point(42, 263);
+            this.numericUpDown4.Name = "numericUpDown4";
+            this.numericUpDown4.Size = new System.Drawing.Size(40, 20);
+            this.numericUpDown4.TabIndex = 39;
+            this.numericUpDown4.Tag = "mods";
+            this.numericUpDown4.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Location = new System.Drawing.Point(7, 239);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(25, 13);
+            this.label72.TabIndex = 38;
+            this.label72.Tag = "mods";
+            this.label72.Text = "SIG";
+            // 
+            // numericUpDown5
+            // 
+            this.numericUpDown5.Location = new System.Drawing.Point(88, 237);
+            this.numericUpDown5.Name = "numericUpDown5";
+            this.numericUpDown5.Size = new System.Drawing.Size(40, 20);
+            this.numericUpDown5.TabIndex = 37;
+            this.numericUpDown5.Tag = "mods";
+            this.numericUpDown5.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // numericUpDown6
+            // 
+            this.numericUpDown6.Location = new System.Drawing.Point(42, 237);
+            this.numericUpDown6.Name = "numericUpDown6";
+            this.numericUpDown6.Size = new System.Drawing.Size(40, 20);
+            this.numericUpDown6.TabIndex = 36;
+            this.numericUpDown6.Tag = "mods";
+            this.numericUpDown6.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label73
+            // 
+            this.label73.AutoSize = true;
+            this.label73.Location = new System.Drawing.Point(7, 213);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(29, 13);
+            this.label73.TabIndex = 35;
+            this.label73.Tag = "mods";
+            this.label73.Text = "NSA";
+            // 
+            // numericUpDown7
+            // 
+            this.numericUpDown7.Location = new System.Drawing.Point(88, 211);
+            this.numericUpDown7.Name = "numericUpDown7";
+            this.numericUpDown7.Size = new System.Drawing.Size(40, 20);
+            this.numericUpDown7.TabIndex = 34;
+            this.numericUpDown7.Tag = "mods";
+            this.numericUpDown7.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // numericUpDown8
+            // 
+            this.numericUpDown8.Location = new System.Drawing.Point(42, 211);
+            this.numericUpDown8.Name = "numericUpDown8";
+            this.numericUpDown8.Size = new System.Drawing.Size(40, 20);
+            this.numericUpDown8.TabIndex = 33;
+            this.numericUpDown8.Tag = "mods";
+            this.numericUpDown8.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label74
+            // 
+            this.label74.AutoSize = true;
+            this.label74.Location = new System.Drawing.Point(7, 187);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(30, 13);
+            this.label74.TabIndex = 32;
+            this.label74.Tag = "mods";
+            this.label74.Text = "MSA";
+            // 
+            // numericUpDown9
+            // 
+            this.numericUpDown9.Location = new System.Drawing.Point(88, 185);
+            this.numericUpDown9.Name = "numericUpDown9";
+            this.numericUpDown9.Size = new System.Drawing.Size(40, 20);
+            this.numericUpDown9.TabIndex = 31;
+            this.numericUpDown9.Tag = "mods";
+            this.numericUpDown9.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // numericUpDown10
+            // 
+            this.numericUpDown10.Location = new System.Drawing.Point(42, 185);
+            this.numericUpDown10.Name = "numericUpDown10";
+            this.numericUpDown10.Size = new System.Drawing.Size(40, 20);
+            this.numericUpDown10.TabIndex = 30;
+            this.numericUpDown10.Tag = "mods";
+            this.numericUpDown10.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.Location = new System.Drawing.Point(7, 161);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(26, 13);
+            this.label75.TabIndex = 29;
+            this.label75.Tag = "mods";
+            this.label75.Text = "IND";
+            // 
+            // numericUpDown11
+            // 
+            this.numericUpDown11.Location = new System.Drawing.Point(88, 159);
+            this.numericUpDown11.Name = "numericUpDown11";
+            this.numericUpDown11.Size = new System.Drawing.Size(40, 20);
+            this.numericUpDown11.TabIndex = 28;
+            this.numericUpDown11.Tag = "mods";
+            this.numericUpDown11.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // numericUpDown12
+            // 
+            this.numericUpDown12.Location = new System.Drawing.Point(42, 159);
+            this.numericUpDown12.Name = "numericUpDown12";
+            this.numericUpDown12.Size = new System.Drawing.Size(40, 20);
+            this.numericUpDown12.TabIndex = 27;
+            this.numericUpDown12.Tag = "mods";
+            this.numericUpDown12.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.Location = new System.Drawing.Point(7, 135);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(29, 13);
+            this.label76.TabIndex = 26;
+            this.label76.Tag = "mods";
+            this.label76.Text = "FRQ";
+            // 
+            // numericUpDown13
+            // 
+            this.numericUpDown13.Location = new System.Drawing.Point(88, 133);
+            this.numericUpDown13.Name = "numericUpDown13";
+            this.numericUpDown13.Size = new System.Drawing.Size(40, 20);
+            this.numericUpDown13.TabIndex = 25;
+            this.numericUpDown13.Tag = "mods";
+            this.numericUpDown13.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // numericUpDown14
+            // 
+            this.numericUpDown14.Location = new System.Drawing.Point(42, 133);
+            this.numericUpDown14.Name = "numericUpDown14";
+            this.numericUpDown14.Size = new System.Drawing.Size(40, 20);
+            this.numericUpDown14.TabIndex = 24;
+            this.numericUpDown14.Tag = "mods";
+            this.numericUpDown14.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.Location = new System.Drawing.Point(7, 109);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(28, 13);
+            this.label77.TabIndex = 23;
+            this.label77.Text = "FRK";
+            // 
+            // numericUpDown15
+            // 
+            this.numericUpDown15.Location = new System.Drawing.Point(88, 107);
+            this.numericUpDown15.Name = "numericUpDown15";
+            this.numericUpDown15.Size = new System.Drawing.Size(40, 20);
+            this.numericUpDown15.TabIndex = 22;
+            this.numericUpDown15.Tag = "mods";
+            this.numericUpDown15.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // numericUpDown16
+            // 
+            this.numericUpDown16.Location = new System.Drawing.Point(42, 107);
+            this.numericUpDown16.Name = "numericUpDown16";
+            this.numericUpDown16.Size = new System.Drawing.Size(40, 20);
+            this.numericUpDown16.TabIndex = 21;
+            this.numericUpDown16.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.Location = new System.Drawing.Point(7, 83);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(28, 13);
+            this.label78.TabIndex = 20;
+            this.label78.Tag = "mods";
+            this.label78.Text = "CLR";
+            // 
+            // numericUpDown17
+            // 
+            this.numericUpDown17.Location = new System.Drawing.Point(88, 81);
+            this.numericUpDown17.Name = "numericUpDown17";
+            this.numericUpDown17.Size = new System.Drawing.Size(40, 20);
+            this.numericUpDown17.TabIndex = 19;
+            this.numericUpDown17.Tag = "mods";
+            this.numericUpDown17.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // numericUpDown18
+            // 
+            this.numericUpDown18.Location = new System.Drawing.Point(42, 81);
+            this.numericUpDown18.Name = "numericUpDown18";
+            this.numericUpDown18.Size = new System.Drawing.Size(40, 20);
+            this.numericUpDown18.TabIndex = 18;
+            this.numericUpDown18.Tag = "mods";
+            this.numericUpDown18.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Location = new System.Drawing.Point(7, 57);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(29, 13);
+            this.label79.TabIndex = 17;
+            this.label79.Text = "CAR";
+            // 
+            // numericUpDown19
+            // 
+            this.numericUpDown19.Location = new System.Drawing.Point(88, 55);
+            this.numericUpDown19.Name = "numericUpDown19";
+            this.numericUpDown19.Size = new System.Drawing.Size(40, 20);
+            this.numericUpDown19.TabIndex = 16;
+            this.numericUpDown19.Tag = "mods";
+            this.numericUpDown19.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // numericUpDown20
+            // 
+            this.numericUpDown20.Location = new System.Drawing.Point(42, 55);
+            this.numericUpDown20.Name = "numericUpDown20";
+            this.numericUpDown20.Size = new System.Drawing.Size(40, 20);
+            this.numericUpDown20.TabIndex = 15;
+            this.numericUpDown20.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.Location = new System.Drawing.Point(7, 31);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(29, 13);
+            this.label80.TabIndex = 14;
+            this.label80.Tag = "mods";
+            this.label80.Text = "BOB";
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.Location = new System.Drawing.Point(94, 13);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(28, 13);
+            this.label81.TabIndex = 13;
+            this.label81.Tag = "mods";
+            this.label81.Text = "Unlit";
+            // 
+            // label82
+            // 
+            this.label82.AutoSize = true;
+            this.label82.Location = new System.Drawing.Point(51, 13);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(18, 13);
+            this.label82.TabIndex = 12;
+            this.label82.Text = "Lit";
+            // 
+            // numericUpDown21
+            // 
+            this.numericUpDown21.Location = new System.Drawing.Point(88, 29);
+            this.numericUpDown21.Name = "numericUpDown21";
+            this.numericUpDown21.Size = new System.Drawing.Size(40, 20);
+            this.numericUpDown21.TabIndex = 11;
+            this.numericUpDown21.Tag = "mods";
+            this.numericUpDown21.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // numericUpDown22
+            // 
+            this.numericUpDown22.Location = new System.Drawing.Point(42, 29);
+            this.numericUpDown22.Name = "numericUpDown22";
+            this.numericUpDown22.Size = new System.Drawing.Size(40, 20);
+            this.numericUpDown22.TabIndex = 10;
+            this.numericUpDown22.Tag = "mods";
+            this.numericUpDown22.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // gbIndicators
             // 
@@ -3382,6 +3995,7 @@
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(30, 13);
             this.label40.TabIndex = 44;
+            this.label40.Tag = "bob";
             this.label40.Text = "TRN";
             // 
             // nudUnlitTRN
@@ -3390,6 +4004,7 @@
             this.nudUnlitTRN.Name = "nudUnlitTRN";
             this.nudUnlitTRN.Size = new System.Drawing.Size(40, 20);
             this.nudUnlitTRN.TabIndex = 43;
+            this.nudUnlitTRN.Tag = "bob";
             this.nudUnlitTRN.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // nudLitTRN
@@ -3398,6 +4013,7 @@
             this.nudLitTRN.Name = "nudLitTRN";
             this.nudLitTRN.Size = new System.Drawing.Size(40, 20);
             this.nudLitTRN.TabIndex = 42;
+            this.nudLitTRN.Tag = "bob";
             this.nudLitTRN.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // label39
@@ -3407,6 +4023,7 @@
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(30, 13);
             this.label39.TabIndex = 41;
+            this.label39.Tag = "bob";
             this.label39.Text = "SND";
             // 
             // nudUnlitSND
@@ -3415,6 +4032,7 @@
             this.nudUnlitSND.Name = "nudUnlitSND";
             this.nudUnlitSND.Size = new System.Drawing.Size(40, 20);
             this.nudUnlitSND.TabIndex = 40;
+            this.nudUnlitSND.Tag = "bob";
             this.nudUnlitSND.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // nudLitSND
@@ -3423,6 +4041,7 @@
             this.nudLitSND.Name = "nudLitSND";
             this.nudLitSND.Size = new System.Drawing.Size(40, 20);
             this.nudLitSND.TabIndex = 39;
+            this.nudLitSND.Tag = "bob";
             this.nudLitSND.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // label38
@@ -3432,6 +4051,7 @@
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(25, 13);
             this.label38.TabIndex = 38;
+            this.label38.Tag = "bob";
             this.label38.Text = "SIG";
             // 
             // nudUnlitSIG
@@ -3440,6 +4060,7 @@
             this.nudUnlitSIG.Name = "nudUnlitSIG";
             this.nudUnlitSIG.Size = new System.Drawing.Size(40, 20);
             this.nudUnlitSIG.TabIndex = 37;
+            this.nudUnlitSIG.Tag = "bob";
             this.nudUnlitSIG.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // nudLitSIG
@@ -3448,6 +4069,7 @@
             this.nudLitSIG.Name = "nudLitSIG";
             this.nudLitSIG.Size = new System.Drawing.Size(40, 20);
             this.nudLitSIG.TabIndex = 36;
+            this.nudLitSIG.Tag = "bob";
             this.nudLitSIG.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // label37
@@ -3457,6 +4079,7 @@
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(29, 13);
             this.label37.TabIndex = 35;
+            this.label37.Tag = "bob";
             this.label37.Text = "NSA";
             // 
             // nudUnlitNSA
@@ -3465,6 +4088,7 @@
             this.nudUnlitNSA.Name = "nudUnlitNSA";
             this.nudUnlitNSA.Size = new System.Drawing.Size(40, 20);
             this.nudUnlitNSA.TabIndex = 34;
+            this.nudUnlitNSA.Tag = "bob";
             this.nudUnlitNSA.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // nudLitNSA
@@ -3473,6 +4097,7 @@
             this.nudLitNSA.Name = "nudLitNSA";
             this.nudLitNSA.Size = new System.Drawing.Size(40, 20);
             this.nudLitNSA.TabIndex = 33;
+            this.nudLitNSA.Tag = "bob";
             this.nudLitNSA.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // label36
@@ -3482,6 +4107,7 @@
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(30, 13);
             this.label36.TabIndex = 32;
+            this.label36.Tag = "bob";
             this.label36.Text = "MSA";
             // 
             // nudUnlitMSA
@@ -3490,6 +4116,7 @@
             this.nudUnlitMSA.Name = "nudUnlitMSA";
             this.nudUnlitMSA.Size = new System.Drawing.Size(40, 20);
             this.nudUnlitMSA.TabIndex = 31;
+            this.nudUnlitMSA.Tag = "bob";
             this.nudUnlitMSA.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // nudLitMSA
@@ -3498,6 +4125,7 @@
             this.nudLitMSA.Name = "nudLitMSA";
             this.nudLitMSA.Size = new System.Drawing.Size(40, 20);
             this.nudLitMSA.TabIndex = 30;
+            this.nudLitMSA.Tag = "bob";
             this.nudLitMSA.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // label35
@@ -3507,6 +4135,7 @@
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(26, 13);
             this.label35.TabIndex = 29;
+            this.label35.Tag = "bob";
             this.label35.Text = "IND";
             // 
             // nudUnlitIND
@@ -3515,6 +4144,7 @@
             this.nudUnlitIND.Name = "nudUnlitIND";
             this.nudUnlitIND.Size = new System.Drawing.Size(40, 20);
             this.nudUnlitIND.TabIndex = 28;
+            this.nudUnlitIND.Tag = "bob";
             this.nudUnlitIND.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // nudLitIND
@@ -3523,6 +4153,7 @@
             this.nudLitIND.Name = "nudLitIND";
             this.nudLitIND.Size = new System.Drawing.Size(40, 20);
             this.nudLitIND.TabIndex = 27;
+            this.nudLitIND.Tag = "bob";
             this.nudLitIND.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // label34
@@ -3532,6 +4163,7 @@
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(29, 13);
             this.label34.TabIndex = 26;
+            this.label34.Tag = "bob";
             this.label34.Text = "FRQ";
             // 
             // nudUnlitFRQ
@@ -3540,6 +4172,7 @@
             this.nudUnlitFRQ.Name = "nudUnlitFRQ";
             this.nudUnlitFRQ.Size = new System.Drawing.Size(40, 20);
             this.nudUnlitFRQ.TabIndex = 25;
+            this.nudUnlitFRQ.Tag = "bob";
             this.nudUnlitFRQ.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // nudLitFRQ
@@ -3548,6 +4181,7 @@
             this.nudLitFRQ.Name = "nudLitFRQ";
             this.nudLitFRQ.Size = new System.Drawing.Size(40, 20);
             this.nudLitFRQ.TabIndex = 24;
+            this.nudLitFRQ.Tag = "bob";
             this.nudLitFRQ.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // label33
@@ -3565,6 +4199,7 @@
             this.nudUnlitFRK.Name = "nudUnlitFRK";
             this.nudUnlitFRK.Size = new System.Drawing.Size(40, 20);
             this.nudUnlitFRK.TabIndex = 22;
+            this.nudUnlitFRK.Tag = "bob";
             this.nudUnlitFRK.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // nudLitFRK
@@ -3582,6 +4217,7 @@
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(28, 13);
             this.label32.TabIndex = 20;
+            this.label32.Tag = "bob";
             this.label32.Text = "CLR";
             // 
             // nudUnlitCLR
@@ -3590,6 +4226,7 @@
             this.nudUnlitCLR.Name = "nudUnlitCLR";
             this.nudUnlitCLR.Size = new System.Drawing.Size(40, 20);
             this.nudUnlitCLR.TabIndex = 19;
+            this.nudUnlitCLR.Tag = "bob";
             this.nudUnlitCLR.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // nudLitCLR
@@ -3598,6 +4235,7 @@
             this.nudLitCLR.Name = "nudLitCLR";
             this.nudLitCLR.Size = new System.Drawing.Size(40, 20);
             this.nudLitCLR.TabIndex = 18;
+            this.nudLitCLR.Tag = "bob";
             this.nudLitCLR.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // label31
@@ -3615,6 +4253,7 @@
             this.nudUnlitCAR.Name = "nudUnlitCAR";
             this.nudUnlitCAR.Size = new System.Drawing.Size(40, 20);
             this.nudUnlitCAR.TabIndex = 16;
+            this.nudUnlitCAR.Tag = "bob";
             this.nudUnlitCAR.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // nudLitCAR
@@ -3632,6 +4271,7 @@
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(29, 13);
             this.label30.TabIndex = 14;
+            this.label30.Tag = "bob";
             this.label30.Text = "BOB";
             // 
             // label29
@@ -3641,6 +4281,7 @@
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(28, 13);
             this.label29.TabIndex = 13;
+            this.label29.Tag = "bob";
             this.label29.Text = "Unlit";
             // 
             // label28
@@ -3658,6 +4299,7 @@
             this.nudUnlitBOB.Name = "nudUnlitBOB";
             this.nudUnlitBOB.Size = new System.Drawing.Size(40, 20);
             this.nudUnlitBOB.TabIndex = 11;
+            this.nudUnlitBOB.Tag = "bob";
             this.nudUnlitBOB.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // nudLitBOB
@@ -3666,6 +4308,7 @@
             this.nudLitBOB.Name = "nudLitBOB";
             this.nudLitBOB.Size = new System.Drawing.Size(40, 20);
             this.nudLitBOB.TabIndex = 10;
+            this.nudLitBOB.Tag = "bob";
             this.nudLitBOB.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // facts_strike
@@ -3690,99 +4333,14 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.tabControl1);
+            this.splitContainer1.Panel1.Controls.Add(this.tcTabs);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.groupBox5);
+            this.splitContainer1.Panel2.Controls.Add(this.gbBombInformation);
             this.splitContainer1.Size = new System.Drawing.Size(987, 509);
             this.splitContainer1.SplitterDistance = 656;
             this.splitContainer1.TabIndex = 4;
-            // 
-            // groupBox12
-            // 
-            this.groupBox12.Controls.Add(this.label69);
-            this.groupBox12.Controls.Add(this.label51);
-            this.groupBox12.Controls.Add(this.label52);
-            this.groupBox12.Controls.Add(this.label48);
-            this.groupBox12.Controls.Add(this.label25);
-            this.groupBox12.Controls.Add(this.cw_input);
-            this.groupBox12.Controls.Add(this.cw_output);
-            this.groupBox12.Controls.Add(this.cw_reset);
-            this.groupBox12.Controls.Add(this.cw_all_wires);
-            this.groupBox12.Location = new System.Drawing.Point(10, 118);
-            this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(618, 259);
-            this.groupBox12.TabIndex = 10;
-            this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "Complicated Wires";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(6, 163);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(162, 91);
-            this.label25.TabIndex = 12;
-            this.label25.Text = "R = Red\r\nB = Blue\r\nW = White\r\nL = LED / Light\r\nS = Star / Symbol\r\n/ = New Wire Se" +
-    "quence Panel\r\nSeperate each wire with a space";
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(174, 163);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(185, 65);
-            this.label48.TabIndex = 13;
-            this.label48.Text = "C = Cut\r\nD = Don\'t Cut\r\nS = Cut if Last digit of Serial is Even\r\nB = Cut if there" +
-    " are 2 or more batteries\r\nP = Cut if there is a Parallel Port";
-            // 
-            // label51
-            // 
-            this.label51.AutoSize = true;
-            this.label51.Location = new System.Drawing.Point(6, 56);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(39, 13);
-            this.label51.TabIndex = 15;
-            this.label51.Text = "Output";
-            // 
-            // label52
-            // 
-            this.label52.AutoSize = true;
-            this.label52.Location = new System.Drawing.Point(6, 26);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(31, 13);
-            this.label52.TabIndex = 14;
-            this.label52.Text = "Input";
-            // 
-            // label63
-            // 
-            this.label63.AutoSize = true;
-            this.label63.Location = new System.Drawing.Point(426, 16);
-            this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(162, 26);
-            this.label63.TabIndex = 10;
-            this.label63.Text = "R = Red, B = Blue, K = Black\r\nEnter as pairs of Colors to Letters";
-            // 
-            // label68
-            // 
-            this.label68.AutoSize = true;
-            this.label68.Location = new System.Drawing.Point(48, 68);
-            this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(458, 13);
-            this.label68.TabIndex = 13;
-            this.label68.Text = "R = Red, B = Blue, K = Black, W = White, Y = Yellow    Enter between 3 to 6 Wire " +
-    "color Letters.";
-            // 
-            // label69
-            // 
-            this.label69.AutoSize = true;
-            this.label69.Location = new System.Drawing.Point(176, 230);
-            this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(339, 26);
-            this.label69.TabIndex = 16;
-            this.label69.Text = "Enter in the Letters RBWLS based on what each wire has as a group. \r\n(You can ign" +
-    "ore White, if there is Red or Blue Coloring.)";
             // 
             // Form1
             // 
@@ -3798,7 +4356,7 @@
             this.Name = "Form1";
             this.Text = "Keep Talking and Nobody Explodes Helper";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.tabControl1.ResumeLayout(false);
+            this.tcTabs.ResumeLayout(false);
             this.tpAbout.ResumeLayout(false);
             this.tpAbout.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -3827,19 +4385,22 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaze)).EndInit();
             this.tpWires.ResumeLayout(false);
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
+            this.fpWires.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.fpWires.ResumeLayout(false);
-            this.tpMorseCode.ResumeLayout(false);
-            this.tpMorseCode.PerformLayout();
-            this.tpPassword.ResumeLayout(false);
-            this.tpPassword.PerformLayout();
-            this.fpPasswordLettersNotPresent.ResumeLayout(false);
-            this.fpPasswordLettersNotPresent.PerformLayout();
+            this.tpPasswordMorseCode.ResumeLayout(false);
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox14.PerformLayout();
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
             this.fpPassword.ResumeLayout(false);
             this.fpPassword.PerformLayout();
+            this.fpPasswordLettersNotPresent.ResumeLayout(false);
+            this.fpPasswordLettersNotPresent.PerformLayout();
             this.tpNeedyKnobV1.ResumeLayout(false);
             this.tpNeedyKnobV1.PerformLayout();
             this.fpKnob.ResumeLayout(false);
@@ -3848,6 +4409,8 @@
             this.tpForgetMeNot.PerformLayout();
             this.tpModCollection1.ResumeLayout(false);
             this.tpModCollection1.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
             this.groupBox9.ResumeLayout(false);
@@ -3858,8 +4421,8 @@
             this.groupBox7.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
+            this.gbBombInformation.ResumeLayout(false);
+            this.gbBombInformation.PerformLayout();
             this.gbBatteries.ResumeLayout(false);
             this.gbBatteries.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudBatteryHolders)).EndInit();
@@ -3874,6 +4437,30 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudPortParallel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPortDVID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPortPlates)).EndInit();
+            this.groupBox15.ResumeLayout(false);
+            this.groupBox15.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown18)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown19)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown20)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown21)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown22)).EndInit();
             this.gbIndicators.ResumeLayout(false);
             this.gbIndicators.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudUnlitTRN)).EndInit();
@@ -3902,8 +4489,6 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.groupBox12.ResumeLayout(false);
-            this.groupBox12.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3911,7 +4496,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tcTabs;
         private System.Windows.Forms.TabPage tpWires;
         private System.Windows.Forms.Button wsReset;
         private System.Windows.Forms.TabPage tpSimonSays;
@@ -3934,7 +4519,7 @@
         private System.Windows.Forms.ComboBox wire2;
         private System.Windows.Forms.ComboBox wire1;
         private System.Windows.Forms.ComboBox wire6;
-        private System.Windows.Forms.TabPage tpPassword;
+        private System.Windows.Forms.TabPage tpPasswordMorseCode;
         private System.Windows.Forms.TextBox pass1;
         private System.Windows.Forms.TextBox pass5;
         private System.Windows.Forms.TextBox pass4;
@@ -3953,7 +4538,6 @@
         private System.Windows.Forms.Button MemoryReset;
         private System.Windows.Forms.Label memoryLabel;
         private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.TabPage tpMorseCode;
         private System.Windows.Forms.TextBox MorseCodeOutput;
         private System.Windows.Forms.TextBox MorseCodeInput;
         private System.Windows.Forms.TextBox memoryDebug;
@@ -4043,7 +4627,7 @@
         private System.Windows.Forms.FlowLayoutPanel fpWires;
         private System.Windows.Forms.Button cw_all_wires;
         private System.Windows.Forms.Button cw_reset;
-        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox gbBombInformation;
         private System.Windows.Forms.ComboBox facts_strike;
         private System.Windows.Forms.TextBox mazeOutput;
         private System.Windows.Forms.FlowLayoutPanel fpKeypadOrder;
@@ -4223,6 +4807,50 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label68;
         private System.Windows.Forms.Label label63;
+        private System.Windows.Forms.GroupBox groupBox14;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.GroupBox groupBox15;
+        private System.Windows.Forms.Label label70;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.Label label71;
+        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.Label label72;
+        private System.Windows.Forms.NumericUpDown numericUpDown5;
+        private System.Windows.Forms.NumericUpDown numericUpDown6;
+        private System.Windows.Forms.Label label73;
+        private System.Windows.Forms.NumericUpDown numericUpDown7;
+        private System.Windows.Forms.NumericUpDown numericUpDown8;
+        private System.Windows.Forms.Label label74;
+        private System.Windows.Forms.NumericUpDown numericUpDown9;
+        private System.Windows.Forms.NumericUpDown numericUpDown10;
+        private System.Windows.Forms.Label label75;
+        private System.Windows.Forms.NumericUpDown numericUpDown11;
+        private System.Windows.Forms.NumericUpDown numericUpDown12;
+        private System.Windows.Forms.Label label76;
+        private System.Windows.Forms.NumericUpDown numericUpDown13;
+        private System.Windows.Forms.NumericUpDown numericUpDown14;
+        private System.Windows.Forms.Label label77;
+        private System.Windows.Forms.NumericUpDown numericUpDown15;
+        private System.Windows.Forms.NumericUpDown numericUpDown16;
+        private System.Windows.Forms.Label label78;
+        private System.Windows.Forms.NumericUpDown numericUpDown17;
+        private System.Windows.Forms.NumericUpDown numericUpDown18;
+        private System.Windows.Forms.Label label79;
+        private System.Windows.Forms.NumericUpDown numericUpDown19;
+        private System.Windows.Forms.NumericUpDown numericUpDown20;
+        private System.Windows.Forms.Label label80;
+        private System.Windows.Forms.Label label81;
+        private System.Windows.Forms.Label label82;
+        private System.Windows.Forms.NumericUpDown numericUpDown21;
+        private System.Windows.Forms.NumericUpDown numericUpDown22;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label83;
+        private System.Windows.Forms.Label label84;
+        private System.Windows.Forms.TextBox txtLetteredKeysOut;
+        private System.Windows.Forms.TextBox txtLetteredKeysIn;
     }
 }
 
