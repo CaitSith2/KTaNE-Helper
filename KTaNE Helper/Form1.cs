@@ -1502,6 +1502,8 @@ namespace KTaNE_Helper
                 if (serials[i].Contains(serialchar))
                     group = i;
 
+            if (group == -1) return;
+
             foreach (var entry in txtConnections.Text.Split(new[] {" "}, StringSplitOptions.RemoveEmptyEntries))
             {
                 txtConnectionCheckOut.Text += connectionPairs[group].Contains(entry)
@@ -1511,9 +1513,97 @@ namespace KTaNE_Helper
 
         }
 
+        private void CalculateSafetySafe()
+        {
+            var safeOffsets = new Dictionary<string, int[]>
+            {
+                {"A", new []{8,3,4,8,9,0 } },
+                {"B", new []{10,1,3,7,3,8} },
+                {"C", new []{2,1,1,5,3,6} },
+                {"D", new []{11,6,11,11,7,7} },
+                {"E", new []{0,5,5,8,2,1} },
+                {"F", new []{4,2,7,7,1,5} },
+                {"G", new []{7,4,4,2,10,5} },
+                {"H", new []{8,3,6,6,6,5} },
+                {"I", new []{0,11,0,0,9,10} },
+                {"J", new []{2,11,8,0,5,6} },
+                {"K", new []{5,2,5,1,0,4} },
+                {"L", new []{1,9,8,11,11,11} },
+                {"M", new []{1,7,9,5,6,2} },
+                {"N", new []{9,5,1,4,4,9} },
+                {"O", new []{5,9,8,10,2,8} },
+                {"P", new []{3,10,9,1,9,7} },
+                {"Q", new []{4,10,6,1,4,8} },
+                {"R", new []{8,0,4,0,6,11} },
+                {"S", new []{9,4,0,6,3,10} },
+                {"T", new []{7,6,7,11,5,3} },
+                {"U", new []{11,9,6,3,11,1} },
+                {"V", new []{11,11,2,8,1,0} },
+                {"W", new []{6,0,11,6,11,2} },
+                {"X", new []{4,2,7,2,8,10} },
+                {"Y", new []{10,7,10,10,8,9} },
+                {"Z", new []{3,7,1,10,0,4} },
+                {"0", new []{7,0,3,5,8,6} },
+                {"1", new []{9,10,10,9,1,2} },
+                {"2", new []{2,5,11,7,7,3} },
+                {"3", new []{10,8,10,4,10,4} },
+                {"4", new []{6,8,0,3,5,0} },
+                {"5", new []{6,3,3,3,0,11} },
+                {"6", new []{1,1,5,2,7,3} },
+                {"7", new []{0,6,2,4,2,1} },
+                {"8", new []{5,4,9,9,10,7} },
+                {"9", new []{3,8,2,9,4,9} }
+
+            };
+            txtSafetySafe.Text = "";
+            if (txtSerialNumber.TextLength < 6) return;
+
+            var offset = CountUniquePorts()*7;
+            foreach (var c in gbIndicators.Controls)
+            {
+                if (c.GetType() != typeof(NumericUpDown)) continue;
+                var numericUpDown = c as NumericUpDown;
+                if (numericUpDown == null) continue;
+                if (numericUpDown.Value == 0) continue;
+                if (numericUpDown.Name.StartsWith("nudLit"))
+                {
+                    for (var i = 0; i < 3; i++)
+                    {
+                        if (!txtSerialNumber.Text.ToUpper().Contains(numericUpDown.Name.Substring(6 + i, 1))) continue;
+                        offset += (int) numericUpDown.Value*5;
+                        break;
+                    }
+                }
+                if (numericUpDown.Name.StartsWith("nudUnlit"))
+                {
+                    for (var i = 0; i < 3; i++)
+                    {
+                        if (!txtSerialNumber.Text.ToUpper().Contains(numericUpDown.Name.Substring(8 + i, 1))) continue;
+                        offset += (int) numericUpDown.Value;
+                        break;
+                    }
+                }
+            }
+            for (var i = 0; i < 6; i++)
+            {
+                var x = offset;
+
+                x += safeOffsets[txtSerialNumber.Text.Substring(i, 1).ToUpper()][i];
+
+                if (i == 5)
+                    for (var j = 0; j < 5; j++)
+                        x += safeOffsets[txtSerialNumber.Text.Substring(j, 1).ToUpper()][5];
+
+                x %= 12;
+                txtSafetySafe.Text += x + @" ";
+            }
+
+        }
+
         private void UpdateBombSolution(object sender, EventArgs e)
         {
             cbPlumbingRedIn_CheckedChanged();
+            txtChessInput_TextChanged(null, null);
             Simon_Says_Event();
             Complicated_Wires_Event(null, null);
             Button_Event(null, null);
@@ -1527,14 +1617,18 @@ namespace KTaNE_Helper
             txtLogicAND_TextChanged(null, null);
             txtLogicOR_TextChanged(null, null);
             CalculateInitialTwoBitsCode();
+            CalculateSafetySafe();
+            txtNumberPadIn_TextChanged(null, null);
         }
 
         private bool DuplicateSerialCharacters()
         {
             for(var i = 0; i < txtSerialNumber.TextLength; i++)
-                for(var j = 1; j < txtSerialNumber.TextLength; j++)
+                for(var j = i + 1; j < txtSerialNumber.TextLength; j++)
                     if (txtSerialNumber.Text.Substring(i, 1) == txtSerialNumber.Text.Substring(j, 1))
+                    {
                         return true;
+                    }
             return false;
         }
 
@@ -1554,7 +1648,7 @@ namespace KTaNE_Helper
                     where c.GetType() == typeof(NumericUpDown)
                         select (NumericUpDown) c into y
                         where y.Name.Contains(portnames[port]) && !y.Name.Contains("nudPortPlates")
-                            select y).Aggregate(false, (current, y) => current | y.Value > 0);
+                            select y).Aggregate(false, (current, y) => current | y.Value > 1);
         }
 
         private int CountUniquePorts()
@@ -1813,15 +1907,28 @@ namespace KTaNE_Helper
                 || !positionsLetters.Contains(x.Substring(0, 1))
                 || !positionNumbers.Contains(x.Substring(1, 1))))
                 return;
-            var pieces = new[]
-            {
-                whitefields.Contains(inputs[4])                                     ? ChessPieces.King : ChessPieces.Bishop,
-                SerialNumberLastDigitOdd()                                          ? ChessPieces.Rook : ChessPieces.Knight,
-                !SerialNumberLastDigitOdd() && !whitefields.Contains(inputs[4])     ? ChessPieces.Queen : ChessPieces.King,
-                /* Always a Rook */                                                   ChessPieces.Rook,
-                whitefields.Contains(inputs[4])                                     ? ChessPieces.Queen : ChessPieces.Rook,
-                                                                                      ChessPieces.None
-            };
+
+
+            var pieces = new int[6];
+            //{
+            //    whitefields.Contains(inputs[4])                                     ? ChessPieces.King : ChessPieces.Bishop,
+            //    SerialNumberLastDigitOdd()                                          ? ChessPieces.Rook : ChessPieces.Knight,
+            //    !SerialNumberLastDigitOdd() && !whitefields.Contains(inputs[4])     ? ChessPieces.Queen : ChessPieces.King,
+            //    /* Always a Rook */                                                   ChessPieces.Rook,
+            //    whitefields.Contains(inputs[4])                                     ? ChessPieces.Queen : ChessPieces.Rook,
+            //                                                                          ChessPieces.None
+            //};
+            pieces[3] = ChessPieces.Rook;
+            pieces[1] = SerialNumberLastDigitOdd() ? ChessPieces.Rook : ChessPieces.Knight;
+            pieces[4] = whitefields.Contains(inputs[4]) ? ChessPieces.Queen : ChessPieces.Rook;
+            pieces[2] = (pieces[1] != ChessPieces.Rook && pieces[4] != ChessPieces.Rook)
+                ? ChessPieces.Queen
+                : ChessPieces.King;
+            pieces[0] = pieces[4] == ChessPieces.Queen
+                ? ChessPieces.King
+                : ChessPieces.Bishop;
+            
+
             if (pieces[2] != ChessPieces.Queen && pieces[4] != ChessPieces.Queen) pieces[5] = ChessPieces.Queen;
             else if (pieces[1] != ChessPieces.Knight) pieces[5] = ChessPieces.Knight;
             else pieces[5] = ChessPieces.Bishop;
@@ -1830,15 +1937,22 @@ namespace KTaNE_Helper
             {
                 var x = positionsLetters.IndexOf(inputs[i].Substring(0, 1), StringComparison.Ordinal);
                 var y = positionNumbers.IndexOf(inputs[i].Substring(1, 1), StringComparison.Ordinal);
-                int j,k;
                 chessboard[x, y] = 1;
+            }
+
+
+            for (var i = 0; i < 6; i++)
+            {
+                var x = positionsLetters.IndexOf(inputs[i].Substring(0, 1), StringComparison.Ordinal);
+                var y = positionNumbers.IndexOf(inputs[i].Substring(1, 1), StringComparison.Ordinal);
+                int j,k;
 
                 switch (pieces[i])
                 {
                     case ChessPieces.Rook:
                         for (j = x + 1; j < 6 && chessboard[j, y] != 1; j++) chessboard[j, y] = 2;
                         for (j = x - 1; j >= 0 && chessboard[j, y] != 1; j--) chessboard[j, y] = 2;
-                        for (j = y + 1; j > 6 && chessboard[x, j] != 1; j++) chessboard[x, j] = 2;
+                        for (j = y + 1; j < 6 && chessboard[x, j] != 1; j++) chessboard[x, j] = 2;
                         for (j = y - 1; j >= 0 && chessboard[x, j] != 1; j--) chessboard[x, j] = 2;
                         break;
                     case ChessPieces.Knight:
@@ -1859,7 +1973,7 @@ namespace KTaNE_Helper
                     case ChessPieces.Queen:
                         for (j = x + 1; j < 6 && chessboard[j, y] != 1; j++) chessboard[j, y] = 2;
                         for (j = x - 1; j >= 0 && chessboard[j, y] != 1; j--) chessboard[j, y] = 2;
-                        for (j = y + 1; j > 6 && chessboard[x, j] != 1; j++) chessboard[x, j] = 2;
+                        for (j = y + 1; j < 6 && chessboard[x, j] != 1; j++) chessboard[x, j] = 2;
                         for (j = y - 1; j >= 0 && chessboard[x, j] != 1; j--) chessboard[x, j] = 2;
                         for (j = x + 1, k = y + 1; j < 6 && k < 6 && chessboard[j, k] != 1; j++, k++) chessboard[j, k] = 2;
                         for (j = x - 1, k = y + 1; j >= 0 && k < 6 && chessboard[j, k] != 1; j--, k++) chessboard[j, k] = 2;
@@ -1915,7 +2029,7 @@ namespace KTaNE_Helper
             for (var i = 4; i < 8; i++)
                 ((Button) fpKeypadSelection.Controls[i]).Visible = checkBox1.Checked;
             while (_keypadSelection[4] != "")
-                keypadSelection_Click(fpKeypadLabel.Controls[4], e);
+                keypadSelection_Click(fpKeypadSelection.Controls[4], e);
 
         }
 
@@ -1935,56 +2049,293 @@ namespace KTaNE_Helper
                 txtLetteredKeysOut.Text = num >= 22 && num <= 79 ? "B" : "C";
             else txtLetteredKeysOut.Text = num < 46 ? "D" : "A";
         }
-    }
 
-    public static class MemoryRules
-    {
-        public const int FirstPos = 0;
-        public const int SecondPos = 1;
-        public const int ThirdPos = 2;
-        public const int FourthPos = 3;
-        public const int One = 4;
-        public const int Two = 5;
-        public const int Three = 6;
-        public const int Four = 7;
-        public const int StageOnePos = 8;
-        public const int StageTwoPos = 9;
-        public const int StageThreePos = 10;
-        public const int StageFourPos = 11;
-        public const int StageOneLabel = 12;
-        public const int StageTwoLabel = 13;
-        public const int StageThreeLabel = 14;
-        public const int StageFourLabel = 15;
-    }
+        private void txtEmojiMathIn_TextChanged(object sender, EventArgs e)
+        {
+            const string numbers = ":) =( (: )= :( ): =) (= :| |:";
+            var num1 = 0;
+            var sign = 0;
+            var num2 = 0;
+            foreach (var num in txtEmojiMathIn.Text.Split(' '))
+            {
+                var x = numbers.IndexOf(num, StringComparison.Ordinal);
+                if (x == -1)
+                    sign = (num == "+") ? 1 : -1;
+                else
+                    switch (sign)
+                    {
+                        case 0:
+                            num1 *= 10;
+                            num1 += (x/3);
+                            break;
+                        default:
+                            num2 *= 10;
+                            num2 += (x/3);
+                            break;
+                    }
+            }
+            if (sign == 0)
+            {
+                txtEmojiMathOut.Text = "";
+                return;
+            }
+            txtEmojiMathOut.Text = (sign > 0 ? num1 + num2 : num1 - num2).ToString();
+        }
 
-    public static class ChessPieces
-    {
-        public const int None = 0;
-        public const int Rook = 1;
-        public const int Knight = 2;
-        public const int Bishop = 3;
-        public const int King = 4;
-        public const int Queen = 5;
-    }
+        private void txtStroopColors_TextChanged(object sender, EventArgs e)
+        {
+            const string colorLookup = "RYGBMW";
+            txtStroopAnswer.Text = "";
+            var answer = "";
+            if (txtStroopColors.TextLength < 8 || txtStroopWords.TextLength < 8) return;
+            var colors = new int[8];
+            var words = new int[8];
+            var colorMatchesWord = new bool[8];
+            var totalMatches = 0;
+            for (var i = 0; i < 8; i++)
+            {
+                colors[i] = colorLookup.IndexOf(txtStroopColors.Text.ToUpper().Substring(i, 1), StringComparison.Ordinal);
+                words[i] = colorLookup.IndexOf(txtStroopWords.Text.ToUpper().Substring(i, 1), StringComparison.Ordinal);
+                if (colors[i] == Stroop.None || words[i] == Stroop.None) return;
+                colorMatchesWord[i] = colors[i] == words[i];
+                if (colorMatchesWord[i]) totalMatches++;
+            }
 
-    public static class Ports
-    {
-        public const int All = 0;
-        public const int DVID = 1;
-        public const int Parallel = 2;
-        public const int PS2 = 3;
-        public const int RJ45 = 4;
-        public const int Serial = 5;
-        public const int RCA = 6;
-    }
+            var colorsCount = new int[6];
+            var wordsCount = new int[6];
+            var colorAsWords = new int[6];
 
-    public static class Wires
-    {
-        public const int None = 0;
-        public const int Red = 1;
-        public const int White = 2;
-        public const int Black = 3;
-        public const int Blue = 4;
-        public const int Yellow = 5;
+            for (var i = 0; i < 8; i++)
+            {
+                colorsCount[colors[i]]++;
+                wordsCount[words[i]]++;
+                if (colors[i] == words[i]) colorAsWords[colors[i]]++;
+            }
+
+            var condition = false;
+            var lastWord = words[0];
+            var lastColor = colors[0];
+            switch (colors[7])
+            {
+                case Stroop.Red:
+                    if (wordsCount[Stroop.Green] >= 3)
+                    {
+                        var j = 0;
+                        for (var i = 0; i < 8; i++)
+                        {
+                            if (colors[i] == Stroop.Green || words[i] == Stroop.Green)
+                                j++;
+                            if (j < 3) continue;
+                            answer = "Press Yes on " + (i + 1) + " (R1)";
+                            break;
+                        }
+                    }
+                    else if (colorsCount[Stroop.Blue] == 1)
+                    {
+                        for (var i = 0; i < 8; i++)
+                        {
+                            if (words[i] != Stroop.Magenta) continue;
+                            answer = "Press No on " + (i + 1) + " (R2)";
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        for (var i = 7; i >= 0; i--)
+                        {
+                            if (colors[i] != Stroop.White && words[i] != Stroop.White) continue;
+                            answer = "Press Yes on " + (i + 1) + " (R3)";
+                            break;
+                        }
+                    }
+                    break;
+                case Stroop.Yellow:
+                    for (var i = 0; i < 8 && !condition; i++)
+                    {
+                        condition = words[i] == Stroop.Blue && colors[i] == Stroop.Green;
+                        if (!condition) continue;
+                        for (var j = 0; j < 8; j++)
+                        {
+                            if (words[j] != Stroop.Green) continue;
+                            answer = "Press Yes on " + (j + 1) + " (Y1)";
+                            break;
+                        }
+                    }
+                    for (var i = 0; i < 8 && !condition; i++)
+                    {
+                        condition = words[i] == Stroop.White &&
+                                    (colors[i] == Stroop.White || colors[i] == Stroop.Red);
+                        if (!condition) continue;
+                        var k = 0;
+                        for (var j = 0; j < 8; j++)
+                        {
+                            if (words[j] != colors[j]) k++;
+                            if (k < 2) continue;
+                            answer = "Press Yes on " + (j + 1) + " (Y2)";
+                            break;
+                        }
+                    }
+                    if (!condition)
+                        answer = "Press No on " +
+                                 (colorsCount[Stroop.Magenta] + wordsCount[Stroop.Magenta] - colorAsWords[Stroop.Magenta])
+                                 + " (Y3)";
+                    break;
+                case Stroop.Green:
+                    for (var i = 1; i < 8 && !condition; i++)
+                    {
+                        if (words[i] == lastWord && colors[i] != lastColor)
+                        {
+                            answer = "Press No on 5 (G1)";
+                            condition = true;
+                        }
+                        else
+                        {
+                            lastWord = words[i];
+                            lastColor = colors[i];
+                        }
+                    }
+                    if (!condition && wordsCount[Stroop.Magenta] >= 3)
+                    {
+                        var j = 0;
+                        for (var i = 0; i < 8; i++)
+                        {
+                            if (colors[i] == Stroop.Yellow || words[i] == Stroop.Yellow)
+                                j++;
+                            if (j < 1) continue;
+                            answer = "Press No on " + (i + 1) + " (G2)";
+                            break;
+                        }
+                    }
+                    else if (!condition)
+                    {
+                        for (var i = 0; i < 8; i++)
+                        {
+                            if (colors[i] != words[i]) continue;
+                            answer = "Press Yes on " + (i + 1) + " (G3)";
+                            break;
+                        }
+                    }
+                    break;
+                case Stroop.Blue:
+                    if (totalMatches <= 5)
+                    {
+                        for (var i = 0; i < 6 && !condition; i++)
+                        {
+                            if (colorMatchesWord[i]) continue;
+                            answer = "Press Yes on " + (i + 1) + " (B1)";
+                            condition = true;
+                        }
+                    }
+                    if (!condition)
+                    {
+                        for (var i = 0; i < 8 && !condition; i++)
+                        {
+                            condition = (words[i] == Stroop.Red && colors[i] == Stroop.Yellow)
+                                        || (words[i] == Stroop.Yellow && colors[i] == Stroop.White);
+                            if (!condition) continue;
+                            for (var j = 0; j < 8; j++)
+                            {
+                                if (words[j] != Stroop.White || colors[j] != Stroop.Red) continue;
+                                answer = "Press No on " + (j + 1) + " (B2)";
+                                break;
+                            }
+                        }
+                    }
+                    if (!condition)
+                    {
+                        for (var i = 0; i < 8; i++)
+                        {
+                            if (colors[i] == Stroop.Green || words[i] == Stroop.Green)
+                                answer = "Press Yes on " + (i + 1) + " (B3)";
+                        }
+                        
+                    }
+                    break;
+                case Stroop.Magenta:
+                    for (var i = 1; i < 8 && !condition; i++)
+                    {
+                        if (words[i] != lastWord && colors[i] == lastColor)
+                        {
+                            answer = "Press Yes on 3 (M1)";
+                            condition = true;
+                        }
+                        else
+                        {
+                            lastWord = words[i];
+                            lastColor = colors[i];
+                        }
+                    }
+                    if (wordsCount[Stroop.Yellow] > colorsCount[Stroop.Blue] && !condition)
+                    {
+                        condition = true;
+                        for (var i = 0; i < 8; i++)
+                            if (words[i] == Stroop.Yellow)
+                                answer = "Press No on " + (i + 1) + " (M2)";
+
+                    }
+                    if (!condition)
+                    {
+                        for (var i = 0; i < 8; i++)
+                        {
+                            if (colors[i] != words[6]) continue;
+                            answer = "Press No on " + (i + 1) + " (M3)";
+                            break;
+                        }
+                    }
+
+                    break;
+                case Stroop.White:
+                    if (colors[2] == words[3] || colors[2] == words[4])
+                    {
+                        for (var i = 0; i < 8; i++)
+                        {
+                            if (colors[i] != Stroop.Blue && words[i] != Stroop.Blue) continue;
+                            answer = "Press No on " + (i + 1) + " (W1)";
+                            break;
+                        }
+                        condition = true;
+                    }
+                    if (!condition)
+                    {
+                        for (var i = 0; i < 8 && !condition; i++)
+                        {
+                            condition = words[i] == Stroop.Yellow && colors[i] == Stroop.Red;
+                            if (!condition) continue;
+                            for (var j = 0; j < 8; j++)
+                            {
+                                if (colors[j] == Stroop.Blue)
+                                    answer = "Press Yes on " + (j + 1) + " (W2)";
+                            }
+                            
+                        }
+                    }
+                    if (!condition)
+                        answer = "Press No (W3)";
+                    break;
+                default:
+                    return;
+            }
+            txtStroopAnswer.Text = answer;
+        }
+
+        
+
+        private void txtNumberPadIn_TextChanged(object sender, EventArgs e)
+        {
+            var pad = new NumberPad(txtNumberPadIn.Text,(int)nudBatteriesD.Value + (int)nudBatteriesAA.Value,
+                CountTotalPorts(),!SerialNumberLastDigitOdd(),SerialNumberContainsVowel());
+            txtNumberPadOut.Text = "";
+            if (txtNumberPadIn.TextLength < 10 || pad.GetColorCount(pad.ColorAll) < 10) return;
+            try
+            {
+
+                txtNumberPadOut.Text = pad.GetCorrectCode();
+            }
+            catch
+            {
+                txtNumberPadOut.Text = @"Module solved itself";
+            }
+        }
+
     }
 }
