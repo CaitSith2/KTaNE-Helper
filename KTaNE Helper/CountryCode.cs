@@ -49,5 +49,10 @@ namespace KTaNE_Helper
             }
             return Empty;
         }
+
+        public static string GetConversionURL(string baseCode, string targetCode)
+        {
+            return "http://api.fixer.io/latest?base=" + baseCode + "&symbols=" + targetCode;
+        }
     }
 }
