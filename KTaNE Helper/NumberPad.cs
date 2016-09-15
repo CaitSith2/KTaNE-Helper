@@ -10,7 +10,7 @@ namespace KTaNE_Helper
     {
         public NumberPad(string colors, int batteries, int ports, bool even, bool vowel)
         {
-            _colors = colors;
+            _colors = colors.ToUpper();
             _serialEven = even;
             _serialHasVowel = vowel;
             _batteries = batteries;

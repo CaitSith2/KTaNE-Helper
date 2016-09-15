@@ -576,6 +576,7 @@ namespace KTaNE_Helper
             Password_TextChanged(sender, e);
         }
 
+        private string _memoryInstruction;
         private bool _memoryState = true;
         private int _memoryStage;
         private int _memoryStageNumber;
@@ -587,7 +588,9 @@ namespace KTaNE_Helper
         {
             _memoryState = state;
 
-            memoryDebug.Text = @"Stage " + (_memoryStage + 1) + @" - " + (state ? "Display number" : "Defuser Input") + Environment.NewLine;
+            memoryDebug.Text = _memoryInstruction + Environment.NewLine;
+            memoryDebug.Text += Environment.NewLine;
+            memoryDebug.Text += @"Stage " + (_memoryStage + 1) + @" - " + (state ? "Display number" : "Defuser Input") + Environment.NewLine;
             memoryDebug.Text += Environment.NewLine;
             // ReSharper disable once LocalizableElement
             memoryDebug.Text += "Num\tPos" + Environment.NewLine;
@@ -612,7 +615,7 @@ namespace KTaNE_Helper
                 case MemoryRules.ThirdPos:
                 case MemoryRules.FourthPos:
                     _memoryPositions[_memoryStage] = (rule - MemoryRules.FirstPos) + 1;
-                    memoryLabel.Text = @"Press Button in Position " + _memoryPositions[_memoryStage];
+                    _memoryInstruction = @"Press Button in Position " + _memoryPositions[_memoryStage];
                     memoryNumberLabel.Visible = true;
                     break;
                 case MemoryRules.One:
@@ -620,7 +623,7 @@ namespace KTaNE_Helper
                 case MemoryRules.Three:
                 case MemoryRules.Four:
                     _memoryNumbers[_memoryStage] = (rule - MemoryRules.One) + 1;
-                    memoryLabel.Text = @"Press Button labelled " + _memoryNumbers[_memoryStage];
+                    _memoryInstruction = @"Press Button labelled " + _memoryNumbers[_memoryStage];
                     memoryPositionLabel.Visible = true;
                     break;
                 case MemoryRules.StageOnePos:
@@ -628,7 +631,7 @@ namespace KTaNE_Helper
                 case MemoryRules.StageThreePos:
                 case MemoryRules.StageFourPos:
                     _memoryPositions[_memoryStage] = _memoryPositions[rule - MemoryRules.StageOnePos];
-                    memoryLabel.Text = @"Press Button in Position " + _memoryPositions[_memoryStage];
+                    _memoryInstruction = @"Press Button in Position " + _memoryPositions[_memoryStage];
                     memoryNumberLabel.Visible = true;
                     break;
                 case MemoryRules.StageOneLabel:
@@ -636,7 +639,7 @@ namespace KTaNE_Helper
                 case MemoryRules.StageThreeLabel:
                 case MemoryRules.StageFourLabel:
                     _memoryNumbers[_memoryStage] = _memoryNumbers[rule - MemoryRules.StageOneLabel];
-                    memoryLabel.Text = @"Press Button labelled " + _memoryNumbers[_memoryStage];
+                    _memoryInstruction = @"Press Button labelled " + _memoryNumbers[_memoryStage];
                     memoryPositionLabel.Visible = true;
                     break;
             }
@@ -689,12 +692,14 @@ namespace KTaNE_Helper
             memoryNumberLabel.Visible = memoryPositionLabel.Visible = false;
             _memoryStage++;
 
+            _memoryInstruction = "";
             MemoryButtonStates(true);
         }
 
         private void MemoryReset_Click(object sender, EventArgs e)
         {
-            memoryLabel.Text = "";
+            _memoryInstruction = "";
+            memoryDebug.Text = "";
             _memoryStage = 0;
             _memoryNumbers = new int[5];
             _memoryPositions = new int[5];
@@ -741,7 +746,8 @@ namespace KTaNE_Helper
                 if ((total & mask) == (nkLeds[result] & mask))
                     break;
             }
-            nn_label.Text = directions[result];
+
+            txtNeedyKnobOut.Text = directions[result];
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -1048,7 +1054,10 @@ namespace KTaNE_Helper
 
         private void wofStep1_CheckedChanged(object sender, EventArgs e)
         {
+            whosOnFirstStep1.Visible = !wofStep1.Checked;
+            wofOutput.Visible = wofStep1.Checked;
             if (!wofStep1.Checked) return;
+
             _whosOnFirstLookIndex = 6;
             wofStep1Label.Text = "";
             rbWOF_CheckedChanged(sender, e);
@@ -1282,12 +1291,12 @@ namespace KTaNE_Helper
             return x;
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void ForgetMeNot_Event(object sender, EventArgs e)
         {
-            tbFMNSolution.Text = "";
+            txtForgetMeNotOut.Text = "";
             if (txtSerialNumber.TextLength < 6)
             {
-                tbFMNSolution.Text = @"The Full serial number is needed to calculate the solution";
+                txtForgetMeNotOut.Text = @"The Full serial number is needed to calculate the solution";
                 return;
             }
             var smallestOdd = 9;
@@ -1306,7 +1315,7 @@ namespace KTaNE_Helper
                     largestDigit = num;
                 lastDigit = num;
             }
-            foreach (var line in textBox1.Text.Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries))
+            foreach (var line in txtForgetMeNotIn.Text.Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries))
             {
                 var unlit = NumberUnlitIndicators();
                 var lit = NumberLitIndicators();
@@ -1351,7 +1360,7 @@ namespace KTaNE_Helper
                     }
                     solutionStr += solution[i]%10 + " ";
                 }
-                tbFMNSolution.Text += solutionStr.Trim() + Environment.NewLine;
+                txtForgetMeNotOut.Text += solutionStr.Trim() + Environment.NewLine;
             }
         }
 
@@ -1610,7 +1619,7 @@ namespace KTaNE_Helper
             wires_Input_TextChanged(null, null);
             Needy_Knob_CheckedChanged(null, null);
             textBox2_TextChanged(null, null);
-            textBox1_TextChanged(null, null);
+            ForgetMeNot_Event(null, null);
             txtConnections_TextChanged(null, null);
             Password_TextChanged(null, null);
             MorseCodeInput_TextChanged(null, null);
@@ -1619,6 +1628,8 @@ namespace KTaNE_Helper
             CalculateInitialTwoBitsCode();
             CalculateSafetySafe();
             txtNumberPadIn_TextChanged(null, null);
+            txtLetteredKeysIn_TextChanged(null, null);
+            txtCombinationLockIn_TextChanged(null, null);
         }
 
         private bool DuplicateSerialCharacters()
@@ -2104,5 +2115,40 @@ namespace KTaNE_Helper
             }
         }
 
+        private void txtCombinationLockIn_TextChanged(object sender, EventArgs e)
+        {
+            var input = txtCombinationLockIn.Text.ToUpper();
+            var twoFactor = input.Split(' ');
+            txtCombinationLockOut.Text = @"Input [Solved modules] [list of two factors]  or [solved modules] S [total modules]";
+            if (twoFactor.Length < 2) return;
+
+            var step1 = (int)(nudBatteriesD.Value + nudBatteriesAA.Value);
+            var step2 = GetDigitFromCharacter(twoFactor[0]);
+            if (input.Contains("S"))
+            {
+                 if (twoFactor.Length < 3) return;
+                if (txtSerialNumber.TextLength < 6) return;
+                step1 += GetDigitFromCharacter(txtSerialNumber.Text.Substring(5, 1));
+                step1 += GetDigitFromCharacter(twoFactor[0]);
+                step2 += GetDigitFromCharacter(twoFactor[2]);
+            }
+            else
+            {
+                for (var i = 1; i < twoFactor.Length; i++)
+                {
+                    if (twoFactor[i].Length != 2) return;
+                    step2 += GetDigitFromCharacter(twoFactor[i].Substring(0, 1));
+                    step1 += GetDigitFromCharacter(twoFactor[i].Substring(1, 1));
+                }
+            }
+            txtCombinationLockOut.Text = @"Right " + (step1%20) + 
+                                        @", Left " + (step2%20) + 
+                                        @", Right " + (((step1%20) + (step2%20))%20);
+        }
+
+        private void txtSemaphoreIn_TextChanged(object sender, EventArgs e)
+        {
+            txtSemaphoreOut.Text = new Semaphore(txtSerialNumber.Text).GetAnswer(txtSemaphoreIn.Text);
+        }
     }
 }

@@ -29,6 +29,84 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.fpKnob = new System.Windows.Forms.FlowLayoutPanel();
+            this.nk1 = new System.Windows.Forms.CheckBox();
+            this.nk2 = new System.Windows.Forms.CheckBox();
+            this.nk4 = new System.Windows.Forms.CheckBox();
+            this.nk8 = new System.Windows.Forms.CheckBox();
+            this.nk16 = new System.Windows.Forms.CheckBox();
+            this.nk32 = new System.Windows.Forms.CheckBox();
+            this.nk64 = new System.Windows.Forms.CheckBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtSerialNumber = new System.Windows.Forms.TextBox();
+            this.ManualVersionSelect = new System.Windows.Forms.ComboBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.gbBombInformation = new System.Windows.Forms.GroupBox();
+            this.label77 = new System.Windows.Forms.Label();
+            this.groupBox23 = new System.Windows.Forms.GroupBox();
+            this.txtNeedyKnobOut = new System.Windows.Forms.TextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.button42 = new System.Windows.Forms.Button();
+            this.gbBatteries = new System.Windows.Forms.GroupBox();
+            this.label53 = new System.Windows.Forms.Label();
+            this.nudBatteryHolders = new System.Windows.Forms.NumericUpDown();
+            this.label50 = new System.Windows.Forms.Label();
+            this.nudBatteriesD = new System.Windows.Forms.NumericUpDown();
+            this.label49 = new System.Windows.Forms.Label();
+            this.nudBatteriesAA = new System.Windows.Forms.NumericUpDown();
+            this.gbPorts = new System.Windows.Forms.GroupBox();
+            this.label47 = new System.Windows.Forms.Label();
+            this.nudPortRCA = new System.Windows.Forms.NumericUpDown();
+            this.label46 = new System.Windows.Forms.Label();
+            this.nudPortSerial = new System.Windows.Forms.NumericUpDown();
+            this.label45 = new System.Windows.Forms.Label();
+            this.nudPortRJ45 = new System.Windows.Forms.NumericUpDown();
+            this.label44 = new System.Windows.Forms.Label();
+            this.nudPortPS2 = new System.Windows.Forms.NumericUpDown();
+            this.label43 = new System.Windows.Forms.Label();
+            this.nudPortParallel = new System.Windows.Forms.NumericUpDown();
+            this.label42 = new System.Windows.Forms.Label();
+            this.nudPortDVID = new System.Windows.Forms.NumericUpDown();
+            this.label41 = new System.Windows.Forms.Label();
+            this.nudPortPlates = new System.Windows.Forms.NumericUpDown();
+            this.gbIndicators = new System.Windows.Forms.GroupBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.nudUnlitTRN = new System.Windows.Forms.NumericUpDown();
+            this.nudLitTRN = new System.Windows.Forms.NumericUpDown();
+            this.label39 = new System.Windows.Forms.Label();
+            this.nudUnlitSND = new System.Windows.Forms.NumericUpDown();
+            this.nudLitSND = new System.Windows.Forms.NumericUpDown();
+            this.label38 = new System.Windows.Forms.Label();
+            this.nudUnlitSIG = new System.Windows.Forms.NumericUpDown();
+            this.nudLitSIG = new System.Windows.Forms.NumericUpDown();
+            this.label37 = new System.Windows.Forms.Label();
+            this.nudUnlitNSA = new System.Windows.Forms.NumericUpDown();
+            this.nudLitNSA = new System.Windows.Forms.NumericUpDown();
+            this.label36 = new System.Windows.Forms.Label();
+            this.nudUnlitMSA = new System.Windows.Forms.NumericUpDown();
+            this.nudLitMSA = new System.Windows.Forms.NumericUpDown();
+            this.label35 = new System.Windows.Forms.Label();
+            this.nudUnlitIND = new System.Windows.Forms.NumericUpDown();
+            this.nudLitIND = new System.Windows.Forms.NumericUpDown();
+            this.label34 = new System.Windows.Forms.Label();
+            this.nudUnlitFRQ = new System.Windows.Forms.NumericUpDown();
+            this.nudLitFRQ = new System.Windows.Forms.NumericUpDown();
+            this.label33 = new System.Windows.Forms.Label();
+            this.nudUnlitFRK = new System.Windows.Forms.NumericUpDown();
+            this.nudLitFRK = new System.Windows.Forms.NumericUpDown();
+            this.label32 = new System.Windows.Forms.Label();
+            this.nudUnlitCLR = new System.Windows.Forms.NumericUpDown();
+            this.nudLitCLR = new System.Windows.Forms.NumericUpDown();
+            this.label31 = new System.Windows.Forms.Label();
+            this.nudUnlitCAR = new System.Windows.Forms.NumericUpDown();
+            this.nudLitCAR = new System.Windows.Forms.NumericUpDown();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.nudUnlitBOB = new System.Windows.Forms.NumericUpDown();
+            this.nudLitBOB = new System.Windows.Forms.NumericUpDown();
+            this.facts_strike = new System.Windows.Forms.ComboBox();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tcTabs = new System.Windows.Forms.TabControl();
             this.tpAbout = new System.Windows.Forms.TabPage();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -103,21 +181,17 @@
             this.ss_green = new System.Windows.Forms.Label();
             this.ss_blue = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.tpWhosOnFirst = new System.Windows.Forms.TabPage();
-            this.wofStep1Label = new System.Windows.Forms.Label();
-            this.wofOutput = new System.Windows.Forms.TextBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.wofLook = new System.Windows.Forms.FlowLayoutPanel();
-            this.rbWOF1 = new System.Windows.Forms.RadioButton();
-            this.rbWOF2 = new System.Windows.Forms.RadioButton();
-            this.rbWOF3 = new System.Windows.Forms.RadioButton();
-            this.rbWOF4 = new System.Windows.Forms.RadioButton();
-            this.rbWOF5 = new System.Windows.Forms.RadioButton();
-            this.rbWOF6 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.wofStep2 = new System.Windows.Forms.RadioButton();
-            this.wofStep1 = new System.Windows.Forms.RadioButton();
+            this.tpMemoryWhosOnFirst = new System.Windows.Forms.TabPage();
+            this.groupBox21 = new System.Windows.Forms.GroupBox();
+            this.memoryPositionLabel = new System.Windows.Forms.Label();
+            this.memoryDebug = new System.Windows.Forms.TextBox();
+            this.Num1 = new System.Windows.Forms.Button();
+            this.Num2 = new System.Windows.Forms.Button();
+            this.MemoryReset = new System.Windows.Forms.Button();
+            this.Num3 = new System.Windows.Forms.Button();
+            this.Num4 = new System.Windows.Forms.Button();
+            this.memoryNumberLabel = new System.Windows.Forms.Label();
+            this.groupBox22 = new System.Windows.Forms.GroupBox();
             this.wofButtons = new System.Windows.Forms.FlowLayoutPanel();
             this.wofButton1 = new System.Windows.Forms.Button();
             this.wofButton2 = new System.Windows.Forms.Button();
@@ -148,18 +222,27 @@
             this.wofButton27 = new System.Windows.Forms.Button();
             this.wofButton28 = new System.Windows.Forms.Button();
             this.wofStep2Label = new System.Windows.Forms.Label();
-            this.tpMemory = new System.Windows.Forms.TabPage();
-            this.memoryDebug = new System.Windows.Forms.TextBox();
-            this.memoryLabel = new System.Windows.Forms.Label();
-            this.MemoryReset = new System.Windows.Forms.Button();
-            this.memoryPositionLabel = new System.Windows.Forms.Label();
-            this.memoryNumberLabel = new System.Windows.Forms.Label();
-            this.Num4 = new System.Windows.Forms.Button();
-            this.Num3 = new System.Windows.Forms.Button();
-            this.Num2 = new System.Windows.Forms.Button();
-            this.Num1 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.wofStep2 = new System.Windows.Forms.RadioButton();
+            this.wofStep1 = new System.Windows.Forms.RadioButton();
+            this.whosOnFirstStep1 = new System.Windows.Forms.Panel();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.wofLook = new System.Windows.Forms.FlowLayoutPanel();
+            this.rbWOF1 = new System.Windows.Forms.RadioButton();
+            this.rbWOF2 = new System.Windows.Forms.RadioButton();
+            this.rbWOF3 = new System.Windows.Forms.RadioButton();
+            this.rbWOF4 = new System.Windows.Forms.RadioButton();
+            this.rbWOF5 = new System.Windows.Forms.RadioButton();
+            this.rbWOF6 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.wofStep1Label = new System.Windows.Forms.TextBox();
+            this.wofOutput = new System.Windows.Forms.TextBox();
             this.tpMaze = new System.Windows.Forms.TabPage();
             this.mazeOutput = new System.Windows.Forms.TextBox();
+            this.mazeStart = new System.Windows.Forms.TextBox();
+            this.mazeSelection = new System.Windows.Forms.TextBox();
+            this.mazeEnd = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cbAutoAdvance = new System.Windows.Forms.CheckBox();
             this.rbEnd = new System.Windows.Forms.RadioButton();
@@ -168,21 +251,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.mazeStart = new System.Windows.Forms.TextBox();
-            this.mazeSelection = new System.Windows.Forms.TextBox();
-            this.mazeEnd = new System.Windows.Forms.TextBox();
             this.pbMaze = new System.Windows.Forms.PictureBox();
             this.tpWires = new System.Windows.Forms.TabPage();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.label69 = new System.Windows.Forms.Label();
-            this.label51 = new System.Windows.Forms.Label();
-            this.label52 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.cw_input = new System.Windows.Forms.TextBox();
-            this.cw_output = new System.Windows.Forms.TextBox();
-            this.cw_reset = new System.Windows.Forms.Button();
-            this.cw_all_wires = new System.Windows.Forms.Button();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.label68 = new System.Windows.Forms.Label();
             this.txtSimpleWireOutput = new System.Windows.Forms.TextBox();
@@ -197,6 +268,16 @@
             this.wire6 = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
             this.wires_input = new System.Windows.Forms.TextBox();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.label69 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label52 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.cw_input = new System.Windows.Forms.TextBox();
+            this.cw_output = new System.Windows.Forms.TextBox();
+            this.cw_reset = new System.Windows.Forms.Button();
+            this.cw_all_wires = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label63 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -205,49 +286,59 @@
             this.ws_input = new System.Windows.Forms.TextBox();
             this.ws_output = new System.Windows.Forms.TextBox();
             this.tpPasswordMorseCode = new System.Windows.Forms.TabPage();
-            this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.MorseCodeInput = new System.Windows.Forms.TextBox();
-            this.MorseCodeOutput = new System.Windows.Forms.TextBox();
+            this.scPasswordMorseCode = new System.Windows.Forms.SplitContainer();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.passwordClear = new System.Windows.Forms.Button();
-            this.passResults = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.splitContainer5 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer6 = new System.Windows.Forms.SplitContainer();
             this.fpPassword = new System.Windows.Forms.FlowLayoutPanel();
             this.pass1 = new System.Windows.Forms.TextBox();
             this.pass2 = new System.Windows.Forms.TextBox();
             this.pass3 = new System.Windows.Forms.TextBox();
             this.pass4 = new System.Windows.Forms.TextBox();
             this.pass5 = new System.Windows.Forms.TextBox();
+            this.passwordClear = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
             this.fpPasswordLettersNotPresent = new System.Windows.Forms.FlowLayoutPanel();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.tpNeedyKnobV1 = new System.Windows.Forms.TabPage();
-            this.fpKnob = new System.Windows.Forms.FlowLayoutPanel();
-            this.nk1 = new System.Windows.Forms.CheckBox();
-            this.nk2 = new System.Windows.Forms.CheckBox();
-            this.nk4 = new System.Windows.Forms.CheckBox();
-            this.nk8 = new System.Windows.Forms.CheckBox();
-            this.nk16 = new System.Windows.Forms.CheckBox();
-            this.nk32 = new System.Windows.Forms.CheckBox();
-            this.nk64 = new System.Windows.Forms.CheckBox();
-            this.nn_label = new System.Windows.Forms.Label();
-            this.tpForgetMeNot = new System.Windows.Forms.TabPage();
+            this.passResults = new System.Windows.Forms.TextBox();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.MorseCodeInput = new System.Windows.Forms.TextBox();
+            this.MorseCodeOutput = new System.Windows.Forms.TextBox();
+            this.tpModForgetMeNot = new System.Windows.Forms.TabPage();
             this.label59 = new System.Windows.Forms.Label();
             this.label57 = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
             this.label55 = new System.Windows.Forms.Label();
-            this.tbFMNSolution = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtForgetMeNotOut = new System.Windows.Forms.TextBox();
+            this.txtForgetMeNotIn = new System.Windows.Forms.TextBox();
             this.tpModCollection1 = new System.Windows.Forms.TabPage();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label24 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.txtChessInput = new System.Windows.Forms.TextBox();
             this.label64 = new System.Windows.Forms.Label();
             this.txtChessSolution = new System.Windows.Forms.TextBox();
             this.label65 = new System.Windows.Forms.Label();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label62 = new System.Windows.Forms.Label();
+            this.label54 = new System.Windows.Forms.Label();
+            this.txtLogicOR = new System.Windows.Forms.TextBox();
+            this.txtLogicAND = new System.Windows.Forms.TextBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label83 = new System.Windows.Forms.Label();
+            this.label84 = new System.Windows.Forms.Label();
+            this.txtLetteredKeysOut = new System.Windows.Forms.TextBox();
+            this.txtLetteredKeysIn = new System.Windows.Forms.TextBox();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.txtConnectionCheckOut = new System.Windows.Forms.TextBox();
+            this.txtConnections = new System.Windows.Forms.TextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.label67 = new System.Windows.Forms.Label();
             this.label66 = new System.Windows.Forms.Label();
@@ -266,29 +357,6 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.label62 = new System.Windows.Forms.Label();
-            this.label54 = new System.Windows.Forms.Label();
-            this.txtLogicOR = new System.Windows.Forms.TextBox();
-            this.txtLogicAND = new System.Windows.Forms.TextBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label83 = new System.Windows.Forms.Label();
-            this.label84 = new System.Windows.Forms.Label();
-            this.txtLetteredKeysOut = new System.Windows.Forms.TextBox();
-            this.txtLetteredKeysIn = new System.Windows.Forms.TextBox();
-            this.groupBox15 = new System.Windows.Forms.GroupBox();
-            this.label58 = new System.Windows.Forms.Label();
-            this.label70 = new System.Windows.Forms.Label();
-            this.txtEmojiMathOut = new System.Windows.Forms.TextBox();
-            this.txtEmojiMathIn = new System.Windows.Forms.TextBox();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.txtConnectionCheckOut = new System.Windows.Forms.TextBox();
-            this.txtConnections = new System.Windows.Forms.TextBox();
-            this.groupBox18 = new System.Windows.Forms.GroupBox();
-            this.label71 = new System.Windows.Forms.Label();
-            this.txtSafetySafe = new System.Windows.Forms.TextBox();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
             this.label73 = new System.Windows.Forms.Label();
             this.label74 = new System.Windows.Forms.Label();
@@ -296,132 +364,35 @@
             this.txtStroopAnswer = new System.Windows.Forms.TextBox();
             this.txtStroopColors = new System.Windows.Forms.TextBox();
             this.txtStroopWords = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
+            this.groupBox18 = new System.Windows.Forms.GroupBox();
+            this.label71 = new System.Windows.Forms.Label();
+            this.txtSafetySafe = new System.Windows.Forms.TextBox();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.label58 = new System.Windows.Forms.Label();
+            this.label70 = new System.Windows.Forms.Label();
+            this.txtEmojiMathOut = new System.Windows.Forms.TextBox();
+            this.txtEmojiMathIn = new System.Windows.Forms.TextBox();
             this.tpModCollection2 = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox20 = new System.Windows.Forms.GroupBox();
             this.txtNumberPadIn = new System.Windows.Forms.TextBox();
             this.label75 = new System.Windows.Forms.Label();
             this.txtNumberPadOut = new System.Windows.Forms.TextBox();
             this.label76 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.txtSerialNumber = new System.Windows.Forms.TextBox();
-            this.ManualVersionSelect = new System.Windows.Forms.ComboBox();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.gbBombInformation = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.button42 = new System.Windows.Forms.Button();
-            this.gbBatteries = new System.Windows.Forms.GroupBox();
-            this.label53 = new System.Windows.Forms.Label();
-            this.nudBatteryHolders = new System.Windows.Forms.NumericUpDown();
-            this.label50 = new System.Windows.Forms.Label();
-            this.nudBatteriesD = new System.Windows.Forms.NumericUpDown();
-            this.label49 = new System.Windows.Forms.Label();
-            this.nudBatteriesAA = new System.Windows.Forms.NumericUpDown();
-            this.gbPorts = new System.Windows.Forms.GroupBox();
-            this.label47 = new System.Windows.Forms.Label();
-            this.nudPortRCA = new System.Windows.Forms.NumericUpDown();
-            this.label46 = new System.Windows.Forms.Label();
-            this.nudPortSerial = new System.Windows.Forms.NumericUpDown();
-            this.label45 = new System.Windows.Forms.Label();
-            this.nudPortRJ45 = new System.Windows.Forms.NumericUpDown();
-            this.label44 = new System.Windows.Forms.Label();
-            this.nudPortPS2 = new System.Windows.Forms.NumericUpDown();
-            this.label43 = new System.Windows.Forms.Label();
-            this.nudPortParallel = new System.Windows.Forms.NumericUpDown();
-            this.label42 = new System.Windows.Forms.Label();
-            this.nudPortDVID = new System.Windows.Forms.NumericUpDown();
-            this.label41 = new System.Windows.Forms.Label();
-            this.nudPortPlates = new System.Windows.Forms.NumericUpDown();
-            this.gbIndicators = new System.Windows.Forms.GroupBox();
-            this.label40 = new System.Windows.Forms.Label();
-            this.nudUnlitTRN = new System.Windows.Forms.NumericUpDown();
-            this.nudLitTRN = new System.Windows.Forms.NumericUpDown();
-            this.label39 = new System.Windows.Forms.Label();
-            this.nudUnlitSND = new System.Windows.Forms.NumericUpDown();
-            this.nudLitSND = new System.Windows.Forms.NumericUpDown();
-            this.label38 = new System.Windows.Forms.Label();
-            this.nudUnlitSIG = new System.Windows.Forms.NumericUpDown();
-            this.nudLitSIG = new System.Windows.Forms.NumericUpDown();
-            this.label37 = new System.Windows.Forms.Label();
-            this.nudUnlitNSA = new System.Windows.Forms.NumericUpDown();
-            this.nudLitNSA = new System.Windows.Forms.NumericUpDown();
-            this.label36 = new System.Windows.Forms.Label();
-            this.nudUnlitMSA = new System.Windows.Forms.NumericUpDown();
-            this.nudLitMSA = new System.Windows.Forms.NumericUpDown();
-            this.label35 = new System.Windows.Forms.Label();
-            this.nudUnlitIND = new System.Windows.Forms.NumericUpDown();
-            this.nudLitIND = new System.Windows.Forms.NumericUpDown();
-            this.label34 = new System.Windows.Forms.Label();
-            this.nudUnlitFRQ = new System.Windows.Forms.NumericUpDown();
-            this.nudLitFRQ = new System.Windows.Forms.NumericUpDown();
-            this.label33 = new System.Windows.Forms.Label();
-            this.nudUnlitFRK = new System.Windows.Forms.NumericUpDown();
-            this.nudLitFRK = new System.Windows.Forms.NumericUpDown();
-            this.label32 = new System.Windows.Forms.Label();
-            this.nudUnlitCLR = new System.Windows.Forms.NumericUpDown();
-            this.nudLitCLR = new System.Windows.Forms.NumericUpDown();
-            this.label31 = new System.Windows.Forms.Label();
-            this.nudUnlitCAR = new System.Windows.Forms.NumericUpDown();
-            this.nudLitCAR = new System.Windows.Forms.NumericUpDown();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.nudUnlitBOB = new System.Windows.Forms.NumericUpDown();
-            this.nudLitBOB = new System.Windows.Forms.NumericUpDown();
-            this.facts_strike = new System.Windows.Forms.ComboBox();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox24 = new System.Windows.Forms.GroupBox();
+            this.txtCombinationLockIn = new System.Windows.Forms.TextBox();
+            this.label78 = new System.Windows.Forms.Label();
+            this.txtCombinationLockOut = new System.Windows.Forms.TextBox();
+            this.label79 = new System.Windows.Forms.Label();
+            this.groupBox25 = new System.Windows.Forms.GroupBox();
+            this.txtSemaphoreIn = new System.Windows.Forms.TextBox();
+            this.label80 = new System.Windows.Forms.Label();
+            this.txtSemaphoreOut = new System.Windows.Forms.TextBox();
+            this.label81 = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.scPasswordMorseCode = new System.Windows.Forms.SplitContainer();
-            this.splitContainer5 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer6 = new System.Windows.Forms.SplitContainer();
-            this.tcTabs.SuspendLayout();
-            this.tpAbout.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.tpButtonV1.SuspendLayout();
-            this.tpKeypadsSimonSays.SuspendLayout();
-            this.groupBox17.SuspendLayout();
-            this.fpKeypadSymbols.SuspendLayout();
-            this.fpKeypadOrder.SuspendLayout();
-            this.fpKeypadSelection.SuspendLayout();
-            this.groupBox16.SuspendLayout();
-            this.tpWhosOnFirst.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.wofLook.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.wofButtons.SuspendLayout();
-            this.tpMemory.SuspendLayout();
-            this.tpMaze.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMaze)).BeginInit();
-            this.tpWires.SuspendLayout();
-            this.groupBox12.SuspendLayout();
-            this.groupBox11.SuspendLayout();
-            this.fpWires.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.tpPasswordMorseCode.SuspendLayout();
-            this.groupBox14.SuspendLayout();
-            this.groupBox13.SuspendLayout();
-            this.fpPassword.SuspendLayout();
-            this.fpPasswordLettersNotPresent.SuspendLayout();
-            this.tpNeedyKnobV1.SuspendLayout();
             this.fpKnob.SuspendLayout();
-            this.tpForgetMeNot.SuspendLayout();
-            this.tpModCollection1.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBox8.SuspendLayout();
-            this.groupBox10.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox15.SuspendLayout();
-            this.groupBox9.SuspendLayout();
-            this.groupBox18.SuspendLayout();
-            this.groupBox19.SuspendLayout();
-            this.tpModCollection2.SuspendLayout();
-            this.groupBox20.SuspendLayout();
             this.gbBombInformation.SuspendLayout();
+            this.groupBox23.SuspendLayout();
             this.gbBatteries.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudBatteryHolders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBatteriesD)).BeginInit();
@@ -461,19 +432,40 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
+            this.tcTabs.SuspendLayout();
+            this.tpAbout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tpButtonV1.SuspendLayout();
+            this.tpKeypadsSimonSays.SuspendLayout();
+            this.groupBox17.SuspendLayout();
+            this.fpKeypadSymbols.SuspendLayout();
+            this.fpKeypadOrder.SuspendLayout();
+            this.fpKeypadSelection.SuspendLayout();
+            this.groupBox16.SuspendLayout();
+            this.tpMemoryWhosOnFirst.SuspendLayout();
+            this.groupBox21.SuspendLayout();
+            this.groupBox22.SuspendLayout();
+            this.wofButtons.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.whosOnFirstStep1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.wofLook.SuspendLayout();
+            this.tpMaze.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMaze)).BeginInit();
+            this.tpWires.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
-            this.splitContainer3.Panel1.SuspendLayout();
-            this.splitContainer3.Panel2.SuspendLayout();
-            this.splitContainer3.SuspendLayout();
+            this.groupBox11.SuspendLayout();
+            this.fpWires.SuspendLayout();
+            this.groupBox12.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.tpPasswordMorseCode.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scPasswordMorseCode)).BeginInit();
             this.scPasswordMorseCode.Panel1.SuspendLayout();
             this.scPasswordMorseCode.Panel2.SuspendLayout();
             this.scPasswordMorseCode.SuspendLayout();
+            this.groupBox13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
             this.splitContainer5.Panel1.SuspendLayout();
             this.splitContainer5.Panel2.SuspendLayout();
@@ -482,28 +474,873 @@
             this.splitContainer6.Panel1.SuspendLayout();
             this.splitContainer6.Panel2.SuspendLayout();
             this.splitContainer6.SuspendLayout();
+            this.fpPassword.SuspendLayout();
+            this.fpPasswordLettersNotPresent.SuspendLayout();
+            this.groupBox14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
+            this.tpModForgetMeNot.SuspendLayout();
+            this.tpModCollection1.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            this.groupBox19.SuspendLayout();
+            this.groupBox18.SuspendLayout();
+            this.groupBox15.SuspendLayout();
+            this.tpModCollection2.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
+            this.groupBox20.SuspendLayout();
+            this.groupBox24.SuspendLayout();
+            this.groupBox25.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // fpKnob
+            // 
+            this.fpKnob.Controls.Add(this.nk1);
+            this.fpKnob.Controls.Add(this.nk2);
+            this.fpKnob.Controls.Add(this.nk4);
+            this.fpKnob.Controls.Add(this.nk8);
+            this.fpKnob.Controls.Add(this.nk16);
+            this.fpKnob.Controls.Add(this.nk32);
+            this.fpKnob.Location = new System.Drawing.Point(11, 21);
+            this.fpKnob.Name = "fpKnob";
+            this.fpKnob.Size = new System.Drawing.Size(65, 42);
+            this.fpKnob.TabIndex = 18;
+            // 
+            // nk1
+            // 
+            this.nk1.AutoSize = true;
+            this.nk1.Location = new System.Drawing.Point(3, 3);
+            this.nk1.Name = "nk1";
+            this.nk1.Size = new System.Drawing.Size(15, 14);
+            this.nk1.TabIndex = 9;
+            this.nk1.UseVisualStyleBackColor = true;
+            this.nk1.CheckedChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
+            // 
+            // nk2
+            // 
+            this.nk2.AutoSize = true;
+            this.nk2.Location = new System.Drawing.Point(24, 3);
+            this.nk2.Name = "nk2";
+            this.nk2.Size = new System.Drawing.Size(15, 14);
+            this.nk2.TabIndex = 10;
+            this.nk2.UseVisualStyleBackColor = true;
+            this.nk2.CheckedChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
+            // 
+            // nk4
+            // 
+            this.nk4.AutoSize = true;
+            this.nk4.Location = new System.Drawing.Point(45, 3);
+            this.nk4.Name = "nk4";
+            this.nk4.Size = new System.Drawing.Size(15, 14);
+            this.nk4.TabIndex = 11;
+            this.nk4.UseVisualStyleBackColor = true;
+            this.nk4.CheckedChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
+            // 
+            // nk8
+            // 
+            this.nk8.AutoSize = true;
+            this.nk8.Location = new System.Drawing.Point(3, 23);
+            this.nk8.Name = "nk8";
+            this.nk8.Size = new System.Drawing.Size(15, 14);
+            this.nk8.TabIndex = 12;
+            this.nk8.UseVisualStyleBackColor = true;
+            this.nk8.CheckedChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
+            // 
+            // nk16
+            // 
+            this.nk16.AutoSize = true;
+            this.nk16.Location = new System.Drawing.Point(24, 23);
+            this.nk16.Name = "nk16";
+            this.nk16.Size = new System.Drawing.Size(15, 14);
+            this.nk16.TabIndex = 13;
+            this.nk16.UseVisualStyleBackColor = true;
+            this.nk16.CheckedChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
+            // 
+            // nk32
+            // 
+            this.nk32.AutoSize = true;
+            this.nk32.Location = new System.Drawing.Point(45, 23);
+            this.nk32.Name = "nk32";
+            this.nk32.Size = new System.Drawing.Size(15, 14);
+            this.nk32.TabIndex = 14;
+            this.nk32.UseVisualStyleBackColor = true;
+            this.nk32.CheckedChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
+            // 
+            // nk64
+            // 
+            this.nk64.AutoSize = true;
+            this.nk64.Location = new System.Drawing.Point(82, 21);
+            this.nk64.Name = "nk64";
+            this.nk64.Size = new System.Drawing.Size(107, 17);
+            this.nk64.TabIndex = 17;
+            this.nk64.Text = "Upper Right LED";
+            this.nk64.UseVisualStyleBackColor = true;
+            this.nk64.CheckedChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(0, 23);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(46, 13);
+            this.label16.TabIndex = 4;
+            this.label16.Text = "Serial #:";
+            // 
+            // txtSerialNumber
+            // 
+            this.txtSerialNumber.Location = new System.Drawing.Point(50, 20);
+            this.txtSerialNumber.Name = "txtSerialNumber";
+            this.txtSerialNumber.Size = new System.Drawing.Size(133, 20);
+            this.txtSerialNumber.TabIndex = 3;
+            this.txtSerialNumber.TextChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // ManualVersionSelect
+            // 
+            this.ManualVersionSelect.FormattingEnabled = true;
+            this.ManualVersionSelect.Items.AddRange(new object[] {
+            "Manual Version 1 (Official) - Verification Code 241",
+            "Manual Version 990 (Unofficial) - Verification Code 724"});
+            this.ManualVersionSelect.Location = new System.Drawing.Point(6, 2);
+            this.ManualVersionSelect.Name = "ManualVersionSelect";
+            this.ManualVersionSelect.Size = new System.Drawing.Size(314, 21);
+            this.ManualVersionSelect.TabIndex = 1;
+            this.ManualVersionSelect.Text = "Manual Version 1 (Official) - Verification Code 241";
+            this.ManualVersionSelect.SelectedIndexChanged += new System.EventHandler(this.ManualVersionSelect_SelectedIndexChanged);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(323, 5);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(63, 13);
+            this.linkLabel1.TabIndex = 2;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "manualURL";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // gbBombInformation
+            // 
+            this.gbBombInformation.Controls.Add(this.label77);
+            this.gbBombInformation.Controls.Add(this.groupBox23);
+            this.gbBombInformation.Controls.Add(this.checkBox1);
+            this.gbBombInformation.Controls.Add(this.button42);
+            this.gbBombInformation.Controls.Add(this.gbBatteries);
+            this.gbBombInformation.Controls.Add(this.gbPorts);
+            this.gbBombInformation.Controls.Add(this.gbIndicators);
+            this.gbBombInformation.Controls.Add(this.label16);
+            this.gbBombInformation.Controls.Add(this.txtSerialNumber);
+            this.gbBombInformation.Controls.Add(this.facts_strike);
+            this.gbBombInformation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbBombInformation.Location = new System.Drawing.Point(0, 0);
+            this.gbBombInformation.Name = "gbBombInformation";
+            this.gbBombInformation.Size = new System.Drawing.Size(327, 593);
+            this.gbBombInformation.TabIndex = 3;
+            this.gbBombInformation.TabStop = false;
+            this.gbBombInformation.Text = "Bomb Information";
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.Location = new System.Drawing.Point(17, 472);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(267, 26);
+            this.label77.TabIndex = 28;
+            this.label77.Text = "On Needy Vent Gas - Answer Yes if prompt is Vent Gas\r\nAnswer No, if the prompt is" +
+    " to Detonate.";
+            // 
+            // groupBox23
+            // 
+            this.groupBox23.Controls.Add(this.txtNeedyKnobOut);
+            this.groupBox23.Controls.Add(this.fpKnob);
+            this.groupBox23.Controls.Add(this.nk64);
+            this.groupBox23.Location = new System.Drawing.Point(6, 406);
+            this.groupBox23.Name = "groupBox23";
+            this.groupBox23.Size = new System.Drawing.Size(292, 70);
+            this.groupBox23.TabIndex = 7;
+            this.groupBox23.TabStop = false;
+            this.groupBox23.Text = "Needy Knob";
+            // 
+            // txtNeedyKnobOut
+            // 
+            this.txtNeedyKnobOut.Location = new System.Drawing.Point(82, 41);
+            this.txtNeedyKnobOut.Name = "txtNeedyKnobOut";
+            this.txtNeedyKnobOut.Size = new System.Drawing.Size(117, 20);
+            this.txtNeedyKnobOut.TabIndex = 19;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(6, 46);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(82, 17);
+            this.checkBox1.TabIndex = 27;
+            this.checkBox1.Text = "Show Mods";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // button42
+            // 
+            this.button42.Location = new System.Drawing.Point(159, 46);
+            this.button42.Name = "button42";
+            this.button42.Size = new System.Drawing.Size(139, 28);
+            this.button42.TabIndex = 26;
+            this.button42.Text = "Reset Bomb Information";
+            this.button42.UseVisualStyleBackColor = true;
+            this.button42.Click += new System.EventHandler(this.button42_Click);
+            // 
+            // gbBatteries
+            // 
+            this.gbBatteries.Controls.Add(this.label53);
+            this.gbBatteries.Controls.Add(this.nudBatteryHolders);
+            this.gbBatteries.Controls.Add(this.label50);
+            this.gbBatteries.Controls.Add(this.nudBatteriesD);
+            this.gbBatteries.Controls.Add(this.label49);
+            this.gbBatteries.Controls.Add(this.nudBatteriesAA);
+            this.gbBatteries.Location = new System.Drawing.Point(150, 296);
+            this.gbBatteries.Name = "gbBatteries";
+            this.gbBatteries.Size = new System.Drawing.Size(142, 104);
+            this.gbBatteries.TabIndex = 25;
+            this.gbBatteries.TabStop = false;
+            this.gbBatteries.Text = "Batteries";
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Location = new System.Drawing.Point(7, 75);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(43, 13);
+            this.label53.TabIndex = 36;
+            this.label53.Tag = "mods";
+            this.label53.Text = "Holders";
+            // 
+            // nudBatteryHolders
+            // 
+            this.nudBatteryHolders.Location = new System.Drawing.Point(90, 73);
+            this.nudBatteryHolders.Name = "nudBatteryHolders";
+            this.nudBatteryHolders.Size = new System.Drawing.Size(40, 20);
+            this.nudBatteryHolders.TabIndex = 35;
+            this.nudBatteryHolders.Tag = "mods";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(7, 49);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(15, 13);
+            this.label50.TabIndex = 34;
+            this.label50.Tag = "mods";
+            this.label50.Text = "D";
+            // 
+            // nudBatteriesD
+            // 
+            this.nudBatteriesD.Location = new System.Drawing.Point(90, 47);
+            this.nudBatteriesD.Name = "nudBatteriesD";
+            this.nudBatteriesD.Size = new System.Drawing.Size(40, 20);
+            this.nudBatteriesD.TabIndex = 33;
+            this.nudBatteriesD.Tag = "mods";
+            this.nudBatteriesD.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(7, 23);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(21, 13);
+            this.label49.TabIndex = 32;
+            this.label49.Text = "AA";
+            // 
+            // nudBatteriesAA
+            // 
+            this.nudBatteriesAA.Location = new System.Drawing.Point(90, 21);
+            this.nudBatteriesAA.Name = "nudBatteriesAA";
+            this.nudBatteriesAA.Size = new System.Drawing.Size(40, 20);
+            this.nudBatteriesAA.TabIndex = 31;
+            this.nudBatteriesAA.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // gbPorts
+            // 
+            this.gbPorts.Controls.Add(this.label47);
+            this.gbPorts.Controls.Add(this.nudPortRCA);
+            this.gbPorts.Controls.Add(this.label46);
+            this.gbPorts.Controls.Add(this.nudPortSerial);
+            this.gbPorts.Controls.Add(this.label45);
+            this.gbPorts.Controls.Add(this.nudPortRJ45);
+            this.gbPorts.Controls.Add(this.label44);
+            this.gbPorts.Controls.Add(this.nudPortPS2);
+            this.gbPorts.Controls.Add(this.label43);
+            this.gbPorts.Controls.Add(this.nudPortParallel);
+            this.gbPorts.Controls.Add(this.label42);
+            this.gbPorts.Controls.Add(this.nudPortDVID);
+            this.gbPorts.Controls.Add(this.label41);
+            this.gbPorts.Controls.Add(this.nudPortPlates);
+            this.gbPorts.Location = new System.Drawing.Point(150, 80);
+            this.gbPorts.Name = "gbPorts";
+            this.gbPorts.Size = new System.Drawing.Size(148, 210);
+            this.gbPorts.TabIndex = 24;
+            this.gbPorts.TabStop = false;
+            this.gbPorts.Text = "Ports";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(12, 177);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(63, 13);
+            this.label47.TabIndex = 28;
+            this.label47.Tag = "mods";
+            this.label47.Text = "Stereo RCA";
+            // 
+            // nudPortRCA
+            // 
+            this.nudPortRCA.Location = new System.Drawing.Point(96, 175);
+            this.nudPortRCA.Name = "nudPortRCA";
+            this.nudPortRCA.Size = new System.Drawing.Size(40, 20);
+            this.nudPortRCA.TabIndex = 27;
+            this.nudPortRCA.Tag = "mods";
+            this.nudPortRCA.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(12, 151);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(33, 13);
+            this.label46.TabIndex = 26;
+            this.label46.Tag = "mods";
+            this.label46.Text = "Serial";
+            // 
+            // nudPortSerial
+            // 
+            this.nudPortSerial.Location = new System.Drawing.Point(96, 149);
+            this.nudPortSerial.Name = "nudPortSerial";
+            this.nudPortSerial.Size = new System.Drawing.Size(40, 20);
+            this.nudPortSerial.TabIndex = 25;
+            this.nudPortSerial.Tag = "mods";
+            this.nudPortSerial.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(12, 125);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(35, 13);
+            this.label45.TabIndex = 24;
+            this.label45.Tag = "mods";
+            this.label45.Text = "RJ-45";
+            // 
+            // nudPortRJ45
+            // 
+            this.nudPortRJ45.Location = new System.Drawing.Point(97, 125);
+            this.nudPortRJ45.Name = "nudPortRJ45";
+            this.nudPortRJ45.Size = new System.Drawing.Size(40, 20);
+            this.nudPortRJ45.TabIndex = 23;
+            this.nudPortRJ45.Tag = "mods";
+            this.nudPortRJ45.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(12, 99);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(32, 13);
+            this.label44.TabIndex = 22;
+            this.label44.Tag = "mods";
+            this.label44.Text = "PS/2";
+            // 
+            // nudPortPS2
+            // 
+            this.nudPortPS2.Location = new System.Drawing.Point(97, 99);
+            this.nudPortPS2.Name = "nudPortPS2";
+            this.nudPortPS2.Size = new System.Drawing.Size(40, 20);
+            this.nudPortPS2.TabIndex = 21;
+            this.nudPortPS2.Tag = "mods";
+            this.nudPortPS2.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(12, 73);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(41, 13);
+            this.label43.TabIndex = 20;
+            this.label43.Text = "Parallel";
+            // 
+            // nudPortParallel
+            // 
+            this.nudPortParallel.Location = new System.Drawing.Point(97, 73);
+            this.nudPortParallel.Name = "nudPortParallel";
+            this.nudPortParallel.Size = new System.Drawing.Size(40, 20);
+            this.nudPortParallel.TabIndex = 19;
+            this.nudPortParallel.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(12, 47);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(36, 13);
+            this.label42.TabIndex = 18;
+            this.label42.Tag = "mods";
+            this.label42.Text = "DVI-D";
+            // 
+            // nudPortDVID
+            // 
+            this.nudPortDVID.Location = new System.Drawing.Point(97, 45);
+            this.nudPortDVID.Name = "nudPortDVID";
+            this.nudPortDVID.Size = new System.Drawing.Size(40, 20);
+            this.nudPortDVID.TabIndex = 17;
+            this.nudPortDVID.Tag = "mods";
+            this.nudPortDVID.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(12, 21);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(57, 13);
+            this.label41.TabIndex = 16;
+            this.label41.Tag = "mods";
+            this.label41.Text = "Port plates";
+            // 
+            // nudPortPlates
+            // 
+            this.nudPortPlates.Location = new System.Drawing.Point(97, 19);
+            this.nudPortPlates.Name = "nudPortPlates";
+            this.nudPortPlates.Size = new System.Drawing.Size(40, 20);
+            this.nudPortPlates.TabIndex = 15;
+            this.nudPortPlates.Tag = "mods";
+            this.nudPortPlates.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // gbIndicators
+            // 
+            this.gbIndicators.Controls.Add(this.label40);
+            this.gbIndicators.Controls.Add(this.nudUnlitTRN);
+            this.gbIndicators.Controls.Add(this.nudLitTRN);
+            this.gbIndicators.Controls.Add(this.label39);
+            this.gbIndicators.Controls.Add(this.nudUnlitSND);
+            this.gbIndicators.Controls.Add(this.nudLitSND);
+            this.gbIndicators.Controls.Add(this.label38);
+            this.gbIndicators.Controls.Add(this.nudUnlitSIG);
+            this.gbIndicators.Controls.Add(this.nudLitSIG);
+            this.gbIndicators.Controls.Add(this.label37);
+            this.gbIndicators.Controls.Add(this.nudUnlitNSA);
+            this.gbIndicators.Controls.Add(this.nudLitNSA);
+            this.gbIndicators.Controls.Add(this.label36);
+            this.gbIndicators.Controls.Add(this.nudUnlitMSA);
+            this.gbIndicators.Controls.Add(this.nudLitMSA);
+            this.gbIndicators.Controls.Add(this.label35);
+            this.gbIndicators.Controls.Add(this.nudUnlitIND);
+            this.gbIndicators.Controls.Add(this.nudLitIND);
+            this.gbIndicators.Controls.Add(this.label34);
+            this.gbIndicators.Controls.Add(this.nudUnlitFRQ);
+            this.gbIndicators.Controls.Add(this.nudLitFRQ);
+            this.gbIndicators.Controls.Add(this.label33);
+            this.gbIndicators.Controls.Add(this.nudUnlitFRK);
+            this.gbIndicators.Controls.Add(this.nudLitFRK);
+            this.gbIndicators.Controls.Add(this.label32);
+            this.gbIndicators.Controls.Add(this.nudUnlitCLR);
+            this.gbIndicators.Controls.Add(this.nudLitCLR);
+            this.gbIndicators.Controls.Add(this.label31);
+            this.gbIndicators.Controls.Add(this.nudUnlitCAR);
+            this.gbIndicators.Controls.Add(this.nudLitCAR);
+            this.gbIndicators.Controls.Add(this.label30);
+            this.gbIndicators.Controls.Add(this.label29);
+            this.gbIndicators.Controls.Add(this.label28);
+            this.gbIndicators.Controls.Add(this.nudUnlitBOB);
+            this.gbIndicators.Controls.Add(this.nudLitBOB);
+            this.gbIndicators.Location = new System.Drawing.Point(6, 80);
+            this.gbIndicators.Name = "gbIndicators";
+            this.gbIndicators.Size = new System.Drawing.Size(138, 320);
+            this.gbIndicators.TabIndex = 23;
+            this.gbIndicators.TabStop = false;
+            this.gbIndicators.Text = "Indicators";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(7, 291);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(30, 13);
+            this.label40.TabIndex = 44;
+            this.label40.Tag = "bob";
+            this.label40.Text = "TRN";
+            // 
+            // nudUnlitTRN
+            // 
+            this.nudUnlitTRN.Location = new System.Drawing.Point(88, 289);
+            this.nudUnlitTRN.Name = "nudUnlitTRN";
+            this.nudUnlitTRN.Size = new System.Drawing.Size(40, 20);
+            this.nudUnlitTRN.TabIndex = 43;
+            this.nudUnlitTRN.Tag = "bob";
+            this.nudUnlitTRN.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // nudLitTRN
+            // 
+            this.nudLitTRN.Location = new System.Drawing.Point(42, 289);
+            this.nudLitTRN.Name = "nudLitTRN";
+            this.nudLitTRN.Size = new System.Drawing.Size(40, 20);
+            this.nudLitTRN.TabIndex = 42;
+            this.nudLitTRN.Tag = "bob";
+            this.nudLitTRN.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(7, 265);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(30, 13);
+            this.label39.TabIndex = 41;
+            this.label39.Tag = "bob";
+            this.label39.Text = "SND";
+            // 
+            // nudUnlitSND
+            // 
+            this.nudUnlitSND.Location = new System.Drawing.Point(88, 263);
+            this.nudUnlitSND.Name = "nudUnlitSND";
+            this.nudUnlitSND.Size = new System.Drawing.Size(40, 20);
+            this.nudUnlitSND.TabIndex = 40;
+            this.nudUnlitSND.Tag = "bob";
+            this.nudUnlitSND.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // nudLitSND
+            // 
+            this.nudLitSND.Location = new System.Drawing.Point(42, 263);
+            this.nudLitSND.Name = "nudLitSND";
+            this.nudLitSND.Size = new System.Drawing.Size(40, 20);
+            this.nudLitSND.TabIndex = 39;
+            this.nudLitSND.Tag = "bob";
+            this.nudLitSND.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(7, 239);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(25, 13);
+            this.label38.TabIndex = 38;
+            this.label38.Tag = "bob";
+            this.label38.Text = "SIG";
+            // 
+            // nudUnlitSIG
+            // 
+            this.nudUnlitSIG.Location = new System.Drawing.Point(88, 237);
+            this.nudUnlitSIG.Name = "nudUnlitSIG";
+            this.nudUnlitSIG.Size = new System.Drawing.Size(40, 20);
+            this.nudUnlitSIG.TabIndex = 37;
+            this.nudUnlitSIG.Tag = "bob";
+            this.nudUnlitSIG.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // nudLitSIG
+            // 
+            this.nudLitSIG.Location = new System.Drawing.Point(42, 237);
+            this.nudLitSIG.Name = "nudLitSIG";
+            this.nudLitSIG.Size = new System.Drawing.Size(40, 20);
+            this.nudLitSIG.TabIndex = 36;
+            this.nudLitSIG.Tag = "bob";
+            this.nudLitSIG.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(7, 213);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(29, 13);
+            this.label37.TabIndex = 35;
+            this.label37.Tag = "bob";
+            this.label37.Text = "NSA";
+            // 
+            // nudUnlitNSA
+            // 
+            this.nudUnlitNSA.Location = new System.Drawing.Point(88, 211);
+            this.nudUnlitNSA.Name = "nudUnlitNSA";
+            this.nudUnlitNSA.Size = new System.Drawing.Size(40, 20);
+            this.nudUnlitNSA.TabIndex = 34;
+            this.nudUnlitNSA.Tag = "bob";
+            this.nudUnlitNSA.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // nudLitNSA
+            // 
+            this.nudLitNSA.Location = new System.Drawing.Point(42, 211);
+            this.nudLitNSA.Name = "nudLitNSA";
+            this.nudLitNSA.Size = new System.Drawing.Size(40, 20);
+            this.nudLitNSA.TabIndex = 33;
+            this.nudLitNSA.Tag = "bob";
+            this.nudLitNSA.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(7, 187);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(30, 13);
+            this.label36.TabIndex = 32;
+            this.label36.Tag = "bob";
+            this.label36.Text = "MSA";
+            // 
+            // nudUnlitMSA
+            // 
+            this.nudUnlitMSA.Location = new System.Drawing.Point(88, 185);
+            this.nudUnlitMSA.Name = "nudUnlitMSA";
+            this.nudUnlitMSA.Size = new System.Drawing.Size(40, 20);
+            this.nudUnlitMSA.TabIndex = 31;
+            this.nudUnlitMSA.Tag = "bob";
+            this.nudUnlitMSA.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // nudLitMSA
+            // 
+            this.nudLitMSA.Location = new System.Drawing.Point(42, 185);
+            this.nudLitMSA.Name = "nudLitMSA";
+            this.nudLitMSA.Size = new System.Drawing.Size(40, 20);
+            this.nudLitMSA.TabIndex = 30;
+            this.nudLitMSA.Tag = "bob";
+            this.nudLitMSA.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(7, 161);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(26, 13);
+            this.label35.TabIndex = 29;
+            this.label35.Tag = "bob";
+            this.label35.Text = "IND";
+            // 
+            // nudUnlitIND
+            // 
+            this.nudUnlitIND.Location = new System.Drawing.Point(88, 159);
+            this.nudUnlitIND.Name = "nudUnlitIND";
+            this.nudUnlitIND.Size = new System.Drawing.Size(40, 20);
+            this.nudUnlitIND.TabIndex = 28;
+            this.nudUnlitIND.Tag = "bob";
+            this.nudUnlitIND.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // nudLitIND
+            // 
+            this.nudLitIND.Location = new System.Drawing.Point(42, 159);
+            this.nudLitIND.Name = "nudLitIND";
+            this.nudLitIND.Size = new System.Drawing.Size(40, 20);
+            this.nudLitIND.TabIndex = 27;
+            this.nudLitIND.Tag = "bob";
+            this.nudLitIND.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(7, 135);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(29, 13);
+            this.label34.TabIndex = 26;
+            this.label34.Tag = "bob";
+            this.label34.Text = "FRQ";
+            // 
+            // nudUnlitFRQ
+            // 
+            this.nudUnlitFRQ.Location = new System.Drawing.Point(88, 133);
+            this.nudUnlitFRQ.Name = "nudUnlitFRQ";
+            this.nudUnlitFRQ.Size = new System.Drawing.Size(40, 20);
+            this.nudUnlitFRQ.TabIndex = 25;
+            this.nudUnlitFRQ.Tag = "bob";
+            this.nudUnlitFRQ.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // nudLitFRQ
+            // 
+            this.nudLitFRQ.Location = new System.Drawing.Point(42, 133);
+            this.nudLitFRQ.Name = "nudLitFRQ";
+            this.nudLitFRQ.Size = new System.Drawing.Size(40, 20);
+            this.nudLitFRQ.TabIndex = 24;
+            this.nudLitFRQ.Tag = "bob";
+            this.nudLitFRQ.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(7, 109);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(28, 13);
+            this.label33.TabIndex = 23;
+            this.label33.Text = "FRK";
+            // 
+            // nudUnlitFRK
+            // 
+            this.nudUnlitFRK.Location = new System.Drawing.Point(88, 107);
+            this.nudUnlitFRK.Name = "nudUnlitFRK";
+            this.nudUnlitFRK.Size = new System.Drawing.Size(40, 20);
+            this.nudUnlitFRK.TabIndex = 22;
+            this.nudUnlitFRK.Tag = "bob";
+            this.nudUnlitFRK.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // nudLitFRK
+            // 
+            this.nudLitFRK.Location = new System.Drawing.Point(42, 107);
+            this.nudLitFRK.Name = "nudLitFRK";
+            this.nudLitFRK.Size = new System.Drawing.Size(40, 20);
+            this.nudLitFRK.TabIndex = 21;
+            this.nudLitFRK.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(7, 83);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(28, 13);
+            this.label32.TabIndex = 20;
+            this.label32.Tag = "bob";
+            this.label32.Text = "CLR";
+            // 
+            // nudUnlitCLR
+            // 
+            this.nudUnlitCLR.Location = new System.Drawing.Point(88, 81);
+            this.nudUnlitCLR.Name = "nudUnlitCLR";
+            this.nudUnlitCLR.Size = new System.Drawing.Size(40, 20);
+            this.nudUnlitCLR.TabIndex = 19;
+            this.nudUnlitCLR.Tag = "bob";
+            this.nudUnlitCLR.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // nudLitCLR
+            // 
+            this.nudLitCLR.Location = new System.Drawing.Point(42, 81);
+            this.nudLitCLR.Name = "nudLitCLR";
+            this.nudLitCLR.Size = new System.Drawing.Size(40, 20);
+            this.nudLitCLR.TabIndex = 18;
+            this.nudLitCLR.Tag = "bob";
+            this.nudLitCLR.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(7, 57);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(29, 13);
+            this.label31.TabIndex = 17;
+            this.label31.Text = "CAR";
+            // 
+            // nudUnlitCAR
+            // 
+            this.nudUnlitCAR.Location = new System.Drawing.Point(88, 55);
+            this.nudUnlitCAR.Name = "nudUnlitCAR";
+            this.nudUnlitCAR.Size = new System.Drawing.Size(40, 20);
+            this.nudUnlitCAR.TabIndex = 16;
+            this.nudUnlitCAR.Tag = "bob";
+            this.nudUnlitCAR.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // nudLitCAR
+            // 
+            this.nudLitCAR.Location = new System.Drawing.Point(42, 55);
+            this.nudLitCAR.Name = "nudLitCAR";
+            this.nudLitCAR.Size = new System.Drawing.Size(40, 20);
+            this.nudLitCAR.TabIndex = 15;
+            this.nudLitCAR.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(7, 31);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(29, 13);
+            this.label30.TabIndex = 14;
+            this.label30.Tag = "bob";
+            this.label30.Text = "BOB";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(94, 13);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(28, 13);
+            this.label29.TabIndex = 13;
+            this.label29.Tag = "bob";
+            this.label29.Text = "Unlit";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(51, 13);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(18, 13);
+            this.label28.TabIndex = 12;
+            this.label28.Text = "Lit";
+            // 
+            // nudUnlitBOB
+            // 
+            this.nudUnlitBOB.Location = new System.Drawing.Point(88, 29);
+            this.nudUnlitBOB.Name = "nudUnlitBOB";
+            this.nudUnlitBOB.Size = new System.Drawing.Size(40, 20);
+            this.nudUnlitBOB.TabIndex = 11;
+            this.nudUnlitBOB.Tag = "bob";
+            this.nudUnlitBOB.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // nudLitBOB
+            // 
+            this.nudLitBOB.Location = new System.Drawing.Point(42, 29);
+            this.nudLitBOB.Name = "nudLitBOB";
+            this.nudLitBOB.Size = new System.Drawing.Size(40, 20);
+            this.nudLitBOB.TabIndex = 10;
+            this.nudLitBOB.Tag = "bob";
+            this.nudLitBOB.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // facts_strike
+            // 
+            this.facts_strike.FormattingEnabled = true;
+            this.facts_strike.Items.AddRange(new object[] {
+            "0 Strikes",
+            "1 Strike",
+            "2 Strikes"});
+            this.facts_strike.Location = new System.Drawing.Point(189, 19);
+            this.facts_strike.Name = "facts_strike";
+            this.facts_strike.Size = new System.Drawing.Size(109, 21);
+            this.facts_strike.TabIndex = 4;
+            this.facts_strike.Text = "0 Strikes";
+            this.facts_strike.SelectedIndexChanged += new System.EventHandler(this.UpdateBombSolution);
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.tcTabs);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.gbBombInformation);
+            this.splitContainer1.Size = new System.Drawing.Size(983, 593);
+            this.splitContainer1.SplitterDistance = 652;
+            this.splitContainer1.TabIndex = 4;
             // 
             // tcTabs
             // 
             this.tcTabs.Controls.Add(this.tpAbout);
             this.tcTabs.Controls.Add(this.tpButtonV1);
             this.tcTabs.Controls.Add(this.tpKeypadsSimonSays);
-            this.tcTabs.Controls.Add(this.tpWhosOnFirst);
-            this.tcTabs.Controls.Add(this.tpMemory);
+            this.tcTabs.Controls.Add(this.tpMemoryWhosOnFirst);
             this.tcTabs.Controls.Add(this.tpMaze);
             this.tcTabs.Controls.Add(this.tpWires);
             this.tcTabs.Controls.Add(this.tpPasswordMorseCode);
-            this.tcTabs.Controls.Add(this.tpNeedyKnobV1);
-            this.tcTabs.Controls.Add(this.tpForgetMeNot);
-            this.tcTabs.Controls.Add(this.tpModCollection1);
             this.tcTabs.Controls.Add(this.tpModCollection2);
+            this.tcTabs.Controls.Add(this.tpModCollection1);
+            this.tcTabs.Controls.Add(this.tpModForgetMeNot);
             this.tcTabs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcTabs.Location = new System.Drawing.Point(0, 0);
             this.tcTabs.Multiline = true;
             this.tcTabs.Name = "tcTabs";
             this.tcTabs.SelectedIndex = 0;
-            this.tcTabs.Size = new System.Drawing.Size(645, 593);
+            this.tcTabs.Size = new System.Drawing.Size(652, 593);
             this.tcTabs.TabIndex = 0;
             // 
             // tpAbout
@@ -512,7 +1349,7 @@
             this.tpAbout.Controls.Add(this.pictureBox1);
             this.tpAbout.Location = new System.Drawing.Point(4, 58);
             this.tpAbout.Name = "tpAbout";
-            this.tpAbout.Size = new System.Drawing.Size(637, 503);
+            this.tpAbout.Size = new System.Drawing.Size(644, 531);
             this.tpAbout.TabIndex = 11;
             this.tpAbout.Text = "About";
             this.tpAbout.UseVisualStyleBackColor = true;
@@ -521,14 +1358,12 @@
             // 
             this.textBox3.Dock = System.Windows.Forms.DockStyle.Right;
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(142, 0);
+            this.textBox3.Location = new System.Drawing.Point(149, 0);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(495, 503);
+            this.textBox3.Size = new System.Drawing.Size(495, 531);
             this.textBox3.TabIndex = 1;
-            this.textBox3.Text = "Keep Talking and Nobody Explodes helper\r\nWritten by CaitSith2\r\n\r\nCredits to Steel" +
-    " Crate Games for the awesome game.\r\n\r\nCredits to LtHummus for the unofficial man" +
-    "ual hack.\r\n\r\n";
+            this.textBox3.Text = resources.GetString("textBox3.Text");
             // 
             // pictureBox1
             // 
@@ -553,9 +1388,9 @@
             this.tpButtonV1.Controls.Add(this.yellowstrip);
             this.tpButtonV1.Controls.Add(this.bluestrip);
             this.tpButtonV1.Controls.Add(this.button_label);
-            this.tpButtonV1.Location = new System.Drawing.Point(4, 58);
+            this.tpButtonV1.Location = new System.Drawing.Point(4, 22);
             this.tpButtonV1.Name = "tpButtonV1";
-            this.tpButtonV1.Size = new System.Drawing.Size(637, 503);
+            this.tpButtonV1.Size = new System.Drawing.Size(644, 567);
             this.tpButtonV1.TabIndex = 4;
             this.tpButtonV1.Text = "The Button";
             this.tpButtonV1.UseVisualStyleBackColor = true;
@@ -676,9 +1511,9 @@
             // 
             this.tpKeypadsSimonSays.Controls.Add(this.groupBox17);
             this.tpKeypadsSimonSays.Controls.Add(this.groupBox16);
-            this.tpKeypadsSimonSays.Location = new System.Drawing.Point(4, 58);
+            this.tpKeypadsSimonSays.Location = new System.Drawing.Point(4, 22);
             this.tpKeypadsSimonSays.Name = "tpKeypadsSimonSays";
-            this.tpKeypadsSimonSays.Size = new System.Drawing.Size(637, 503);
+            this.tpKeypadsSimonSays.Size = new System.Drawing.Size(644, 567);
             this.tpKeypadsSimonSays.TabIndex = 14;
             this.tpKeypadsSimonSays.Text = "Keypads, Simon Says";
             this.tpKeypadsSimonSays.UseVisualStyleBackColor = true;
@@ -1359,168 +2194,136 @@
             this.label9.TabIndex = 27;
             this.label9.Text = "label9";
             // 
-            // tpWhosOnFirst
+            // tpMemoryWhosOnFirst
             // 
-            this.tpWhosOnFirst.Controls.Add(this.wofStep1Label);
-            this.tpWhosOnFirst.Controls.Add(this.wofOutput);
-            this.tpWhosOnFirst.Controls.Add(this.groupBox4);
-            this.tpWhosOnFirst.Controls.Add(this.groupBox3);
-            this.tpWhosOnFirst.Controls.Add(this.wofButtons);
-            this.tpWhosOnFirst.Location = new System.Drawing.Point(4, 58);
-            this.tpWhosOnFirst.Name = "tpWhosOnFirst";
-            this.tpWhosOnFirst.Size = new System.Drawing.Size(637, 503);
-            this.tpWhosOnFirst.TabIndex = 13;
-            this.tpWhosOnFirst.Text = "Who\'s on First";
-            this.tpWhosOnFirst.UseVisualStyleBackColor = true;
+            this.tpMemoryWhosOnFirst.Controls.Add(this.groupBox21);
+            this.tpMemoryWhosOnFirst.Controls.Add(this.groupBox22);
+            this.tpMemoryWhosOnFirst.Location = new System.Drawing.Point(4, 22);
+            this.tpMemoryWhosOnFirst.Name = "tpMemoryWhosOnFirst";
+            this.tpMemoryWhosOnFirst.Size = new System.Drawing.Size(644, 567);
+            this.tpMemoryWhosOnFirst.TabIndex = 13;
+            this.tpMemoryWhosOnFirst.Text = "Who\'s on First, Memory";
+            this.tpMemoryWhosOnFirst.UseVisualStyleBackColor = true;
             // 
-            // wofStep1Label
+            // groupBox21
             // 
-            this.wofStep1Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wofStep1Label.Location = new System.Drawing.Point(172, 168);
-            this.wofStep1Label.Name = "wofStep1Label";
-            this.wofStep1Label.Size = new System.Drawing.Size(102, 27);
-            this.wofStep1Label.TabIndex = 5;
-            this.wofStep1Label.Text = "HOLD ON";
-            this.wofStep1Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.groupBox21.Controls.Add(this.memoryPositionLabel);
+            this.groupBox21.Controls.Add(this.memoryDebug);
+            this.groupBox21.Controls.Add(this.Num1);
+            this.groupBox21.Controls.Add(this.Num2);
+            this.groupBox21.Controls.Add(this.MemoryReset);
+            this.groupBox21.Controls.Add(this.Num3);
+            this.groupBox21.Controls.Add(this.Num4);
+            this.groupBox21.Controls.Add(this.memoryNumberLabel);
+            this.groupBox21.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox21.Location = new System.Drawing.Point(0, 201);
+            this.groupBox21.Name = "groupBox21";
+            this.groupBox21.Size = new System.Drawing.Size(644, 327);
+            this.groupBox21.TabIndex = 13;
+            this.groupBox21.TabStop = false;
+            this.groupBox21.Text = "Memory";
             // 
-            // wofOutput
+            // memoryPositionLabel
             // 
-            this.wofOutput.Location = new System.Drawing.Point(323, 150);
-            this.wofOutput.Multiline = true;
-            this.wofOutput.Name = "wofOutput";
-            this.wofOutput.Size = new System.Drawing.Size(148, 138);
-            this.wofOutput.TabIndex = 3;
+            this.memoryPositionLabel.AutoSize = true;
+            this.memoryPositionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.memoryPositionLabel.Location = new System.Drawing.Point(6, 16);
+            this.memoryPositionLabel.Name = "memoryPositionLabel";
+            this.memoryPositionLabel.Size = new System.Drawing.Size(84, 24);
+            this.memoryPositionLabel.TabIndex = 9;
+            this.memoryPositionLabel.Text = "Position";
+            this.memoryPositionLabel.Visible = false;
             // 
-            // groupBox4
+            // memoryDebug
             // 
-            this.groupBox4.Controls.Add(this.wofLook);
-            this.groupBox4.Location = new System.Drawing.Point(195, 198);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(56, 77);
-            this.groupBox4.TabIndex = 2;
-            this.groupBox4.TabStop = false;
+            this.memoryDebug.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.memoryDebug.Location = new System.Drawing.Point(23, 51);
+            this.memoryDebug.Multiline = true;
+            this.memoryDebug.Name = "memoryDebug";
+            this.memoryDebug.Size = new System.Drawing.Size(413, 215);
+            this.memoryDebug.TabIndex = 12;
             // 
-            // wofLook
+            // Num1
             // 
-            this.wofLook.Controls.Add(this.rbWOF1);
-            this.wofLook.Controls.Add(this.rbWOF2);
-            this.wofLook.Controls.Add(this.rbWOF3);
-            this.wofLook.Controls.Add(this.rbWOF4);
-            this.wofLook.Controls.Add(this.rbWOF5);
-            this.wofLook.Controls.Add(this.rbWOF6);
-            this.wofLook.Controls.Add(this.radioButton1);
-            this.wofLook.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.wofLook.Location = new System.Drawing.Point(6, 11);
-            this.wofLook.Name = "wofLook";
-            this.wofLook.Size = new System.Drawing.Size(41, 60);
-            this.wofLook.TabIndex = 4;
+            this.Num1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Num1.Location = new System.Drawing.Point(96, 9);
+            this.Num1.Name = "Num1";
+            this.Num1.Size = new System.Drawing.Size(33, 37);
+            this.Num1.TabIndex = 0;
+            this.Num1.Tag = "0";
+            this.Num1.Text = "1";
+            this.Num1.UseVisualStyleBackColor = true;
+            this.Num1.Click += new System.EventHandler(this.Num1_Click);
             // 
-            // rbWOF1
+            // Num2
             // 
-            this.rbWOF1.AutoSize = true;
-            this.rbWOF1.Location = new System.Drawing.Point(3, 3);
-            this.rbWOF1.Name = "rbWOF1";
-            this.rbWOF1.Size = new System.Drawing.Size(14, 13);
-            this.rbWOF1.TabIndex = 0;
-            this.rbWOF1.UseVisualStyleBackColor = true;
-            this.rbWOF1.CheckedChanged += new System.EventHandler(this.rbWOF_CheckedChanged);
+            this.Num2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Num2.Location = new System.Drawing.Point(135, 9);
+            this.Num2.Name = "Num2";
+            this.Num2.Size = new System.Drawing.Size(33, 37);
+            this.Num2.TabIndex = 1;
+            this.Num2.Tag = "1";
+            this.Num2.Text = "2";
+            this.Num2.UseVisualStyleBackColor = true;
+            this.Num2.Click += new System.EventHandler(this.Num1_Click);
             // 
-            // rbWOF2
+            // MemoryReset
             // 
-            this.rbWOF2.AutoSize = true;
-            this.rbWOF2.Location = new System.Drawing.Point(3, 22);
-            this.rbWOF2.Name = "rbWOF2";
-            this.rbWOF2.Size = new System.Drawing.Size(14, 13);
-            this.rbWOF2.TabIndex = 1;
-            this.rbWOF2.UseVisualStyleBackColor = true;
-            this.rbWOF2.CheckedChanged += new System.EventHandler(this.rbWOF_CheckedChanged);
+            this.MemoryReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MemoryReset.Location = new System.Drawing.Point(285, 9);
+            this.MemoryReset.Name = "MemoryReset";
+            this.MemoryReset.Size = new System.Drawing.Size(151, 37);
+            this.MemoryReset.TabIndex = 10;
+            this.MemoryReset.Text = "Reset";
+            this.MemoryReset.UseVisualStyleBackColor = true;
+            this.MemoryReset.Click += new System.EventHandler(this.MemoryReset_Click);
             // 
-            // rbWOF3
+            // Num3
             // 
-            this.rbWOF3.AutoSize = true;
-            this.rbWOF3.Location = new System.Drawing.Point(3, 41);
-            this.rbWOF3.Name = "rbWOF3";
-            this.rbWOF3.Size = new System.Drawing.Size(14, 13);
-            this.rbWOF3.TabIndex = 2;
-            this.rbWOF3.UseVisualStyleBackColor = true;
-            this.rbWOF3.CheckedChanged += new System.EventHandler(this.rbWOF_CheckedChanged);
+            this.Num3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Num3.Location = new System.Drawing.Point(174, 9);
+            this.Num3.Name = "Num3";
+            this.Num3.Size = new System.Drawing.Size(33, 37);
+            this.Num3.TabIndex = 2;
+            this.Num3.Tag = "2";
+            this.Num3.Text = "3";
+            this.Num3.UseVisualStyleBackColor = true;
+            this.Num3.Click += new System.EventHandler(this.Num1_Click);
             // 
-            // rbWOF4
+            // Num4
             // 
-            this.rbWOF4.AutoSize = true;
-            this.rbWOF4.Location = new System.Drawing.Point(23, 3);
-            this.rbWOF4.Name = "rbWOF4";
-            this.rbWOF4.Size = new System.Drawing.Size(14, 13);
-            this.rbWOF4.TabIndex = 3;
-            this.rbWOF4.UseVisualStyleBackColor = true;
-            this.rbWOF4.CheckedChanged += new System.EventHandler(this.rbWOF_CheckedChanged);
+            this.Num4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Num4.Location = new System.Drawing.Point(213, 9);
+            this.Num4.Name = "Num4";
+            this.Num4.Size = new System.Drawing.Size(33, 37);
+            this.Num4.TabIndex = 3;
+            this.Num4.Tag = "3";
+            this.Num4.Text = "4";
+            this.Num4.UseVisualStyleBackColor = true;
+            this.Num4.Click += new System.EventHandler(this.Num1_Click);
             // 
-            // rbWOF5
+            // memoryNumberLabel
             // 
-            this.rbWOF5.AutoSize = true;
-            this.rbWOF5.Location = new System.Drawing.Point(23, 22);
-            this.rbWOF5.Name = "rbWOF5";
-            this.rbWOF5.Size = new System.Drawing.Size(14, 13);
-            this.rbWOF5.TabIndex = 4;
-            this.rbWOF5.UseVisualStyleBackColor = true;
-            this.rbWOF5.CheckedChanged += new System.EventHandler(this.rbWOF_CheckedChanged);
+            this.memoryNumberLabel.AutoSize = true;
+            this.memoryNumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.memoryNumberLabel.Location = new System.Drawing.Point(5, 16);
+            this.memoryNumberLabel.Name = "memoryNumberLabel";
+            this.memoryNumberLabel.Size = new System.Drawing.Size(85, 24);
+            this.memoryNumberLabel.TabIndex = 8;
+            this.memoryNumberLabel.Text = "Number";
+            this.memoryNumberLabel.Visible = false;
             // 
-            // rbWOF6
+            // groupBox22
             // 
-            this.rbWOF6.AutoSize = true;
-            this.rbWOF6.Checked = true;
-            this.rbWOF6.Location = new System.Drawing.Point(23, 41);
-            this.rbWOF6.Name = "rbWOF6";
-            this.rbWOF6.Size = new System.Drawing.Size(14, 13);
-            this.rbWOF6.TabIndex = 5;
-            this.rbWOF6.TabStop = true;
-            this.rbWOF6.UseVisualStyleBackColor = true;
-            this.rbWOF6.CheckedChanged += new System.EventHandler(this.rbWOF_CheckedChanged);
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(43, 3);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(14, 13);
-            this.radioButton1.TabIndex = 6;
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.Visible = false;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.wofStep2);
-            this.groupBox3.Controls.Add(this.wofStep1);
-            this.groupBox3.Location = new System.Drawing.Point(8, 150);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(146, 42);
-            this.groupBox3.TabIndex = 1;
-            this.groupBox3.TabStop = false;
-            // 
-            // wofStep2
-            // 
-            this.wofStep2.AutoSize = true;
-            this.wofStep2.Location = new System.Drawing.Point(78, 16);
-            this.wofStep2.Name = "wofStep2";
-            this.wofStep2.Size = new System.Drawing.Size(56, 17);
-            this.wofStep2.TabIndex = 1;
-            this.wofStep2.TabStop = true;
-            this.wofStep2.Text = "Step 2";
-            this.wofStep2.UseVisualStyleBackColor = true;
-            this.wofStep2.CheckedChanged += new System.EventHandler(this.wofStep2_CheckedChanged);
-            // 
-            // wofStep1
-            // 
-            this.wofStep1.AutoSize = true;
-            this.wofStep1.Checked = true;
-            this.wofStep1.Location = new System.Drawing.Point(16, 16);
-            this.wofStep1.Name = "wofStep1";
-            this.wofStep1.Size = new System.Drawing.Size(56, 17);
-            this.wofStep1.TabIndex = 0;
-            this.wofStep1.TabStop = true;
-            this.wofStep1.Text = "Step 1";
-            this.wofStep1.UseVisualStyleBackColor = true;
-            this.wofStep1.CheckedChanged += new System.EventHandler(this.wofStep1_CheckedChanged);
+            this.groupBox22.Controls.Add(this.wofButtons);
+            this.groupBox22.Controls.Add(this.panel2);
+            this.groupBox22.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox22.Location = new System.Drawing.Point(0, 0);
+            this.groupBox22.Name = "groupBox22";
+            this.groupBox22.Size = new System.Drawing.Size(644, 201);
+            this.groupBox22.TabIndex = 6;
+            this.groupBox22.TabStop = false;
+            this.groupBox22.Text = "Who\'s on First";
             // 
             // wofButtons
             // 
@@ -1553,9 +2356,9 @@
             this.wofButtons.Controls.Add(this.wofButton27);
             this.wofButtons.Controls.Add(this.wofButton28);
             this.wofButtons.Controls.Add(this.wofStep2Label);
-            this.wofButtons.Location = new System.Drawing.Point(8, 3);
+            this.wofButtons.Location = new System.Drawing.Point(8, 19);
             this.wofButtons.Name = "wofButtons";
-            this.wofButtons.Size = new System.Drawing.Size(471, 141);
+            this.wofButtons.Size = new System.Drawing.Size(468, 141);
             this.wofButtons.TabIndex = 0;
             // 
             // wofButton1
@@ -1847,137 +2650,190 @@
             this.wofStep2Label.TabIndex = 6;
             this.wofStep2Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // tpMemory
+            // panel2
             // 
-            this.tpMemory.Controls.Add(this.memoryDebug);
-            this.tpMemory.Controls.Add(this.memoryLabel);
-            this.tpMemory.Controls.Add(this.MemoryReset);
-            this.tpMemory.Controls.Add(this.memoryPositionLabel);
-            this.tpMemory.Controls.Add(this.memoryNumberLabel);
-            this.tpMemory.Controls.Add(this.Num4);
-            this.tpMemory.Controls.Add(this.Num3);
-            this.tpMemory.Controls.Add(this.Num2);
-            this.tpMemory.Controls.Add(this.Num1);
-            this.tpMemory.Location = new System.Drawing.Point(4, 58);
-            this.tpMemory.Name = "tpMemory";
-            this.tpMemory.Size = new System.Drawing.Size(637, 503);
-            this.tpMemory.TabIndex = 9;
-            this.tpMemory.Text = "Memory";
-            this.tpMemory.UseVisualStyleBackColor = true;
+            this.panel2.Controls.Add(this.groupBox3);
+            this.panel2.Controls.Add(this.whosOnFirstStep1);
+            this.panel2.Controls.Add(this.wofOutput);
+            this.panel2.Location = new System.Drawing.Point(482, 19);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(153, 181);
+            this.panel2.TabIndex = 10;
             // 
-            // memoryDebug
+            // groupBox3
             // 
-            this.memoryDebug.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.memoryDebug.Location = new System.Drawing.Point(24, 119);
-            this.memoryDebug.Multiline = true;
-            this.memoryDebug.Name = "memoryDebug";
-            this.memoryDebug.Size = new System.Drawing.Size(413, 169);
-            this.memoryDebug.TabIndex = 12;
+            this.groupBox3.Controls.Add(this.wofStep2);
+            this.groupBox3.Controls.Add(this.wofStep1);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox3.Location = new System.Drawing.Point(0, 141);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(153, 40);
+            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabStop = false;
             // 
-            // memoryLabel
+            // wofStep2
             // 
-            this.memoryLabel.AutoSize = true;
-            this.memoryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.memoryLabel.Location = new System.Drawing.Point(8, 73);
-            this.memoryLabel.Name = "memoryLabel";
-            this.memoryLabel.Size = new System.Drawing.Size(0, 37);
-            this.memoryLabel.TabIndex = 11;
+            this.wofStep2.AutoSize = true;
+            this.wofStep2.Location = new System.Drawing.Point(78, 14);
+            this.wofStep2.Name = "wofStep2";
+            this.wofStep2.Size = new System.Drawing.Size(56, 17);
+            this.wofStep2.TabIndex = 1;
+            this.wofStep2.TabStop = true;
+            this.wofStep2.Text = "Step 2";
+            this.wofStep2.UseVisualStyleBackColor = true;
+            this.wofStep2.CheckedChanged += new System.EventHandler(this.wofStep2_CheckedChanged);
             // 
-            // MemoryReset
+            // wofStep1
             // 
-            this.MemoryReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MemoryReset.Location = new System.Drawing.Point(287, 22);
-            this.MemoryReset.Name = "MemoryReset";
-            this.MemoryReset.Size = new System.Drawing.Size(151, 37);
-            this.MemoryReset.TabIndex = 10;
-            this.MemoryReset.Text = "Reset";
-            this.MemoryReset.UseVisualStyleBackColor = true;
-            this.MemoryReset.Click += new System.EventHandler(this.MemoryReset_Click);
+            this.wofStep1.AutoSize = true;
+            this.wofStep1.Checked = true;
+            this.wofStep1.Location = new System.Drawing.Point(16, 14);
+            this.wofStep1.Name = "wofStep1";
+            this.wofStep1.Size = new System.Drawing.Size(56, 17);
+            this.wofStep1.TabIndex = 0;
+            this.wofStep1.TabStop = true;
+            this.wofStep1.Text = "Step 1";
+            this.wofStep1.UseVisualStyleBackColor = true;
+            this.wofStep1.CheckedChanged += new System.EventHandler(this.wofStep1_CheckedChanged);
             // 
-            // memoryPositionLabel
+            // whosOnFirstStep1
             // 
-            this.memoryPositionLabel.AutoSize = true;
-            this.memoryPositionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.memoryPositionLabel.Location = new System.Drawing.Point(8, 29);
-            this.memoryPositionLabel.Name = "memoryPositionLabel";
-            this.memoryPositionLabel.Size = new System.Drawing.Size(84, 24);
-            this.memoryPositionLabel.TabIndex = 9;
-            this.memoryPositionLabel.Text = "Position";
-            this.memoryPositionLabel.Visible = false;
+            this.whosOnFirstStep1.Controls.Add(this.groupBox4);
+            this.whosOnFirstStep1.Controls.Add(this.wofStep1Label);
+            this.whosOnFirstStep1.Location = new System.Drawing.Point(12, 10);
+            this.whosOnFirstStep1.Name = "whosOnFirstStep1";
+            this.whosOnFirstStep1.Size = new System.Drawing.Size(130, 115);
+            this.whosOnFirstStep1.TabIndex = 9;
+            this.whosOnFirstStep1.Visible = false;
             // 
-            // memoryNumberLabel
+            // groupBox4
             // 
-            this.memoryNumberLabel.AutoSize = true;
-            this.memoryNumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.memoryNumberLabel.Location = new System.Drawing.Point(7, 29);
-            this.memoryNumberLabel.Name = "memoryNumberLabel";
-            this.memoryNumberLabel.Size = new System.Drawing.Size(85, 24);
-            this.memoryNumberLabel.TabIndex = 8;
-            this.memoryNumberLabel.Text = "Number";
-            this.memoryNumberLabel.Visible = false;
+            this.groupBox4.Controls.Add(this.wofLook);
+            this.groupBox4.Location = new System.Drawing.Point(36, 31);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(56, 77);
+            this.groupBox4.TabIndex = 2;
+            this.groupBox4.TabStop = false;
             // 
-            // Num4
+            // wofLook
             // 
-            this.Num4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Num4.Location = new System.Drawing.Point(215, 22);
-            this.Num4.Name = "Num4";
-            this.Num4.Size = new System.Drawing.Size(33, 37);
-            this.Num4.TabIndex = 3;
-            this.Num4.Tag = "3";
-            this.Num4.Text = "4";
-            this.Num4.UseVisualStyleBackColor = true;
-            this.Num4.Click += new System.EventHandler(this.Num1_Click);
+            this.wofLook.Controls.Add(this.rbWOF1);
+            this.wofLook.Controls.Add(this.rbWOF2);
+            this.wofLook.Controls.Add(this.rbWOF3);
+            this.wofLook.Controls.Add(this.rbWOF4);
+            this.wofLook.Controls.Add(this.rbWOF5);
+            this.wofLook.Controls.Add(this.rbWOF6);
+            this.wofLook.Controls.Add(this.radioButton1);
+            this.wofLook.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.wofLook.Location = new System.Drawing.Point(6, 11);
+            this.wofLook.Name = "wofLook";
+            this.wofLook.Size = new System.Drawing.Size(41, 60);
+            this.wofLook.TabIndex = 4;
             // 
-            // Num3
+            // rbWOF1
             // 
-            this.Num3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Num3.Location = new System.Drawing.Point(176, 22);
-            this.Num3.Name = "Num3";
-            this.Num3.Size = new System.Drawing.Size(33, 37);
-            this.Num3.TabIndex = 2;
-            this.Num3.Tag = "2";
-            this.Num3.Text = "3";
-            this.Num3.UseVisualStyleBackColor = true;
-            this.Num3.Click += new System.EventHandler(this.Num1_Click);
+            this.rbWOF1.AutoSize = true;
+            this.rbWOF1.Location = new System.Drawing.Point(3, 3);
+            this.rbWOF1.Name = "rbWOF1";
+            this.rbWOF1.Size = new System.Drawing.Size(14, 13);
+            this.rbWOF1.TabIndex = 0;
+            this.rbWOF1.UseVisualStyleBackColor = true;
+            this.rbWOF1.CheckedChanged += new System.EventHandler(this.rbWOF_CheckedChanged);
             // 
-            // Num2
+            // rbWOF2
             // 
-            this.Num2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Num2.Location = new System.Drawing.Point(137, 22);
-            this.Num2.Name = "Num2";
-            this.Num2.Size = new System.Drawing.Size(33, 37);
-            this.Num2.TabIndex = 1;
-            this.Num2.Tag = "1";
-            this.Num2.Text = "2";
-            this.Num2.UseVisualStyleBackColor = true;
-            this.Num2.Click += new System.EventHandler(this.Num1_Click);
+            this.rbWOF2.AutoSize = true;
+            this.rbWOF2.Location = new System.Drawing.Point(3, 22);
+            this.rbWOF2.Name = "rbWOF2";
+            this.rbWOF2.Size = new System.Drawing.Size(14, 13);
+            this.rbWOF2.TabIndex = 1;
+            this.rbWOF2.UseVisualStyleBackColor = true;
+            this.rbWOF2.CheckedChanged += new System.EventHandler(this.rbWOF_CheckedChanged);
             // 
-            // Num1
+            // rbWOF3
             // 
-            this.Num1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Num1.Location = new System.Drawing.Point(98, 22);
-            this.Num1.Name = "Num1";
-            this.Num1.Size = new System.Drawing.Size(33, 37);
-            this.Num1.TabIndex = 0;
-            this.Num1.Tag = "0";
-            this.Num1.Text = "1";
-            this.Num1.UseVisualStyleBackColor = true;
-            this.Num1.Click += new System.EventHandler(this.Num1_Click);
+            this.rbWOF3.AutoSize = true;
+            this.rbWOF3.Location = new System.Drawing.Point(3, 41);
+            this.rbWOF3.Name = "rbWOF3";
+            this.rbWOF3.Size = new System.Drawing.Size(14, 13);
+            this.rbWOF3.TabIndex = 2;
+            this.rbWOF3.UseVisualStyleBackColor = true;
+            this.rbWOF3.CheckedChanged += new System.EventHandler(this.rbWOF_CheckedChanged);
+            // 
+            // rbWOF4
+            // 
+            this.rbWOF4.AutoSize = true;
+            this.rbWOF4.Location = new System.Drawing.Point(23, 3);
+            this.rbWOF4.Name = "rbWOF4";
+            this.rbWOF4.Size = new System.Drawing.Size(14, 13);
+            this.rbWOF4.TabIndex = 3;
+            this.rbWOF4.UseVisualStyleBackColor = true;
+            this.rbWOF4.CheckedChanged += new System.EventHandler(this.rbWOF_CheckedChanged);
+            // 
+            // rbWOF5
+            // 
+            this.rbWOF5.AutoSize = true;
+            this.rbWOF5.Location = new System.Drawing.Point(23, 22);
+            this.rbWOF5.Name = "rbWOF5";
+            this.rbWOF5.Size = new System.Drawing.Size(14, 13);
+            this.rbWOF5.TabIndex = 4;
+            this.rbWOF5.UseVisualStyleBackColor = true;
+            this.rbWOF5.CheckedChanged += new System.EventHandler(this.rbWOF_CheckedChanged);
+            // 
+            // rbWOF6
+            // 
+            this.rbWOF6.AutoSize = true;
+            this.rbWOF6.Checked = true;
+            this.rbWOF6.Location = new System.Drawing.Point(23, 41);
+            this.rbWOF6.Name = "rbWOF6";
+            this.rbWOF6.Size = new System.Drawing.Size(14, 13);
+            this.rbWOF6.TabIndex = 5;
+            this.rbWOF6.TabStop = true;
+            this.rbWOF6.UseVisualStyleBackColor = true;
+            this.rbWOF6.CheckedChanged += new System.EventHandler(this.rbWOF_CheckedChanged);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(43, 3);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(14, 13);
+            this.radioButton1.TabIndex = 6;
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.Visible = false;
+            // 
+            // wofStep1Label
+            // 
+            this.wofStep1Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.wofStep1Label.Location = new System.Drawing.Point(3, 5);
+            this.wofStep1Label.Name = "wofStep1Label";
+            this.wofStep1Label.Size = new System.Drawing.Size(122, 26);
+            this.wofStep1Label.TabIndex = 8;
+            this.wofStep1Label.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // wofOutput
+            // 
+            this.wofOutput.Dock = System.Windows.Forms.DockStyle.Top;
+            this.wofOutput.Location = new System.Drawing.Point(0, 0);
+            this.wofOutput.Multiline = true;
+            this.wofOutput.Name = "wofOutput";
+            this.wofOutput.Size = new System.Drawing.Size(153, 141);
+            this.wofOutput.TabIndex = 3;
             // 
             // tpMaze
             // 
             this.tpMaze.Controls.Add(this.mazeOutput);
+            this.tpMaze.Controls.Add(this.mazeStart);
+            this.tpMaze.Controls.Add(this.mazeSelection);
+            this.tpMaze.Controls.Add(this.mazeEnd);
             this.tpMaze.Controls.Add(this.groupBox2);
             this.tpMaze.Controls.Add(this.label4);
             this.tpMaze.Controls.Add(this.label3);
             this.tpMaze.Controls.Add(this.label2);
-            this.tpMaze.Controls.Add(this.mazeStart);
-            this.tpMaze.Controls.Add(this.mazeSelection);
-            this.tpMaze.Controls.Add(this.mazeEnd);
             this.tpMaze.Controls.Add(this.pbMaze);
-            this.tpMaze.Location = new System.Drawing.Point(4, 58);
+            this.tpMaze.Location = new System.Drawing.Point(4, 22);
             this.tpMaze.Name = "tpMaze";
-            this.tpMaze.Size = new System.Drawing.Size(637, 503);
+            this.tpMaze.Size = new System.Drawing.Size(644, 567);
             this.tpMaze.TabIndex = 12;
             this.tpMaze.Text = "Mazes";
             this.tpMaze.UseVisualStyleBackColor = true;
@@ -1989,6 +2845,36 @@
             this.mazeOutput.Name = "mazeOutput";
             this.mazeOutput.Size = new System.Drawing.Size(187, 207);
             this.mazeOutput.TabIndex = 8;
+            // 
+            // mazeStart
+            // 
+            this.mazeStart.Location = new System.Drawing.Point(382, 6);
+            this.mazeStart.MaxLength = 2;
+            this.mazeStart.Name = "mazeStart";
+            this.mazeStart.Size = new System.Drawing.Size(79, 20);
+            this.mazeStart.TabIndex = 2;
+            this.mazeStart.Visible = false;
+            this.mazeStart.TextChanged += new System.EventHandler(this.mazeSelection_TextChanged);
+            // 
+            // mazeSelection
+            // 
+            this.mazeSelection.Location = new System.Drawing.Point(382, 3);
+            this.mazeSelection.MaxLength = 2;
+            this.mazeSelection.Name = "mazeSelection";
+            this.mazeSelection.Size = new System.Drawing.Size(79, 20);
+            this.mazeSelection.TabIndex = 1;
+            this.mazeSelection.Visible = false;
+            this.mazeSelection.TextChanged += new System.EventHandler(this.mazeSelection_TextChanged);
+            // 
+            // mazeEnd
+            // 
+            this.mazeEnd.Location = new System.Drawing.Point(382, 6);
+            this.mazeEnd.MaxLength = 2;
+            this.mazeEnd.Name = "mazeEnd";
+            this.mazeEnd.Size = new System.Drawing.Size(79, 20);
+            this.mazeEnd.TabIndex = 3;
+            this.mazeEnd.Visible = false;
+            this.mazeEnd.TextChanged += new System.EventHandler(this.mazeSelection_TextChanged);
             // 
             // groupBox2
             // 
@@ -2076,36 +2962,6 @@
             this.label2.Text = "Green Circle";
             this.label2.Visible = false;
             // 
-            // mazeStart
-            // 
-            this.mazeStart.Location = new System.Drawing.Point(382, 6);
-            this.mazeStart.MaxLength = 2;
-            this.mazeStart.Name = "mazeStart";
-            this.mazeStart.Size = new System.Drawing.Size(79, 20);
-            this.mazeStart.TabIndex = 2;
-            this.mazeStart.Visible = false;
-            this.mazeStart.TextChanged += new System.EventHandler(this.mazeSelection_TextChanged);
-            // 
-            // mazeSelection
-            // 
-            this.mazeSelection.Location = new System.Drawing.Point(382, 3);
-            this.mazeSelection.MaxLength = 2;
-            this.mazeSelection.Name = "mazeSelection";
-            this.mazeSelection.Size = new System.Drawing.Size(79, 20);
-            this.mazeSelection.TabIndex = 1;
-            this.mazeSelection.Visible = false;
-            this.mazeSelection.TextChanged += new System.EventHandler(this.mazeSelection_TextChanged);
-            // 
-            // mazeEnd
-            // 
-            this.mazeEnd.Location = new System.Drawing.Point(382, 6);
-            this.mazeEnd.MaxLength = 2;
-            this.mazeEnd.Name = "mazeEnd";
-            this.mazeEnd.Size = new System.Drawing.Size(79, 20);
-            this.mazeEnd.TabIndex = 3;
-            this.mazeEnd.Visible = false;
-            this.mazeEnd.TextChanged += new System.EventHandler(this.mazeSelection_TextChanged);
-            // 
             // pbMaze
             // 
             this.pbMaze.Location = new System.Drawing.Point(3, 3);
@@ -2119,115 +2975,24 @@
             // tpWires
             // 
             this.tpWires.Controls.Add(this.flowLayoutPanel2);
-            this.tpWires.Location = new System.Drawing.Point(4, 58);
+            this.tpWires.Location = new System.Drawing.Point(4, 22);
             this.tpWires.Name = "tpWires";
             this.tpWires.Padding = new System.Windows.Forms.Padding(3);
-            this.tpWires.Size = new System.Drawing.Size(637, 503);
+            this.tpWires.Size = new System.Drawing.Size(644, 567);
             this.tpWires.TabIndex = 0;
             this.tpWires.Text = "Simple Wires, Complicated Wires, Wire Sequences";
             this.tpWires.UseVisualStyleBackColor = true;
             // 
-            // groupBox12
+            // flowLayoutPanel2
             // 
-            this.groupBox12.Controls.Add(this.label69);
-            this.groupBox12.Controls.Add(this.label51);
-            this.groupBox12.Controls.Add(this.label52);
-            this.groupBox12.Controls.Add(this.label48);
-            this.groupBox12.Controls.Add(this.label25);
-            this.groupBox12.Controls.Add(this.cw_input);
-            this.groupBox12.Controls.Add(this.cw_output);
-            this.groupBox12.Controls.Add(this.cw_reset);
-            this.groupBox12.Controls.Add(this.cw_all_wires);
-            this.groupBox12.Location = new System.Drawing.Point(3, 105);
-            this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(618, 269);
-            this.groupBox12.TabIndex = 10;
-            this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "Complicated Wires";
-            // 
-            // label69
-            // 
-            this.label69.AutoSize = true;
-            this.label69.Location = new System.Drawing.Point(176, 230);
-            this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(339, 26);
-            this.label69.TabIndex = 16;
-            this.label69.Text = "Enter in the Letters RBWLS based on what each wire has as a group. \r\n(You can ign" +
-    "ore White, if there is Red or Blue Coloring.)";
-            // 
-            // label51
-            // 
-            this.label51.AutoSize = true;
-            this.label51.Location = new System.Drawing.Point(6, 56);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(39, 13);
-            this.label51.TabIndex = 15;
-            this.label51.Text = "Output";
-            // 
-            // label52
-            // 
-            this.label52.AutoSize = true;
-            this.label52.Location = new System.Drawing.Point(6, 26);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(31, 13);
-            this.label52.TabIndex = 14;
-            this.label52.Text = "Input";
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(174, 163);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(185, 65);
-            this.label48.TabIndex = 13;
-            this.label48.Text = "C = Cut\r\nD = Don\'t Cut\r\nS = Cut if Last digit of Serial is Even\r\nB = Cut if there" +
-    " are 2 or more batteries\r\nP = Cut if there is a Parallel Port";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(6, 163);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(162, 91);
-            this.label25.TabIndex = 12;
-            this.label25.Text = "R = Red\r\nB = Blue\r\nW = White\r\nL = LED / Light\r\nS = Star / Symbol\r\n/ = New Wire Se" +
-    "quence Panel\r\nSeperate each wire with a space";
-            // 
-            // cw_input
-            // 
-            this.cw_input.Location = new System.Drawing.Point(53, 23);
-            this.cw_input.Name = "cw_input";
-            this.cw_input.Size = new System.Drawing.Size(559, 20);
-            this.cw_input.TabIndex = 8;
-            this.cw_input.TextChanged += new System.EventHandler(this.Complicated_Wires_Event);
-            // 
-            // cw_output
-            // 
-            this.cw_output.Location = new System.Drawing.Point(53, 53);
-            this.cw_output.Multiline = true;
-            this.cw_output.Name = "cw_output";
-            this.cw_output.Size = new System.Drawing.Size(559, 104);
-            this.cw_output.TabIndex = 9;
-            // 
-            // cw_reset
-            // 
-            this.cw_reset.Location = new System.Drawing.Point(392, 204);
-            this.cw_reset.Name = "cw_reset";
-            this.cw_reset.Size = new System.Drawing.Size(108, 25);
-            this.cw_reset.TabIndex = 10;
-            this.cw_reset.Text = "Reset";
-            this.cw_reset.UseVisualStyleBackColor = true;
-            this.cw_reset.Click += new System.EventHandler(this.cw_reset_Click);
-            // 
-            // cw_all_wires
-            // 
-            this.cw_all_wires.Location = new System.Drawing.Point(392, 168);
-            this.cw_all_wires.Name = "cw_all_wires";
-            this.cw_all_wires.Size = new System.Drawing.Size(106, 25);
-            this.cw_all_wires.TabIndex = 11;
-            this.cw_all_wires.Text = "Set All wire types";
-            this.cw_all_wires.UseVisualStyleBackColor = true;
-            this.cw_all_wires.Click += new System.EventHandler(this.cw_all_wires_Click);
+            this.flowLayoutPanel2.Controls.Add(this.groupBox11);
+            this.flowLayoutPanel2.Controls.Add(this.groupBox12);
+            this.flowLayoutPanel2.Controls.Add(this.groupBox1);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(638, 561);
+            this.flowLayoutPanel2.TabIndex = 0;
             // 
             // groupBox11
             // 
@@ -2409,6 +3174,108 @@
             this.wires_input.TabIndex = 10;
             this.wires_input.TextChanged += new System.EventHandler(this.wires_Input_TextChanged);
             // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.label69);
+            this.groupBox12.Controls.Add(this.label51);
+            this.groupBox12.Controls.Add(this.label52);
+            this.groupBox12.Controls.Add(this.label48);
+            this.groupBox12.Controls.Add(this.label25);
+            this.groupBox12.Controls.Add(this.cw_input);
+            this.groupBox12.Controls.Add(this.cw_output);
+            this.groupBox12.Controls.Add(this.cw_reset);
+            this.groupBox12.Controls.Add(this.cw_all_wires);
+            this.groupBox12.Location = new System.Drawing.Point(3, 105);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(618, 269);
+            this.groupBox12.TabIndex = 10;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "Complicated Wires";
+            // 
+            // label69
+            // 
+            this.label69.AutoSize = true;
+            this.label69.Location = new System.Drawing.Point(176, 230);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(339, 26);
+            this.label69.TabIndex = 16;
+            this.label69.Text = "Enter in the Letters RBWLS based on what each wire has as a group. \r\n(You can ign" +
+    "ore White, if there is Red or Blue Coloring.)";
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(6, 56);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(39, 13);
+            this.label51.TabIndex = 15;
+            this.label51.Text = "Output";
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(6, 26);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(31, 13);
+            this.label52.TabIndex = 14;
+            this.label52.Text = "Input";
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(174, 163);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(185, 65);
+            this.label48.TabIndex = 13;
+            this.label48.Text = "C = Cut\r\nD = Don\'t Cut\r\nS = Cut if Last digit of Serial is Even\r\nB = Cut if there" +
+    " are 2 or more batteries\r\nP = Cut if there is a Parallel Port";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(6, 163);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(162, 91);
+            this.label25.TabIndex = 12;
+            this.label25.Text = "R = Red\r\nB = Blue\r\nW = White\r\nL = LED / Light\r\nS = Star / Symbol\r\n/ = New Wire Se" +
+    "quence Panel\r\nSeperate each wire with a space";
+            // 
+            // cw_input
+            // 
+            this.cw_input.Location = new System.Drawing.Point(53, 23);
+            this.cw_input.Name = "cw_input";
+            this.cw_input.Size = new System.Drawing.Size(559, 20);
+            this.cw_input.TabIndex = 8;
+            this.cw_input.TextChanged += new System.EventHandler(this.Complicated_Wires_Event);
+            // 
+            // cw_output
+            // 
+            this.cw_output.Location = new System.Drawing.Point(53, 53);
+            this.cw_output.Multiline = true;
+            this.cw_output.Name = "cw_output";
+            this.cw_output.Size = new System.Drawing.Size(559, 104);
+            this.cw_output.TabIndex = 9;
+            // 
+            // cw_reset
+            // 
+            this.cw_reset.Location = new System.Drawing.Point(392, 204);
+            this.cw_reset.Name = "cw_reset";
+            this.cw_reset.Size = new System.Drawing.Size(108, 25);
+            this.cw_reset.TabIndex = 10;
+            this.cw_reset.Text = "Reset";
+            this.cw_reset.UseVisualStyleBackColor = true;
+            this.cw_reset.Click += new System.EventHandler(this.cw_reset_Click);
+            // 
+            // cw_all_wires
+            // 
+            this.cw_all_wires.Location = new System.Drawing.Point(392, 168);
+            this.cw_all_wires.Name = "cw_all_wires";
+            this.cw_all_wires.Size = new System.Drawing.Size(106, 25);
+            this.cw_all_wires.TabIndex = 11;
+            this.cw_all_wires.Text = "Set All wire types";
+            this.cw_all_wires.UseVisualStyleBackColor = true;
+            this.cw_all_wires.Click += new System.EventHandler(this.cw_all_wires_Click);
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label63);
@@ -2481,43 +3348,30 @@
             // tpPasswordMorseCode
             // 
             this.tpPasswordMorseCode.Controls.Add(this.scPasswordMorseCode);
-            this.tpPasswordMorseCode.Location = new System.Drawing.Point(4, 58);
+            this.tpPasswordMorseCode.Location = new System.Drawing.Point(4, 40);
             this.tpPasswordMorseCode.Name = "tpPasswordMorseCode";
-            this.tpPasswordMorseCode.Size = new System.Drawing.Size(637, 531);
+            this.tpPasswordMorseCode.Size = new System.Drawing.Size(644, 549);
             this.tpPasswordMorseCode.TabIndex = 8;
             this.tpPasswordMorseCode.Text = "Passwords, Morse Code";
             this.tpPasswordMorseCode.UseVisualStyleBackColor = true;
             // 
-            // groupBox14
+            // scPasswordMorseCode
             // 
-            this.groupBox14.Controls.Add(this.splitContainer3);
-            this.groupBox14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox14.Location = new System.Drawing.Point(0, 0);
-            this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(637, 195);
-            this.groupBox14.TabIndex = 2;
-            this.groupBox14.TabStop = false;
-            this.groupBox14.Text = "Morse Code";
+            this.scPasswordMorseCode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scPasswordMorseCode.Location = new System.Drawing.Point(0, 0);
+            this.scPasswordMorseCode.Name = "scPasswordMorseCode";
+            this.scPasswordMorseCode.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // MorseCodeInput
+            // scPasswordMorseCode.Panel1
             // 
-            this.MorseCodeInput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MorseCodeInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MorseCodeInput.Location = new System.Drawing.Point(0, 0);
-            this.MorseCodeInput.Name = "MorseCodeInput";
-            this.MorseCodeInput.Size = new System.Drawing.Size(631, 31);
-            this.MorseCodeInput.TabIndex = 0;
-            this.MorseCodeInput.TextChanged += new System.EventHandler(this.MorseCodeInput_TextChanged);
+            this.scPasswordMorseCode.Panel1.Controls.Add(this.groupBox13);
             // 
-            // MorseCodeOutput
+            // scPasswordMorseCode.Panel2
             // 
-            this.MorseCodeOutput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MorseCodeOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MorseCodeOutput.Location = new System.Drawing.Point(0, 0);
-            this.MorseCodeOutput.Multiline = true;
-            this.MorseCodeOutput.Name = "MorseCodeOutput";
-            this.MorseCodeOutput.Size = new System.Drawing.Size(631, 141);
-            this.MorseCodeOutput.TabIndex = 1;
+            this.scPasswordMorseCode.Panel2.Controls.Add(this.groupBox14);
+            this.scPasswordMorseCode.Size = new System.Drawing.Size(644, 549);
+            this.scPasswordMorseCode.SplitterDistance = 343;
+            this.scPasswordMorseCode.TabIndex = 0;
             // 
             // groupBox13
             // 
@@ -2525,41 +3379,48 @@
             this.groupBox13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox13.Location = new System.Drawing.Point(0, 0);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(637, 332);
+            this.groupBox13.Size = new System.Drawing.Size(644, 343);
             this.groupBox13.TabIndex = 11;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Password";
             // 
-            // passwordClear
+            // splitContainer5
             // 
-            this.passwordClear.Dock = System.Windows.Forms.DockStyle.Left;
-            this.passwordClear.Location = new System.Drawing.Point(291, 39);
-            this.passwordClear.Name = "passwordClear";
-            this.passwordClear.Size = new System.Drawing.Size(50, 115);
-            this.passwordClear.TabIndex = 6;
-            this.passwordClear.Text = "Clear";
-            this.passwordClear.UseVisualStyleBackColor = true;
-            this.passwordClear.Click += new System.EventHandler(this.PasswordClear_Click);
+            this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer5.Location = new System.Drawing.Point(3, 16);
+            this.splitContainer5.Name = "splitContainer5";
+            this.splitContainer5.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // passResults
+            // splitContainer5.Panel1
             // 
-            this.passResults.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.passResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passResults.Location = new System.Drawing.Point(0, 0);
-            this.passResults.Multiline = true;
-            this.passResults.Name = "passResults";
-            this.passResults.Size = new System.Drawing.Size(631, 155);
-            this.passResults.TabIndex = 5;
+            this.splitContainer5.Panel1.Controls.Add(this.splitContainer6);
             // 
-            // label15
+            // splitContainer5.Panel2
             // 
-            this.label15.AutoSize = true;
-            this.label15.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label15.Location = new System.Drawing.Point(291, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(92, 39);
-            this.label15.TabIndex = 10;
-            this.label15.Text = "<--- Letters Never \r\n<--- present in \r\n<--- that column:";
+            this.splitContainer5.Panel2.Controls.Add(this.passResults);
+            this.splitContainer5.Size = new System.Drawing.Size(638, 324);
+            this.splitContainer5.SplitterDistance = 159;
+            this.splitContainer5.TabIndex = 11;
+            // 
+            // splitContainer6
+            // 
+            this.splitContainer6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer6.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer6.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer6.Name = "splitContainer6";
+            // 
+            // splitContainer6.Panel1
+            // 
+            this.splitContainer6.Panel1.Controls.Add(this.fpPassword);
+            // 
+            // splitContainer6.Panel2
+            // 
+            this.splitContainer6.Panel2.Controls.Add(this.passwordClear);
+            this.splitContainer6.Panel2.Controls.Add(this.label15);
+            this.splitContainer6.Panel2.Controls.Add(this.fpPasswordLettersNotPresent);
+            this.splitContainer6.Size = new System.Drawing.Size(638, 159);
+            this.splitContainer6.SplitterDistance = 84;
+            this.splitContainer6.TabIndex = 0;
             // 
             // fpPassword
             // 
@@ -2571,7 +3432,7 @@
             this.fpPassword.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fpPassword.Location = new System.Drawing.Point(0, 0);
             this.fpPassword.Name = "fpPassword";
-            this.fpPassword.Size = new System.Drawing.Size(84, 154);
+            this.fpPassword.Size = new System.Drawing.Size(84, 159);
             this.fpPassword.TabIndex = 7;
             // 
             // pass1
@@ -2624,6 +3485,27 @@
             this.pass5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.pass5.TextChanged += new System.EventHandler(this.Password_TextChanged);
             // 
+            // passwordClear
+            // 
+            this.passwordClear.Dock = System.Windows.Forms.DockStyle.Left;
+            this.passwordClear.Location = new System.Drawing.Point(291, 39);
+            this.passwordClear.Name = "passwordClear";
+            this.passwordClear.Size = new System.Drawing.Size(50, 120);
+            this.passwordClear.TabIndex = 6;
+            this.passwordClear.Text = "Clear";
+            this.passwordClear.UseVisualStyleBackColor = true;
+            this.passwordClear.Click += new System.EventHandler(this.PasswordClear_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label15.Location = new System.Drawing.Point(291, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(92, 39);
+            this.label15.TabIndex = 10;
+            this.label15.Text = "<--- Letters Never \r\n<--- present in \r\n<--- that column:";
+            // 
             // fpPasswordLettersNotPresent
             // 
             this.fpPasswordLettersNotPresent.Controls.Add(this.label10);
@@ -2635,7 +3517,7 @@
             this.fpPasswordLettersNotPresent.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.fpPasswordLettersNotPresent.Location = new System.Drawing.Point(0, 0);
             this.fpPasswordLettersNotPresent.Name = "fpPasswordLettersNotPresent";
-            this.fpPasswordLettersNotPresent.Size = new System.Drawing.Size(291, 154);
+            this.fpPasswordLettersNotPresent.Size = new System.Drawing.Size(291, 159);
             this.fpPasswordLettersNotPresent.TabIndex = 9;
             // 
             // label10
@@ -2688,127 +3570,82 @@
             this.label14.TabIndex = 12;
             this.label14.Text = "label14";
             // 
-            // tpNeedyKnobV1
+            // passResults
             // 
-            this.tpNeedyKnobV1.Controls.Add(this.fpKnob);
-            this.tpNeedyKnobV1.Controls.Add(this.nk64);
-            this.tpNeedyKnobV1.Controls.Add(this.nn_label);
-            this.tpNeedyKnobV1.Location = new System.Drawing.Point(4, 58);
-            this.tpNeedyKnobV1.Name = "tpNeedyKnobV1";
-            this.tpNeedyKnobV1.Size = new System.Drawing.Size(637, 503);
-            this.tpNeedyKnobV1.TabIndex = 2;
-            this.tpNeedyKnobV1.Text = "Knobs";
-            this.tpNeedyKnobV1.UseVisualStyleBackColor = true;
+            this.passResults.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.passResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passResults.Location = new System.Drawing.Point(0, 0);
+            this.passResults.Multiline = true;
+            this.passResults.Name = "passResults";
+            this.passResults.Size = new System.Drawing.Size(638, 161);
+            this.passResults.TabIndex = 5;
             // 
-            // fpKnob
+            // groupBox14
             // 
-            this.fpKnob.Controls.Add(this.nk1);
-            this.fpKnob.Controls.Add(this.nk2);
-            this.fpKnob.Controls.Add(this.nk4);
-            this.fpKnob.Controls.Add(this.nk8);
-            this.fpKnob.Controls.Add(this.nk16);
-            this.fpKnob.Controls.Add(this.nk32);
-            this.fpKnob.Location = new System.Drawing.Point(83, 50);
-            this.fpKnob.Name = "fpKnob";
-            this.fpKnob.Size = new System.Drawing.Size(65, 42);
-            this.fpKnob.TabIndex = 18;
+            this.groupBox14.Controls.Add(this.splitContainer3);
+            this.groupBox14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox14.Location = new System.Drawing.Point(0, 0);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(644, 202);
+            this.groupBox14.TabIndex = 2;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "Morse Code";
             // 
-            // nk1
+            // splitContainer3
             // 
-            this.nk1.AutoSize = true;
-            this.nk1.Location = new System.Drawing.Point(3, 3);
-            this.nk1.Name = "nk1";
-            this.nk1.Size = new System.Drawing.Size(15, 14);
-            this.nk1.TabIndex = 9;
-            this.nk1.UseVisualStyleBackColor = true;
-            this.nk1.CheckedChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer3.Location = new System.Drawing.Point(3, 16);
+            this.splitContainer3.Name = "splitContainer3";
+            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // nk2
+            // splitContainer3.Panel1
             // 
-            this.nk2.AutoSize = true;
-            this.nk2.Location = new System.Drawing.Point(24, 3);
-            this.nk2.Name = "nk2";
-            this.nk2.Size = new System.Drawing.Size(15, 14);
-            this.nk2.TabIndex = 10;
-            this.nk2.UseVisualStyleBackColor = true;
-            this.nk2.CheckedChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
+            this.splitContainer3.Panel1.Controls.Add(this.MorseCodeInput);
             // 
-            // nk4
+            // splitContainer3.Panel2
             // 
-            this.nk4.AutoSize = true;
-            this.nk4.Location = new System.Drawing.Point(45, 3);
-            this.nk4.Name = "nk4";
-            this.nk4.Size = new System.Drawing.Size(15, 14);
-            this.nk4.TabIndex = 11;
-            this.nk4.UseVisualStyleBackColor = true;
-            this.nk4.CheckedChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
+            this.splitContainer3.Panel2.Controls.Add(this.MorseCodeOutput);
+            this.splitContainer3.Size = new System.Drawing.Size(638, 183);
+            this.splitContainer3.SplitterDistance = 31;
+            this.splitContainer3.TabIndex = 0;
             // 
-            // nk8
+            // MorseCodeInput
             // 
-            this.nk8.AutoSize = true;
-            this.nk8.Location = new System.Drawing.Point(3, 23);
-            this.nk8.Name = "nk8";
-            this.nk8.Size = new System.Drawing.Size(15, 14);
-            this.nk8.TabIndex = 12;
-            this.nk8.UseVisualStyleBackColor = true;
-            this.nk8.CheckedChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
+            this.MorseCodeInput.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MorseCodeInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MorseCodeInput.Location = new System.Drawing.Point(0, 0);
+            this.MorseCodeInput.Name = "MorseCodeInput";
+            this.MorseCodeInput.Size = new System.Drawing.Size(638, 31);
+            this.MorseCodeInput.TabIndex = 0;
+            this.MorseCodeInput.TextChanged += new System.EventHandler(this.MorseCodeInput_TextChanged);
             // 
-            // nk16
+            // MorseCodeOutput
             // 
-            this.nk16.AutoSize = true;
-            this.nk16.Location = new System.Drawing.Point(24, 23);
-            this.nk16.Name = "nk16";
-            this.nk16.Size = new System.Drawing.Size(15, 14);
-            this.nk16.TabIndex = 13;
-            this.nk16.UseVisualStyleBackColor = true;
-            this.nk16.CheckedChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
+            this.MorseCodeOutput.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MorseCodeOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MorseCodeOutput.Location = new System.Drawing.Point(0, 0);
+            this.MorseCodeOutput.Multiline = true;
+            this.MorseCodeOutput.Name = "MorseCodeOutput";
+            this.MorseCodeOutput.Size = new System.Drawing.Size(638, 148);
+            this.MorseCodeOutput.TabIndex = 1;
             // 
-            // nk32
+            // tpModForgetMeNot
             // 
-            this.nk32.AutoSize = true;
-            this.nk32.Location = new System.Drawing.Point(45, 23);
-            this.nk32.Name = "nk32";
-            this.nk32.Size = new System.Drawing.Size(15, 14);
-            this.nk32.TabIndex = 14;
-            this.nk32.UseVisualStyleBackColor = true;
-            this.nk32.CheckedChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
-            // 
-            // nk64
-            // 
-            this.nk64.AutoSize = true;
-            this.nk64.Location = new System.Drawing.Point(154, 52);
-            this.nk64.Name = "nk64";
-            this.nk64.Size = new System.Drawing.Size(107, 17);
-            this.nk64.TabIndex = 17;
-            this.nk64.Text = "Upper Right LED";
-            this.nk64.UseVisualStyleBackColor = true;
-            this.nk64.CheckedChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
-            // 
-            // nn_label
-            // 
-            this.nn_label.AutoSize = true;
-            this.nn_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nn_label.Location = new System.Drawing.Point(77, 100);
-            this.nn_label.Name = "nn_label";
-            this.nn_label.Size = new System.Drawing.Size(0, 37);
-            this.nn_label.TabIndex = 8;
-            // 
-            // tpForgetMeNot
-            // 
-            this.tpForgetMeNot.Controls.Add(this.label59);
-            this.tpForgetMeNot.Controls.Add(this.label57);
-            this.tpForgetMeNot.Controls.Add(this.label56);
-            this.tpForgetMeNot.Controls.Add(this.label55);
-            this.tpForgetMeNot.Controls.Add(this.tbFMNSolution);
-            this.tpForgetMeNot.Controls.Add(this.textBox1);
-            this.tpForgetMeNot.Location = new System.Drawing.Point(4, 58);
-            this.tpForgetMeNot.Name = "tpForgetMeNot";
-            this.tpForgetMeNot.Padding = new System.Windows.Forms.Padding(3);
-            this.tpForgetMeNot.Size = new System.Drawing.Size(637, 503);
-            this.tpForgetMeNot.TabIndex = 15;
-            this.tpForgetMeNot.Tag = "mods";
-            this.tpForgetMeNot.Text = "(mod) Forget Me Not";
-            this.tpForgetMeNot.UseVisualStyleBackColor = true;
+            this.tpModForgetMeNot.Controls.Add(this.label59);
+            this.tpModForgetMeNot.Controls.Add(this.label57);
+            this.tpModForgetMeNot.Controls.Add(this.label56);
+            this.tpModForgetMeNot.Controls.Add(this.label55);
+            this.tpModForgetMeNot.Controls.Add(this.txtForgetMeNotOut);
+            this.tpModForgetMeNot.Controls.Add(this.txtForgetMeNotIn);
+            this.tpModForgetMeNot.Location = new System.Drawing.Point(4, 58);
+            this.tpModForgetMeNot.Name = "tpModForgetMeNot";
+            this.tpModForgetMeNot.Padding = new System.Windows.Forms.Padding(3);
+            this.tpModForgetMeNot.Size = new System.Drawing.Size(644, 531);
+            this.tpModForgetMeNot.TabIndex = 15;
+            this.tpModForgetMeNot.Tag = "mods";
+            this.tpModForgetMeNot.Text = "Forget Me Not";
+            this.tpModForgetMeNot.UseVisualStyleBackColor = true;
             // 
             // label59
             // 
@@ -2850,22 +3687,22 @@
             this.label55.TabIndex = 14;
             this.label55.Text = "Need to know the full Serial Number";
             // 
-            // tbFMNSolution
+            // txtForgetMeNotOut
             // 
-            this.tbFMNSolution.Location = new System.Drawing.Point(183, 6);
-            this.tbFMNSolution.Multiline = true;
-            this.tbFMNSolution.Name = "tbFMNSolution";
-            this.tbFMNSolution.Size = new System.Drawing.Size(258, 299);
-            this.tbFMNSolution.TabIndex = 1;
+            this.txtForgetMeNotOut.Location = new System.Drawing.Point(183, 6);
+            this.txtForgetMeNotOut.Multiline = true;
+            this.txtForgetMeNotOut.Name = "txtForgetMeNotOut";
+            this.txtForgetMeNotOut.Size = new System.Drawing.Size(258, 299);
+            this.txtForgetMeNotOut.TabIndex = 1;
             // 
-            // textBox1
+            // txtForgetMeNotIn
             // 
-            this.textBox1.Location = new System.Drawing.Point(10, 6);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(167, 299);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtForgetMeNotIn.Location = new System.Drawing.Point(10, 6);
+            this.txtForgetMeNotIn.Multiline = true;
+            this.txtForgetMeNotIn.Name = "txtForgetMeNotIn";
+            this.txtForgetMeNotIn.Size = new System.Drawing.Size(167, 299);
+            this.txtForgetMeNotIn.TabIndex = 0;
+            this.txtForgetMeNotIn.TextChanged += new System.EventHandler(this.ForgetMeNot_Event);
             // 
             // tpModCollection1
             // 
@@ -2873,7 +3710,7 @@
             this.tpModCollection1.Location = new System.Drawing.Point(4, 58);
             this.tpModCollection1.Name = "tpModCollection1";
             this.tpModCollection1.Padding = new System.Windows.Forms.Padding(3);
-            this.tpModCollection1.Size = new System.Drawing.Size(637, 503);
+            this.tpModCollection1.Size = new System.Drawing.Size(644, 531);
             this.tpModCollection1.TabIndex = 20;
             this.tpModCollection1.Tag = "mods";
             this.tpModCollection1.Text = "Chess, Connection Check, Emoji Math, Flashing Colors, Lettered Keys, Logic, Plumb" +
@@ -2895,8 +3732,18 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(631, 497);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(638, 525);
             this.flowLayoutPanel1.TabIndex = 26;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(3, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(607, 25);
+            this.label24.TabIndex = 20;
+            this.label24.Text = "Need to know about everything on the sides of the Bomb";
             // 
             // groupBox6
             // 
@@ -2944,6 +3791,153 @@
             this.label65.Size = new System.Drawing.Size(39, 13);
             this.label65.TabIndex = 14;
             this.label65.Text = "Output";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.label62);
+            this.groupBox7.Controls.Add(this.label54);
+            this.groupBox7.Controls.Add(this.txtLogicOR);
+            this.groupBox7.Controls.Add(this.txtLogicAND);
+            this.groupBox7.Location = new System.Drawing.Point(183, 28);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(107, 77);
+            this.groupBox7.TabIndex = 17;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Logic";
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Location = new System.Drawing.Point(9, 43);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(26, 13);
+            this.label62.TabIndex = 7;
+            this.label62.Text = "OR:";
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(9, 17);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(33, 13);
+            this.label54.TabIndex = 6;
+            this.label54.Text = "AND:";
+            // 
+            // txtLogicOR
+            // 
+            this.txtLogicOR.Location = new System.Drawing.Point(48, 40);
+            this.txtLogicOR.MaxLength = 3;
+            this.txtLogicOR.Name = "txtLogicOR";
+            this.txtLogicOR.Size = new System.Drawing.Size(45, 20);
+            this.txtLogicOR.TabIndex = 5;
+            this.txtLogicOR.TextChanged += new System.EventHandler(this.txtLogicOR_TextChanged);
+            // 
+            // txtLogicAND
+            // 
+            this.txtLogicAND.Location = new System.Drawing.Point(48, 14);
+            this.txtLogicAND.MaxLength = 3;
+            this.txtLogicAND.Name = "txtLogicAND";
+            this.txtLogicAND.Size = new System.Drawing.Size(45, 20);
+            this.txtLogicAND.TabIndex = 4;
+            this.txtLogicAND.TextChanged += new System.EventHandler(this.txtLogicAND_TextChanged);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.label83);
+            this.groupBox5.Controls.Add(this.label84);
+            this.groupBox5.Controls.Add(this.txtLetteredKeysOut);
+            this.groupBox5.Controls.Add(this.txtLetteredKeysIn);
+            this.groupBox5.Location = new System.Drawing.Point(296, 28);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(108, 91);
+            this.groupBox5.TabIndex = 22;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Lettered Keys";
+            // 
+            // label83
+            // 
+            this.label83.AutoSize = true;
+            this.label83.Location = new System.Drawing.Point(6, 24);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(31, 13);
+            this.label83.TabIndex = 21;
+            this.label83.Text = "Input";
+            // 
+            // label84
+            // 
+            this.label84.AutoSize = true;
+            this.label84.Location = new System.Drawing.Point(6, 50);
+            this.label84.Name = "label84";
+            this.label84.Size = new System.Drawing.Size(39, 13);
+            this.label84.TabIndex = 20;
+            this.label84.Text = "Output";
+            // 
+            // txtLetteredKeysOut
+            // 
+            this.txtLetteredKeysOut.Enabled = false;
+            this.txtLetteredKeysOut.Location = new System.Drawing.Point(56, 47);
+            this.txtLetteredKeysOut.MaxLength = 11;
+            this.txtLetteredKeysOut.Name = "txtLetteredKeysOut";
+            this.txtLetteredKeysOut.Size = new System.Drawing.Size(39, 20);
+            this.txtLetteredKeysOut.TabIndex = 19;
+            // 
+            // txtLetteredKeysIn
+            // 
+            this.txtLetteredKeysIn.Location = new System.Drawing.Point(56, 21);
+            this.txtLetteredKeysIn.MaxLength = 11;
+            this.txtLetteredKeysIn.Name = "txtLetteredKeysIn";
+            this.txtLetteredKeysIn.Size = new System.Drawing.Size(39, 20);
+            this.txtLetteredKeysIn.TabIndex = 18;
+            this.txtLetteredKeysIn.TextChanged += new System.EventHandler(this.txtLetteredKeysIn_TextChanged);
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.label27);
+            this.groupBox9.Controls.Add(this.label26);
+            this.groupBox9.Controls.Add(this.txtConnectionCheckOut);
+            this.groupBox9.Controls.Add(this.txtConnections);
+            this.groupBox9.Location = new System.Drawing.Point(410, 28);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(205, 91);
+            this.groupBox9.TabIndex = 19;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Connection Check";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(9, 28);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(31, 13);
+            this.label27.TabIndex = 17;
+            this.label27.Text = "Input";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(9, 54);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(39, 13);
+            this.label26.TabIndex = 16;
+            this.label26.Text = "Output";
+            // 
+            // txtConnectionCheckOut
+            // 
+            this.txtConnectionCheckOut.Enabled = false;
+            this.txtConnectionCheckOut.Location = new System.Drawing.Point(59, 51);
+            this.txtConnectionCheckOut.MaxLength = 11;
+            this.txtConnectionCheckOut.Name = "txtConnectionCheckOut";
+            this.txtConnectionCheckOut.Size = new System.Drawing.Size(128, 20);
+            this.txtConnectionCheckOut.TabIndex = 15;
+            // 
+            // txtConnections
+            // 
+            this.txtConnections.Location = new System.Drawing.Point(59, 25);
+            this.txtConnections.MaxLength = 11;
+            this.txtConnections.Name = "txtConnections";
+            this.txtConnections.Size = new System.Drawing.Size(128, 20);
+            this.txtConnections.TabIndex = 14;
+            this.txtConnections.TextChanged += new System.EventHandler(this.txtConnections_TextChanged);
             // 
             // groupBox8
             // 
@@ -3142,230 +4136,6 @@
             this.label20.TabIndex = 3;
             this.label20.Text = "Response:";
             // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.label62);
-            this.groupBox7.Controls.Add(this.label54);
-            this.groupBox7.Controls.Add(this.txtLogicOR);
-            this.groupBox7.Controls.Add(this.txtLogicAND);
-            this.groupBox7.Location = new System.Drawing.Point(183, 28);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(107, 77);
-            this.groupBox7.TabIndex = 17;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Logic";
-            // 
-            // label62
-            // 
-            this.label62.AutoSize = true;
-            this.label62.Location = new System.Drawing.Point(9, 43);
-            this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(26, 13);
-            this.label62.TabIndex = 7;
-            this.label62.Text = "OR:";
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.Location = new System.Drawing.Point(9, 17);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(33, 13);
-            this.label54.TabIndex = 6;
-            this.label54.Text = "AND:";
-            // 
-            // txtLogicOR
-            // 
-            this.txtLogicOR.Location = new System.Drawing.Point(48, 40);
-            this.txtLogicOR.MaxLength = 3;
-            this.txtLogicOR.Name = "txtLogicOR";
-            this.txtLogicOR.Size = new System.Drawing.Size(45, 20);
-            this.txtLogicOR.TabIndex = 5;
-            this.txtLogicOR.TextChanged += new System.EventHandler(this.txtLogicOR_TextChanged);
-            // 
-            // txtLogicAND
-            // 
-            this.txtLogicAND.Location = new System.Drawing.Point(48, 14);
-            this.txtLogicAND.MaxLength = 3;
-            this.txtLogicAND.Name = "txtLogicAND";
-            this.txtLogicAND.Size = new System.Drawing.Size(45, 20);
-            this.txtLogicAND.TabIndex = 4;
-            this.txtLogicAND.TextChanged += new System.EventHandler(this.txtLogicAND_TextChanged);
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.label83);
-            this.groupBox5.Controls.Add(this.label84);
-            this.groupBox5.Controls.Add(this.txtLetteredKeysOut);
-            this.groupBox5.Controls.Add(this.txtLetteredKeysIn);
-            this.groupBox5.Location = new System.Drawing.Point(296, 28);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(108, 91);
-            this.groupBox5.TabIndex = 22;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Lettered Keys";
-            // 
-            // label83
-            // 
-            this.label83.AutoSize = true;
-            this.label83.Location = new System.Drawing.Point(6, 24);
-            this.label83.Name = "label83";
-            this.label83.Size = new System.Drawing.Size(31, 13);
-            this.label83.TabIndex = 21;
-            this.label83.Text = "Input";
-            // 
-            // label84
-            // 
-            this.label84.AutoSize = true;
-            this.label84.Location = new System.Drawing.Point(6, 50);
-            this.label84.Name = "label84";
-            this.label84.Size = new System.Drawing.Size(39, 13);
-            this.label84.TabIndex = 20;
-            this.label84.Text = "Output";
-            // 
-            // txtLetteredKeysOut
-            // 
-            this.txtLetteredKeysOut.Enabled = false;
-            this.txtLetteredKeysOut.Location = new System.Drawing.Point(56, 47);
-            this.txtLetteredKeysOut.MaxLength = 11;
-            this.txtLetteredKeysOut.Name = "txtLetteredKeysOut";
-            this.txtLetteredKeysOut.Size = new System.Drawing.Size(39, 20);
-            this.txtLetteredKeysOut.TabIndex = 19;
-            // 
-            // txtLetteredKeysIn
-            // 
-            this.txtLetteredKeysIn.Location = new System.Drawing.Point(56, 21);
-            this.txtLetteredKeysIn.MaxLength = 11;
-            this.txtLetteredKeysIn.Name = "txtLetteredKeysIn";
-            this.txtLetteredKeysIn.Size = new System.Drawing.Size(39, 20);
-            this.txtLetteredKeysIn.TabIndex = 18;
-            this.txtLetteredKeysIn.TextChanged += new System.EventHandler(this.txtLetteredKeysIn_TextChanged);
-            // 
-            // groupBox15
-            // 
-            this.groupBox15.Controls.Add(this.label58);
-            this.groupBox15.Controls.Add(this.label70);
-            this.groupBox15.Controls.Add(this.txtEmojiMathOut);
-            this.groupBox15.Controls.Add(this.txtEmojiMathIn);
-            this.groupBox15.Location = new System.Drawing.Point(3, 250);
-            this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(249, 91);
-            this.groupBox15.TabIndex = 23;
-            this.groupBox15.TabStop = false;
-            this.groupBox15.Text = "Emoji Math";
-            // 
-            // label58
-            // 
-            this.label58.AutoSize = true;
-            this.label58.Location = new System.Drawing.Point(6, 24);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(31, 13);
-            this.label58.TabIndex = 21;
-            this.label58.Text = "Input";
-            // 
-            // label70
-            // 
-            this.label70.AutoSize = true;
-            this.label70.Location = new System.Drawing.Point(6, 50);
-            this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(39, 13);
-            this.label70.TabIndex = 20;
-            this.label70.Text = "Output";
-            // 
-            // txtEmojiMathOut
-            // 
-            this.txtEmojiMathOut.Enabled = false;
-            this.txtEmojiMathOut.Location = new System.Drawing.Point(56, 47);
-            this.txtEmojiMathOut.MaxLength = 11;
-            this.txtEmojiMathOut.Name = "txtEmojiMathOut";
-            this.txtEmojiMathOut.Size = new System.Drawing.Size(170, 20);
-            this.txtEmojiMathOut.TabIndex = 19;
-            // 
-            // txtEmojiMathIn
-            // 
-            this.txtEmojiMathIn.Location = new System.Drawing.Point(56, 21);
-            this.txtEmojiMathIn.MaxLength = 30;
-            this.txtEmojiMathIn.Name = "txtEmojiMathIn";
-            this.txtEmojiMathIn.Size = new System.Drawing.Size(170, 20);
-            this.txtEmojiMathIn.TabIndex = 18;
-            this.txtEmojiMathIn.TextChanged += new System.EventHandler(this.txtEmojiMathIn_TextChanged);
-            // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.label27);
-            this.groupBox9.Controls.Add(this.label26);
-            this.groupBox9.Controls.Add(this.txtConnectionCheckOut);
-            this.groupBox9.Controls.Add(this.txtConnections);
-            this.groupBox9.Location = new System.Drawing.Point(410, 28);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(205, 91);
-            this.groupBox9.TabIndex = 19;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Connection Check";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(9, 28);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(31, 13);
-            this.label27.TabIndex = 17;
-            this.label27.Text = "Input";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(9, 54);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(39, 13);
-            this.label26.TabIndex = 16;
-            this.label26.Text = "Output";
-            // 
-            // txtConnectionCheckOut
-            // 
-            this.txtConnectionCheckOut.Enabled = false;
-            this.txtConnectionCheckOut.Location = new System.Drawing.Point(59, 51);
-            this.txtConnectionCheckOut.MaxLength = 11;
-            this.txtConnectionCheckOut.Name = "txtConnectionCheckOut";
-            this.txtConnectionCheckOut.Size = new System.Drawing.Size(128, 20);
-            this.txtConnectionCheckOut.TabIndex = 15;
-            // 
-            // txtConnections
-            // 
-            this.txtConnections.Location = new System.Drawing.Point(59, 25);
-            this.txtConnections.MaxLength = 11;
-            this.txtConnections.Name = "txtConnections";
-            this.txtConnections.Size = new System.Drawing.Size(128, 20);
-            this.txtConnections.TabIndex = 14;
-            this.txtConnections.TextChanged += new System.EventHandler(this.txtConnections_TextChanged);
-            // 
-            // groupBox18
-            // 
-            this.groupBox18.Controls.Add(this.label71);
-            this.groupBox18.Controls.Add(this.txtSafetySafe);
-            this.groupBox18.Location = new System.Drawing.Point(478, 125);
-            this.groupBox18.Name = "groupBox18";
-            this.groupBox18.Size = new System.Drawing.Size(139, 58);
-            this.groupBox18.TabIndex = 24;
-            this.groupBox18.TabStop = false;
-            this.groupBox18.Text = "Safety Safe Combination";
-            // 
-            // label71
-            // 
-            this.label71.AutoSize = true;
-            this.label71.Location = new System.Drawing.Point(9, 24);
-            this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(0, 13);
-            this.label71.TabIndex = 18;
-            // 
-            // txtSafetySafe
-            // 
-            this.txtSafetySafe.Enabled = false;
-            this.txtSafetySafe.Location = new System.Drawing.Point(6, 21);
-            this.txtSafetySafe.MaxLength = 11;
-            this.txtSafetySafe.Name = "txtSafetySafe";
-            this.txtSafetySafe.Size = new System.Drawing.Size(115, 20);
-            this.txtSafetySafe.TabIndex = 17;
-            // 
             // groupBox19
             // 
             this.groupBox19.Controls.Add(this.label73);
@@ -3435,26 +4205,104 @@
             this.txtStroopWords.TabIndex = 26;
             this.txtStroopWords.TextChanged += new System.EventHandler(this.txtStroopColors_TextChanged);
             // 
-            // label24
+            // groupBox18
             // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(3, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(607, 25);
-            this.label24.TabIndex = 20;
-            this.label24.Text = "Need to know about everything on the sides of the Bomb";
+            this.groupBox18.Controls.Add(this.label71);
+            this.groupBox18.Controls.Add(this.txtSafetySafe);
+            this.groupBox18.Location = new System.Drawing.Point(478, 125);
+            this.groupBox18.Name = "groupBox18";
+            this.groupBox18.Size = new System.Drawing.Size(139, 58);
+            this.groupBox18.TabIndex = 24;
+            this.groupBox18.TabStop = false;
+            this.groupBox18.Text = "Safety Safe Combination";
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Location = new System.Drawing.Point(9, 24);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(0, 13);
+            this.label71.TabIndex = 18;
+            // 
+            // txtSafetySafe
+            // 
+            this.txtSafetySafe.Enabled = false;
+            this.txtSafetySafe.Location = new System.Drawing.Point(6, 21);
+            this.txtSafetySafe.MaxLength = 11;
+            this.txtSafetySafe.Name = "txtSafetySafe";
+            this.txtSafetySafe.Size = new System.Drawing.Size(115, 20);
+            this.txtSafetySafe.TabIndex = 17;
+            // 
+            // groupBox15
+            // 
+            this.groupBox15.Controls.Add(this.label58);
+            this.groupBox15.Controls.Add(this.label70);
+            this.groupBox15.Controls.Add(this.txtEmojiMathOut);
+            this.groupBox15.Controls.Add(this.txtEmojiMathIn);
+            this.groupBox15.Location = new System.Drawing.Point(3, 250);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(249, 91);
+            this.groupBox15.TabIndex = 23;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "Emoji Math";
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(6, 24);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(31, 13);
+            this.label58.TabIndex = 21;
+            this.label58.Text = "Input";
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Location = new System.Drawing.Point(6, 50);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(39, 13);
+            this.label70.TabIndex = 20;
+            this.label70.Text = "Output";
+            // 
+            // txtEmojiMathOut
+            // 
+            this.txtEmojiMathOut.Enabled = false;
+            this.txtEmojiMathOut.Location = new System.Drawing.Point(56, 47);
+            this.txtEmojiMathOut.MaxLength = 11;
+            this.txtEmojiMathOut.Name = "txtEmojiMathOut";
+            this.txtEmojiMathOut.Size = new System.Drawing.Size(170, 20);
+            this.txtEmojiMathOut.TabIndex = 19;
+            // 
+            // txtEmojiMathIn
+            // 
+            this.txtEmojiMathIn.Location = new System.Drawing.Point(56, 21);
+            this.txtEmojiMathIn.MaxLength = 30;
+            this.txtEmojiMathIn.Name = "txtEmojiMathIn";
+            this.txtEmojiMathIn.Size = new System.Drawing.Size(170, 20);
+            this.txtEmojiMathIn.TabIndex = 18;
+            this.txtEmojiMathIn.TextChanged += new System.EventHandler(this.txtEmojiMathIn_TextChanged);
             // 
             // tpModCollection2
             // 
-            this.tpModCollection2.Controls.Add(this.groupBox20);
+            this.tpModCollection2.Controls.Add(this.flowLayoutPanel3);
             this.tpModCollection2.Location = new System.Drawing.Point(4, 58);
             this.tpModCollection2.Name = "tpModCollection2";
             this.tpModCollection2.Padding = new System.Windows.Forms.Padding(3);
-            this.tpModCollection2.Size = new System.Drawing.Size(637, 503);
+            this.tpModCollection2.Size = new System.Drawing.Size(644, 531);
             this.tpModCollection2.TabIndex = 21;
-            this.tpModCollection2.Text = "Number Pads";
+            this.tpModCollection2.Text = "Combination Lock, Number Pads, Semaphore";
             this.tpModCollection2.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.groupBox24);
+            this.flowLayoutPanel3.Controls.Add(this.groupBox25);
+            this.flowLayoutPanel3.Controls.Add(this.groupBox20);
+            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(638, 525);
+            this.flowLayoutPanel3.TabIndex = 18;
             // 
             // groupBox20
             // 
@@ -3462,7 +4310,7 @@
             this.groupBox20.Controls.Add(this.label75);
             this.groupBox20.Controls.Add(this.txtNumberPadOut);
             this.groupBox20.Controls.Add(this.label76);
-            this.groupBox20.Location = new System.Drawing.Point(8, 6);
+            this.groupBox20.Location = new System.Drawing.Point(3, 177);
             this.groupBox20.Name = "groupBox20";
             this.groupBox20.Size = new System.Drawing.Size(205, 81);
             this.groupBox20.TabIndex = 17;
@@ -3504,709 +4352,99 @@
             this.label76.TabIndex = 14;
             this.label76.Text = "Output";
             // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(0, 23);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(46, 13);
-            this.label16.TabIndex = 4;
-            this.label16.Text = "Serial #:";
-            // 
-            // txtSerialNumber
-            // 
-            this.txtSerialNumber.Location = new System.Drawing.Point(50, 20);
-            this.txtSerialNumber.Name = "txtSerialNumber";
-            this.txtSerialNumber.Size = new System.Drawing.Size(133, 20);
-            this.txtSerialNumber.TabIndex = 3;
-            this.txtSerialNumber.TextChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // ManualVersionSelect
-            // 
-            this.ManualVersionSelect.FormattingEnabled = true;
-            this.ManualVersionSelect.Items.AddRange(new object[] {
-            "Manual Version 1 (Official) - Verification Code 241",
-            "Manual Version 990 (Unofficial) - Verification Code 724"});
-            this.ManualVersionSelect.Location = new System.Drawing.Point(6, 2);
-            this.ManualVersionSelect.Name = "ManualVersionSelect";
-            this.ManualVersionSelect.Size = new System.Drawing.Size(314, 21);
-            this.ManualVersionSelect.TabIndex = 1;
-            this.ManualVersionSelect.Text = "Manual Version 1 (Official) - Verification Code 241";
-            this.ManualVersionSelect.SelectedIndexChanged += new System.EventHandler(this.ManualVersionSelect_SelectedIndexChanged);
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(323, 5);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(63, 13);
-            this.linkLabel1.TabIndex = 2;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "manualURL";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // gbBombInformation
-            // 
-            this.gbBombInformation.Controls.Add(this.checkBox1);
-            this.gbBombInformation.Controls.Add(this.button42);
-            this.gbBombInformation.Controls.Add(this.gbBatteries);
-            this.gbBombInformation.Controls.Add(this.gbPorts);
-            this.gbBombInformation.Controls.Add(this.gbIndicators);
-            this.gbBombInformation.Controls.Add(this.label16);
-            this.gbBombInformation.Controls.Add(this.txtSerialNumber);
-            this.gbBombInformation.Controls.Add(this.facts_strike);
-            this.gbBombInformation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbBombInformation.Location = new System.Drawing.Point(0, 0);
-            this.gbBombInformation.Name = "gbBombInformation";
-            this.gbBombInformation.Size = new System.Drawing.Size(327, 593);
-            this.gbBombInformation.TabIndex = 3;
-            this.gbBombInformation.TabStop = false;
-            this.gbBombInformation.Text = "Bomb Information";
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(6, 46);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(82, 17);
-            this.checkBox1.TabIndex = 27;
-            this.checkBox1.Text = "Show Mods";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // button42
-            // 
-            this.button42.Location = new System.Drawing.Point(156, 139);
-            this.button42.Name = "button42";
-            this.button42.Size = new System.Drawing.Size(139, 33);
-            this.button42.TabIndex = 26;
-            this.button42.Text = "Reset Bomb Information";
-            this.button42.UseVisualStyleBackColor = true;
-            this.button42.Click += new System.EventHandler(this.button42_Click);
-            // 
-            // gbBatteries
-            // 
-            this.gbBatteries.Controls.Add(this.label53);
-            this.gbBatteries.Controls.Add(this.nudBatteryHolders);
-            this.gbBatteries.Controls.Add(this.label50);
-            this.gbBatteries.Controls.Add(this.nudBatteriesD);
-            this.gbBatteries.Controls.Add(this.label49);
-            this.gbBatteries.Controls.Add(this.nudBatteriesAA);
-            this.gbBatteries.Location = new System.Drawing.Point(156, 399);
-            this.gbBatteries.Name = "gbBatteries";
-            this.gbBatteries.Size = new System.Drawing.Size(142, 104);
-            this.gbBatteries.TabIndex = 25;
-            this.gbBatteries.TabStop = false;
-            this.gbBatteries.Text = "Batteries";
-            // 
-            // label53
-            // 
-            this.label53.AutoSize = true;
-            this.label53.Location = new System.Drawing.Point(7, 75);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(43, 13);
-            this.label53.TabIndex = 36;
-            this.label53.Tag = "mods";
-            this.label53.Text = "Holders";
-            // 
-            // nudBatteryHolders
-            // 
-            this.nudBatteryHolders.Location = new System.Drawing.Point(90, 73);
-            this.nudBatteryHolders.Name = "nudBatteryHolders";
-            this.nudBatteryHolders.Size = new System.Drawing.Size(40, 20);
-            this.nudBatteryHolders.TabIndex = 35;
-            this.nudBatteryHolders.Tag = "mods";
-            // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(7, 49);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(15, 13);
-            this.label50.TabIndex = 34;
-            this.label50.Tag = "mods";
-            this.label50.Text = "D";
-            // 
-            // nudBatteriesD
-            // 
-            this.nudBatteriesD.Location = new System.Drawing.Point(90, 47);
-            this.nudBatteriesD.Name = "nudBatteriesD";
-            this.nudBatteriesD.Size = new System.Drawing.Size(40, 20);
-            this.nudBatteriesD.TabIndex = 33;
-            this.nudBatteriesD.Tag = "mods";
-            this.nudBatteriesD.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // label49
-            // 
-            this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(7, 23);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(21, 13);
-            this.label49.TabIndex = 32;
-            this.label49.Text = "AA";
-            // 
-            // nudBatteriesAA
-            // 
-            this.nudBatteriesAA.Location = new System.Drawing.Point(90, 21);
-            this.nudBatteriesAA.Name = "nudBatteriesAA";
-            this.nudBatteriesAA.Size = new System.Drawing.Size(40, 20);
-            this.nudBatteriesAA.TabIndex = 31;
-            this.nudBatteriesAA.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // gbPorts
-            // 
-            this.gbPorts.Controls.Add(this.label47);
-            this.gbPorts.Controls.Add(this.nudPortRCA);
-            this.gbPorts.Controls.Add(this.label46);
-            this.gbPorts.Controls.Add(this.nudPortSerial);
-            this.gbPorts.Controls.Add(this.label45);
-            this.gbPorts.Controls.Add(this.nudPortRJ45);
-            this.gbPorts.Controls.Add(this.label44);
-            this.gbPorts.Controls.Add(this.nudPortPS2);
-            this.gbPorts.Controls.Add(this.label43);
-            this.gbPorts.Controls.Add(this.nudPortParallel);
-            this.gbPorts.Controls.Add(this.label42);
-            this.gbPorts.Controls.Add(this.nudPortDVID);
-            this.gbPorts.Controls.Add(this.label41);
-            this.gbPorts.Controls.Add(this.nudPortPlates);
-            this.gbPorts.Location = new System.Drawing.Point(150, 183);
-            this.gbPorts.Name = "gbPorts";
-            this.gbPorts.Size = new System.Drawing.Size(148, 210);
-            this.gbPorts.TabIndex = 24;
-            this.gbPorts.TabStop = false;
-            this.gbPorts.Text = "Ports";
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(12, 177);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(63, 13);
-            this.label47.TabIndex = 28;
-            this.label47.Tag = "mods";
-            this.label47.Text = "Stereo RCA";
-            // 
-            // nudPortRCA
-            // 
-            this.nudPortRCA.Location = new System.Drawing.Point(96, 175);
-            this.nudPortRCA.Name = "nudPortRCA";
-            this.nudPortRCA.Size = new System.Drawing.Size(40, 20);
-            this.nudPortRCA.TabIndex = 27;
-            this.nudPortRCA.Tag = "mods";
-            this.nudPortRCA.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(12, 151);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(33, 13);
-            this.label46.TabIndex = 26;
-            this.label46.Tag = "mods";
-            this.label46.Text = "Serial";
-            // 
-            // nudPortSerial
-            // 
-            this.nudPortSerial.Location = new System.Drawing.Point(96, 149);
-            this.nudPortSerial.Name = "nudPortSerial";
-            this.nudPortSerial.Size = new System.Drawing.Size(40, 20);
-            this.nudPortSerial.TabIndex = 25;
-            this.nudPortSerial.Tag = "mods";
-            this.nudPortSerial.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(12, 125);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(35, 13);
-            this.label45.TabIndex = 24;
-            this.label45.Tag = "mods";
-            this.label45.Text = "RJ-45";
-            // 
-            // nudPortRJ45
-            // 
-            this.nudPortRJ45.Location = new System.Drawing.Point(97, 125);
-            this.nudPortRJ45.Name = "nudPortRJ45";
-            this.nudPortRJ45.Size = new System.Drawing.Size(40, 20);
-            this.nudPortRJ45.TabIndex = 23;
-            this.nudPortRJ45.Tag = "mods";
-            this.nudPortRJ45.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(12, 99);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(32, 13);
-            this.label44.TabIndex = 22;
-            this.label44.Tag = "mods";
-            this.label44.Text = "PS/2";
-            // 
-            // nudPortPS2
-            // 
-            this.nudPortPS2.Location = new System.Drawing.Point(97, 99);
-            this.nudPortPS2.Name = "nudPortPS2";
-            this.nudPortPS2.Size = new System.Drawing.Size(40, 20);
-            this.nudPortPS2.TabIndex = 21;
-            this.nudPortPS2.Tag = "mods";
-            this.nudPortPS2.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(12, 73);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(41, 13);
-            this.label43.TabIndex = 20;
-            this.label43.Text = "Parallel";
-            // 
-            // nudPortParallel
-            // 
-            this.nudPortParallel.Location = new System.Drawing.Point(97, 73);
-            this.nudPortParallel.Name = "nudPortParallel";
-            this.nudPortParallel.Size = new System.Drawing.Size(40, 20);
-            this.nudPortParallel.TabIndex = 19;
-            this.nudPortParallel.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(12, 47);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(36, 13);
-            this.label42.TabIndex = 18;
-            this.label42.Tag = "mods";
-            this.label42.Text = "DVI-D";
-            // 
-            // nudPortDVID
-            // 
-            this.nudPortDVID.Location = new System.Drawing.Point(97, 45);
-            this.nudPortDVID.Name = "nudPortDVID";
-            this.nudPortDVID.Size = new System.Drawing.Size(40, 20);
-            this.nudPortDVID.TabIndex = 17;
-            this.nudPortDVID.Tag = "mods";
-            this.nudPortDVID.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(12, 21);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(57, 13);
-            this.label41.TabIndex = 16;
-            this.label41.Tag = "mods";
-            this.label41.Text = "Port plates";
-            // 
-            // nudPortPlates
-            // 
-            this.nudPortPlates.Location = new System.Drawing.Point(97, 19);
-            this.nudPortPlates.Name = "nudPortPlates";
-            this.nudPortPlates.Size = new System.Drawing.Size(40, 20);
-            this.nudPortPlates.TabIndex = 15;
-            this.nudPortPlates.Tag = "mods";
-            this.nudPortPlates.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // gbIndicators
-            // 
-            this.gbIndicators.Controls.Add(this.label40);
-            this.gbIndicators.Controls.Add(this.nudUnlitTRN);
-            this.gbIndicators.Controls.Add(this.nudLitTRN);
-            this.gbIndicators.Controls.Add(this.label39);
-            this.gbIndicators.Controls.Add(this.nudUnlitSND);
-            this.gbIndicators.Controls.Add(this.nudLitSND);
-            this.gbIndicators.Controls.Add(this.label38);
-            this.gbIndicators.Controls.Add(this.nudUnlitSIG);
-            this.gbIndicators.Controls.Add(this.nudLitSIG);
-            this.gbIndicators.Controls.Add(this.label37);
-            this.gbIndicators.Controls.Add(this.nudUnlitNSA);
-            this.gbIndicators.Controls.Add(this.nudLitNSA);
-            this.gbIndicators.Controls.Add(this.label36);
-            this.gbIndicators.Controls.Add(this.nudUnlitMSA);
-            this.gbIndicators.Controls.Add(this.nudLitMSA);
-            this.gbIndicators.Controls.Add(this.label35);
-            this.gbIndicators.Controls.Add(this.nudUnlitIND);
-            this.gbIndicators.Controls.Add(this.nudLitIND);
-            this.gbIndicators.Controls.Add(this.label34);
-            this.gbIndicators.Controls.Add(this.nudUnlitFRQ);
-            this.gbIndicators.Controls.Add(this.nudLitFRQ);
-            this.gbIndicators.Controls.Add(this.label33);
-            this.gbIndicators.Controls.Add(this.nudUnlitFRK);
-            this.gbIndicators.Controls.Add(this.nudLitFRK);
-            this.gbIndicators.Controls.Add(this.label32);
-            this.gbIndicators.Controls.Add(this.nudUnlitCLR);
-            this.gbIndicators.Controls.Add(this.nudLitCLR);
-            this.gbIndicators.Controls.Add(this.label31);
-            this.gbIndicators.Controls.Add(this.nudUnlitCAR);
-            this.gbIndicators.Controls.Add(this.nudLitCAR);
-            this.gbIndicators.Controls.Add(this.label30);
-            this.gbIndicators.Controls.Add(this.label29);
-            this.gbIndicators.Controls.Add(this.label28);
-            this.gbIndicators.Controls.Add(this.nudUnlitBOB);
-            this.gbIndicators.Controls.Add(this.nudLitBOB);
-            this.gbIndicators.Location = new System.Drawing.Point(6, 183);
-            this.gbIndicators.Name = "gbIndicators";
-            this.gbIndicators.Size = new System.Drawing.Size(138, 320);
-            this.gbIndicators.TabIndex = 23;
-            this.gbIndicators.TabStop = false;
-            this.gbIndicators.Text = "Indicators";
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(7, 291);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(30, 13);
-            this.label40.TabIndex = 44;
-            this.label40.Tag = "bob";
-            this.label40.Text = "TRN";
-            // 
-            // nudUnlitTRN
-            // 
-            this.nudUnlitTRN.Location = new System.Drawing.Point(88, 289);
-            this.nudUnlitTRN.Name = "nudUnlitTRN";
-            this.nudUnlitTRN.Size = new System.Drawing.Size(40, 20);
-            this.nudUnlitTRN.TabIndex = 43;
-            this.nudUnlitTRN.Tag = "bob";
-            this.nudUnlitTRN.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // nudLitTRN
-            // 
-            this.nudLitTRN.Location = new System.Drawing.Point(42, 289);
-            this.nudLitTRN.Name = "nudLitTRN";
-            this.nudLitTRN.Size = new System.Drawing.Size(40, 20);
-            this.nudLitTRN.TabIndex = 42;
-            this.nudLitTRN.Tag = "bob";
-            this.nudLitTRN.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(7, 265);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(30, 13);
-            this.label39.TabIndex = 41;
-            this.label39.Tag = "bob";
-            this.label39.Text = "SND";
-            // 
-            // nudUnlitSND
-            // 
-            this.nudUnlitSND.Location = new System.Drawing.Point(88, 263);
-            this.nudUnlitSND.Name = "nudUnlitSND";
-            this.nudUnlitSND.Size = new System.Drawing.Size(40, 20);
-            this.nudUnlitSND.TabIndex = 40;
-            this.nudUnlitSND.Tag = "bob";
-            this.nudUnlitSND.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // nudLitSND
-            // 
-            this.nudLitSND.Location = new System.Drawing.Point(42, 263);
-            this.nudLitSND.Name = "nudLitSND";
-            this.nudLitSND.Size = new System.Drawing.Size(40, 20);
-            this.nudLitSND.TabIndex = 39;
-            this.nudLitSND.Tag = "bob";
-            this.nudLitSND.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(7, 239);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(25, 13);
-            this.label38.TabIndex = 38;
-            this.label38.Tag = "bob";
-            this.label38.Text = "SIG";
-            // 
-            // nudUnlitSIG
-            // 
-            this.nudUnlitSIG.Location = new System.Drawing.Point(88, 237);
-            this.nudUnlitSIG.Name = "nudUnlitSIG";
-            this.nudUnlitSIG.Size = new System.Drawing.Size(40, 20);
-            this.nudUnlitSIG.TabIndex = 37;
-            this.nudUnlitSIG.Tag = "bob";
-            this.nudUnlitSIG.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // nudLitSIG
-            // 
-            this.nudLitSIG.Location = new System.Drawing.Point(42, 237);
-            this.nudLitSIG.Name = "nudLitSIG";
-            this.nudLitSIG.Size = new System.Drawing.Size(40, 20);
-            this.nudLitSIG.TabIndex = 36;
-            this.nudLitSIG.Tag = "bob";
-            this.nudLitSIG.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(7, 213);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(29, 13);
-            this.label37.TabIndex = 35;
-            this.label37.Tag = "bob";
-            this.label37.Text = "NSA";
-            // 
-            // nudUnlitNSA
-            // 
-            this.nudUnlitNSA.Location = new System.Drawing.Point(88, 211);
-            this.nudUnlitNSA.Name = "nudUnlitNSA";
-            this.nudUnlitNSA.Size = new System.Drawing.Size(40, 20);
-            this.nudUnlitNSA.TabIndex = 34;
-            this.nudUnlitNSA.Tag = "bob";
-            this.nudUnlitNSA.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // nudLitNSA
-            // 
-            this.nudLitNSA.Location = new System.Drawing.Point(42, 211);
-            this.nudLitNSA.Name = "nudLitNSA";
-            this.nudLitNSA.Size = new System.Drawing.Size(40, 20);
-            this.nudLitNSA.TabIndex = 33;
-            this.nudLitNSA.Tag = "bob";
-            this.nudLitNSA.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(7, 187);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(30, 13);
-            this.label36.TabIndex = 32;
-            this.label36.Tag = "bob";
-            this.label36.Text = "MSA";
-            // 
-            // nudUnlitMSA
-            // 
-            this.nudUnlitMSA.Location = new System.Drawing.Point(88, 185);
-            this.nudUnlitMSA.Name = "nudUnlitMSA";
-            this.nudUnlitMSA.Size = new System.Drawing.Size(40, 20);
-            this.nudUnlitMSA.TabIndex = 31;
-            this.nudUnlitMSA.Tag = "bob";
-            this.nudUnlitMSA.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // nudLitMSA
-            // 
-            this.nudLitMSA.Location = new System.Drawing.Point(42, 185);
-            this.nudLitMSA.Name = "nudLitMSA";
-            this.nudLitMSA.Size = new System.Drawing.Size(40, 20);
-            this.nudLitMSA.TabIndex = 30;
-            this.nudLitMSA.Tag = "bob";
-            this.nudLitMSA.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(7, 161);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(26, 13);
-            this.label35.TabIndex = 29;
-            this.label35.Tag = "bob";
-            this.label35.Text = "IND";
-            // 
-            // nudUnlitIND
-            // 
-            this.nudUnlitIND.Location = new System.Drawing.Point(88, 159);
-            this.nudUnlitIND.Name = "nudUnlitIND";
-            this.nudUnlitIND.Size = new System.Drawing.Size(40, 20);
-            this.nudUnlitIND.TabIndex = 28;
-            this.nudUnlitIND.Tag = "bob";
-            this.nudUnlitIND.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // nudLitIND
-            // 
-            this.nudLitIND.Location = new System.Drawing.Point(42, 159);
-            this.nudLitIND.Name = "nudLitIND";
-            this.nudLitIND.Size = new System.Drawing.Size(40, 20);
-            this.nudLitIND.TabIndex = 27;
-            this.nudLitIND.Tag = "bob";
-            this.nudLitIND.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(7, 135);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(29, 13);
-            this.label34.TabIndex = 26;
-            this.label34.Tag = "bob";
-            this.label34.Text = "FRQ";
-            // 
-            // nudUnlitFRQ
-            // 
-            this.nudUnlitFRQ.Location = new System.Drawing.Point(88, 133);
-            this.nudUnlitFRQ.Name = "nudUnlitFRQ";
-            this.nudUnlitFRQ.Size = new System.Drawing.Size(40, 20);
-            this.nudUnlitFRQ.TabIndex = 25;
-            this.nudUnlitFRQ.Tag = "bob";
-            this.nudUnlitFRQ.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // nudLitFRQ
-            // 
-            this.nudLitFRQ.Location = new System.Drawing.Point(42, 133);
-            this.nudLitFRQ.Name = "nudLitFRQ";
-            this.nudLitFRQ.Size = new System.Drawing.Size(40, 20);
-            this.nudLitFRQ.TabIndex = 24;
-            this.nudLitFRQ.Tag = "bob";
-            this.nudLitFRQ.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(7, 109);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(28, 13);
-            this.label33.TabIndex = 23;
-            this.label33.Text = "FRK";
-            // 
-            // nudUnlitFRK
-            // 
-            this.nudUnlitFRK.Location = new System.Drawing.Point(88, 107);
-            this.nudUnlitFRK.Name = "nudUnlitFRK";
-            this.nudUnlitFRK.Size = new System.Drawing.Size(40, 20);
-            this.nudUnlitFRK.TabIndex = 22;
-            this.nudUnlitFRK.Tag = "bob";
-            this.nudUnlitFRK.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // nudLitFRK
-            // 
-            this.nudLitFRK.Location = new System.Drawing.Point(42, 107);
-            this.nudLitFRK.Name = "nudLitFRK";
-            this.nudLitFRK.Size = new System.Drawing.Size(40, 20);
-            this.nudLitFRK.TabIndex = 21;
-            this.nudLitFRK.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(7, 83);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(28, 13);
-            this.label32.TabIndex = 20;
-            this.label32.Tag = "bob";
-            this.label32.Text = "CLR";
-            // 
-            // nudUnlitCLR
-            // 
-            this.nudUnlitCLR.Location = new System.Drawing.Point(88, 81);
-            this.nudUnlitCLR.Name = "nudUnlitCLR";
-            this.nudUnlitCLR.Size = new System.Drawing.Size(40, 20);
-            this.nudUnlitCLR.TabIndex = 19;
-            this.nudUnlitCLR.Tag = "bob";
-            this.nudUnlitCLR.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // nudLitCLR
-            // 
-            this.nudLitCLR.Location = new System.Drawing.Point(42, 81);
-            this.nudLitCLR.Name = "nudLitCLR";
-            this.nudLitCLR.Size = new System.Drawing.Size(40, 20);
-            this.nudLitCLR.TabIndex = 18;
-            this.nudLitCLR.Tag = "bob";
-            this.nudLitCLR.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(7, 57);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(29, 13);
-            this.label31.TabIndex = 17;
-            this.label31.Text = "CAR";
-            // 
-            // nudUnlitCAR
-            // 
-            this.nudUnlitCAR.Location = new System.Drawing.Point(88, 55);
-            this.nudUnlitCAR.Name = "nudUnlitCAR";
-            this.nudUnlitCAR.Size = new System.Drawing.Size(40, 20);
-            this.nudUnlitCAR.TabIndex = 16;
-            this.nudUnlitCAR.Tag = "bob";
-            this.nudUnlitCAR.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // nudLitCAR
-            // 
-            this.nudLitCAR.Location = new System.Drawing.Point(42, 55);
-            this.nudLitCAR.Name = "nudLitCAR";
-            this.nudLitCAR.Size = new System.Drawing.Size(40, 20);
-            this.nudLitCAR.TabIndex = 15;
-            this.nudLitCAR.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(7, 31);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(29, 13);
-            this.label30.TabIndex = 14;
-            this.label30.Tag = "bob";
-            this.label30.Text = "BOB";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(94, 13);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(28, 13);
-            this.label29.TabIndex = 13;
-            this.label29.Tag = "bob";
-            this.label29.Text = "Unlit";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(51, 13);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(18, 13);
-            this.label28.TabIndex = 12;
-            this.label28.Text = "Lit";
-            // 
-            // nudUnlitBOB
-            // 
-            this.nudUnlitBOB.Location = new System.Drawing.Point(88, 29);
-            this.nudUnlitBOB.Name = "nudUnlitBOB";
-            this.nudUnlitBOB.Size = new System.Drawing.Size(40, 20);
-            this.nudUnlitBOB.TabIndex = 11;
-            this.nudUnlitBOB.Tag = "bob";
-            this.nudUnlitBOB.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // nudLitBOB
-            // 
-            this.nudLitBOB.Location = new System.Drawing.Point(42, 29);
-            this.nudLitBOB.Name = "nudLitBOB";
-            this.nudLitBOB.Size = new System.Drawing.Size(40, 20);
-            this.nudLitBOB.TabIndex = 10;
-            this.nudLitBOB.Tag = "bob";
-            this.nudLitBOB.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // facts_strike
-            // 
-            this.facts_strike.FormattingEnabled = true;
-            this.facts_strike.Items.AddRange(new object[] {
-            "0 Strikes",
-            "1 Strike",
-            "2 Strikes"});
-            this.facts_strike.Location = new System.Drawing.Point(189, 19);
-            this.facts_strike.Name = "facts_strike";
-            this.facts_strike.Size = new System.Drawing.Size(109, 21);
-            this.facts_strike.TabIndex = 4;
-            this.facts_strike.Text = "0 Strikes";
-            this.facts_strike.SelectedIndexChanged += new System.EventHandler(this.UpdateBombSolution);
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.tcTabs);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.gbBombInformation);
-            this.splitContainer1.Size = new System.Drawing.Size(976, 593);
-            this.splitContainer1.SplitterDistance = 645;
-            this.splitContainer1.TabIndex = 4;
+            // groupBox24
+            // 
+            this.groupBox24.Controls.Add(this.txtCombinationLockIn);
+            this.groupBox24.Controls.Add(this.label78);
+            this.groupBox24.Controls.Add(this.txtCombinationLockOut);
+            this.groupBox24.Controls.Add(this.label79);
+            this.groupBox24.Location = new System.Drawing.Point(3, 3);
+            this.groupBox24.Name = "groupBox24";
+            this.groupBox24.Size = new System.Drawing.Size(628, 81);
+            this.groupBox24.TabIndex = 18;
+            this.groupBox24.TabStop = false;
+            this.groupBox24.Text = "Combination Lock";
+            // 
+            // txtCombinationLockIn
+            // 
+            this.txtCombinationLockIn.Location = new System.Drawing.Point(56, 19);
+            this.txtCombinationLockIn.Name = "txtCombinationLockIn";
+            this.txtCombinationLockIn.Size = new System.Drawing.Size(566, 20);
+            this.txtCombinationLockIn.TabIndex = 16;
+            this.txtCombinationLockIn.TextChanged += new System.EventHandler(this.txtCombinationLockIn_TextChanged);
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.Location = new System.Drawing.Point(6, 22);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(31, 13);
+            this.label78.TabIndex = 19;
+            this.label78.Text = "Input";
+            // 
+            // txtCombinationLockOut
+            // 
+            this.txtCombinationLockOut.Enabled = false;
+            this.txtCombinationLockOut.Location = new System.Drawing.Point(56, 45);
+            this.txtCombinationLockOut.Name = "txtCombinationLockOut";
+            this.txtCombinationLockOut.Size = new System.Drawing.Size(566, 20);
+            this.txtCombinationLockOut.TabIndex = 17;
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Location = new System.Drawing.Point(6, 48);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(39, 13);
+            this.label79.TabIndex = 18;
+            this.label79.Text = "Output";
+            // 
+            // groupBox25
+            // 
+            this.groupBox25.Controls.Add(this.txtSemaphoreIn);
+            this.groupBox25.Controls.Add(this.label80);
+            this.groupBox25.Controls.Add(this.txtSemaphoreOut);
+            this.groupBox25.Controls.Add(this.label81);
+            this.groupBox25.Location = new System.Drawing.Point(3, 90);
+            this.groupBox25.Name = "groupBox25";
+            this.groupBox25.Size = new System.Drawing.Size(628, 81);
+            this.groupBox25.TabIndex = 19;
+            this.groupBox25.TabStop = false;
+            this.groupBox25.Text = "Semaphore";
+            // 
+            // txtSemaphoreIn
+            // 
+            this.txtSemaphoreIn.Location = new System.Drawing.Point(56, 19);
+            this.txtSemaphoreIn.Name = "txtSemaphoreIn";
+            this.txtSemaphoreIn.Size = new System.Drawing.Size(566, 20);
+            this.txtSemaphoreIn.TabIndex = 16;
+            this.txtSemaphoreIn.TextChanged += new System.EventHandler(this.txtSemaphoreIn_TextChanged);
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.Location = new System.Drawing.Point(6, 22);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(31, 13);
+            this.label80.TabIndex = 19;
+            this.label80.Text = "Input";
+            // 
+            // txtSemaphoreOut
+            // 
+            this.txtSemaphoreOut.Enabled = false;
+            this.txtSemaphoreOut.Location = new System.Drawing.Point(56, 45);
+            this.txtSemaphoreOut.Name = "txtSemaphoreOut";
+            this.txtSemaphoreOut.Size = new System.Drawing.Size(566, 20);
+            this.txtSemaphoreOut.TabIndex = 17;
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.Location = new System.Drawing.Point(6, 48);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(39, 13);
+            this.label81.TabIndex = 18;
+            this.label81.Text = "Output";
             // 
             // splitContainer2
             // 
@@ -4224,101 +4462,15 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.ManualVersionSelect);
             this.splitContainer2.Panel2.Controls.Add(this.linkLabel1);
-            this.splitContainer2.Size = new System.Drawing.Size(976, 627);
+            this.splitContainer2.Size = new System.Drawing.Size(983, 627);
             this.splitContainer2.SplitterDistance = 593;
             this.splitContainer2.TabIndex = 5;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Controls.Add(this.groupBox11);
-            this.flowLayoutPanel2.Controls.Add(this.groupBox12);
-            this.flowLayoutPanel2.Controls.Add(this.groupBox1);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(631, 497);
-            this.flowLayoutPanel2.TabIndex = 0;
-            // 
-            // splitContainer3
-            // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer3.Location = new System.Drawing.Point(3, 16);
-            this.splitContainer3.Name = "splitContainer3";
-            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer3.Panel1
-            // 
-            this.splitContainer3.Panel1.Controls.Add(this.MorseCodeInput);
-            // 
-            // splitContainer3.Panel2
-            // 
-            this.splitContainer3.Panel2.Controls.Add(this.MorseCodeOutput);
-            this.splitContainer3.Size = new System.Drawing.Size(631, 176);
-            this.splitContainer3.SplitterDistance = 31;
-            this.splitContainer3.TabIndex = 0;
-            // 
-            // scPasswordMorseCode
-            // 
-            this.scPasswordMorseCode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scPasswordMorseCode.Location = new System.Drawing.Point(0, 0);
-            this.scPasswordMorseCode.Name = "scPasswordMorseCode";
-            this.scPasswordMorseCode.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // scPasswordMorseCode.Panel1
-            // 
-            this.scPasswordMorseCode.Panel1.Controls.Add(this.groupBox13);
-            // 
-            // scPasswordMorseCode.Panel2
-            // 
-            this.scPasswordMorseCode.Panel2.Controls.Add(this.groupBox14);
-            this.scPasswordMorseCode.Size = new System.Drawing.Size(637, 531);
-            this.scPasswordMorseCode.SplitterDistance = 332;
-            this.scPasswordMorseCode.TabIndex = 0;
-            // 
-            // splitContainer5
-            // 
-            this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer5.Location = new System.Drawing.Point(3, 16);
-            this.splitContainer5.Name = "splitContainer5";
-            this.splitContainer5.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer5.Panel1
-            // 
-            this.splitContainer5.Panel1.Controls.Add(this.splitContainer6);
-            // 
-            // splitContainer5.Panel2
-            // 
-            this.splitContainer5.Panel2.Controls.Add(this.passResults);
-            this.splitContainer5.Size = new System.Drawing.Size(631, 313);
-            this.splitContainer5.SplitterDistance = 154;
-            this.splitContainer5.TabIndex = 11;
-            // 
-            // splitContainer6
-            // 
-            this.splitContainer6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer6.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer6.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer6.Name = "splitContainer6";
-            // 
-            // splitContainer6.Panel1
-            // 
-            this.splitContainer6.Panel1.Controls.Add(this.fpPassword);
-            // 
-            // splitContainer6.Panel2
-            // 
-            this.splitContainer6.Panel2.Controls.Add(this.passwordClear);
-            this.splitContainer6.Panel2.Controls.Add(this.label15);
-            this.splitContainer6.Panel2.Controls.Add(this.fpPasswordLettersNotPresent);
-            this.splitContainer6.Size = new System.Drawing.Size(631, 154);
-            this.splitContainer6.SplitterDistance = 84;
-            this.splitContainer6.TabIndex = 0;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(976, 627);
+            this.ClientSize = new System.Drawing.Size(983, 627);
             this.Controls.Add(this.splitContainer2);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -4327,82 +4479,12 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "Keep Talking and Nobody Explodes Helper";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.tcTabs.ResumeLayout(false);
-            this.tpAbout.ResumeLayout(false);
-            this.tpAbout.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.tpButtonV1.ResumeLayout(false);
-            this.tpButtonV1.PerformLayout();
-            this.tpKeypadsSimonSays.ResumeLayout(false);
-            this.groupBox17.ResumeLayout(false);
-            this.groupBox17.PerformLayout();
-            this.fpKeypadSymbols.ResumeLayout(false);
-            this.fpKeypadOrder.ResumeLayout(false);
-            this.fpKeypadSelection.ResumeLayout(false);
-            this.groupBox16.ResumeLayout(false);
-            this.groupBox16.PerformLayout();
-            this.tpWhosOnFirst.ResumeLayout(false);
-            this.tpWhosOnFirst.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.wofLook.ResumeLayout(false);
-            this.wofLook.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.wofButtons.ResumeLayout(false);
-            this.tpMemory.ResumeLayout(false);
-            this.tpMemory.PerformLayout();
-            this.tpMaze.ResumeLayout(false);
-            this.tpMaze.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMaze)).EndInit();
-            this.tpWires.ResumeLayout(false);
-            this.groupBox12.ResumeLayout(false);
-            this.groupBox12.PerformLayout();
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox11.PerformLayout();
-            this.fpWires.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.tpPasswordMorseCode.ResumeLayout(false);
-            this.groupBox14.ResumeLayout(false);
-            this.groupBox13.ResumeLayout(false);
-            this.fpPassword.ResumeLayout(false);
-            this.fpPassword.PerformLayout();
-            this.fpPasswordLettersNotPresent.ResumeLayout(false);
-            this.fpPasswordLettersNotPresent.PerformLayout();
-            this.tpNeedyKnobV1.ResumeLayout(false);
-            this.tpNeedyKnobV1.PerformLayout();
             this.fpKnob.ResumeLayout(false);
             this.fpKnob.PerformLayout();
-            this.tpForgetMeNot.ResumeLayout(false);
-            this.tpForgetMeNot.PerformLayout();
-            this.tpModCollection1.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox15.ResumeLayout(false);
-            this.groupBox15.PerformLayout();
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
-            this.groupBox18.ResumeLayout(false);
-            this.groupBox18.PerformLayout();
-            this.groupBox19.ResumeLayout(false);
-            this.groupBox19.PerformLayout();
-            this.tpModCollection2.ResumeLayout(false);
-            this.groupBox20.ResumeLayout(false);
-            this.groupBox20.PerformLayout();
             this.gbBombInformation.ResumeLayout(false);
             this.gbBombInformation.PerformLayout();
+            this.groupBox23.ResumeLayout(false);
+            this.groupBox23.PerformLayout();
             this.gbBatteries.ResumeLayout(false);
             this.gbBatteries.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudBatteryHolders)).EndInit();
@@ -4445,22 +4527,54 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            this.splitContainer2.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
+            this.tcTabs.ResumeLayout(false);
+            this.tpAbout.ResumeLayout(false);
+            this.tpAbout.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tpButtonV1.ResumeLayout(false);
+            this.tpButtonV1.PerformLayout();
+            this.tpKeypadsSimonSays.ResumeLayout(false);
+            this.groupBox17.ResumeLayout(false);
+            this.groupBox17.PerformLayout();
+            this.fpKeypadSymbols.ResumeLayout(false);
+            this.fpKeypadOrder.ResumeLayout(false);
+            this.fpKeypadSelection.ResumeLayout(false);
+            this.groupBox16.ResumeLayout(false);
+            this.groupBox16.PerformLayout();
+            this.tpMemoryWhosOnFirst.ResumeLayout(false);
+            this.groupBox21.ResumeLayout(false);
+            this.groupBox21.PerformLayout();
+            this.groupBox22.ResumeLayout(false);
+            this.wofButtons.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.whosOnFirstStep1.ResumeLayout(false);
+            this.whosOnFirstStep1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.wofLook.ResumeLayout(false);
+            this.wofLook.PerformLayout();
+            this.tpMaze.ResumeLayout(false);
+            this.tpMaze.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMaze)).EndInit();
+            this.tpWires.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
-            this.splitContainer3.Panel1.ResumeLayout(false);
-            this.splitContainer3.Panel1.PerformLayout();
-            this.splitContainer3.Panel2.ResumeLayout(false);
-            this.splitContainer3.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
-            this.splitContainer3.ResumeLayout(false);
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
+            this.fpWires.ResumeLayout(false);
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.tpPasswordMorseCode.ResumeLayout(false);
             this.scPasswordMorseCode.Panel1.ResumeLayout(false);
             this.scPasswordMorseCode.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.scPasswordMorseCode)).EndInit();
             this.scPasswordMorseCode.ResumeLayout(false);
+            this.groupBox13.ResumeLayout(false);
             this.splitContainer5.Panel1.ResumeLayout(false);
             this.splitContainer5.Panel2.ResumeLayout(false);
             this.splitContainer5.Panel2.PerformLayout();
@@ -4471,121 +4585,60 @@
             this.splitContainer6.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).EndInit();
             this.splitContainer6.ResumeLayout(false);
+            this.fpPassword.ResumeLayout(false);
+            this.fpPassword.PerformLayout();
+            this.fpPasswordLettersNotPresent.ResumeLayout(false);
+            this.fpPasswordLettersNotPresent.PerformLayout();
+            this.groupBox14.ResumeLayout(false);
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel1.PerformLayout();
+            this.splitContainer3.Panel2.ResumeLayout(false);
+            this.splitContainer3.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
+            this.tpModForgetMeNot.ResumeLayout(false);
+            this.tpModForgetMeNot.PerformLayout();
+            this.tpModCollection1.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            this.groupBox19.ResumeLayout(false);
+            this.groupBox19.PerformLayout();
+            this.groupBox18.ResumeLayout(false);
+            this.groupBox18.PerformLayout();
+            this.groupBox15.ResumeLayout(false);
+            this.groupBox15.PerformLayout();
+            this.tpModCollection2.ResumeLayout(false);
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.groupBox20.ResumeLayout(false);
+            this.groupBox20.PerformLayout();
+            this.groupBox24.ResumeLayout(false);
+            this.groupBox24.PerformLayout();
+            this.groupBox25.ResumeLayout(false);
+            this.groupBox25.PerformLayout();
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            this.splitContainer2.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TabControl tcTabs;
-        private System.Windows.Forms.TabPage tpWires;
-        private System.Windows.Forms.Button wsReset;
-        private System.Windows.Forms.TabPage tpButtonV1;
-        private System.Windows.Forms.ComboBox button_color;
-        private System.Windows.Forms.Label otherstrip;
-        private System.Windows.Forms.Label yellowstrip;
-        private System.Windows.Forms.Label bluestrip;
-        private System.Windows.Forms.Label button_label;
-        private System.Windows.Forms.ComboBox button_name;
         private System.Windows.Forms.ComboBox ManualVersionSelect;
-        private System.Windows.Forms.Button wireReset;
-        private System.Windows.Forms.ComboBox wire5;
-        private System.Windows.Forms.ComboBox wire4;
-        private System.Windows.Forms.ComboBox wire3;
-        private System.Windows.Forms.ComboBox wire2;
-        private System.Windows.Forms.ComboBox wire1;
-        private System.Windows.Forms.ComboBox wire6;
-        private System.Windows.Forms.TabPage tpPasswordMorseCode;
-        private System.Windows.Forms.TextBox pass1;
-        private System.Windows.Forms.TextBox pass5;
-        private System.Windows.Forms.TextBox pass4;
-        private System.Windows.Forms.TextBox pass3;
-        private System.Windows.Forms.TextBox pass2;
-        private System.Windows.Forms.Button passwordClear;
-        private System.Windows.Forms.TextBox passResults;
-        private System.Windows.Forms.Label whitestrip;
-        private System.Windows.Forms.TabPage tpMemory;
-        private System.Windows.Forms.Label memoryPositionLabel;
-        private System.Windows.Forms.Label memoryNumberLabel;
-        private System.Windows.Forms.Button Num4;
-        private System.Windows.Forms.Button Num3;
-        private System.Windows.Forms.Button Num2;
-        private System.Windows.Forms.Button Num1;
-        private System.Windows.Forms.Button MemoryReset;
-        private System.Windows.Forms.Label memoryLabel;
         private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.TextBox MorseCodeOutput;
-        private System.Windows.Forms.TextBox MorseCodeInput;
-        private System.Windows.Forms.TextBox memoryDebug;
-        private System.Windows.Forms.TextBox cw_output;
-        private System.Windows.Forms.TextBox cw_input;
-        private System.Windows.Forms.TextBox wires_input;
-        private System.Windows.Forms.TextBox ws_output;
-        private System.Windows.Forms.TextBox ws_input;
-        private System.Windows.Forms.TabPage tpAbout;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TabPage tpMaze;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox mazeStart;
-        private System.Windows.Forms.TextBox mazeSelection;
-        private System.Windows.Forms.TextBox mazeEnd;
-        private System.Windows.Forms.PictureBox pbMaze;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton rbEnd;
-        private System.Windows.Forms.RadioButton rbStart;
-        private System.Windows.Forms.RadioButton rbGreenCircle;
-        private System.Windows.Forms.CheckBox cbAutoAdvance;
-        private System.Windows.Forms.TabPage tpWhosOnFirst;
-        private System.Windows.Forms.FlowLayoutPanel wofButtons;
-        private System.Windows.Forms.Button wofButton1;
-        private System.Windows.Forms.Button wofButton2;
-        private System.Windows.Forms.Button wofButton3;
-        private System.Windows.Forms.Button wofButton4;
-        private System.Windows.Forms.Button wofButton5;
-        private System.Windows.Forms.Button wofButton6;
-        private System.Windows.Forms.Button wofButton7;
-        private System.Windows.Forms.Button wofButton8;
-        private System.Windows.Forms.Button wofButton9;
-        private System.Windows.Forms.Button wofButton10;
-        private System.Windows.Forms.Button wofButton11;
-        private System.Windows.Forms.Button wofButton12;
-        private System.Windows.Forms.Button wofButton13;
-        private System.Windows.Forms.Button wofButton14;
-        private System.Windows.Forms.Button wofButton15;
-        private System.Windows.Forms.Button wofButton16;
-        private System.Windows.Forms.Button wofButton17;
-        private System.Windows.Forms.Button wofButton18;
-        private System.Windows.Forms.Button wofButton19;
-        private System.Windows.Forms.Button wofButton20;
-        private System.Windows.Forms.Button wofButton21;
-        private System.Windows.Forms.Button wofButton22;
-        private System.Windows.Forms.Button wofButton23;
-        private System.Windows.Forms.Button wofButton24;
-        private System.Windows.Forms.Button wofButton25;
-        private System.Windows.Forms.Button wofButton26;
-        private System.Windows.Forms.Button wofButton27;
-        private System.Windows.Forms.Button wofButton28;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.RadioButton wofStep2;
-        private System.Windows.Forms.RadioButton wofStep1;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.RadioButton rbWOF6;
-        private System.Windows.Forms.RadioButton rbWOF5;
-        private System.Windows.Forms.RadioButton rbWOF4;
-        private System.Windows.Forms.RadioButton rbWOF3;
-        private System.Windows.Forms.RadioButton rbWOF2;
-        private System.Windows.Forms.RadioButton rbWOF1;
-        private System.Windows.Forms.TextBox wofOutput;
-        private System.Windows.Forms.FlowLayoutPanel wofLook;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.Label wofStep2Label;
-        private System.Windows.Forms.Label wofStep1Label;
-        private System.Windows.Forms.TabPage tpKeypadsSimonSays;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.FlowLayoutPanel fpPassword;
-        private System.Windows.Forms.TabPage tpNeedyKnobV1;
         private System.Windows.Forms.FlowLayoutPanel fpKnob;
         private System.Windows.Forms.CheckBox nk1;
         private System.Windows.Forms.CheckBox nk2;
@@ -4594,77 +4647,10 @@
         private System.Windows.Forms.CheckBox nk16;
         private System.Windows.Forms.CheckBox nk32;
         private System.Windows.Forms.CheckBox nk64;
-        private System.Windows.Forms.Label nn_label;
-        private System.Windows.Forms.FlowLayoutPanel fpWires;
-        private System.Windows.Forms.Button cw_all_wires;
-        private System.Windows.Forms.Button cw_reset;
         private System.Windows.Forms.GroupBox gbBombInformation;
         private System.Windows.Forms.ComboBox facts_strike;
-        private System.Windows.Forms.TextBox mazeOutput;
-        private System.Windows.Forms.FlowLayoutPanel fpKeypadOrder;
-        private System.Windows.Forms.FlowLayoutPanel fpKeypadSymbols;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.Button button18;
-        private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.Button button21;
-        private System.Windows.Forms.Button button22;
-        private System.Windows.Forms.Button button23;
-        private System.Windows.Forms.Button button24;
-        private System.Windows.Forms.Button button25;
-        private System.Windows.Forms.Button button26;
-        private System.Windows.Forms.Button button27;
-        private System.Windows.Forms.Button button28;
-        private System.Windows.Forms.Button button29;
-        private System.Windows.Forms.Button button30;
-        private System.Windows.Forms.Button button31;
-        private System.Windows.Forms.Button keypadReset;
-        private System.Windows.Forms.Label fpKeypadLabel;
-        private System.Windows.Forms.FlowLayoutPanel fpKeypadSelection;
-        private System.Windows.Forms.Button button32;
-        private System.Windows.Forms.Button button33;
-        private System.Windows.Forms.Button button34;
-        private System.Windows.Forms.Button button35;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.FlowLayoutPanel fpPasswordLettersNotPresent;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button button36;
-        private System.Windows.Forms.Button button37;
-        private System.Windows.Forms.Button button38;
-        private System.Windows.Forms.Button button39;
-        private System.Windows.Forms.Button button40;
-        private System.Windows.Forms.Button button41;
-        private System.Windows.Forms.TabPage tpForgetMeNot;
-        private System.Windows.Forms.TextBox tbFMNSolution;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtSerialNumber;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.GroupBox gbBatteries;
         private System.Windows.Forms.Label label50;
         private System.Windows.Forms.NumericUpDown nudBatteriesD;
@@ -4724,19 +4710,239 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label label53;
         private System.Windows.Forms.NumericUpDown nudBatteryHolders;
+        private System.Windows.Forms.Button button42;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.GroupBox groupBox23;
+        private System.Windows.Forms.TextBox txtNeedyKnobOut;
+        private System.Windows.Forms.Label label77;
+        private System.Windows.Forms.TabControl tcTabs;
+        private System.Windows.Forms.TabPage tpAbout;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TabPage tpButtonV1;
+        private System.Windows.Forms.Label lblButtonQuery;
+        private System.Windows.Forms.Label label61;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.Label whitestrip;
+        private System.Windows.Forms.ComboBox button_name;
+        private System.Windows.Forms.ComboBox button_color;
+        private System.Windows.Forms.Label otherstrip;
+        private System.Windows.Forms.Label yellowstrip;
+        private System.Windows.Forms.Label bluestrip;
+        private System.Windows.Forms.Label button_label;
+        private System.Windows.Forms.TabPage tpKeypadsSimonSays;
+        private System.Windows.Forms.GroupBox groupBox17;
+        private System.Windows.Forms.FlowLayoutPanel fpKeypadSymbols;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Button button19;
+        private System.Windows.Forms.Button button20;
+        private System.Windows.Forms.Button button21;
+        private System.Windows.Forms.Button button22;
+        private System.Windows.Forms.Button button23;
+        private System.Windows.Forms.Button button24;
+        private System.Windows.Forms.Button button25;
+        private System.Windows.Forms.Button button26;
+        private System.Windows.Forms.Button button27;
+        private System.Windows.Forms.Button button28;
+        private System.Windows.Forms.Button button29;
+        private System.Windows.Forms.Button button30;
+        private System.Windows.Forms.Button button31;
+        private System.Windows.Forms.FlowLayoutPanel fpKeypadOrder;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button40;
+        private System.Windows.Forms.Button button41;
+        private System.Windows.Forms.Label fpKeypadLabel;
+        private System.Windows.Forms.Button keypadReset;
+        private System.Windows.Forms.FlowLayoutPanel fpKeypadSelection;
+        private System.Windows.Forms.Button button32;
+        private System.Windows.Forms.Button button33;
+        private System.Windows.Forms.Button button34;
+        private System.Windows.Forms.Button button35;
+        private System.Windows.Forms.Button button36;
+        private System.Windows.Forms.Button button37;
+        private System.Windows.Forms.Button button38;
+        private System.Windows.Forms.Button button39;
+        private System.Windows.Forms.GroupBox groupBox16;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label ss_red;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label ss_yellow;
+        private System.Windows.Forms.Label ss_green;
+        private System.Windows.Forms.Label ss_blue;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TabPage tpMemoryWhosOnFirst;
+        private System.Windows.Forms.GroupBox groupBox21;
+        private System.Windows.Forms.Label memoryPositionLabel;
+        private System.Windows.Forms.TextBox memoryDebug;
+        private System.Windows.Forms.Button Num1;
+        private System.Windows.Forms.Button Num2;
+        private System.Windows.Forms.Button MemoryReset;
+        private System.Windows.Forms.Button Num3;
+        private System.Windows.Forms.Button Num4;
+        private System.Windows.Forms.Label memoryNumberLabel;
+        private System.Windows.Forms.GroupBox groupBox22;
+        private System.Windows.Forms.FlowLayoutPanel wofButtons;
+        private System.Windows.Forms.Button wofButton1;
+        private System.Windows.Forms.Button wofButton2;
+        private System.Windows.Forms.Button wofButton3;
+        private System.Windows.Forms.Button wofButton4;
+        private System.Windows.Forms.Button wofButton5;
+        private System.Windows.Forms.Button wofButton6;
+        private System.Windows.Forms.Button wofButton7;
+        private System.Windows.Forms.Button wofButton8;
+        private System.Windows.Forms.Button wofButton9;
+        private System.Windows.Forms.Button wofButton10;
+        private System.Windows.Forms.Button wofButton11;
+        private System.Windows.Forms.Button wofButton12;
+        private System.Windows.Forms.Button wofButton13;
+        private System.Windows.Forms.Button wofButton14;
+        private System.Windows.Forms.Button wofButton15;
+        private System.Windows.Forms.Button wofButton16;
+        private System.Windows.Forms.Button wofButton17;
+        private System.Windows.Forms.Button wofButton18;
+        private System.Windows.Forms.Button wofButton19;
+        private System.Windows.Forms.Button wofButton20;
+        private System.Windows.Forms.Button wofButton21;
+        private System.Windows.Forms.Button wofButton22;
+        private System.Windows.Forms.Button wofButton23;
+        private System.Windows.Forms.Button wofButton24;
+        private System.Windows.Forms.Button wofButton25;
+        private System.Windows.Forms.Button wofButton26;
+        private System.Windows.Forms.Button wofButton27;
+        private System.Windows.Forms.Button wofButton28;
+        private System.Windows.Forms.Label wofStep2Label;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.RadioButton wofStep2;
+        private System.Windows.Forms.RadioButton wofStep1;
+        private System.Windows.Forms.Panel whosOnFirstStep1;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.FlowLayoutPanel wofLook;
+        private System.Windows.Forms.RadioButton rbWOF1;
+        private System.Windows.Forms.RadioButton rbWOF2;
+        private System.Windows.Forms.RadioButton rbWOF3;
+        private System.Windows.Forms.RadioButton rbWOF4;
+        private System.Windows.Forms.RadioButton rbWOF5;
+        private System.Windows.Forms.RadioButton rbWOF6;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.TextBox wofStep1Label;
+        private System.Windows.Forms.TextBox wofOutput;
+        private System.Windows.Forms.TabPage tpMaze;
+        private System.Windows.Forms.TextBox mazeOutput;
+        private System.Windows.Forms.TextBox mazeStart;
+        private System.Windows.Forms.TextBox mazeSelection;
+        private System.Windows.Forms.TextBox mazeEnd;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckBox cbAutoAdvance;
+        private System.Windows.Forms.RadioButton rbEnd;
+        private System.Windows.Forms.RadioButton rbStart;
+        private System.Windows.Forms.RadioButton rbGreenCircle;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pbMaze;
+        private System.Windows.Forms.TabPage tpWires;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.Label label68;
+        private System.Windows.Forms.TextBox txtSimpleWireOutput;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button wireReset;
+        private System.Windows.Forms.FlowLayoutPanel fpWires;
+        private System.Windows.Forms.ComboBox wire1;
+        private System.Windows.Forms.ComboBox wire2;
+        private System.Windows.Forms.ComboBox wire3;
+        private System.Windows.Forms.ComboBox wire4;
+        private System.Windows.Forms.ComboBox wire5;
+        private System.Windows.Forms.ComboBox wire6;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox wires_input;
+        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.Label label69;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox cw_input;
+        private System.Windows.Forms.TextBox cw_output;
+        private System.Windows.Forms.Button cw_reset;
+        private System.Windows.Forms.Button cw_all_wires;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label63;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Button wsReset;
+        private System.Windows.Forms.TextBox ws_input;
+        private System.Windows.Forms.TextBox ws_output;
+        private System.Windows.Forms.TabPage tpPasswordMorseCode;
+        private System.Windows.Forms.SplitContainer scPasswordMorseCode;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.SplitContainer splitContainer5;
+        private System.Windows.Forms.SplitContainer splitContainer6;
+        private System.Windows.Forms.FlowLayoutPanel fpPassword;
+        private System.Windows.Forms.TextBox pass1;
+        private System.Windows.Forms.TextBox pass2;
+        private System.Windows.Forms.TextBox pass3;
+        private System.Windows.Forms.TextBox pass4;
+        private System.Windows.Forms.TextBox pass5;
+        private System.Windows.Forms.Button passwordClear;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.FlowLayoutPanel fpPasswordLettersNotPresent;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox passResults;
+        private System.Windows.Forms.GroupBox groupBox14;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.TextBox MorseCodeInput;
+        private System.Windows.Forms.TextBox MorseCodeOutput;
+        private System.Windows.Forms.TabPage tpModForgetMeNot;
+        private System.Windows.Forms.Label label59;
         private System.Windows.Forms.Label label57;
         private System.Windows.Forms.Label label56;
         private System.Windows.Forms.Label label55;
-        private System.Windows.Forms.Label label61;
-        private System.Windows.Forms.Label label60;
-        private System.Windows.Forms.Label label59;
-        private System.Windows.Forms.Button button42;
-        private System.Windows.Forms.Label lblButtonQuery;
+        private System.Windows.Forms.TextBox txtForgetMeNotOut;
+        private System.Windows.Forms.TextBox txtForgetMeNotIn;
         private System.Windows.Forms.TabPage tpModCollection1;
-        private System.Windows.Forms.Label label64;
-        private System.Windows.Forms.Label label65;
-        private System.Windows.Forms.TextBox txtChessSolution;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TextBox txtChessInput;
+        private System.Windows.Forms.Label label64;
+        private System.Windows.Forms.TextBox txtChessSolution;
+        private System.Windows.Forms.Label label65;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.TextBox txtLogicOR;
+        private System.Windows.Forms.TextBox txtLogicAND;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label83;
+        private System.Windows.Forms.Label label84;
+        private System.Windows.Forms.TextBox txtLetteredKeysOut;
+        private System.Windows.Forms.TextBox txtLetteredKeysIn;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label26;
@@ -4753,57 +4959,13 @@
         private System.Windows.Forms.CheckBox cbPlumbingGreenOut;
         private System.Windows.Forms.CheckBox cbPlumbingYellowOut;
         private System.Windows.Forms.CheckBox cbPlumbingYellowIn;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Label label62;
-        private System.Windows.Forms.Label label54;
-        private System.Windows.Forms.TextBox txtLogicOR;
-        private System.Windows.Forms.TextBox txtLogicAND;
-        private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.TextBox txtSimpleWireOutput;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.GroupBox groupBox12;
-        private System.Windows.Forms.Label label69;
-        private System.Windows.Forms.Label label51;
-        private System.Windows.Forms.Label label52;
-        private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label68;
-        private System.Windows.Forms.Label label63;
-        private System.Windows.Forms.GroupBox groupBox14;
-        private System.Windows.Forms.GroupBox groupBox13;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Label label83;
-        private System.Windows.Forms.Label label84;
-        private System.Windows.Forms.TextBox txtLetteredKeysOut;
-        private System.Windows.Forms.TextBox txtLetteredKeysIn;
-        private System.Windows.Forms.GroupBox groupBox17;
-        private System.Windows.Forms.GroupBox groupBox16;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label ss_red;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label ss_yellow;
-        private System.Windows.Forms.Label ss_green;
-        private System.Windows.Forms.Label ss_blue;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.GroupBox groupBox15;
-        private System.Windows.Forms.Label label58;
-        private System.Windows.Forms.Label label70;
-        private System.Windows.Forms.TextBox txtEmojiMathOut;
-        private System.Windows.Forms.TextBox txtEmojiMathIn;
-        private System.Windows.Forms.GroupBox groupBox18;
-        private System.Windows.Forms.Label label71;
-        private System.Windows.Forms.TextBox txtSafetySafe;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.GroupBox groupBox19;
         private System.Windows.Forms.Label label73;
         private System.Windows.Forms.Label label74;
@@ -4811,19 +4973,31 @@
         private System.Windows.Forms.TextBox txtStroopAnswer;
         private System.Windows.Forms.TextBox txtStroopColors;
         private System.Windows.Forms.TextBox txtStroopWords;
+        private System.Windows.Forms.GroupBox groupBox18;
+        private System.Windows.Forms.Label label71;
+        private System.Windows.Forms.TextBox txtSafetySafe;
+        private System.Windows.Forms.GroupBox groupBox15;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.Label label70;
+        private System.Windows.Forms.TextBox txtEmojiMathOut;
+        private System.Windows.Forms.TextBox txtEmojiMathIn;
         private System.Windows.Forms.TabPage tpModCollection2;
         private System.Windows.Forms.GroupBox groupBox20;
         private System.Windows.Forms.TextBox txtNumberPadIn;
         private System.Windows.Forms.Label label75;
         private System.Windows.Forms.TextBox txtNumberPadOut;
         private System.Windows.Forms.Label label76;
-        private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.SplitContainer scPasswordMorseCode;
-        private System.Windows.Forms.SplitContainer splitContainer5;
-        private System.Windows.Forms.SplitContainer splitContainer6;
-        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.GroupBox groupBox24;
+        private System.Windows.Forms.TextBox txtCombinationLockIn;
+        private System.Windows.Forms.Label label78;
+        private System.Windows.Forms.TextBox txtCombinationLockOut;
+        private System.Windows.Forms.Label label79;
+        private System.Windows.Forms.GroupBox groupBox25;
+        private System.Windows.Forms.TextBox txtSemaphoreIn;
+        private System.Windows.Forms.Label label80;
+        private System.Windows.Forms.TextBox txtSemaphoreOut;
+        private System.Windows.Forms.Label label81;
     }
 }
 
