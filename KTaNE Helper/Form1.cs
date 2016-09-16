@@ -1467,16 +1467,18 @@ namespace KTaNE_Helper
             var serials = new List<string> {"7HPJ", "34XYZ", "SLIM", "15BRO", "20DGT", "8CAKE", "9QVN", "6WUF"};
             var connectionPairs = new List<string>
             {
-                "12-13-21-23-31-32-46-47-56-57-64-65-74-45",
-                "12-14-46-21-23-24-32-41-42-47-56-65-61-67-68-74-76-78-87-86",
-                "12-16-13-21-26-31-36-34-62-61-63-64-65-43-46-45-47-48-56-54-57-84-87-75-74-78",
-                "12-17-21-27-71-72-75-76-57-56-67-65-34-38-43-48-83-84",
-                "13-12-31-35-37-53-57-56-73-75-72-74-21-27-24-47-42-46-48-65-64-68-84-86",
-                "12-16-13-18-21-26-24-61-62-64-63-31-36-34-37-38-42-46-43-47-45-73-74-75-78-81-83-87-85-54-57-58",
-                "12-14-18-21-27-26-23-32-37-36-34-43-41-45-54-58-56-65-63-62-67-76-73-72-78-87-85-81",
-                "12-17-16-21-27-28-23-61-63-65-67-76-75-74-78-72-71-84-83-82-87-53-54-57-56-48-47-45-32-38-35-36"
+                "12-13-21-23-31-32-46-47-56-57-64-65-74-75",
+                "12-14-16-21-23-24-32-41-42-47-56-61-65-67-68-74-76-78-86-87",
+                "12-13-16-21-26-31-34-36-43-45-46-47-48-54-56-57-61-62-63-64-65-74-75-78-84-87",
+                "12-17-21-27-34-38-43-48-56-57-65-67-71-72-75-76-83-84",
+                "12-13-21-24-27-31-35-37-42-46-47-48-53-56-57-64-65-68-72-73-74-75-84-86",
+                "12-13-16-18-21-24-26-31-34-36-37-38-42-43-45-46-47-54-57-58-61-62-63-64-73-74-75-78-81-83-85-87",
+                "12-14-18-21-23-26-27-32-34-36-37-41-43-45-54-56-58-62-63-65-67-72-73-76-78-81-85-87",
+                "12-16-17-21-23-27-28-32-35-36-38-45-47-48-53-54-56-57-61-63-65-67-71-72-74-75-76-78-82-83-84-87"
             };
-            if (txtConnections.Text.Split(new[] {" "}, StringSplitOptions.RemoveEmptyEntries).Length != 4) return;
+            var entries = txtConnections.Text.Split(new[] {" "}, StringSplitOptions.RemoveEmptyEntries);
+            if (entries.Length != 4) return;
+            if (entries.Any(entry => entry.Length != 2)) return;
             if (txtSerialNumber.TextLength < 6) return;
             int serialdigit;
             var counts = new int[8];
@@ -1513,12 +1515,19 @@ namespace KTaNE_Helper
 
             if (group == -1) return;
 
-            foreach (var entry in txtConnections.Text.Split(new[] {" "}, StringSplitOptions.RemoveEmptyEntries))
+            var sanity = "";
+            foreach (var entry in entries)
             {
                 txtConnectionCheckOut.Text += connectionPairs[group].Contains(entry)
-                    ? "Green "
-                    : "Red ";
+                    ? "G "
+                    : "R ";
+
+                sanity += connectionPairs[group].Contains(entry.Substring(1, 1) + entry.Substring(0, 1))
+                    ? "G "
+                    : "R ";
             }
+            if (txtConnectionCheckOut.Text != sanity)
+                txtConnectionCheckOut.Text += @"(POSSIBLY INVALID)";
 
         }
 
@@ -1616,7 +1625,7 @@ namespace KTaNE_Helper
             Simon_Says_Event();
             Complicated_Wires_Event(null, null);
             Button_Event(null, null);
-            wires_Input_TextChanged(null, null);
+            simpleWires_Event(null, null);
             Needy_Knob_CheckedChanged(null, null);
             textBox2_TextChanged(null, null);
             ForgetMeNot_Event(null, null);
@@ -1630,6 +1639,8 @@ namespace KTaNE_Helper
             txtNumberPadIn_TextChanged(null, null);
             txtLetteredKeysIn_TextChanged(null, null);
             txtCombinationLockIn_TextChanged(null, null);
+            txtCaesarCipherIn_TextChanged(null, null);
+            txtResistorsIn_TextChanged(null,null);
         }
 
         private bool DuplicateSerialCharacters()
@@ -2149,6 +2160,148 @@ namespace KTaNE_Helper
         private void txtSemaphoreIn_TextChanged(object sender, EventArgs e)
         {
             txtSemaphoreOut.Text = new Semaphore(txtSerialNumber.Text).GetAnswer(txtSemaphoreIn.Text);
+        }
+
+        private void txtCaesarCipherIn_TextChanged(object sender, EventArgs e)
+        {
+            const string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            if (nudPortParallel.Value > 0 && nudLitNSA.Value > 0)
+            {
+                txtCaesarCipherOut.Text = txtCaesarCipherIn.Text;
+                return;
+            }
+            var offset = (int) (nudBatteriesAA.Value + nudBatteriesD.Value);
+            if (SerialNumberContainsVowel()) offset--;
+            if (!SerialNumberLastDigitOdd()) offset++;
+            if (nudLitCAR.Value > 0 || nudUnlitCAR.Value > 0) offset++;
+
+            txtCaesarCipherOut.Text = "";
+            for (var i = 0; i < txtCaesarCipherIn.TextLength; i++)
+            {
+                var c = letters.IndexOf(txtCaesarCipherIn.Text.Substring(i, 1), StringComparison.Ordinal);
+                if (c == -1)
+                {
+                    txtCaesarCipherOut.Text = @"Input only Letters";
+                    return;
+                }
+                c += offset;
+                c %= 26;
+                txtCaesarCipherOut.Text += letters.Substring(c, 1);
+            }
+        }
+
+        private void txtResistorsIn_TextChanged(object sender, EventArgs e)
+        {
+            const string digits = "0123456789";
+            const string ohm = "Ω";
+            const string colors = "SDKNROYGBVAW";
+            var resistorsTxt = txtResistorsIn.Text.ToUpper().Split(' ');
+            var batts = (int) (nudBatteriesD.Value + nudBatteriesAA.Value);
+            if (batts > 6) batts = 6;
+            txtResistorsOut.Text = "";
+
+            if (txtSerialNumber.TextLength < 6) return;
+            if (resistorsTxt.Length < 2) return;
+            if (resistorsTxt.Any(r => r.Length != 3)) return;
+            var resistors = new float[2];
+            
+            for(var x=0; x<2;x++)
+            {
+                var i = colors.IndexOf(resistorsTxt[x].Substring(0, 1), StringComparison.Ordinal)-2;    //Gold/Siver not Valid
+                var j = colors.IndexOf(resistorsTxt[x].Substring(1, 1), StringComparison.Ordinal)-2;    //Gold/Silver not Valid
+                var k = colors.IndexOf(resistorsTxt[x].Substring(2, 1), StringComparison.Ordinal)-2;    //Gray/White not Valid
+                if (i < 0 || j < 0 || k < -2 || k > 7) return;
+                var r = (i*10.0f) + j;
+                switch (k)
+                {
+                    case -1:
+                        r /= 10.0f;
+                        break;
+                    case -2:
+                        r /= 100.0f;
+                        break;
+                    default:
+                        r *= (float)Math.Pow(10.0, k);
+                        break;
+                }
+                resistors[x] = r;
+            }
+            
+            var resistance = 0ul;
+            var targetIn = 0;
+            var targetOut = digits.IndexOf(txtSerialNumber.Text.Substring(5, 1), StringComparison.Ordinal);
+            var digitFound = false;
+            for (var i = 0; i < 6; i++)
+            {
+                if (!digits.Contains(txtSerialNumber.Text.Substring(i, 1))) continue;
+                resistance *= 10;
+                var j = digits.IndexOf(txtSerialNumber.Text.Substring(i, 1), StringComparison.Ordinal);
+                resistance += (ulong)j;
+                if (!digitFound)
+                {
+                    targetIn = j;
+                    digitFound = true;
+                }
+                else
+                    break;
+            }
+            resistance *= (ulong) Math.Pow(10.0f, batts);
+            if (targetOut < 0)
+                targetOut = targetIn;
+
+            var primaryIn = (targetIn%2) == 0 ? "A" : "B";
+            var secondaryIn = (targetIn % 2) == 1 ? "A" : "B";
+            var primaryOut = (targetOut%2) == 0 ? "C" : "D";
+            var secondaryOut = (targetOut % 2) == 1 ? "C" : "D";
+            if (nudLitFRK.Value > 0) primaryOut = "C+D";
+            else if (nudBatteriesD.Value > 0)
+                primaryOut += ", 0" + ohm + " from " + secondaryIn + " to " + secondaryOut;
+
+            var parallel = (resistors[0]*resistors[1])/(resistors[0] + resistors[1]);
+            var serial = resistors[0] + resistors[1];
+
+            var p = parallel >= 1000000
+                ? (parallel/1000000.0f) + "M" + ohm
+                : (parallel >= 1000)
+                    ? (parallel/1000.0f) + "K" + ohm
+                    : parallel + ohm;
+            var s = serial >= 1000000
+                ? (serial / 1000000.0f) + "M" + ohm
+                : (serial >= 1000)
+                    ? (serial / 1000.0f) + "K" + ohm
+                    : serial + ohm;
+            var t = resistance >= 1000000
+                ? (resistance / 1000000.0f) + "M" + ohm
+                : (resistance >= 1000)
+                    ? (resistance / 1000.0f) + "K" + ohm
+                    : resistance + ohm;
+
+            var r0 = resistors[0] >= 1000000
+                ? (resistors[0] / 1000000.0f) + "M" + ohm
+                : (resistors[0] >= 1000)
+                    ? (resistors[0] / 1000.0f) + "K" + ohm
+                    : resistors[0] + ohm;
+
+            var r1 = resistors[1] >= 1000000
+                ? (resistors[1] / 1000000.0f) + "M" + ohm
+                : (resistors[1] >= 1000)
+                    ? (resistors[1] / 1000.0f) + "K" + ohm
+                    : resistors[1] + ohm;
+
+
+            if (resistance == 0)
+                txtResistorsOut.Text = @"Connect " + primaryIn + @" to " + primaryOut;
+            else if (resistance == (ulong)parallel)
+                txtResistorsOut.Text = @"Connect the Resistors in Parallel from " + primaryIn + @" to " + primaryOut;
+            else if (resistance == (ulong)serial)
+                txtResistorsOut.Text = @"Connect the Resistors in Series from " + primaryIn + @" to " + primaryOut;
+            else if (resistance == (ulong)resistors[0])
+                txtResistorsOut.Text = @"Connect Resistor One from " + primaryIn + @" to " + primaryOut;
+            else if (resistance == (ulong)resistors[1])
+                txtResistorsOut.Text = @"Connect Resistor Two from " + primaryIn + @" to " + primaryOut;
+            else
+                txtResistorsOut.Text = @"R1=" + r0 + @" R2=" + r1 + @" Parallel=" + p + @" Series=" + s + @" Target = " + t + @" From " + primaryIn + @" to " + primaryOut;
+
         }
     }
 }

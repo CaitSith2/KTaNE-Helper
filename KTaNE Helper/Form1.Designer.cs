@@ -309,13 +309,34 @@
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.MorseCodeInput = new System.Windows.Forms.TextBox();
             this.MorseCodeOutput = new System.Windows.Forms.TextBox();
-            this.tpModForgetMeNot = new System.Windows.Forms.TabPage();
-            this.label59 = new System.Windows.Forms.Label();
-            this.label57 = new System.Windows.Forms.Label();
-            this.label56 = new System.Windows.Forms.Label();
-            this.label55 = new System.Windows.Forms.Label();
-            this.txtForgetMeNotOut = new System.Windows.Forms.TextBox();
-            this.txtForgetMeNotIn = new System.Windows.Forms.TextBox();
+            this.tpModCollection2 = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.groupBox24 = new System.Windows.Forms.GroupBox();
+            this.txtCombinationLockIn = new System.Windows.Forms.TextBox();
+            this.label78 = new System.Windows.Forms.Label();
+            this.txtCombinationLockOut = new System.Windows.Forms.TextBox();
+            this.label79 = new System.Windows.Forms.Label();
+            this.groupBox25 = new System.Windows.Forms.GroupBox();
+            this.txtSemaphoreIn = new System.Windows.Forms.TextBox();
+            this.label80 = new System.Windows.Forms.Label();
+            this.txtSemaphoreOut = new System.Windows.Forms.TextBox();
+            this.label81 = new System.Windows.Forms.Label();
+            this.groupBox27 = new System.Windows.Forms.GroupBox();
+            this.label88 = new System.Windows.Forms.Label();
+            this.txtResistorsIn = new System.Windows.Forms.TextBox();
+            this.label86 = new System.Windows.Forms.Label();
+            this.txtResistorsOut = new System.Windows.Forms.TextBox();
+            this.label87 = new System.Windows.Forms.Label();
+            this.groupBox20 = new System.Windows.Forms.GroupBox();
+            this.txtNumberPadIn = new System.Windows.Forms.TextBox();
+            this.label75 = new System.Windows.Forms.Label();
+            this.txtNumberPadOut = new System.Windows.Forms.TextBox();
+            this.label76 = new System.Windows.Forms.Label();
+            this.groupBox26 = new System.Windows.Forms.GroupBox();
+            this.txtCaesarCipherIn = new System.Windows.Forms.TextBox();
+            this.label82 = new System.Windows.Forms.Label();
+            this.txtCaesarCipherOut = new System.Windows.Forms.TextBox();
+            this.label85 = new System.Windows.Forms.Label();
             this.tpModCollection1 = new System.Windows.Forms.TabPage();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label24 = new System.Windows.Forms.Label();
@@ -372,23 +393,13 @@
             this.label70 = new System.Windows.Forms.Label();
             this.txtEmojiMathOut = new System.Windows.Forms.TextBox();
             this.txtEmojiMathIn = new System.Windows.Forms.TextBox();
-            this.tpModCollection2 = new System.Windows.Forms.TabPage();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.groupBox20 = new System.Windows.Forms.GroupBox();
-            this.txtNumberPadIn = new System.Windows.Forms.TextBox();
-            this.label75 = new System.Windows.Forms.Label();
-            this.txtNumberPadOut = new System.Windows.Forms.TextBox();
-            this.label76 = new System.Windows.Forms.Label();
-            this.groupBox24 = new System.Windows.Forms.GroupBox();
-            this.txtCombinationLockIn = new System.Windows.Forms.TextBox();
-            this.label78 = new System.Windows.Forms.Label();
-            this.txtCombinationLockOut = new System.Windows.Forms.TextBox();
-            this.label79 = new System.Windows.Forms.Label();
-            this.groupBox25 = new System.Windows.Forms.GroupBox();
-            this.txtSemaphoreIn = new System.Windows.Forms.TextBox();
-            this.label80 = new System.Windows.Forms.Label();
-            this.txtSemaphoreOut = new System.Windows.Forms.TextBox();
-            this.label81 = new System.Windows.Forms.Label();
+            this.tpModForgetMeNot = new System.Windows.Forms.TabPage();
+            this.label59 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
+            this.label56 = new System.Windows.Forms.Label();
+            this.label55 = new System.Windows.Forms.Label();
+            this.txtForgetMeNotOut = new System.Windows.Forms.TextBox();
+            this.txtForgetMeNotIn = new System.Windows.Forms.TextBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.fpKnob.SuspendLayout();
             this.gbBombInformation.SuspendLayout();
@@ -481,7 +492,13 @@
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
-            this.tpModForgetMeNot.SuspendLayout();
+            this.tpModCollection2.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
+            this.groupBox24.SuspendLayout();
+            this.groupBox25.SuspendLayout();
+            this.groupBox27.SuspendLayout();
+            this.groupBox20.SuspendLayout();
+            this.groupBox26.SuspendLayout();
             this.tpModCollection1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -493,11 +510,7 @@
             this.groupBox19.SuspendLayout();
             this.groupBox18.SuspendLayout();
             this.groupBox15.SuspendLayout();
-            this.tpModCollection2.SuspendLayout();
-            this.flowLayoutPanel3.SuspendLayout();
-            this.groupBox20.SuspendLayout();
-            this.groupBox24.SuspendLayout();
-            this.groupBox25.SuspendLayout();
+            this.tpModForgetMeNot.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -1388,9 +1401,9 @@
             this.tpButtonV1.Controls.Add(this.yellowstrip);
             this.tpButtonV1.Controls.Add(this.bluestrip);
             this.tpButtonV1.Controls.Add(this.button_label);
-            this.tpButtonV1.Location = new System.Drawing.Point(4, 22);
+            this.tpButtonV1.Location = new System.Drawing.Point(4, 58);
             this.tpButtonV1.Name = "tpButtonV1";
-            this.tpButtonV1.Size = new System.Drawing.Size(644, 567);
+            this.tpButtonV1.Size = new System.Drawing.Size(644, 531);
             this.tpButtonV1.TabIndex = 4;
             this.tpButtonV1.Text = "The Button";
             this.tpButtonV1.UseVisualStyleBackColor = true;
@@ -1511,9 +1524,9 @@
             // 
             this.tpKeypadsSimonSays.Controls.Add(this.groupBox17);
             this.tpKeypadsSimonSays.Controls.Add(this.groupBox16);
-            this.tpKeypadsSimonSays.Location = new System.Drawing.Point(4, 22);
+            this.tpKeypadsSimonSays.Location = new System.Drawing.Point(4, 58);
             this.tpKeypadsSimonSays.Name = "tpKeypadsSimonSays";
-            this.tpKeypadsSimonSays.Size = new System.Drawing.Size(644, 567);
+            this.tpKeypadsSimonSays.Size = new System.Drawing.Size(644, 531);
             this.tpKeypadsSimonSays.TabIndex = 14;
             this.tpKeypadsSimonSays.Text = "Keypads, Simon Says";
             this.tpKeypadsSimonSays.UseVisualStyleBackColor = true;
@@ -2198,9 +2211,9 @@
             // 
             this.tpMemoryWhosOnFirst.Controls.Add(this.groupBox21);
             this.tpMemoryWhosOnFirst.Controls.Add(this.groupBox22);
-            this.tpMemoryWhosOnFirst.Location = new System.Drawing.Point(4, 22);
+            this.tpMemoryWhosOnFirst.Location = new System.Drawing.Point(4, 58);
             this.tpMemoryWhosOnFirst.Name = "tpMemoryWhosOnFirst";
-            this.tpMemoryWhosOnFirst.Size = new System.Drawing.Size(644, 567);
+            this.tpMemoryWhosOnFirst.Size = new System.Drawing.Size(644, 531);
             this.tpMemoryWhosOnFirst.TabIndex = 13;
             this.tpMemoryWhosOnFirst.Text = "Who\'s on First, Memory";
             this.tpMemoryWhosOnFirst.UseVisualStyleBackColor = true;
@@ -2831,9 +2844,9 @@
             this.tpMaze.Controls.Add(this.label3);
             this.tpMaze.Controls.Add(this.label2);
             this.tpMaze.Controls.Add(this.pbMaze);
-            this.tpMaze.Location = new System.Drawing.Point(4, 22);
+            this.tpMaze.Location = new System.Drawing.Point(4, 58);
             this.tpMaze.Name = "tpMaze";
-            this.tpMaze.Size = new System.Drawing.Size(644, 567);
+            this.tpMaze.Size = new System.Drawing.Size(644, 531);
             this.tpMaze.TabIndex = 12;
             this.tpMaze.Text = "Mazes";
             this.tpMaze.UseVisualStyleBackColor = true;
@@ -2975,10 +2988,10 @@
             // tpWires
             // 
             this.tpWires.Controls.Add(this.flowLayoutPanel2);
-            this.tpWires.Location = new System.Drawing.Point(4, 22);
+            this.tpWires.Location = new System.Drawing.Point(4, 58);
             this.tpWires.Name = "tpWires";
             this.tpWires.Padding = new System.Windows.Forms.Padding(3);
-            this.tpWires.Size = new System.Drawing.Size(644, 567);
+            this.tpWires.Size = new System.Drawing.Size(644, 531);
             this.tpWires.TabIndex = 0;
             this.tpWires.Text = "Simple Wires, Complicated Wires, Wire Sequences";
             this.tpWires.UseVisualStyleBackColor = true;
@@ -2991,7 +3004,7 @@
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(638, 561);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(638, 525);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // groupBox11
@@ -3348,9 +3361,9 @@
             // tpPasswordMorseCode
             // 
             this.tpPasswordMorseCode.Controls.Add(this.scPasswordMorseCode);
-            this.tpPasswordMorseCode.Location = new System.Drawing.Point(4, 40);
+            this.tpPasswordMorseCode.Location = new System.Drawing.Point(4, 58);
             this.tpPasswordMorseCode.Name = "tpPasswordMorseCode";
-            this.tpPasswordMorseCode.Size = new System.Drawing.Size(644, 549);
+            this.tpPasswordMorseCode.Size = new System.Drawing.Size(644, 531);
             this.tpPasswordMorseCode.TabIndex = 8;
             this.tpPasswordMorseCode.Text = "Passwords, Morse Code";
             this.tpPasswordMorseCode.UseVisualStyleBackColor = true;
@@ -3369,8 +3382,8 @@
             // scPasswordMorseCode.Panel2
             // 
             this.scPasswordMorseCode.Panel2.Controls.Add(this.groupBox14);
-            this.scPasswordMorseCode.Size = new System.Drawing.Size(644, 549);
-            this.scPasswordMorseCode.SplitterDistance = 343;
+            this.scPasswordMorseCode.Size = new System.Drawing.Size(644, 531);
+            this.scPasswordMorseCode.SplitterDistance = 331;
             this.scPasswordMorseCode.TabIndex = 0;
             // 
             // groupBox13
@@ -3379,7 +3392,7 @@
             this.groupBox13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox13.Location = new System.Drawing.Point(0, 0);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(644, 343);
+            this.groupBox13.Size = new System.Drawing.Size(644, 331);
             this.groupBox13.TabIndex = 11;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Password";
@@ -3398,8 +3411,8 @@
             // splitContainer5.Panel2
             // 
             this.splitContainer5.Panel2.Controls.Add(this.passResults);
-            this.splitContainer5.Size = new System.Drawing.Size(638, 324);
-            this.splitContainer5.SplitterDistance = 159;
+            this.splitContainer5.Size = new System.Drawing.Size(638, 312);
+            this.splitContainer5.SplitterDistance = 153;
             this.splitContainer5.TabIndex = 11;
             // 
             // splitContainer6
@@ -3418,7 +3431,7 @@
             this.splitContainer6.Panel2.Controls.Add(this.passwordClear);
             this.splitContainer6.Panel2.Controls.Add(this.label15);
             this.splitContainer6.Panel2.Controls.Add(this.fpPasswordLettersNotPresent);
-            this.splitContainer6.Size = new System.Drawing.Size(638, 159);
+            this.splitContainer6.Size = new System.Drawing.Size(638, 153);
             this.splitContainer6.SplitterDistance = 84;
             this.splitContainer6.TabIndex = 0;
             // 
@@ -3432,7 +3445,7 @@
             this.fpPassword.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fpPassword.Location = new System.Drawing.Point(0, 0);
             this.fpPassword.Name = "fpPassword";
-            this.fpPassword.Size = new System.Drawing.Size(84, 159);
+            this.fpPassword.Size = new System.Drawing.Size(84, 153);
             this.fpPassword.TabIndex = 7;
             // 
             // pass1
@@ -3490,7 +3503,7 @@
             this.passwordClear.Dock = System.Windows.Forms.DockStyle.Left;
             this.passwordClear.Location = new System.Drawing.Point(291, 39);
             this.passwordClear.Name = "passwordClear";
-            this.passwordClear.Size = new System.Drawing.Size(50, 120);
+            this.passwordClear.Size = new System.Drawing.Size(50, 114);
             this.passwordClear.TabIndex = 6;
             this.passwordClear.Text = "Clear";
             this.passwordClear.UseVisualStyleBackColor = true;
@@ -3517,7 +3530,7 @@
             this.fpPasswordLettersNotPresent.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.fpPasswordLettersNotPresent.Location = new System.Drawing.Point(0, 0);
             this.fpPasswordLettersNotPresent.Name = "fpPasswordLettersNotPresent";
-            this.fpPasswordLettersNotPresent.Size = new System.Drawing.Size(291, 159);
+            this.fpPasswordLettersNotPresent.Size = new System.Drawing.Size(291, 153);
             this.fpPasswordLettersNotPresent.TabIndex = 9;
             // 
             // label10
@@ -3577,7 +3590,7 @@
             this.passResults.Location = new System.Drawing.Point(0, 0);
             this.passResults.Multiline = true;
             this.passResults.Name = "passResults";
-            this.passResults.Size = new System.Drawing.Size(638, 161);
+            this.passResults.Size = new System.Drawing.Size(638, 155);
             this.passResults.TabIndex = 5;
             // 
             // groupBox14
@@ -3586,7 +3599,7 @@
             this.groupBox14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox14.Location = new System.Drawing.Point(0, 0);
             this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(644, 202);
+            this.groupBox14.Size = new System.Drawing.Size(644, 196);
             this.groupBox14.TabIndex = 2;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "Morse Code";
@@ -3606,7 +3619,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.MorseCodeOutput);
-            this.splitContainer3.Size = new System.Drawing.Size(638, 183);
+            this.splitContainer3.Size = new System.Drawing.Size(638, 177);
             this.splitContainer3.SplitterDistance = 31;
             this.splitContainer3.TabIndex = 0;
             // 
@@ -3627,82 +3640,281 @@
             this.MorseCodeOutput.Location = new System.Drawing.Point(0, 0);
             this.MorseCodeOutput.Multiline = true;
             this.MorseCodeOutput.Name = "MorseCodeOutput";
-            this.MorseCodeOutput.Size = new System.Drawing.Size(638, 148);
+            this.MorseCodeOutput.Size = new System.Drawing.Size(638, 142);
             this.MorseCodeOutput.TabIndex = 1;
             // 
-            // tpModForgetMeNot
+            // tpModCollection2
             // 
-            this.tpModForgetMeNot.Controls.Add(this.label59);
-            this.tpModForgetMeNot.Controls.Add(this.label57);
-            this.tpModForgetMeNot.Controls.Add(this.label56);
-            this.tpModForgetMeNot.Controls.Add(this.label55);
-            this.tpModForgetMeNot.Controls.Add(this.txtForgetMeNotOut);
-            this.tpModForgetMeNot.Controls.Add(this.txtForgetMeNotIn);
-            this.tpModForgetMeNot.Location = new System.Drawing.Point(4, 58);
-            this.tpModForgetMeNot.Name = "tpModForgetMeNot";
-            this.tpModForgetMeNot.Padding = new System.Windows.Forms.Padding(3);
-            this.tpModForgetMeNot.Size = new System.Drawing.Size(644, 531);
-            this.tpModForgetMeNot.TabIndex = 15;
-            this.tpModForgetMeNot.Tag = "mods";
-            this.tpModForgetMeNot.Text = "Forget Me Not";
-            this.tpModForgetMeNot.UseVisualStyleBackColor = true;
+            this.tpModCollection2.Controls.Add(this.flowLayoutPanel3);
+            this.tpModCollection2.Location = new System.Drawing.Point(4, 58);
+            this.tpModCollection2.Name = "tpModCollection2";
+            this.tpModCollection2.Padding = new System.Windows.Forms.Padding(3);
+            this.tpModCollection2.Size = new System.Drawing.Size(644, 531);
+            this.tpModCollection2.TabIndex = 21;
+            this.tpModCollection2.Text = "Caesar Cipher, Combination Lock, Number Pads, Resistors, Semaphore";
+            this.tpModCollection2.UseVisualStyleBackColor = true;
             // 
-            // label59
+            // flowLayoutPanel3
             // 
-            this.label59.AutoSize = true;
-            this.label59.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label59.Location = new System.Drawing.Point(8, 406);
-            this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(471, 25);
-            this.label59.TabIndex = 17;
-            this.label59.Text = "Impossible to solve if a digit is not recorded";
+            this.flowLayoutPanel3.Controls.Add(this.groupBox24);
+            this.flowLayoutPanel3.Controls.Add(this.groupBox25);
+            this.flowLayoutPanel3.Controls.Add(this.groupBox27);
+            this.flowLayoutPanel3.Controls.Add(this.groupBox20);
+            this.flowLayoutPanel3.Controls.Add(this.groupBox26);
+            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(638, 525);
+            this.flowLayoutPanel3.TabIndex = 18;
             // 
-            // label57
+            // groupBox24
             // 
-            this.label57.AutoSize = true;
-            this.label57.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label57.Location = new System.Drawing.Point(8, 370);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(422, 25);
-            this.label57.TabIndex = 16;
-            this.label57.Text = "Need to know if a Serial port is present";
+            this.groupBox24.Controls.Add(this.txtCombinationLockIn);
+            this.groupBox24.Controls.Add(this.label78);
+            this.groupBox24.Controls.Add(this.txtCombinationLockOut);
+            this.groupBox24.Controls.Add(this.label79);
+            this.groupBox24.Location = new System.Drawing.Point(3, 3);
+            this.groupBox24.Name = "groupBox24";
+            this.groupBox24.Size = new System.Drawing.Size(628, 81);
+            this.groupBox24.TabIndex = 18;
+            this.groupBox24.TabStop = false;
+            this.groupBox24.Text = "Combination Lock";
             // 
-            // label56
+            // txtCombinationLockIn
             // 
-            this.label56.AutoSize = true;
-            this.label56.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label56.Location = new System.Drawing.Point(8, 344);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(611, 25);
-            this.label56.TabIndex = 15;
-            this.label56.Text = "Need to know # of Lit/Unlit Indicators including Unlit CAR";
+            this.txtCombinationLockIn.Location = new System.Drawing.Point(56, 19);
+            this.txtCombinationLockIn.Name = "txtCombinationLockIn";
+            this.txtCombinationLockIn.Size = new System.Drawing.Size(566, 20);
+            this.txtCombinationLockIn.TabIndex = 16;
+            this.txtCombinationLockIn.TextChanged += new System.EventHandler(this.txtCombinationLockIn_TextChanged);
             // 
-            // label55
+            // label78
             // 
-            this.label55.AutoSize = true;
-            this.label55.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label55.Location = new System.Drawing.Point(6, 318);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(390, 25);
-            this.label55.TabIndex = 14;
-            this.label55.Text = "Need to know the full Serial Number";
+            this.label78.AutoSize = true;
+            this.label78.Location = new System.Drawing.Point(6, 22);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(31, 13);
+            this.label78.TabIndex = 19;
+            this.label78.Text = "Input";
             // 
-            // txtForgetMeNotOut
+            // txtCombinationLockOut
             // 
-            this.txtForgetMeNotOut.Location = new System.Drawing.Point(183, 6);
-            this.txtForgetMeNotOut.Multiline = true;
-            this.txtForgetMeNotOut.Name = "txtForgetMeNotOut";
-            this.txtForgetMeNotOut.Size = new System.Drawing.Size(258, 299);
-            this.txtForgetMeNotOut.TabIndex = 1;
+            this.txtCombinationLockOut.Enabled = false;
+            this.txtCombinationLockOut.Location = new System.Drawing.Point(56, 45);
+            this.txtCombinationLockOut.Name = "txtCombinationLockOut";
+            this.txtCombinationLockOut.Size = new System.Drawing.Size(566, 20);
+            this.txtCombinationLockOut.TabIndex = 17;
             // 
-            // txtForgetMeNotIn
+            // label79
             // 
-            this.txtForgetMeNotIn.Location = new System.Drawing.Point(10, 6);
-            this.txtForgetMeNotIn.Multiline = true;
-            this.txtForgetMeNotIn.Name = "txtForgetMeNotIn";
-            this.txtForgetMeNotIn.Size = new System.Drawing.Size(167, 299);
-            this.txtForgetMeNotIn.TabIndex = 0;
-            this.txtForgetMeNotIn.TextChanged += new System.EventHandler(this.ForgetMeNot_Event);
+            this.label79.AutoSize = true;
+            this.label79.Location = new System.Drawing.Point(6, 48);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(39, 13);
+            this.label79.TabIndex = 18;
+            this.label79.Text = "Output";
+            // 
+            // groupBox25
+            // 
+            this.groupBox25.Controls.Add(this.txtSemaphoreIn);
+            this.groupBox25.Controls.Add(this.label80);
+            this.groupBox25.Controls.Add(this.txtSemaphoreOut);
+            this.groupBox25.Controls.Add(this.label81);
+            this.groupBox25.Location = new System.Drawing.Point(3, 90);
+            this.groupBox25.Name = "groupBox25";
+            this.groupBox25.Size = new System.Drawing.Size(628, 81);
+            this.groupBox25.TabIndex = 19;
+            this.groupBox25.TabStop = false;
+            this.groupBox25.Text = "Semaphore";
+            // 
+            // txtSemaphoreIn
+            // 
+            this.txtSemaphoreIn.Location = new System.Drawing.Point(56, 19);
+            this.txtSemaphoreIn.Name = "txtSemaphoreIn";
+            this.txtSemaphoreIn.Size = new System.Drawing.Size(566, 20);
+            this.txtSemaphoreIn.TabIndex = 16;
+            this.txtSemaphoreIn.TextChanged += new System.EventHandler(this.txtSemaphoreIn_TextChanged);
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.Location = new System.Drawing.Point(6, 22);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(31, 13);
+            this.label80.TabIndex = 19;
+            this.label80.Text = "Input";
+            // 
+            // txtSemaphoreOut
+            // 
+            this.txtSemaphoreOut.Enabled = false;
+            this.txtSemaphoreOut.Location = new System.Drawing.Point(56, 45);
+            this.txtSemaphoreOut.Name = "txtSemaphoreOut";
+            this.txtSemaphoreOut.Size = new System.Drawing.Size(566, 20);
+            this.txtSemaphoreOut.TabIndex = 17;
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.Location = new System.Drawing.Point(6, 48);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(39, 13);
+            this.label81.TabIndex = 18;
+            this.label81.Text = "Output";
+            // 
+            // groupBox27
+            // 
+            this.groupBox27.Controls.Add(this.label88);
+            this.groupBox27.Controls.Add(this.txtResistorsIn);
+            this.groupBox27.Controls.Add(this.label86);
+            this.groupBox27.Controls.Add(this.txtResistorsOut);
+            this.groupBox27.Controls.Add(this.label87);
+            this.groupBox27.Location = new System.Drawing.Point(3, 177);
+            this.groupBox27.Name = "groupBox27";
+            this.groupBox27.Size = new System.Drawing.Size(628, 81);
+            this.groupBox27.TabIndex = 21;
+            this.groupBox27.TabStop = false;
+            this.groupBox27.Text = "Resistors";
+            // 
+            // label88
+            // 
+            this.label88.AutoSize = true;
+            this.label88.Location = new System.Drawing.Point(140, 16);
+            this.label88.Name = "label88";
+            this.label88.Size = new System.Drawing.Size(249, 26);
+            this.label88.TabIndex = 16;
+            this.label88.Text = "blac[K], brow[N], [R]ed,  [O]range, [Y]ellow, [G]reen\r\n[B]lue,   [V]iolet,   [G]r" +
+    "ay, [W]hite,   gol[D],     [S]ilver";
+            // 
+            // txtResistorsIn
+            // 
+            this.txtResistorsIn.Location = new System.Drawing.Point(59, 19);
+            this.txtResistorsIn.MaxLength = 7;
+            this.txtResistorsIn.Name = "txtResistorsIn";
+            this.txtResistorsIn.Size = new System.Drawing.Size(74, 20);
+            this.txtResistorsIn.TabIndex = 0;
+            this.txtResistorsIn.TextChanged += new System.EventHandler(this.txtResistorsIn_TextChanged);
+            // 
+            // label86
+            // 
+            this.label86.AutoSize = true;
+            this.label86.Location = new System.Drawing.Point(9, 22);
+            this.label86.Name = "label86";
+            this.label86.Size = new System.Drawing.Size(31, 13);
+            this.label86.TabIndex = 15;
+            this.label86.Text = "Input";
+            // 
+            // txtResistorsOut
+            // 
+            this.txtResistorsOut.Enabled = false;
+            this.txtResistorsOut.Location = new System.Drawing.Point(59, 45);
+            this.txtResistorsOut.Name = "txtResistorsOut";
+            this.txtResistorsOut.Size = new System.Drawing.Size(563, 20);
+            this.txtResistorsOut.TabIndex = 1;
+            // 
+            // label87
+            // 
+            this.label87.AutoSize = true;
+            this.label87.Location = new System.Drawing.Point(9, 48);
+            this.label87.Name = "label87";
+            this.label87.Size = new System.Drawing.Size(39, 13);
+            this.label87.TabIndex = 14;
+            this.label87.Text = "Output";
+            // 
+            // groupBox20
+            // 
+            this.groupBox20.Controls.Add(this.txtNumberPadIn);
+            this.groupBox20.Controls.Add(this.label75);
+            this.groupBox20.Controls.Add(this.txtNumberPadOut);
+            this.groupBox20.Controls.Add(this.label76);
+            this.groupBox20.Location = new System.Drawing.Point(3, 264);
+            this.groupBox20.Name = "groupBox20";
+            this.groupBox20.Size = new System.Drawing.Size(205, 81);
+            this.groupBox20.TabIndex = 17;
+            this.groupBox20.TabStop = false;
+            this.groupBox20.Text = "Number Pads";
+            // 
+            // txtNumberPadIn
+            // 
+            this.txtNumberPadIn.Location = new System.Drawing.Point(59, 19);
+            this.txtNumberPadIn.MaxLength = 10;
+            this.txtNumberPadIn.Name = "txtNumberPadIn";
+            this.txtNumberPadIn.Size = new System.Drawing.Size(128, 20);
+            this.txtNumberPadIn.TabIndex = 0;
+            this.txtNumberPadIn.TextChanged += new System.EventHandler(this.txtNumberPadIn_TextChanged);
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.Location = new System.Drawing.Point(9, 22);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(31, 13);
+            this.label75.TabIndex = 15;
+            this.label75.Text = "Input";
+            // 
+            // txtNumberPadOut
+            // 
+            this.txtNumberPadOut.Enabled = false;
+            this.txtNumberPadOut.Location = new System.Drawing.Point(59, 45);
+            this.txtNumberPadOut.Name = "txtNumberPadOut";
+            this.txtNumberPadOut.Size = new System.Drawing.Size(128, 20);
+            this.txtNumberPadOut.TabIndex = 1;
+            // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.Location = new System.Drawing.Point(9, 48);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(39, 13);
+            this.label76.TabIndex = 14;
+            this.label76.Text = "Output";
+            // 
+            // groupBox26
+            // 
+            this.groupBox26.Controls.Add(this.txtCaesarCipherIn);
+            this.groupBox26.Controls.Add(this.label82);
+            this.groupBox26.Controls.Add(this.txtCaesarCipherOut);
+            this.groupBox26.Controls.Add(this.label85);
+            this.groupBox26.Location = new System.Drawing.Point(214, 264);
+            this.groupBox26.Name = "groupBox26";
+            this.groupBox26.Size = new System.Drawing.Size(205, 81);
+            this.groupBox26.TabIndex = 20;
+            this.groupBox26.TabStop = false;
+            this.groupBox26.Text = "Caesar Cipher";
+            // 
+            // txtCaesarCipherIn
+            // 
+            this.txtCaesarCipherIn.Location = new System.Drawing.Point(59, 19);
+            this.txtCaesarCipherIn.MaxLength = 10;
+            this.txtCaesarCipherIn.Name = "txtCaesarCipherIn";
+            this.txtCaesarCipherIn.Size = new System.Drawing.Size(128, 20);
+            this.txtCaesarCipherIn.TabIndex = 0;
+            this.txtCaesarCipherIn.TextChanged += new System.EventHandler(this.txtCaesarCipherIn_TextChanged);
+            // 
+            // label82
+            // 
+            this.label82.AutoSize = true;
+            this.label82.Location = new System.Drawing.Point(9, 22);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(31, 13);
+            this.label82.TabIndex = 15;
+            this.label82.Text = "Input";
+            // 
+            // txtCaesarCipherOut
+            // 
+            this.txtCaesarCipherOut.Enabled = false;
+            this.txtCaesarCipherOut.Location = new System.Drawing.Point(59, 45);
+            this.txtCaesarCipherOut.Name = "txtCaesarCipherOut";
+            this.txtCaesarCipherOut.Size = new System.Drawing.Size(128, 20);
+            this.txtCaesarCipherOut.TabIndex = 1;
+            // 
+            // label85
+            // 
+            this.label85.AutoSize = true;
+            this.label85.Location = new System.Drawing.Point(9, 48);
+            this.label85.Name = "label85";
+            this.label85.Size = new System.Drawing.Size(39, 13);
+            this.label85.TabIndex = 14;
+            this.label85.Text = "Output";
             // 
             // tpModCollection1
             // 
@@ -3927,7 +4139,7 @@
             this.txtConnectionCheckOut.Location = new System.Drawing.Point(59, 51);
             this.txtConnectionCheckOut.MaxLength = 11;
             this.txtConnectionCheckOut.Name = "txtConnectionCheckOut";
-            this.txtConnectionCheckOut.Size = new System.Drawing.Size(128, 20);
+            this.txtConnectionCheckOut.Size = new System.Drawing.Size(140, 20);
             this.txtConnectionCheckOut.TabIndex = 15;
             // 
             // txtConnections
@@ -3935,7 +4147,7 @@
             this.txtConnections.Location = new System.Drawing.Point(59, 25);
             this.txtConnections.MaxLength = 11;
             this.txtConnections.Name = "txtConnections";
-            this.txtConnections.Size = new System.Drawing.Size(128, 20);
+            this.txtConnections.Size = new System.Drawing.Size(140, 20);
             this.txtConnections.TabIndex = 14;
             this.txtConnections.TextChanged += new System.EventHandler(this.txtConnections_TextChanged);
             // 
@@ -4282,169 +4494,79 @@
             this.txtEmojiMathIn.TabIndex = 18;
             this.txtEmojiMathIn.TextChanged += new System.EventHandler(this.txtEmojiMathIn_TextChanged);
             // 
-            // tpModCollection2
+            // tpModForgetMeNot
             // 
-            this.tpModCollection2.Controls.Add(this.flowLayoutPanel3);
-            this.tpModCollection2.Location = new System.Drawing.Point(4, 58);
-            this.tpModCollection2.Name = "tpModCollection2";
-            this.tpModCollection2.Padding = new System.Windows.Forms.Padding(3);
-            this.tpModCollection2.Size = new System.Drawing.Size(644, 531);
-            this.tpModCollection2.TabIndex = 21;
-            this.tpModCollection2.Text = "Combination Lock, Number Pads, Semaphore";
-            this.tpModCollection2.UseVisualStyleBackColor = true;
+            this.tpModForgetMeNot.Controls.Add(this.label59);
+            this.tpModForgetMeNot.Controls.Add(this.label57);
+            this.tpModForgetMeNot.Controls.Add(this.label56);
+            this.tpModForgetMeNot.Controls.Add(this.label55);
+            this.tpModForgetMeNot.Controls.Add(this.txtForgetMeNotOut);
+            this.tpModForgetMeNot.Controls.Add(this.txtForgetMeNotIn);
+            this.tpModForgetMeNot.Location = new System.Drawing.Point(4, 58);
+            this.tpModForgetMeNot.Name = "tpModForgetMeNot";
+            this.tpModForgetMeNot.Padding = new System.Windows.Forms.Padding(3);
+            this.tpModForgetMeNot.Size = new System.Drawing.Size(644, 531);
+            this.tpModForgetMeNot.TabIndex = 15;
+            this.tpModForgetMeNot.Tag = "mods";
+            this.tpModForgetMeNot.Text = "Forget Me Not";
+            this.tpModForgetMeNot.UseVisualStyleBackColor = true;
             // 
-            // flowLayoutPanel3
+            // label59
             // 
-            this.flowLayoutPanel3.Controls.Add(this.groupBox24);
-            this.flowLayoutPanel3.Controls.Add(this.groupBox25);
-            this.flowLayoutPanel3.Controls.Add(this.groupBox20);
-            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(638, 525);
-            this.flowLayoutPanel3.TabIndex = 18;
+            this.label59.AutoSize = true;
+            this.label59.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label59.Location = new System.Drawing.Point(8, 406);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(471, 25);
+            this.label59.TabIndex = 17;
+            this.label59.Text = "Impossible to solve if a digit is not recorded";
             // 
-            // groupBox20
+            // label57
             // 
-            this.groupBox20.Controls.Add(this.txtNumberPadIn);
-            this.groupBox20.Controls.Add(this.label75);
-            this.groupBox20.Controls.Add(this.txtNumberPadOut);
-            this.groupBox20.Controls.Add(this.label76);
-            this.groupBox20.Location = new System.Drawing.Point(3, 177);
-            this.groupBox20.Name = "groupBox20";
-            this.groupBox20.Size = new System.Drawing.Size(205, 81);
-            this.groupBox20.TabIndex = 17;
-            this.groupBox20.TabStop = false;
-            this.groupBox20.Text = "Number Pads";
+            this.label57.AutoSize = true;
+            this.label57.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label57.Location = new System.Drawing.Point(8, 370);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(422, 25);
+            this.label57.TabIndex = 16;
+            this.label57.Text = "Need to know if a Serial port is present";
             // 
-            // txtNumberPadIn
+            // label56
             // 
-            this.txtNumberPadIn.Location = new System.Drawing.Point(59, 19);
-            this.txtNumberPadIn.MaxLength = 10;
-            this.txtNumberPadIn.Name = "txtNumberPadIn";
-            this.txtNumberPadIn.Size = new System.Drawing.Size(128, 20);
-            this.txtNumberPadIn.TabIndex = 0;
-            this.txtNumberPadIn.TextChanged += new System.EventHandler(this.txtNumberPadIn_TextChanged);
+            this.label56.AutoSize = true;
+            this.label56.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label56.Location = new System.Drawing.Point(8, 344);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(611, 25);
+            this.label56.TabIndex = 15;
+            this.label56.Text = "Need to know # of Lit/Unlit Indicators including Unlit CAR";
             // 
-            // label75
+            // label55
             // 
-            this.label75.AutoSize = true;
-            this.label75.Location = new System.Drawing.Point(9, 22);
-            this.label75.Name = "label75";
-            this.label75.Size = new System.Drawing.Size(31, 13);
-            this.label75.TabIndex = 15;
-            this.label75.Text = "Input";
+            this.label55.AutoSize = true;
+            this.label55.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label55.Location = new System.Drawing.Point(6, 318);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(390, 25);
+            this.label55.TabIndex = 14;
+            this.label55.Text = "Need to know the full Serial Number";
             // 
-            // txtNumberPadOut
+            // txtForgetMeNotOut
             // 
-            this.txtNumberPadOut.Enabled = false;
-            this.txtNumberPadOut.Location = new System.Drawing.Point(59, 45);
-            this.txtNumberPadOut.Name = "txtNumberPadOut";
-            this.txtNumberPadOut.Size = new System.Drawing.Size(128, 20);
-            this.txtNumberPadOut.TabIndex = 1;
+            this.txtForgetMeNotOut.Location = new System.Drawing.Point(183, 6);
+            this.txtForgetMeNotOut.Multiline = true;
+            this.txtForgetMeNotOut.Name = "txtForgetMeNotOut";
+            this.txtForgetMeNotOut.Size = new System.Drawing.Size(258, 299);
+            this.txtForgetMeNotOut.TabIndex = 1;
             // 
-            // label76
+            // txtForgetMeNotIn
             // 
-            this.label76.AutoSize = true;
-            this.label76.Location = new System.Drawing.Point(9, 48);
-            this.label76.Name = "label76";
-            this.label76.Size = new System.Drawing.Size(39, 13);
-            this.label76.TabIndex = 14;
-            this.label76.Text = "Output";
-            // 
-            // groupBox24
-            // 
-            this.groupBox24.Controls.Add(this.txtCombinationLockIn);
-            this.groupBox24.Controls.Add(this.label78);
-            this.groupBox24.Controls.Add(this.txtCombinationLockOut);
-            this.groupBox24.Controls.Add(this.label79);
-            this.groupBox24.Location = new System.Drawing.Point(3, 3);
-            this.groupBox24.Name = "groupBox24";
-            this.groupBox24.Size = new System.Drawing.Size(628, 81);
-            this.groupBox24.TabIndex = 18;
-            this.groupBox24.TabStop = false;
-            this.groupBox24.Text = "Combination Lock";
-            // 
-            // txtCombinationLockIn
-            // 
-            this.txtCombinationLockIn.Location = new System.Drawing.Point(56, 19);
-            this.txtCombinationLockIn.Name = "txtCombinationLockIn";
-            this.txtCombinationLockIn.Size = new System.Drawing.Size(566, 20);
-            this.txtCombinationLockIn.TabIndex = 16;
-            this.txtCombinationLockIn.TextChanged += new System.EventHandler(this.txtCombinationLockIn_TextChanged);
-            // 
-            // label78
-            // 
-            this.label78.AutoSize = true;
-            this.label78.Location = new System.Drawing.Point(6, 22);
-            this.label78.Name = "label78";
-            this.label78.Size = new System.Drawing.Size(31, 13);
-            this.label78.TabIndex = 19;
-            this.label78.Text = "Input";
-            // 
-            // txtCombinationLockOut
-            // 
-            this.txtCombinationLockOut.Enabled = false;
-            this.txtCombinationLockOut.Location = new System.Drawing.Point(56, 45);
-            this.txtCombinationLockOut.Name = "txtCombinationLockOut";
-            this.txtCombinationLockOut.Size = new System.Drawing.Size(566, 20);
-            this.txtCombinationLockOut.TabIndex = 17;
-            // 
-            // label79
-            // 
-            this.label79.AutoSize = true;
-            this.label79.Location = new System.Drawing.Point(6, 48);
-            this.label79.Name = "label79";
-            this.label79.Size = new System.Drawing.Size(39, 13);
-            this.label79.TabIndex = 18;
-            this.label79.Text = "Output";
-            // 
-            // groupBox25
-            // 
-            this.groupBox25.Controls.Add(this.txtSemaphoreIn);
-            this.groupBox25.Controls.Add(this.label80);
-            this.groupBox25.Controls.Add(this.txtSemaphoreOut);
-            this.groupBox25.Controls.Add(this.label81);
-            this.groupBox25.Location = new System.Drawing.Point(3, 90);
-            this.groupBox25.Name = "groupBox25";
-            this.groupBox25.Size = new System.Drawing.Size(628, 81);
-            this.groupBox25.TabIndex = 19;
-            this.groupBox25.TabStop = false;
-            this.groupBox25.Text = "Semaphore";
-            // 
-            // txtSemaphoreIn
-            // 
-            this.txtSemaphoreIn.Location = new System.Drawing.Point(56, 19);
-            this.txtSemaphoreIn.Name = "txtSemaphoreIn";
-            this.txtSemaphoreIn.Size = new System.Drawing.Size(566, 20);
-            this.txtSemaphoreIn.TabIndex = 16;
-            this.txtSemaphoreIn.TextChanged += new System.EventHandler(this.txtSemaphoreIn_TextChanged);
-            // 
-            // label80
-            // 
-            this.label80.AutoSize = true;
-            this.label80.Location = new System.Drawing.Point(6, 22);
-            this.label80.Name = "label80";
-            this.label80.Size = new System.Drawing.Size(31, 13);
-            this.label80.TabIndex = 19;
-            this.label80.Text = "Input";
-            // 
-            // txtSemaphoreOut
-            // 
-            this.txtSemaphoreOut.Enabled = false;
-            this.txtSemaphoreOut.Location = new System.Drawing.Point(56, 45);
-            this.txtSemaphoreOut.Name = "txtSemaphoreOut";
-            this.txtSemaphoreOut.Size = new System.Drawing.Size(566, 20);
-            this.txtSemaphoreOut.TabIndex = 17;
-            // 
-            // label81
-            // 
-            this.label81.AutoSize = true;
-            this.label81.Location = new System.Drawing.Point(6, 48);
-            this.label81.Name = "label81";
-            this.label81.Size = new System.Drawing.Size(39, 13);
-            this.label81.TabIndex = 18;
-            this.label81.Text = "Output";
+            this.txtForgetMeNotIn.Location = new System.Drawing.Point(10, 6);
+            this.txtForgetMeNotIn.Multiline = true;
+            this.txtForgetMeNotIn.Name = "txtForgetMeNotIn";
+            this.txtForgetMeNotIn.Size = new System.Drawing.Size(167, 299);
+            this.txtForgetMeNotIn.TabIndex = 0;
+            this.txtForgetMeNotIn.TextChanged += new System.EventHandler(this.ForgetMeNot_Event);
             // 
             // splitContainer2
             // 
@@ -4596,8 +4718,18 @@
             this.splitContainer3.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
-            this.tpModForgetMeNot.ResumeLayout(false);
-            this.tpModForgetMeNot.PerformLayout();
+            this.tpModCollection2.ResumeLayout(false);
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.groupBox24.ResumeLayout(false);
+            this.groupBox24.PerformLayout();
+            this.groupBox25.ResumeLayout(false);
+            this.groupBox25.PerformLayout();
+            this.groupBox27.ResumeLayout(false);
+            this.groupBox27.PerformLayout();
+            this.groupBox20.ResumeLayout(false);
+            this.groupBox20.PerformLayout();
+            this.groupBox26.ResumeLayout(false);
+            this.groupBox26.PerformLayout();
             this.tpModCollection1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
@@ -4619,14 +4751,8 @@
             this.groupBox18.PerformLayout();
             this.groupBox15.ResumeLayout(false);
             this.groupBox15.PerformLayout();
-            this.tpModCollection2.ResumeLayout(false);
-            this.flowLayoutPanel3.ResumeLayout(false);
-            this.groupBox20.ResumeLayout(false);
-            this.groupBox20.PerformLayout();
-            this.groupBox24.ResumeLayout(false);
-            this.groupBox24.PerformLayout();
-            this.groupBox25.ResumeLayout(false);
-            this.groupBox25.PerformLayout();
+            this.tpModForgetMeNot.ResumeLayout(false);
+            this.tpModForgetMeNot.PerformLayout();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             this.splitContainer2.Panel2.PerformLayout();
@@ -4998,6 +5124,17 @@
         private System.Windows.Forms.Label label80;
         private System.Windows.Forms.TextBox txtSemaphoreOut;
         private System.Windows.Forms.Label label81;
+        private System.Windows.Forms.GroupBox groupBox26;
+        private System.Windows.Forms.TextBox txtCaesarCipherIn;
+        private System.Windows.Forms.Label label82;
+        private System.Windows.Forms.TextBox txtCaesarCipherOut;
+        private System.Windows.Forms.Label label85;
+        private System.Windows.Forms.GroupBox groupBox27;
+        private System.Windows.Forms.TextBox txtResistorsIn;
+        private System.Windows.Forms.Label label86;
+        private System.Windows.Forms.TextBox txtResistorsOut;
+        private System.Windows.Forms.Label label87;
+        private System.Windows.Forms.Label label88;
     }
 }
 
