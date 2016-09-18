@@ -338,6 +338,7 @@ namespace KTaNE_Helper
 
             if(!checkBox1.Checked)
                 checkBox1_CheckedChanged(null, null);
+            btnSillySlotsReset_Click(null, null);
         }
 
         private void wireReset_Click(object sender, EventArgs e)
@@ -1364,7 +1365,7 @@ namespace KTaNE_Helper
             }
         }
 
-        readonly List<string> _twoBitLookup = new List<string>
+        private readonly List<string> _twoBitLookup = new List<string>
             {
                 "kb","dk","gv","tk","pv","kp","bv","vt","pz","dt",
                 "ee","zk","ke","ck","zp","pp","tp","tg","pd","pt",
@@ -1378,10 +1379,10 @@ namespace KTaNE_Helper
                 "kt","ct","zz","vg","gd","cp","be","zt","vk","dc"
             };
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void txtTwoBitsIN_TextChanged(object sender, EventArgs e)
         {
-            var lookup = GetDigitFromCharacter(textBox2.Text);
-            textBox4.Text = lookup > -1 ? _twoBitLookup[lookup] : "";
+            var lookup = GetDigitFromCharacter(txtTwoBitsIN.Text);
+            txtTwoBitsOUT.Text = lookup > -1 ? _twoBitLookup[lookup] : "";
         }
 
         private void CalculateInitialTwoBitsCode()
@@ -1389,7 +1390,7 @@ namespace KTaNE_Helper
             var batts = (int)(nudBatteriesD.Value + nudBatteriesAA.Value);
             if (txtSerialNumber.TextLength < 6)
             {
-                textBox5.Text = "";
+                txtTwoBitsInitialValue.Text = "";
                 return;
             }
             var dict = new Dictionary<string, int>
@@ -1412,7 +1413,7 @@ namespace KTaNE_Helper
             initial += ( batts * GetDigitFromCharacter(txtSerialNumber.Text.Substring(txtSerialNumber.TextLength - 1, 1)));
             if (nudPortRCA.Value > 0 && nudPortRJ45.Value == 0)
                 initial *= 2;
-            textBox5.Text = _twoBitLookup[initial%100];
+            txtTwoBitsInitialValue.Text = _twoBitLookup[initial%100];
 
         }
 
@@ -1527,7 +1528,7 @@ namespace KTaNE_Helper
                     : "R ";
             }
             if (txtConnectionCheckOut.Text != sanity)
-                txtConnectionCheckOut.Text += @"(POSSIBLY INVALID)";
+                txtConnectionCheckOut.Text += @"(POSSIBLY INVALID)";    //Should not happen.
 
         }
 
@@ -1618,29 +1619,63 @@ namespace KTaNE_Helper
 
         }
 
+
+        //Anything that depends on bomb information will be called by this function
+        //the moment said information is updated.
         private void UpdateBombSolution(object sender, EventArgs e)
         {
-            cbPlumbingRedIn_CheckedChanged();
-            txtChessInput_TextChanged(null, null);
-            Simon_Says_Event();
-            Complicated_Wires_Event(null, null);
-            Button_Event(null, null);
-            simpleWires_Event(null, null);
+            //--- Bomb information side box ---//
+            //Needy Knobs does not depend on information, just manual version alone.
             Needy_Knob_CheckedChanged(null, null);
-            textBox2_TextChanged(null, null);
-            ForgetMeNot_Event(null, null);
-            txtConnections_TextChanged(null, null);
+            nudBatteryHolders.Value = (nudBatteriesD.Value + (nudBatteriesAA.Value / 2));
+
+            //--- The Button ---//
+            Button_Event(null, null);
+
+            //--- Keypads, Simon Says ---//
+            //keypad does not depend on bomb info
+            Simon_Says_Event();
+
+            //--- Who's on First, Memory ---//
+            //Nothing on this tab depends on bomb information
+
+            //--- Mazes ---//
+            //Nothing on this tab depends on bomb information
+
+            //--- Simple Wires, Complicated wires, Wire Sequences ---//
+            simpleWires_Event(null, null);
+            Complicated_Wires_Event(null, null);
+            //Wire sequences does not depend on bomb information
+
+            //--- Passwords, Morse Code ---//
+            //Nothing on this tab depends on bomb information
             Password_TextChanged(null, null);
             MorseCodeInput_TextChanged(null, null);
-            txtLogicAND_TextChanged(null, null);
-            txtLogicOR_TextChanged(null, null);
-            CalculateInitialTwoBitsCode();
-            CalculateSafetySafe();
-            txtNumberPadIn_TextChanged(null, null);
-            txtLetteredKeysIn_TextChanged(null, null);
-            txtCombinationLockIn_TextChanged(null, null);
+
+            //--- Caesar Cipher, Combination Lock, Number Pads, Resistors, Semaphore ---//
             txtCaesarCipherIn_TextChanged(null, null);
-            txtResistorsIn_TextChanged(null,null);
+            txtCombinationLockIn_TextChanged(null, null);
+            txtNumberPadIn_TextChanged(null, null);
+            txtResistorsIn_TextChanged(null, null);
+            txtSemaphoreIn_TextChanged(null, null);
+
+            //--- Chess, Connection Check, Emoji Math, Flashing Colors, Lettered Keys, Logic, Plumbing, Safety Safe, Two Bits ---//
+            txtChessInput_TextChanged(null, null);
+            txtConnections_TextChanged(null, null);
+            //Emoji Math does not depend on bomb information
+            //Flashing Colors does not depend on bomb information
+            txtLetteredKeysIn_TextChanged(null, null);
+            txtLogicAND_TextChanged(null, null); txtLogicOR_TextChanged(null, null);
+            cbPlumbingRedIn_CheckedChanged();
+            CalculateSafetySafe();
+            CalculateInitialTwoBitsCode();
+
+            //--- Forget Me Not ---//
+            ForgetMeNot_Event(null, null);
+
+            txtTwoBitsIN_TextChanged(null, null);
+            
+
         }
 
         private bool DuplicateSerialCharacters()
@@ -2302,6 +2337,215 @@ namespace KTaNE_Helper
             else
                 txtResistorsOut.Text = @"R1=" + r0 + @" R2=" + r1 + @" Parallel=" + p + @" Series=" + s + @" Target = " + t + @" From " + primaryIn + @" to " + primaryOut;
 
+        }
+
+        private bool[] txtContainsFrequencies(string text)
+        {
+            var frequencies = new bool[4];
+                switch (text.ToUpper())
+                {
+                    case "10 22":
+                        frequencies[2] = true;
+                        frequencies[3] = true;
+                        break;
+                    case "10 50":
+                        frequencies[1] = true;
+                        frequencies[3] = true;
+                        break;
+                    case "10 60":
+                        frequencies[1] = true;
+                        frequencies[2] = true;
+                        break;
+                    case "22 50":
+                        frequencies[0] = true;
+                        frequencies[3] = true;
+                        break;
+                    case "22 60":
+                        frequencies[0] = true;
+                        frequencies[2] = true;
+                        break;
+                    case "50 60":
+                        frequencies[0] = true;
+                        frequencies[1] = true;
+                        break;
+                }
+            return frequencies;
+        }
+
+        private void txtProbing12_TextChanged(object sender, EventArgs e)
+        {
+            var wires = new bool[6,4];
+            txtProbingOut.Text = @"""i still maintain ""reading order"" on probing is some BS"" - LtHummus (Sept 16, 2016)";
+            var textBoxes = new[]
+            {
+                txtProbing12.Text, txtProbing34.Text, txtProbing56.Text,
+                txtProbing14.Text, txtProbing25.Text, txtProbing36.Text,
+                txtProbing13.Text, txtProbing24.Text, txtProbing35.Text,
+                txtProbing46.Text, txtProbing15.Text, txtProbing26.Text,
+                txtProbing16.Text, txtProbing23.Text, txtProbing45.Text
+            };
+            var pairs = new[]
+            {
+                new[] {0, 1}, new[] {2, 3}, new[] {4, 5},
+                new[] {0, 3}, new[] {1, 4}, new[] {2, 5},
+                new[] {0, 2}, new[] {1, 3}, new[] {2, 4},
+                new[] {3, 5}, new[] {0, 4}, new[] {1, 5},
+                new[] {0, 5}, new[] {1, 2}, new[] {3, 4}
+            };
+
+            for (var i = 0; i < 15; i++)
+            {
+                var wire = txtContainsFrequencies(textBoxes[i]);
+                for (var j = 0; j < 4; j++)
+                {
+                    wires[pairs[i][0], j] |= wire[j];
+                    wires[pairs[i][1], j] |= wire[j];
+                }
+            }
+
+            var counts = new int[6];
+            for (var i = 0; i < 6; i++)
+                for (var j = 0; j < 4; j++)
+                    if (wires[i, j]) counts[i]++;
+
+            
+
+            if (counts[0] == 3 && counts[4] == 3)
+            {
+                //We might have a solution to this probing.
+                //Check for Red soltution
+                var red = -1;
+                var blue = -1;
+                if (wires[0, 2])
+                {
+                    for (var i = 0; i < 6; i++)
+                    {
+                        if (counts[i] != 3 || wires[i, 2]) continue;
+                        red = i;
+                        break;
+                    }
+                }
+                else if (!wires[4, 0])
+                {
+                    for (var i = 0; i < 6; i++)
+                    {
+                        if (counts[i] != 3 || wires[i, 0]) continue;
+                        red = i;
+                        break;
+                    }
+                }
+                else
+                {
+                    for (var i = 0; i < 6; i++)
+                    {
+                        if (counts[i] != 3 || wires[i, 3]) continue;
+                        red = i;
+                        break;
+                    }
+                }
+
+                if (wires[4, 0])
+                {
+                    for (var i = 0; i < 6; i++)
+                    {
+                        if (red == i || counts[i] != 3 || wires[i, 1]) continue;
+                        blue = i;
+                        break;
+                    }
+                }
+                else
+                {
+                    for (var i = 0; i < 6; i++)
+                    {
+                        if (red == i || counts[i] != 3 || wires[i, 3]) continue;
+                        blue = i;
+                        break;
+                    }
+                }
+
+                if (red != -1 && blue != -1)
+                {
+                    txtProbingOut.Text = @"Connect Red on " + (red + 1) + @" and Blue on " + (blue + 1);
+                    return;
+                }
+            }
+
+            var text = txtProbingOut.Text;
+            for (var i = 0; i < 6; i++)
+            {
+                if (counts[i] != 3) continue;
+                if (text == txtProbingOut.Text) txtProbingOut.Text = "";
+                txtProbingOut.Text += (i+1) + @" = ";
+                if (wires[i, 0]) txtProbingOut.Text += @"10,";
+                if (wires[i, 1]) txtProbingOut.Text += @"22,";
+                if (wires[i, 2]) txtProbingOut.Text += wires[i, 3] ? @"50," : @"50   ";
+                if (wires[i, 3]) txtProbingOut.Text += @"60   ";
+            }
+
+        }
+
+        private void button43_Click(object sender, EventArgs e)
+        {
+            txtProbing12.Text = "";
+            txtProbing13.Text = "";
+            txtProbing14.Text = "";
+            txtProbing15.Text = "";
+            txtProbing16.Text = "";
+            txtProbing23.Text = "";
+            txtProbing24.Text = "";
+            txtProbing25.Text = "";
+            txtProbing26.Text = "";
+            txtProbing34.Text = "";
+            txtProbing35.Text = "";
+            txtProbing36.Text = "";
+            txtProbing45.Text = "";
+            txtProbing46.Text = "";
+            txtProbing56.Text = "";
+            txtCaesarCipherIn.Text = "";
+            txtCombinationLockIn.Text = "";
+            txtSemaphoreIn.Text = "";
+            txtResistorsIn.Text = "";
+            txtNumberPadIn.Text = "";
+        }
+
+
+        private SillySlots _sillyslots = new SillySlots();
+        private void btnSillySlotsReset_Click(object sender, EventArgs e)
+        {
+            _sillyslots = new SillySlots();
+            cboSillySlotsKeyWord.SelectedIndex = 0;
+            cboSillySlotsSlot1.SelectedIndex = 0;
+            cboSillySlotsSlot2.SelectedIndex = 0;
+            cboSillySlotsSlot3.SelectedIndex = 0;
+            txtSillySlotsResult.Text = "";
+        }
+
+        private void btnSillySlotsSubmit_Click(object sender, EventArgs e)
+        {
+            txtSillySlotsResult.Text = "";
+            if (cboSillySlotsKeyWord.SelectedIndex < 1
+                || cboSillySlotsSlot1.SelectedIndex < 1
+                || cboSillySlotsSlot2.SelectedIndex < 1
+                || cboSillySlotsSlot3.SelectedIndex < 1)
+            {
+                return;
+            }
+            txtSillySlotsResult.Text = _sillyslots.CheckSlots(
+                cboSillySlotsKeyWord.SelectedIndex - 1,
+                cboSillySlotsSlot1.SelectedIndex - 1, 
+                cboSillySlotsSlot2.SelectedIndex - 1,
+                cboSillySlotsSlot3.SelectedIndex - 1)
+                ? "Keep"
+                : "Spin";
+            cboSillySlotsKeyWord.SelectedIndex = 0;
+            cboSillySlotsSlot1.SelectedIndex = 0;
+            cboSillySlotsSlot2.SelectedIndex = 0;
+            cboSillySlotsSlot3.SelectedIndex = 0;
+        }
+
+        private void btnSillySlotsDebugDump_Click(object sender, EventArgs e)
+        {
+            _sillyslots.DumpStateToClipboard();
         }
     }
 }
