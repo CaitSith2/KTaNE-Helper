@@ -2114,6 +2114,8 @@ namespace KTaNE_Helper
 
             lbModules.SelectedIndex = lbModules.Items.IndexOf("  About");
 
+            lblBatteryD.Text = checkBox1.Checked ? "D" : "Batteries";
+
             //Keypad specific mod
             for (var i = 4; i < 8; i++)
                 ((Button) fpKeypadSelection.Controls[i]).Visible = checkBox1.Checked;
@@ -2581,9 +2583,9 @@ namespace KTaNE_Helper
             _sillyslots.DumpStateToClipboard();
         }
 
-        private void txtAnagramIn_TextChanged(object sender, EventArgs e)
+        private void txtWordScrambleIn_TextChanged(object sender, EventArgs e)
         {
-            var words = new List<IList<string>>()
+            var wordsAnagram = new List<IList<string>>()
             {
                 new List<string> {"stream", "master", "tamers"},
                 new List<string> {"looped", "poodle", "pooled"},
@@ -2594,21 +2596,7 @@ namespace KTaNE_Helper
                 new List<string> {"barely", "barley", "bleary"},
                 new List<string> {"duster", "rusted", "rudest"}
             };
-            txtAnagramOut.Text = "";
-            if (txtAnagramIn.TextLength < 6) return;
-            foreach (var w in words)
-            {
-                if (!w.Contains(txtAnagramIn.Text)) continue;
-                foreach(var ww in w)
-                    if (ww != txtAnagramIn.Text)
-                        txtAnagramOut.Text += ww + @" ";
-                break;
-            }
-        }
-
-        private void txtWordScrambleIn_TextChanged(object sender, EventArgs e)
-        {
-            var words = new List<string>()
+            var wordsScramble = new List<string>()
             {
                 "module","ottawa","banana","kaboom","letter","widget",
                 "person","sapper","wiring","archer","device","rocket",
@@ -2618,12 +2606,20 @@ namespace KTaNE_Helper
             };
             txtWordScrambleOut.Text = "";
             if (txtWordScrambleIn.TextLength < 6) return;
-            var x = Concat(txtWordScrambleIn.Text.OrderBy(c => c));
-            foreach (var w in words)
+            foreach (var w in wordsAnagram)
+            {
+                if (!w.Contains(txtWordScrambleIn.Text.ToLower())) continue;
+                foreach (var ww in w)
+                    if (ww != txtWordScrambleIn.Text.ToLower())
+                        txtWordScrambleOut.Text += ww + @" ";
+                return;
+            }
+            var x = Concat(txtWordScrambleIn.Text.ToLower().OrderBy(c => c));
+            foreach (var w in wordsScramble)
             {
                 var y = Concat(w.OrderBy(c => c));
                 if (x != y) continue;
-                txtWordScrambleOut.Text = w;
+                txtWordScrambleOut.Text = w.ToUpper();
                 break;
             }
         }
@@ -2755,8 +2751,18 @@ namespace KTaNE_Helper
                 ((ComboBox) c).SelectedIndex = 0;
             btnSillySlotsReset_Click(null, null);
             txtWordScrambleIn.Text = "";
-            txtAnagramIn.Text = "";
             txtAlphabetIn.Text = "";
+            cbSwitchesCurrent1.Checked = false;
+            cbSwitchesCurrent2.Checked = false;
+            cbSwitchesCurrent3.Checked = false;
+            cbSwitchesCurrent4.Checked = false;
+            cbSwitchesCurrent5.Checked = false;
+            cbSwitchesDesired1.Checked = false;
+            cbSwitchesDesired2.Checked = false;
+            cbSwitchesDesired3.Checked = false;
+            cbSwitchesDesired4.Checked = false;
+            cbSwitchesDesired5.Checked = false;
+
         }
 
         private void lbModules_SelectedIndexChanged(object sender, EventArgs e)
@@ -2766,6 +2772,28 @@ namespace KTaNE_Helper
             if (!_moduleNameToTab.TryGetValue(name, out page)) return;
             tcTabs.TabPages.Clear();
             tcTabs.TabPages.Add(page);
+        }
+
+        
+
+        private void cbSwitchesCurrent1_CheckedChanged(object sender, EventArgs e)
+        {
+            txtSwitchesOut.Text = "";
+
+            var current = cbSwitchesCurrent1.Checked ? "1" : "0";
+            current += cbSwitchesCurrent2.Checked ? "1" : "0";
+            current += cbSwitchesCurrent3.Checked ? "1" : "0";
+            current += cbSwitchesCurrent4.Checked ? "1" : "0";
+            current += cbSwitchesCurrent5.Checked ? "1" : "0";
+
+            var desired = cbSwitchesDesired1.Checked ? "1" : "0";
+            desired += cbSwitchesDesired2.Checked ? "1" : "0";
+            desired += cbSwitchesDesired3.Checked ? "1" : "0";
+            desired += cbSwitchesDesired4.Checked ? "1" : "0";
+            desired += cbSwitchesDesired5.Checked ? "1" : "0";
+
+            txtSwitchesOut.Text = Switches.Solve(current, desired);
+
         }
     }
 }

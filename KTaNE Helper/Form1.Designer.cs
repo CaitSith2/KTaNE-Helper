@@ -50,7 +50,7 @@
             this.gbBatteries = new System.Windows.Forms.GroupBox();
             this.label53 = new System.Windows.Forms.Label();
             this.nudBatteryHolders = new System.Windows.Forms.NumericUpDown();
-            this.label50 = new System.Windows.Forms.Label();
+            this.lblBatteryD = new System.Windows.Forms.Label();
             this.nudBatteriesD = new System.Windows.Forms.NumericUpDown();
             this.label49 = new System.Windows.Forms.Label();
             this.nudBatteriesAA = new System.Windows.Forms.NumericUpDown();
@@ -107,7 +107,10 @@
             this.nudLitBOB = new System.Windows.Forms.NumericUpDown();
             this.facts_strike = new System.Windows.Forms.ComboBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.tcTabs = new System.Windows.Forms.TabControl();
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.lbModules = new System.Windows.Forms.ListBox();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.tcTabs = new TablessControl();
             this.tpAbout = new System.Windows.Forms.TabPage();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -309,6 +312,70 @@
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.MorseCodeInput = new System.Windows.Forms.TextBox();
             this.MorseCodeOutput = new System.Windows.Forms.TextBox();
+            this.tpModCollection3 = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.groupBox33 = new System.Windows.Forms.GroupBox();
+            this.txtAdventureGameOut = new System.Windows.Forms.TextBox();
+            this.flpAdventureGameCBO = new System.Windows.Forms.FlowLayoutPanel();
+            this.cboAdventureGameMonster = new System.Windows.Forms.ComboBox();
+            this.cboAdventureGameWeapon1 = new System.Windows.Forms.ComboBox();
+            this.cboAdventureGameWeapon2 = new System.Windows.Forms.ComboBox();
+            this.cboAdventureGameWeapon3 = new System.Windows.Forms.ComboBox();
+            this.cboAdventureGameItem1 = new System.Windows.Forms.ComboBox();
+            this.cboAdventureGameItem2 = new System.Windows.Forms.ComboBox();
+            this.cboAdventureGameItem3 = new System.Windows.Forms.ComboBox();
+            this.cboAdventureGameItem4 = new System.Windows.Forms.ComboBox();
+            this.cboAdventureGameItem5 = new System.Windows.Forms.ComboBox();
+            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label111 = new System.Windows.Forms.Label();
+            this.txtAdventureGameSTR = new System.Windows.Forms.TextBox();
+            this.label112 = new System.Windows.Forms.Label();
+            this.txtAdventrueGameDEX = new System.Windows.Forms.TextBox();
+            this.label113 = new System.Windows.Forms.Label();
+            this.txtAdventrueGameINT = new System.Windows.Forms.TextBox();
+            this.label114 = new System.Windows.Forms.Label();
+            this.txtAdventrueGameHeight = new System.Windows.Forms.TextBox();
+            this.label115 = new System.Windows.Forms.Label();
+            this.txtAdventrueGameTemp = new System.Windows.Forms.TextBox();
+            this.label117 = new System.Windows.Forms.Label();
+            this.txtAdventrueGameGravity = new System.Windows.Forms.TextBox();
+            this.label118 = new System.Windows.Forms.Label();
+            this.txtAdventrueGamePressure = new System.Windows.Forms.TextBox();
+            this.groupBox29 = new System.Windows.Forms.GroupBox();
+            this.btnSillySlotsDebugDump = new System.Windows.Forms.Button();
+            this.txtSillySlotsResult = new System.Windows.Forms.TextBox();
+            this.btnSillySlotsReset = new System.Windows.Forms.Button();
+            this.btnSillySlotsSubmit = new System.Windows.Forms.Button();
+            this.cboSillySlotsSlot3 = new System.Windows.Forms.ComboBox();
+            this.cboSillySlotsSlot2 = new System.Windows.Forms.ComboBox();
+            this.cboSillySlotsSlot1 = new System.Windows.Forms.ComboBox();
+            this.cboSillySlotsKeyWord = new System.Windows.Forms.ComboBox();
+            this.groupBox32 = new System.Windows.Forms.GroupBox();
+            this.txtAlphabetIn = new System.Windows.Forms.TextBox();
+            this.label109 = new System.Windows.Forms.Label();
+            this.txtAlphabetOut = new System.Windows.Forms.TextBox();
+            this.label110 = new System.Windows.Forms.Label();
+            this.groupBox31 = new System.Windows.Forms.GroupBox();
+            this.txtWordScrambleIn = new System.Windows.Forms.TextBox();
+            this.label107 = new System.Windows.Forms.Label();
+            this.txtWordScrambleOut = new System.Windows.Forms.TextBox();
+            this.label108 = new System.Windows.Forms.Label();
+            this.groupBox34 = new System.Windows.Forms.GroupBox();
+            this.txtSwitchesOut = new System.Windows.Forms.TextBox();
+            this.label120 = new System.Windows.Forms.Label();
+            this.cbSwitchesDesired5 = new System.Windows.Forms.CheckBox();
+            this.cbSwitchesDesired4 = new System.Windows.Forms.CheckBox();
+            this.cbSwitchesDesired3 = new System.Windows.Forms.CheckBox();
+            this.cbSwitchesDesired2 = new System.Windows.Forms.CheckBox();
+            this.cbSwitchesDesired1 = new System.Windows.Forms.CheckBox();
+            this.cbSwitchesCurrent5 = new System.Windows.Forms.CheckBox();
+            this.cbSwitchesCurrent4 = new System.Windows.Forms.CheckBox();
+            this.cbSwitchesCurrent3 = new System.Windows.Forms.CheckBox();
+            this.cbSwitchesCurrent2 = new System.Windows.Forms.CheckBox();
+            this.cbSwitchesCurrent1 = new System.Windows.Forms.CheckBox();
+            this.label119 = new System.Windows.Forms.Label();
+            this.label116 = new System.Windows.Forms.Label();
+            this.button51 = new System.Windows.Forms.Button();
             this.tpModCollection2 = new System.Windows.Forms.TabPage();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox24 = new System.Windows.Forms.GroupBox();
@@ -377,17 +444,6 @@
             this.button48 = new System.Windows.Forms.Button();
             this.button49 = new System.Windows.Forms.Button();
             this.button50 = new System.Windows.Forms.Button();
-            this.tpModCollection3 = new System.Windows.Forms.TabPage();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.groupBox29 = new System.Windows.Forms.GroupBox();
-            this.btnSillySlotsDebugDump = new System.Windows.Forms.Button();
-            this.txtSillySlotsResult = new System.Windows.Forms.TextBox();
-            this.btnSillySlotsReset = new System.Windows.Forms.Button();
-            this.btnSillySlotsSubmit = new System.Windows.Forms.Button();
-            this.cboSillySlotsSlot3 = new System.Windows.Forms.ComboBox();
-            this.cboSillySlotsSlot2 = new System.Windows.Forms.ComboBox();
-            this.cboSillySlotsSlot1 = new System.Windows.Forms.ComboBox();
-            this.cboSillySlotsKeyWord = new System.Windows.Forms.ComboBox();
             this.tpModCollection1 = new System.Windows.Forms.TabPage();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label24 = new System.Windows.Forms.Label();
@@ -452,52 +508,6 @@
             this.label55 = new System.Windows.Forms.Label();
             this.txtForgetMeNotOut = new System.Windows.Forms.TextBox();
             this.txtForgetMeNotIn = new System.Windows.Forms.TextBox();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.groupBox30 = new System.Windows.Forms.GroupBox();
-            this.txtAnagramIn = new System.Windows.Forms.TextBox();
-            this.label98 = new System.Windows.Forms.Label();
-            this.txtAnagramOut = new System.Windows.Forms.TextBox();
-            this.label106 = new System.Windows.Forms.Label();
-            this.groupBox31 = new System.Windows.Forms.GroupBox();
-            this.txtWordScrambleIn = new System.Windows.Forms.TextBox();
-            this.label107 = new System.Windows.Forms.Label();
-            this.txtWordScrambleOut = new System.Windows.Forms.TextBox();
-            this.label108 = new System.Windows.Forms.Label();
-            this.groupBox32 = new System.Windows.Forms.GroupBox();
-            this.txtAlphabetIn = new System.Windows.Forms.TextBox();
-            this.label109 = new System.Windows.Forms.Label();
-            this.txtAlphabetOut = new System.Windows.Forms.TextBox();
-            this.label110 = new System.Windows.Forms.Label();
-            this.groupBox33 = new System.Windows.Forms.GroupBox();
-            this.txtAdventureGameSTR = new System.Windows.Forms.TextBox();
-            this.label111 = new System.Windows.Forms.Label();
-            this.txtAdventrueGameDEX = new System.Windows.Forms.TextBox();
-            this.label112 = new System.Windows.Forms.Label();
-            this.txtAdventrueGameINT = new System.Windows.Forms.TextBox();
-            this.label113 = new System.Windows.Forms.Label();
-            this.txtAdventrueGameHeight = new System.Windows.Forms.TextBox();
-            this.label114 = new System.Windows.Forms.Label();
-            this.txtAdventrueGameTemp = new System.Windows.Forms.TextBox();
-            this.label115 = new System.Windows.Forms.Label();
-            this.txtAdventrueGameGravity = new System.Windows.Forms.TextBox();
-            this.label117 = new System.Windows.Forms.Label();
-            this.txtAdventrueGamePressure = new System.Windows.Forms.TextBox();
-            this.label118 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flpAdventureGameCBO = new System.Windows.Forms.FlowLayoutPanel();
-            this.cboAdventureGameMonster = new System.Windows.Forms.ComboBox();
-            this.cboAdventureGameWeapon1 = new System.Windows.Forms.ComboBox();
-            this.cboAdventureGameWeapon2 = new System.Windows.Forms.ComboBox();
-            this.cboAdventureGameWeapon3 = new System.Windows.Forms.ComboBox();
-            this.cboAdventureGameItem1 = new System.Windows.Forms.ComboBox();
-            this.cboAdventureGameItem2 = new System.Windows.Forms.ComboBox();
-            this.cboAdventureGameItem3 = new System.Windows.Forms.ComboBox();
-            this.cboAdventureGameItem4 = new System.Windows.Forms.ComboBox();
-            this.cboAdventureGameItem5 = new System.Windows.Forms.ComboBox();
-            this.txtAdventureGameOut = new System.Windows.Forms.TextBox();
-            this.button51 = new System.Windows.Forms.Button();
-            this.lbModules = new System.Windows.Forms.ListBox();
-            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.fpKnob.SuspendLayout();
             this.gbBombInformation.SuspendLayout();
             this.groupBox23.SuspendLayout();
@@ -540,6 +550,14 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
+            this.splitContainer4.Panel1.SuspendLayout();
+            this.splitContainer4.Panel2.SuspendLayout();
+            this.splitContainer4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             this.tcTabs.SuspendLayout();
             this.tpAbout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -589,6 +607,15 @@
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
+            this.tpModCollection3.SuspendLayout();
+            this.flowLayoutPanel4.SuspendLayout();
+            this.groupBox33.SuspendLayout();
+            this.flpAdventureGameCBO.SuspendLayout();
+            this.flowLayoutPanel5.SuspendLayout();
+            this.groupBox29.SuspendLayout();
+            this.groupBox32.SuspendLayout();
+            this.groupBox31.SuspendLayout();
+            this.groupBox34.SuspendLayout();
             this.tpModCollection2.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             this.groupBox24.SuspendLayout();
@@ -597,9 +624,6 @@
             this.groupBox28.SuspendLayout();
             this.groupBox20.SuspendLayout();
             this.groupBox26.SuspendLayout();
-            this.tpModCollection3.SuspendLayout();
-            this.flowLayoutPanel4.SuspendLayout();
-            this.groupBox29.SuspendLayout();
             this.tpModCollection1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -612,20 +636,6 @@
             this.groupBox18.SuspendLayout();
             this.groupBox15.SuspendLayout();
             this.tpModForgetMeNot.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
-            this.groupBox30.SuspendLayout();
-            this.groupBox31.SuspendLayout();
-            this.groupBox32.SuspendLayout();
-            this.groupBox33.SuspendLayout();
-            this.flowLayoutPanel5.SuspendLayout();
-            this.flpAdventureGameCBO.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
-            this.splitContainer4.Panel1.SuspendLayout();
-            this.splitContainer4.Panel2.SuspendLayout();
-            this.splitContainer4.SuspendLayout();
             this.SuspendLayout();
             // 
             // fpKnob
@@ -830,7 +840,7 @@
             // 
             this.gbBatteries.Controls.Add(this.label53);
             this.gbBatteries.Controls.Add(this.nudBatteryHolders);
-            this.gbBatteries.Controls.Add(this.label50);
+            this.gbBatteries.Controls.Add(this.lblBatteryD);
             this.gbBatteries.Controls.Add(this.nudBatteriesD);
             this.gbBatteries.Controls.Add(this.label49);
             this.gbBatteries.Controls.Add(this.nudBatteriesAA);
@@ -860,15 +870,15 @@
             this.nudBatteryHolders.TabIndex = 35;
             this.nudBatteryHolders.Tag = "mods";
             // 
-            // label50
+            // lblBatteryD
             // 
-            this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(7, 49);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(15, 13);
-            this.label50.TabIndex = 34;
-            this.label50.Tag = "";
-            this.label50.Text = "D";
+            this.lblBatteryD.AutoSize = true;
+            this.lblBatteryD.Location = new System.Drawing.Point(7, 49);
+            this.lblBatteryD.Name = "lblBatteryD";
+            this.lblBatteryD.Size = new System.Drawing.Size(15, 13);
+            this.lblBatteryD.TabIndex = 34;
+            this.lblBatteryD.Tag = "";
+            this.lblBatteryD.Text = "D";
             // 
             // nudBatteriesD
             // 
@@ -1108,7 +1118,7 @@
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(30, 13);
             this.label40.TabIndex = 44;
-            this.label40.Tag = "bob";
+            this.label40.Tag = "mods";
             this.label40.Text = "TRN";
             // 
             // nudUnlitTRN
@@ -1117,7 +1127,7 @@
             this.nudUnlitTRN.Name = "nudUnlitTRN";
             this.nudUnlitTRN.Size = new System.Drawing.Size(40, 20);
             this.nudUnlitTRN.TabIndex = 43;
-            this.nudUnlitTRN.Tag = "bob";
+            this.nudUnlitTRN.Tag = "mods";
             this.nudUnlitTRN.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // nudLitTRN
@@ -1126,7 +1136,7 @@
             this.nudLitTRN.Name = "nudLitTRN";
             this.nudLitTRN.Size = new System.Drawing.Size(40, 20);
             this.nudLitTRN.TabIndex = 42;
-            this.nudLitTRN.Tag = "bob";
+            this.nudLitTRN.Tag = "mods";
             this.nudLitTRN.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // label39
@@ -1136,7 +1146,7 @@
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(30, 13);
             this.label39.TabIndex = 41;
-            this.label39.Tag = "bob";
+            this.label39.Tag = "mods";
             this.label39.Text = "SND";
             // 
             // nudUnlitSND
@@ -1145,7 +1155,7 @@
             this.nudUnlitSND.Name = "nudUnlitSND";
             this.nudUnlitSND.Size = new System.Drawing.Size(40, 20);
             this.nudUnlitSND.TabIndex = 40;
-            this.nudUnlitSND.Tag = "bob";
+            this.nudUnlitSND.Tag = "mods";
             this.nudUnlitSND.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // nudLitSND
@@ -1154,7 +1164,7 @@
             this.nudLitSND.Name = "nudLitSND";
             this.nudLitSND.Size = new System.Drawing.Size(40, 20);
             this.nudLitSND.TabIndex = 39;
-            this.nudLitSND.Tag = "bob";
+            this.nudLitSND.Tag = "mods";
             this.nudLitSND.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // label38
@@ -1164,7 +1174,7 @@
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(25, 13);
             this.label38.TabIndex = 38;
-            this.label38.Tag = "bob";
+            this.label38.Tag = "mods";
             this.label38.Text = "SIG";
             // 
             // nudUnlitSIG
@@ -1173,7 +1183,7 @@
             this.nudUnlitSIG.Name = "nudUnlitSIG";
             this.nudUnlitSIG.Size = new System.Drawing.Size(40, 20);
             this.nudUnlitSIG.TabIndex = 37;
-            this.nudUnlitSIG.Tag = "bob";
+            this.nudUnlitSIG.Tag = "mods";
             this.nudUnlitSIG.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // nudLitSIG
@@ -1182,7 +1192,7 @@
             this.nudLitSIG.Name = "nudLitSIG";
             this.nudLitSIG.Size = new System.Drawing.Size(40, 20);
             this.nudLitSIG.TabIndex = 36;
-            this.nudLitSIG.Tag = "bob";
+            this.nudLitSIG.Tag = "mods";
             this.nudLitSIG.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // label37
@@ -1192,7 +1202,7 @@
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(29, 13);
             this.label37.TabIndex = 35;
-            this.label37.Tag = "bob";
+            this.label37.Tag = "mods";
             this.label37.Text = "NSA";
             // 
             // nudUnlitNSA
@@ -1201,7 +1211,7 @@
             this.nudUnlitNSA.Name = "nudUnlitNSA";
             this.nudUnlitNSA.Size = new System.Drawing.Size(40, 20);
             this.nudUnlitNSA.TabIndex = 34;
-            this.nudUnlitNSA.Tag = "bob";
+            this.nudUnlitNSA.Tag = "mods";
             this.nudUnlitNSA.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // nudLitNSA
@@ -1210,7 +1220,7 @@
             this.nudLitNSA.Name = "nudLitNSA";
             this.nudLitNSA.Size = new System.Drawing.Size(40, 20);
             this.nudLitNSA.TabIndex = 33;
-            this.nudLitNSA.Tag = "bob";
+            this.nudLitNSA.Tag = "mods";
             this.nudLitNSA.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // label36
@@ -1220,7 +1230,7 @@
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(30, 13);
             this.label36.TabIndex = 32;
-            this.label36.Tag = "bob";
+            this.label36.Tag = "mods";
             this.label36.Text = "MSA";
             // 
             // nudUnlitMSA
@@ -1229,7 +1239,7 @@
             this.nudUnlitMSA.Name = "nudUnlitMSA";
             this.nudUnlitMSA.Size = new System.Drawing.Size(40, 20);
             this.nudUnlitMSA.TabIndex = 31;
-            this.nudUnlitMSA.Tag = "bob";
+            this.nudUnlitMSA.Tag = "mods";
             this.nudUnlitMSA.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // nudLitMSA
@@ -1238,7 +1248,7 @@
             this.nudLitMSA.Name = "nudLitMSA";
             this.nudLitMSA.Size = new System.Drawing.Size(40, 20);
             this.nudLitMSA.TabIndex = 30;
-            this.nudLitMSA.Tag = "bob";
+            this.nudLitMSA.Tag = "mods";
             this.nudLitMSA.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // label35
@@ -1248,7 +1258,7 @@
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(26, 13);
             this.label35.TabIndex = 29;
-            this.label35.Tag = "bob";
+            this.label35.Tag = "mods";
             this.label35.Text = "IND";
             // 
             // nudUnlitIND
@@ -1257,7 +1267,7 @@
             this.nudUnlitIND.Name = "nudUnlitIND";
             this.nudUnlitIND.Size = new System.Drawing.Size(40, 20);
             this.nudUnlitIND.TabIndex = 28;
-            this.nudUnlitIND.Tag = "bob";
+            this.nudUnlitIND.Tag = "mods";
             this.nudUnlitIND.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // nudLitIND
@@ -1266,7 +1276,7 @@
             this.nudLitIND.Name = "nudLitIND";
             this.nudLitIND.Size = new System.Drawing.Size(40, 20);
             this.nudLitIND.TabIndex = 27;
-            this.nudLitIND.Tag = "bob";
+            this.nudLitIND.Tag = "mods";
             this.nudLitIND.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // label34
@@ -1276,7 +1286,7 @@
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(29, 13);
             this.label34.TabIndex = 26;
-            this.label34.Tag = "bob";
+            this.label34.Tag = "mods";
             this.label34.Text = "FRQ";
             // 
             // nudUnlitFRQ
@@ -1285,7 +1295,7 @@
             this.nudUnlitFRQ.Name = "nudUnlitFRQ";
             this.nudUnlitFRQ.Size = new System.Drawing.Size(40, 20);
             this.nudUnlitFRQ.TabIndex = 25;
-            this.nudUnlitFRQ.Tag = "bob";
+            this.nudUnlitFRQ.Tag = "mods";
             this.nudUnlitFRQ.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // nudLitFRQ
@@ -1294,7 +1304,7 @@
             this.nudLitFRQ.Name = "nudLitFRQ";
             this.nudLitFRQ.Size = new System.Drawing.Size(40, 20);
             this.nudLitFRQ.TabIndex = 24;
-            this.nudLitFRQ.Tag = "bob";
+            this.nudLitFRQ.Tag = "mods";
             this.nudLitFRQ.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // label33
@@ -1312,7 +1322,7 @@
             this.nudUnlitFRK.Name = "nudUnlitFRK";
             this.nudUnlitFRK.Size = new System.Drawing.Size(40, 20);
             this.nudUnlitFRK.TabIndex = 22;
-            this.nudUnlitFRK.Tag = "bob";
+            this.nudUnlitFRK.Tag = "mods";
             this.nudUnlitFRK.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // nudLitFRK
@@ -1330,7 +1340,7 @@
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(28, 13);
             this.label32.TabIndex = 20;
-            this.label32.Tag = "bob";
+            this.label32.Tag = "mods";
             this.label32.Text = "CLR";
             // 
             // nudUnlitCLR
@@ -1339,7 +1349,7 @@
             this.nudUnlitCLR.Name = "nudUnlitCLR";
             this.nudUnlitCLR.Size = new System.Drawing.Size(40, 20);
             this.nudUnlitCLR.TabIndex = 19;
-            this.nudUnlitCLR.Tag = "bob";
+            this.nudUnlitCLR.Tag = "mods";
             this.nudUnlitCLR.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // nudLitCLR
@@ -1348,7 +1358,7 @@
             this.nudLitCLR.Name = "nudLitCLR";
             this.nudLitCLR.Size = new System.Drawing.Size(40, 20);
             this.nudLitCLR.TabIndex = 18;
-            this.nudLitCLR.Tag = "bob";
+            this.nudLitCLR.Tag = "mods";
             this.nudLitCLR.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // label31
@@ -1366,7 +1376,7 @@
             this.nudUnlitCAR.Name = "nudUnlitCAR";
             this.nudUnlitCAR.Size = new System.Drawing.Size(40, 20);
             this.nudUnlitCAR.TabIndex = 16;
-            this.nudUnlitCAR.Tag = "bob";
+            this.nudUnlitCAR.Tag = "mods";
             this.nudUnlitCAR.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // nudLitCAR
@@ -1384,7 +1394,7 @@
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(29, 13);
             this.label30.TabIndex = 14;
-            this.label30.Tag = "bob";
+            this.label30.Tag = "mods";
             this.label30.Text = "BOB";
             // 
             // label29
@@ -1394,7 +1404,7 @@
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(28, 13);
             this.label29.TabIndex = 13;
-            this.label29.Tag = "bob";
+            this.label29.Tag = "mods";
             this.label29.Text = "Unlit";
             // 
             // label28
@@ -1412,7 +1422,7 @@
             this.nudUnlitBOB.Name = "nudUnlitBOB";
             this.nudUnlitBOB.Size = new System.Drawing.Size(40, 20);
             this.nudUnlitBOB.TabIndex = 11;
-            this.nudUnlitBOB.Tag = "bob";
+            this.nudUnlitBOB.Tag = "mods";
             this.nudUnlitBOB.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // nudLitBOB
@@ -1421,7 +1431,7 @@
             this.nudLitBOB.Name = "nudLitBOB";
             this.nudLitBOB.Size = new System.Drawing.Size(40, 20);
             this.nudLitBOB.TabIndex = 10;
-            this.nudLitBOB.Tag = "bob";
+            this.nudLitBOB.Tag = "mods";
             this.nudLitBOB.ValueChanged += new System.EventHandler(this.UpdateBombSolution);
             // 
             // facts_strike
@@ -1456,6 +1466,53 @@
             this.splitContainer1.SplitterDistance = 817;
             this.splitContainer1.TabIndex = 4;
             // 
+            // splitContainer4
+            // 
+            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer4.Name = "splitContainer4";
+            // 
+            // splitContainer4.Panel1
+            // 
+            this.splitContainer4.Panel1.Controls.Add(this.lbModules);
+            // 
+            // splitContainer4.Panel2
+            // 
+            this.splitContainer4.Panel2.Controls.Add(this.tcTabs);
+            this.splitContainer4.Size = new System.Drawing.Size(817, 530);
+            this.splitContainer4.SplitterDistance = 155;
+            this.splitContainer4.TabIndex = 0;
+            // 
+            // lbModules
+            // 
+            this.lbModules.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbModules.FormattingEnabled = true;
+            this.lbModules.Location = new System.Drawing.Point(0, 0);
+            this.lbModules.Name = "lbModules";
+            this.lbModules.Size = new System.Drawing.Size(155, 530);
+            this.lbModules.TabIndex = 4;
+            this.lbModules.SelectedIndexChanged += new System.EventHandler(this.lbModules_SelectedIndexChanged);
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.splitContainer1);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.ManualVersionSelect);
+            this.splitContainer2.Panel2.Controls.Add(this.linkLabel1);
+            this.splitContainer2.Size = new System.Drawing.Size(1126, 564);
+            this.splitContainer2.SplitterDistance = 530;
+            this.splitContainer2.TabIndex = 5;
+            // 
             // tcTabs
             // 
             this.tcTabs.Controls.Add(this.tpAbout);
@@ -1483,7 +1540,7 @@
             this.tpAbout.Controls.Add(this.pictureBox1);
             this.tpAbout.Location = new System.Drawing.Point(4, 76);
             this.tpAbout.Name = "tpAbout";
-            this.tpAbout.Size = new System.Drawing.Size(582, 450);
+            this.tpAbout.Size = new System.Drawing.Size(650, 450);
             this.tpAbout.TabIndex = 11;
             this.tpAbout.Text = "About";
             this.tpAbout.UseVisualStyleBackColor = true;
@@ -1492,7 +1549,7 @@
             // 
             this.textBox3.Dock = System.Windows.Forms.DockStyle.Right;
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(87, 0);
+            this.textBox3.Location = new System.Drawing.Point(155, 0);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(495, 450);
@@ -1522,9 +1579,9 @@
             this.tpButtonV1.Controls.Add(this.yellowstrip);
             this.tpButtonV1.Controls.Add(this.bluestrip);
             this.tpButtonV1.Controls.Add(this.button_label);
-            this.tpButtonV1.Location = new System.Drawing.Point(4, 112);
+            this.tpButtonV1.Location = new System.Drawing.Point(4, 76);
             this.tpButtonV1.Name = "tpButtonV1";
-            this.tpButtonV1.Size = new System.Drawing.Size(582, 414);
+            this.tpButtonV1.Size = new System.Drawing.Size(650, 450);
             this.tpButtonV1.TabIndex = 4;
             this.tpButtonV1.Text = "The Button";
             this.tpButtonV1.UseVisualStyleBackColor = true;
@@ -1645,9 +1702,9 @@
             // 
             this.tpKeypadsSimonSays.Controls.Add(this.groupBox17);
             this.tpKeypadsSimonSays.Controls.Add(this.groupBox16);
-            this.tpKeypadsSimonSays.Location = new System.Drawing.Point(4, 112);
+            this.tpKeypadsSimonSays.Location = new System.Drawing.Point(4, 76);
             this.tpKeypadsSimonSays.Name = "tpKeypadsSimonSays";
-            this.tpKeypadsSimonSays.Size = new System.Drawing.Size(582, 414);
+            this.tpKeypadsSimonSays.Size = new System.Drawing.Size(650, 450);
             this.tpKeypadsSimonSays.TabIndex = 14;
             this.tpKeypadsSimonSays.Text = "Keypads, Simon Says";
             this.tpKeypadsSimonSays.UseVisualStyleBackColor = true;
@@ -2332,9 +2389,9 @@
             // 
             this.tpMemoryWhosOnFirst.Controls.Add(this.groupBox21);
             this.tpMemoryWhosOnFirst.Controls.Add(this.groupBox22);
-            this.tpMemoryWhosOnFirst.Location = new System.Drawing.Point(4, 112);
+            this.tpMemoryWhosOnFirst.Location = new System.Drawing.Point(4, 76);
             this.tpMemoryWhosOnFirst.Name = "tpMemoryWhosOnFirst";
-            this.tpMemoryWhosOnFirst.Size = new System.Drawing.Size(582, 414);
+            this.tpMemoryWhosOnFirst.Size = new System.Drawing.Size(650, 450);
             this.tpMemoryWhosOnFirst.TabIndex = 13;
             this.tpMemoryWhosOnFirst.Text = "Who\'s on First, Memory";
             this.tpMemoryWhosOnFirst.UseVisualStyleBackColor = true;
@@ -2352,7 +2409,7 @@
             this.groupBox21.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox21.Location = new System.Drawing.Point(0, 201);
             this.groupBox21.Name = "groupBox21";
-            this.groupBox21.Size = new System.Drawing.Size(582, 327);
+            this.groupBox21.Size = new System.Drawing.Size(650, 327);
             this.groupBox21.TabIndex = 13;
             this.groupBox21.TabStop = false;
             this.groupBox21.Text = "Memory";
@@ -2454,7 +2511,7 @@
             this.groupBox22.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox22.Location = new System.Drawing.Point(0, 0);
             this.groupBox22.Name = "groupBox22";
-            this.groupBox22.Size = new System.Drawing.Size(582, 201);
+            this.groupBox22.Size = new System.Drawing.Size(650, 201);
             this.groupBox22.TabIndex = 6;
             this.groupBox22.TabStop = false;
             this.groupBox22.Text = "Who\'s on First";
@@ -2965,9 +3022,9 @@
             this.tpMaze.Controls.Add(this.label3);
             this.tpMaze.Controls.Add(this.label2);
             this.tpMaze.Controls.Add(this.pbMaze);
-            this.tpMaze.Location = new System.Drawing.Point(4, 112);
+            this.tpMaze.Location = new System.Drawing.Point(4, 76);
             this.tpMaze.Name = "tpMaze";
-            this.tpMaze.Size = new System.Drawing.Size(582, 414);
+            this.tpMaze.Size = new System.Drawing.Size(650, 450);
             this.tpMaze.TabIndex = 12;
             this.tpMaze.Text = "Mazes";
             this.tpMaze.UseVisualStyleBackColor = true;
@@ -3109,10 +3166,10 @@
             // tpWires
             // 
             this.tpWires.Controls.Add(this.flowLayoutPanel2);
-            this.tpWires.Location = new System.Drawing.Point(4, 22);
+            this.tpWires.Location = new System.Drawing.Point(4, 76);
             this.tpWires.Name = "tpWires";
             this.tpWires.Padding = new System.Windows.Forms.Padding(3);
-            this.tpWires.Size = new System.Drawing.Size(654, 504);
+            this.tpWires.Size = new System.Drawing.Size(650, 450);
             this.tpWires.TabIndex = 0;
             this.tpWires.Text = "Simple Wires, Complicated Wires, Wire Sequences";
             this.tpWires.UseVisualStyleBackColor = true;
@@ -3125,7 +3182,7 @@
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(648, 498);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(644, 444);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // groupBox11
@@ -3482,9 +3539,9 @@
             // tpPasswordMorseCode
             // 
             this.tpPasswordMorseCode.Controls.Add(this.scPasswordMorseCode);
-            this.tpPasswordMorseCode.Location = new System.Drawing.Point(4, 40);
+            this.tpPasswordMorseCode.Location = new System.Drawing.Point(4, 76);
             this.tpPasswordMorseCode.Name = "tpPasswordMorseCode";
-            this.tpPasswordMorseCode.Size = new System.Drawing.Size(654, 486);
+            this.tpPasswordMorseCode.Size = new System.Drawing.Size(650, 450);
             this.tpPasswordMorseCode.TabIndex = 8;
             this.tpPasswordMorseCode.Text = "Passwords, Morse Code";
             this.tpPasswordMorseCode.UseVisualStyleBackColor = true;
@@ -3503,8 +3560,8 @@
             // scPasswordMorseCode.Panel2
             // 
             this.scPasswordMorseCode.Panel2.Controls.Add(this.groupBox14);
-            this.scPasswordMorseCode.Size = new System.Drawing.Size(654, 486);
-            this.scPasswordMorseCode.SplitterDistance = 302;
+            this.scPasswordMorseCode.Size = new System.Drawing.Size(650, 450);
+            this.scPasswordMorseCode.SplitterDistance = 279;
             this.scPasswordMorseCode.TabIndex = 0;
             // 
             // groupBox13
@@ -3513,7 +3570,7 @@
             this.groupBox13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox13.Location = new System.Drawing.Point(0, 0);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(654, 302);
+            this.groupBox13.Size = new System.Drawing.Size(650, 279);
             this.groupBox13.TabIndex = 11;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Password";
@@ -3532,8 +3589,8 @@
             // splitContainer5.Panel2
             // 
             this.splitContainer5.Panel2.Controls.Add(this.passResults);
-            this.splitContainer5.Size = new System.Drawing.Size(648, 283);
-            this.splitContainer5.SplitterDistance = 138;
+            this.splitContainer5.Size = new System.Drawing.Size(644, 260);
+            this.splitContainer5.SplitterDistance = 125;
             this.splitContainer5.TabIndex = 11;
             // 
             // splitContainer6
@@ -3552,7 +3609,7 @@
             this.splitContainer6.Panel2.Controls.Add(this.passwordClear);
             this.splitContainer6.Panel2.Controls.Add(this.label15);
             this.splitContainer6.Panel2.Controls.Add(this.fpPasswordLettersNotPresent);
-            this.splitContainer6.Size = new System.Drawing.Size(648, 138);
+            this.splitContainer6.Size = new System.Drawing.Size(644, 125);
             this.splitContainer6.SplitterDistance = 84;
             this.splitContainer6.TabIndex = 0;
             // 
@@ -3566,7 +3623,7 @@
             this.fpPassword.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fpPassword.Location = new System.Drawing.Point(0, 0);
             this.fpPassword.Name = "fpPassword";
-            this.fpPassword.Size = new System.Drawing.Size(84, 138);
+            this.fpPassword.Size = new System.Drawing.Size(84, 125);
             this.fpPassword.TabIndex = 7;
             // 
             // pass1
@@ -3624,7 +3681,7 @@
             this.passwordClear.Dock = System.Windows.Forms.DockStyle.Left;
             this.passwordClear.Location = new System.Drawing.Point(291, 39);
             this.passwordClear.Name = "passwordClear";
-            this.passwordClear.Size = new System.Drawing.Size(50, 99);
+            this.passwordClear.Size = new System.Drawing.Size(50, 86);
             this.passwordClear.TabIndex = 6;
             this.passwordClear.Text = "Clear";
             this.passwordClear.UseVisualStyleBackColor = true;
@@ -3651,7 +3708,7 @@
             this.fpPasswordLettersNotPresent.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.fpPasswordLettersNotPresent.Location = new System.Drawing.Point(0, 0);
             this.fpPasswordLettersNotPresent.Name = "fpPasswordLettersNotPresent";
-            this.fpPasswordLettersNotPresent.Size = new System.Drawing.Size(291, 138);
+            this.fpPasswordLettersNotPresent.Size = new System.Drawing.Size(291, 125);
             this.fpPasswordLettersNotPresent.TabIndex = 9;
             // 
             // label10
@@ -3711,7 +3768,7 @@
             this.passResults.Location = new System.Drawing.Point(0, 0);
             this.passResults.Multiline = true;
             this.passResults.Name = "passResults";
-            this.passResults.Size = new System.Drawing.Size(648, 141);
+            this.passResults.Size = new System.Drawing.Size(644, 131);
             this.passResults.TabIndex = 5;
             // 
             // groupBox14
@@ -3720,7 +3777,7 @@
             this.groupBox14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox14.Location = new System.Drawing.Point(0, 0);
             this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(654, 180);
+            this.groupBox14.Size = new System.Drawing.Size(650, 167);
             this.groupBox14.TabIndex = 2;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "Morse Code";
@@ -3740,7 +3797,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.MorseCodeOutput);
-            this.splitContainer3.Size = new System.Drawing.Size(648, 161);
+            this.splitContainer3.Size = new System.Drawing.Size(644, 148);
             this.splitContainer3.SplitterDistance = 31;
             this.splitContainer3.TabIndex = 0;
             // 
@@ -3750,7 +3807,7 @@
             this.MorseCodeInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MorseCodeInput.Location = new System.Drawing.Point(0, 0);
             this.MorseCodeInput.Name = "MorseCodeInput";
-            this.MorseCodeInput.Size = new System.Drawing.Size(648, 31);
+            this.MorseCodeInput.Size = new System.Drawing.Size(644, 31);
             this.MorseCodeInput.TabIndex = 0;
             this.MorseCodeInput.TextChanged += new System.EventHandler(this.MorseCodeInput_TextChanged);
             // 
@@ -3761,8 +3818,838 @@
             this.MorseCodeOutput.Location = new System.Drawing.Point(0, 0);
             this.MorseCodeOutput.Multiline = true;
             this.MorseCodeOutput.Name = "MorseCodeOutput";
-            this.MorseCodeOutput.Size = new System.Drawing.Size(648, 126);
+            this.MorseCodeOutput.Size = new System.Drawing.Size(644, 113);
             this.MorseCodeOutput.TabIndex = 1;
+            // 
+            // tpModCollection3
+            // 
+            this.tpModCollection3.Controls.Add(this.flowLayoutPanel4);
+            this.tpModCollection3.Location = new System.Drawing.Point(4, 76);
+            this.tpModCollection3.Name = "tpModCollection3";
+            this.tpModCollection3.Size = new System.Drawing.Size(650, 450);
+            this.tpModCollection3.TabIndex = 22;
+            this.tpModCollection3.Tag = "mods";
+            this.tpModCollection3.Text = "Adventure Game, Alphabet, Anagram, Word Scramble, Silly Slots, Switches";
+            this.tpModCollection3.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.Controls.Add(this.groupBox33);
+            this.flowLayoutPanel4.Controls.Add(this.groupBox29);
+            this.flowLayoutPanel4.Controls.Add(this.groupBox32);
+            this.flowLayoutPanel4.Controls.Add(this.groupBox31);
+            this.flowLayoutPanel4.Controls.Add(this.groupBox34);
+            this.flowLayoutPanel4.Controls.Add(this.button51);
+            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(650, 450);
+            this.flowLayoutPanel4.TabIndex = 0;
+            // 
+            // groupBox33
+            // 
+            this.groupBox33.Controls.Add(this.txtAdventureGameOut);
+            this.groupBox33.Controls.Add(this.flpAdventureGameCBO);
+            this.groupBox33.Controls.Add(this.flowLayoutPanel5);
+            this.groupBox33.Location = new System.Drawing.Point(3, 3);
+            this.groupBox33.Name = "groupBox33";
+            this.groupBox33.Size = new System.Drawing.Size(638, 137);
+            this.groupBox33.TabIndex = 21;
+            this.groupBox33.TabStop = false;
+            this.groupBox33.Text = "Adventure Game";
+            // 
+            // txtAdventureGameOut
+            // 
+            this.txtAdventureGameOut.Enabled = false;
+            this.txtAdventureGameOut.Location = new System.Drawing.Point(6, 107);
+            this.txtAdventureGameOut.Name = "txtAdventureGameOut";
+            this.txtAdventureGameOut.Size = new System.Drawing.Size(626, 20);
+            this.txtAdventureGameOut.TabIndex = 32;
+            // 
+            // flpAdventureGameCBO
+            // 
+            this.flpAdventureGameCBO.Controls.Add(this.cboAdventureGameMonster);
+            this.flpAdventureGameCBO.Controls.Add(this.cboAdventureGameWeapon1);
+            this.flpAdventureGameCBO.Controls.Add(this.cboAdventureGameWeapon2);
+            this.flpAdventureGameCBO.Controls.Add(this.cboAdventureGameWeapon3);
+            this.flpAdventureGameCBO.Controls.Add(this.cboAdventureGameItem1);
+            this.flpAdventureGameCBO.Controls.Add(this.cboAdventureGameItem2);
+            this.flpAdventureGameCBO.Controls.Add(this.cboAdventureGameItem3);
+            this.flpAdventureGameCBO.Controls.Add(this.cboAdventureGameItem4);
+            this.flpAdventureGameCBO.Controls.Add(this.cboAdventureGameItem5);
+            this.flpAdventureGameCBO.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flpAdventureGameCBO.Location = new System.Drawing.Point(3, 42);
+            this.flpAdventureGameCBO.Name = "flpAdventureGameCBO";
+            this.flpAdventureGameCBO.Size = new System.Drawing.Size(632, 59);
+            this.flpAdventureGameCBO.TabIndex = 31;
+            // 
+            // cboAdventureGameMonster
+            // 
+            this.cboAdventureGameMonster.FormattingEnabled = true;
+            this.cboAdventureGameMonster.Items.AddRange(new object[] {
+            "(Monster)",
+            "Demon",
+            "Dragon",
+            "Eagle",
+            "Goblin",
+            "Golem",
+            "Troll",
+            "Lizard",
+            "Wizard"});
+            this.cboAdventureGameMonster.Location = new System.Drawing.Point(3, 3);
+            this.cboAdventureGameMonster.Name = "cboAdventureGameMonster";
+            this.cboAdventureGameMonster.Size = new System.Drawing.Size(151, 21);
+            this.cboAdventureGameMonster.TabIndex = 0;
+            this.cboAdventureGameMonster.Text = "(Monster)";
+            this.cboAdventureGameMonster.SelectedIndexChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
+            // 
+            // cboAdventureGameWeapon1
+            // 
+            this.cboAdventureGameWeapon1.FormattingEnabled = true;
+            this.cboAdventureGameWeapon1.Items.AddRange(new object[] {
+            "(Weapon)",
+            "Broadsword (STR)",
+            "Caber (STR)",
+            "Nasty  Knife (DEX)",
+            "Longbow (DEX)",
+            "Magic orb (INT)",
+            "Grimoire (INT)"});
+            this.cboAdventureGameWeapon1.Location = new System.Drawing.Point(160, 3);
+            this.cboAdventureGameWeapon1.Name = "cboAdventureGameWeapon1";
+            this.cboAdventureGameWeapon1.Size = new System.Drawing.Size(151, 21);
+            this.cboAdventureGameWeapon1.TabIndex = 1;
+            this.cboAdventureGameWeapon1.Text = "(Weapon)";
+            this.cboAdventureGameWeapon1.SelectedIndexChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
+            // 
+            // cboAdventureGameWeapon2
+            // 
+            this.cboAdventureGameWeapon2.FormattingEnabled = true;
+            this.cboAdventureGameWeapon2.Items.AddRange(new object[] {
+            "(Weapon)",
+            "Broadsword (STR)",
+            "Caber (STR)",
+            "Nasty  Knife (DEX)",
+            "Longbow (DEX)",
+            "Magic orb (INT)",
+            "Grimoire (INT)"});
+            this.cboAdventureGameWeapon2.Location = new System.Drawing.Point(317, 3);
+            this.cboAdventureGameWeapon2.Name = "cboAdventureGameWeapon2";
+            this.cboAdventureGameWeapon2.Size = new System.Drawing.Size(151, 21);
+            this.cboAdventureGameWeapon2.TabIndex = 2;
+            this.cboAdventureGameWeapon2.Text = "(Weapon)";
+            this.cboAdventureGameWeapon2.SelectedIndexChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
+            // 
+            // cboAdventureGameWeapon3
+            // 
+            this.cboAdventureGameWeapon3.FormattingEnabled = true;
+            this.cboAdventureGameWeapon3.Items.AddRange(new object[] {
+            "(Weapon)",
+            "Broadsword (STR)",
+            "Caber (STR)",
+            "Nasty  Knife (DEX)",
+            "Longbow (DEX)",
+            "Magic orb (INT)",
+            "Grimoire (INT)"});
+            this.cboAdventureGameWeapon3.Location = new System.Drawing.Point(474, 3);
+            this.cboAdventureGameWeapon3.Name = "cboAdventureGameWeapon3";
+            this.cboAdventureGameWeapon3.Size = new System.Drawing.Size(151, 21);
+            this.cboAdventureGameWeapon3.TabIndex = 3;
+            this.cboAdventureGameWeapon3.Text = "(Weapon)";
+            this.cboAdventureGameWeapon3.SelectedIndexChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
+            // 
+            // cboAdventureGameItem1
+            // 
+            this.cboAdventureGameItem1.FormattingEnabled = true;
+            this.cboAdventureGameItem1.Items.AddRange(new object[] {
+            "(Item)",
+            "Balloon",
+            "Battery",
+            "Bellows",
+            "Cheat code",
+            "Crystal Ball",
+            "Feather",
+            "Hard drive",
+            "Lamp",
+            "Moonstone",
+            "Potion",
+            "Small dog",
+            "Stepladder",
+            "Sunstone",
+            "Symbol",
+            "Ticket",
+            "Trophy"});
+            this.cboAdventureGameItem1.Location = new System.Drawing.Point(3, 30);
+            this.cboAdventureGameItem1.Name = "cboAdventureGameItem1";
+            this.cboAdventureGameItem1.Size = new System.Drawing.Size(120, 21);
+            this.cboAdventureGameItem1.TabIndex = 4;
+            this.cboAdventureGameItem1.Text = "(Item)";
+            this.cboAdventureGameItem1.SelectedIndexChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
+            // 
+            // cboAdventureGameItem2
+            // 
+            this.cboAdventureGameItem2.FormattingEnabled = true;
+            this.cboAdventureGameItem2.Items.AddRange(new object[] {
+            "(Item)",
+            "Balloon",
+            "Battery",
+            "Bellows",
+            "Cheat code",
+            "Crystal Ball",
+            "Feather",
+            "Hard drive",
+            "Lamp",
+            "Moonstone",
+            "Potion",
+            "Small dog",
+            "Stepladder",
+            "Sunstone",
+            "Symbol",
+            "Ticket",
+            "Trophy"});
+            this.cboAdventureGameItem2.Location = new System.Drawing.Point(129, 30);
+            this.cboAdventureGameItem2.Name = "cboAdventureGameItem2";
+            this.cboAdventureGameItem2.Size = new System.Drawing.Size(120, 21);
+            this.cboAdventureGameItem2.TabIndex = 5;
+            this.cboAdventureGameItem2.Text = "(Item)";
+            this.cboAdventureGameItem2.SelectedIndexChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
+            // 
+            // cboAdventureGameItem3
+            // 
+            this.cboAdventureGameItem3.FormattingEnabled = true;
+            this.cboAdventureGameItem3.Items.AddRange(new object[] {
+            "(Item)",
+            "Balloon",
+            "Battery",
+            "Bellows",
+            "Cheat code",
+            "Crystal Ball",
+            "Feather",
+            "Hard drive",
+            "Lamp",
+            "Moonstone",
+            "Potion",
+            "Small dog",
+            "Stepladder",
+            "Sunstone",
+            "Symbol",
+            "Ticket",
+            "Trophy"});
+            this.cboAdventureGameItem3.Location = new System.Drawing.Point(255, 30);
+            this.cboAdventureGameItem3.Name = "cboAdventureGameItem3";
+            this.cboAdventureGameItem3.Size = new System.Drawing.Size(120, 21);
+            this.cboAdventureGameItem3.TabIndex = 6;
+            this.cboAdventureGameItem3.Text = "(Item)";
+            this.cboAdventureGameItem3.SelectedIndexChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
+            // 
+            // cboAdventureGameItem4
+            // 
+            this.cboAdventureGameItem4.FormattingEnabled = true;
+            this.cboAdventureGameItem4.Items.AddRange(new object[] {
+            "(Item)",
+            "Balloon",
+            "Battery",
+            "Bellows",
+            "Cheat code",
+            "Crystal Ball",
+            "Feather",
+            "Hard drive",
+            "Lamp",
+            "Moonstone",
+            "Potion",
+            "Small dog",
+            "Stepladder",
+            "Sunstone",
+            "Symbol",
+            "Ticket",
+            "Trophy"});
+            this.cboAdventureGameItem4.Location = new System.Drawing.Point(381, 30);
+            this.cboAdventureGameItem4.Name = "cboAdventureGameItem4";
+            this.cboAdventureGameItem4.Size = new System.Drawing.Size(120, 21);
+            this.cboAdventureGameItem4.TabIndex = 7;
+            this.cboAdventureGameItem4.Text = "(Item)";
+            this.cboAdventureGameItem4.SelectedIndexChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
+            // 
+            // cboAdventureGameItem5
+            // 
+            this.cboAdventureGameItem5.FormattingEnabled = true;
+            this.cboAdventureGameItem5.Items.AddRange(new object[] {
+            "(Item)",
+            "Balloon",
+            "Battery",
+            "Bellows",
+            "Cheat code",
+            "Crystal Ball",
+            "Feather",
+            "Hard drive",
+            "Lamp",
+            "Moonstone",
+            "Potion",
+            "Small dog",
+            "Stepladder",
+            "Sunstone",
+            "Symbol",
+            "Ticket",
+            "Trophy"});
+            this.cboAdventureGameItem5.Location = new System.Drawing.Point(507, 30);
+            this.cboAdventureGameItem5.Name = "cboAdventureGameItem5";
+            this.cboAdventureGameItem5.Size = new System.Drawing.Size(120, 21);
+            this.cboAdventureGameItem5.TabIndex = 8;
+            this.cboAdventureGameItem5.Text = "(Item)";
+            this.cboAdventureGameItem5.SelectedIndexChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
+            // 
+            // flowLayoutPanel5
+            // 
+            this.flowLayoutPanel5.Controls.Add(this.label111);
+            this.flowLayoutPanel5.Controls.Add(this.txtAdventureGameSTR);
+            this.flowLayoutPanel5.Controls.Add(this.label112);
+            this.flowLayoutPanel5.Controls.Add(this.txtAdventrueGameDEX);
+            this.flowLayoutPanel5.Controls.Add(this.label113);
+            this.flowLayoutPanel5.Controls.Add(this.txtAdventrueGameINT);
+            this.flowLayoutPanel5.Controls.Add(this.label114);
+            this.flowLayoutPanel5.Controls.Add(this.txtAdventrueGameHeight);
+            this.flowLayoutPanel5.Controls.Add(this.label115);
+            this.flowLayoutPanel5.Controls.Add(this.txtAdventrueGameTemp);
+            this.flowLayoutPanel5.Controls.Add(this.label117);
+            this.flowLayoutPanel5.Controls.Add(this.txtAdventrueGameGravity);
+            this.flowLayoutPanel5.Controls.Add(this.label118);
+            this.flowLayoutPanel5.Controls.Add(this.txtAdventrueGamePressure);
+            this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(3, 16);
+            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(632, 26);
+            this.flowLayoutPanel5.TabIndex = 30;
+            // 
+            // label111
+            // 
+            this.label111.Location = new System.Drawing.Point(3, 0);
+            this.label111.Name = "label111";
+            this.label111.Size = new System.Drawing.Size(31, 23);
+            this.label111.TabIndex = 17;
+            this.label111.Text = "STR";
+            this.label111.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtAdventureGameSTR
+            // 
+            this.txtAdventureGameSTR.Location = new System.Drawing.Point(40, 3);
+            this.txtAdventureGameSTR.MaxLength = 6;
+            this.txtAdventureGameSTR.Name = "txtAdventureGameSTR";
+            this.txtAdventureGameSTR.Size = new System.Drawing.Size(25, 20);
+            this.txtAdventureGameSTR.TabIndex = 16;
+            this.txtAdventureGameSTR.TextChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
+            // 
+            // label112
+            // 
+            this.label112.Location = new System.Drawing.Point(71, 0);
+            this.label112.Name = "label112";
+            this.label112.Size = new System.Drawing.Size(29, 23);
+            this.label112.TabIndex = 19;
+            this.label112.Text = "DEX";
+            this.label112.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtAdventrueGameDEX
+            // 
+            this.txtAdventrueGameDEX.Location = new System.Drawing.Point(106, 3);
+            this.txtAdventrueGameDEX.MaxLength = 6;
+            this.txtAdventrueGameDEX.Name = "txtAdventrueGameDEX";
+            this.txtAdventrueGameDEX.Size = new System.Drawing.Size(25, 20);
+            this.txtAdventrueGameDEX.TabIndex = 18;
+            this.txtAdventrueGameDEX.TextChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
+            // 
+            // label113
+            // 
+            this.label113.Location = new System.Drawing.Point(137, 0);
+            this.label113.Name = "label113";
+            this.label113.Size = new System.Drawing.Size(29, 23);
+            this.label113.TabIndex = 21;
+            this.label113.Text = "INT";
+            this.label113.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtAdventrueGameINT
+            // 
+            this.txtAdventrueGameINT.Location = new System.Drawing.Point(172, 3);
+            this.txtAdventrueGameINT.MaxLength = 6;
+            this.txtAdventrueGameINT.Name = "txtAdventrueGameINT";
+            this.txtAdventrueGameINT.Size = new System.Drawing.Size(25, 20);
+            this.txtAdventrueGameINT.TabIndex = 20;
+            this.txtAdventrueGameINT.TextChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
+            // 
+            // label114
+            // 
+            this.label114.Location = new System.Drawing.Point(203, 0);
+            this.label114.Name = "label114";
+            this.label114.Size = new System.Drawing.Size(40, 23);
+            this.label114.TabIndex = 23;
+            this.label114.Text = "Height";
+            this.label114.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtAdventrueGameHeight
+            // 
+            this.txtAdventrueGameHeight.Location = new System.Drawing.Point(249, 3);
+            this.txtAdventrueGameHeight.MaxLength = 6;
+            this.txtAdventrueGameHeight.Name = "txtAdventrueGameHeight";
+            this.txtAdventrueGameHeight.Size = new System.Drawing.Size(34, 20);
+            this.txtAdventrueGameHeight.TabIndex = 22;
+            this.txtAdventrueGameHeight.TextChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
+            // 
+            // label115
+            // 
+            this.label115.Location = new System.Drawing.Point(289, 0);
+            this.label115.Name = "label115";
+            this.label115.Size = new System.Drawing.Size(55, 23);
+            this.label115.TabIndex = 25;
+            this.label115.Text = "Temp (°C)";
+            this.label115.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtAdventrueGameTemp
+            // 
+            this.txtAdventrueGameTemp.Location = new System.Drawing.Point(350, 3);
+            this.txtAdventrueGameTemp.MaxLength = 6;
+            this.txtAdventrueGameTemp.Name = "txtAdventrueGameTemp";
+            this.txtAdventrueGameTemp.Size = new System.Drawing.Size(25, 20);
+            this.txtAdventrueGameTemp.TabIndex = 24;
+            this.txtAdventrueGameTemp.TextChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
+            // 
+            // label117
+            // 
+            this.label117.Location = new System.Drawing.Point(381, 0);
+            this.label117.Name = "label117";
+            this.label117.Size = new System.Drawing.Size(70, 23);
+            this.label117.TabIndex = 27;
+            this.label117.Text = "Gravity (m/s²)";
+            this.label117.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtAdventrueGameGravity
+            // 
+            this.txtAdventrueGameGravity.Location = new System.Drawing.Point(457, 3);
+            this.txtAdventrueGameGravity.MaxLength = 6;
+            this.txtAdventrueGameGravity.Name = "txtAdventrueGameGravity";
+            this.txtAdventrueGameGravity.Size = new System.Drawing.Size(34, 20);
+            this.txtAdventrueGameGravity.TabIndex = 26;
+            this.txtAdventrueGameGravity.TextChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
+            // 
+            // label118
+            // 
+            this.label118.Location = new System.Drawing.Point(497, 0);
+            this.label118.Name = "label118";
+            this.label118.Size = new System.Drawing.Size(77, 23);
+            this.label118.TabIndex = 29;
+            this.label118.Text = "Pressure (kPa)";
+            this.label118.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtAdventrueGamePressure
+            // 
+            this.txtAdventrueGamePressure.Location = new System.Drawing.Point(580, 3);
+            this.txtAdventrueGamePressure.MaxLength = 6;
+            this.txtAdventrueGamePressure.Name = "txtAdventrueGamePressure";
+            this.txtAdventrueGamePressure.Size = new System.Drawing.Size(34, 20);
+            this.txtAdventrueGamePressure.TabIndex = 28;
+            this.txtAdventrueGamePressure.TextChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
+            // 
+            // groupBox29
+            // 
+            this.groupBox29.Controls.Add(this.btnSillySlotsDebugDump);
+            this.groupBox29.Controls.Add(this.txtSillySlotsResult);
+            this.groupBox29.Controls.Add(this.btnSillySlotsReset);
+            this.groupBox29.Controls.Add(this.btnSillySlotsSubmit);
+            this.groupBox29.Controls.Add(this.cboSillySlotsSlot3);
+            this.groupBox29.Controls.Add(this.cboSillySlotsSlot2);
+            this.groupBox29.Controls.Add(this.cboSillySlotsSlot1);
+            this.groupBox29.Controls.Add(this.cboSillySlotsKeyWord);
+            this.groupBox29.Location = new System.Drawing.Point(3, 146);
+            this.groupBox29.Name = "groupBox29";
+            this.groupBox29.Size = new System.Drawing.Size(583, 79);
+            this.groupBox29.TabIndex = 0;
+            this.groupBox29.TabStop = false;
+            this.groupBox29.Text = "Silly Slots";
+            // 
+            // btnSillySlotsDebugDump
+            // 
+            this.btnSillySlotsDebugDump.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSillySlotsDebugDump.Location = new System.Drawing.Point(519, 20);
+            this.btnSillySlotsDebugDump.Name = "btnSillySlotsDebugDump";
+            this.btnSillySlotsDebugDump.Size = new System.Drawing.Size(58, 47);
+            this.btnSillySlotsDebugDump.TabIndex = 7;
+            this.btnSillySlotsDebugDump.Text = "Debug Dump";
+            this.btnSillySlotsDebugDump.UseVisualStyleBackColor = true;
+            this.btnSillySlotsDebugDump.Click += new System.EventHandler(this.btnSillySlotsDebugDump_Click);
+            // 
+            // txtSillySlotsResult
+            // 
+            this.txtSillySlotsResult.Enabled = false;
+            this.txtSillySlotsResult.Location = new System.Drawing.Point(122, 19);
+            this.txtSillySlotsResult.Name = "txtSillySlotsResult";
+            this.txtSillySlotsResult.Size = new System.Drawing.Size(226, 20);
+            this.txtSillySlotsResult.TabIndex = 6;
+            // 
+            // btnSillySlotsReset
+            // 
+            this.btnSillySlotsReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSillySlotsReset.Location = new System.Drawing.Point(454, 20);
+            this.btnSillySlotsReset.Name = "btnSillySlotsReset";
+            this.btnSillySlotsReset.Size = new System.Drawing.Size(59, 47);
+            this.btnSillySlotsReset.TabIndex = 5;
+            this.btnSillySlotsReset.Text = "Reset";
+            this.btnSillySlotsReset.UseVisualStyleBackColor = true;
+            this.btnSillySlotsReset.Click += new System.EventHandler(this.btnSillySlotsReset_Click);
+            // 
+            // btnSillySlotsSubmit
+            // 
+            this.btnSillySlotsSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSillySlotsSubmit.Location = new System.Drawing.Point(354, 20);
+            this.btnSillySlotsSubmit.Name = "btnSillySlotsSubmit";
+            this.btnSillySlotsSubmit.Size = new System.Drawing.Size(94, 47);
+            this.btnSillySlotsSubmit.TabIndex = 4;
+            this.btnSillySlotsSubmit.Text = "Submit";
+            this.btnSillySlotsSubmit.UseVisualStyleBackColor = true;
+            this.btnSillySlotsSubmit.Click += new System.EventHandler(this.btnSillySlotsSubmit_Click);
+            // 
+            // cboSillySlotsSlot3
+            // 
+            this.cboSillySlotsSlot3.FormattingEnabled = true;
+            this.cboSillySlotsSlot3.Items.AddRange(new object[] {
+            "(Slot 3)",
+            "Red Grape",
+            "Red Cherry",
+            "Red Bomb",
+            "Red Coin",
+            "Blue Grape",
+            "Blue Cherry",
+            "Blue Bomb",
+            "Blue Coin",
+            "Green Grape",
+            "Green Cherry",
+            "Green Bomb",
+            "Green Coin"});
+            this.cboSillySlotsSlot3.Location = new System.Drawing.Point(238, 46);
+            this.cboSillySlotsSlot3.Name = "cboSillySlotsSlot3";
+            this.cboSillySlotsSlot3.Size = new System.Drawing.Size(110, 21);
+            this.cboSillySlotsSlot3.TabIndex = 3;
+            // 
+            // cboSillySlotsSlot2
+            // 
+            this.cboSillySlotsSlot2.FormattingEnabled = true;
+            this.cboSillySlotsSlot2.Items.AddRange(new object[] {
+            "(Slot 2)",
+            "Red Grape",
+            "Red Cherry",
+            "Red Bomb",
+            "Red Coin",
+            "Blue Grape",
+            "Blue Cherry",
+            "Blue Bomb",
+            "Blue Coin",
+            "Green Grape",
+            "Green Cherry",
+            "Green Bomb",
+            "Green Coin"});
+            this.cboSillySlotsSlot2.Location = new System.Drawing.Point(122, 46);
+            this.cboSillySlotsSlot2.Name = "cboSillySlotsSlot2";
+            this.cboSillySlotsSlot2.Size = new System.Drawing.Size(110, 21);
+            this.cboSillySlotsSlot2.TabIndex = 2;
+            // 
+            // cboSillySlotsSlot1
+            // 
+            this.cboSillySlotsSlot1.FormattingEnabled = true;
+            this.cboSillySlotsSlot1.Items.AddRange(new object[] {
+            "(Slot 1)",
+            "Red Grape",
+            "Red Cherry",
+            "Red Bomb",
+            "Red Coin",
+            "Blue Grape",
+            "Blue Cherry",
+            "Blue Bomb",
+            "Blue Coin",
+            "Green Grape",
+            "Green Cherry",
+            "Green Bomb",
+            "Green Coin"});
+            this.cboSillySlotsSlot1.Location = new System.Drawing.Point(6, 46);
+            this.cboSillySlotsSlot1.Name = "cboSillySlotsSlot1";
+            this.cboSillySlotsSlot1.Size = new System.Drawing.Size(110, 21);
+            this.cboSillySlotsSlot1.TabIndex = 1;
+            // 
+            // cboSillySlotsKeyWord
+            // 
+            this.cboSillySlotsKeyWord.FormattingEnabled = true;
+            this.cboSillySlotsKeyWord.Items.AddRange(new object[] {
+            "Key Word",
+            "Sassy",
+            "Silly",
+            "Soggy",
+            "Sally",
+            "Simon",
+            "Sausage",
+            "Steven"});
+            this.cboSillySlotsKeyWord.Location = new System.Drawing.Point(6, 19);
+            this.cboSillySlotsKeyWord.Name = "cboSillySlotsKeyWord";
+            this.cboSillySlotsKeyWord.Size = new System.Drawing.Size(110, 21);
+            this.cboSillySlotsKeyWord.TabIndex = 0;
+            // 
+            // groupBox32
+            // 
+            this.groupBox32.Controls.Add(this.txtAlphabetIn);
+            this.groupBox32.Controls.Add(this.label109);
+            this.groupBox32.Controls.Add(this.txtAlphabetOut);
+            this.groupBox32.Controls.Add(this.label110);
+            this.groupBox32.Location = new System.Drawing.Point(3, 231);
+            this.groupBox32.Name = "groupBox32";
+            this.groupBox32.Size = new System.Drawing.Size(155, 81);
+            this.groupBox32.TabIndex = 20;
+            this.groupBox32.TabStop = false;
+            this.groupBox32.Text = "Alphabet";
+            // 
+            // txtAlphabetIn
+            // 
+            this.txtAlphabetIn.Location = new System.Drawing.Point(59, 19);
+            this.txtAlphabetIn.MaxLength = 4;
+            this.txtAlphabetIn.Name = "txtAlphabetIn";
+            this.txtAlphabetIn.Size = new System.Drawing.Size(72, 20);
+            this.txtAlphabetIn.TabIndex = 0;
+            this.txtAlphabetIn.TextChanged += new System.EventHandler(this.txtAlphabetIn_TextChanged);
+            // 
+            // label109
+            // 
+            this.label109.AutoSize = true;
+            this.label109.Location = new System.Drawing.Point(9, 22);
+            this.label109.Name = "label109";
+            this.label109.Size = new System.Drawing.Size(31, 13);
+            this.label109.TabIndex = 15;
+            this.label109.Text = "Input";
+            // 
+            // txtAlphabetOut
+            // 
+            this.txtAlphabetOut.Enabled = false;
+            this.txtAlphabetOut.Location = new System.Drawing.Point(59, 45);
+            this.txtAlphabetOut.Name = "txtAlphabetOut";
+            this.txtAlphabetOut.Size = new System.Drawing.Size(72, 20);
+            this.txtAlphabetOut.TabIndex = 1;
+            // 
+            // label110
+            // 
+            this.label110.AutoSize = true;
+            this.label110.Location = new System.Drawing.Point(9, 48);
+            this.label110.Name = "label110";
+            this.label110.Size = new System.Drawing.Size(39, 13);
+            this.label110.TabIndex = 14;
+            this.label110.Text = "Output";
+            // 
+            // groupBox31
+            // 
+            this.groupBox31.Controls.Add(this.txtWordScrambleIn);
+            this.groupBox31.Controls.Add(this.label107);
+            this.groupBox31.Controls.Add(this.txtWordScrambleOut);
+            this.groupBox31.Controls.Add(this.label108);
+            this.groupBox31.Location = new System.Drawing.Point(164, 231);
+            this.groupBox31.Name = "groupBox31";
+            this.groupBox31.Size = new System.Drawing.Size(153, 81);
+            this.groupBox31.TabIndex = 19;
+            this.groupBox31.TabStop = false;
+            this.groupBox31.Text = "Anagram / Word Scramble";
+            // 
+            // txtWordScrambleIn
+            // 
+            this.txtWordScrambleIn.Location = new System.Drawing.Point(59, 19);
+            this.txtWordScrambleIn.MaxLength = 6;
+            this.txtWordScrambleIn.Name = "txtWordScrambleIn";
+            this.txtWordScrambleIn.Size = new System.Drawing.Size(81, 20);
+            this.txtWordScrambleIn.TabIndex = 0;
+            this.txtWordScrambleIn.TextChanged += new System.EventHandler(this.txtWordScrambleIn_TextChanged);
+            // 
+            // label107
+            // 
+            this.label107.AutoSize = true;
+            this.label107.Location = new System.Drawing.Point(9, 22);
+            this.label107.Name = "label107";
+            this.label107.Size = new System.Drawing.Size(31, 13);
+            this.label107.TabIndex = 15;
+            this.label107.Text = "Input";
+            // 
+            // txtWordScrambleOut
+            // 
+            this.txtWordScrambleOut.Enabled = false;
+            this.txtWordScrambleOut.Location = new System.Drawing.Point(59, 45);
+            this.txtWordScrambleOut.Name = "txtWordScrambleOut";
+            this.txtWordScrambleOut.Size = new System.Drawing.Size(81, 20);
+            this.txtWordScrambleOut.TabIndex = 1;
+            // 
+            // label108
+            // 
+            this.label108.AutoSize = true;
+            this.label108.Location = new System.Drawing.Point(9, 48);
+            this.label108.Name = "label108";
+            this.label108.Size = new System.Drawing.Size(39, 13);
+            this.label108.TabIndex = 14;
+            this.label108.Text = "Output";
+            // 
+            // groupBox34
+            // 
+            this.groupBox34.Controls.Add(this.txtSwitchesOut);
+            this.groupBox34.Controls.Add(this.label120);
+            this.groupBox34.Controls.Add(this.cbSwitchesDesired5);
+            this.groupBox34.Controls.Add(this.cbSwitchesDesired4);
+            this.groupBox34.Controls.Add(this.cbSwitchesDesired3);
+            this.groupBox34.Controls.Add(this.cbSwitchesDesired2);
+            this.groupBox34.Controls.Add(this.cbSwitchesDesired1);
+            this.groupBox34.Controls.Add(this.cbSwitchesCurrent5);
+            this.groupBox34.Controls.Add(this.cbSwitchesCurrent4);
+            this.groupBox34.Controls.Add(this.cbSwitchesCurrent3);
+            this.groupBox34.Controls.Add(this.cbSwitchesCurrent2);
+            this.groupBox34.Controls.Add(this.cbSwitchesCurrent1);
+            this.groupBox34.Controls.Add(this.label119);
+            this.groupBox34.Controls.Add(this.label116);
+            this.groupBox34.Location = new System.Drawing.Point(323, 231);
+            this.groupBox34.Name = "groupBox34";
+            this.groupBox34.Size = new System.Drawing.Size(169, 91);
+            this.groupBox34.TabIndex = 25;
+            this.groupBox34.TabStop = false;
+            this.groupBox34.Text = "Switches";
+            // 
+            // txtSwitchesOut
+            // 
+            this.txtSwitchesOut.Enabled = false;
+            this.txtSwitchesOut.Location = new System.Drawing.Point(53, 56);
+            this.txtSwitchesOut.Name = "txtSwitchesOut";
+            this.txtSwitchesOut.Size = new System.Drawing.Size(99, 20);
+            this.txtSwitchesOut.TabIndex = 15;
+            // 
+            // label120
+            // 
+            this.label120.AutoSize = true;
+            this.label120.Location = new System.Drawing.Point(8, 59);
+            this.label120.Name = "label120";
+            this.label120.Size = new System.Drawing.Size(39, 13);
+            this.label120.TabIndex = 16;
+            this.label120.Text = "Output";
+            // 
+            // cbSwitchesDesired5
+            // 
+            this.cbSwitchesDesired5.AutoSize = true;
+            this.cbSwitchesDesired5.Location = new System.Drawing.Point(137, 35);
+            this.cbSwitchesDesired5.Name = "cbSwitchesDesired5";
+            this.cbSwitchesDesired5.Size = new System.Drawing.Size(15, 14);
+            this.cbSwitchesDesired5.TabIndex = 11;
+            this.cbSwitchesDesired5.UseVisualStyleBackColor = true;
+            this.cbSwitchesDesired5.CheckedChanged += new System.EventHandler(this.cbSwitchesCurrent1_CheckedChanged);
+            // 
+            // cbSwitchesDesired4
+            // 
+            this.cbSwitchesDesired4.AutoSize = true;
+            this.cbSwitchesDesired4.Location = new System.Drawing.Point(116, 35);
+            this.cbSwitchesDesired4.Name = "cbSwitchesDesired4";
+            this.cbSwitchesDesired4.Size = new System.Drawing.Size(15, 14);
+            this.cbSwitchesDesired4.TabIndex = 10;
+            this.cbSwitchesDesired4.UseVisualStyleBackColor = true;
+            this.cbSwitchesDesired4.CheckedChanged += new System.EventHandler(this.cbSwitchesCurrent1_CheckedChanged);
+            // 
+            // cbSwitchesDesired3
+            // 
+            this.cbSwitchesDesired3.AutoSize = true;
+            this.cbSwitchesDesired3.Location = new System.Drawing.Point(95, 35);
+            this.cbSwitchesDesired3.Name = "cbSwitchesDesired3";
+            this.cbSwitchesDesired3.Size = new System.Drawing.Size(15, 14);
+            this.cbSwitchesDesired3.TabIndex = 9;
+            this.cbSwitchesDesired3.UseVisualStyleBackColor = true;
+            this.cbSwitchesDesired3.CheckedChanged += new System.EventHandler(this.cbSwitchesCurrent1_CheckedChanged);
+            // 
+            // cbSwitchesDesired2
+            // 
+            this.cbSwitchesDesired2.AutoSize = true;
+            this.cbSwitchesDesired2.Location = new System.Drawing.Point(74, 35);
+            this.cbSwitchesDesired2.Name = "cbSwitchesDesired2";
+            this.cbSwitchesDesired2.Size = new System.Drawing.Size(15, 14);
+            this.cbSwitchesDesired2.TabIndex = 8;
+            this.cbSwitchesDesired2.UseVisualStyleBackColor = true;
+            this.cbSwitchesDesired2.CheckedChanged += new System.EventHandler(this.cbSwitchesCurrent1_CheckedChanged);
+            // 
+            // cbSwitchesDesired1
+            // 
+            this.cbSwitchesDesired1.AutoSize = true;
+            this.cbSwitchesDesired1.Location = new System.Drawing.Point(53, 35);
+            this.cbSwitchesDesired1.Name = "cbSwitchesDesired1";
+            this.cbSwitchesDesired1.Size = new System.Drawing.Size(15, 14);
+            this.cbSwitchesDesired1.TabIndex = 7;
+            this.cbSwitchesDesired1.UseVisualStyleBackColor = true;
+            this.cbSwitchesDesired1.CheckedChanged += new System.EventHandler(this.cbSwitchesCurrent1_CheckedChanged);
+            // 
+            // cbSwitchesCurrent5
+            // 
+            this.cbSwitchesCurrent5.AutoSize = true;
+            this.cbSwitchesCurrent5.Location = new System.Drawing.Point(137, 15);
+            this.cbSwitchesCurrent5.Name = "cbSwitchesCurrent5";
+            this.cbSwitchesCurrent5.Size = new System.Drawing.Size(15, 14);
+            this.cbSwitchesCurrent5.TabIndex = 6;
+            this.cbSwitchesCurrent5.UseVisualStyleBackColor = true;
+            this.cbSwitchesCurrent5.CheckedChanged += new System.EventHandler(this.cbSwitchesCurrent1_CheckedChanged);
+            // 
+            // cbSwitchesCurrent4
+            // 
+            this.cbSwitchesCurrent4.AutoSize = true;
+            this.cbSwitchesCurrent4.Location = new System.Drawing.Point(116, 15);
+            this.cbSwitchesCurrent4.Name = "cbSwitchesCurrent4";
+            this.cbSwitchesCurrent4.Size = new System.Drawing.Size(15, 14);
+            this.cbSwitchesCurrent4.TabIndex = 5;
+            this.cbSwitchesCurrent4.UseVisualStyleBackColor = true;
+            this.cbSwitchesCurrent4.CheckedChanged += new System.EventHandler(this.cbSwitchesCurrent1_CheckedChanged);
+            // 
+            // cbSwitchesCurrent3
+            // 
+            this.cbSwitchesCurrent3.AutoSize = true;
+            this.cbSwitchesCurrent3.Location = new System.Drawing.Point(95, 15);
+            this.cbSwitchesCurrent3.Name = "cbSwitchesCurrent3";
+            this.cbSwitchesCurrent3.Size = new System.Drawing.Size(15, 14);
+            this.cbSwitchesCurrent3.TabIndex = 4;
+            this.cbSwitchesCurrent3.UseVisualStyleBackColor = true;
+            this.cbSwitchesCurrent3.CheckedChanged += new System.EventHandler(this.cbSwitchesCurrent1_CheckedChanged);
+            // 
+            // cbSwitchesCurrent2
+            // 
+            this.cbSwitchesCurrent2.AutoSize = true;
+            this.cbSwitchesCurrent2.Location = new System.Drawing.Point(74, 15);
+            this.cbSwitchesCurrent2.Name = "cbSwitchesCurrent2";
+            this.cbSwitchesCurrent2.Size = new System.Drawing.Size(15, 14);
+            this.cbSwitchesCurrent2.TabIndex = 3;
+            this.cbSwitchesCurrent2.UseVisualStyleBackColor = true;
+            this.cbSwitchesCurrent2.CheckedChanged += new System.EventHandler(this.cbSwitchesCurrent1_CheckedChanged);
+            // 
+            // cbSwitchesCurrent1
+            // 
+            this.cbSwitchesCurrent1.AutoSize = true;
+            this.cbSwitchesCurrent1.Location = new System.Drawing.Point(53, 15);
+            this.cbSwitchesCurrent1.Name = "cbSwitchesCurrent1";
+            this.cbSwitchesCurrent1.Size = new System.Drawing.Size(15, 14);
+            this.cbSwitchesCurrent1.TabIndex = 2;
+            this.cbSwitchesCurrent1.UseVisualStyleBackColor = true;
+            this.cbSwitchesCurrent1.CheckedChanged += new System.EventHandler(this.cbSwitchesCurrent1_CheckedChanged);
+            // 
+            // label119
+            // 
+            this.label119.AutoSize = true;
+            this.label119.Location = new System.Drawing.Point(4, 34);
+            this.label119.Name = "label119";
+            this.label119.Size = new System.Drawing.Size(43, 13);
+            this.label119.TabIndex = 1;
+            this.label119.Text = "Desired";
+            // 
+            // label116
+            // 
+            this.label116.AutoSize = true;
+            this.label116.Location = new System.Drawing.Point(6, 16);
+            this.label116.Name = "label116";
+            this.label116.Size = new System.Drawing.Size(41, 13);
+            this.label116.TabIndex = 0;
+            this.label116.Text = "Current";
+            // 
+            // button51
+            // 
+            this.button51.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button51.Location = new System.Drawing.Point(498, 231);
+            this.button51.Name = "button51";
+            this.button51.Size = new System.Drawing.Size(135, 81);
+            this.button51.TabIndex = 24;
+            this.button51.Text = "RESET\r\nALL";
+            this.button51.UseVisualStyleBackColor = true;
+            this.button51.Click += new System.EventHandler(this.button51_Click);
             // 
             // tpModCollection2
             // 
@@ -4439,172 +5326,6 @@
             this.button50.Text = "Reset Caesar";
             this.button50.UseVisualStyleBackColor = true;
             // 
-            // tpModCollection3
-            // 
-            this.tpModCollection3.Controls.Add(this.flowLayoutPanel4);
-            this.tpModCollection3.Location = new System.Drawing.Point(4, 76);
-            this.tpModCollection3.Name = "tpModCollection3";
-            this.tpModCollection3.Size = new System.Drawing.Size(650, 450);
-            this.tpModCollection3.TabIndex = 22;
-            this.tpModCollection3.Tag = "mods";
-            this.tpModCollection3.Text = "Adventure Game, Alphabet, Anagram, Word Scramble, Silly Slots";
-            this.tpModCollection3.UseVisualStyleBackColor = true;
-            // 
-            // flowLayoutPanel4
-            // 
-            this.flowLayoutPanel4.Controls.Add(this.groupBox33);
-            this.flowLayoutPanel4.Controls.Add(this.groupBox29);
-            this.flowLayoutPanel4.Controls.Add(this.groupBox32);
-            this.flowLayoutPanel4.Controls.Add(this.groupBox31);
-            this.flowLayoutPanel4.Controls.Add(this.groupBox30);
-            this.flowLayoutPanel4.Controls.Add(this.button51);
-            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(650, 450);
-            this.flowLayoutPanel4.TabIndex = 0;
-            // 
-            // groupBox29
-            // 
-            this.groupBox29.Controls.Add(this.btnSillySlotsDebugDump);
-            this.groupBox29.Controls.Add(this.txtSillySlotsResult);
-            this.groupBox29.Controls.Add(this.btnSillySlotsReset);
-            this.groupBox29.Controls.Add(this.btnSillySlotsSubmit);
-            this.groupBox29.Controls.Add(this.cboSillySlotsSlot3);
-            this.groupBox29.Controls.Add(this.cboSillySlotsSlot2);
-            this.groupBox29.Controls.Add(this.cboSillySlotsSlot1);
-            this.groupBox29.Controls.Add(this.cboSillySlotsKeyWord);
-            this.groupBox29.Location = new System.Drawing.Point(3, 146);
-            this.groupBox29.Name = "groupBox29";
-            this.groupBox29.Size = new System.Drawing.Size(583, 79);
-            this.groupBox29.TabIndex = 0;
-            this.groupBox29.TabStop = false;
-            this.groupBox29.Text = "Silly Slots";
-            // 
-            // btnSillySlotsDebugDump
-            // 
-            this.btnSillySlotsDebugDump.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSillySlotsDebugDump.Location = new System.Drawing.Point(519, 20);
-            this.btnSillySlotsDebugDump.Name = "btnSillySlotsDebugDump";
-            this.btnSillySlotsDebugDump.Size = new System.Drawing.Size(58, 47);
-            this.btnSillySlotsDebugDump.TabIndex = 7;
-            this.btnSillySlotsDebugDump.Text = "Debug Dump";
-            this.btnSillySlotsDebugDump.UseVisualStyleBackColor = true;
-            this.btnSillySlotsDebugDump.Click += new System.EventHandler(this.btnSillySlotsDebugDump_Click);
-            // 
-            // txtSillySlotsResult
-            // 
-            this.txtSillySlotsResult.Enabled = false;
-            this.txtSillySlotsResult.Location = new System.Drawing.Point(122, 19);
-            this.txtSillySlotsResult.Name = "txtSillySlotsResult";
-            this.txtSillySlotsResult.Size = new System.Drawing.Size(226, 20);
-            this.txtSillySlotsResult.TabIndex = 6;
-            // 
-            // btnSillySlotsReset
-            // 
-            this.btnSillySlotsReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSillySlotsReset.Location = new System.Drawing.Point(454, 20);
-            this.btnSillySlotsReset.Name = "btnSillySlotsReset";
-            this.btnSillySlotsReset.Size = new System.Drawing.Size(59, 47);
-            this.btnSillySlotsReset.TabIndex = 5;
-            this.btnSillySlotsReset.Text = "Reset";
-            this.btnSillySlotsReset.UseVisualStyleBackColor = true;
-            this.btnSillySlotsReset.Click += new System.EventHandler(this.btnSillySlotsReset_Click);
-            // 
-            // btnSillySlotsSubmit
-            // 
-            this.btnSillySlotsSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSillySlotsSubmit.Location = new System.Drawing.Point(354, 20);
-            this.btnSillySlotsSubmit.Name = "btnSillySlotsSubmit";
-            this.btnSillySlotsSubmit.Size = new System.Drawing.Size(94, 47);
-            this.btnSillySlotsSubmit.TabIndex = 4;
-            this.btnSillySlotsSubmit.Text = "Submit";
-            this.btnSillySlotsSubmit.UseVisualStyleBackColor = true;
-            this.btnSillySlotsSubmit.Click += new System.EventHandler(this.btnSillySlotsSubmit_Click);
-            // 
-            // cboSillySlotsSlot3
-            // 
-            this.cboSillySlotsSlot3.FormattingEnabled = true;
-            this.cboSillySlotsSlot3.Items.AddRange(new object[] {
-            "(Slot 3)",
-            "Red Grape",
-            "Red Cherry",
-            "Red Bomb",
-            "Red Coin",
-            "Blue Grape",
-            "Blue Cherry",
-            "Blue Bomb",
-            "Blue Coin",
-            "Green Grape",
-            "Green Cherry",
-            "Green Bomb",
-            "Green Coin"});
-            this.cboSillySlotsSlot3.Location = new System.Drawing.Point(238, 46);
-            this.cboSillySlotsSlot3.Name = "cboSillySlotsSlot3";
-            this.cboSillySlotsSlot3.Size = new System.Drawing.Size(110, 21);
-            this.cboSillySlotsSlot3.TabIndex = 3;
-            // 
-            // cboSillySlotsSlot2
-            // 
-            this.cboSillySlotsSlot2.FormattingEnabled = true;
-            this.cboSillySlotsSlot2.Items.AddRange(new object[] {
-            "(Slot 2)",
-            "Red Grape",
-            "Red Cherry",
-            "Red Bomb",
-            "Red Coin",
-            "Blue Grape",
-            "Blue Cherry",
-            "Blue Bomb",
-            "Blue Coin",
-            "Green Grape",
-            "Green Cherry",
-            "Green Bomb",
-            "Green Coin"});
-            this.cboSillySlotsSlot2.Location = new System.Drawing.Point(122, 46);
-            this.cboSillySlotsSlot2.Name = "cboSillySlotsSlot2";
-            this.cboSillySlotsSlot2.Size = new System.Drawing.Size(110, 21);
-            this.cboSillySlotsSlot2.TabIndex = 2;
-            // 
-            // cboSillySlotsSlot1
-            // 
-            this.cboSillySlotsSlot1.FormattingEnabled = true;
-            this.cboSillySlotsSlot1.Items.AddRange(new object[] {
-            "(Slot 1)",
-            "Red Grape",
-            "Red Cherry",
-            "Red Bomb",
-            "Red Coin",
-            "Blue Grape",
-            "Blue Cherry",
-            "Blue Bomb",
-            "Blue Coin",
-            "Green Grape",
-            "Green Cherry",
-            "Green Bomb",
-            "Green Coin"});
-            this.cboSillySlotsSlot1.Location = new System.Drawing.Point(6, 46);
-            this.cboSillySlotsSlot1.Name = "cboSillySlotsSlot1";
-            this.cboSillySlotsSlot1.Size = new System.Drawing.Size(110, 21);
-            this.cboSillySlotsSlot1.TabIndex = 1;
-            // 
-            // cboSillySlotsKeyWord
-            // 
-            this.cboSillySlotsKeyWord.FormattingEnabled = true;
-            this.cboSillySlotsKeyWord.Items.AddRange(new object[] {
-            "Key Word",
-            "Sassy",
-            "Silly",
-            "Soggy",
-            "Sally",
-            "Simon",
-            "Sausage",
-            "Steven"});
-            this.cboSillySlotsKeyWord.Location = new System.Drawing.Point(6, 19);
-            this.cboSillySlotsKeyWord.Name = "cboSillySlotsKeyWord";
-            this.cboSillySlotsKeyWord.Size = new System.Drawing.Size(110, 21);
-            this.cboSillySlotsKeyWord.TabIndex = 0;
-            // 
             // tpModCollection1
             // 
             this.tpModCollection1.Controls.Add(this.flowLayoutPanel1);
@@ -5205,7 +5926,7 @@
             this.tpModForgetMeNot.Location = new System.Drawing.Point(4, 76);
             this.tpModForgetMeNot.Name = "tpModForgetMeNot";
             this.tpModForgetMeNot.Padding = new System.Windows.Forms.Padding(3);
-            this.tpModForgetMeNot.Size = new System.Drawing.Size(654, 450);
+            this.tpModForgetMeNot.Size = new System.Drawing.Size(650, 450);
             this.tpModForgetMeNot.TabIndex = 15;
             this.tpModForgetMeNot.Tag = "mods";
             this.tpModForgetMeNot.Text = "Forget Me Not";
@@ -5268,607 +5989,6 @@
             this.txtForgetMeNotIn.TabIndex = 0;
             this.txtForgetMeNotIn.TextChanged += new System.EventHandler(this.ForgetMeNot_Event);
             // 
-            // splitContainer2
-            // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer2.Panel1
-            // 
-            this.splitContainer2.Panel1.Controls.Add(this.splitContainer1);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.ManualVersionSelect);
-            this.splitContainer2.Panel2.Controls.Add(this.linkLabel1);
-            this.splitContainer2.Size = new System.Drawing.Size(1126, 564);
-            this.splitContainer2.SplitterDistance = 530;
-            this.splitContainer2.TabIndex = 5;
-            // 
-            // groupBox30
-            // 
-            this.groupBox30.Controls.Add(this.txtAnagramIn);
-            this.groupBox30.Controls.Add(this.label98);
-            this.groupBox30.Controls.Add(this.txtAnagramOut);
-            this.groupBox30.Controls.Add(this.label106);
-            this.groupBox30.Location = new System.Drawing.Point(323, 231);
-            this.groupBox30.Name = "groupBox30";
-            this.groupBox30.Size = new System.Drawing.Size(176, 81);
-            this.groupBox30.TabIndex = 18;
-            this.groupBox30.TabStop = false;
-            this.groupBox30.Text = "Anagram";
-            // 
-            // txtAnagramIn
-            // 
-            this.txtAnagramIn.Location = new System.Drawing.Point(59, 19);
-            this.txtAnagramIn.MaxLength = 6;
-            this.txtAnagramIn.Name = "txtAnagramIn";
-            this.txtAnagramIn.Size = new System.Drawing.Size(98, 20);
-            this.txtAnagramIn.TabIndex = 0;
-            this.txtAnagramIn.TextChanged += new System.EventHandler(this.txtAnagramIn_TextChanged);
-            // 
-            // label98
-            // 
-            this.label98.AutoSize = true;
-            this.label98.Location = new System.Drawing.Point(9, 22);
-            this.label98.Name = "label98";
-            this.label98.Size = new System.Drawing.Size(31, 13);
-            this.label98.TabIndex = 15;
-            this.label98.Text = "Input";
-            // 
-            // txtAnagramOut
-            // 
-            this.txtAnagramOut.Enabled = false;
-            this.txtAnagramOut.Location = new System.Drawing.Point(59, 45);
-            this.txtAnagramOut.Name = "txtAnagramOut";
-            this.txtAnagramOut.Size = new System.Drawing.Size(98, 20);
-            this.txtAnagramOut.TabIndex = 1;
-            // 
-            // label106
-            // 
-            this.label106.AutoSize = true;
-            this.label106.Location = new System.Drawing.Point(9, 48);
-            this.label106.Name = "label106";
-            this.label106.Size = new System.Drawing.Size(39, 13);
-            this.label106.TabIndex = 14;
-            this.label106.Text = "Output";
-            // 
-            // groupBox31
-            // 
-            this.groupBox31.Controls.Add(this.txtWordScrambleIn);
-            this.groupBox31.Controls.Add(this.label107);
-            this.groupBox31.Controls.Add(this.txtWordScrambleOut);
-            this.groupBox31.Controls.Add(this.label108);
-            this.groupBox31.Location = new System.Drawing.Point(164, 231);
-            this.groupBox31.Name = "groupBox31";
-            this.groupBox31.Size = new System.Drawing.Size(153, 81);
-            this.groupBox31.TabIndex = 19;
-            this.groupBox31.TabStop = false;
-            this.groupBox31.Text = "Word Scramble";
-            // 
-            // txtWordScrambleIn
-            // 
-            this.txtWordScrambleIn.Location = new System.Drawing.Point(59, 19);
-            this.txtWordScrambleIn.MaxLength = 6;
-            this.txtWordScrambleIn.Name = "txtWordScrambleIn";
-            this.txtWordScrambleIn.Size = new System.Drawing.Size(81, 20);
-            this.txtWordScrambleIn.TabIndex = 0;
-            this.txtWordScrambleIn.TextChanged += new System.EventHandler(this.txtWordScrambleIn_TextChanged);
-            // 
-            // label107
-            // 
-            this.label107.AutoSize = true;
-            this.label107.Location = new System.Drawing.Point(9, 22);
-            this.label107.Name = "label107";
-            this.label107.Size = new System.Drawing.Size(31, 13);
-            this.label107.TabIndex = 15;
-            this.label107.Text = "Input";
-            // 
-            // txtWordScrambleOut
-            // 
-            this.txtWordScrambleOut.Enabled = false;
-            this.txtWordScrambleOut.Location = new System.Drawing.Point(59, 45);
-            this.txtWordScrambleOut.Name = "txtWordScrambleOut";
-            this.txtWordScrambleOut.Size = new System.Drawing.Size(81, 20);
-            this.txtWordScrambleOut.TabIndex = 1;
-            // 
-            // label108
-            // 
-            this.label108.AutoSize = true;
-            this.label108.Location = new System.Drawing.Point(9, 48);
-            this.label108.Name = "label108";
-            this.label108.Size = new System.Drawing.Size(39, 13);
-            this.label108.TabIndex = 14;
-            this.label108.Text = "Output";
-            // 
-            // groupBox32
-            // 
-            this.groupBox32.Controls.Add(this.txtAlphabetIn);
-            this.groupBox32.Controls.Add(this.label109);
-            this.groupBox32.Controls.Add(this.txtAlphabetOut);
-            this.groupBox32.Controls.Add(this.label110);
-            this.groupBox32.Location = new System.Drawing.Point(3, 231);
-            this.groupBox32.Name = "groupBox32";
-            this.groupBox32.Size = new System.Drawing.Size(155, 81);
-            this.groupBox32.TabIndex = 20;
-            this.groupBox32.TabStop = false;
-            this.groupBox32.Text = "Alphabet";
-            // 
-            // txtAlphabetIn
-            // 
-            this.txtAlphabetIn.Location = new System.Drawing.Point(59, 19);
-            this.txtAlphabetIn.MaxLength = 4;
-            this.txtAlphabetIn.Name = "txtAlphabetIn";
-            this.txtAlphabetIn.Size = new System.Drawing.Size(72, 20);
-            this.txtAlphabetIn.TabIndex = 0;
-            this.txtAlphabetIn.TextChanged += new System.EventHandler(this.txtAlphabetIn_TextChanged);
-            // 
-            // label109
-            // 
-            this.label109.AutoSize = true;
-            this.label109.Location = new System.Drawing.Point(9, 22);
-            this.label109.Name = "label109";
-            this.label109.Size = new System.Drawing.Size(31, 13);
-            this.label109.TabIndex = 15;
-            this.label109.Text = "Input";
-            // 
-            // txtAlphabetOut
-            // 
-            this.txtAlphabetOut.Enabled = false;
-            this.txtAlphabetOut.Location = new System.Drawing.Point(59, 45);
-            this.txtAlphabetOut.Name = "txtAlphabetOut";
-            this.txtAlphabetOut.Size = new System.Drawing.Size(72, 20);
-            this.txtAlphabetOut.TabIndex = 1;
-            // 
-            // label110
-            // 
-            this.label110.AutoSize = true;
-            this.label110.Location = new System.Drawing.Point(9, 48);
-            this.label110.Name = "label110";
-            this.label110.Size = new System.Drawing.Size(39, 13);
-            this.label110.TabIndex = 14;
-            this.label110.Text = "Output";
-            // 
-            // groupBox33
-            // 
-            this.groupBox33.Controls.Add(this.txtAdventureGameOut);
-            this.groupBox33.Controls.Add(this.flpAdventureGameCBO);
-            this.groupBox33.Controls.Add(this.flowLayoutPanel5);
-            this.groupBox33.Location = new System.Drawing.Point(3, 3);
-            this.groupBox33.Name = "groupBox33";
-            this.groupBox33.Size = new System.Drawing.Size(638, 137);
-            this.groupBox33.TabIndex = 21;
-            this.groupBox33.TabStop = false;
-            this.groupBox33.Text = "Adventure Game";
-            // 
-            // txtAdventureGameSTR
-            // 
-            this.txtAdventureGameSTR.Location = new System.Drawing.Point(40, 3);
-            this.txtAdventureGameSTR.MaxLength = 6;
-            this.txtAdventureGameSTR.Name = "txtAdventureGameSTR";
-            this.txtAdventureGameSTR.Size = new System.Drawing.Size(25, 20);
-            this.txtAdventureGameSTR.TabIndex = 16;
-            this.txtAdventureGameSTR.TextChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
-            // 
-            // label111
-            // 
-            this.label111.Location = new System.Drawing.Point(3, 0);
-            this.label111.Name = "label111";
-            this.label111.Size = new System.Drawing.Size(31, 23);
-            this.label111.TabIndex = 17;
-            this.label111.Text = "STR";
-            this.label111.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtAdventrueGameDEX
-            // 
-            this.txtAdventrueGameDEX.Location = new System.Drawing.Point(106, 3);
-            this.txtAdventrueGameDEX.MaxLength = 6;
-            this.txtAdventrueGameDEX.Name = "txtAdventrueGameDEX";
-            this.txtAdventrueGameDEX.Size = new System.Drawing.Size(25, 20);
-            this.txtAdventrueGameDEX.TabIndex = 18;
-            this.txtAdventrueGameDEX.TextChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
-            // 
-            // label112
-            // 
-            this.label112.Location = new System.Drawing.Point(71, 0);
-            this.label112.Name = "label112";
-            this.label112.Size = new System.Drawing.Size(29, 23);
-            this.label112.TabIndex = 19;
-            this.label112.Text = "DEX";
-            this.label112.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtAdventrueGameINT
-            // 
-            this.txtAdventrueGameINT.Location = new System.Drawing.Point(172, 3);
-            this.txtAdventrueGameINT.MaxLength = 6;
-            this.txtAdventrueGameINT.Name = "txtAdventrueGameINT";
-            this.txtAdventrueGameINT.Size = new System.Drawing.Size(25, 20);
-            this.txtAdventrueGameINT.TabIndex = 20;
-            this.txtAdventrueGameINT.TextChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
-            // 
-            // label113
-            // 
-            this.label113.Location = new System.Drawing.Point(137, 0);
-            this.label113.Name = "label113";
-            this.label113.Size = new System.Drawing.Size(29, 23);
-            this.label113.TabIndex = 21;
-            this.label113.Text = "INT";
-            this.label113.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtAdventrueGameHeight
-            // 
-            this.txtAdventrueGameHeight.Location = new System.Drawing.Point(249, 3);
-            this.txtAdventrueGameHeight.MaxLength = 6;
-            this.txtAdventrueGameHeight.Name = "txtAdventrueGameHeight";
-            this.txtAdventrueGameHeight.Size = new System.Drawing.Size(34, 20);
-            this.txtAdventrueGameHeight.TabIndex = 22;
-            this.txtAdventrueGameHeight.TextChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
-            // 
-            // label114
-            // 
-            this.label114.Location = new System.Drawing.Point(203, 0);
-            this.label114.Name = "label114";
-            this.label114.Size = new System.Drawing.Size(40, 23);
-            this.label114.TabIndex = 23;
-            this.label114.Text = "Height";
-            this.label114.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtAdventrueGameTemp
-            // 
-            this.txtAdventrueGameTemp.Location = new System.Drawing.Point(350, 3);
-            this.txtAdventrueGameTemp.MaxLength = 6;
-            this.txtAdventrueGameTemp.Name = "txtAdventrueGameTemp";
-            this.txtAdventrueGameTemp.Size = new System.Drawing.Size(25, 20);
-            this.txtAdventrueGameTemp.TabIndex = 24;
-            this.txtAdventrueGameTemp.TextChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
-            // 
-            // label115
-            // 
-            this.label115.Location = new System.Drawing.Point(289, 0);
-            this.label115.Name = "label115";
-            this.label115.Size = new System.Drawing.Size(55, 23);
-            this.label115.TabIndex = 25;
-            this.label115.Text = "Temp (°C)";
-            this.label115.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtAdventrueGameGravity
-            // 
-            this.txtAdventrueGameGravity.Location = new System.Drawing.Point(457, 3);
-            this.txtAdventrueGameGravity.MaxLength = 6;
-            this.txtAdventrueGameGravity.Name = "txtAdventrueGameGravity";
-            this.txtAdventrueGameGravity.Size = new System.Drawing.Size(34, 20);
-            this.txtAdventrueGameGravity.TabIndex = 26;
-            this.txtAdventrueGameGravity.TextChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
-            // 
-            // label117
-            // 
-            this.label117.Location = new System.Drawing.Point(381, 0);
-            this.label117.Name = "label117";
-            this.label117.Size = new System.Drawing.Size(70, 23);
-            this.label117.TabIndex = 27;
-            this.label117.Text = "Gravity (m/s²)";
-            this.label117.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtAdventrueGamePressure
-            // 
-            this.txtAdventrueGamePressure.Location = new System.Drawing.Point(580, 3);
-            this.txtAdventrueGamePressure.MaxLength = 6;
-            this.txtAdventrueGamePressure.Name = "txtAdventrueGamePressure";
-            this.txtAdventrueGamePressure.Size = new System.Drawing.Size(34, 20);
-            this.txtAdventrueGamePressure.TabIndex = 28;
-            this.txtAdventrueGamePressure.TextChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
-            // 
-            // label118
-            // 
-            this.label118.Location = new System.Drawing.Point(497, 0);
-            this.label118.Name = "label118";
-            this.label118.Size = new System.Drawing.Size(77, 23);
-            this.label118.TabIndex = 29;
-            this.label118.Text = "Pressure (kPa)";
-            this.label118.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // flowLayoutPanel5
-            // 
-            this.flowLayoutPanel5.Controls.Add(this.label111);
-            this.flowLayoutPanel5.Controls.Add(this.txtAdventureGameSTR);
-            this.flowLayoutPanel5.Controls.Add(this.label112);
-            this.flowLayoutPanel5.Controls.Add(this.txtAdventrueGameDEX);
-            this.flowLayoutPanel5.Controls.Add(this.label113);
-            this.flowLayoutPanel5.Controls.Add(this.txtAdventrueGameINT);
-            this.flowLayoutPanel5.Controls.Add(this.label114);
-            this.flowLayoutPanel5.Controls.Add(this.txtAdventrueGameHeight);
-            this.flowLayoutPanel5.Controls.Add(this.label115);
-            this.flowLayoutPanel5.Controls.Add(this.txtAdventrueGameTemp);
-            this.flowLayoutPanel5.Controls.Add(this.label117);
-            this.flowLayoutPanel5.Controls.Add(this.txtAdventrueGameGravity);
-            this.flowLayoutPanel5.Controls.Add(this.label118);
-            this.flowLayoutPanel5.Controls.Add(this.txtAdventrueGamePressure);
-            this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(3, 16);
-            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(632, 26);
-            this.flowLayoutPanel5.TabIndex = 30;
-            // 
-            // flpAdventureGameCBO
-            // 
-            this.flpAdventureGameCBO.Controls.Add(this.cboAdventureGameMonster);
-            this.flpAdventureGameCBO.Controls.Add(this.cboAdventureGameWeapon1);
-            this.flpAdventureGameCBO.Controls.Add(this.cboAdventureGameWeapon2);
-            this.flpAdventureGameCBO.Controls.Add(this.cboAdventureGameWeapon3);
-            this.flpAdventureGameCBO.Controls.Add(this.cboAdventureGameItem1);
-            this.flpAdventureGameCBO.Controls.Add(this.cboAdventureGameItem2);
-            this.flpAdventureGameCBO.Controls.Add(this.cboAdventureGameItem3);
-            this.flpAdventureGameCBO.Controls.Add(this.cboAdventureGameItem4);
-            this.flpAdventureGameCBO.Controls.Add(this.cboAdventureGameItem5);
-            this.flpAdventureGameCBO.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flpAdventureGameCBO.Location = new System.Drawing.Point(3, 42);
-            this.flpAdventureGameCBO.Name = "flpAdventureGameCBO";
-            this.flpAdventureGameCBO.Size = new System.Drawing.Size(632, 59);
-            this.flpAdventureGameCBO.TabIndex = 31;
-            // 
-            // cboAdventureGameMonster
-            // 
-            this.cboAdventureGameMonster.FormattingEnabled = true;
-            this.cboAdventureGameMonster.Items.AddRange(new object[] {
-            "(Monster)",
-            "Demon",
-            "Dragon",
-            "Eagle",
-            "Goblin",
-            "Golem",
-            "Troll",
-            "Lizard",
-            "Wizard"});
-            this.cboAdventureGameMonster.Location = new System.Drawing.Point(3, 3);
-            this.cboAdventureGameMonster.Name = "cboAdventureGameMonster";
-            this.cboAdventureGameMonster.Size = new System.Drawing.Size(151, 21);
-            this.cboAdventureGameMonster.TabIndex = 0;
-            this.cboAdventureGameMonster.Text = "(Monster)";
-            this.cboAdventureGameMonster.SelectedIndexChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
-            // 
-            // cboAdventureGameWeapon1
-            // 
-            this.cboAdventureGameWeapon1.FormattingEnabled = true;
-            this.cboAdventureGameWeapon1.Items.AddRange(new object[] {
-            "(Weapon)",
-            "Broadsword (STR)",
-            "Caber (STR)",
-            "Nasty  Knife (DEX)",
-            "Longbow (DEX)",
-            "Magic orb (INT)",
-            "Grimoire (INT)"});
-            this.cboAdventureGameWeapon1.Location = new System.Drawing.Point(160, 3);
-            this.cboAdventureGameWeapon1.Name = "cboAdventureGameWeapon1";
-            this.cboAdventureGameWeapon1.Size = new System.Drawing.Size(151, 21);
-            this.cboAdventureGameWeapon1.TabIndex = 1;
-            this.cboAdventureGameWeapon1.Text = "(Weapon)";
-            this.cboAdventureGameWeapon1.SelectedIndexChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
-            // 
-            // cboAdventureGameWeapon2
-            // 
-            this.cboAdventureGameWeapon2.FormattingEnabled = true;
-            this.cboAdventureGameWeapon2.Items.AddRange(new object[] {
-            "(Weapon)",
-            "Broadsword (STR)",
-            "Caber (STR)",
-            "Nasty  Knife (DEX)",
-            "Longbow (DEX)",
-            "Magic orb (INT)",
-            "Grimoire (INT)"});
-            this.cboAdventureGameWeapon2.Location = new System.Drawing.Point(317, 3);
-            this.cboAdventureGameWeapon2.Name = "cboAdventureGameWeapon2";
-            this.cboAdventureGameWeapon2.Size = new System.Drawing.Size(151, 21);
-            this.cboAdventureGameWeapon2.TabIndex = 2;
-            this.cboAdventureGameWeapon2.Text = "(Weapon)";
-            this.cboAdventureGameWeapon2.SelectedIndexChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
-            // 
-            // cboAdventureGameWeapon3
-            // 
-            this.cboAdventureGameWeapon3.FormattingEnabled = true;
-            this.cboAdventureGameWeapon3.Items.AddRange(new object[] {
-            "(Weapon)",
-            "Broadsword (STR)",
-            "Caber (STR)",
-            "Nasty  Knife (DEX)",
-            "Longbow (DEX)",
-            "Magic orb (INT)",
-            "Grimoire (INT)"});
-            this.cboAdventureGameWeapon3.Location = new System.Drawing.Point(474, 3);
-            this.cboAdventureGameWeapon3.Name = "cboAdventureGameWeapon3";
-            this.cboAdventureGameWeapon3.Size = new System.Drawing.Size(151, 21);
-            this.cboAdventureGameWeapon3.TabIndex = 3;
-            this.cboAdventureGameWeapon3.Text = "(Weapon)";
-            this.cboAdventureGameWeapon3.SelectedIndexChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
-            // 
-            // cboAdventureGameItem1
-            // 
-            this.cboAdventureGameItem1.FormattingEnabled = true;
-            this.cboAdventureGameItem1.Items.AddRange(new object[] {
-            "(Item)",
-            "Balloon",
-            "Battery",
-            "Bellows",
-            "Cheat code",
-            "Crystal Ball",
-            "Feather",
-            "Hard drive",
-            "Lamp",
-            "Moonstone",
-            "Potion",
-            "Small dog",
-            "Stepladder",
-            "Sunstone",
-            "Symbol",
-            "Ticket",
-            "Trophy"});
-            this.cboAdventureGameItem1.Location = new System.Drawing.Point(3, 34);
-            this.cboAdventureGameItem1.Name = "cboAdventureGameItem1";
-            this.cboAdventureGameItem1.Size = new System.Drawing.Size(120, 21);
-            this.cboAdventureGameItem1.TabIndex = 4;
-            this.cboAdventureGameItem1.Text = "(Item)";
-            this.cboAdventureGameItem1.SelectedIndexChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
-            // 
-            // cboAdventureGameItem2
-            // 
-            this.cboAdventureGameItem2.FormattingEnabled = true;
-            this.cboAdventureGameItem2.Items.AddRange(new object[] {
-            "(Item)",
-            "Balloon",
-            "Battery",
-            "Bellows",
-            "Cheat code",
-            "Crystal Ball",
-            "Feather",
-            "Hard drive",
-            "Lamp",
-            "Moonstone",
-            "Potion",
-            "Small dog",
-            "Stepladder",
-            "Sunstone",
-            "Symbol",
-            "Ticket",
-            "Trophy"});
-            this.cboAdventureGameItem2.Location = new System.Drawing.Point(129, 34);
-            this.cboAdventureGameItem2.Name = "cboAdventureGameItem2";
-            this.cboAdventureGameItem2.Size = new System.Drawing.Size(120, 21);
-            this.cboAdventureGameItem2.TabIndex = 5;
-            this.cboAdventureGameItem2.Text = "(Item)";
-            this.cboAdventureGameItem2.SelectedIndexChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
-            // 
-            // cboAdventureGameItem3
-            // 
-            this.cboAdventureGameItem3.FormattingEnabled = true;
-            this.cboAdventureGameItem3.Items.AddRange(new object[] {
-            "(Item)",
-            "Balloon",
-            "Battery",
-            "Bellows",
-            "Cheat code",
-            "Crystal Ball",
-            "Feather",
-            "Hard drive",
-            "Lamp",
-            "Moonstone",
-            "Potion",
-            "Small dog",
-            "Stepladder",
-            "Sunstone",
-            "Symbol",
-            "Ticket",
-            "Trophy"});
-            this.cboAdventureGameItem3.Location = new System.Drawing.Point(255, 34);
-            this.cboAdventureGameItem3.Name = "cboAdventureGameItem3";
-            this.cboAdventureGameItem3.Size = new System.Drawing.Size(120, 21);
-            this.cboAdventureGameItem3.TabIndex = 6;
-            this.cboAdventureGameItem3.Text = "(Item)";
-            this.cboAdventureGameItem3.SelectedIndexChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
-            // 
-            // cboAdventureGameItem4
-            // 
-            this.cboAdventureGameItem4.FormattingEnabled = true;
-            this.cboAdventureGameItem4.Items.AddRange(new object[] {
-            "(Item)",
-            "Balloon",
-            "Battery",
-            "Bellows",
-            "Cheat code",
-            "Crystal Ball",
-            "Feather",
-            "Hard drive",
-            "Lamp",
-            "Moonstone",
-            "Potion",
-            "Small dog",
-            "Stepladder",
-            "Sunstone",
-            "Symbol",
-            "Ticket",
-            "Trophy"});
-            this.cboAdventureGameItem4.Location = new System.Drawing.Point(381, 34);
-            this.cboAdventureGameItem4.Name = "cboAdventureGameItem4";
-            this.cboAdventureGameItem4.Size = new System.Drawing.Size(120, 21);
-            this.cboAdventureGameItem4.TabIndex = 7;
-            this.cboAdventureGameItem4.Text = "(Item)";
-            this.cboAdventureGameItem4.SelectedIndexChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
-            // 
-            // cboAdventureGameItem5
-            // 
-            this.cboAdventureGameItem5.FormattingEnabled = true;
-            this.cboAdventureGameItem5.Items.AddRange(new object[] {
-            "(Item)",
-            "Balloon",
-            "Battery",
-            "Bellows",
-            "Cheat code",
-            "Crystal Ball",
-            "Feather",
-            "Hard drive",
-            "Lamp",
-            "Moonstone",
-            "Potion",
-            "Small dog",
-            "Stepladder",
-            "Sunstone",
-            "Symbol",
-            "Ticket",
-            "Trophy"});
-            this.cboAdventureGameItem5.Location = new System.Drawing.Point(507, 34);
-            this.cboAdventureGameItem5.Name = "cboAdventureGameItem5";
-            this.cboAdventureGameItem5.Size = new System.Drawing.Size(120, 21);
-            this.cboAdventureGameItem5.TabIndex = 8;
-            this.cboAdventureGameItem5.Text = "(Item)";
-            this.cboAdventureGameItem5.SelectedIndexChanged += new System.EventHandler(this.txtAdventureGameSTR_TextChanged);
-            // 
-            // txtAdventureGameOut
-            // 
-            this.txtAdventureGameOut.Enabled = false;
-            this.txtAdventureGameOut.Location = new System.Drawing.Point(6, 107);
-            this.txtAdventureGameOut.Name = "txtAdventureGameOut";
-            this.txtAdventureGameOut.Size = new System.Drawing.Size(626, 20);
-            this.txtAdventureGameOut.TabIndex = 32;
-            // 
-            // button51
-            // 
-            this.button51.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button51.Location = new System.Drawing.Point(505, 231);
-            this.button51.Name = "button51";
-            this.button51.Size = new System.Drawing.Size(135, 81);
-            this.button51.TabIndex = 24;
-            this.button51.Text = "RESET\r\nALL";
-            this.button51.UseVisualStyleBackColor = true;
-            this.button51.Click += new System.EventHandler(this.button51_Click);
-            // 
-            // lbModules
-            // 
-            this.lbModules.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbModules.FormattingEnabled = true;
-            this.lbModules.Location = new System.Drawing.Point(0, 0);
-            this.lbModules.Name = "lbModules";
-            this.lbModules.Size = new System.Drawing.Size(155, 530);
-            this.lbModules.TabIndex = 4;
-            this.lbModules.SelectedIndexChanged += new System.EventHandler(this.lbModules_SelectedIndexChanged);
-            // 
-            // splitContainer4
-            // 
-            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer4.Name = "splitContainer4";
-            // 
-            // splitContainer4.Panel1
-            // 
-            this.splitContainer4.Panel1.Controls.Add(this.lbModules);
-            // 
-            // splitContainer4.Panel2
-            // 
-            this.splitContainer4.Panel2.Controls.Add(this.tcTabs);
-            this.splitContainer4.Size = new System.Drawing.Size(817, 530);
-            this.splitContainer4.SplitterDistance = 155;
-            this.splitContainer4.TabIndex = 0;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5930,6 +6050,15 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.splitContainer4.Panel1.ResumeLayout(false);
+            this.splitContainer4.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
+            this.splitContainer4.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            this.splitContainer2.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             this.tcTabs.ResumeLayout(false);
             this.tpAbout.ResumeLayout(false);
             this.tpAbout.PerformLayout();
@@ -5999,6 +6128,21 @@
             this.splitContainer3.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
+            this.tpModCollection3.ResumeLayout(false);
+            this.flowLayoutPanel4.ResumeLayout(false);
+            this.groupBox33.ResumeLayout(false);
+            this.groupBox33.PerformLayout();
+            this.flpAdventureGameCBO.ResumeLayout(false);
+            this.flowLayoutPanel5.ResumeLayout(false);
+            this.flowLayoutPanel5.PerformLayout();
+            this.groupBox29.ResumeLayout(false);
+            this.groupBox29.PerformLayout();
+            this.groupBox32.ResumeLayout(false);
+            this.groupBox32.PerformLayout();
+            this.groupBox31.ResumeLayout(false);
+            this.groupBox31.PerformLayout();
+            this.groupBox34.ResumeLayout(false);
+            this.groupBox34.PerformLayout();
             this.tpModCollection2.ResumeLayout(false);
             this.flowLayoutPanel3.ResumeLayout(false);
             this.groupBox24.ResumeLayout(false);
@@ -6013,10 +6157,6 @@
             this.groupBox20.PerformLayout();
             this.groupBox26.ResumeLayout(false);
             this.groupBox26.PerformLayout();
-            this.tpModCollection3.ResumeLayout(false);
-            this.flowLayoutPanel4.ResumeLayout(false);
-            this.groupBox29.ResumeLayout(false);
-            this.groupBox29.PerformLayout();
             this.tpModCollection1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
@@ -6040,26 +6180,6 @@
             this.groupBox15.PerformLayout();
             this.tpModForgetMeNot.ResumeLayout(false);
             this.tpModForgetMeNot.PerformLayout();
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            this.splitContainer2.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
-            this.groupBox30.ResumeLayout(false);
-            this.groupBox30.PerformLayout();
-            this.groupBox31.ResumeLayout(false);
-            this.groupBox31.PerformLayout();
-            this.groupBox32.ResumeLayout(false);
-            this.groupBox32.PerformLayout();
-            this.groupBox33.ResumeLayout(false);
-            this.groupBox33.PerformLayout();
-            this.flowLayoutPanel5.ResumeLayout(false);
-            this.flowLayoutPanel5.PerformLayout();
-            this.flpAdventureGameCBO.ResumeLayout(false);
-            this.splitContainer4.Panel1.ResumeLayout(false);
-            this.splitContainer4.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
-            this.splitContainer4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -6080,7 +6200,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtSerialNumber;
         private System.Windows.Forms.GroupBox gbBatteries;
-        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.Label lblBatteryD;
         private System.Windows.Forms.NumericUpDown nudBatteriesD;
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.NumericUpDown nudBatteriesAA;
@@ -6144,7 +6264,7 @@
         private System.Windows.Forms.GroupBox groupBox23;
         private System.Windows.Forms.TextBox txtNeedyKnobOut;
         private System.Windows.Forms.Label label77;
-        private System.Windows.Forms.TabControl tcTabs;
+        private TablessControl tcTabs;
         private System.Windows.Forms.TabPage tpAbout;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -6489,11 +6609,6 @@
         private System.Windows.Forms.ComboBox cboSillySlotsKeyWord;
         private System.Windows.Forms.TextBox txtSillySlotsResult;
         private System.Windows.Forms.Button btnSillySlotsDebugDump;
-        private System.Windows.Forms.GroupBox groupBox30;
-        private System.Windows.Forms.TextBox txtAnagramIn;
-        private System.Windows.Forms.Label label98;
-        private System.Windows.Forms.TextBox txtAnagramOut;
-        private System.Windows.Forms.Label label106;
         private System.Windows.Forms.GroupBox groupBox31;
         private System.Windows.Forms.TextBox txtWordScrambleIn;
         private System.Windows.Forms.Label label107;
@@ -6534,6 +6649,21 @@
         private System.Windows.Forms.Button button51;
         private System.Windows.Forms.ListBox lbModules;
         private System.Windows.Forms.SplitContainer splitContainer4;
+        private System.Windows.Forms.GroupBox groupBox34;
+        private System.Windows.Forms.TextBox txtSwitchesOut;
+        private System.Windows.Forms.Label label120;
+        private System.Windows.Forms.CheckBox cbSwitchesDesired5;
+        private System.Windows.Forms.CheckBox cbSwitchesDesired4;
+        private System.Windows.Forms.CheckBox cbSwitchesDesired3;
+        private System.Windows.Forms.CheckBox cbSwitchesDesired2;
+        private System.Windows.Forms.CheckBox cbSwitchesDesired1;
+        private System.Windows.Forms.CheckBox cbSwitchesCurrent5;
+        private System.Windows.Forms.CheckBox cbSwitchesCurrent4;
+        private System.Windows.Forms.CheckBox cbSwitchesCurrent3;
+        private System.Windows.Forms.CheckBox cbSwitchesCurrent2;
+        private System.Windows.Forms.CheckBox cbSwitchesCurrent1;
+        private System.Windows.Forms.Label label119;
+        private System.Windows.Forms.Label label116;
     }
 }
 

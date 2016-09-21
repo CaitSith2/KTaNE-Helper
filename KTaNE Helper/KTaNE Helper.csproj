@@ -75,6 +75,10 @@
     <Compile Include="SillySlots.cs" />
     <Compile Include="StringExtension.cs" />
     <Compile Include="Stroop.cs" />
+    <Compile Include="Switches.cs" />
+    <Compile Include="TablessControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Wires.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
