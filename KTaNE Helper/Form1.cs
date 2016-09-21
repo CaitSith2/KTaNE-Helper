@@ -290,6 +290,10 @@ namespace KTaNE_Helper
 
         }
 
+        private readonly Dictionary<string, TabPage> _moduleNameToTab = new Dictionary<string, TabPage>();
+        private readonly List<string> _stockModules = new List<string>();
+        private readonly List<string> _moduleNames = new List<string>();
+
         private void Form1_Load(object sender, EventArgs e)
         {
             ManualVersionSelect.SelectedIndex = 0;
@@ -331,13 +335,20 @@ namespace KTaNE_Helper
 
             foreach (TabPage p in tcTabs.TabPages)
             {
-                if ((string) p?.Tag != "mods")
-                    _noModPages.Add(p);
-                _allPages.Add(p);
+                var modulenames = p.Text.Split(',');
+                foreach (var m in modulenames)
+                {
+                    _moduleNameToTab.Add(m.Trim(), p);
+                    if ((string) p?.Tag == "mods")
+                        _moduleNames.Add(m.Trim());
+                    else
+                        _stockModules.Add(m.Trim());
+                }
             }
+            _stockModules.Sort();
+            _moduleNames.Sort();
 
-            if(!checkBox1.Checked)
-                checkBox1_CheckedChanged(null, null);
+            checkBox1_CheckedChanged(null, null);
             btnSillySlotsReset_Click(null, null);
         }
 
@@ -1306,7 +1317,7 @@ namespace KTaNE_Helper
             var lastDigit = 0;
             for (var i = 0; i < txtSerialNumber.TextLength; i++)
             {
-                var num = GetDigitFromCharacter(txtSerialNumber.Text.Substring(i, 1));
+                var num = GetDigitFromCharacter(txtSerialNumber.Text.ToUpper().Substring(i, 1));
                 if (num == -1) continue;
                 numDigits++;
                 if((num%2)==1)
@@ -1421,7 +1432,7 @@ namespace KTaNE_Helper
         {
             var vowels = new List<string> { "A", "E", "I", "O", "U" };
             for (var i = 0; i < 5; i++)
-                if (txtSerialNumber.Text.Contains(vowels[i]))
+                if (txtSerialNumber.Text.ToUpper().Contains(vowels[i]))
                     return true;
             return false;
         }
@@ -1430,7 +1441,7 @@ namespace KTaNE_Helper
         {
             var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             return txtSerialNumber.TextLength != 0 
-                && letters.Contains(txtSerialNumber.Text.Substring(0, 1));
+                && letters.Contains(txtSerialNumber.Text.ToUpper().Substring(0, 1));
         }
 
         private bool SerialNumberLastDigitOdd()
@@ -1446,7 +1457,7 @@ namespace KTaNE_Helper
             var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             var count = 0;
             for(var i=0;i<txtSerialNumber.TextLength;i++)
-                if (letters.Contains(txtSerialNumber.Text.Substring(i, 1)))
+                if (letters.Contains(txtSerialNumber.Text.ToUpper().Substring(i, 1)))
                     count++;
             return count;
         }
@@ -1508,7 +1519,7 @@ namespace KTaNE_Helper
             else
                 serialdigit = batts;
 
-            var serialchar = txtSerialNumber.Text.Substring(serialdigit - 1, 1);
+            var serialchar = txtSerialNumber.Text.ToUpper().Substring(serialdigit - 1, 1);
             var group = -1;
             for(var i=0;i<8 && group == -1;i++)
                 if (serials[i].Contains(serialchar))
@@ -1607,7 +1618,14 @@ namespace KTaNE_Helper
             {
                 var x = offset;
 
-                x += safeOffsets[txtSerialNumber.Text.Substring(i, 1).ToUpper()][i];
+                try
+                {
+                    x += safeOffsets[txtSerialNumber.Text.Substring(i, 1).ToUpper()][i];
+                }
+                catch
+                {
+                    return;
+                }
 
                 if (i == 5)
                     for (var j = 0; j < 5; j++)
@@ -1670,6 +1688,10 @@ namespace KTaNE_Helper
             CalculateSafetySafe();
             CalculateInitialTwoBitsCode();
 
+            //--- Adventure Game, Alphabet, Anagram, Silly Slots, Word Scramble ---//
+            txtAdventureGameSTR_TextChanged(null, null);
+
+
             //--- Forget Me Not ---//
             ForgetMeNot_Event(null, null);
 
@@ -1682,7 +1704,7 @@ namespace KTaNE_Helper
         {
             for(var i = 0; i < txtSerialNumber.TextLength; i++)
                 for(var j = i + 1; j < txtSerialNumber.TextLength; j++)
-                    if (txtSerialNumber.Text.Substring(i, 1) == txtSerialNumber.Text.Substring(j, 1))
+                    if (txtSerialNumber.Text.ToUpper().Substring(i, 1) == txtSerialNumber.Text.ToUpper().Substring(j, 1))
                     {
                         return true;
                     }
@@ -1758,7 +1780,7 @@ namespace KTaNE_Helper
                 countFor++;
             if (!DuplicatePorts())
                 countAgainst++;
-            if (txtSerialNumber.Text.Contains("1") || txtSerialNumber.Text.Contains("L"))
+            if (txtSerialNumber.Text.Contains("1") || txtSerialNumber.Text.ToUpper().Contains("L"))
                 countAgainst++;
 
             cbPlumbingYellowIn.Checked = countFor > countAgainst;
@@ -2077,10 +2099,20 @@ namespace KTaNE_Helper
                     }
                 }
             }
-            var list = checkBox1.Checked ? _allPages : _noModPages;
-            tcTabs.TabPages.Clear();
-            foreach (var p in list)
-                tcTabs.TabPages.Add(p);
+            lbModules.Items.Clear();
+            lbModules.Items.Add("----- Stock Modules -----");
+            foreach (var m in _stockModules)
+                lbModules.Items.Add("  " + m);
+
+            if (checkBox1.Checked)
+            {
+                lbModules.Items.Add("");
+                lbModules.Items.Add("----- Add on Modules -----");
+                foreach (var m in _moduleNames)
+                    lbModules.Items.Add("  " + m);
+            }
+
+            lbModules.SelectedIndex = lbModules.Items.IndexOf("  About");
 
             //Keypad specific mod
             for (var i = 4; i < 8; i++)
@@ -2100,8 +2132,8 @@ namespace KTaNE_Helper
             if (num == 69) txtLetteredKeysOut.Text = @"D";
             else if ((num%6) == 0) txtLetteredKeysOut.Text = @"A";
             else if (batts >= 2 && (num%3) == 0) txtLetteredKeysOut.Text = @"B";
-            else if (txtSerialNumber.Text.Contains("C")
-                     || txtSerialNumber.Text.Contains("E")
+            else if (txtSerialNumber.Text.ToUpper().Contains("C")
+                     || txtSerialNumber.Text.ToUpper().Contains("E")
                      || txtSerialNumber.Text.Contains("3"))
                 txtLetteredKeysOut.Text = num >= 22 && num <= 79 ? "B" : "C";
             else txtLetteredKeysOut.Text = num < 46 ? "D" : "A";
@@ -2174,7 +2206,7 @@ namespace KTaNE_Helper
             {
                  if (twoFactor.Length < 3) return;
                 if (txtSerialNumber.TextLength < 6) return;
-                step1 += GetDigitFromCharacter(txtSerialNumber.Text.Substring(5, 1));
+                step1 += GetDigitFromCharacter(txtSerialNumber.Text.ToUpper().Substring(5, 1));
                 step1 += GetDigitFromCharacter(twoFactor[0]);
                 step2 += GetDigitFromCharacter(twoFactor[2]);
             }
@@ -2194,7 +2226,7 @@ namespace KTaNE_Helper
 
         private void txtSemaphoreIn_TextChanged(object sender, EventArgs e)
         {
-            txtSemaphoreOut.Text = new Semaphore(txtSerialNumber.Text).GetAnswer(txtSemaphoreIn.Text);
+            txtSemaphoreOut.Text = new Semaphore(txtSerialNumber.Text.ToUpper()).GetAnswer(txtSemaphoreIn.Text);
         }
 
         private void txtCaesarCipherIn_TextChanged(object sender, EventArgs e)
@@ -2512,6 +2544,7 @@ namespace KTaNE_Helper
         private SillySlots _sillyslots = new SillySlots();
         private void btnSillySlotsReset_Click(object sender, EventArgs e)
         {
+            Slots.PopulateSubstitionTable();
             _sillyslots = new SillySlots();
             cboSillySlotsKeyWord.SelectedIndex = 0;
             cboSillySlotsSlot1.SelectedIndex = 0;
@@ -2532,9 +2565,9 @@ namespace KTaNE_Helper
             }
             txtSillySlotsResult.Text = _sillyslots.CheckSlots(
                 cboSillySlotsKeyWord.SelectedIndex - 1,
-                cboSillySlotsSlot1.SelectedIndex - 1, 
-                cboSillySlotsSlot2.SelectedIndex - 1,
-                cboSillySlotsSlot3.SelectedIndex - 1)
+                Slots.slots[cboSillySlotsSlot1.SelectedIndex - 1],
+                Slots.slots[cboSillySlotsSlot2.SelectedIndex - 1],
+                Slots.slots[cboSillySlotsSlot3.SelectedIndex - 1])
                 ? "Keep"
                 : "Spin";
             cboSillySlotsKeyWord.SelectedIndex = 0;
@@ -2546,6 +2579,193 @@ namespace KTaNE_Helper
         private void btnSillySlotsDebugDump_Click(object sender, EventArgs e)
         {
             _sillyslots.DumpStateToClipboard();
+        }
+
+        private void txtAnagramIn_TextChanged(object sender, EventArgs e)
+        {
+            var words = new List<IList<string>>()
+            {
+                new List<string> {"stream", "master", "tamers"},
+                new List<string> {"looped", "poodle", "pooled"},
+                new List<string> {"cellar", "caller", "recall"},
+                new List<string> {"seated", "sedate", "teased"},
+                new List<string> {"rescue", "secure", "recuse"},
+                new List<string> {"rashes", "shears", "shares"},
+                new List<string> {"barely", "barley", "bleary"},
+                new List<string> {"duster", "rusted", "rudest"}
+            };
+            txtAnagramOut.Text = "";
+            if (txtAnagramIn.TextLength < 6) return;
+            foreach (var w in words)
+            {
+                if (!w.Contains(txtAnagramIn.Text)) continue;
+                foreach(var ww in w)
+                    if (ww != txtAnagramIn.Text)
+                        txtAnagramOut.Text += ww + @" ";
+                break;
+            }
+        }
+
+        private void txtWordScrambleIn_TextChanged(object sender, EventArgs e)
+        {
+            var words = new List<string>()
+            {
+                "module","ottawa","banana","kaboom","letter","widget",
+                "person","sapper","wiring","archer","device","rocket",
+                "damage","defuse","flames","semtex","cannon","blasts",
+                "attack","weapon","charge","napalm","mortar","bursts",
+                "casing","disarm","keypad","button","robots","kevlar"
+            };
+            txtWordScrambleOut.Text = "";
+            if (txtWordScrambleIn.TextLength < 6) return;
+            var x = Concat(txtWordScrambleIn.Text.OrderBy(c => c));
+            foreach (var w in words)
+            {
+                var y = Concat(w.OrderBy(c => c));
+                if (x != y) continue;
+                txtWordScrambleOut.Text = w;
+                break;
+            }
+        }
+
+        private static string CanSpell(string query, string with) // Query is the thing you're searching for, With is the string you're checking whether it can spell Query or not
+        {
+
+            var can = 0; // tells how many characters we could spell
+
+            var newWith = ""; // this stores the unused characters
+
+            for (var i = with.Length - 1; i >= 0; i--) // start from the end so removing doesn't fuck up stuff if we went up
+            {
+
+                var search = query.Substring(0, Math.Min(query.Length, with.Length)); // the portion of the string we're searching for
+                // ReSharper disable once InconsistentNaming
+                var _Query = with.Substring(i, 1); // the search query
+                                                      //Debug.Log (i + ", " + Search + ", " + _Query);
+
+                if (search.Contains(_Query))
+                {
+                    //Debug.Log ("CONTAINS " + _Query);
+                    // we can spell this character
+                    can++; // so count it
+                }
+                else
+                {
+                    newWith += with.Substring(i, 1); // otherwise, this is an unusable character, so it's a 'leftover'
+                }
+            }
+            //Debug.Log ("> " + Can + ", " + originalSize );
+            return can >= query.Length ? newWith : with; // if we managed to spell enough characters, return the leftovers, otherwise return the original With variable
+
+        }
+
+        private void txtAlphabetIn_TextChanged(object sender, EventArgs e)
+        {
+            var wordBank = new[]
+            {
+                "JQXZ","PQJS","OKBV","QYDX","IRNM","ARGF",
+                "LXE","QEW","TJL","VCN","HDU","PKD",
+                "VSI","DFW","ZNY","YKQ","GS","AC","JR","OP"
+            };
+            var words4 = wordBank.Where(data => data.Length == 4).ToList();
+            var words3 = wordBank.Where(data => data.Length == 3).ToList();
+            var words2 = wordBank.Where(data => data.Length == 2).ToList();
+            words4.Sort();
+            words3.Sort();
+            words2.Sort();
+            var all = words4;
+            all.AddRange(words3);
+            all.AddRange(words2);
+
+            var code = ""; // the current code we have
+            var labels = txtAlphabetIn.Text; // this will contain the 'leftovers' at the end, so store it locally in this scope
+
+            foreach (var t in all)
+            {
+                var remainders = CanSpell(t, labels); // CanSpell will return the characters that weren't used to spell a word. if the word can't be spelled, it will return what was given as the 2nd argument
+                if (remainders != labels) // if the remainders have changed
+                {
+                    labels = remainders; // update them
+                    code += t.ToUpper(); // append this word to the code
+                }
+                if (code.Length >= 3) // if we're 3 or more characters, there's no more room for another word
+                    break;
+            }
+
+            // finally, sort the remainders by putting them into a list and taking them back out
+            // ReSharper disable once InconsistentNaming
+            var Remainders = labels.Select((t, i) => labels.Substring(i, 1)).ToList();
+            Remainders.Sort();
+            labels = Remainders.Aggregate("", (current, t) => current + t);
+            txtAlphabetOut.Text = code + labels;
+        }
+
+        private void txtAdventureGameSTR_TextChanged(object sender, EventArgs e)
+        {
+            txtAdventureGameOut.Text = "";
+            if (txtAdventrueGameDEX.TextLength == 0
+                || txtAdventrueGameGravity.TextLength == 0
+                || txtAdventrueGameHeight.TextLength == 0
+                || txtAdventrueGameINT.TextLength == 0
+                || txtAdventrueGamePressure.TextLength == 0
+                || txtAdventrueGameTemp.TextLength == 0
+                || txtAdventureGameSTR.TextLength == 0) return;
+            if (flpAdventureGameCBO.Controls.Cast<object>().Any(c => ((ComboBox) c).SelectedIndex <= 0)) return;
+
+            var ag = new AdventureGame(txtSerialNumber.Text.ToUpper(), NumberLitIndicators(),NumberUnlitIndicators(),
+                (int)(nudBatteriesD.Value + nudBatteriesAA.Value),DuplicatePorts());
+
+            var monster = (Monsters)cboAdventureGameMonster.SelectedIndex - 1;
+            var items = new[]
+            {
+                (Items)cboAdventureGameItem1.SelectedIndex - 1,
+                (Items)cboAdventureGameItem2.SelectedIndex - 1,
+                (Items)cboAdventureGameItem3.SelectedIndex - 1,
+                (Items)cboAdventureGameItem4.SelectedIndex - 1,
+                (Items)cboAdventureGameItem5.SelectedIndex - 1
+            };
+            var weapons = new[]
+            {
+                (Weapons)cboAdventureGameWeapon1.SelectedIndex - 1,
+                (Weapons)cboAdventureGameWeapon2.SelectedIndex - 1,
+                (Weapons)cboAdventureGameWeapon3.SelectedIndex - 1
+            };
+            var stats = new int[7];
+            int.TryParse(txtAdventureGameSTR.Text, out stats[0]);
+            int.TryParse(txtAdventrueGameDEX.Text, out stats[1]);
+            int.TryParse(txtAdventrueGameINT.Text, out stats[2]);
+            stats[3] = ag.ParseHeight(txtAdventrueGameHeight.Text);
+            int.TryParse(txtAdventrueGameTemp.Text, out stats[4]);
+            stats[5] = ag.ParseGravity(txtAdventrueGameGravity.Text);
+            int.TryParse(txtAdventrueGamePressure.Text, out stats[6]);
+
+            txtAdventureGameOut.Text = ag.GetAdventrueGameResults(stats, monster, weapons, items);
+        }
+
+        private void button51_Click(object sender, EventArgs e)
+        {
+            txtAdventrueGamePressure.Text = "";
+            txtAdventrueGameGravity.Text = "";
+            txtAdventrueGameTemp.Text = "";
+            txtAdventureGameSTR.Text = "";
+            txtAdventrueGameDEX.Text = "";
+            txtAdventrueGameHeight.Text = "";
+            txtAdventrueGameINT.Text = "";
+            foreach (var c in flpAdventureGameCBO.Controls)
+                ((ComboBox) c).SelectedIndex = 0;
+            btnSillySlotsReset_Click(null, null);
+            txtWordScrambleIn.Text = "";
+            txtAnagramIn.Text = "";
+            txtAlphabetIn.Text = "";
+        }
+
+        private void lbModules_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var name = lbModules.SelectedItem.ToString().Trim();
+            TabPage page;
+            if (!_moduleNameToTab.TryGetValue(name, out page)) return;
+            tcTabs.TabPages.Clear();
+            tcTabs.TabPages.Add(page);
         }
     }
 }

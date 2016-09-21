@@ -1,225 +1,463 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Xml.Schema;
 
 namespace KTaNE_Helper
 {
     public class SillySlots
     {
-        private const int Sassy = 0;
-        private const int Silly = 1;
-        private const int Soggy = 2;
-        private const int Sally = 0;
-        private const int Simon = 1;
-        private const int Sausage = 2;
-        private const int Steven = 3;
+        private readonly SlotData[] _slotRounds = new SlotData[6];
 
-        private readonly int[][] _keyWordLookup = {
-            new[] {Silly,Sassy,Soggy,Simon,Sally,Sausage,Steven},
-            new[] {Soggy,Sassy,Silly,Sausage,Steven,Simon,Sally},
-            new[] {Soggy,Silly,Sassy,Steven,Simon,Sausage,Sally},
-            new[] {Sassy,Silly,Soggy,Sally,Simon,Sausage,Steven},
-            new[] {Sassy,Soggy,Silly,Simon,Sausage,Sally,Steven},
-            new[] {Sassy,Silly,Soggy,Sally,Steven,Simon,Sausage},
-            new[] {Silly,Soggy,Sassy,Steven,Sally,Simon,Sausage}      
-        };
+        private const string Silly = "Silly";
+        private const string Sassy = "Sassy";
+        private const string Soggy = "Soggy";
 
-        private readonly int[][] _slotRounds = new int[6][];
+        private const string Sally = "Sally";
+        private const string Simon = "Simon";
+        private const string Sausage = "Sausage";
+        private const string Steven = "Steven";
+
+
+        public string GetSlotColorName(string keyword, SlotColor color)
+        {
+            return Slots.SlotColors[keyword][Sassy] == color ? Sassy
+                 : Slots.SlotColors[keyword][Silly] == color ? Silly
+                 : Soggy;
+        }
+
+        public string GetSlotShapeName(string keyword, SlotShape shape)
+        {
+            return Slots.SlotShapes[keyword][Sally] == shape ? Sally
+                 : Slots.SlotShapes[keyword][Simon] == shape ? Simon
+                 : Slots.SlotShapes[keyword][Sausage] == shape ? Sausage
+                 : Steven;
+        }
 
         public void DumpStateToClipboard()
         {
-            var keywords = new[]
-            {
-                    "Sassy", "Silly", "Soggy", "Sally", "Simon", "Sausage", "Steven"
-                };
-            var colorsymboles = new[]
-            {
-                    "Red", "Blue", "Green", " Grape", " Cherry", " Bomb", " Coin"
-                };
+            var slotColorColors = new[] {"Red", "Green", "Blue"};
+            var slotShapeShapes = new[] {"Bomb", "Grape", "Cherry", "Coin"};
+            
 
             var clipboard = "";
+            if (_slotRounds[0] == null) return;
             foreach (var xx in _slotRounds)
             {
-                if (xx != null)
+                if (xx == null) break;
+
+                clipboard += xx.Keyword + "\t";
+                for (var i = 0; i < 3; i++)
                 {
-                    clipboard += keywords[xx[0]] + "\t";
-                    for (var i = 0; i < 6; i += 2)
-                    {
-                        clipboard += colorsymboles[xx[i + 1]] + colorsymboles[xx[i + 2]];
-                        if (i < 4)
-                            clipboard += ", ";
-                    }
-                    clipboard += xx[7] == 0 ? "\t\t//Spin" : "\t\t//Keep";
-                    clipboard += Environment.NewLine;
+                    clipboard += slotColorColors[(int) xx.Slots[i].Color];
+                    clipboard += " ";
+                    clipboard += slotShapeShapes[(int) xx.Slots[i].Shape];
+                    if (i < 2)
+                        clipboard += ", ";
                 }
-                else
-                {
-                    Clipboard.SetText(clipboard);
-                    return;
-                }
+                //clipboard += xx.Result == 0 ? "\t//Spin" : "\t//Keep";
+                clipboard += Environment.NewLine;
             }
+            clipboard += Environment.NewLine;
+            for(var j = 0; j < 4; j++)
+            {
+                var xx = _slotRounds[j];
+                if (xx == null) break;
+
+                for (var i = 0; i < 3; i++)
+                {
+                    clipboard += GetSlotColorName(xx.Keyword, xx.Slots[i].Color);
+                    clipboard += " ";
+                    clipboard += GetSlotShapeName(xx.Keyword, xx.Slots[i].Shape);
+                    if (i < 2)
+                        clipboard += ", ";
+                }
+                clipboard += xx.Result == 0 ? "\t//Spin\t" : "\t//Keep\t";
+                string reason;
+                var s = new Slot(SlotShape.Bomb, SlotColor.Blue);
+                CheckSlots(0, s, s, s, out reason, j);
+                clipboard += reason + Environment.NewLine;
+            }
+
+
+            Clipboard.SetText(clipboard);
         }
 
         private int _currentRound = -1;
 
-        public bool CheckSlots(int keyWord, int slot1, int slot2, int slot3, bool debug = false)
+        private static int CountSlots(SlotData x, string identifier, SlotBool type)
         {
-            var x = new int[8];
-
-            if (_currentRound == 5)
-                return true;
-            _currentRound++;
-
-            x[0] = keyWord;
-            x[1] = slot1/4;
-            x[2] = (slot1%4) + 3;
-            x[3] = slot2/4;
-            x[4] = (slot2%4) + 3;
-            x[5] = slot3/4;
-            x[6] = (slot3%4) + 3;
-            _slotRounds[_currentRound] = x;
-
-
             var count = 0;
-
-            var y = _keyWordLookup[x[0]];
             for (var i = 0; i < 3; i++)
             {
-                if (y[x[(i*2) + 1]] == Silly && y[x[(i*2) + 2]] == Sausage)
+                if (type == SlotBool.Color && x.Slots[i].Color == Slots.SlotColors[x.Keyword][identifier])
+                    count++;
+                else if (type == SlotBool.Shape && x.Slots[i].Shape == Slots.SlotShapes[x.Keyword][identifier])
                     count++;
             }
-            if (count == 1) return false; //There is a Single Silly Sausage
+            return count;
+        }
 
-            count = 0;
-            var position = 0;
+        private static int CountSlots(SlotData x, string color, string shape)
+        {
+            var count = 0;
             for (var i = 0; i < 3; i++)
             {
-                if (y[x[(i*2) + 1]] == Sassy && y[x[(i*2) + 2]] == Sally)
+                if (x.Slots[i].Color == Slots.SlotColors[x.Keyword][color] &&
+                    x.Slots[i].Shape == Slots.SlotShapes[x.Keyword][shape])
                     count++;
-                if (count == 1) position = i;
             }
-            if (count == 1) //There is a single Sasy Sally
+            return count;
+        }
+
+        private static int CountSlots(SlotData x, string color, string shape, out int position)
+        {
+            position = -1;
+            var count = 0;
+            for (var i = 0; i < 3; i++)
             {
-                if ((_currentRound - 2) < 0) return false; //Not possible to be true on rounds 1 & 2.
+                if (x.Slots[i].Color == Slots.SlotColors[x.Keyword][color] &&
+                    x.Slots[i].Shape == Slots.SlotShapes[x.Keyword][shape])
+                    count++;
+                position = (count == 1) ? i : -1;
+            }
+            return count;
+        }
+
+
+        public bool CheckSlots(int keyWord, Slot slot1, Slot slot2, Slot slot3)
+        {
+            string reason;
+            return CheckSlots(keyWord, slot1, slot2, slot3, out reason);
+        }
+
+
+        public bool CheckSlots(int keyWord, Slot slot1, Slot slot2, Slot slot3, out string reason, int debug = -1)
+        {
+            var x = new SlotData();
+            reason = "";
+
+            if (debug < 0)
+            {
+                if (_currentRound == 3)
+                {
+                    reason = "Module already Solved";
+                    return true;
+                }
+                _currentRound++;
+
+                x.Keyword = Slots.Keywords[keyWord];
+                x.Slots[0] = slot1;
+                x.Slots[1] = slot2;
+                x.Slots[2] = slot3;
+
+                _slotRounds[_currentRound] = x;
+            }
+            else
+            {
+                _currentRound = debug;
+                x = _slotRounds[debug];
+            }
+
+            if (CountSlots(x, Silly, Sausage) == 1)
+            {
+                reason += "There is a Single Silly Sausage";
+                return false; //There is a Single Silly Sausage
+            }
+
+            int position;
+            if (CountSlots(x, Sassy, Sally, out position) == 1)
+            {   //There is a single Sasy Sally
+                reason += "There is a single Sassy Sally";
+                if ((_currentRound - 2) < 0) return false;
                 var xx = _slotRounds[_currentRound - 2];
-                var yy = _keyWordLookup[xx[0]];
-                if (yy[xx[(position*2) + 1]] != Soggy) return false;
-            } //Unless the slot in the same position 2 Stages ago was Soggy
+                if (xx.Slots[position].Color != Slots.SlotColors[xx.Keyword][Soggy]) return false;
+                reason += ", however, That slot 2 stages ago was Soggy. ";
+            }   //Unless the slot in the same position 2 Stages ago was Soggy
 
-            count = 0;
-            for (var i = 0; i < 3; i++)
+            if (CountSlots(x, Soggy, Steven) > 1)
             {
-                if (y[x[(i*2) + 1]] == Soggy && y[x[(i*2) + 2]] == Steven)
-                    count++;
+                reason += "There are 2 or more Soggy Stevens";
+                return false; //There are 2 or more Soggy Stevens
             }
-            if (count > 1) return false; //There are 2 or more Soggy Stevens
 
-            count = 0;
-            for (var i = 0; i < 3; i++)
+            if (CountSlots(x, Simon, SlotBool.Shape) == 3)
             {
-                if (y[x[(i*2) + 1]] != Sassy && y[x[(i*2) + 2]] == Simon)
-                    count++;
+                reason += "There are 3 Simons";
+                if(CountSlots(x, Sassy, SlotBool.Color) == 0)
+                    return false; //There are 3 Simons, unless any of them are Sassy
+                reason += ", However, at least one of those Simons was Sassy. ";
             }
-            if (count == 3) return false; //There are 3 Simons, unless any of them are Sassy
 
-            if (y[x[2]] == Sausage && y[x[3]] != Soggy && y[x[4]] == Sally) return false;
-            if (y[x[4]] == Sausage && y[x[1]] != Soggy && y[x[2]] == Sally) return false;
-            if (y[x[4]] == Sausage && y[x[5]] != Soggy && y[x[6]] == Sally) return false;
-            if (y[x[6]] == Sausage && y[x[3]] != Soggy && y[x[4]] == Sally) return false;
-            //There is a Sausage adjacent to Sally, unless Sally is Soggy
-
-            count = 0;
-            position = 0;
-            for (var i = 0; i < 3; i++)
+            var sss = new[] {0, 1, 1, 2, 2, 1, 1, 0};
+            var flag1 = false;
+            var flag2 = false;
+            for (var i = 0; i < 8 && !flag1; i += 2)
             {
-                if (y[x[(i*2) + 1]] == Silly)
-                    count++;
-                if (y[x[(i*2) + 1]] == Silly && y[x[(i*2) + 2]] == Steven)
-                    position++;
+                flag1 = (x.Slots[sss[i]].Shape == Slots.SlotShapes[x.Keyword][Sausage] &&
+                          x.Slots[sss[i + 1]].Shape == Slots.SlotShapes[x.Keyword][Sally]);
+                flag2 = x.Slots[sss[i + 1]].Color != Slots.SlotColors[x.Keyword][Soggy];
+            }   //There is a Sausage adjacent to Sally, unless Sally is Soggy
+            if (flag1)
+            {
+                reason += "There is a Sausage adjacent to Sally";
+                if (flag2) return false;
+                reason += ", However, Sally was Soggy. ";
             }
-            if (count == 2 && position < 2) return false; //There are exactly 2 Silly Slots, unless they are both Steven
 
-            count = 0;
-            for (var i = 0; i < 3; i++)
+
+            if (CountSlots(x, Silly, SlotBool.Color) == 2)
             {
-                if (y[x[(i*2) + 1]] == Soggy)
-                    count++;
+                reason += "There are 2 Silly slots";
+                if(CountSlots(x, Silly, Steven) != 2)
+                    return false; //There are exactly 2 Silly Slots, unless they are both Steven
+                reason += ", However, both of these were Silly Stevens. ";
             }
-            if (count == 1) //There is a single Soggy slot
+
+
+
+            if (CountSlots(x,Soggy,SlotBool.Color) == 1) //There is a single Soggy slot
             {
+                reason += "There is a single Soggy slot";
                 if (_currentRound == 0) return false; //Not possible to be true on first round.
-                var xx = _slotRounds[_currentRound - 1];
-                var yy = _keyWordLookup[xx[0]];
-                count = 0;
-                for (var i = 0; i < 3; i++)
-                {
-                    if (yy[xx[(i*2) + 2]] == Sausage)
-                        count++;
-                }
-                if (count == 0) return false;
-            } //Unless the previous stage had any number of Sausage slots
-
-            if (slot1 == slot2 && slot2 == slot3) //All 3 slots are the same symbol and color
-            {
-                if (_currentRound == 0) return false;
-                count = 0;
-                for (var i = _currentRound - 1; i >= 0 && count == 0; i--)
-                {
-                    var xx = _slotRounds[i];
-                    var yy = _keyWordLookup[xx[0]];
-                    for (var j = 0; j < 2 && count == 0; j++)
-                    {
-                        if (yy[xx[(i*2) + 1]] == Soggy && yy[xx[(i*2) + 2]] == Sausage)
-                            count++;
-                    }
-                }
-                if (count == 0) return false;
-            } //Unless there has been a Soggy Sausage in any previous Stage
-
-            if (x[1] == x[3] && x[3] == x[5]) //All 3 slots are the same Color
-            {
-                if (y[x[2]] != Sally && y[x[4]] != Sally && y[x[6]] != Sally)
-                {
-                    if (_currentRound == 0) return false;
-                    var xx = _slotRounds[_currentRound - 1];
-                    var yy = _keyWordLookup[xx[0]];
-                    count = 0;
-                    for (var i = 0; i < 3; i++)
-                    {
-                        if (yy[xx[(i*2) + 1]] == Silly && yy[xx[(i*2) + 2]] == Steven)
-                            count++;
-                    }
-                    if (count == 0) return false;
-                }
-            } //Unless any of them are Sally or there was a Silly Steven in the last stage
-
-            count = 0;
-            for (var i = 0; i < 3; i++)
-            {
-                if (y[x[(i*2) + 1]] == Silly && y[x[(i*2) + 2]] == Simon)
-                    count++;
+                if (CountSlots(_slotRounds[_currentRound - 1], Sausage, SlotBool.Shape) == 0)
+                    return false;   //Unless the previous stage had any number of Sausage slots
+                reason += ", However, there was at least one Sausage the previous round. ";
             }
-            if (count > 0) //There are any number of Silly Simons
+
+            if (x.Slots[0].Color == x.Slots[1].Color && x.Slots[1].Color == x.Slots[2].Color)
             {
-                if (_currentRound == 0) return false;
-                count = 0;
-                for (var i = _currentRound - 1; i >= 0 && count == 0; i--)
+                reason += "All 3 slots are the same color";
+                var flag3 = false;
+                if (x.Slots[0].Shape == x.Slots[1].Shape && x.Slots[1].Shape == x.Slots[2].Shape)
                 {
-                    var xx = _slotRounds[i];
-                    var yy = _keyWordLookup[xx[0]];
-                    for (var j = 0; j < 2 && count == 0; j++)
+                    //All 3 slots are the same symbol and color
+                    reason += " and symbol";
+                    for (var i = _currentRound - 1; i >= 0; i--)
                     {
-                        if (yy[xx[(i*2) + 1]] == Sassy && yy[xx[(i*2) + 2]] == Sausage)
-                            count++;
+                        if (CountSlots(_slotRounds[i], Soggy, Sausage) > 0) break;
+                        if (i == 0) return false;
                     }
+                    reason += ", However, there was a Soggy Sausage present in the past. ";
+                    flag3 = true;
+                } //Unless there has been a Soggy Sausage in any previous Stage
+                else
+                    reason += ", but with different symbols. ";
+
+                if (flag3)
+                    reason += "All 3 slots are the same color";
+                //All 3 slots are the same Color
+                if (CountSlots(x, Sally, SlotBool.Shape) == 0)
+                {
+                    if (_currentRound == 0) return false; //Not possible to be true on first round.
+                    if (CountSlots(_slotRounds[_currentRound - 1], Silly, Steven) == 0)
+                        return false;
+                    if (flag3)
+                        reason += ", ";
+                    reason += "However, there was a Silly Steven the previous stage. ";
+                } //Unless any of them are Sally or there was a Silly Steven in the last stage
+                else
+                {
+                    if (flag3)
+                        reason += ", ";
+                    reason += "However, one of these slots were Sally. ";
                 }
-                if (count == 0) return false;
-            } //Unless there has been a Sassy Sausage in any previous stage.
+            }
 
+            if (CountSlots(x, Silly, Simon) > 0)    //There are any number of Silly Simons
+            {
+                reason += "There is at least one Silly Simon";
+                for (var i = _currentRound - 1; i >= 0; i--)
+                {
+                    if (CountSlots(_slotRounds[i], Sassy, Sausage) > 0) break;
+                    if (i == 0) return false;
+                }
+                reason += ", However, there was a Sassy Sausage in the past. ";
+            }   //Unless there has been a Sassy Sausage in any previous stage.
 
-            x[7] = 1;
+            reason += "No Illegal states Detected.";
+            x.Result = 1;
             return true; //Keep.
         }
 
     }
+
+    public struct Slot
+    {
+        public SlotShape Shape;
+        public SlotColor Color;
+        //public int position;
+        public Slot(SlotShape shape, SlotColor color/*, int position*/)
+        {
+            Shape = shape;
+            Color = color;
+            //this.position = position;
+        }
+    }
+
+    public class SlotData
+    {
+        public string Keyword = "";
+        public Slot[] Slots = new Slot[3];
+        public int Result;
+    }
+
+    public enum SlotColor
+    {
+        Red,
+        Green,
+        Blue
+    }
+
+    public enum SlotShape
+    {
+        Bomb,
+        Grape,
+        Cherry,
+        Coin
+    }
+
+    public enum SlotBool
+    {
+        Color,
+        Shape
+    }
+
+    public static class Slots
+    {
+        // Fields
+        public static Dictionary<string, Dictionary<string, SlotColor>> SlotColors;
+        public static Dictionary<string, Dictionary<string, SlotShape>> SlotShapes;
+
+        public static List<string> Keywords = new List<string>
+        {
+            "Sassy","Silly","Soggy",
+            "Sally","Simon","Sausage","Steven"
+        };
+
+        // ReSharper disable once InconsistentNaming
+        public static Slot[] slots =
+        {
+            new Slot(SlotShape.Grape, SlotColor.Red),
+            new Slot(SlotShape.Cherry, SlotColor.Red),
+            new Slot(SlotShape.Bomb, SlotColor.Red),
+            new Slot(SlotShape.Coin, SlotColor.Red),
+            new Slot(SlotShape.Grape, SlotColor.Blue),
+            new Slot(SlotShape.Cherry, SlotColor.Blue),
+            new Slot(SlotShape.Bomb, SlotColor.Blue),
+            new Slot(SlotShape.Coin, SlotColor.Blue),
+            new Slot(SlotShape.Grape, SlotColor.Green),
+            new Slot(SlotShape.Cherry, SlotColor.Green),
+            new Slot(SlotShape.Bomb, SlotColor.Green),
+            new Slot(SlotShape.Coin, SlotColor.Green)
+        };
+        
+
+        // Methods
+        public static void PopulateSubstitionTable()
+        {
+            if ((SlotColors != null) && (SlotShapes != null)) return;
+
+            SlotColors = new Dictionary<string, Dictionary<string, SlotColor>>();
+            var dictionary = new Dictionary<string, SlotColor> {
+                {"Sassy",SlotColor.Blue},
+                {"Silly",SlotColor.Red},
+                {"Soggy",SlotColor.Green}
+            };
+            var dictionary2 = new Dictionary<string, SlotColor> {
+                {"Sassy",SlotColor.Blue},
+                {"Silly",SlotColor.Green},
+                {"Soggy",SlotColor.Red}
+            };
+            var dictionary3 = new Dictionary<string, SlotColor> {
+                {"Sassy",SlotColor.Green},
+                {"Silly",SlotColor.Blue},
+                {"Soggy",SlotColor.Red}
+            };
+            var dictionary4 = new Dictionary<string, SlotColor> {
+                {"Sassy",SlotColor.Red},
+                {"Silly",SlotColor.Blue},
+                {"Soggy",SlotColor.Green}
+            };
+            var dictionary5 = new Dictionary<string, SlotColor> {
+                {"Sassy",SlotColor.Red},
+                {"Silly",SlotColor.Green},
+                {"Soggy",SlotColor.Blue}
+            };
+            var dictionary6 = new Dictionary<string, SlotColor> {
+                {"Sassy",SlotColor.Red},
+                {"Silly",SlotColor.Blue},
+                {"Soggy",SlotColor.Green}
+            };
+            var dictionary7 = new Dictionary<string, SlotColor> {
+                {"Sassy",SlotColor.Green},
+                {"Silly",SlotColor.Red},
+                {"Soggy",SlotColor.Blue}
+            };
+            SlotColors.Add("Sassy", dictionary);
+            SlotColors.Add("Silly", dictionary2);
+            SlotColors.Add("Soggy", dictionary3);
+            SlotColors.Add("Sally", dictionary4);
+            SlotColors.Add("Simon", dictionary5);
+            SlotColors.Add("Sausage", dictionary6);
+            SlotColors.Add("Steven", dictionary7);
+
+            SlotShapes = new Dictionary<string, Dictionary<string, SlotShape>>();
+            var dictionary8 = new Dictionary<string, SlotShape> {
+                {"Sally",SlotShape.Cherry},
+                {"Simon",SlotShape.Grape},
+                {"Sausage",SlotShape.Bomb},
+                {"Steven",SlotShape.Coin}
+            };
+            var dictionary9 = new Dictionary<string, SlotShape> {
+                {"Sally",SlotShape.Coin},
+                {"Simon",SlotShape.Bomb},
+                {"Sausage",SlotShape.Grape},
+                {"Steven",SlotShape.Cherry}
+            };
+            var dictionary10 = new Dictionary<string, SlotShape> {
+                {"Sally",SlotShape.Coin},
+                {"Simon",SlotShape.Cherry},
+                {"Sausage",SlotShape.Bomb},
+                {"Steven",SlotShape.Grape}
+            };
+            var dictionary11 = new Dictionary<string, SlotShape> {
+                {"Sally",SlotShape.Grape},
+                {"Simon",SlotShape.Cherry},
+                {"Sausage",SlotShape.Bomb},
+                {"Steven",SlotShape.Coin}
+            };
+            var dictionary12 = new Dictionary<string, SlotShape> {
+                {"Sally",SlotShape.Bomb},
+                {"Simon",SlotShape.Grape},
+                {"Sausage",SlotShape.Cherry},
+                {"Steven",SlotShape.Coin}
+            };
+            var dictionary13 = new Dictionary<string, SlotShape> {
+                {"Sally",SlotShape.Grape},
+                {"Simon",SlotShape.Bomb},
+                {"Sausage",SlotShape.Coin},
+                {"Steven",SlotShape.Cherry}
+            };
+            var dictionary14 = new Dictionary<string, SlotShape> {
+                {"Sally",SlotShape.Cherry},
+                {"Simon",SlotShape.Bomb},
+                {"Sausage",SlotShape.Coin},
+                {"Steven",SlotShape.Grape}
+            };
+            SlotShapes.Add("Sassy", dictionary8);
+            SlotShapes.Add("Silly", dictionary9);
+            SlotShapes.Add("Soggy", dictionary10);
+            SlotShapes.Add("Sally", dictionary11);
+            SlotShapes.Add("Simon", dictionary12);
+            SlotShapes.Add("Sausage", dictionary13);
+            SlotShapes.Add("Steven", dictionary14);
+        }
+}
+
+
+
+
+
 }

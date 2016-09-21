@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdventureGame.cs" />
     <Compile Include="ChessPieces.cs" />
     <Compile Include="CountryCode.cs" />
     <Compile Include="Form1.cs">
