@@ -1,4 +1,5 @@
 using System;
+using System.Text.RegularExpressions;
 using static System.String;
 
 namespace KTaNE_Helper
@@ -17,16 +18,16 @@ namespace KTaNE_Helper
         {
             const string colorLookup = "RYGBMW";
             var answer = "";
-            if (stroopColors.Length < 8 || stroopWords.Length < 8) return Empty;
+            var regex = new Regex("[BGMRWY]{8}");
+            if (!regex.IsMatch(stroopColors) || !regex.IsMatch(stroopWords)) return Empty;
             var colors = new int[8];
             var words = new int[8];
             var colorMatchesWord = new bool[8];
             var totalMatches = 0;
             for (var i = 0; i < 8; i++)
             {
-                colors[i] = colorLookup.IndexOf(stroopColors.ToUpper().Substring(i, 1), StringComparison.Ordinal);
-                words[i] = colorLookup.IndexOf(stroopWords.ToUpper().Substring(i, 1), StringComparison.Ordinal);
-                if (colors[i] == None || words[i] == None) return Empty;
+                colors[i] = colorLookup.IndexOf(stroopColors.Substring(i, 1), StringComparison.Ordinal);
+                words[i] = colorLookup.IndexOf(stroopWords.Substring(i, 1), StringComparison.Ordinal);
                 colorMatchesWord[i] = colors[i] == words[i];
                 if (colorMatchesWord[i]) totalMatches++;
             }

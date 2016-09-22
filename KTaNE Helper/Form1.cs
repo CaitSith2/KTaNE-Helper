@@ -3,6 +3,8 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using static System.String;
 
@@ -296,6 +298,9 @@ namespace KTaNE_Helper
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            tcTabs.Multiline = true;
+            Size = new Size(1142, 603);
+
             ManualVersionSelect.SelectedIndex = 0;
             ManualVersionSelect_SelectedIndexChanged(sender, e);
             wireReset_Click(sender, e);
@@ -338,15 +343,28 @@ namespace KTaNE_Helper
                 var modulenames = p.Text.Split(',');
                 foreach (var m in modulenames)
                 {
-                    _moduleNameToTab.Add(m.Trim(), p);
+                    var sm = m.Split(new[] {"|"}, StringSplitOptions.RemoveEmptyEntries);
+                    foreach(var x in sm)
+                        _moduleNameToTab.Add(x.Trim(), p);
+
+                    if (sm[0].Trim() == "About") continue;
                     if ((string) p?.Tag == "mods")
-                        _moduleNames.Add(m.Trim());
+                        _moduleNames.Add("  " + sm[0].Trim());
                     else
-                        _stockModules.Add(m.Trim());
+                    {
+                        _stockModules.Add("  " + sm[0].Trim());
+                        if (sm.Length > 1)
+                            _moduleNames.Add("  " + sm[1].Trim());
+                    }
                 }
             }
             _stockModules.Sort();
             _moduleNames.Sort();
+
+            _stockModules.Insert(0, "----- Stock Modules -----");
+            _stockModules.Insert(0, "");
+            _moduleNames.Insert(0, "----- Add on Modules -----");
+            _moduleNames.Insert(0, "");
 
             checkBox1_CheckedChanged(null, null);
             btnSillySlotsReset_Click(null, null);
@@ -561,8 +579,8 @@ namespace KTaNE_Helper
             {
                 var includePassword = true;
                 for(var i = 0; i < 5 && includePassword; i++)
-                    if (((TextBox)fpPassword.Controls[i]).Text != Empty)
-                        includePassword = ((TextBox) fpPassword.Controls[i]).Text.ToLower().Contains(pass.Substring(i, 1));
+                    if (((MaskedTextBox)fpPassword.Controls[i]).Text != Empty)
+                        includePassword = ((MaskedTextBox) fpPassword.Controls[i]).Text.ToLower().Contains(pass.Substring(i, 1));
                 if(includePassword)
                     result.Add(pass);
             }
@@ -584,7 +602,7 @@ namespace KTaNE_Helper
         private void PasswordClear_Click(object sender, EventArgs e)
         {
             foreach (var textbox in fpPassword.Controls)
-                ((TextBox) textbox).Text = Empty;
+                ((MaskedTextBox) textbox).Text = Empty;
             Password_TextChanged(sender, e);
         }
 
@@ -826,6 +844,7 @@ namespace KTaNE_Helper
 
         private void wires_Input_TextChanged(object sender, EventArgs e)
         {
+            txtSimpleWireOutput.Text = "";
             wires_input.Text = wires_input.Text.ToUpper();
             wires_input.SelectionStart = wires_input.Text.Length;
             var wirecount = wires_input.Text.Length;
@@ -1162,7 +1181,7 @@ namespace KTaNE_Helper
 
         private void KeypadSymbol_Click(object sender, EventArgs e)
         {
-            var max = checkBox1.Checked ? 8 : 4;
+            var max = cbShowAddonModules.Checked ? 8 : 4;
             var keypadorder = (_manualVersion == 0 ? _keypadOrder241 : _keypadOrder724);
 
             for (var i = 0; i < max; i++)
@@ -1220,7 +1239,7 @@ namespace KTaNE_Helper
             }
             else
             {
-                if (!checkBox1.Checked) return;
+                if (!cbShowAddonModules.Checked) return;
                 if (_keypadSelection[7] == "") return;
                 fpKeypadLabel.Visible = true;
                 fpKeypadLabel.Text = @"Push the following keys";
@@ -1306,7 +1325,7 @@ namespace KTaNE_Helper
         private void ForgetMeNot_Event(object sender, EventArgs e)
         {
             txtForgetMeNotOut.Text = "";
-            if (txtSerialNumber.TextLength < 6)
+            if (txtSerialNumber.Text.Trim().Length < 6)
             {
                 txtForgetMeNotOut.Text = @"The Full serial number is needed to calculate the solution";
                 return;
@@ -1315,7 +1334,7 @@ namespace KTaNE_Helper
             var largestDigit = 0;
             var numDigits = 0;
             var lastDigit = 0;
-            for (var i = 0; i < txtSerialNumber.TextLength; i++)
+            for (var i = 0; i < txtSerialNumber.Text.Trim().Length; i++)
             {
                 var num = GetDigitFromCharacter(txtSerialNumber.Text.ToUpper().Substring(i, 1));
                 if (num == -1) continue;
@@ -1399,7 +1418,7 @@ namespace KTaNE_Helper
         private void CalculateInitialTwoBitsCode()
         {
             var batts = (int)(nudBatteriesD.Value + nudBatteriesAA.Value);
-            if (txtSerialNumber.TextLength < 6)
+            if (txtSerialNumber.Text.Trim().Length < 6)
             {
                 txtTwoBitsInitialValue.Text = "";
                 return;
@@ -1415,13 +1434,13 @@ namespace KTaNE_Helper
             };
 
             var initial = 0;
-            for (var i = 0; i < txtSerialNumber.TextLength; i++)
+            for (var i = 0; i < txtSerialNumber.Text.Trim().Length; i++)
             {
                 if (dict[txtSerialNumber.Text.Substring(i, 1).ToUpper()] <= 0) continue;
                 initial = dict[txtSerialNumber.Text.Substring(i, 1).ToUpper()];
                 break;
             }
-            initial += ( batts * GetDigitFromCharacter(txtSerialNumber.Text.Substring(txtSerialNumber.TextLength - 1, 1)));
+            initial += ( batts * GetDigitFromCharacter(txtSerialNumber.Text.Substring(txtSerialNumber.Text.Trim().Length - 1, 1)));
             if (nudPortRCA.Value > 0 && nudPortRJ45.Value == 0)
                 initial *= 2;
             txtTwoBitsInitialValue.Text = _twoBitLookup[initial%100];
@@ -1440,15 +1459,15 @@ namespace KTaNE_Helper
         private bool SerialNumberBeginsWithLetter()
         {
             var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            return txtSerialNumber.TextLength != 0 
+            return txtSerialNumber.Text.Trim().Length != 0 
                 && letters.Contains(txtSerialNumber.Text.ToUpper().Substring(0, 1));
         }
 
         private bool SerialNumberLastDigitOdd()
         {
             var odd = "13579";
-            return txtSerialNumber.TextLength != 0 
-                && odd.Contains(txtSerialNumber.Text.Substring(txtSerialNumber.TextLength - 1, 1));
+            return txtSerialNumber.Text.Trim().Length != 0 
+                && odd.Contains(txtSerialNumber.Text.Substring(txtSerialNumber.Text.Trim().Length - 1, 1));
         }
 
         // ReSharper disable once UnusedMember.Local
@@ -1456,7 +1475,7 @@ namespace KTaNE_Helper
         {
             var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             var count = 0;
-            for(var i=0;i<txtSerialNumber.TextLength;i++)
+            for(var i=0;i<txtSerialNumber.Text.Trim().Length;i++)
                 if (letters.Contains(txtSerialNumber.Text.ToUpper().Substring(i, 1)))
                     count++;
             return count;
@@ -1466,16 +1485,24 @@ namespace KTaNE_Helper
         {
             var digits = "0123456789";
             var count = 0;
-            for (var i = 0; i < txtSerialNumber.TextLength; i++)
+            for (var i = 0; i < txtSerialNumber.Text.Trim().Length; i++)
                 if (digits.Contains(txtSerialNumber.Text.Substring(i, 1)))
                     count++;
             return count;
         }
 
+        private bool IsInputValid(string input, string pattern, bool serialRequired=false)
+        {
+            if (serialRequired && txtSerialNumber.Text.Trim().Length < 6) return false;
+            return new Regex(pattern).IsMatch(input);
+        }
+
         private void txtConnections_TextChanged(object sender, EventArgs e)
         {
-            var batts = (int) (nudBatteriesD.Value + nudBatteriesAA.Value);
             txtConnectionCheckOut.Text = "";
+            if (!IsInputValid(txtConnections.Text, "[1-8]{2} [1-8]{2} [1-8]{2} [1-8]{2}",true)) return;
+
+            var batts = (int) (nudBatteriesD.Value + nudBatteriesAA.Value);
             var serials = new List<string> {"7HPJ", "34XYZ", "SLIM", "15BRO", "20DGT", "8CAKE", "9QVN", "6WUF"};
             var connectionPairs = new List<string>
             {
@@ -1489,9 +1516,7 @@ namespace KTaNE_Helper
                 "12-16-17-21-23-27-28-32-35-36-38-45-47-48-53-54-56-57-61-63-65-67-71-72-74-75-76-78-82-83-84-87"
             };
             var entries = txtConnections.Text.Split(new[] {" "}, StringSplitOptions.RemoveEmptyEntries);
-            if (entries.Length != 4) return;
-            if (entries.Any(entry => entry.Length != 2)) return;
-            if (txtSerialNumber.TextLength < 6) return;
+            
             int serialdigit;
             var counts = new int[8];
             var digits = new[] {'1', '2', '3', '4', '5', '6', '7', '8'};
@@ -1586,7 +1611,7 @@ namespace KTaNE_Helper
 
             };
             txtSafetySafe.Text = "";
-            if (txtSerialNumber.TextLength < 6) return;
+            if (txtSerialNumber.Text.Trim().Length < 6) return;
 
             var offset = CountUniquePorts()*7;
             foreach (var c in gbIndicators.Controls)
@@ -1702,8 +1727,8 @@ namespace KTaNE_Helper
 
         private bool DuplicateSerialCharacters()
         {
-            for(var i = 0; i < txtSerialNumber.TextLength; i++)
-                for(var j = i + 1; j < txtSerialNumber.TextLength; j++)
+            for(var i = 0; i < txtSerialNumber.Text.Trim().Length; i++)
+                for(var j = i + 1; j < txtSerialNumber.Text.Trim().Length; j++)
                     if (txtSerialNumber.Text.ToUpper().Substring(i, 1) == txtSerialNumber.Text.ToUpper().Substring(j, 1))
                     {
                         return true;
@@ -1939,32 +1964,30 @@ namespace KTaNE_Helper
         private void txtLogicAND_TextChanged(object sender, EventArgs e)
         {
             
-            if (txtLogicAND.TextLength < 3)
+            if (txtLogicAND.Text.Trim().Length == 0)
             {
                 txtLogicAND.ResetBackColor();
                 return;
             }
             var truth = BuildTruthTable();
-            txtLogicAND.BackColor = truth[txtLogicAND.Text.Substring(0, 1).ToUpper()]
-                                    && truth[txtLogicAND.Text.Substring(1, 1).ToUpper()]
-                                    && truth[txtLogicAND.Text.Substring(2, 1).ToUpper()]
-                ? Color.Green
-                : Color.Red;
+            var and = txtLogicAND.Text.Trim().ToCharArray().Aggregate(true, (current, t) => current & truth[t.ToString()]);
+
+
+            txtLogicAND.BackColor = and ? Color.Green : Color.Red;
         }
 
         private void txtLogicOR_TextChanged(object sender, EventArgs e)
         {
-            if (txtLogicOR.TextLength < 3)
+            if (txtLogicOR.Text.Trim().Length == 0)
             {
                 txtLogicOR.ResetBackColor();
                 return;
             }
             var truth = BuildTruthTable();
-            txtLogicOR.BackColor = truth[txtLogicOR.Text.Substring(0, 1).ToUpper()]
-                                    || truth[txtLogicOR.Text.Substring(1, 1).ToUpper()]
-                                    || truth[txtLogicOR.Text.Substring(2, 1).ToUpper()]
-                ? Color.Green
-                : Color.Red;
+
+            var or = txtLogicOR.Text.Trim().ToCharArray().Aggregate(false, (current, t) => current | truth[t.ToString()]);
+
+            txtLogicOR.BackColor = or ? Color.Green : Color.Red;
         }
 
         private void txtChessInput_TextChanged(object sender, EventArgs e)
@@ -1979,13 +2002,18 @@ namespace KTaNE_Helper
             var kingMovesY = new[] {1, 0, -1, -1, -1, 0, 1, 1};
             txtChessSolution.Text = "";
 
-            if (txtChessInput.TextLength < 17 || txtChessInput.Text.Split(' ').Length < 6)
+            if (!(new Regex("[A-F][1-6] [A-F][1-6] [A-F][1-6] [A-F][1-6] [A-F][1-6] [A-F][1-6]")
+                    .IsMatch(txtChessInput.Text.ToUpper())))
                 return;
             var inputs = txtChessInput.Text.ToUpper().Split(' ');
+            /*
+            if (txtChessInput.TextLength < 17 || txtChessInput.Text.Split(' ').Length < 6)
+                return;
+            
             if (inputs.Any(x => x.Length < 2
                 || !positionsLetters.Contains(x.Substring(0, 1))
                 || !positionNumbers.Contains(x.Substring(1, 1))))
-                return;
+                return;*/
 
 
             var pieces = new int[6];
@@ -2089,38 +2117,54 @@ namespace KTaNE_Helper
                     {
                         var l = (Label) c;
                         if ((string)l.Tag == "mods")
-                            l.Visible = checkBox1.Checked;
+                            l.Visible = cbShowAddonModules.Checked;
                     }
                     else if (c.GetType() == typeof(NumericUpDown))
                     {
                         var n = (NumericUpDown) c;
                         if ((string)n.Tag == "mods")
-                            n.Visible = checkBox1.Checked;
+                            n.Visible = cbShowAddonModules.Checked;
                     }
                 }
             }
-            lbModules.Items.Clear();
-            lbModules.Items.Add("----- Stock Modules -----");
-            foreach (var m in _stockModules)
-                lbModules.Items.Add("  " + m);
+            var selected = "About";
+            if(lbModules.Items.Count > 0)
+                selected = lbModules.SelectedItem.ToString();
 
-            if (checkBox1.Checked)
+            lbModules.Items.Clear();
+            lbModules.Items.Add("About");
+
+            if (cbShowStockModules.Checked)
             {
-                lbModules.Items.Add("");
-                lbModules.Items.Add("----- Add on Modules -----");
-                foreach (var m in _moduleNames)
-                    lbModules.Items.Add("  " + m);
+                foreach (var m in _stockModules)
+                    lbModules.Items.Add(m);
             }
 
-            lbModules.SelectedIndex = lbModules.Items.IndexOf("  About");
+            if (cbShowAddonModules.Checked)
+            {
+                foreach (var m in _moduleNames)
+                    lbModules.Items.Add(m);
+            }
 
-            lblBatteryD.Text = checkBox1.Checked ? "D" : "Batteries";
+            var index = lbModules.Items.IndexOf(selected);
+            lbModules.SelectedIndex = index == -1 ? 0 : index;
+            lbModules_SelectedIndexChanged(null, null);
+
+            lblBatteryD.Text = cbShowAddonModules.Checked ? "D" : "Batteries";
 
             //Keypad specific mod
             for (var i = 4; i < 8; i++)
-                ((Button) fpKeypadSelection.Controls[i]).Visible = checkBox1.Checked;
-            while (_keypadSelection[4] != "")
+                ((Button) fpKeypadSelection.Controls[i]).Visible = cbShowAddonModules.Checked;
+            while (!cbShowAddonModules.Checked && _keypadSelection[4] != "")
                 keypadSelection_Click(fpKeypadSelection.Controls[4], e);
+            if (cbShowStockModules.Checked && cbShowAddonModules.Checked)
+                gbKeypads.Text = @"Keypads, Round Keypads";
+            else if (cbShowStockModules.Checked)
+                gbKeypads.Text = @"Keypads";
+            else
+                gbKeypads.Text = @"Round Keypads";
+
+            gbSimonSays.Visible = cbShowStockModules.Checked;
 
         }
 
@@ -2147,29 +2191,49 @@ namespace KTaNE_Helper
             var num1 = 0;
             var sign = 0;
             var num2 = 0;
-            foreach (var num in txtEmojiMathIn.Text.Split(' '))
+
+            txtEmojiMathOut.Text = "";
+            var chars = txtEmojiMathIn.Text.ToCharArray();
+            for (var i = 0; i < chars.Length;)
             {
-                var x = numbers.IndexOf(num, StringComparison.Ordinal);
-                if (x == -1)
-                    sign = (num == "+") ? 1 : -1;
-                else
-                    switch (sign)
-                    {
-                        case 0:
+                switch (chars[i])
+                {
+                    case '|':
+                    case ')':
+                    case '(':
+                    case ':':
+                    case '=':
+                        if ((i + 1) == chars.Length) return;
+                        var n = numbers.IndexOf(("" + chars[i] + chars[i + 1]), StringComparison.Ordinal);
+                        if (n < 0) return;
+
+                        if (sign == 0)
+                        {
                             num1 *= 10;
-                            num1 += (x/3);
-                            break;
-                        default:
+                            num1 += n/3;
+                        }
+                        else
+                        {
                             num2 *= 10;
-                            num2 += (x/3);
-                            break;
-                    }
+                            num2 += n/3;
+                        }
+                        i++;
+                        break;
+                    case '+':
+                    case '-':
+                        if (sign != 0) return;
+                        sign = "- +".IndexOf(chars[i].ToString(), StringComparison.Ordinal) - 1;
+                        if (sign < -1) return;
+                        break;
+                    case ' ':
+                        break;
+                    default:
+                        return;
+                }
+                i++;
             }
-            if (sign == 0)
-            {
-                txtEmojiMathOut.Text = "";
-                return;
-            }
+
+            if (sign == 0) return;
             txtEmojiMathOut.Text = (sign > 0 ? num1 + num2 : num1 - num2).ToString();
         }
 
@@ -2183,7 +2247,7 @@ namespace KTaNE_Helper
             var pad = new NumberPad(txtNumberPadIn.Text,(int)nudBatteriesD.Value + (int)nudBatteriesAA.Value,
                 CountTotalPorts(),!SerialNumberLastDigitOdd(),SerialNumberContainsVowel());
             txtNumberPadOut.Text = "";
-            if (txtNumberPadIn.TextLength < 10 || pad.GetColorCount(pad.ColorAll) < 10) return;
+            if (txtNumberPadIn.Text.Trim().Length < 10 || pad.GetColorCount(pad.ColorAll) < 10) return;
             try
             {
 
@@ -2207,7 +2271,7 @@ namespace KTaNE_Helper
             if (input.Contains("S"))
             {
                  if (twoFactor.Length < 3) return;
-                if (txtSerialNumber.TextLength < 6) return;
+                if (txtSerialNumber.Text.Trim().Length < 6) return;
                 step1 += GetDigitFromCharacter(txtSerialNumber.Text.ToUpper().Substring(5, 1));
                 step1 += GetDigitFromCharacter(twoFactor[0]);
                 step2 += GetDigitFromCharacter(twoFactor[2]);
@@ -2245,7 +2309,7 @@ namespace KTaNE_Helper
             if (nudLitCAR.Value > 0 || nudUnlitCAR.Value > 0) offset++;
 
             txtCaesarCipherOut.Text = "";
-            for (var i = 0; i < txtCaesarCipherIn.TextLength; i++)
+            for (var i = 0; i < txtCaesarCipherIn.Text.Trim().Length; i++)
             {
                 var c = letters.IndexOf(txtCaesarCipherIn.Text.Substring(i, 1), StringComparison.Ordinal);
                 if (c == -1)
@@ -2259,6 +2323,19 @@ namespace KTaNE_Helper
             }
         }
 
+        private bool RoughEqual(double x, double y)
+        {
+            if (double.IsInfinity(x))
+            {
+                return double.IsInfinity(y);
+            }
+            if (double.IsInfinity(y))
+            {
+                return double.IsInfinity(x);
+            }
+            return ((((x * 0.95) <= y) && (y <= (x * 1.0526315789473684))) || (((x - 0.1) <= y) && (y <= (x + 0.1))));
+        }
+
         private void txtResistorsIn_TextChanged(object sender, EventArgs e)
         {
             const string digits = "0123456789";
@@ -2269,7 +2346,7 @@ namespace KTaNE_Helper
             if (batts > 6) batts = 6;
             txtResistorsOut.Text = "";
 
-            if (txtSerialNumber.TextLength < 6) return;
+            if (txtSerialNumber.Text.Trim().Length < 6) return;
             if (resistorsTxt.Length < 2) return;
             if (resistorsTxt.Any(r => r.Length != 3)) return;
             var resistors = new float[2];
@@ -2360,13 +2437,13 @@ namespace KTaNE_Helper
 
             if (resistance == 0)
                 txtResistorsOut.Text = @"Connect " + primaryIn + @" to " + primaryOut;
-            else if (resistance == (ulong)parallel)
+            else if (RoughEqual(resistance,parallel))
                 txtResistorsOut.Text = @"Connect the Resistors in Parallel from " + primaryIn + @" to " + primaryOut;
-            else if (resistance == (ulong)serial)
+            else if (RoughEqual(resistance,serial))
                 txtResistorsOut.Text = @"Connect the Resistors in Series from " + primaryIn + @" to " + primaryOut;
-            else if (resistance == (ulong)resistors[0])
+            else if (RoughEqual(resistance,resistors[0]))
                 txtResistorsOut.Text = @"Connect Resistor One from " + primaryIn + @" to " + primaryOut;
-            else if (resistance == (ulong)resistors[1])
+            else if (RoughEqual(resistance,resistors[1]))
                 txtResistorsOut.Text = @"Connect Resistor Two from " + primaryIn + @" to " + primaryOut;
             else
                 txtResistorsOut.Text = @"R1=" + r0 + @" R2=" + r1 + @" Parallel=" + p + @" Series=" + s + @" Target = " + t + @" From " + primaryIn + @" to " + primaryOut;
@@ -2375,41 +2452,51 @@ namespace KTaNE_Helper
 
         private bool[] txtContainsFrequencies(string text)
         {
-            var frequencies = new bool[4];
-                switch (text.ToUpper())
-                {
-                    case "10 22":
-                        frequencies[2] = true;
-                        frequencies[3] = true;
-                        break;
-                    case "10 50":
-                        frequencies[1] = true;
-                        frequencies[3] = true;
-                        break;
-                    case "10 60":
-                        frequencies[1] = true;
-                        frequencies[2] = true;
-                        break;
-                    case "22 50":
-                        frequencies[0] = true;
-                        frequencies[3] = true;
-                        break;
-                    case "22 60":
-                        frequencies[0] = true;
-                        frequencies[2] = true;
-                        break;
-                    case "50 60":
-                        frequencies[0] = true;
-                        frequencies[1] = true;
-                        break;
-                }
+            var frequencies = new bool[5];
+            switch (text.Trim())
+            {
+
+                case "10 22":
+                    frequencies[2] = true;
+                    frequencies[3] = true;
+                    break;
+                case "10 50":
+                    frequencies[1] = true;
+                    frequencies[3] = true;
+                    break;
+                case "10 60":
+                    frequencies[1] = true;
+                    frequencies[2] = true;
+                    break;
+                case "22 50":
+                    frequencies[0] = true;
+                    frequencies[3] = true;
+                    break;
+                case "22 60":
+                    frequencies[0] = true;
+                    frequencies[2] = true;
+                    break;
+                case "50 60":
+                    frequencies[0] = true;
+                    frequencies[1] = true;
+                    break;
+                case "00 00":
+                case "99 99":
+                    frequencies[4] = true;
+                    break;
+            }
             return frequencies;
         }
 
         private void txtProbing12_TextChanged(object sender, EventArgs e)
         {
-            var wires = new bool[6,4];
-            txtProbingOut.Text = @"""i still maintain ""reading order"" on probing is some BS"" - LtHummus (Sept 16, 2016)";
+            var wires = new[]
+            {
+                new ProbingSet(), new ProbingSet(), new ProbingSet(),
+                new ProbingSet(), new ProbingSet(), new ProbingSet()
+            };
+            
+            txtProbingOut.Text = @"""I still maintain ""reading order"" on probing is some BS"" - LtHummus (Sept 16, 2016)";
             var textBoxes = new[]
             {
                 txtProbing12.Text, txtProbing34.Text, txtProbing56.Text,
@@ -2432,15 +2519,27 @@ namespace KTaNE_Helper
                 var wire = txtContainsFrequencies(textBoxes[i]);
                 for (var j = 0; j < 4; j++)
                 {
-                    wires[pairs[i][0], j] |= wire[j];
-                    wires[pairs[i][1], j] |= wire[j];
+                    wires[pairs[i][0]].Frequencies[j] |= wire[j];
+                    wires[pairs[i][1]].Frequencies[j] |= wire[j];
+                }
+                if (!wire[4]) continue;
+                wires[pairs[i][0]].PairsWith.Add(pairs[i][1]);
+                wires[pairs[i][1]].PairsWith.Add(pairs[i][0]);
+            }
+
+            for (var i = 0; i < 6; i++)
+            {
+                foreach (var pair in wires[i].PairsWith)
+                {
+                    for (var j = 0; j < 4; j++)
+                        wires[pair].Frequencies[j] |= wires[i].Frequencies[j];
                 }
             }
 
             var counts = new int[6];
             for (var i = 0; i < 6; i++)
                 for (var j = 0; j < 4; j++)
-                    if (wires[i, j]) counts[i]++;
+                    if (wires[i].Frequencies[j]) counts[i]++;
 
             
 
@@ -2450,20 +2549,20 @@ namespace KTaNE_Helper
                 //Check for Red soltution
                 var red = -1;
                 var blue = -1;
-                if (wires[0, 2])
+                if (wires[0].Frequencies[2])
                 {
                     for (var i = 0; i < 6; i++)
                     {
-                        if (counts[i] != 3 || wires[i, 2]) continue;
+                        if (counts[i] != 3 || wires[i].Frequencies[2]) continue;
                         red = i;
                         break;
                     }
                 }
-                else if (!wires[4, 0])
+                else if (!wires[4].Frequencies[0])
                 {
                     for (var i = 0; i < 6; i++)
                     {
-                        if (counts[i] != 3 || wires[i, 0]) continue;
+                        if (counts[i] != 3 || wires[i].Frequencies[0]) continue;
                         red = i;
                         break;
                     }
@@ -2472,17 +2571,17 @@ namespace KTaNE_Helper
                 {
                     for (var i = 0; i < 6; i++)
                     {
-                        if (counts[i] != 3 || wires[i, 3]) continue;
+                        if (counts[i] != 3 || wires[i].Frequencies[3]) continue;
                         red = i;
                         break;
                     }
                 }
 
-                if (wires[4, 0])
+                if (wires[4].Frequencies[0])
                 {
                     for (var i = 0; i < 6; i++)
                     {
-                        if (red == i || counts[i] != 3 || wires[i, 1]) continue;
+                        if (red == i || counts[i] != 3 || wires[i].Frequencies[1]) continue;
                         blue = i;
                         break;
                     }
@@ -2491,7 +2590,7 @@ namespace KTaNE_Helper
                 {
                     for (var i = 0; i < 6; i++)
                     {
-                        if (red == i || counts[i] != 3 || wires[i, 3]) continue;
+                        if (red == i || counts[i] != 3 || wires[i].Frequencies[3]) continue;
                         blue = i;
                         break;
                     }
@@ -2507,39 +2606,30 @@ namespace KTaNE_Helper
             var text = txtProbingOut.Text;
             for (var i = 0; i < 6; i++)
             {
-                if (counts[i] != 3) continue;
+                var freqtxt = new[] {"10", "22", "50", "60"};
+                var count = 0;
+                if (counts[i] == 0) continue;
                 if (text == txtProbingOut.Text) txtProbingOut.Text = "";
                 txtProbingOut.Text += (i+1) + @" = ";
-                if (wires[i, 0]) txtProbingOut.Text += @"10,";
-                if (wires[i, 1]) txtProbingOut.Text += @"22,";
-                if (wires[i, 2]) txtProbingOut.Text += wires[i, 3] ? @"50," : @"50   ";
-                if (wires[i, 3]) txtProbingOut.Text += @"60   ";
+                for (var j = 0; j < 4; j++)
+                {
+                    if (!wires[i].Frequencies[j]) continue;
+                    if (count++ > 0) txtProbingOut.Text += @",";
+                    txtProbingOut.Text += freqtxt[j];
+                }
+                txtProbingOut.Text += @"  ";
             }
 
         }
 
         private void button43_Click(object sender, EventArgs e)
         {
-            txtProbing12.Text = "";
-            txtProbing13.Text = "";
-            txtProbing14.Text = "";
-            txtProbing15.Text = "";
-            txtProbing16.Text = "";
-            txtProbing23.Text = "";
-            txtProbing24.Text = "";
-            txtProbing25.Text = "";
-            txtProbing26.Text = "";
-            txtProbing34.Text = "";
-            txtProbing35.Text = "";
-            txtProbing36.Text = "";
-            txtProbing45.Text = "";
-            txtProbing46.Text = "";
-            txtProbing56.Text = "";
-            txtCaesarCipherIn.Text = "";
-            txtCombinationLockIn.Text = "";
-            txtSemaphoreIn.Text = "";
-            txtResistorsIn.Text = "";
-            txtNumberPadIn.Text = "";
+            button45_Click(sender, e);
+            button46_Click(sender, e);
+            button47_Click(sender, e);
+            button48_Click(sender, e);
+            button50_Click(sender, e);
+            button49_Click(sender, e);
         }
 
 
@@ -2727,13 +2817,20 @@ namespace KTaNE_Helper
                 (Weapons)cboAdventureGameWeapon3.SelectedIndex - 1
             };
             var stats = new int[7];
-            int.TryParse(txtAdventureGameSTR.Text, out stats[0]);
-            int.TryParse(txtAdventrueGameDEX.Text, out stats[1]);
-            int.TryParse(txtAdventrueGameINT.Text, out stats[2]);
-            stats[3] = ag.ParseHeight(txtAdventrueGameHeight.Text);
-            int.TryParse(txtAdventrueGameTemp.Text, out stats[4]);
-            stats[5] = ag.ParseGravity(txtAdventrueGameGravity.Text);
-            int.TryParse(txtAdventrueGamePressure.Text, out stats[6]);
+            try
+            {
+                int.TryParse(txtAdventureGameSTR.Text, out stats[0]);
+                int.TryParse(txtAdventrueGameDEX.Text, out stats[1]);
+                int.TryParse(txtAdventrueGameINT.Text, out stats[2]);
+                stats[3] = ag.ParseHeight(txtAdventrueGameHeight.Text);
+                int.TryParse(txtAdventrueGameTemp.Text, out stats[4]);
+                stats[5] = ag.ParseGravity(txtAdventrueGameGravity.Text);
+                int.TryParse(txtAdventrueGamePressure.Text, out stats[6]);
+            }
+            catch
+            {
+                return;
+            }
 
             txtAdventureGameOut.Text = ag.GetAdventrueGameResults(stats, monster, weapons, items);
         }
@@ -2769,7 +2866,20 @@ namespace KTaNE_Helper
         {
             var name = lbModules.SelectedItem.ToString().Trim();
             TabPage page;
-            if (!_moduleNameToTab.TryGetValue(name, out page)) return;
+            if (!_moduleNameToTab.TryGetValue(name, out page))
+            {
+                for (var i = lbModules.SelectedIndex; i < lbModules.Items.Count; i++)
+                {
+                    if (!_moduleNameToTab.TryGetValue(lbModules.Items[i].ToString().Trim(), out page)) continue;
+                    lbModules.SelectedIndex = i;
+                    break;
+                }
+                if (page == null)
+                {
+                    lbModules.SelectedIndex = lbModules.Items.Count > 0 ? 0 : -1;
+                    page = _moduleNameToTab["About"];
+                }
+            }
             tcTabs.TabPages.Clear();
             tcTabs.TabPages.Add(page);
         }
@@ -2795,5 +2905,87 @@ namespace KTaNE_Helper
             txtSwitchesOut.Text = Switches.Solve(current, desired);
 
         }
+
+        private void MaskTextBox_Enter(object sender, EventArgs e)
+        {
+            //This method will prevent the cursor from being positioned in the middle 
+            //of a textbox when the user clicks in it.
+            var textBox = sender as MaskedTextBox;
+
+            if (textBox != null)
+            {
+                BeginInvoke((MethodInvoker)delegate
+                {
+                    var pos = textBox.SelectionStart;
+                    var slen = textBox.SelectionLength;
+                    var tlen = textBox.Text.Trim().Length;
+
+                    if (pos > tlen)
+                    {
+                        var diff = pos - tlen;
+                        pos = tlen;
+                        slen -= diff;
+                    }
+
+                    if ((pos + slen) > tlen)
+                    {
+                        var diff = (pos + slen) - tlen;
+                        slen -= diff;
+                    }
+
+                    textBox.Select(pos, slen);
+                });
+            }
+        }
+
+        private void button48_Click(object sender, EventArgs e)
+        {
+            txtProbing12.Text = "";
+            txtProbing13.Text = "";
+            txtProbing14.Text = "";
+            txtProbing15.Text = "";
+            txtProbing16.Text = "";
+            txtProbing23.Text = "";
+            txtProbing24.Text = "";
+            txtProbing25.Text = "";
+            txtProbing26.Text = "";
+            txtProbing34.Text = "";
+            txtProbing35.Text = "";
+            txtProbing36.Text = "";
+            txtProbing45.Text = "";
+            txtProbing46.Text = "";
+            txtProbing56.Text = "";
+        }
+
+        private void button49_Click(object sender, EventArgs e)
+        {
+            txtNumberPadIn.Text = "";
+        }
+
+        private void button50_Click(object sender, EventArgs e)
+        {
+            txtCaesarCipherIn.Text = "";
+        }
+
+        private void button45_Click(object sender, EventArgs e)
+        {
+            txtCombinationLockIn.Text = "";
+        }
+
+        private void button46_Click(object sender, EventArgs e)
+        {
+            txtSemaphoreIn.Text = "";
+        }
+
+        private void button47_Click(object sender, EventArgs e)
+        {
+            txtResistorsIn.Text = "";
+        }
+    }
+
+    public class ProbingSet
+    {
+        public bool[] Frequencies = new bool[4];
+        public List<int> PairsWith = new List<int>();
     }
 }

@@ -7,11 +7,11 @@ namespace KTaNE_Helper
 {
     public class AdventureGame
     {
-        private bool _useMoonstone;
-        private bool _useSunstone;
-        private bool _useHardDrive;
-        private bool _useBattery;
-        private string _serial;
+        private readonly bool _useMoonstone;
+        private readonly bool _useSunstone;
+        private readonly bool _useHardDrive;
+        private readonly bool _useBattery;
+        private readonly string _serial;
 
         public AdventureGame(string serial, int litIndicators, int unlitIndicators, int batteries, bool duplicatePorts)
         {
@@ -22,8 +22,8 @@ namespace KTaNE_Helper
             _serial = serial;
         }
 
-        private string ItemName(Items i) => i.ToString().Replace("_", " ");
-        private string WeaponName(Weapons w) => w.ToString().Replace("_", " ");
+        private static string ItemName(Items i) => i.ToString().Replace("_", " ");
+        private static string WeaponName(Weapons w) => w.ToString().Replace("_", " ");
 
         private int[] _stats;
         private Monsters _monster;
@@ -36,36 +36,23 @@ namespace KTaNE_Helper
         private int GetGrav() => _stats[5];
         private int GetATM() => _stats[6];
 
-        private int GetWeapon(Weapons w) => (int) w;
+        private static int GetWeapon(Weapons w) => (int) w;
 
 
         private int GetLastDigit()
         {
-            int i;
-            try
-            {
-                return int.TryParse(_serial.Substring(_serial.Length - 1, 1), out i) ? i : 0;
-            }
-            catch
-            {
-                return 0;
-            }
+            return
+                _serial.ToCharArray()
+                    .Select(c => "0123456789".IndexOf(c.ToString(), StringComparison.Ordinal))
+                    .LastOrDefault(d => d >= 0);
         }
 
         private int GetFirstDigit()
         {
-            int i;
-            // ReSharper disable once LoopCanBeConvertedToQuery
-            try
-            {
-                foreach (var c in _serial.ToCharArray())
-                    if (int.TryParse(c.ToString(), out i)) return i;
-            }
-            catch
-            {
-                return 0;
-            }
-            return 0;
+            return 
+                _serial.ToCharArray()
+                    .Select(c => "0123456789".IndexOf(c.ToString(), StringComparison.Ordinal))
+                    .FirstOrDefault(d => d >= 0);
         }
 
         private bool UseThisItem(Items item)
@@ -239,12 +226,12 @@ namespace KTaNE_Helper
             if (height.Contains("'"))
             {
                 var feetInches = height.Split(new[] {"'"}, StringSplitOptions.RemoveEmptyEntries);
-                if (int.TryParse(feetInches[0], out i))
+                if (feetInches.Length > 0 && int.TryParse(feetInches[0], out i))
                     h = i*12;
-                if (int.TryParse(feetInches[1], out i))
+                if (feetInches.Length > 1 && int.TryParse(feetInches[1], out i))
                     h += i;
             }
-            else if (int.TryParse(height, out i))
+            else if (height.Length > 0 && int.TryParse(height, out i))
                 h = i;
             return h;
         }
@@ -256,12 +243,12 @@ namespace KTaNE_Helper
             if (gravity.Contains("."))
             {
                 var feetInches = gravity.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries);
-                if (int.TryParse(feetInches[0], out i))
+                if (feetInches.Length > 0 && int.TryParse(feetInches[0], out i))
                     h = i * 10;
-                if (int.TryParse(feetInches[1], out i))
+                if (feetInches.Length > 1 && int.TryParse(feetInches[1], out i))
                     h += i;
             }
-            else if (int.TryParse(gravity, out i))
+            else if (gravity.Length > 0 && int.TryParse(gravity, out i))
                 h = i;
             return h;
         }
@@ -279,6 +266,7 @@ namespace KTaNE_Helper
         Wizard
     }
 
+    // ReSharper disable InconsistentNaming
     public enum Weapons
     {
         Broadsword = 0,
@@ -308,4 +296,5 @@ namespace KTaNE_Helper
         Ticket,
         Trophy
     }
+    // ReSharper restore InconsistentNaming
 }
