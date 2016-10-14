@@ -108,6 +108,9 @@ namespace KTaNE_Helper
                 case Items.Trophy:
                     return GetSTR() > GetFirstDigit() || _monster == Monsters.Troll;
 
+                case Items.NotSelected:
+                    return false;
+
                 default:
                     return false;
             }
@@ -143,10 +146,12 @@ namespace KTaNE_Helper
                     if (weapons[i] != weapons[j]) continue;
                     return "Please Select 3 different Weapons";
                 }
+
             for (var i = 0; i < 5; i++)
                 for (var j = i + 1; j < 5; j++)
                 {
                     if (items[i] != items[j]) continue;
+                    if (items[i] == Items.NotSelected) continue;
                     return "Please Select 5 different items";
                 }
 
@@ -279,6 +284,7 @@ namespace KTaNE_Helper
 
     public enum Items
     {
+        NotSelected = -1,
         Balloon,
         Battery,
         Bellows,

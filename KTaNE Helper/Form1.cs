@@ -1,7 +1,10 @@
 ﻿using System;
+using System.CodeDom;
 using System.Diagnostics;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text.RegularExpressions;
@@ -958,10 +961,10 @@ namespace KTaNE_Helper
                 {
                     for (var j = 0; j < 6; j++)
                     {
-                        e.Graphics.DrawLine(new Pen(Color.White, 3f), new Point((i * 47), (j * 47)), new Point((i * 47) + 47, (j * 47)));
-                        e.Graphics.DrawLine(new Pen(Color.White, 3f), new Point((i * 47), (j * 47) + 47), new Point((i * 47) + 47, (j * 47) + 47));
-                        e.Graphics.DrawLine(new Pen(Color.White, 3f), new Point((i * 47), (j * 47)), new Point((i * 47), (j * 47) + 47));
-                        e.Graphics.DrawLine(new Pen(Color.White, 3f), new Point((i * 47) + 47, (j * 47)), new Point((i * 47) + 47, (j * 47) + 47));
+                        e.Graphics.DrawWall(i, j, "Up");
+                        e.Graphics.DrawWall(i, j, "Down");
+                        e.Graphics.DrawWall(i, j, "Left");
+                        e.Graphics.DrawWall(i, j, "Right");
                         e.Graphics.FillRectangle(new SolidBrush(Color.DarkSlateGray), (j * 47) + 18, (i * 47) + 18, 10, 10);
                     }
                 }
@@ -975,13 +978,13 @@ namespace KTaNE_Helper
                 for (var j = 0; j < 6; j++)
                 { 
                     if(!mazes[_mazeSelection,j,i].Contains("u"))
-                        e.Graphics.DrawLine(new Pen(Color.White,3f),new Point((i*47),(j*47)),new Point((i*47)+47,(j*47))  );
+                        e.Graphics.DrawWall(i, j, "Up");
                     if (!mazes[_mazeSelection, j, i].Contains("d"))
-                        e.Graphics.DrawLine(new Pen(Color.White, 3f), new Point((i * 47), (j * 47)+47), new Point((i * 47) + 47, (j * 47)+47));
+                        e.Graphics.DrawWall(i, j, "Down");
                     if (!mazes[_mazeSelection, j, i].Contains("l"))
-                        e.Graphics.DrawLine(new Pen(Color.White, 3f), new Point((i * 47), (j * 47)), new Point((i * 47), (j * 47) + 47));
+                        e.Graphics.DrawWall(i, j, "Left");
                     if (!mazes[_mazeSelection, j, i].Contains("r"))
-                        e.Graphics.DrawLine(new Pen(Color.White, 3f), new Point((i * 47) + 47, (j * 47)), new Point((i * 47) + 47, (j * 47) + 47));
+                        e.Graphics.DrawWall(i, j, "Right");
 
                     e.Graphics.FillRectangle(new SolidBrush(Color.DarkSlateGray), (j * 47) + 18, (i * 47) + 18, 10, 10);
                 }
@@ -1389,7 +1392,8 @@ namespace KTaNE_Helper
                             }
                             break;
                     }
-                    solutionStr += solution[i]%10 + " ";
+                    solution[i] %= 10;
+                    solutionStr += solution[i] + " ";
                 }
                 txtForgetMeNotOut.Text += solutionStr.Trim() + Environment.NewLine;
             }
@@ -1443,7 +1447,7 @@ namespace KTaNE_Helper
             initial += ( batts * GetDigitFromCharacter(txtSerialNumber.Text.Substring(txtSerialNumber.Text.Trim().Length - 1, 1)));
             if (nudPortRCA.Value > 0 && nudPortRJ45.Value == 0)
                 initial *= 2;
-            txtTwoBitsInitialValue.Text = _twoBitLookup[initial%100];
+            txtTwoBitsInitialValue.Text = _twoBitLookup[initial%100] + @" / " + (initial % 100);
 
         }
 
@@ -1716,9 +1720,16 @@ namespace KTaNE_Helper
             //--- Adventure Game, Alphabet, Anagram, Silly Slots, Word Scramble ---//
             txtAdventureGameSTR_TextChanged(null, null);
 
+            //--- Cryptography, Gamepad, Microcontrollers, Murder ---//
+            cbMurderRoom_SelectedIndexChanged(null, null);
+            cbMicrocontroller_SelectedIndexChanged(null, null);
+            txtGamePadX_TextChanged(null, null);
 
             //--- Forget Me Not ---//
             ForgetMeNot_Event(null, null);
+
+            //--- 3D Maze ---//
+            Refresh();
 
             txtTwoBitsIN_TextChanged(null, null);
             
@@ -2298,15 +2309,16 @@ namespace KTaNE_Helper
         private void txtCaesarCipherIn_TextChanged(object sender, EventArgs e)
         {
             const string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            if (nudPortParallel.Value > 0 && nudLitNSA.Value > 0)
-            {
-                txtCaesarCipherOut.Text = txtCaesarCipherIn.Text;
-                return;
-            }
-            var offset = (int) (nudBatteriesAA.Value + nudBatteriesD.Value);
+            var offset = (int)(nudBatteriesAA.Value + nudBatteriesD.Value);
             if (SerialNumberContainsVowel()) offset--;
             if (!SerialNumberLastDigitOdd()) offset++;
             if (nudLitCAR.Value > 0 || nudUnlitCAR.Value > 0) offset++;
+
+            if (nudPortParallel.Value > 0 && nudLitNSA.Value > 0)
+            {
+                offset = 0;
+            }
+            
 
             txtCaesarCipherOut.Text = "";
             for (var i = 0; i < txtCaesarCipherIn.Text.Trim().Length; i++)
@@ -2321,6 +2333,8 @@ namespace KTaNE_Helper
                 c %= 26;
                 txtCaesarCipherOut.Text += letters.Substring(c, 1);
             }
+            if (txtCaesarCipherOut.TextLength == 0)
+                txtCaesarCipherOut.Text = @"Offset = " + offset;
         }
 
         private bool RoughEqual(double x, double y)
@@ -2622,14 +2636,14 @@ namespace KTaNE_Helper
 
         }
 
-        private void button43_Click(object sender, EventArgs e)
+        private void btnResetAll2_Click(object sender, EventArgs e)
         {
-            button45_Click(sender, e);
-            button46_Click(sender, e);
-            button47_Click(sender, e);
-            button48_Click(sender, e);
-            button50_Click(sender, e);
-            button49_Click(sender, e);
+            btnResetCombinationLock_Click(sender, e);
+            btnResetSemaphore_Click(sender, e);
+            btnResetResistors_Click(sender, e);
+            btnResetProbing_Click(sender, e);
+            btnResetCaesar_Click(sender, e);
+            btnResetNumberPads_Click(sender, e);
         }
 
 
@@ -2714,76 +2728,11 @@ namespace KTaNE_Helper
             }
         }
 
-        private static string CanSpell(string query, string with) // Query is the thing you're searching for, With is the string you're checking whether it can spell Query or not
-        {
-
-            var can = 0; // tells how many characters we could spell
-
-            var newWith = ""; // this stores the unused characters
-
-            for (var i = with.Length - 1; i >= 0; i--) // start from the end so removing doesn't fuck up stuff if we went up
-            {
-
-                var search = query.Substring(0, Math.Min(query.Length, with.Length)); // the portion of the string we're searching for
-                // ReSharper disable once InconsistentNaming
-                var _Query = with.Substring(i, 1); // the search query
-                                                      //Debug.Log (i + ", " + Search + ", " + _Query);
-
-                if (search.Contains(_Query))
-                {
-                    //Debug.Log ("CONTAINS " + _Query);
-                    // we can spell this character
-                    can++; // so count it
-                }
-                else
-                {
-                    newWith += with.Substring(i, 1); // otherwise, this is an unusable character, so it's a 'leftover'
-                }
-            }
-            //Debug.Log ("> " + Can + ", " + originalSize );
-            return can >= query.Length ? newWith : with; // if we managed to spell enough characters, return the leftovers, otherwise return the original With variable
-
-        }
+        
 
         private void txtAlphabetIn_TextChanged(object sender, EventArgs e)
         {
-            var wordBank = new[]
-            {
-                "JQXZ","PQJS","OKBV","QYDX","IRNM","ARGF",
-                "LXE","QEW","TJL","VCN","HDU","PKD",
-                "VSI","DFW","ZNY","YKQ","GS","AC","JR","OP"
-            };
-            var words4 = wordBank.Where(data => data.Length == 4).ToList();
-            var words3 = wordBank.Where(data => data.Length == 3).ToList();
-            var words2 = wordBank.Where(data => data.Length == 2).ToList();
-            words4.Sort();
-            words3.Sort();
-            words2.Sort();
-            var all = words4;
-            all.AddRange(words3);
-            all.AddRange(words2);
-
-            var code = ""; // the current code we have
-            var labels = txtAlphabetIn.Text; // this will contain the 'leftovers' at the end, so store it locally in this scope
-
-            foreach (var t in all)
-            {
-                var remainders = CanSpell(t, labels); // CanSpell will return the characters that weren't used to spell a word. if the word can't be spelled, it will return what was given as the 2nd argument
-                if (remainders != labels) // if the remainders have changed
-                {
-                    labels = remainders; // update them
-                    code += t.ToUpper(); // append this word to the code
-                }
-                if (code.Length >= 3) // if we're 3 or more characters, there's no more room for another word
-                    break;
-            }
-
-            // finally, sort the remainders by putting them into a list and taking them back out
-            // ReSharper disable once InconsistentNaming
-            var Remainders = labels.Select((t, i) => labels.Substring(i, 1)).ToList();
-            Remainders.Sort();
-            labels = Remainders.Aggregate("", (current, t) => current + t);
-            txtAlphabetOut.Text = code + labels;
+            txtAlphabetOut.Text = Alphabet.GetOrder(txtAlphabetIn.Text);
         }
 
         private void txtAdventureGameSTR_TextChanged(object sender, EventArgs e)
@@ -2795,8 +2744,25 @@ namespace KTaNE_Helper
                 || txtAdventrueGameINT.TextLength == 0
                 || txtAdventrueGamePressure.TextLength == 0
                 || txtAdventrueGameTemp.TextLength == 0
-                || txtAdventureGameSTR.TextLength == 0) return;
-            if (flpAdventureGameCBO.Controls.Cast<object>().Any(c => ((ComboBox) c).SelectedIndex <= 0)) return;
+                || txtAdventureGameSTR.TextLength == 0
+                || cboAdventureGameMonster.SelectedIndex <= 0
+                || cboAdventureGameWeapon1.SelectedIndex <= 0
+                || cboAdventureGameWeapon2.SelectedIndex <= 0
+                || cboAdventureGameWeapon3.SelectedIndex <= 0
+                || cboAdventureGameItem1.SelectedIndex < 0
+                || cboAdventureGameItem2.SelectedIndex < 0
+                || cboAdventureGameItem3.SelectedIndex < 0
+                || cboAdventureGameItem4.SelectedIndex < 0
+                || cboAdventureGameItem5.SelectedIndex < 0) return;
+
+            var itemsnotselected = 0;
+            if (cboAdventureGameItem1.SelectedIndex == 0) itemsnotselected++;
+            if (cboAdventureGameItem2.SelectedIndex == 0) itemsnotselected++;
+            if (cboAdventureGameItem3.SelectedIndex == 0) itemsnotselected++;
+            if (cboAdventureGameItem4.SelectedIndex == 0) itemsnotselected++;
+            if (cboAdventureGameItem5.SelectedIndex == 0) itemsnotselected++;
+            if (itemsnotselected > 2) return;
+
 
             var ag = new AdventureGame(txtSerialNumber.Text.ToUpper(), NumberLitIndicators(),NumberUnlitIndicators(),
                 (int)(nudBatteriesD.Value + nudBatteriesAA.Value),DuplicatePorts());
@@ -2835,31 +2801,12 @@ namespace KTaNE_Helper
             txtAdventureGameOut.Text = ag.GetAdventrueGameResults(stats, monster, weapons, items);
         }
 
-        private void button51_Click(object sender, EventArgs e)
+        private void btnResetAll3_Click(object sender, EventArgs e)
         {
-            txtAdventrueGamePressure.Text = "";
-            txtAdventrueGameGravity.Text = "";
-            txtAdventrueGameTemp.Text = "";
-            txtAdventureGameSTR.Text = "";
-            txtAdventrueGameDEX.Text = "";
-            txtAdventrueGameHeight.Text = "";
-            txtAdventrueGameINT.Text = "";
-            foreach (var c in flpAdventureGameCBO.Controls)
-                ((ComboBox) c).SelectedIndex = 0;
-            btnSillySlotsReset_Click(null, null);
-            txtWordScrambleIn.Text = "";
-            txtAlphabetIn.Text = "";
-            cbSwitchesCurrent1.Checked = false;
-            cbSwitchesCurrent2.Checked = false;
-            cbSwitchesCurrent3.Checked = false;
-            cbSwitchesCurrent4.Checked = false;
-            cbSwitchesCurrent5.Checked = false;
-            cbSwitchesDesired1.Checked = false;
-            cbSwitchesDesired2.Checked = false;
-            cbSwitchesDesired3.Checked = false;
-            cbSwitchesDesired4.Checked = false;
-            cbSwitchesDesired5.Checked = false;
-
+            btnResetAdventureGame_Click(sender, e);
+            btnResetAlphabet_Click(sender,e);
+            btnResetWordScramble_Click(sender, e);
+            btnResetSwitches_Click(sender, e);
         }
 
         private void lbModules_SelectedIndexChanged(object sender, EventArgs e)
@@ -2925,6 +2872,7 @@ namespace KTaNE_Helper
                         var diff = pos - tlen;
                         pos = tlen;
                         slen -= diff;
+                        if (slen < 0) slen = 0;
                     }
 
                     if ((pos + slen) > tlen)
@@ -2938,7 +2886,7 @@ namespace KTaNE_Helper
             }
         }
 
-        private void button48_Click(object sender, EventArgs e)
+        private void btnResetProbing_Click(object sender, EventArgs e)
         {
             txtProbing12.Text = "";
             txtProbing13.Text = "";
@@ -2957,29 +2905,548 @@ namespace KTaNE_Helper
             txtProbing56.Text = "";
         }
 
-        private void button49_Click(object sender, EventArgs e)
+        private void btnResetNumberPads_Click(object sender, EventArgs e)
         {
             txtNumberPadIn.Text = "";
         }
 
-        private void button50_Click(object sender, EventArgs e)
+        private void btnResetCaesar_Click(object sender, EventArgs e)
         {
             txtCaesarCipherIn.Text = "";
         }
 
-        private void button45_Click(object sender, EventArgs e)
+        private void btnResetCombinationLock_Click(object sender, EventArgs e)
         {
             txtCombinationLockIn.Text = "";
         }
 
-        private void button46_Click(object sender, EventArgs e)
+        private void btnResetSemaphore_Click(object sender, EventArgs e)
         {
             txtSemaphoreIn.Text = "";
         }
 
-        private void button47_Click(object sender, EventArgs e)
+        private void btnResetResistors_Click(object sender, EventArgs e)
         {
             txtResistorsIn.Text = "";
+        }
+
+        private void btnResetAdventureGame_Click(object sender, EventArgs e)
+        {
+            txtAdventrueGamePressure.Text = "";
+            txtAdventrueGameGravity.Text = "";
+            txtAdventrueGameTemp.Text = "";
+            txtAdventureGameSTR.Text = "";
+            txtAdventrueGameDEX.Text = "";
+            txtAdventrueGameHeight.Text = "";
+            txtAdventrueGameINT.Text = "";
+            foreach (var c in flpAdventureGameCBO.Controls)
+                ((ComboBox)c).SelectedIndex = 0;
+        }
+
+        private void btnResetAlphabet_Click(object sender, EventArgs e)
+        {
+            txtAlphabetIn.Text = "";
+        }
+
+        private void btnResetWordScramble_Click(object sender, EventArgs e)
+        {
+            txtWordScrambleIn.Text = "";
+        }
+
+        private void btnResetSwitches_Click(object sender, EventArgs e)
+        {
+            cbSwitchesCurrent1.Checked = false;
+            cbSwitchesCurrent2.Checked = false;
+            cbSwitchesCurrent3.Checked = false;
+            cbSwitchesCurrent4.Checked = false;
+            cbSwitchesCurrent5.Checked = false;
+            cbSwitchesDesired1.Checked = false;
+            cbSwitchesDesired2.Checked = false;
+            cbSwitchesDesired3.Checked = false;
+            cbSwitchesDesired4.Checked = false;
+            cbSwitchesDesired5.Checked = false;
+        }
+
+        private void cbMurderRoom_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtMurderOut.Text = "";
+            if (cbMurderRoom.SelectedIndex < 1) return;
+
+            var murderRoom = cbMurderRoom.SelectedIndex - 1;
+
+            var roomList = new List<string>
+            {
+                "Ballroom","Billiard Room","Conservatory",
+                "Dining Room","Hall","Kitchen",
+                "Library","Lounge","Study"
+            };
+            var suspectList = new List<string>
+            {
+                "Miss Scarlett","Professor Plum","Mrs Peacock",
+                "Reverend Green","Colonel Mustard","Mrs White"
+            };
+            var weaponList = new List<string>
+            {
+                "Candlestick","Dagger","Lead Pipe",
+                "Revolver","Rope","Spanner"
+            };
+
+            var rows = new int[][]
+            {
+                new[] {3,6,7,5,8,2},
+                new[] {8,4,1,7,5,6},
+                new[] {5,1,0,6,2,3},
+                new[] {7,0,3,2,4,5},
+                new[] {1,5,8,0,3,4},
+                new[] {2,7,6,8,1,0},
+                new[] {0,2,5,4,6,8},
+                new[] {4,8,2,3,7,1},
+                new[] {6,3,4,1,0,7}
+            };
+
+            var suspects = 6;
+            var weapons = 8;
+
+            if (nudLitTRN.Value > 0)
+                suspects = 5;
+            else if (murderRoom == 3)
+                suspects = 7;
+            else if (nudPortRCA.Value >= 2)
+                suspects = 8;
+            else if (nudBatteriesD.Value == 0)
+                suspects = 2;
+            else if (murderRoom == 8)
+                suspects = 4;
+            else if ((nudBatteriesD.Value + nudBatteriesAA.Value) >= 5)
+                suspects = 9;
+            else if (nudUnlitFRQ.Value > 0)
+                suspects = 1;
+            else if (murderRoom == 2)
+                suspects = 3;
+
+            if (murderRoom == 7)
+                weapons = 3;
+            else if ((nudBatteriesD.Value + nudBatteriesAA.Value) >= 5)
+                weapons = 1;
+            else if (nudPortSerial.Value > 0)
+                weapons = 9;
+            else if (murderRoom == 1)
+                weapons = 4;
+            else if (nudBatteryHolders.Value == 0)
+                weapons = 6;
+            else if (NumberLitIndicators() == 0)
+                weapons = 5;
+            else if (murderRoom == 4)
+                weapons = 7;
+            else if (nudPortRCA.Value >= 2)
+                weapons = 2;
+
+            suspects--;
+            weapons--;
+
+            txtMurderOut.Text = @"Possible Accusations:" + Environment.NewLine;
+            for(var i = 0; i < 6; i++)
+                for (var j = 0; j < 6; j++)
+                {
+                    if (rows[suspects][i] != rows[weapons][j]) continue;
+                    txtMurderOut.Text += Environment.NewLine;
+                    txtMurderOut.Text += suspectList[i] + 
+                        @" with the " + weaponList[j] + 
+                        @" in the " + roomList[rows[suspects][i]];
+                }
+        }
+
+        private void cbMicrocontroller_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var index = cbMicrocontroller.SelectedIndex - 1;
+            txtMicrocontrollerOut.Text = "";
+            if (index < 0) return;
+            var colors = new List<string> {"White","Green","Red","Yellow","Blue","Magenta"};
+            if (txtMicrocontrollerLastDigit.Text == @"1" || txtMicrocontrollerLastDigit.Text == @"4")
+            {
+                colors = new List<string>() {"White","Yellow","Magenta","Green","Blue","Red"};
+            }
+            else if (nudLitSIG.Value > 0 || nudPortRJ45.Value > 0)
+            {
+                colors = new List<string>() {"White","Yellow","Red","Magenta","Green","Blue"};
+            }
+            else if ("CLRX18".ToCharArray().Any(c => txtSerialNumber.Text.Trim().Contains(c.ToString())))
+            {
+                colors = new List<string>() {"White","Red","Magenta","Green","Blue","Yellow"};
+            }
+            else if ((nudBatteriesD.Value + nudBatteriesAA.Value).ToString(CultureInfo.InvariantCulture) == txtMicrocontrollerSecondDigit.Text)
+            {
+                colors = new List<string>() {"White","Green","Red","Yellow","Blue","Magenta"};
+            }
+
+            var pinmaps = new[]
+            {
+                new[] {2,1,5,3,4,0},
+                new[] {2,4,0,3,1,0,5,0},
+                new[] {0,0,0,0,2,3,0,1,5,4},
+                new[] {4,5,1,3,2,0},
+                new[] {4,3,1,0,2,0,5,0},
+                new[] {4,2,3,0,0,0,0,5,1,0},
+                new[] {0,2,4,1,3,5},
+                new[] {4,0,0,1,2,0,3,5},
+                new[] {4,3,2,0,0,1,0,0,5,0},
+                new[] {4,1,5,2,3,0},
+                new[] {2,0,5,0,1,0,3,4},
+                new[] {5,3,1,0,0,0,2,0,4,0} 
+            };
+
+            txtMicrocontrollerOut.Text = @"Pin Map:" + Environment.NewLine;
+            for (var i = 0; i < pinmaps[index].Length; i+=2)
+            {
+                txtMicrocontrollerOut.Text += Environment.NewLine;
+                txtMicrocontrollerOut.Text += (i + 1) + @" = " + colors[pinmaps[index][i]];
+                txtMicrocontrollerOut.Text += @", " + (i + 2) + @" = " + colors[pinmaps[index][i + 1]];
+            }
+            //
+        }
+
+        private static bool IsPrime(int num)
+        {
+            var prime = new List<int> {2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97};
+            return prime.Contains(num);
+        }
+
+        private static bool IsPerfectSquare(int num)
+        {
+            var perfectsquare = new List<int> {1,4,9,16,25,36,49,64,81};
+            return perfectsquare.Contains(num);
+        }
+
+        private static bool IsMultiple(int num, int multiple)
+        {
+            return (num%multiple) == 0;
+        }
+
+        private static string SwapCharacters(string str, int n, int n2)
+        {
+            var chArray = str.ToCharArray();
+            var ch = chArray[n];
+            chArray[n] = chArray[n2];
+            chArray[n2] = ch;
+            return new string(chArray);
+        }
+
+        private void txtGamePadX_TextChanged(object sender, EventArgs e)
+        {
+            txtGamePadOut.Text = "";
+            if (txtGamePadX.Text.Trim().Length == 0 || txtGamePadY.Text.Trim().Length == 0) return;
+
+            var hcn = new List<int> {1,2,4,6,12,24,36,48,60};
+
+            var x = int.Parse(txtGamePadX.Text.Trim());
+            var y = int.Parse(txtGamePadY.Text.Trim());
+            string solution;
+           
+            var numbatteries = nudBatteriesD.Value + nudBatteriesAA.Value;
+
+            var xA = x / 10;
+            var xB = (xA * -10) + x;
+            var yA = y / 10;
+            var yB = (xB * -10) + x;
+            if (IsPrime(x))
+            {
+                solution = "▲▲▼▼";
+            }
+            else if (IsMultiple(x, 12))
+            {
+                solution = "▲A◀◀";
+            }
+            else if (((xA + xB) == 10) && SerialNumberLastDigitOdd())
+            {
+                solution = "AB◀▶";
+            }
+            else if (((x % 6) == 3) || ((x % 10) == 5))
+            {
+                solution = "▼◀A▶";
+            }
+            else if (IsMultiple(x, 7) && !IsMultiple(y, 7))
+            {
+                solution = "◀◀▲B";
+            }
+            else if (x == (yA * yB))
+            {
+                solution = "A▲◀◀";
+            }
+            else if (IsPerfectSquare(x))
+            {
+                solution = "▶▶A▼";
+            }
+            else if (((x % 3) == 2) || nudUnlitSND.Value > 0)
+            {
+                solution = "▶AB▲";
+            }
+            else if (((60 <= x) && (x < 90)) && (numbatteries == 0))
+            {
+                solution = "BB▶◀";
+            }
+            else if (IsMultiple(x, 6))
+            {
+                solution = "ABA▶";
+            }
+            else if (IsMultiple(x, 4))
+            {
+                solution = "▼▼◀▲";
+            }
+            else
+            {
+                solution = "A◀B▶";
+            }
+            if (IsPrime(y))
+            {
+                solution = solution + "◀▶◀▶";
+            }
+            else if (IsMultiple(y, 8))
+            {
+                solution = solution + "▼▶B▲";
+            }
+            else if (((yA - yB) == 4) && nudPortRCA.Value > 0)
+            {
+                solution = solution + "▶A▼▼";
+            }
+            else if (((y % 4) == 2) || nudLitFRQ.Value > 0)
+            {
+                solution = solution + "B▲▶A";
+            }
+            else if (IsMultiple(y, 7) && !IsMultiple(x, 7))
+            {
+                solution = solution + "◀◀▼A";
+            }
+            else if (IsPerfectSquare(y))
+            {
+                solution = solution + "▲▼B▶";
+            }
+            else if (y == (xA * xB))
+            {
+                solution = solution + "A▲◀▼";
+            }
+            else if (((y % 4) == 3) || nudPortPS2.Value > 0)
+            {
+                solution = solution + "▲BBB";
+            }
+            else if ((yA > yB) && (numbatteries >= 2))
+            {
+                solution = solution + "AA▲▼";
+            }
+            else if (IsMultiple(y, 5))
+            {
+                solution = solution + "BAB◀";
+            }
+            else if (IsMultiple(y, 3))
+            {
+                solution = solution + "▶▲▲◀";
+            }
+            else
+            {
+                solution = solution + "B▲A▼";
+            }
+            if (IsMultiple(x, 11))
+            {
+                solution = SwapCharacters(SwapCharacters(solution, 4, 6), 0, 1);
+            }
+            if (xA == (1 + yB))
+            {
+                solution = SwapCharacters(SwapCharacters(solution, 5, 7), 2, 3);
+            }
+            if (hcn.Contains<int>(x) || hcn.Contains<int>(y))
+            {
+                solution = solution.Substring(4, 4) + solution.Substring(0, 4);
+            }
+            if (IsPerfectSquare(x) && IsPerfectSquare(y))
+            {
+                var array = solution.ToCharArray();
+                Array.Reverse(array);
+                solution = new string(array);
+            }
+            txtGamePadOut.Text = solution;
+
+        }
+
+        private void btnGamepadReset_Click(object sender, EventArgs e)
+        {
+            txtGamePadY.Text = "";
+            txtGamePadX.Text = "";
+        }
+
+        private void btnMicroControllerReset_Click(object sender, EventArgs e)
+        {
+            txtMicrocontrollerLastDigit.Text = "";
+            txtMicrocontrollerSecondDigit.Text = "";
+            cbMicrocontroller.SelectedIndex = 0;
+        }
+
+        private void btnResetMurder_Click(object sender, EventArgs e)
+        {
+            cbMurderRoom.SelectedIndex = 0;
+        }
+
+        private void txtCryptograpyLengths_TextChanged(object sender, EventArgs e)
+        {
+            txtCryptographyOut.Text = new Cryptography().GetLetterOrder(txtCryptograpyLengths.Text,
+                txtCryptographyLetters.Text);
+        }
+
+        private void pb3DMaze_Paint(object sender, PaintEventArgs e)
+        {
+            
+            var maze = _3DMaze.GetMaze(txt3DMazeLetters.Text);
+            e.Graphics.FillRectangle(new SolidBrush(Color.Black), 0, 0, pb3DMaze.Size.Width, pb3DMaze.Size.Height);
+
+            var x = -1;
+            var y = -1;
+
+            if (txtSerialNumber.Text.Trim().Length == 6)
+            {
+                const string digits = "0123456789";
+
+                x = digits.IndexOf(txtSerialNumber.Text.Substring(5, 1), StringComparison.Ordinal);
+                for (var i = 0; i < 6 && y < 0; i++)
+                    y = digits.IndexOf(txtSerialNumber.Text.Substring(i, 1), StringComparison.Ordinal);
+
+                if (x >= 0 && y >= 0)
+                {
+                    foreach (var c in gbIndicators.Controls)
+                    {
+                        if (c.GetType() != typeof(NumericUpDown)) continue;
+                        var cc = (NumericUpDown) c;
+                        var lit = cc.Name.Split(new[] {"nudLit", "nudUnlit"}, StringSplitOptions.RemoveEmptyEntries);
+
+                        var flag = false;
+                        if (cc.Name.Contains("nudUnlit"))
+                        {
+                            foreach (var l in lit[0].ToCharArray())
+                            {
+                                if ("MAZE GAMER".Contains(l)) flag = true;
+                            }
+                            if (flag) y += (int) cc.Value;
+                        }
+                        else
+                        {
+                            foreach (var l in lit[0].ToCharArray())
+                            {
+                                if ("HELP IM LOST".Contains(l)) flag = true;
+                            }
+                            if (flag) x += (int) cc.Value;
+                        }
+                    }
+
+                    x %= 8;
+                    y %= 8;
+                    e.Graphics.DrawMarker(Color.Green,x,y);
+                }
+            }
+
+            if (maze == null || maze[0].Length == 1)
+            {
+                if (maze?[0].Length == 1)
+                {
+                    for (var i = 0; i < 8; i++)
+                        e.Graphics.DrawString(i.ToString(), txt3DMazeLetters.Font, Brushes.Red, new Point((i * 47) + 10, (0 * 47) + 10));
+                    for (var j = 1; j < 8; j++)
+                        e.Graphics.DrawString(j.ToString(), txt3DMazeLetters.Font, Brushes.Red, new Point((0 * 47) + 10, (j * 47) + 10));
+                }
+                for (var i = 0; i < 8; i++)
+                {
+                    for (var j = 0; j < 8; j++)
+                    {
+                        e.Graphics.DrawWall(Color.Red, 7f, i, j, "Up");
+                        e.Graphics.DrawWall(Color.Red, 7f, i, j, "Down");
+                        e.Graphics.DrawWall(Color.Red, 7f, i, j, "Left");
+                        e.Graphics.DrawWall(Color.Red, 7f, i, j, "Right");
+                    }
+                }
+                mazeOutput.Text = "";
+                rbGreenCircle.Checked = true;
+                return;
+            }
+
+            var locations = _3DMaze.GetLocationList(txt3DMazeLine.Text, txt3DMazeLetters.Text);
+            if(locations.Count <= 6)
+                foreach (var l in locations)
+                {
+                    var color = Color.Magenta;
+                    if (l[0] == y && l[1] == x)
+                        color = Color.Cyan;
+                    e.Graphics.DrawMarker(color, l[1], l[0], l[2]);
+                }
+           
+
+            for (var i = 0; i < 8; i++)
+            {
+                for (var j = 0; j < 8; j++)
+                {
+                    var direction = maze[j][i].Split(',');
+                    if (!direction[0].Contains("u"))
+                        e.Graphics.DrawWall(Color.Red, 7f, i, j, "Up");
+                    if (!direction[0].Contains("d"))
+                        e.Graphics.DrawWall(Color.Red, 7f, i, j, "Down");
+                    if (!direction[0].Contains("l"))
+                        e.Graphics.DrawWall(Color.Red, 7f, i, j, "Left");
+                    if (!direction[0].Contains("r"))
+                        e.Graphics.DrawWall(Color.Red, 7f, i, j, "Right");
+
+                    if (direction.Length == 1) continue;
+                    e.Graphics.DrawString(direction[1].ToUpper(),txt3DMazeLetters.Font,Brushes.Red,new Point((i*47)+10,(j*47)+10) );
+                }
+            }
+
+            if (x < 0 || y < 0) return;
+            if (txt3DMazeCardinal.Text.Length != 1) return;
+
+            if (!"NEWS".Contains(txt3DMazeCardinal.Text.ToUpper())) return;
+
+            var wallhit = false;
+            while (!wallhit)
+            {
+                var direction = maze[y][x].Split(',')[0];
+                switch (txt3DMazeCardinal.Text.ToUpper())
+                {
+                    case "N":
+                        wallhit = !direction.Contains("u");
+                        if (wallhit) e.Graphics.DrawWall(Color.Green, 7f, x, y, "North");
+                        y--;
+                        if (y < 0) y = 7;
+                        if (wallhit) e.Graphics.DrawWall(Color.Green, 7f, x, y, "South");
+                        break;
+                    case "S":
+                        wallhit = !direction.Contains("d");
+                        if (wallhit) e.Graphics.DrawWall(Color.Green, 7f, x, y, "South");
+                        y++;
+                        y %= 8;
+                        if (wallhit) e.Graphics.DrawWall(Color.Green, 7f, x, y, "North");
+                        break;
+                    case "E":
+                        wallhit = !direction.Contains("r");
+                        if (wallhit) e.Graphics.DrawWall(Color.Green, 7f, x, y, "East");
+                        x++;
+                        x %= 8;
+                        if (wallhit) e.Graphics.DrawWall(Color.Green, 7f, x, y, "West");
+                        break;
+                    case "W":
+                        wallhit = !direction.Contains("l");
+                        if (wallhit) e.Graphics.DrawWall(Color.Green, 7f, x, y, "West");
+                        x--;
+                        if (x < 0) x = 7;
+                        if (wallhit) e.Graphics.DrawWall(Color.Green, 7f, x, y, "East");
+                        break;
+                }
+            }
+        }
+
+        private void txt3DMazeLetters_TextChanged(object sender, EventArgs e)
+        {
+            Refresh();
+            txt3DMazeOut.Text = _3DMaze.FindLocation(txt3DMazeLine.Text, txt3DMazeLetters.Text);
+        }
+
+        private void txt3DMazeLine_TextChanged(object sender, EventArgs e)
+        {
+            Refresh();
+            txt3DMazeOut.Text = _3DMaze.FindLocation(txt3DMazeLine.Text, txt3DMazeLetters.Text);
         }
     }
 

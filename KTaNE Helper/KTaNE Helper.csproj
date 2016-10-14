@@ -57,15 +57,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="3DMaze.cs" />
     <Compile Include="AdventureGame.cs" />
+    <Compile Include="Alphabet.cs" />
+    <Compile Include="Astrology.cs" />
     <Compile Include="ChessPieces.cs" />
     <Compile Include="CountryCode.cs" />
+    <Compile Include="Cryptography.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GraphicsExtensions.cs" />
     <Compile Include="MemoryRules.cs" />
     <Compile Include="NumberPad.cs" />
     <Compile Include="Ports.cs" />
