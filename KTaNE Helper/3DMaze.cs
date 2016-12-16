@@ -4,145 +4,119 @@ using System.Linq;
 
 namespace KTaNE_Helper
 {
-    public static class _3DMaze
+    public class _3DMaze
     {
-        private static readonly string[][][] MazePaths =
-        {
-            new[] //ABC
-            {
-                new[] {"dr", "ld", "urd", "uld", "ur", "lrd,a", "ld", "ud"},
-                new[] {"urd", "ul,*", "urd,a", "ulr", "l", "ur", "ulrd", "uld,b"},
-                new[] {"ulrd,a", "lrd", "ul", "rd,b", "lrd", "lrd,c", "ul", "ur"},
-                new[] {"lu", "urd,c", "ld", "ur", "ul,*", "ud", "rd", "lr,b"},
-                new[] {"ld", "urd", "uld", "rd", "lrd,a", "ulr", "uld", "rd"},
-                new[] {"uld", "ud,b", "ur", "ulr,c", "ul", "rd", "ulr,b", "ulrd"},
-                new[] {"ul,*", "ur", "lrd,c", "ld", "ud", "urd", "ld", "ur"},
-                new[] {"lr", "l", "urd", "uld", "ud,a", "ur", "ulr,c", "lrd"},
-                new[] {"ABC"}
-            },
-            new[] //ABD
-            {
-                new[] {"rd,a", "ulr", "lr", "ulrd,b", "ulrd", "ul", "rd,a", "ld,*"},
-                new[] {"ud", "rd", "lrd,d", "ulr", "ul", "rd", "ulr", "uld"},
-                new[] {"ulrd", "ulrd", "ul", "rd", "lrd", "ulrd,d", "ld", "urd,b"},
-                new[] {"ul", "ur,a", "lr", "ulrd,b", "uld", "ur", "ulr", "ulrd"},
-                new[] {"rd", "lrd", "ld,*", "ur", "ulrd", "lr", "ld,a", "ud"},
-                new[] {"ulr,d", "ulrd", "ul", "rd", "uld,a", "rd", "ulrd", "ulr"},
-                new[] {"ld", "urd", "lrd,b", "ulr", "ul", "urd,d", "uld", "rd"},
-                new[] {"ulr", "ulrd,d", "ul", "rd", "ld,*", "urd", "ulr", "ulr,b"},
-                new[] {"ABD"}
-            },
-            new[]
-            {
-                new[] {"rd,b","lr","ld","ur","lr","ulrd,a","lrd","ld,h"},
-                new[] {"lu,*","rd","ulrd,h","lrd","lr","ulr","uld","ur"},
-                new[] {"lrd,b","ul","ud","ur","lrd,b","ld","ud","rd"},
-                new[] {"ud","rd","uld","rd","ul,*","urd","uld,h","ud,a"},
-                new[] {"ud","urd,a","ul","ur,h","lrd","ul","urd","uld"},
-                new[] {"ud","ud","r","ldr","ulr,a","lr","ulr,b","uld"},
-                new[] {"ulrd","ulr,b","l","urd","ld","rd,*","ld","urd"},
-                new[] {"ulr,a","lr","lr","ulrd,h","ulr","ulrd","ul","ur"},
-                new[] {"ABH"},
-            },
-            new[]
-            {
-                new[] {"lrd,d","ulr","lr","ld","rd","ulr","lr","lrd"},
-                new[] {"ud","rd","lrd,c","uld","ud,d","r,*","lr","ul,c"},
-                new[] {"uld","u,*","ud","urd","ulrd","ld,c","rd","lrd"},
-                new[] {"ur","lr,a","ul","ud","ur","ulr","ul","ud"},
-                new[] {"rd,d","lr","lr","uld,c","rd","lr,d","ld","ud"},
-                new[] {"uld","d","rd,a","ulr","uld","r,*","ul","urd,a"},
-                new[] {"uld","ur","ul","rd,a","ulr","lr","lrd,d","ulrd"},
-                new[] {"ur,a","lrd","lr","ulr","lr","ld,c","ur","ul"},
-                new[] {"ACD"},
-            },
-            new[]
-            {
-                new[] {"ur,h","ulr","lrd,c","lr","ld","d","urd,a","uld"},
-                new[] {"rd,*","lr","ul","rd","ulrd,h","ulr","ul","ud"},
-                new[] {"uld","rd","ld","urd","uld","rd","ld,*","urd,c"},
-                new[] {"urd","ulr,a","ulrd","ulrd","ulrd","ulr,h","uld","ud"},
-                new[] {"uc,c","rd","ulrd,h","ulrd","ulrd,c","lrd","ulrd,a","ul"},
-                new[] {"ul","ur,*","ul","urd","uld","urd","ul","rd,a"},
-                new[] {"rd","lr","ld","ur,c","ulr","ulrd,h","lr","ul"},
-                new[] {"uld","rd","ulr,a","lr","lr","ul","rd","lrd"},
-                new[] {"ACH"},
-            },
-            new[]
-            {
-                new[] {"urd,d","ld","rd,d","lrd","ul","r,*","ulr","ld"},
-                new[] {"ud","ud","ud","urd","lrd,h","lr","lr","ul,a"},
-                new[] {"ud","ur,*","uld,h","ud","ur","lr","lrd,a","ld"},
-                new[] {"uld,a","d","u","ur,d","lrd","lr","ulrd","ulr"},
-                new[] {"ur","ulr","lr","lrd","uld,h","rd,d","uld","d"},
-                new[] {"rd,*","lr","lr,h","uld","ud","ud","urd","uld,a"},
-                new[] {"ulr,d","lr","ld","ud","u","ud","ud","urd"},
-                new[] {"rd","lr","ulr","ulr,a","ld","ur,h","uld","u"},
-                new[] {"ADH"},
-            },
-            new[]
-            {
-                new[] {"urd","lr","ul","rd","lr","lrd,b","lr","ul"},
-                new[] {"ulrd,c","lr","lr,d","uld","rd","ul","rd,*","lrd"},
-                new[] {"u","d,*","rd","uld,b","urd","lr","ulr,c","ul"},
-                new[] {"lr","ulrd,c","ulr","ul","urd","lrd","lr,b","lr"},
-                new[] {"lr","uld","rd","lr","ulr,c","uld","rd","lr,d"},
-                new[] {"lrd,b","ulr","ul","rd","lrd","ulrd,d","ul","rd"},
-                new[] {"ulr","lrd","lr","ulr","ul,*","ud","rd,d","ulr"},
-                new[] {"lrd,d","ul","rd","lr,b","lr","ulr","ul","rd"},
-                new[] {"BCD"},
-            },
-            new[]
-            {
-                new[] {"rd,c","ulr","lrd","lr","uld,h","ur","lr","l"},
-                new[] {"ul","rd","ulr,c","ld","ur","lr","lrd","lrd,h"},
-                new[] {"ld","ud","d,*","ud","rd,b","lr","ul","urd"},
-                new[] {"urd,b","ulr","ulr","ul,h","ur,*","lr","lr","uld"},
-                new[] {"urd","lrd,h","lr","ld","rd","lrd,b","lr","uld,c"},
-                new[] {"ul","ud","rd","ul,*","ud","ur","ld","urd"},
-                new[] {"ld","ud","urd,b","ld","urd,c","lr","ul","urd"},
-                new[] {"ulr","ulrd,c","ul","ur","ulrd","ld,h","r","ulr,b"},
-                new[] {"BCH"},
-            },
-            new[]
-            {
-                new[] {"uld","ud","rd,d","ul","urd,b","ulrd","ulrd","lr,h"},
-                new[] {"u","ur","uld","r,*","lu","ud","ud,d","d"},
-                new[] {"lr","lr","ulrd,h","lr","l,*","ud","ur","ulr"},
-                new[] {"lrd,d","ld","urd","lr","lrd","ulrd,b","lr","lr"},
-                new[] {"ulr","uld","ud","rd","uld,d","urd","lrd","lrd,h"},
-                new[] {"rd","ulr","ulr,b","uld","u","u","urd","uld"},
-                new[] {"ud","r","lrd","ulrd,h","lr","lr","ulr,h","ul,*"},
-                new[] {"ulrd,d","lrd","ul","ud","rd","ld,b","rd","lr"},
-                new[] {"BDH"},
-            },
-            new[]
-            {
-                new[] {"ud","rd","ulr,h","ld","rd","ulr,d","ld","ud"},
-                new[] {"ud","ud","d","urd","uld,c","d,*","ud","ud"},
-                new[] {"ulrd","ul","urd","ulrd,h","ulrd","uld","ur","ulrd,d"},
-                new[] {"ulrd,h","lr","uld","ud","ud","urd,d","lr","ulrd"},
-                new[] {"urd","lr","ul","ud","ud","ur","lr","uld"},
-                new[] {"urd,c","lr","lrd","ul,d","ur","lrd,c","lr","uld,h"},
-                new[] {"u,*","rd,d","ulr","lrd","lrd,h","ulr","ld,*","u"},
-                new[] {"lrd","ul","rd","ul","ur","ld","ur","lrd,c"},
-                new[] {"CDH"},
-            },
+        private static readonly string[][][] MazePaths = new string[10][][];
 
-        };
-
-        public static bool IsTravelPossible(string[][] maze, int x, int y, string direction)
+        public _3DMaze()
         {
-            return maze[x][y].Split(',')[0].Contains(direction);
+            for (var mapIndex = 0; mapIndex < 10; mapIndex++)
+            {
+                MazePaths[mapIndex] = new string[9][];
+                var letters = new List<string>();
+                string[] cardinals;
+                string[] northWall;
+                string[] westWalls;
+                switch (mapIndex)
+                {
+                    case 0:
+                        cardinals = new[]{"     A  ", " *A    B", "A  B C  ", " C  *  B", "    A   ", " B C  B ", "* C     ", "    A C "};
+                        northWall = new[]{"11000110", "00001000", "01011100", "00100011", "10011001", "00000100", "00110010", "11000001"};
+                        westWalls = new[]{"10101001", "10100100", "00010001", "01010110", "01010001", "01100100", "01001101", "00101100"};
+                        break;
+
+                    case 1:
+                        cardinals = new[]{"A  B  A*", "  D     ", "     D B", " A B    ", "  *   A ", "D   A   ", "  B  D  ", " D  *  B"};
+                        northWall = new[]{"10100011", "01100100", "00011010", "00100000", "11100110", "00010100", "10100001", "00011000"};
+                        westWalls = new[]{"10000010", "11000100", "00010001", "01000100", "10010001", "00010100", "01000101", "00010100"};
+                        break;
+
+                    case 2:
+                        cardinals = new[]{"B    A H", "* H     ", "B   B   ", "    * HA", " A H    ", "    A B ", " B   *  ", "A  H    "};
+                        northWall = new[]{"11101011", "01011000", "10001101", "01010000", "00001000", "00110100", "00101110", "01100000"};
+                        westWalls = new[]{"10010000", "01000001", "00110011", "11010101", "11010010", "11100000", "00010101", "00000001"};
+                        break;
+
+                    case 3:
+                        cardinals = new[]{"D       ", "  C D* C", " *   C  ", " A      ", "D  C D  ", "  A  * A", "   A  D ", "A    C  "};
+                        northWall = new[]{"10111011", "01100110", "00000111", "01000000", "11101110", "01100100", "00010110", "01101100"};
+                        westWalls = new[]{"00001000", "11001100", "01110010", "10011001", "10001001", "01100101", "01010000", "10000010"};
+                        break;
+
+                    case 4:
+                        cardinals = new[]{"H C   A ", "*   H   ", "      *C", " A   H  ", "C H C A ", " *     A", "   C H  ", "  A     "};
+                        northWall = new[]{"00111100", "11010000", "01100110", "00000000", "01000100", "00000001", "11100010", "01011011"};
+                        westWalls = new[]{"10000110", "10010001", "01010101", "10000001", "11000000", "01010101", "10010000", "01000010"};
+                        break;
+
+                    case 5:
+                        cardinals = new[]{"D D  *  ", "    H  A", " *H   A ", "A  D    ", "    HD  ", "* H    A", "D       ", "   A H  "};
+                        northWall = new[]{"01110101", "00001110", "00000111", "01001100", "00110101", "11100000", "01100000", "11001000"};
+                        westWalls = new[]{"10100100", "11110000", "11011000", "01110000", "10000101", "10001110", "00011111", "10000101"};
+                        break;
+
+                    case 6:
+                        cardinals = new[]{"     B  ", "C D   * ", " * B  C ", " C    B ", "    C  D", "B    D  ", " C  * D ", "D  B    "};
+                        northWall = new[]{"01011110", "01101011", "01100100", "10000111", "10110011", "10011001", "01100010", "10111001"};
+                        westWalls = new[]{"10010000", "00001010", "11101000", "00001000", "00100010", "00010001", "00000110", "00100001"};
+                        break;
+
+                    case 7:
+                        cardinals = new[]{"C   H   ", "  C    H", "  * B   ", "B  H*   ", " H   B C", "   *    ", "  B C   ", " C   H B"};
+                        northWall = new[]{"10110011", "01010111", "10101100", "00000110", "01111110", "00100010", "10010100", "00000110"};
+                        westWalls = new[]{"10000100", "01001000", "01111001", "10001000", "10001000", "01101101", "01101001", "00010010"};
+                        break;
+
+                    case 8:
+                        cardinals = new[]{"  D B  H", "   *  D ", "  H *  B", "D    B  ", "    D  H", "  B     ", "   H  H*", "D    B  "};
+                        northWall = new[]{"00100001", "00010001", "11011000", "11011011", "00010011", "10000000", "01101100", "01001111"};
+                        westWalls = new[]{"01101000", "11010111", "00000110", "00100000", "00110100", "10001110", "11000000", "00011010"};
+                        break;
+
+                    default:
+                        cardinals = new[]{"  H  D  ", "    C*  ", "   H   D", "H    D  ", "  C     ", "C  D C H", "*D  H * ", "       C"};
+                        northWall = new[]{"01011010", "00100100", "00000000", "01000010", "01000010", "01100110", "01011010", "10100101"};
+                        westWalls = new[]{"11001001", "11110111", "00100010", "00011100", "10011100", "10001000", "11000001", "00101010"};
+                        break;
+                }
+                for (var y = 0; y < 8; y++)
+                {
+                    MazePaths[mapIndex][y] = new string[8];
+                    for (var x = 0; x < 8; x++)
+                    {
+                        MazePaths[mapIndex][y][x] = "";
+                        var letter = cardinals[y].Substring(x, 1);
+                        if (!letters.Contains(letter)) letters.Add(letter);
+                        var north = northWall[y].Substring(x, 1);
+                        var south = northWall[(y + 1)%8].Substring(x, 1);
+                        var west = westWalls[y].Substring(x, 1);
+                        var east = westWalls[y].Substring((x + 1)%8, 1);
+                        if (north == "0") MazePaths[mapIndex][y][x] += "un";
+                        if (west == "0") MazePaths[mapIndex][y][x] += "lw";
+                        if (east == "0") MazePaths[mapIndex][y][x] += "re";
+                        if (south == "0") MazePaths[mapIndex][y][x] += "ds";
+                        MazePaths[mapIndex][y][x] += "," + letter;
+                    }
+                }
+                letters.Remove(" ");
+                letters.Remove("*");
+                letters.Sort();
+                MazePaths[mapIndex][8] = new [] {letters[0] + letters[1] + letters[2]};
+            }
+
         }
 
-        public static string MazeLetterAtLocation(string[][] maze, int x, int y)
+        public bool IsTravelPossible(string[][] maze, int x, int y, string direction)
         {
-            var l = maze[x][y].Split(',');
-            return l.Length > 1 ? l[1] : " ";
+            return maze[x][y].Split(',')[0].Contains(direction.ToLower());
         }
 
-        public static List<int[]> GetLocationList(string line, string maze)
+        public string MazeLetterAtLocation(string[][] maze, int x, int y)
+        {
+            return maze[x][y].Split(',')[1];
+        }
+
+        public List<int[]> GetLocationList(string line, string maze)
         {
             var locations = new List<int[]>();
 
@@ -161,62 +135,56 @@ namespace KTaNE_Helper
                     {
                         j++;
                         j %= 8;
-                        if (j == 0) return locations;
+                        if (j == 0) break;
                     }
 
                     var jj = j;
                     do
                     {
-                        var locationReverse = new [] {(rows ? i : j), (rows ? j : i), (rows ? 3 : 0), 0};
-                        var rj = (j + line.Length - 1) % 8;
-                        var location = new [] {rows ? i : rj, rows ? rj : i, rows ? 1 : 2, 0};
                         var mazeline = "";
+                        var oj = j;
                         do
                         {
                             mazeline += MazeLetterAtLocation(m, rows ? i : j, rows ? j : i);
                             j++;
                             j %= 8;
-                        } while (IsTravelPossible(m, rows ? i : j, rows ? j : i, rows ? "l" : "u"));
+                        } while (IsTravelPossible(m, rows ? i : j, rows ? j : i, rows ? "l" : "u") && j != jj);
 
                         if (line.Length != mazeline.Length) continue;
 
-                        var matched = false;
-                        if (line.ToLower() == mazeline)
-                        {
-                            if (line.Contains('*')) location[3] = 1;
-                            locations.Add(location);
-                            matched = true;
-                        }
-                        if (!matched && line.Replace('*', ' ').ToLower() == mazeline.Replace('*',' '))
-                        {
-                            if (mazeline.Contains(' ')) location[3] = 2;
-                            locations.Add(location);
-                        }
+                        var rj = (oj + line.Length - 1) % 8;
+                        if (line.Replace('*', ' ').ToUpper() == mazeline.Replace('*',' '))
+                            locations.Add(
+                                new[]
+                                {
+                                    rows ? i : rj,
+                                    rows ? rj : i,
+                                    rows ? 1 : 2,
+                                    mazeline.Contains('*') ? 1 : 0
+                                });
+                        if (line.Replace('*', ' ').ToUpper() == mazeline.Reverse().Replace('*', ' '))
+                            locations.Add(
+                                new[]
+                                {
+                                    rows ? i : oj,
+                                    rows ? oj : i,
+                                    rows ? 3 : 0,
+                                    mazeline.Contains('*') ? 1 : 0
+                                });
 
-                        matched = false;
-                        if (line.ToLower() == mazeline.Reverse())
-                        {
-                            if (line.Contains('*')) locationReverse[3] = 1;
-                            locations.Add(locationReverse);
-                            matched = true;
-                        }
-                        if (matched || line.Replace('*', ' ').ToLower() != mazeline.Reverse().Replace('*', ' '))
-                            continue;
-                        if (mazeline.Contains(' ')) locationReverse[3] = 2;
-                        locations.Add(locationReverse);
                     } while (j != jj);
                 }
-                rows = !rows;
+                rows = !rows;  //Switch to columns after first round.  Finished after second round.
             }
             while (!rows);
 
             return locations;
         }
 
-        public static string FindLocation(string line, string maze)
+        public string FindLocation(string line, string maze)
         {
             var walls = new[] { ", Facing North Wall", ", Facing East Wall", ", Facing South Wall", ", Facing West Wall" };
-            var cardinal = new[] { "", ", Cardinal is real", ", Cardinal present" };
+            var cardinal = new[] { "", ", Cardinal present" };
 
             var m = GetLocationList(line, maze);
             var locations = m.Select(l => "Row: " + l[0] + ", Column: " + l[1] + walls[l[2]] + cardinal[l[3]]).ToList();
@@ -236,7 +204,7 @@ namespace KTaNE_Helper
             return locations.Count > 6 ? "Too Many Locations possible" : result;
         }
 
-        public static string[][] GetMaze(string maze)
+        public string[][] GetMaze(string maze)
         {
             var letters = string.Concat(maze.ToUpper().Distinct().OrderBy(c => c));
             return MazePaths.FirstOrDefault(m => m[8][0] == letters);

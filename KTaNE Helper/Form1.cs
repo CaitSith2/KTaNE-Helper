@@ -3,6 +3,7 @@ using System.CodeDom;
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -114,11 +115,12 @@ namespace KTaNE_Helper
         private readonly string[] _keypadSymbols241 = { "¿","©","¶","☆","★","҂","ƛ","Ͼ","Ͽ","Ψ","Ω","Ϟ","Ϙ","ϗ","Ϭ","Җ","Ҋ","Ҩ","Ӭ","ѣ","Ѧ","Ѭ","ѯ","Ѽ","ӕ","Ԇ","ټ"};
         private readonly string[] _keypadSymbols724 = { "¿","©","¶","☆","★","◌","ƛ","ζ","Ͽ","Ψ","Ϟ","Ϙ","ϗ","ϫ","Ϭ","Җ","Ҋ","Ҩ","Ӭ","ѣ","Ѧ","Ѫ","Ѭ","Ѽ","ӕ","Ԇ","ټ"};
 
-        int _manualVersion;
+        private int _manualVersion;
 
         private readonly List<TabPage> _allPages = new List<TabPage>();
         private readonly List<TabPage> _noModPages = new List<TabPage>();
 
+        
 
         public Form1()
         {
@@ -1671,6 +1673,7 @@ namespace KTaNE_Helper
         //the moment said information is updated.
         private void UpdateBombSolution(object sender, EventArgs e)
         {
+            if (_resetBomb) return;
             //--- Bomb information side box ---//
             //Needy Knobs does not depend on information, just manual version alone.
             Needy_Knob_CheckedChanged(null, null);
@@ -1728,8 +1731,9 @@ namespace KTaNE_Helper
             //--- Forget Me Not ---//
             ForgetMeNot_Event(null, null);
 
-            //--- 3D Maze ---//
-            Refresh();
+            //--- 3D Maze  (and anything else that requires picture box refresh) ---//
+            if(lbModules.SelectedItem?.ToString().Trim() == "3D Maze")
+                Refresh();
 
             txtTwoBitsIN_TextChanged(null, null);
             
@@ -1917,8 +1921,10 @@ namespace KTaNE_Helper
 
         }
 
+        private bool _resetBomb;
         private void button42_Click(object sender, EventArgs e)
         {
+            _resetBomb = true;
             foreach (var c in gbPorts.Controls)
             {
                 if (c.GetType() == typeof(NumericUpDown))
@@ -1936,6 +1942,8 @@ namespace KTaNE_Helper
             }
             facts_strike.SelectedIndex = 0;
             txtSerialNumber.Text = "";
+            _resetBomb = false;
+            UpdateBombSolution(null, null);
         }
 
         private Dictionary<string, bool> BuildTruthTable()
@@ -2005,7 +2013,7 @@ namespace KTaNE_Helper
         {
             var positionsLetters = "ABCDEF";
             var positionNumbers = "123456";
-            var whitefields = "B1,D1,F1,A2,C2,E,B3,D3,F3,A4,C4,E4,B5,D5,F5,A6,C6,E6";
+            var whitefields = "B1,D1,F1,A2,C2,E2,B3,D3,F3,A4,C4,E4,B5,D5,F5,A6,C6,E6";
             var chessboard = new int[6, 6];
             var knightMovesX = new [] {1, 2, 2, 1, -1, -2, -2, -1};
             var knightMovesY = new [] {2, 1, -1, -2, -2, -1, 1, 2};
@@ -2502,6 +2510,69 @@ namespace KTaNE_Helper
             return frequencies;
         }
 
+        private int ProbingCommonFrequency(string pair1, string pair2, bool opposite=false)
+        {
+            if (IsNullOrWhiteSpace(pair1) || IsNullOrWhiteSpace(pair2)) return -1;
+            if (pair1 == pair2) return -1;
+            if (!opposite)
+            {
+                if (pair1.Contains("10") && pair2.Contains("10")) return 1;
+                if (pair1.Contains("22") && pair2.Contains("22")) return 2;
+                if (pair1.Contains("50") && pair2.Contains("50")) return 5;
+                if (pair1.Contains("60") && pair2.Contains("60")) return 6;
+            }
+            else
+            {
+                if (pair1.Contains("10") && pair2.Contains("10"))
+                {
+                    if (pair1.Contains("22")) return 2;
+                    if (pair1.Contains("50")) return 5;
+                    return 6;
+                }
+                if (pair1.Contains("22") && pair2.Contains("22"))
+                {
+                    if (pair1.Contains("10")) return 1;
+                    if (pair1.Contains("50")) return 5;
+                    return 6;
+                }
+                if (pair1.Contains("50") && pair2.Contains("50"))
+                {
+                    if (pair1.Contains("22")) return 2;
+                    if (pair1.Contains("10")) return 1;
+                    return 6;
+                }
+                if (pair1.Contains("60") && pair2.Contains("60"))
+                {
+                    if (pair1.Contains("22")) return 2;
+                    if (pair1.Contains("50")) return 5;
+                    return 1;
+                }
+            }
+            return -1;
+        }
+
+        private int CommonNumber(int[] pair1, int[] pair2, bool opposite=false)
+        {
+            if (opposite)
+            {
+                if (pair1[0] == pair2[0]) return pair1[1];
+                if (pair1[0] == pair2[1]) return pair1[1];
+                if (pair1[1] == pair2[0]) return pair1[0];
+                if (pair1[1] == pair2[1]) return pair1[0];
+            }
+            else
+            {
+                if (pair1[0] == pair2[0]) return pair1[0];
+                if (pair1[0] == pair2[1]) return pair1[0];
+                if (pair1[1] == pair2[0]) return pair1[1];
+                if (pair1[1] == pair2[1]) return pair1[1];
+            }
+
+
+            return -1;
+        }
+
+
         private void txtProbing12_TextChanged(object sender, EventArgs e)
         {
             var wires = new[]
@@ -2511,25 +2582,129 @@ namespace KTaNE_Helper
             };
             
             txtProbingOut.Text = @"""I still maintain ""reading order"" on probing is some BS"" - LtHummus (Sept 16, 2016)";
-            var textBoxes = new[]
+            /*var textBoxes = new[]
             {
                 txtProbing12.Text, txtProbing34.Text, txtProbing56.Text,
                 txtProbing14.Text, txtProbing25.Text, txtProbing36.Text,
                 txtProbing13.Text, txtProbing24.Text, txtProbing35.Text,
                 txtProbing46.Text, txtProbing15.Text, txtProbing26.Text,
                 txtProbing16.Text, txtProbing23.Text, txtProbing45.Text
+            };*/
+            var textBoxes = new[]
+            {
+                txtProbing12.Text, txtProbing34.Text, txtProbing56.Text,
+                txtProbing14.Text, txtProbing25.Text
             };
-            var pairs = new[]
+            /*var pairs = new[]
             {
                 new[] {0, 1}, new[] {2, 3}, new[] {4, 5},
                 new[] {0, 3}, new[] {1, 4}, new[] {2, 5},
                 new[] {0, 2}, new[] {1, 3}, new[] {2, 4},
                 new[] {3, 5}, new[] {0, 4}, new[] {1, 5},
                 new[] {0, 5}, new[] {1, 2}, new[] {3, 4}
+            };*/
+            var pairs = new[]
+            {
+                new[] {0, 1}, new[] {0, 2}, new[] {0,3},
+                new[] {0, 4}, new[] {0,5}
             };
 
-            for (var i = 0; i < 15; i++)
+            for (var i = 0; i < 5; i++)
             {
+                if (textBoxes[i].Trim().Length != 5) continue;
+                if (txtContainsFrequencies(textBoxes[i])[4])
+                {
+                    wires[pairs[i][0]].PairsWith.Add(pairs[i][1]);
+                    wires[pairs[i][1]].PairsWith.Add(pairs[i][0]);
+                    continue;
+                }
+                for (var j = i+1; j < 5; j++)
+                {
+                    if (textBoxes[j].Trim().Length != 5) continue;
+                    var cn = CommonNumber(pairs[i], pairs[j]);
+                    if (cn == -1) continue;
+                    var missing = ProbingCommonFrequency(textBoxes[i], textBoxes[j]);
+                    if (missing == -1) continue;
+                    switch (missing)
+                    {
+                        case 1:
+                            wires[cn].Frequencies[1] = true;
+                            wires[cn].Frequencies[2] = true;
+                            wires[cn].Frequencies[3] = true;
+                            break;
+                        case 2:
+                            wires[cn].Frequencies[0] = true;
+                            wires[cn].Frequencies[2] = true;
+                            wires[cn].Frequencies[3] = true;
+                            break;
+                        case 5:
+                            wires[cn].Frequencies[1] = true;
+                            wires[cn].Frequencies[0] = true;
+                            wires[cn].Frequencies[3] = true;
+                            break;
+                        case 6:
+                            wires[cn].Frequencies[1] = true;
+                            wires[cn].Frequencies[2] = true;
+                            wires[cn].Frequencies[0] = true;
+                            break;
+
+                    }
+
+                    cn = CommonNumber(pairs[i], pairs[j], true);
+                    missing = ProbingCommonFrequency(textBoxes[i], textBoxes[j], true);
+                    switch (missing)
+                    {
+                        case 1:
+                            wires[cn].Frequencies[1] = true;
+                            wires[cn].Frequencies[2] = true;
+                            wires[cn].Frequencies[3] = true;
+                            break;
+                        case 2:
+                            wires[cn].Frequencies[0] = true;
+                            wires[cn].Frequencies[2] = true;
+                            wires[cn].Frequencies[3] = true;
+                            break;
+                        case 5:
+                            wires[cn].Frequencies[1] = true;
+                            wires[cn].Frequencies[0] = true;
+                            wires[cn].Frequencies[3] = true;
+                            break;
+                        case 6:
+                            wires[cn].Frequencies[1] = true;
+                            wires[cn].Frequencies[2] = true;
+                            wires[cn].Frequencies[0] = true;
+                            break;
+
+                    }
+
+                    cn = CommonNumber(pairs[j], pairs[i], true);
+                    missing = ProbingCommonFrequency(textBoxes[j], textBoxes[i], true);
+                    switch (missing)
+                    {
+                        case 1:
+                            wires[cn].Frequencies[1] = true;
+                            wires[cn].Frequencies[2] = true;
+                            wires[cn].Frequencies[3] = true;
+                            break;
+                        case 2:
+                            wires[cn].Frequencies[0] = true;
+                            wires[cn].Frequencies[2] = true;
+                            wires[cn].Frequencies[3] = true;
+                            break;
+                        case 5:
+                            wires[cn].Frequencies[1] = true;
+                            wires[cn].Frequencies[0] = true;
+                            wires[cn].Frequencies[3] = true;
+                            break;
+                        case 6:
+                            wires[cn].Frequencies[1] = true;
+                            wires[cn].Frequencies[2] = true;
+                            wires[cn].Frequencies[0] = true;
+                            break;
+
+                    }
+                }
+                /*
                 var wire = txtContainsFrequencies(textBoxes[i]);
                 for (var j = 0; j < 4; j++)
                 {
@@ -2538,7 +2713,7 @@ namespace KTaNE_Helper
                 }
                 if (!wire[4]) continue;
                 wires[pairs[i][0]].PairsWith.Add(pairs[i][1]);
-                wires[pairs[i][1]].PairsWith.Add(pairs[i][0]);
+                wires[pairs[i][1]].PairsWith.Add(pairs[i][0]); */
             }
 
             for (var i = 0; i < 6; i++)
@@ -2554,6 +2729,68 @@ namespace KTaNE_Helper
             for (var i = 0; i < 6; i++)
                 for (var j = 0; j < 4; j++)
                     if (wires[i].Frequencies[j]) counts[i]++;
+
+            var missingFreqs = new bool[4];
+            var wiresComplete = 0;
+            var incomplete = -1;
+            for (var i = 0; i < 6; i++)
+            {
+                if (counts[i] != 3)
+                {
+                    incomplete = i;
+                    continue;
+                }
+                wiresComplete++;
+                for (var j = 0; j < 4; j++)
+                {
+                    missingFreqs[j] |= !wires[i].Frequencies[j];
+                }
+            }
+            if (wiresComplete == 5)
+            {
+                var missing = -1;
+                var missingCount = 4;
+                for(var j = 0; j < 4; j++)
+                    if (!missingFreqs[j])
+                    {
+                        missing = j;
+                    }
+                    else
+                    {
+                        missingCount--;
+                    }
+
+                if (missingCount == 1)
+                {
+                    switch (missing)
+                    {
+                        case 0:
+                            wires[incomplete].Frequencies[1] = true;
+                            wires[incomplete].Frequencies[2] = true;
+                            wires[incomplete].Frequencies[3] = true;
+                            counts[incomplete] = 3;
+                            break;
+                        case 1:
+                            wires[incomplete].Frequencies[0] = true;
+                            wires[incomplete].Frequencies[2] = true;
+                            wires[incomplete].Frequencies[3] = true;
+                            counts[incomplete] = 3;
+                            break;
+                        case 2:
+                            wires[incomplete].Frequencies[1] = true;
+                            wires[incomplete].Frequencies[0] = true;
+                            wires[incomplete].Frequencies[3] = true;
+                            counts[incomplete] = 3;
+                            break;
+                        case 3:
+                            wires[incomplete].Frequencies[1] = true;
+                            wires[incomplete].Frequencies[2] = true;
+                            wires[incomplete].Frequencies[0] = true;
+                            counts[incomplete] = 3;
+                            break;
+                    }
+                }
+            }
 
             
 
@@ -2809,8 +3046,10 @@ namespace KTaNE_Helper
             btnResetSwitches_Click(sender, e);
         }
 
+        [SuppressMessage("ReSharper", "LocalizableElement")]
         private void lbModules_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Text = @"Keep Talking and Nobody Explodes Helper";
             var name = lbModules.SelectedItem.ToString().Trim();
             TabPage page;
             if (!_moduleNameToTab.TryGetValue(name, out page))
@@ -2827,8 +3066,13 @@ namespace KTaNE_Helper
                     page = _moduleNameToTab["About"];
                 }
             }
+            else
+            {
+                Text += EdgeWork.GetRequiredEdgeWork(name);
+            }
             tcTabs.TabPages.Clear();
             tcTabs.TabPages.Add(page);
+            Update();
         }
 
         
@@ -3293,7 +3537,7 @@ namespace KTaNE_Helper
         private void pb3DMaze_Paint(object sender, PaintEventArgs e)
         {
             
-            var maze = _3DMaze.GetMaze(txt3DMazeLetters.Text);
+            var maze = _3Dmaze.GetMaze(txt3DMazeLetters.Text);
             e.Graphics.FillRectangle(new SolidBrush(Color.Black), 0, 0, pb3DMaze.Size.Width, pb3DMaze.Size.Height);
 
             var x = -1;
@@ -3364,7 +3608,7 @@ namespace KTaNE_Helper
                 return;
             }
 
-            var locations = _3DMaze.GetLocationList(txt3DMazeLine.Text, txt3DMazeLetters.Text);
+            var locations = _3Dmaze.GetLocationList(txt3DMazeLine.Text, txt3DMazeLetters.Text);
             if(locations.Count <= 6)
                 foreach (var l in locations)
                 {
@@ -3379,55 +3623,50 @@ namespace KTaNE_Helper
             {
                 for (var j = 0; j < 8; j++)
                 {
-                    var direction = maze[j][i].Split(',');
-                    if (!direction[0].Contains("u"))
-                        e.Graphics.DrawWall(Color.Red, 7f, i, j, "Up");
-                    if (!direction[0].Contains("d"))
-                        e.Graphics.DrawWall(Color.Red, 7f, i, j, "Down");
-                    if (!direction[0].Contains("l"))
-                        e.Graphics.DrawWall(Color.Red, 7f, i, j, "Left");
-                    if (!direction[0].Contains("r"))
-                        e.Graphics.DrawWall(Color.Red, 7f, i, j, "Right");
+                    const string directions = "UDLR";
+                    for(var k = 0; k < 4; k++)
+                        if(!_3Dmaze.IsTravelPossible(maze,i,j,directions.Substring(k,1)))
+                            e.Graphics.DrawWall(Color.Red, 7f, j, i, directions.Substring(k,1));
 
-                    if (direction.Length == 1) continue;
-                    e.Graphics.DrawString(direction[1].ToUpper(),txt3DMazeLetters.Font,Brushes.Red,new Point((i*47)+10,(j*47)+10) );
+                    e.Graphics.DrawString(_3Dmaze.MazeLetterAtLocation(maze,j,i).ToUpper(),
+                        txt3DMazeLetters.Font,Brushes.Red,new Point((i*47)+10,(j*47)+10) );
                 }
             }
 
             if (x < 0 || y < 0) return;
             if (txt3DMazeCardinal.Text.Length != 1) return;
 
-            if (!"NEWS".Contains(txt3DMazeCardinal.Text.ToUpper())) return;
+            if (!"NEWSnews".Contains(txt3DMazeCardinal.Text)) return;
 
             var wallhit = false;
             while (!wallhit)
             {
-                var direction = maze[y][x].Split(',')[0];
-                switch (txt3DMazeCardinal.Text.ToUpper())
+                wallhit = !_3Dmaze.IsTravelPossible(maze, y, x, txt3DMazeCardinal.Text);
+                switch (txt3DMazeCardinal.Text)
                 {
                     case "N":
-                        wallhit = !direction.Contains("u");
+                    case "n":
                         if (wallhit) e.Graphics.DrawWall(Color.Green, 7f, x, y, "North");
                         y--;
                         if (y < 0) y = 7;
                         if (wallhit) e.Graphics.DrawWall(Color.Green, 7f, x, y, "South");
                         break;
                     case "S":
-                        wallhit = !direction.Contains("d");
+                    case "s":
                         if (wallhit) e.Graphics.DrawWall(Color.Green, 7f, x, y, "South");
                         y++;
                         y %= 8;
                         if (wallhit) e.Graphics.DrawWall(Color.Green, 7f, x, y, "North");
                         break;
                     case "E":
-                        wallhit = !direction.Contains("r");
+                    case "e":
                         if (wallhit) e.Graphics.DrawWall(Color.Green, 7f, x, y, "East");
                         x++;
                         x %= 8;
                         if (wallhit) e.Graphics.DrawWall(Color.Green, 7f, x, y, "West");
                         break;
                     case "W":
-                        wallhit = !direction.Contains("l");
+                    case "w":
                         if (wallhit) e.Graphics.DrawWall(Color.Green, 7f, x, y, "West");
                         x--;
                         if (x < 0) x = 7;
@@ -3437,16 +3676,17 @@ namespace KTaNE_Helper
             }
         }
 
+        private readonly _3DMaze _3Dmaze = new _3DMaze();
         private void txt3DMazeLetters_TextChanged(object sender, EventArgs e)
         {
             Refresh();
-            txt3DMazeOut.Text = _3DMaze.FindLocation(txt3DMazeLine.Text, txt3DMazeLetters.Text);
+            txt3DMazeOut.Text = _3Dmaze.FindLocation(txt3DMazeLine.Text, txt3DMazeLetters.Text);
         }
 
         private void txt3DMazeLine_TextChanged(object sender, EventArgs e)
         {
             Refresh();
-            txt3DMazeOut.Text = _3DMaze.FindLocation(txt3DMazeLine.Text, txt3DMazeLetters.Text);
+            txt3DMazeOut.Text = _3Dmaze.FindLocation(txt3DMazeLine.Text, txt3DMazeLetters.Text);
         }
     }
 
