@@ -2582,27 +2582,11 @@ namespace KTaNE_Helper
             };
             
             txtProbingOut.Text = @"""I still maintain ""reading order"" on probing is some BS"" - LtHummus (Sept 16, 2016)";
-            /*var textBoxes = new[]
-            {
-                txtProbing12.Text, txtProbing34.Text, txtProbing56.Text,
-                txtProbing14.Text, txtProbing25.Text, txtProbing36.Text,
-                txtProbing13.Text, txtProbing24.Text, txtProbing35.Text,
-                txtProbing46.Text, txtProbing15.Text, txtProbing26.Text,
-                txtProbing16.Text, txtProbing23.Text, txtProbing45.Text
-            };*/
             var textBoxes = new[]
             {
                 txtProbing12.Text, txtProbing34.Text, txtProbing56.Text,
                 txtProbing14.Text, txtProbing25.Text
             };
-            /*var pairs = new[]
-            {
-                new[] {0, 1}, new[] {2, 3}, new[] {4, 5},
-                new[] {0, 3}, new[] {1, 4}, new[] {2, 5},
-                new[] {0, 2}, new[] {1, 3}, new[] {2, 4},
-                new[] {3, 5}, new[] {0, 4}, new[] {1, 5},
-                new[] {0, 5}, new[] {1, 2}, new[] {3, 4}
-            };*/
             var pairs = new[]
             {
                 new[] {0, 1}, new[] {0, 2}, new[] {0,3},
@@ -2614,8 +2598,7 @@ namespace KTaNE_Helper
                 if (textBoxes[i].Trim().Length != 5) continue;
                 if (txtContainsFrequencies(textBoxes[i])[4])
                 {
-                    wires[pairs[i][0]].PairsWith.Add(pairs[i][1]);
-                    wires[pairs[i][1]].PairsWith.Add(pairs[i][0]);
+                    wires[pairs[i][1]].Even = true;
                     continue;
                 }
                 for (var j = i+1; j < 5; j++)
@@ -2625,125 +2608,48 @@ namespace KTaNE_Helper
                     if (cn == -1) continue;
                     var missing = ProbingCommonFrequency(textBoxes[i], textBoxes[j]);
                     if (missing == -1) continue;
-                    switch (missing)
-                    {
-                        case 1:
-                            wires[cn].Frequencies[1] = true;
-                            wires[cn].Frequencies[2] = true;
-                            wires[cn].Frequencies[3] = true;
-                            break;
-                        case 2:
-                            wires[cn].Frequencies[0] = true;
-                            wires[cn].Frequencies[2] = true;
-                            wires[cn].Frequencies[3] = true;
-                            break;
-                        case 5:
-                            wires[cn].Frequencies[1] = true;
-                            wires[cn].Frequencies[0] = true;
-                            wires[cn].Frequencies[3] = true;
-                            break;
-                        case 6:
-                            wires[cn].Frequencies[1] = true;
-                            wires[cn].Frequencies[2] = true;
-                            wires[cn].Frequencies[0] = true;
-                            break;
-
-                    }
+                    wires[cn].Missing = missing;
 
                     cn = CommonNumber(pairs[i], pairs[j], true);
                     missing = ProbingCommonFrequency(textBoxes[i], textBoxes[j], true);
-                    switch (missing)
-                    {
-                        case 1:
-                            wires[cn].Frequencies[1] = true;
-                            wires[cn].Frequencies[2] = true;
-                            wires[cn].Frequencies[3] = true;
-                            break;
-                        case 2:
-                            wires[cn].Frequencies[0] = true;
-                            wires[cn].Frequencies[2] = true;
-                            wires[cn].Frequencies[3] = true;
-                            break;
-                        case 5:
-                            wires[cn].Frequencies[1] = true;
-                            wires[cn].Frequencies[0] = true;
-                            wires[cn].Frequencies[3] = true;
-                            break;
-                        case 6:
-                            wires[cn].Frequencies[1] = true;
-                            wires[cn].Frequencies[2] = true;
-                            wires[cn].Frequencies[0] = true;
-                            break;
-
-                    }
+                    wires[cn].Missing = missing;
 
                     cn = CommonNumber(pairs[j], pairs[i], true);
                     missing = ProbingCommonFrequency(textBoxes[j], textBoxes[i], true);
-                    switch (missing)
-                    {
-                        case 1:
-                            wires[cn].Frequencies[1] = true;
-                            wires[cn].Frequencies[2] = true;
-                            wires[cn].Frequencies[3] = true;
-                            break;
-                        case 2:
-                            wires[cn].Frequencies[0] = true;
-                            wires[cn].Frequencies[2] = true;
-                            wires[cn].Frequencies[3] = true;
-                            break;
-                        case 5:
-                            wires[cn].Frequencies[1] = true;
-                            wires[cn].Frequencies[0] = true;
-                            wires[cn].Frequencies[3] = true;
-                            break;
-                        case 6:
-                            wires[cn].Frequencies[1] = true;
-                            wires[cn].Frequencies[2] = true;
-                            wires[cn].Frequencies[0] = true;
-                            break;
-
-                    }
+                    wires[cn].Missing = missing;
                 }
-                /*
-                var wire = txtContainsFrequencies(textBoxes[i]);
-                for (var j = 0; j < 4; j++)
-                {
-                    wires[pairs[i][0]].Frequencies[j] |= wire[j];
-                    wires[pairs[i][1]].Frequencies[j] |= wire[j];
-                }
-                if (!wire[4]) continue;
-                wires[pairs[i][0]].PairsWith.Add(pairs[i][1]);
-                wires[pairs[i][1]].PairsWith.Add(pairs[i][0]); */
             }
 
-            for (var i = 0; i < 6; i++)
+            for (var i = 1; i < 6; i++)
             {
-                foreach (var pair in wires[i].PairsWith)
-                {
-                    for (var j = 0; j < 4; j++)
-                        wires[pair].Frequencies[j] |= wires[i].Frequencies[j];
-                }
+                if (wires[i].Even)
+                    wires[i].Missing = wires[0].Missing;
             }
-
-            var counts = new int[6];
-            for (var i = 0; i < 6; i++)
-                for (var j = 0; j < 4; j++)
-                    if (wires[i].Frequencies[j]) counts[i]++;
 
             var missingFreqs = new bool[4];
             var wiresComplete = 0;
             var incomplete = -1;
             for (var i = 0; i < 6; i++)
             {
-                if (counts[i] != 3)
-                {
-                    incomplete = i;
-                    continue;
-                }
                 wiresComplete++;
-                for (var j = 0; j < 4; j++)
+                switch (wires[i].Missing)
                 {
-                    missingFreqs[j] |= !wires[i].Frequencies[j];
+                    case -1:
+                        wiresComplete--;
+                        incomplete = i;
+                        break;
+                    case 1:
+                        missingFreqs[0] = true;
+                        break;
+                    case 2:
+                        missingFreqs[1] = true;
+                        break;
+                    case 5:
+                        missingFreqs[2] = true;
+                        break;
+                    case 6:
+                        missingFreqs[3] = true;
+                        break;
                 }
             }
             if (wiresComplete == 5)
@@ -2765,28 +2671,16 @@ namespace KTaNE_Helper
                     switch (missing)
                     {
                         case 0:
-                            wires[incomplete].Frequencies[1] = true;
-                            wires[incomplete].Frequencies[2] = true;
-                            wires[incomplete].Frequencies[3] = true;
-                            counts[incomplete] = 3;
+                            wires[incomplete].Missing = 1;
                             break;
                         case 1:
-                            wires[incomplete].Frequencies[0] = true;
-                            wires[incomplete].Frequencies[2] = true;
-                            wires[incomplete].Frequencies[3] = true;
-                            counts[incomplete] = 3;
+                            wires[incomplete].Missing = 2;
                             break;
                         case 2:
-                            wires[incomplete].Frequencies[1] = true;
-                            wires[incomplete].Frequencies[0] = true;
-                            wires[incomplete].Frequencies[3] = true;
-                            counts[incomplete] = 3;
+                            wires[incomplete].Missing = 5;
                             break;
                         case 3:
-                            wires[incomplete].Frequencies[1] = true;
-                            wires[incomplete].Frequencies[2] = true;
-                            wires[incomplete].Frequencies[0] = true;
-                            counts[incomplete] = 3;
+                            wires[incomplete].Missing = 6;
                             break;
                     }
                 }
@@ -2794,45 +2688,40 @@ namespace KTaNE_Helper
 
             
 
-            if (counts[0] == 3 && counts[4] == 3)
+            if (wires[0].Missing != -1 && wires[4].Missing != -1)
             {
                 //We might have a solution to this probing.
                 //Check for Red soltution
                 var red = -1;
                 var blue = -1;
-                if (wires[0].Frequencies[2])
+                if (wires[0].Missing == 5)
                 {
                     for (var i = 0; i < 6; i++)
                     {
-                        if (counts[i] != 3 || wires[i].Frequencies[2]) continue;
+                        if (wires[i].Missing != 5) continue;
                         red = i;
                         break;
                     }
                 }
-                else if (!wires[4].Frequencies[0])
+                else if (wires[4].Missing == 1)
                 {
-                    for (var i = 0; i < 6; i++)
-                    {
-                        if (counts[i] != 3 || wires[i].Frequencies[0]) continue;
-                        red = i;
-                        break;
-                    }
+                    red = 4;
                 }
                 else
                 {
                     for (var i = 0; i < 6; i++)
                     {
-                        if (counts[i] != 3 || wires[i].Frequencies[3]) continue;
+                        if (wires[i].Missing != 6) continue;
                         red = i;
                         break;
                     }
                 }
 
-                if (wires[4].Frequencies[0])
+                if (wires[4].Missing != 1)
                 {
                     for (var i = 0; i < 6; i++)
                     {
-                        if (red == i || counts[i] != 3 || wires[i].Frequencies[1]) continue;
+                        if (red == i || wires[i].Missing != 2) continue;
                         blue = i;
                         break;
                     }
@@ -2841,7 +2730,7 @@ namespace KTaNE_Helper
                 {
                     for (var i = 0; i < 6; i++)
                     {
-                        if (red == i || counts[i] != 3 || wires[i].Frequencies[3]) continue;
+                        if (red == i || wires[i].Missing != 6) continue;
                         blue = i;
                         break;
                     }
@@ -2849,7 +2738,8 @@ namespace KTaNE_Helper
 
                 if (red != -1 && blue != -1)
                 {
-                    txtProbingOut.Text = @"Connect Red on " + (red + 1) + @" and Blue on " + (blue + 1);
+                    txtProbingOut.Text = @"Connect Red on " + (red + 1) + @" and Blue on " + (blue + 1) + 
+                        @".  (Connect " + (red + 1) + @" to " + (blue + 1);
                     return;
                 }
             }
@@ -2857,18 +2747,11 @@ namespace KTaNE_Helper
             var text = txtProbingOut.Text;
             for (var i = 0; i < 6; i++)
             {
-                var freqtxt = new[] {"10", "22", "50", "60"};
+                var freqtxt = new[] {"10", "22","","", "50", "60"};
                 var count = 0;
-                if (counts[i] == 0) continue;
+                if (wires[i].Missing == -1) continue;
                 if (text == txtProbingOut.Text) txtProbingOut.Text = "";
-                txtProbingOut.Text += (i+1) + @" = ";
-                for (var j = 0; j < 4; j++)
-                {
-                    if (!wires[i].Frequencies[j]) continue;
-                    if (count++ > 0) txtProbingOut.Text += @",";
-                    txtProbingOut.Text += freqtxt[j];
-                }
-                txtProbingOut.Text += @"  ";
+                txtProbingOut.Text += (i + 1) + @" = " + freqtxt[wires[i].Missing-1] + @", ";
             }
 
         }
@@ -3682,7 +3565,7 @@ namespace KTaNE_Helper
 
     public class ProbingSet
     {
-        public bool[] Frequencies = new bool[4];
-        public List<int> PairsWith = new List<int>();
+        public int Missing = -1;
+        public bool Even;
     }
 }
