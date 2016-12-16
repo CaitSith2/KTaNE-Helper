@@ -3133,19 +3133,9 @@ namespace KTaNE_Helper
         private void btnResetProbing_Click(object sender, EventArgs e)
         {
             txtProbing12.Text = "";
-            txtProbing13.Text = "";
             txtProbing14.Text = "";
-            txtProbing15.Text = "";
-            txtProbing16.Text = "";
-            txtProbing23.Text = "";
-            txtProbing24.Text = "";
             txtProbing25.Text = "";
-            txtProbing26.Text = "";
             txtProbing34.Text = "";
-            txtProbing35.Text = "";
-            txtProbing36.Text = "";
-            txtProbing45.Text = "";
-            txtProbing46.Text = "";
             txtProbing56.Text = "";
         }
 
