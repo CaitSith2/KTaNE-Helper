@@ -2510,45 +2510,45 @@ namespace KTaNE_Helper
             return frequencies;
         }
 
-        private int ProbingCommonFrequency(string pair1, string pair2, bool opposite=false)
+        private ProbingFrequencies ProbingCommonFrequency(string pair1, string pair2, bool opposite=false)
         {
-            if (IsNullOrWhiteSpace(pair1) || IsNullOrWhiteSpace(pair2)) return -1;
-            if (pair1 == pair2) return -1;
+            if (IsNullOrWhiteSpace(pair1) || IsNullOrWhiteSpace(pair2)) return ProbingFrequencies.Unknown;
+            if (pair1 == pair2) return ProbingFrequencies.Unknown;
             if (!opposite)
             {
-                if (pair1.Contains("10") && pair2.Contains("10")) return 1;
-                if (pair1.Contains("22") && pair2.Contains("22")) return 2;
-                if (pair1.Contains("50") && pair2.Contains("50")) return 5;
-                if (pair1.Contains("60") && pair2.Contains("60")) return 6;
+                if (pair1.Contains("10") && pair2.Contains("10")) return ProbingFrequencies.TenHz;
+                if (pair1.Contains("22") && pair2.Contains("22")) return ProbingFrequencies.TwentyTwoHz;
+                if (pair1.Contains("50") && pair2.Contains("50")) return ProbingFrequencies.FiftyHz;
+                if (pair1.Contains("60") && pair2.Contains("60")) return ProbingFrequencies.SixtyHz;
             }
             else
             {
                 if (pair1.Contains("10") && pair2.Contains("10"))
                 {
-                    if (pair1.Contains("22")) return 2;
-                    if (pair1.Contains("50")) return 5;
-                    return 6;
+                    if (pair1.Contains("22")) return ProbingFrequencies.TwentyTwoHz;
+                    if (pair1.Contains("50")) return ProbingFrequencies.FiftyHz;
+                    return ProbingFrequencies.SixtyHz;
                 }
                 if (pair1.Contains("22") && pair2.Contains("22"))
                 {
-                    if (pair1.Contains("10")) return 1;
-                    if (pair1.Contains("50")) return 5;
-                    return 6;
+                    if (pair1.Contains("10")) return ProbingFrequencies.TenHz;
+                    if (pair1.Contains("50")) return ProbingFrequencies.FiftyHz;
+                    return ProbingFrequencies.SixtyHz;
                 }
                 if (pair1.Contains("50") && pair2.Contains("50"))
                 {
-                    if (pair1.Contains("22")) return 2;
-                    if (pair1.Contains("10")) return 1;
-                    return 6;
+                    if (pair1.Contains("22")) return ProbingFrequencies.TwentyTwoHz;
+                    if (pair1.Contains("10")) return ProbingFrequencies.TenHz;
+                    return ProbingFrequencies.SixtyHz;
                 }
                 if (pair1.Contains("60") && pair2.Contains("60"))
                 {
-                    if (pair1.Contains("22")) return 2;
-                    if (pair1.Contains("50")) return 5;
-                    return 1;
+                    if (pair1.Contains("22")) return ProbingFrequencies.TwentyTwoHz;
+                    if (pair1.Contains("50")) return ProbingFrequencies.FiftyHz;
+                    return ProbingFrequencies.TenHz;
                 }
             }
-            return -1;
+            return ProbingFrequencies.Unknown;
         }
 
         private int CommonNumber(int[] pair1, int[] pair2, bool opposite=false)
@@ -2603,11 +2603,15 @@ namespace KTaNE_Helper
                 }
                 for (var j = i+1; j < 5; j++)
                 {
+                    if (txtContainsFrequencies(textBoxes[j])[4])
+                    {
+                        wires[pairs[j][1]].Even = true;
+                        continue;
+                    }
                     if (textBoxes[j].Trim().Length != 5) continue;
                     var cn = CommonNumber(pairs[i], pairs[j]);
-                    if (cn == -1) continue;
                     var missing = ProbingCommonFrequency(textBoxes[i], textBoxes[j]);
-                    if (missing == -1) continue;
+                    if (missing == ProbingFrequencies.Unknown) continue;
                     wires[cn].Missing = missing;
 
                     cn = CommonNumber(pairs[i], pairs[j], true);
@@ -2618,6 +2622,7 @@ namespace KTaNE_Helper
                     missing = ProbingCommonFrequency(textBoxes[j], textBoxes[i], true);
                     wires[cn].Missing = missing;
                 }
+                break;
             }
 
             for (var i = 1; i < 6; i++)
@@ -2634,20 +2639,20 @@ namespace KTaNE_Helper
                 wiresComplete++;
                 switch (wires[i].Missing)
                 {
-                    case -1:
+                    case ProbingFrequencies.Unknown:
                         wiresComplete--;
                         incomplete = i;
                         break;
-                    case 1:
+                    case ProbingFrequencies.TenHz:
                         missingFreqs[0] = true;
                         break;
-                    case 2:
+                    case ProbingFrequencies.TwentyTwoHz:
                         missingFreqs[1] = true;
                         break;
-                    case 5:
+                    case ProbingFrequencies.FiftyHz:
                         missingFreqs[2] = true;
                         break;
-                    case 6:
+                    case ProbingFrequencies.SixtyHz:
                         missingFreqs[3] = true;
                         break;
                 }
@@ -2666,44 +2671,27 @@ namespace KTaNE_Helper
                         missingCount--;
                     }
 
-                if (missingCount == 1)
-                {
-                    switch (missing)
-                    {
-                        case 0:
-                            wires[incomplete].Missing = 1;
-                            break;
-                        case 1:
-                            wires[incomplete].Missing = 2;
-                            break;
-                        case 2:
-                            wires[incomplete].Missing = 5;
-                            break;
-                        case 3:
-                            wires[incomplete].Missing = 6;
-                            break;
-                    }
-                }
+                wires[incomplete].Missing = (ProbingFrequencies) missing;
             }
 
             
 
-            if (wires[0].Missing != -1 && wires[4].Missing != -1)
+            if (wires[0].Missing != ProbingFrequencies.Unknown && wires[4].Missing != ProbingFrequencies.Unknown)
             {
                 //We might have a solution to this probing.
                 //Check for Red soltution
                 var red = -1;
                 var blue = -1;
-                if (wires[0].Missing == 5)
+                if (wires[0].Missing == ProbingFrequencies.FiftyHz)
                 {
                     for (var i = 0; i < 6; i++)
                     {
-                        if (wires[i].Missing != 5) continue;
+                        if (wires[i].Missing != ProbingFrequencies.FiftyHz) continue;
                         red = i;
                         break;
                     }
                 }
-                else if (wires[4].Missing == 1)
+                else if (wires[4].Missing == ProbingFrequencies.TenHz)
                 {
                     red = 4;
                 }
@@ -2711,17 +2699,17 @@ namespace KTaNE_Helper
                 {
                     for (var i = 0; i < 6; i++)
                     {
-                        if (wires[i].Missing != 6) continue;
+                        if (wires[i].Missing != ProbingFrequencies.SixtyHz) continue;
                         red = i;
                         break;
                     }
                 }
 
-                if (wires[4].Missing != 1)
+                if (wires[4].Missing != ProbingFrequencies.TenHz)
                 {
                     for (var i = 0; i < 6; i++)
                     {
-                        if (red == i || wires[i].Missing != 2) continue;
+                        if (red == i || wires[i].Missing != ProbingFrequencies.TwentyTwoHz) continue;
                         blue = i;
                         break;
                     }
@@ -2730,7 +2718,7 @@ namespace KTaNE_Helper
                 {
                     for (var i = 0; i < 6; i++)
                     {
-                        if (red == i || wires[i].Missing != 6) continue;
+                        if (red == i || wires[i].Missing != ProbingFrequencies.SixtyHz) continue;
                         blue = i;
                         break;
                     }
@@ -2738,8 +2726,7 @@ namespace KTaNE_Helper
 
                 if (red != -1 && blue != -1)
                 {
-                    txtProbingOut.Text = @"Connect Red on " + (red + 1) + @" and Blue on " + (blue + 1) + 
-                        @".  (Connect " + (red + 1) + @" to " + (blue + 1);
+                    txtProbingOut.Text = @"Connect Red on " + (red + 1) + @" and Blue on " + (blue + 1);
                     return;
                 }
             }
@@ -2747,11 +2734,10 @@ namespace KTaNE_Helper
             var text = txtProbingOut.Text;
             for (var i = 0; i < 6; i++)
             {
-                var freqtxt = new[] {"10", "22","","", "50", "60"};
-                var count = 0;
-                if (wires[i].Missing == -1) continue;
+                var freqtxt = new[] {"10", "22","50", "60"};
+                if (wires[i].Missing == ProbingFrequencies.Unknown) continue;
                 if (text == txtProbingOut.Text) txtProbingOut.Text = "";
-                txtProbingOut.Text += (i + 1) + @" = " + freqtxt[wires[i].Missing-1] + @", ";
+                txtProbingOut.Text += (i + 1) + @" = " + freqtxt[(int)wires[i].Missing] + @", ";
             }
 
         }
@@ -3563,9 +3549,18 @@ namespace KTaNE_Helper
         }
     }
 
+    public enum ProbingFrequencies
+    {
+        Unknown = -1,
+        TenHz,
+        TwentyTwoHz,
+        FiftyHz,
+        SixtyHz
+    }
+
     public class ProbingSet
     {
-        public int Missing = -1;
+        public ProbingFrequencies Missing = ProbingFrequencies.Unknown;
         public bool Even;
     }
 }
