@@ -1,16 +1,20 @@
 ﻿using System;
-using System.CodeDom;
 using System.Diagnostics;
 using System.Collections.Generic;
-using System.Data.SqlTypes;
 using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
+using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using Assets.Scripts.Rules;
+using KTaNE_Helper.Helpers;
+using KTaNE_Helper.Modules;
 using static System.String;
+using static KTaNE_Helper.Indicators;
+using static KTaNE_Helper.PortPlate;
+using static KTaNE_Helper.SerialNumber;
 
 namespace KTaNE_Helper
 {
@@ -53,47 +57,6 @@ namespace KTaNE_Helper
         private int _mazeStartXY = 77;
         private int _mazeEndXY = 77;
 
-        private readonly string[] _whosOnFirstStepOneWords =
-        {
-            string.Empty, "BLANK", "C", "CEE", "DISPLAY", "FIRST", "HOLD ON", "LEAD", "LED", "LEED", "NO", "NOTHING","OKAY", "READ",
-            "RED", "REED", "SAYS", "SEE", "THEIR", "THERE", "THEY ARE", "THEY'RE", "UR", "YES", "YOU", "YOU ARE", "YOUR","YOU'RE"
-        };
-
-        private readonly int[] _whosOnFirstStepOneIndex241 =
-        {
-            2,4,3,5,5,3,5,5,1,2,5,1,3,4,4,2,5,5,4,5,1,2,0,1,4,5,4,4
-        };
-
-        private readonly int[] _whosOnFirstStapOneIndex724 =
-        {
-            2,4,2,3,5,0,0,2,5,0,5,0,1,4,3,5,2,2,2,0,2,5,5,2,1,3,1,4
-        };
-
-
-        private readonly string[,] _whosOnFirstStepTwoWords =
-        {
-            {"BLANK","FIRST","LEFT","MIDDLE","NO","NOTHING","OKAY","PRESS","READY","RIGHT","UHHH","WAIT","WHAT","YES"},
-            {"DONE","HOLD","LIKE","NEXT","SURE","U","UH HUH","UH UH","UR","WHAT?","YOU","YOU ARE","YOUR","YOU'RE"}
-        };
-
-        private readonly int[] _whosOnFirstStepTwoWordIndex =
-        {
-            0 + 0, 14 + 0, 0 + 1, 14 + 1, 0 + 2, 14 + 2, 0 + 3, 14 + 3, 0 + 4, 0 + 5, 0 + 6, 0 + 7, 0 + 8, 0 + 9, 14 + 4,
-            14 + 5, 14 + 6, 14 + 7, 0 + 10, 14 + 8, 0 + 11, 0 + 12, 14 + 9, 0 + 13, 14 + 10, 14 + 11, 14 + 12, 14 + 13
-        };
-
-        private readonly int[,,] _whosOnFirstStepTwoIndex241 =
-        {
-            {{11,9,6,3,0,7,8,5,4,12,2,10,13,1},{2,6,13,3,4,9,5,10,11,8,0,12,7,1},{9,2,1,4,3,13,0,12,10,11,7,8,6,5},{0,8,6,12,5,7,4,11,2,3,9,1,10,13},{0,10,11,1,12,8,9,13,5,2,7,6,4,3},{10,9,6,3,13,0,5,7,2,12,11,1,4,8},{3,4,1,13,10,5,11,6,2,8,0,7,12,9},{9,3,13,8,7,6,5,10,0,2,1,12,4,11},{13,6,12,3,2,7,9,0,8,4,1,10,5,11},{13,5,8,7,4,11,12,9,3,2,10,0,6,1},{8,5,2,12,6,13,9,4,7,0,10,3,11,1},{10,4,0,6,13,2,1,7,12,11,5,8,9,3},{10,12,2,5,8,0,3,4,6,1,11,13,7,9},{6,9,10,3,1,12,7,8,5,13,2,0,4,11}},
-            {{4,6,3,9,12,8,13,1,2,10,5,11,7,0},{11,5,0,7,10,8,4,9,13,3,1,6,12,2},{13,3,5,8,1,0,7,9,6,13,2,4,11,12},{9,6,7,12,1,4,3,2,0,11,8,13,5,10},{11,0,2,13,10,1,6,8,4,5,9,3,12,7},{6,4,3,9,13,8,7,0,5,10,2,1,11,12},{6,12,11,10,0,1,7,3,4,2,13,8,5,9},{8,5,11,13,3,7,0,10,6,2,12,4,1,9},{0,5,8,6,9,4,12,1,13,2,3,7,11,10},{10,1,13,12,5,0,7,2,11,6,8,3,9,4},{4,11,12,13,3,6,8,1,9,10,7,2,0,5},{12,3,2,6,9,0,7,1,10,5,13,4,8,11},{7,11,6,12,3,8,4,5,13,10,9,1,2,0},{10,13,8,3,7,11,5,12,9,6,4,0,2,1}}
-        };
-
-        private readonly int[,,] _whosOnFirstStepTwoIndex724 =
-        {
-            {{7,6,8,0,11,10,12,2,9,4,3,13,1,5},{5,9,10,4,0,12,8,3,11,7,2,6,1,13},{2,7,11,10,5,3,4,1,6,12,13,8,9,0},{10,5,1,2,12,13,8,9,4,3,11,0,7,6},{7,11,3,13,4,5,12,0,9,8,1,6,10,2},{11,6,13,8,12,2,9,0,7,5,1,4,10,3},{9,6,1,11,2,8,7,3,12,5,0,13,10,4},{9,5,7,0,2,1,6,3,13,12,11,4,10,8},{1,13,6,10,2,0,5,9,12,3,7,8,11,4},{0,4,2,5,1,13,9,7,6,10,3,11,8,12},{2,13,8,3,9,12,1,7,4,6,11,10,0,5},{1,12,6,2,0,11,10,5,8,4,3,13,7,9},{2,0,11,7,9,3,1,6,4,8,13,10,12,5},{11,13,12,10,8,6,3,7,9,2,1,4,5,0}},
-            {{8,3,5,11,13,4,6,12,2,0,10,9,7,1},{7,11,10,4,8,0,6,1,2,13,12,3,5,9},{12,5,7,8,9,11,10,3,6,13,0,2,4,1},{2,3,6,8,11,13,7,4,5,1,0,12,10,9},{10,6,9,7,5,0,12,4,3,1,2,13,11,8},{9,13,8,11,3,7,6,5,10,0,12,1,2,4},{6,9,7,0,13,1,5,8,3,11,2,10,12,4},{10,11,2,12,8,5,0,4,3,6,7,1,9,13},{0,5,10,6,9,12,7,4,8,2,1,3,13,11},{5,0,4,12,3,11,13,1,2,6,9,7,8,10},{2,10,6,3,13,9,8,7,5,4,0,11,12,1},{11,13,8,12,0,4,7,9,10,1,5,2,3,6},{6,11,5,3,13,12,8,4,1,7,10,2,9,0},{8,12,9,10,7,1,4,6,11,5,2,0,13,3}}
-        };
-
         private int _whosOnFirstLookIndex = 6;
 
 
@@ -132,11 +95,39 @@ namespace KTaNE_Helper
             ws_input.Text = "";
         }
 
-        
+        private int GetModuleCount
+        {
+            get
+            {
+                int x;
+                return int.TryParse(txtModuleCount.Text, out x) ? x : 0;
+            }
+        }
+
+        private int GetBombTime
+        {
+            get
+            {
+                var split = txtBombTime.Text.Split(':');
+                int minutes;
+                var seconds=0;
+                int.TryParse(split[1], out seconds);
+                seconds /= 30;
+                seconds *= 30;
+                if (int.TryParse(split[0], out minutes))
+                    seconds += minutes * 60;
+                return seconds;
+            }
+        }
+
+        private int GetBombMinutes
+        {
+            get { return GetBombTime / 60; }
+        }
 
         private void Complicated_Wires_Event(object sender, EventArgs e)
         {
-            var batts = (int)nudBatteriesAA.Value + (int)nudBatteriesD.Value;
+            var batts = Batteries.TotalBatteries;
             cw_input.Text = cw_input.Text.ToUpper();
             cw_input.SelectionStart = cw_input.Text.Length;
 
@@ -182,7 +173,7 @@ namespace KTaNE_Helper
                             //Cut if 2 or more Batteries
                             break;
                         case 4:
-                            outputStr += (nudPortParallel.Value > 0 ? "Cut" : "Leave");
+                            outputStr += (IsPortPresent(PortTypes.Parallel) ? "Cut" : "Leave");
                             typestr += @"P";
                             //Cut if parallel port
                             break;
@@ -224,7 +215,7 @@ namespace KTaNE_Helper
         {
             var color = button_color.SelectedIndex;
             var name = button_name.SelectedIndex;
-            var batts = (int) (nudBatteriesAA.Value + nudBatteriesD.Value);
+            var batts = Batteries.TotalBatteries;
 
             if (_manualVersion == 0)
             {
@@ -243,15 +234,15 @@ namespace KTaNE_Helper
 
                 if ((color == 0) && (name == 0)) button_label.Text = @"Hold the Button";
                 else if ((name == 1) && (batts > 1)) button_label.Text = @"Press and Release";
-                else if ((color == 1) && nudLitCAR.Value > 0) button_label.Text = @"Hold the Button";
-                else if ((batts > 2) && nudLitFRK.Value > 0) button_label.Text = @"Press and Release";
+                else if ((color == 1) && IsIndicatorLit("CAR")) button_label.Text = @"Hold the Button";
+                else if ((batts > 2) && IsIndicatorLit("FRK")) button_label.Text = @"Press and Release";
                 else if (color == 2) button_label.Text = @"Hold the Button";
                 else if ((color == 3) && (name == 3)) button_label.Text = @"Press and Release";
                 else button_label.Text = @"Hold the Button";
             }
             else
             {
-                if ((color == 1) && nudLitCAR.Value > 0) button_label.Text = @"Press and Release";
+                if ((color == 1) && IsIndicatorLit("CAR")) button_label.Text = @"Press and Release";
                 else if ((color == 3) && (batts < 2)) button_label.Text = @"Press and Release";
                 else button_label.Text = @"Hold the Button";
             }
@@ -268,33 +259,21 @@ namespace KTaNE_Helper
                 yellowstrip.Text = @"Yellow - 5";
                 whitestrip.Text = @"Other - 1";
                 otherstrip.Text = @"";
+                nudVanillaSeed.Value = 1;
             }
             else
             {
+                
                 linkLabel1.Text = @"http://www.lthummus.com/";
                 button_name.Visible = false;
                 bluestrip.Text = @" Red - 5";
                 yellowstrip.Text = @"Yellow - 3";
                 whitestrip.Text = @"White - 3";
                 otherstrip.Text = @"Other - 4";
+                nudVanillaSeed.Value = 2;
             }
 
-            _initLettersNotPresent = false;
-            keypadReset_Click(sender, e);
-            Needy_Knob_CheckedChanged(sender, e);
-            Simon_Says_Event();
-            Button_Event(sender, e);
-            Complicated_Wires_Event(sender, e);
-            wsReset_Click(sender, e);
-            simpleWires_Event(sender, e);
-            Password_TextChanged(sender, e);
-            MemoryReset_Click(sender, e);
-            MorseCodeInput_TextChanged(sender, e);
-            mazeSelection_TextChanged(sender, e);
-            wofStep1.Checked = true;
-            wofStep1_CheckedChanged(sender, e);
-            Refresh();
-
+            
         }
 
         private readonly Dictionary<string, TabPage> _moduleNameToTab = new Dictionary<string, TabPage>();
@@ -377,158 +356,12 @@ namespace KTaNE_Helper
 
         private void wireReset_Click(object sender, EventArgs e)
         {
-            for (var i = 0; i < 6; i++)
-                ((ComboBox) fpWires.Controls[i]).SelectedIndex = 0;
             wires_input.Text = "";
         }
 
         private void simpleWires_Event(object sender, EventArgs e)
         {
-          //  facts_serial_last_digit.SelectedIndex = (wires_serial_odd.Checked ? 0 : 1);
-          //  facts_serial_starts_with_letter.Checked = wires_serial_letter.Checked;
-            var conditions = "";
-            string result;
-            var wires = new int[6];
-            for (var i = 0; i < 6; i++)
-                wires[i] = ((ComboBox) fpWires.Controls[i]).SelectedIndex;
-
-            var wirecounts = new int[6];
-            for (var i = 0; i < 6; i++)
-                if (wires[i] >= 0)
-                    wirecounts[wires[i]]++;
-                else
-                    wirecounts[Wires.None]++;
-
-            var count = 6 - wirecounts[Wires.None];
-
-            if (count < 3) return;
-            if (count < 6)
-            {
-                for (var i = 0; i < 6; i++)
-                {
-                    if (wires[i] != Wires.None) continue;
-                    for (var j = i; j < 5; j++)
-                    {
-                        wires[j] = wires[j + 1];
-                    }
-                    wires[5] = Wires.None;
-                }
-            }
-            if (_manualVersion == 0)
-            {
-                if (count == 3)
-                {
-                    if (wirecounts[Wires.Red] == 0)
-                        result = @"Cut Second Wire";
-                    else if (wires[2] == Wires.White)
-                        result = @"Cut Last Wire";
-                    else if (wirecounts[Wires.Blue] > 1)
-                        result = @"Cut Last Blue Wire";
-                    else
-                        result = @"Cut Last Wire";
-                }
-                else if (count == 4)
-                {
-                    if (wirecounts[Wires.Red] > 1)
-                        conditions = @"Is last digit of Serial Odd?";
-                    if ((wirecounts[Wires.Red] > 1) && SerialNumberLastDigitOdd())
-                        result = @"Cut Last Red Wire";
-                    else if ((wires[3] == Wires.Yellow) && (wirecounts[Wires.Red] == 0))
-                        result = @"Cut First Wire";
-                    else if (wirecounts[Wires.Blue] == 1)
-                        result = @"Cut First Wire";
-                    else if (wirecounts[Wires.Yellow] > 1)
-                        result = @"Cut Last Wire";
-                    else
-                        result = @"Cut Second Wire";
-                }
-                else if (count == 5)
-                {
-                    if (wires[4] == Wires.Black)
-                        conditions = @"Is last digit of Serial Odd?";
-                    if ((wires[4] == Wires.Black) && SerialNumberLastDigitOdd())
-                        result = @"Cut Fourth Wire";
-                    else if ((wirecounts[Wires.Red] == 1) && (wirecounts[Wires.Yellow] > 1))
-                        result = @"Cut First Wire";
-                    else if (wirecounts[Wires.Black] == 0)
-                        result = @"Cut Second Wire";
-                    else
-                        result = @"Cut First Wire";
-                }
-                else
-                {
-                    if (wirecounts[Wires.Yellow] == 0)
-                        conditions = @"Is last digit of Serial Odd?";
-                    if ((wirecounts[Wires.Yellow] == 0) && SerialNumberLastDigitOdd())
-                        result = @"Cut Third Wire";
-                    else if ((wirecounts[Wires.Yellow] == 1) && (wirecounts[Wires.White] > 1))
-                        result = @"Cut Fourth Wire";
-                    else if (wirecounts[Wires.Red] == 0)
-                        result = @"Cut Last Wire";
-                    else
-                        result = @"Cut Fourth Wire";
-                }
-            }
-            else
-            {
-                if (count == 3)
-                {
-                    if(wirecounts[Wires.White] == 0)
-                        conditions = @"Is the first character of Serial a Letter?";
-                    if (wirecounts[Wires.White] == 0 && SerialNumberBeginsWithLetter())
-                        result = @"Cut the Second Wire";
-                    else if (wirecounts[Wires.Red] == 1)
-                        result = @"Cut the First Wire";
-                    else if (wirecounts[Wires.Blue] > 1)
-                        result = @"Cut the First Blue Wire";
-                    else if (wires[2] == Wires.Red)
-                        result = @"Cut the Last Wire";
-                    else
-                        result = @"Cut the Second Wire";
-                }
-                else if (count == 4)
-                {
-                    if (wirecounts[Wires.Yellow] == 1 && wires[3] == Wires.Red)
-                        result = @"Cut the Third Wire";
-                    else if (wires[3] == Wires.White)
-                        result = @"Cut the Second Wire";
-                    else if (wirecounts[Wires.Yellow] == 0)
-                        result = @"Cut the First Wire";
-                    else
-                        result = @"Cut the Last Wire";
-                }
-                else if (count == 5)
-                {
-                    if(wirecounts[Wires.Black] > 1)
-                        conditions = @"Is the first character of Serial a Letter?";
-                    if (wirecounts[Wires.Black] > 1 && SerialNumberBeginsWithLetter())
-                        result = @"Cut the Second Wire";
-                    else if (wires[4] == Wires.Blue && wirecounts[Wires.Red] == 1)
-                        result = @"Cut the First Wire";
-                    else if (wires[4] == Wires.Red)
-                        result = @"Cut the Fourth Wire";
-                    else if (wirecounts[Wires.Red] == 0)
-                        result = @"Cut the Third Wire";
-                    else
-                        result = @"Cut the First Wire";
-                }
-                else
-                {
-                    if (wirecounts[Wires.Red] == 1)
-                        result = @"Cut the Red Wire";
-                    else if (wires[5] == Wires.Red)
-                        result = @"Cut the Last Wire";
-                    else if (wirecounts[Wires.Yellow] == 0)
-                        result = @"Cut the Fourth Wire";
-                    else
-                        result = @"Cut the Second Wire";
-                }
-            }
-
-            txtSimpleWireOutput.Text = result;
-            if (conditions != "")
-                txtSimpleWireOutput.Text += @", " + conditions;
-
+            wires_Input_TextChanged(sender, e);
         }
 
         private bool _initLettersNotPresent;
@@ -568,7 +401,7 @@ namespace KTaNE_Helper
                         {
                             found = passwords[k].Substring(i, 1) == letters.Substring(j, 1);
                         }
-                        if (found) continue;
+                        if (!found) continue;
                         if (((Label) fpPasswordLettersNotPresent.Controls[i]).Text != "")
                             ((Label) fpPasswordLettersNotPresent.Controls[i]).Text += @"";
                         ((Label) fpPasswordLettersNotPresent.Controls[i]).Text += letters.Substring(j, 1).ToUpper();
@@ -594,12 +427,19 @@ namespace KTaNE_Helper
             passResults.Text = Empty;
             foreach (var pass in result)
             {
-                if (count != 0)
-                    passResults.Text += ((count++ % 8) == 0) ? Environment.NewLine : ", ";
+                if (txtPasswordSubmitID.Text == "")
+                {
+                    if (count != 0)
+                        passResults.Text += ((count++%8) == 0) ? Environment.NewLine : ", ";
+                    else
+                        count++;
+                    passResults.Text += pass;
+                }
                 else
-                    count++;
-                passResults.Text += pass;
-                
+                {
+                    passResults.Text += @"!" + txtPasswordSubmitID.Text + @" " + pass + Environment.NewLine;
+                    
+                }
             }
 
         }
@@ -815,7 +655,7 @@ namespace KTaNE_Helper
                 spacedMorse += letter;
             }
             return "|" + spacedMorse + "|" + morse + "|" + word +  "," 
-                + word + " - 3." + freq + " Mhz" + Environment.NewLine;
+                + word + " - 3." + freq + " Mhz" +  Environment.NewLine + @"," + freq + Environment.NewLine;
         }
 
         private void MorseCodeInput_TextChanged(object sender, EventArgs e)
@@ -843,13 +683,16 @@ namespace KTaNE_Helper
             foreach (var code in words.Select(Entry => 
                 new {Entry}).Select(word => WordToMorseCode(word.Entry.Key, word.Entry.Value)).Where(code => code.Split(',')[0].Contains(MorseCodeInput.Text)))
             {
-                MorseCodeOutput.Text += code.Split(',')[1];
+                if (txtPasswordSubmitID.Text == "")
+                    MorseCodeOutput.Text += code.Split(',')[1];
+                else
+                    MorseCodeOutput.Text += @"!" + txtPasswordSubmitID.Text + @" transmit " + code.Split(',')[2];
             }
         }
 
         private void wires_Input_TextChanged(object sender, EventArgs e)
         {
-            txtSimpleWireOutput.Text = "";
+            /*txtSimpleWireOutput.Text = "";
             wires_input.Text = wires_input.Text.ToUpper();
             wires_input.SelectionStart = wires_input.Text.Length;
             var wirecount = wires_input.Text.Length;
@@ -859,7 +702,10 @@ namespace KTaNE_Helper
                 wires[i] = ("|rwkby").IndexOf(wires_input.Text.ToLower().Substring(i, 1), StringComparison.Ordinal);
             }
             for (var i = 0; i < 6; i++)
-                ((ComboBox) fpWires.Controls[i]).SelectedIndex = wires[i];
+                ((ComboBox) fpWires.Controls[i]).SelectedIndex = wires[i];*/
+
+            txtSimpleWireOutput.Text = WireSetComponent.Instance.GetSolution(wires_input.Text.Trim());
+
         }
 
         private void ws_input_TextChanged(object sender, EventArgs e)
@@ -1099,8 +945,8 @@ namespace KTaNE_Helper
             rbWOF_CheckedChanged(sender, e);
             for (var i = 0; i < 28; i++)
             {
-                ((Button) wofButtons.Controls[i]).Text = _whosOnFirstStepOneWords[i];
-                ((Button) wofButtons.Controls[i]).Tag = i;
+                ((Button) wofButtons.Controls[i]).Text = WhosOnFirstComponent.Instance.WhosOnFirstStep1WordList[i];
+                ((Button)wofButtons.Controls[i]).Tag = WhosOnFirstComponent.Instance.WhosOnFistStep1Index(WhosOnFirstComponent.Instance.WhosOnFirstStep1WordList[i]);
             }
         }
 
@@ -1111,44 +957,40 @@ namespace KTaNE_Helper
             wofStep2Label.Text = "";
             for (var i = 0; i < 28; i++)
             {
-                var x = _whosOnFirstStepTwoWordIndex[i] / 14;
-                var y = _whosOnFirstStepTwoWordIndex[i] % 14;
-                ((Button) wofButtons.Controls[i]).Text = _whosOnFirstStepTwoWords[x, y];
-                ((Button) wofButtons.Controls[i]).Tag = _whosOnFirstStepTwoWordIndex[i];
+                ((Button)wofButtons.Controls[i]).Text = WhosOnFirstComponent.Instance.WhosOnFirstStep2WordList[i];
+                ((Button)wofButtons.Controls[i]).Tag = WhosOnFirstComponent.Instance.Step2WordOrder(WhosOnFirstComponent.Instance.WhosOnFirstStep2WordList[i]);
             }
         }
 
         private void wofButton_Click(object sender, EventArgs e)
         {
-            var step1Index = (_manualVersion == 0 ? _whosOnFirstStepOneIndex241 : _whosOnFirstStapOneIndex724);
-            var step2Index = (_manualVersion == 0 ? _whosOnFirstStepTwoIndex241 : _whosOnFirstStepTwoIndex724);
-            var text = ((Button) sender).Text;
-            var index = Convert.ToInt32(((Button) sender).Tag);
+            var text = ((Button)sender).Text;
+            var tag = ((Button) sender).Tag;
+
             if (wofStep1.Checked)
             {
-                _whosOnFirstLookIndex = step1Index[index];
+                _whosOnFirstLookIndex = (int) tag;
                 rbWOF_CheckedChanged(sender, e);
                 wofStep1Label.Text = text;
                 wofStep2.Checked = true;
             }
             else
             {
-                var x = index/14;
-                var y = index%14;
-                wofStep2Label.Text = _whosOnFirstStepTwoWords[x,y];
+                var wordlist = (string[]) tag;
+                wofStep2Label.Text = text;
                 for (var i = 0; i < 9; i++)
                 {
-                    var z = step2Index[x, y, i];
-                    wofOutput.Text += _whosOnFirstStepTwoWords[x, z] + Environment.NewLine;
-                    if (wofStep2Label.Text == _whosOnFirstStepTwoWords[x, z]) break;
+                    wofOutput.Text += wordlist[i] + Environment.NewLine;
+                    if (wordlist[i].Equals(text)) break;
                 }
                 wofStep1.Checked = true;
-            }
+            } 
         }
 
         private void rbWOF_CheckedChanged(object sender, EventArgs e)
         {
-            ((RadioButton) wofLook.Controls[_whosOnFirstLookIndex]).Checked = true;
+            var buttons = new[] {rbWOF1, rbWOF2, rbWOF3, rbWOF4, rbWOF5, rbWOF6, rbWOF6};
+            buttons[_whosOnFirstLookIndex].Checked = true;
         }
 
         private void cw_reset_Click(object sender, EventArgs e)
@@ -1309,28 +1151,18 @@ namespace KTaNE_Helper
 
         private int NumberUnlitIndicators()
         {
-            var x = (from object c in gbIndicators.Controls
-                     where c.GetType() == typeof(NumericUpDown)
-                        select ((NumericUpDown) c) into y
-                        where y.Name.Contains("nudUnlit")
-                            select (int) y.Value).Sum();
-            return x;
+            return UnlitIndicators.Length;
         }
 
         private int NumberLitIndicators()
         {
-            var x = (from object c in gbIndicators.Controls
-                     where c.GetType() == typeof(NumericUpDown)
-                        select ((NumericUpDown)c) into y
-                        where y.Name.Contains("nudLit")
-                            select (int)y.Value).Sum();
-            return x;
+            return LitIndicators.Length;
         }
 
         private void ForgetMeNot_Event(object sender, EventArgs e)
         {
             txtForgetMeNotOut.Text = "";
-            if (txtSerialNumber.Text.Trim().Length < 6)
+            if (!IsSerialValid)
             {
                 txtForgetMeNotOut.Text = @"The Full serial number is needed to calculate the solution";
                 return;
@@ -1339,9 +1171,9 @@ namespace KTaNE_Helper
             var largestDigit = 0;
             var numDigits = 0;
             var lastDigit = 0;
-            for (var i = 0; i < txtSerialNumber.Text.Trim().Length; i++)
+            for (var i = 0; i < Serial.Length; i++)
             {
-                var num = GetDigitFromCharacter(txtSerialNumber.Text.ToUpper().Substring(i, 1));
+                var num = GetDigitFromCharacter(Serial.Substring(i, 1));
                 if (num == -1) continue;
                 numDigits++;
                 if((num%2)==1)
@@ -1353,17 +1185,40 @@ namespace KTaNE_Helper
             }
             foreach (var line in txtForgetMeNotIn.Text.Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries))
             {
+                
+
                 var unlit = NumberUnlitIndicators();
                 var lit = NumberLitIndicators();
                 var solutionStr = "";
-                var solution = new int[line.Length];
-                for (var i = 0; i < line.Length; i++)
+                var tpLines = line.Split(':');
+                if (tpLines.Length > 2) continue;
+                var tpID = "";
+                var lineData = tpLines[0];
+
+                if (tpLines.Length == 2)
                 {
-                    var num = GetDigitFromCharacter(line.Substring(i, 1));
+                    tpID = tpLines[0];
+                    lineData = tpLines[1];
+                }
+                var fmnNumbers = new List<int>();
+                foreach (var c in lineData)
+                {
+                    int test;
+                    if (int.TryParse(c.ToString(), out test))
+                        fmnNumbers.Add(test);
+                }
+
+                var solution = new int[fmnNumbers.Count];
+                
+
+
+                for (var i = 0; i < fmnNumbers.Count; i++)
+                {
+                    var num = fmnNumbers[i];
                     switch (i)
                     {
                         case 0:
-                            if (nudUnlitCAR.Value > 0)
+                            if (IsIndicatorUnlit("CAR"))
                                 solution[i] = num + 2;
                             else if (unlit > lit)
                                 solution[i] = num + 7;
@@ -1373,7 +1228,7 @@ namespace KTaNE_Helper
                                 solution[i] = num + lastDigit;
                             break;
                         case 1:
-                            if (nudPortSerial.Value > 0 && (numDigits >= 3))
+                            if (IsPortPresent(PortTypes.Serial) && (numDigits >= 3))
                                 solution[i] = num + 3;
                             else if ((solution[i - 1] % 2) == 0)
                                 solution[i] = num + solution[i - 1] + 1;
@@ -1395,111 +1250,30 @@ namespace KTaNE_Helper
                             break;
                     }
                     solution[i] %= 10;
-                    solutionStr += solution[i] + " ";
+                    solutionStr += solution[i];
+                    if (i % 3 == 2)
+                        solutionStr += " ";
                 }
-                txtForgetMeNotOut.Text += solutionStr.Trim() + Environment.NewLine;
+                if (tpID == "")
+                    txtForgetMeNotOut.Text += solutionStr.Trim() + Environment.NewLine;
+                else
+                    txtForgetMeNotOut.Text += @"!" + tpID.Trim() + @" press " + solutionStr.Trim() + Environment.NewLine;
             }
         }
 
-        private readonly List<string> _twoBitLookup = new List<string>
-            {
-                "kb","dk","gv","tk","pv","kp","bv","vt","pz","dt",
-                "ee","zk","ke","ck","zp","pp","tp","tg","pd","pt",
-                "tz","eb","ec","cc","cz","zv","cv","gc","bt","gt",
-                "bz","pk","kz","kg","vd","ce","vb","kd","gg","dg",
-                "pb","vv","ge","kv","dz","pe","db","cd","td","cb",
-                "gb","tv","kk","bg","bp","vp","ep","tt","ed","zg",
-                "de","dd","ev","te","zd","bb","pc","bd","kc","zb",
-                "eg","bc","tc","ze","zc","gp","et","vc","tb","vz",
-                "ez","ek","dv","cg","ve","dp","bk","pg","gk","gz",
-                "kt","ct","zz","vg","gd","cp","be","zt","vk","dc"
-            };
+        
 
         private void txtTwoBitsIN_TextChanged(object sender, EventArgs e)
         {
             var lookup = GetDigitFromCharacter(txtTwoBitsIN.Text);
-            txtTwoBitsOUT.Text = lookup > -1 ? _twoBitLookup[lookup] : "";
+            txtTwoBitsOUT.Text = TwoBits.Instance.TwoBitsLookup(lookup);
         }
 
-        private void CalculateInitialTwoBitsCode()
-        {
-            var batts = (int)(nudBatteriesD.Value + nudBatteriesAA.Value);
-            if (txtSerialNumber.Text.Trim().Length < 6)
-            {
-                txtTwoBitsInitialValue.Text = "";
-                return;
-            }
-            var dict = new Dictionary<string, int>
-            {
-                {"0", 0},{"1", 0},{"2", 0},{"3", 0},{"4", 0},{"5", 0},
-                {"6", 0},{"7", 0},{"8", 0},{"9", 0},{"A", 1},{"B", 2},
-                {"C", 3},{"D", 4},{"E", 5},{"F", 6},{"G", 7},{"H", 8},
-                {"I", 9},{"J", 10},{"K", 11},{"L", 12},{"M", 13},{"N", 14},
-                {"O", 15},{"P", 16},{"Q", 17},{"R", 18},{"S", 19},{"T", 20},
-                {"U", 21},{"V", 22},{"W", 23},{"X", 24},{"Y", 25},{"Z", 26},
-            };
-
-            var initial = 0;
-            for (var i = 0; i < txtSerialNumber.Text.Trim().Length; i++)
-            {
-                if (dict[txtSerialNumber.Text.Substring(i, 1).ToUpper()] <= 0) continue;
-                initial = dict[txtSerialNumber.Text.Substring(i, 1).ToUpper()];
-                break;
-            }
-            initial += ( batts * GetDigitFromCharacter(txtSerialNumber.Text.Substring(txtSerialNumber.Text.Trim().Length - 1, 1)));
-            if (nudPortRCA.Value > 0 && nudPortRJ45.Value == 0)
-                initial *= 2;
-            txtTwoBitsInitialValue.Text = _twoBitLookup[initial%100] + @" / " + (initial % 100);
-
-        }
-
-        private bool SerialNumberContainsVowel()
-        {
-            var vowels = new List<string> { "A", "E", "I", "O", "U" };
-            for (var i = 0; i < 5; i++)
-                if (txtSerialNumber.Text.ToUpper().Contains(vowels[i]))
-                    return true;
-            return false;
-        }
-
-        private bool SerialNumberBeginsWithLetter()
-        {
-            var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            return txtSerialNumber.Text.Trim().Length != 0 
-                && letters.Contains(txtSerialNumber.Text.ToUpper().Substring(0, 1));
-        }
-
-        private bool SerialNumberLastDigitOdd()
-        {
-            var odd = "13579";
-            return txtSerialNumber.Text.Trim().Length != 0 
-                && odd.Contains(txtSerialNumber.Text.Substring(txtSerialNumber.Text.Trim().Length - 1, 1));
-        }
-
-        // ReSharper disable once UnusedMember.Local
-        private int CountSerialNumberLetters()
-        {
-            var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            var count = 0;
-            for(var i=0;i<txtSerialNumber.Text.Trim().Length;i++)
-                if (letters.Contains(txtSerialNumber.Text.ToUpper().Substring(i, 1)))
-                    count++;
-            return count;
-        }
-
-        private int CountSerialNumberDigits()
-        {
-            var digits = "0123456789";
-            var count = 0;
-            for (var i = 0; i < txtSerialNumber.Text.Trim().Length; i++)
-                if (digits.Contains(txtSerialNumber.Text.Substring(i, 1)))
-                    count++;
-            return count;
-        }
+        
 
         private bool IsInputValid(string input, string pattern, bool serialRequired=false)
         {
-            if (serialRequired && txtSerialNumber.Text.Trim().Length < 6) return false;
+            if (serialRequired && !IsSerialValid) return false;
             return new Regex(pattern).IsMatch(input);
         }
 
@@ -1508,7 +1282,7 @@ namespace KTaNE_Helper
             txtConnectionCheckOut.Text = "";
             if (!IsInputValid(txtConnections.Text, "[1-8]{2} [1-8]{2} [1-8]{2} [1-8]{2}",true)) return;
 
-            var batts = (int) (nudBatteriesD.Value + nudBatteriesAA.Value);
+            var batts = Batteries.TotalBatteries;
             var serials = new List<string> {"7HPJ", "34XYZ", "SLIM", "15BRO", "20DGT", "8CAKE", "9QVN", "6WUF"};
             var connectionPairs = new List<string>
             {
@@ -1550,7 +1324,7 @@ namespace KTaNE_Helper
             else
                 serialdigit = batts;
 
-            var serialchar = txtSerialNumber.Text.ToUpper().Substring(serialdigit - 1, 1);
+            var serialchar = Serial.Substring(serialdigit - 1, 1);
             var group = -1;
             for(var i=0;i<8 && group == -1;i++)
                 if (serials[i].Contains(serialchar))
@@ -1617,41 +1391,33 @@ namespace KTaNE_Helper
 
             };
             txtSafetySafe.Text = "";
-            if (txtSerialNumber.Text.Trim().Length < 6) return;
+            if (!IsSerialValid) return;
 
             var offset = CountUniquePorts()*7;
-            foreach (var c in gbIndicators.Controls)
+
+            foreach (var indicator in LitIndicators)
             {
-                if (c.GetType() != typeof(NumericUpDown)) continue;
-                var numericUpDown = c as NumericUpDown;
-                if (numericUpDown == null) continue;
-                if (numericUpDown.Value == 0) continue;
-                if (numericUpDown.Name.StartsWith("nudLit"))
+                if (indicator.Any(t => Serial.Contains(t)))
                 {
-                    for (var i = 0; i < 3; i++)
-                    {
-                        if (!txtSerialNumber.Text.ToUpper().Contains(numericUpDown.Name.Substring(6 + i, 1))) continue;
-                        offset += (int) numericUpDown.Value*5;
-                        break;
-                    }
-                }
-                if (numericUpDown.Name.StartsWith("nudUnlit"))
-                {
-                    for (var i = 0; i < 3; i++)
-                    {
-                        if (!txtSerialNumber.Text.ToUpper().Contains(numericUpDown.Name.Substring(8 + i, 1))) continue;
-                        offset += (int) numericUpDown.Value;
-                        break;
-                    }
+                    offset += 5;
                 }
             }
+
+            foreach (var indicator in UnlitIndicators)
+            {
+                if (indicator.Any(t => Serial.Contains(t)))
+                {
+                    offset += 1;
+                }
+            }
+
             for (var i = 0; i < 6; i++)
             {
                 var x = offset;
 
                 try
                 {
-                    x += safeOffsets[txtSerialNumber.Text.Substring(i, 1).ToUpper()][i];
+                    x += safeOffsets[Serial.Substring(i, 1).ToUpper()][i];
                 }
                 catch
                 {
@@ -1660,7 +1426,7 @@ namespace KTaNE_Helper
 
                 if (i == 5)
                     for (var j = 0; j < 5; j++)
-                        x += safeOffsets[txtSerialNumber.Text.Substring(j, 1).ToUpper()][5];
+                        x += safeOffsets[Serial.Substring(j, 1).ToUpper()][5];
 
                 x %= 12;
                 txtSafetySafe.Text += x + @" ";
@@ -1674,10 +1440,20 @@ namespace KTaNE_Helper
         private void UpdateBombSolution(object sender, EventArgs e)
         {
             if (_resetBomb) return;
+            
             //--- Bomb information side box ---//
             //Needy Knobs does not depend on information, just manual version alone.
+            ParsePortPlates(txtPortPlates.Text);
+            SetSerialNumber(txtSerialNumber.Text);
+            SetIndicators(txtLitIndicators.Text, txtUnlitIndicators.Text);
+
+            if (!IsSerialValid && Serial.Length != 0)
+                txtSerialNumber.BackColor = Color.Red;
+            else
+                txtSerialNumber.BackColor = default(Color);
+
             Needy_Knob_CheckedChanged(null, null);
-            nudBatteryHolders.Value = (nudBatteriesD.Value + (nudBatteriesAA.Value / 2));
+            Batteries.SetBatteries(txtBatteries.Text);
 
             //--- The Button ---//
             Button_Event(null, null);
@@ -1709,24 +1485,30 @@ namespace KTaNE_Helper
             txtResistorsIn_TextChanged(null, null);
             txtSemaphoreIn_TextChanged(null, null);
 
-            //--- Chess, Connection Check, Emoji Math, Flashing Colors, Lettered Keys, Logic, Plumbing, Safety Safe, Two Bits ---//
+            //--- Battleship, Blind Alley, Chess, Connection Check, Emoji Math, Flashing Colors, Lettered Keys, Logic, Plumbing, Safety Safe, Two Bits ---//
             txtChessInput_TextChanged(null, null);
             txtConnections_TextChanged(null, null);
             //Emoji Math does not depend on bomb information
             //Flashing Colors does not depend on bomb information
             txtLetteredKeysIn_TextChanged(null, null);
-            txtLogicAND_TextChanged(null, null); txtLogicOR_TextChanged(null, null);
+            txtLogicAND_TextChanged(txtLogicAND, null); txtLogicAND_TextChanged(txtLogicOR, null);
             cbPlumbingRedIn_CheckedChanged();
             CalculateSafetySafe();
-            CalculateInitialTwoBitsCode();
+            txtTwoBitsInitialValue.Text = TwoBits.Instance.CalculateInitialTwoBitsCode();
+            cbBlindAlleyTM_CheckedChanged(null, null);
+            txtBattleShipSafeSpots_TextChanged(null, null);
 
             //--- Adventure Game, Alphabet, Anagram, Silly Slots, Word Scramble ---//
             txtAdventureGameSTR_TextChanged(null, null);
 
-            //--- Cryptography, Gamepad, Microcontrollers, Murder ---//
+            //--- Cryptography, Gamepad, Light Cycle, Microcontrollers, Murder, Skewed Slots ---//
             cbMurderRoom_SelectedIndexChanged(null, null);
             cbMicrocontroller_SelectedIndexChanged(null, null);
             txtGamePadX_TextChanged(null, null);
+            txtLightCycleIn_TextChanged(null, null);
+            txtSkewedIn_TextChanged(null, null);
+            ComputeBitWiseOperators();
+            txtFizzBuzz1IN_TextChanged(null, null);
 
             //--- Forget Me Not ---//
             ForgetMeNot_Event(null, null);
@@ -1736,61 +1518,18 @@ namespace KTaNE_Helper
                 Refresh();
 
             txtTwoBitsIN_TextChanged(null, null);
-            
 
-        }
+            //--- Laundry ---//
+            txtLaundryIn_TextChanged(null, null);
+            cbAcidColor_SelectedIndexChanged(null, null);
 
-        private bool DuplicateSerialCharacters()
-        {
-            for(var i = 0; i < txtSerialNumber.Text.Trim().Length; i++)
-                for(var j = i + 1; j < txtSerialNumber.Text.Trim().Length; j++)
-                    if (txtSerialNumber.Text.ToUpper().Substring(i, 1) == txtSerialNumber.Text.ToUpper().Substring(j, 1))
-                    {
-                        return true;
-                    }
-            return false;
-        }
+            var RPSLS = new RockPaperScissorsLizardSpock();
+            txtRPSLSPrimary.Text = RPSLS.GetPrimaryAnswer();
+            txtRPSLSSecondary.Text = RPSLS.GetSecondaryAnswer();
+            txtRPSLSDecoy.Text = RPSLS.GetPrimaryDecoy();
 
-        private bool DuplicatePorts(int port=Ports.All)
-        {
-            var portnames = new List<string>
-            {
-                "nudPort",
-                "nudPortDVID",
-                "nudPortParallel",
-                "nudPortRJ45",
-                "nudPortPS2",
-                "nudPortSerial",
-                "nudPortRCA"
-            };
-            return (from object c in gbPorts.Controls
-                    where c.GetType() == typeof(NumericUpDown)
-                        select (NumericUpDown) c into y
-                        where y.Name.Contains(portnames[port]) && !y.Name.Contains("nudPortPlates")
-                            select y).Aggregate(false, (current, y) => current | y.Value > 1);
-        }
-
-        private int CountUniquePorts()
-        {
-            var x = 0;
-            if (nudPortParallel.Value > 0) x++;
-            if (nudPortDVID.Value > 0) x++;
-            if (nudPortPS2.Value > 0) x++;
-            if (nudPortRCA.Value > 0) x++;
-            if (nudPortRJ45.Value > 0) x++;
-            if (nudPortSerial.Value > 0) x++;
-            return x;
-        }
-
-        private int CountTotalPorts()
-        {
-            var x = nudPortParallel.Value;
-            x += nudPortDVID.Value;
-            x += nudPortPS2.Value;
-            x += nudPortRCA.Value;
-            x += nudPortRJ45.Value;
-            x += nudPortSerial.Value;
-            return (int) x;
+            txtRubiksCubeIn_TextChanged(null, null);
+            txtMorseMaticsIN_TextChanged(null, null);
         }
 
         private void cbPlumbingRedIn_CheckedChanged()
@@ -1801,9 +1540,9 @@ namespace KTaNE_Helper
             var inputActive = 0;
             var outputActive = 0;
 
-            if (txtSerialNumber.Text.Contains("1"))
+            if (Serial.Contains("1"))
                 countFor++;
-            if (nudPortRJ45.Value == 1)
+            if (PortCount(PortTypes.RJ45) == 1)
                 countFor++;
             if (DuplicatePorts())
                 countAgainst++;
@@ -1814,13 +1553,13 @@ namespace KTaNE_Helper
             inputActive += countFor > countAgainst?1:0;
             countFor = countAgainst = 0;
 
-            if (txtSerialNumber.Text.Contains("2"))
+            if (Serial.Contains("2"))
                 countFor++;
-            if (nudPortRCA.Value > 0)
+            if (IsPortPresent(PortTypes.StereoRCA))
                 countFor++;
             if (!DuplicatePorts())
                 countAgainst++;
-            if (txtSerialNumber.Text.Contains("1") || txtSerialNumber.Text.ToUpper().Contains("L"))
+            if (Serial.Contains("1") || Serial.Contains("L"))
                 countAgainst++;
 
             cbPlumbingYellowIn.Checked = countFor > countAgainst;
@@ -1829,7 +1568,7 @@ namespace KTaNE_Helper
 
             if (CountSerialNumberDigits() >= 3)
                 countFor++;
-            if (nudPortDVID.Value > 0)
+            if (IsPortPresent(PortTypes.DVI))
                 countFor++;
             if (!cbPlumbingRedIn.Checked)
                 countAgainst++;
@@ -1844,11 +1583,11 @@ namespace KTaNE_Helper
             {
                 if (CountUniquePorts() >= 4)
                     countFor++;
-                if ((nudBatteriesAA.Value + nudBatteriesD.Value) >= 4)
+                if (Batteries.TotalBatteries >= 4)
                     countFor++;
                 if (CountUniquePorts() == 0)
                     countAgainst++;
-                if ((nudBatteriesAA.Value + nudBatteriesD.Value) == 0)
+                if (Batteries.TotalBatteries == 0)
                     countAgainst++;
 
                 cbPlumbingBlueIn.Checked = countFor > countAgainst;
@@ -1861,9 +1600,9 @@ namespace KTaNE_Helper
                 cbPlumbingBlueIn.Checked = true;
             }
 
-            if (nudPortSerial.Value > 0)
+            if (IsPortPresent(PortTypes.Serial))
                 countFor++;
-            if ((nudBatteriesAA.Value + nudBatteriesD.Value) == 1)
+            if (Batteries.TotalBatteries == 1)
                 countFor++;
             if (CountSerialNumberDigits() > 2)
                 countAgainst++;
@@ -1876,9 +1615,9 @@ namespace KTaNE_Helper
 
             if (DuplicatePorts())
                 countFor++;
-            if (txtSerialNumber.Text.Contains("4") || txtSerialNumber.Text.Contains("8"))
+            if (Serial.Contains("4") || Serial.Contains("8"))
                 countFor++;
-            if (!txtSerialNumber.Text.Contains("2"))
+            if (!Serial.Contains("2"))
                 countAgainst++;
             if (cbPlumbingGreenIn.Checked)
                 countAgainst++;
@@ -1906,9 +1645,9 @@ namespace KTaNE_Helper
                     countFor++;
                 if (outputActive < 3)
                     countFor++;
-                if ((nudBatteriesAA.Value + nudBatteriesD.Value) < 2)
+                if (Batteries.TotalBatteries < 2)
                     countAgainst++;
-                if (nudPortParallel.Value == 0)
+                if (!IsPortPresent(PortTypes.Parallel))
                     countAgainst++;
 
                 cbPlumbingBlueOut.Checked = countFor > countAgainst;
@@ -1925,21 +1664,10 @@ namespace KTaNE_Helper
         private void button42_Click(object sender, EventArgs e)
         {
             _resetBomb = true;
-            foreach (var c in gbPorts.Controls)
-            {
-                if (c.GetType() == typeof(NumericUpDown))
-                    ((NumericUpDown) c).Value = 0;
-            }
-            foreach (var c in gbIndicators.Controls)
-            {
-                if (c.GetType() == typeof(NumericUpDown))
-                    ((NumericUpDown)c).Value = 0;
-            }
-            foreach (var c in gbBatteries.Controls)
-            {
-                if (c.GetType() == typeof(NumericUpDown))
-                    ((NumericUpDown)c).Value = 0;
-            }
+            txtPortPlates.Text = Empty;
+            txtLitIndicators.Text = Empty;
+            txtUnlitIndicators.Text = Empty;
+            txtBatteries.Text = Empty;
             facts_strike.SelectedIndex = 0;
             txtSerialNumber.Text = "";
             _resetBomb = false;
@@ -1948,65 +1676,63 @@ namespace KTaNE_Helper
 
         private Dictionary<string, bool> BuildTruthTable()
         {
-            var batts = nudBatteriesD.Value + nudBatteriesAA.Value;
+            var batts = Batteries.TotalBatteries;
             return new Dictionary<string, bool>
             {
-                {"A",batts > 2},
-                {"B",nudPortSerial.Value > 0 },
-                {"C",nudPortParallel.Value > 0 },
-                {"D",SerialNumberContainsVowel() },
-                {"E",!SerialNumberContainsVowel() },
-                {"F",nudPortRCA.Value > 0 },
-                {"G",nudLitCLR.Value > 0 },
-                {"H",nudLitIND.Value > 0 },
-                {"I",batts == 0 },
-                {"J",nudLitMSA.Value > 0 },
-                {"K",SerialNumberLastDigitOdd() },
-                {"L", !SerialNumberLastDigitOdd() },
-                {"M", nudLitFRK.Value > 0 },
-                {"N", batts == 1 },
-                {"O", batts == 0 },
-                {"P", nudPortRJ45.Value > 0 },
-                {"Q",nudPortDVID.Value > 0 },
-                {"R",batts > 5 },
-                {"S", nudLitSIG.Value > 0 && nudLitCAR.Value > 0 },
-                {"T", batts >= 2 && nudPortPS2.Value > 0 },
-                {"U",nudPortParallel.Value > 0 && nudPortSerial.Value > 0 },
-                {"V", nudLitBOB.Value > 0 },
-                {"W", CountSerialNumberDigits() == 6 },
-                {"X", CountUniquePorts() >= 4 },
-                {"Y", NumberLitIndicators() == 0 },
-                {"Z", nudPortRJ45.Value > 0 && nudPortSerial.Value > 0 }
+                {"A", batts == (LitIndicators.Length + UnlitIndicators.Length)},
+                {"B", SerialNumberLetters.Length > SerialNumberDigits.Length },
+                {"C", IsIndicatorPresent("IND") },
+                {"D", IsIndicatorPresent("FRK") },
+                {"E", UnlitIndicators.Length == 1 },
+                {"F", CountUniquePorts() > 1 },
+                {"G", batts >= 2 },
+                {"H", batts < 2 },
+                {"I", SerialNumberLastDigitOdd() },
+                {"J", batts > 4 },
+                {"K", LitIndicators.Length == 1 },
+                {"L", (LitIndicators.Length + UnlitIndicators.Length) > 2 },
+                {"M", !DuplicatePorts() },
+                {"N", Batteries.Holders.Length > 2 },
+                {"O", LitIndicators.Length > 0 && UnlitIndicators.Length > 0 },
+                {"P", IsPortPresent(PortTypes.Parallel) },
+                {"Q", CountTotalPorts() == 2 },
+                {"R", IsPortPresent(PortTypes.PS2) },
+                {"S", SerialNumberSum > 10 },
+                {"T", IsIndicatorPresent("MSA") },
+                {"U", Batteries.Holders.Length == 1 },
+                {"V", SerialNumberContainsVowel() },
+                {"W", (LitIndicators.Length + UnlitIndicators.Length) == 0 },
+                {"X", (LitIndicators.Length + UnlitIndicators.Length) == 1},
+                {"Y", CountTotalPorts() > 5 },
+                {"Z", CountTotalPorts() < 2 }
             };
         }
 
         private void txtLogicAND_TextChanged(object sender, EventArgs e)
         {
-            
-            if (txtLogicAND.Text.Trim().Length == 0)
+            if (!(sender is MaskedTextBox)) return;
+            MaskedTextBox maskedTextBox = (MaskedTextBox) sender;
+
+            string text = maskedTextBox.Text.ToUpperInvariant().Trim();
+            if (text.Length < 5 || (text[1] != 'A' && text[1] != 'O') || (text[3] != 'A' && text[3] != 'O'))
             {
-                txtLogicAND.ResetBackColor();
-                return;
-            }
-            var truth = BuildTruthTable();
-            var and = txtLogicAND.Text.Trim().ToCharArray().Aggregate(true, (current, t) => current & truth[t.ToString()]);
-
-
-            txtLogicAND.BackColor = and ? Color.Green : Color.Red;
-        }
-
-        private void txtLogicOR_TextChanged(object sender, EventArgs e)
-        {
-            if (txtLogicOR.Text.Trim().Length == 0)
-            {
-                txtLogicOR.ResetBackColor();
+                maskedTextBox.ResetBackColor();
                 return;
             }
             var truth = BuildTruthTable();
 
-            var or = txtLogicOR.Text.Trim().ToCharArray().Aggregate(false, (current, t) => current | truth[t.ToString()]);
+            bool andOr = true;
+            if (text[1] == 'A')
+                andOr &= (truth[text[0].ToString()] && truth[text[2].ToString()]);
+            else
+                andOr &= (truth[text[0].ToString()] || truth[text[2].ToString()]);
 
-            txtLogicOR.BackColor = or ? Color.Green : Color.Red;
+            if (text[3] == 'A')
+                andOr &= truth[text[4].ToString()];
+            else
+                andOr |= truth[text[0].ToString()];
+
+            maskedTextBox.BackColor = andOr ? Color.Green : Color.Red;
         }
 
         private void txtChessInput_TextChanged(object sender, EventArgs e)
@@ -2169,8 +1895,6 @@ namespace KTaNE_Helper
             lbModules.SelectedIndex = index == -1 ? 0 : index;
             lbModules_SelectedIndexChanged(null, null);
 
-            lblBatteryD.Text = cbShowAddonModules.Checked ? "D" : "Batteries";
-
             //Keypad specific mod
             for (var i = 4; i < 8; i++)
                 ((Button) fpKeypadSelection.Controls[i]).Visible = cbShowAddonModules.Checked;
@@ -2191,15 +1915,15 @@ namespace KTaNE_Helper
         {
             txtLetteredKeysOut.Text = "";
             var num = GetDigitFromCharacter(txtLetteredKeysIn.Text);
-            var batts = nudBatteriesD.Value + nudBatteriesAA.Value;
+            var batts = Batteries.TotalBatteries;
             if (num == -1) return;
 
             if (num == 69) txtLetteredKeysOut.Text = @"D";
             else if ((num%6) == 0) txtLetteredKeysOut.Text = @"A";
             else if (batts >= 2 && (num%3) == 0) txtLetteredKeysOut.Text = @"B";
-            else if (txtSerialNumber.Text.ToUpper().Contains("C")
-                     || txtSerialNumber.Text.ToUpper().Contains("E")
-                     || txtSerialNumber.Text.Contains("3"))
+            else if (Serial.Contains("C")
+                     || Serial.Contains("E")
+                     || Serial.Contains("3"))
                 txtLetteredKeysOut.Text = num >= 22 && num <= 79 ? "B" : "C";
             else txtLetteredKeysOut.Text = num < 46 ? "D" : "A";
         }
@@ -2263,8 +1987,7 @@ namespace KTaNE_Helper
 
         private void txtNumberPadIn_TextChanged(object sender, EventArgs e)
         {
-            var pad = new NumberPad(txtNumberPadIn.Text,(int)nudBatteriesD.Value + (int)nudBatteriesAA.Value,
-                CountTotalPorts(),!SerialNumberLastDigitOdd(),SerialNumberContainsVowel());
+            var pad = new NumberPad(txtNumberPadIn.Text);
             txtNumberPadOut.Text = "";
             if (txtNumberPadIn.Text.Trim().Length < 10 || pad.GetColorCount(pad.ColorAll) < 10) return;
             try
@@ -2285,13 +2008,13 @@ namespace KTaNE_Helper
             txtCombinationLockOut.Text = @"Input [Solved modules] [list of two factors]  or [solved modules] S [total modules]";
             if (twoFactor.Length < 2) return;
 
-            var step1 = (int)(nudBatteriesD.Value + nudBatteriesAA.Value);
+            var step1 = Batteries.TotalBatteries;
             var step2 = GetDigitFromCharacter(twoFactor[0]);
             if (input.Contains("S"))
             {
                  if (twoFactor.Length < 3) return;
-                if (txtSerialNumber.Text.Trim().Length < 6) return;
-                step1 += GetDigitFromCharacter(txtSerialNumber.Text.ToUpper().Substring(5, 1));
+                if (!IsSerialValid) return;
+                step1 += GetDigitFromCharacter(Serial.Substring(5, 1));
                 step1 += GetDigitFromCharacter(twoFactor[0]);
                 step2 += GetDigitFromCharacter(twoFactor[2]);
             }
@@ -2311,18 +2034,18 @@ namespace KTaNE_Helper
 
         private void txtSemaphoreIn_TextChanged(object sender, EventArgs e)
         {
-            txtSemaphoreOut.Text = new Semaphore(txtSerialNumber.Text.ToUpper()).GetAnswer(txtSemaphoreIn.Text);
+            txtSemaphoreOut.Text = new Semaphore().GetAnswer(txtSemaphoreIn.Text);
         }
 
         private void txtCaesarCipherIn_TextChanged(object sender, EventArgs e)
         {
             const string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            var offset = (int)(nudBatteriesAA.Value + nudBatteriesD.Value);
+            var offset = Batteries.TotalBatteries;
             if (SerialNumberContainsVowel()) offset--;
             if (!SerialNumberLastDigitOdd()) offset++;
-            if (nudLitCAR.Value > 0 || nudUnlitCAR.Value > 0) offset++;
+            if (IsIndicatorPresent("CAR")) offset++;
 
-            if (nudPortParallel.Value > 0 && nudLitNSA.Value > 0)
+            if (IsPortPresent(PortTypes.Parallel) && IsIndicatorLit("NSA"))
             {
                 offset = 0;
             }
@@ -2339,6 +2062,8 @@ namespace KTaNE_Helper
                 }
                 c += offset;
                 c %= 26;
+                if (c < 0)
+                    c += 26;
                 txtCaesarCipherOut.Text += letters.Substring(c, 1);
             }
             if (txtCaesarCipherOut.TextLength == 0)
@@ -2364,11 +2089,11 @@ namespace KTaNE_Helper
             const string ohm = "Ω";
             const string colors = "SDKNROYGBVAW";
             var resistorsTxt = txtResistorsIn.Text.ToUpper().Split(' ');
-            var batts = (int) (nudBatteriesD.Value + nudBatteriesAA.Value);
+            var batts = Batteries.TotalBatteries;
             if (batts > 6) batts = 6;
             txtResistorsOut.Text = "";
 
-            if (txtSerialNumber.Text.Trim().Length < 6) return;
+            if (!IsSerialValid) return;
             if (resistorsTxt.Length < 2) return;
             if (resistorsTxt.Any(r => r.Length != 3)) return;
             var resistors = new float[2];
@@ -2397,13 +2122,13 @@ namespace KTaNE_Helper
             
             var resistance = 0ul;
             var targetIn = 0;
-            var targetOut = digits.IndexOf(txtSerialNumber.Text.Substring(5, 1), StringComparison.Ordinal);
+            var targetOut = digits.IndexOf(Serial.Substring(5, 1), StringComparison.Ordinal);
             var digitFound = false;
             for (var i = 0; i < 6; i++)
             {
-                if (!digits.Contains(txtSerialNumber.Text.Substring(i, 1))) continue;
+                if (!digits.Contains(Serial.Substring(i, 1))) continue;
                 resistance *= 10;
-                var j = digits.IndexOf(txtSerialNumber.Text.Substring(i, 1), StringComparison.Ordinal);
+                var j = digits.IndexOf(Serial.Substring(i, 1), StringComparison.Ordinal);
                 resistance += (ulong)j;
                 if (!digitFound)
                 {
@@ -2421,8 +2146,8 @@ namespace KTaNE_Helper
             var secondaryIn = (targetIn % 2) == 1 ? "A" : "B";
             var primaryOut = (targetOut%2) == 0 ? "C" : "D";
             var secondaryOut = (targetOut % 2) == 1 ? "C" : "D";
-            if (nudLitFRK.Value > 0) primaryOut = "C+D";
-            else if (nudBatteriesD.Value > 0)
+            if (IsIndicatorLit("FRK")) primaryOut = "C+D";
+            else if (Batteries.DBatteries > 0)
                 primaryOut += ", 0" + ohm + " from " + secondaryIn + " to " + secondaryOut;
 
             var parallel = (resistors[0]*resistors[1])/(resistors[0] + resistors[1]);
@@ -2479,26 +2204,32 @@ namespace KTaNE_Helper
             {
 
                 case "10 22":
+                case "22 10":
                     frequencies[2] = true;
                     frequencies[3] = true;
                     break;
                 case "10 50":
+                case "50 10":
                     frequencies[1] = true;
                     frequencies[3] = true;
                     break;
                 case "10 60":
+                case "60 10":
                     frequencies[1] = true;
                     frequencies[2] = true;
                     break;
                 case "22 50":
+                case "50 22":
                     frequencies[0] = true;
                     frequencies[3] = true;
                     break;
                 case "22 60":
+                case "60 22":
                     frequencies[0] = true;
                     frequencies[2] = true;
                     break;
                 case "50 60":
+                case "60 50":
                     frequencies[0] = true;
                     frequencies[1] = true;
                     break;
@@ -2595,6 +2326,8 @@ namespace KTaNE_Helper
 
             for (var i = 0; i < 5; i++)
             {
+                if (i == 0 && textBoxes[i].Equals(textBoxes[3])) continue;
+
                 if (textBoxes[i].Trim().Length != 5) continue;
                 if (txtContainsFrequencies(textBoxes[i])[4])
                 {
@@ -2682,7 +2415,7 @@ namespace KTaNE_Helper
                 //Check for Red soltution
                 var red = -1;
                 var blue = -1;
-                if (wires[0].Missing == ProbingFrequencies.FiftyHz)
+                if (wires[0].Missing != ProbingFrequencies.FiftyHz)
                 {
                     for (var i = 0; i < 6; i++)
                     {
@@ -2764,6 +2497,40 @@ namespace KTaNE_Helper
             cboSillySlotsSlot3.SelectedIndex = 0;
             txtSillySlotsResult.Text = "";
         }
+
+        private void txtSillySlotsInput_TextChanged(object sender, EventArgs e)
+        {
+            var keywords = new List<string> {"SAS","SIL","SOG","SAL","SIM","SAU","STE"};
+            var color = new List<string> {"R", "B", "G"};
+            var shape = new List<string> {"G", "Y", "B", "N"};
+
+            if (txtSillySlotsInput.Text.Trim().Length != 11) return;
+
+            var keyword = keywords.IndexOf(txtSillySlotsInput.Text.Split(' ')[0]);
+            var colors = txtSillySlotsInput.Text.Split(' ')[1];
+            var shapes = txtSillySlotsInput.Text.Split(' ')[2];
+
+            cboSillySlotsKeyWord.SelectedIndex = keyword + 1;
+            for (var i = 0; i < 3; i++)
+            {
+                var c = color.IndexOf(colors[i].ToString());
+                var s = shape.IndexOf(shapes[i].ToString());
+                if (c == -1 || s == -1) return;
+                switch (i)
+                {
+                    case 0:
+                        cboSillySlotsSlot1.SelectedIndex = (c*4) + s + 1;
+                        break;
+                    case 1:
+                        cboSillySlotsSlot2.SelectedIndex = (c*4) + s + 1;
+                        break;
+                    default:
+                        cboSillySlotsSlot3.SelectedIndex = (c*4) + s + 1;
+                        break;
+                }
+            }
+        }
+
 
         private void btnSillySlotsSubmit_Click(object sender, EventArgs e)
         {
@@ -2870,8 +2637,7 @@ namespace KTaNE_Helper
             if (itemsnotselected > 2) return;
 
 
-            var ag = new AdventureGame(txtSerialNumber.Text.ToUpper(), NumberLitIndicators(),NumberUnlitIndicators(),
-                (int)(nudBatteriesD.Value + nudBatteriesAA.Value),DuplicatePorts());
+            var ag = new AdventureGame();
 
             var monster = (Monsters)cboAdventureGameMonster.SelectedIndex - 1;
             var items = new[]
@@ -3085,8 +2851,8 @@ namespace KTaNE_Helper
             };
             var suspectList = new List<string>
             {
-                "Miss Scarlett","Professor Plum","Mrs Peacock",
-                "Reverend Green","Colonel Mustard","Mrs White"
+                "Scarlett","Plum","Peacock",
+                "Green","Mustard","White"
             };
             var weaponList = new List<string>
             {
@@ -3110,38 +2876,38 @@ namespace KTaNE_Helper
             var suspects = 6;
             var weapons = 8;
 
-            if (nudLitTRN.Value > 0)
+            if (IsIndicatorLit("TRN"))
                 suspects = 5;
             else if (murderRoom == 3)
                 suspects = 7;
-            else if (nudPortRCA.Value >= 2)
+            else if (PortCount(PortTypes.StereoRCA) >= 2)
                 suspects = 8;
-            else if (nudBatteriesD.Value == 0)
+            else if (Batteries.DBatteries == 0)
                 suspects = 2;
             else if (murderRoom == 8)
                 suspects = 4;
-            else if ((nudBatteriesD.Value + nudBatteriesAA.Value) >= 5)
+            else if (Batteries.TotalBatteries >= 5)
                 suspects = 9;
-            else if (nudUnlitFRQ.Value > 0)
+            else if (IsIndicatorUnlit("FRQ"))
                 suspects = 1;
             else if (murderRoom == 2)
                 suspects = 3;
 
             if (murderRoom == 7)
                 weapons = 3;
-            else if ((nudBatteriesD.Value + nudBatteriesAA.Value) >= 5)
+            else if (Batteries.TotalBatteries >= 5)
                 weapons = 1;
-            else if (nudPortSerial.Value > 0)
+            else if (IsPortPresent(PortTypes.Serial))
                 weapons = 9;
             else if (murderRoom == 1)
                 weapons = 4;
-            else if (nudBatteryHolders.Value == 0)
+            else if (Batteries.Holders.Length == 0)
                 weapons = 6;
             else if (NumberLitIndicators() == 0)
                 weapons = 5;
             else if (murderRoom == 4)
                 weapons = 7;
-            else if (nudPortRCA.Value >= 2)
+            else if (PortCount(PortTypes.StereoRCA) >= 2)
                 weapons = 2;
 
             suspects--;
@@ -3153,9 +2919,9 @@ namespace KTaNE_Helper
                 {
                     if (rows[suspects][i] != rows[weapons][j]) continue;
                     txtMurderOut.Text += Environment.NewLine;
-                    txtMurderOut.Text += suspectList[i] + 
-                        @" with the " + weaponList[j] + 
-                        @" in the " + roomList[rows[suspects][i]];
+                    txtMurderOut.Text += @"It was " + suspectList[i] + 
+                        @", with the " + weaponList[j] + 
+                        @", in the " + roomList[rows[suspects][i]];
                 }
         }
 
@@ -3169,15 +2935,15 @@ namespace KTaNE_Helper
             {
                 colors = new List<string>() {"White","Yellow","Magenta","Green","Blue","Red"};
             }
-            else if (nudLitSIG.Value > 0 || nudPortRJ45.Value > 0)
+            else if (IsIndicatorLit("SIG") || IsPortPresent(PortTypes.RJ45))
             {
                 colors = new List<string>() {"White","Yellow","Red","Magenta","Green","Blue"};
             }
-            else if ("CLRX18".ToCharArray().Any(c => txtSerialNumber.Text.Trim().Contains(c.ToString())))
+            else if ("CLRX18".ToCharArray().Any(c => Serial.Contains(c.ToString())))
             {
                 colors = new List<string>() {"White","Red","Magenta","Green","Blue","Yellow"};
             }
-            else if ((nudBatteriesD.Value + nudBatteriesAA.Value).ToString(CultureInfo.InvariantCulture) == txtMicrocontrollerSecondDigit.Text)
+            else if (Batteries.TotalBatteries.ToString(CultureInfo.InvariantCulture) == txtMicrocontrollerSecondDigit.Text)
             {
                 colors = new List<string>() {"White","Green","Red","Yellow","Blue","Magenta"};
             }
@@ -3237,7 +3003,7 @@ namespace KTaNE_Helper
         private void txtGamePadX_TextChanged(object sender, EventArgs e)
         {
             txtGamePadOut.Text = "";
-            if (txtGamePadX.Text.Trim().Length == 0 || txtGamePadY.Text.Trim().Length == 0) return;
+            if (txtGamePadX.Text.Trim().Length < 2 || txtGamePadY.Text.Trim().Length < 2) return;
 
             var hcn = new List<int> {1,2,4,6,12,24,36,48,60};
 
@@ -3245,12 +3011,12 @@ namespace KTaNE_Helper
             var y = int.Parse(txtGamePadY.Text.Trim());
             string solution;
            
-            var numbatteries = nudBatteriesD.Value + nudBatteriesAA.Value;
+            var numbatteries = Batteries.TotalBatteries;
 
             var xA = x / 10;
             var xB = (xA * -10) + x;
             var yA = y / 10;
-            var yB = (xB * -10) + x;
+            var yB = (yA * -10) + y;
             if (IsPrime(x))
             {
                 solution = "▲▲▼▼";
@@ -3279,7 +3045,7 @@ namespace KTaNE_Helper
             {
                 solution = "▶▶A▼";
             }
-            else if (((x % 3) == 2) || nudUnlitSND.Value > 0)
+            else if (((x % 3) == 2) || IsIndicatorUnlit("SND"))
             {
                 solution = "▶AB▲";
             }
@@ -3307,11 +3073,11 @@ namespace KTaNE_Helper
             {
                 solution = solution + "▼▶B▲";
             }
-            else if (((yA - yB) == 4) && nudPortRCA.Value > 0)
+            else if (((yA - yB) == 4) && IsPortPresent(PortTypes.StereoRCA))
             {
                 solution = solution + "▶A▼▼";
             }
-            else if (((y % 4) == 2) || nudLitFRQ.Value > 0)
+            else if (((y % 4) == 2) || IsIndicatorLit("FRQ"))
             {
                 solution = solution + "B▲▶A";
             }
@@ -3327,7 +3093,7 @@ namespace KTaNE_Helper
             {
                 solution = solution + "A▲◀▼";
             }
-            else if (((y % 4) == 3) || nudPortPS2.Value > 0)
+            else if (((y % 4) == 3) || IsPortPresent(PortTypes.PS2))
             {
                 solution = solution + "▲BBB";
             }
@@ -3402,40 +3168,18 @@ namespace KTaNE_Helper
             var x = -1;
             var y = -1;
 
-            if (txtSerialNumber.Text.Trim().Length == 6)
+            if (IsSerialValid)
             {
                 const string digits = "0123456789";
 
-                x = digits.IndexOf(txtSerialNumber.Text.Substring(5, 1), StringComparison.Ordinal);
+                x = digits.IndexOf(Serial.Substring(5, 1), StringComparison.Ordinal);
                 for (var i = 0; i < 6 && y < 0; i++)
-                    y = digits.IndexOf(txtSerialNumber.Text.Substring(i, 1), StringComparison.Ordinal);
+                    y = digits.IndexOf(Serial.Substring(i, 1), StringComparison.Ordinal);
 
                 if (x >= 0 && y >= 0)
                 {
-                    foreach (var c in gbIndicators.Controls)
-                    {
-                        if (c.GetType() != typeof(NumericUpDown)) continue;
-                        var cc = (NumericUpDown) c;
-                        var lit = cc.Name.Split(new[] {"nudLit", "nudUnlit"}, StringSplitOptions.RemoveEmptyEntries);
-
-                        var flag = false;
-                        if (cc.Name.Contains("nudUnlit"))
-                        {
-                            foreach (var l in lit[0].ToCharArray())
-                            {
-                                if ("MAZE GAMER".Contains(l)) flag = true;
-                            }
-                            if (flag) y += (int) cc.Value;
-                        }
-                        else
-                        {
-                            foreach (var l in lit[0].ToCharArray())
-                            {
-                                if ("HELP IM LOST".Contains(l)) flag = true;
-                            }
-                            if (flag) x += (int) cc.Value;
-                        }
-                    }
+                    y += UnlitIndicators.Count(indicator => indicator.Any(l => "MAZE GAMER".Contains(l)));
+                    x += LitIndicators.Count(indicator => indicator.Any(l => "HELP IM LOST".Contains(l)));
 
                     x %= 8;
                     y %= 8;
@@ -3547,7 +3291,401 @@ namespace KTaNE_Helper
             Refresh();
             txt3DMazeOut.Text = _3Dmaze.FindLocation(txt3DMazeLine.Text, txt3DMazeLetters.Text);
         }
+
+        private void txtPasswordSubmitID_TextChanged(object sender, EventArgs e)
+        {
+            Password_TextChanged(sender, e);
+            MorseCodeInput_TextChanged(sender, e);
+        }
+
+        private void txtSkewedIn_TextChanged(object sender, EventArgs e)
+        {
+            txtSkewedOut.Text = new SkewedSlots().GetAnswer(txtSkewedIn.Text);
+        }
+
+        private void txtLightCycleIn_TextChanged(object sender, EventArgs e)
+        {
+            txtLightCycleOut.Text = LightCycle.GetAnswer(txtLightCycleIn.Text.Trim().ToCharArray());
+        }
+
+        private void cbBlindAlleyTM_CheckedChanged(object sender, EventArgs e)
+        {
+            var score = new int[10];
+            var IndicatorNames = new[]
+            {
+                "BOB", "CAR", "CLR", "FRK", "FRQ", "IND", "MSA", "NSA", "SIG", "SND", "TRN"
+            };
+            var UnlitIndex = new[] {1, 2, 9, 8, 4, 4, 9, 2, 5, 5, 4};
+            var LitIndex = new[] {6, 1, 6, 2, 7, 1, 8, 5, 7, 9, 7};
+
+            var ports = new[]
+            {
+                IsPortPresent(PortTypes.DVI), IsPortPresent(PortTypes.Parallel),
+                IsPortPresent(PortTypes.PS2), IsPortPresent(PortTypes.StereoRCA),
+                IsPortPresent(PortTypes.RJ45), IsPortPresent(PortTypes.Serial)
+            };
+            var portIndex = new[] {4, 8, 6, 9, 2, 6};
+
+            var scoreIndex = new[] {null, cbBlindAlleyTL, cbBlindAlleyTM, null, cbBlindAlleyML, cbBlindAlleyMM, cbBlindAlleyMR, cbBlindAlleyBL, cbBlindAlleyBM, cbBlindAlleyBR };
+
+            if (SerialNumberDigits.Any(digit => digit % 2 == 0))
+                score[7]++;
+            if (SerialNumberContainsVowel())
+                score[8]++;
+            for (var i = 0; i < IndicatorNames.Length; i++)
+            {
+                if (UnlitIndicators.Contains(IndicatorNames[i]))
+                    score[UnlitIndex[i]]++;
+                if (LitIndicators.Contains(IndicatorNames[i]))
+                    score[LitIndex[i]]++;
+            }
+            for (var i = 0; i < ports.Length; i++)
+            {
+                if (ports[i])
+                    score[portIndex[i]]++;
+            }
+
+            if (Batteries.TotalBatteries % 2 == 0)
+                score[5]++;
+            if (Batteries.Holders.Length % 2 == 0)
+                score[1]++;
+
+            for (var i = 0; i < score.Length; i++)
+            {
+                if (scoreIndex[i] == null) continue;
+                scoreIndex[i].Checked = score[i] == score.Max();
+            }
+        }
+
+        private void txtBattleShipSafeSpots_TextChanged(object sender, EventArgs e)
+        {
+            var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            var numbers = "1234567890";
+            txtBattleShipSafeSpots.Text = "";
+            for (var i = 0; i < SerialNumberDigits.Length && i < SerialNumberLetters.Length; i++)
+            {
+                var idx1 = letters.IndexOf(SerialNumberLetters[i], StringComparison.Ordinal);
+                var idx2 = numbers.IndexOf(SerialNumberDigits[i].ToString(), StringComparison.Ordinal);
+                idx1 %= 5;
+                idx2 %= 5;
+                var safe = $@"{letters[idx1]}{numbers[idx2]}";
+                if(!txtBattleShipSafeSpots.Text.Contains(safe))
+                    txtBattleShipSafeSpots.Text += safe + @" ";
+            }
+            var ports = CountTotalPorts() + 4;
+            var battIndicators = Batteries.TotalBatteries + LitIndicators.Length +
+                                 UnlitIndicators.Length + 4;
+            ports %= 5;
+            battIndicators %= 5;
+            var safe2 = $@"{letters[ports]}{numbers[battIndicators]}";
+            if (!txtBattleShipSafeSpots.Text.Contains(safe2))
+                txtBattleShipSafeSpots.Text += safe2;
+        }
+
+        private void ComputeBitWiseOperators()
+        {
+            var Byte1 = new bool[]
+            {
+                Batteries.AABatteries == 0,
+                IsPortPresent(PortTypes.Parallel),
+                LitIndicators.Contains("NSA"),
+                GetModuleCount > GetBombMinutes,
+                LitIndicators.Length > 1,
+                GetModuleCount % 3 == 0,
+                Batteries.DBatteries < 2,
+                CountTotalPorts() < 4
+            };
+            var Byte2 = new bool[]
+            {
+                Batteries.DBatteries > 0,
+                CountTotalPorts() >= 3,
+                Batteries.Holders.Length >= 2,
+                LitIndicators.Contains("BOB"),
+                UnlitIndicators.Length > 1,
+                SerialNumberLastDigitOdd(),
+                GetModuleCount % 2 == 0,
+                Batteries.TotalBatteries >= 2
+            };
+            txtBitWiseOperatorsAND.Text = "";
+            txtBitWiseOperatorsNOT.Text = "";
+            txtBitWiseOperatorsOR.Text = "";
+            txtBitWiseOperatorsXOR.Text = "";
+            for (var i = 0; i < 8; i++)
+            {
+                txtBitWiseOperatorsAND.Text += Byte1[i] && Byte2[i] ? "1" : "0";
+                txtBitWiseOperatorsOR.Text  += Byte1[i] || Byte2[i] ? "1" : "0";
+                txtBitWiseOperatorsXOR.Text += (Byte1[i] && !Byte2[i]) || (!Byte1[i] && Byte2[i]) ? "1" : "0";
+                txtBitWiseOperatorsNOT.Text += !Byte1[i] ? "1" : "0";
+            }
+        }
+
+        private string ComputeFizzBuzz(string text)
+        {
+            
+            if (text.Trim().Length != 7) return "";
+            var fizzBuzzTable = new[]
+            {
+                new[] {7, 3, 2, 4, 5},
+                new[] {3, 4, 9, 2, 8},
+                new[] {4, 5, 8, 8, 2},
+                new[] {2, 3, 7, 9, 1},
+                new[] {6, 6, 1, 2, 8},
+                new[] {1, 2, 2, 5, 3},
+                new[] {3, 1, 8, 3, 4}
+            };
+            var colors = new[] {0, 0, 0, 0, 0};
+            for (var i = 0; i < 5; i++)
+            {
+                if (Batteries.Holders.Length >= 3)
+                    colors[i] += fizzBuzzTable[0][i];
+                if (IsPortPresent(PortTypes.Parallel) && IsPortPresent(PortTypes.Serial))
+                    colors[i] += fizzBuzzTable[1][i];
+                if (SerialNumberDigits.Length == 3 && SerialNumberLetters.Length == 3)
+                    colors[i] += fizzBuzzTable[2][i];
+                if (IsPortPresent(PortTypes.DVI) && IsPortPresent(PortTypes.StereoRCA))
+                    colors[i] += fizzBuzzTable[3][i];
+                if (facts_strike.SelectedIndex == 2)
+                    colors[i] += fizzBuzzTable[4][i];
+                if (Batteries.TotalBatteries >= 5)
+                    colors[i] += fizzBuzzTable[5][i];
+                if (colors[i] == 0)
+                    colors[i] = fizzBuzzTable[6][i];
+                colors[i] %= 10;
+            }
+            var colorText = new[] {"Red", "Green", "Blue", "Yellow", "White"};
+            string result = "";
+            for (var i = 0; i < 5; i++)
+            {
+                int number = 0;
+                foreach (var digit in text)
+                {
+                    int x = int.Parse(digit.ToString());
+                    x += colors[i];
+                    x %= 10;
+                    number *= 10;
+                    number += x;
+                }
+                result += colorText[i] + @":";
+                var fizz = number % 3 == 0;
+                var buzz = number % 5 == 0;
+                if (!fizz && !buzz)
+                    result += "Number";
+                if (fizz)
+                    result += "Fizz";
+                if (buzz)
+                    result += "Buzz";
+                if (i != 4)
+                    result += " - ";
+            }
+            return result;
+        }
+
+        private void txtFizzBuzz1IN_TextChanged(object sender, EventArgs e)
+        {
+            txtFizzBuzz1OUT.Text = ComputeFizzBuzz(txtFizzBuzz1IN.Text);
+            txtFizzBuzz2OUT.Text = ComputeFizzBuzz(txtFizzBuzz2IN.Text);
+            txtFizzBuzz3OUT.Text = ComputeFizzBuzz(txtFizzBuzz3IN.Text);
+        }
+
+        private void txtLaundryIn_TextChanged(object sender, EventArgs e)
+        {
+            if (LitIndicators.Contains("BOB") && Batteries.Holders.Sum() == 4 &&
+                Batteries.Holders.Length == 2)
+            {
+                txtLaundryOut.Text = @"Praise our one true lord and savior BOB, Bestower of Bleach";
+                return;
+            }
+
+            int x;
+            if (!int.TryParse(txtLaundryIn.Text, out x))
+            {
+                txtLaundryOut.Text = "";
+                return;
+            }
+
+            var Item = GetModuleCount - x + UnlitIndicators.Length + LitIndicators.Length;
+            var Material = PortCount(PortTypes.ALL) + x - Batteries.Holders.Length;
+            var Color = LastSerialDigit + Batteries.TotalBatteries;
+
+            while (Item < 0)
+                Item += 6;
+            while (Material < 0)
+                Material += 6;
+            Item %= 6;
+            Material %= 6;
+            Color %= 6;
+
+            var MaterialNames = new[] {"POLYESTER", "COTTON", "WOOL", "NYLON", "CORDUROY", "LEATHER"};
+            bool SerialMatchesMaterial = SerialNumberLetters.Any(letter => MaterialNames[Material].Contains(letter));
+
+            var Washing = new[] {6, 9, 2, 4, 5, 4};
+            var MaterialSpecial = new[] {6, 8, 10, 11, 7, 5};
+            var Drying = new[] {3, 3, 0, 10, 1, 2};
+            var ColorSpecial = new[] {4, 11, 9, 12, 2, 2};
+            var Ironing = new[] {3, 5, 0, 4, 3, 2};
+            var ItemSpecial = new[] {0, 5, 10, 10, 1, 8};
+
+            var SpecialtInstructionsText = "Item";
+            var SpecialInstructions = ItemSpecial[Item];
+            if (Color == 4)
+            {
+                SpecialInstructions = 2;
+                SpecialtInstructionsText = "Color==4";
+            }
+            else if (Item == 0 || Material == 4)
+            {
+                SpecialInstructions = MaterialSpecial[Material];
+                SpecialtInstructionsText = "Material";
+            }
+            else if (SerialMatchesMaterial)
+            {
+                SpecialInstructions = ColorSpecial[Color];
+                SpecialtInstructionsText = "Color";
+            }
+
+            var WashingInstructions = Color == 3 ? 4 : Washing[Material];
+            var WashingOverride = Color == 3 ? "Washing" : "";
+            var DryingInstructions = Material == 2 ? 3 : Drying[Color];
+            var DryingOverride = Material == 2 ? "Drying" : "";
+            var IroningInstructions = Ironing[Item];
+            var OverrideText = WashingOverride == "" && DryingOverride == "" ? "" : " Override:";
+            var OverrideSeperator = WashingOverride != "" && DryingOverride != "" ? "," : "";
+
+            txtLaundryOut.Text = $@"set all {WashingInstructions},{DryingInstructions},{IroningInstructions},{SpecialInstructions}";
+            txtLaundryOut.Text += $@" -- I:{Item}, M:{Material}, C:{Color}, Special:{SpecialtInstructionsText}{OverrideText}{WashingOverride}{OverrideSeperator}{DryingOverride}";
+        }
+
+        private void txtAdjacentLettersIN_TextChanged(object sender, EventArgs e)
+        {
+            txtAdjacentLettersOUT.Text = AdjacentLetters.GetAnswer(txtAdjacentLettersIN.Text.Replace(" ","").ToUpperInvariant());
+        }
+
+        private void cbAcidColor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtNeutralizationOut.Text = new Neutralization(cbAcidColor.SelectedIndex, cbAcidVolume.SelectedIndex).GetAnswer();
+        }
+
+        private void txtRubiksCubeIn_TextChanged(object sender, EventArgs e)
+        {
+            txtRubiksCubeOut.Text = new RubiksCube().GetAnswer(txtRubiksCubeIn.Text);
+        }
+
+        private void txtMorseMaticsIN_TextChanged(object sender, EventArgs e)
+        {
+            txtMorseMaticsOut.Text = new MorseMatics().GenSolution(txtMorseMaticsIN.Text);
+        }
+
+        private void txtMorseAMaze_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCruelPianoInput_TextChanged(object sender, EventArgs e)
+        {
+            txtCruelPianoOutput.Text = Empty;
+            var input = txtCruelPianoInput.Text.Trim().ToLowerInvariant().Split(new [] {" "},StringSplitOptions.RemoveEmptyEntries);
+            if (input.Length <= 0) return;
+
+            int index;
+            Note[] notes;
+            if (!int.TryParse(input[0], out index))
+            {
+                switch (txtCruelPianoInput.Text.ToLowerInvariant())
+                {
+                    case "ff":
+                        notes = MelodyDatabase.FinalFantasyVictory.Notes;
+                        break;
+                    case "guiles":
+                        notes = MelodyDatabase.GuilesTheme.Notes;
+                        break;
+                    case "jamesbond":
+                        notes = MelodyDatabase.JamesBond.Notes;
+                        break;
+                    case "jurrasicpark":
+                        notes = MelodyDatabase.JurrasicPark.Notes;
+                        break;
+                    case "supermario":
+                    case "super mario":
+                        notes = MelodyDatabase.SuperMarioBros.Notes;
+                        break;
+                    case "pinkpanther":
+                        notes = MelodyDatabase.PinkPanther.Notes;
+                        break;
+                    case "super man":
+                        notes = MelodyDatabase.Superman.Notes;
+                        break;
+                    case "tetris":
+                        notes = MelodyDatabase.TetrisA.Notes;
+                        break;
+                    case "starwars":
+                        notes = MelodyDatabase.EmpireStrikesBack.Notes;
+                        break;
+                    case "fairy":
+                        notes = MelodyDatabase.ZeldasLullaby.Notes;
+                        break;
+                    default:
+                        notes = (from melody in MelodyDatabase.StandardMelodies where melody.Name.ToLowerInvariant().Contains(txtCruelPianoInput.Text.ToLowerInvariant()) select melody.Notes).FirstOrDefault();
+                        if (notes == null) return;
+                        break;
+                }
+            }
+            else
+            {
+                if (index < 0 || index >= 10) return;
+                notes = MelodyDatabase.SerialismMelodies[index].Notes;
+                if (input.Length > 1)
+                {
+                    int transpose;
+                    var transposeparsed = int.TryParse(input[1], out transpose);
+                    switch (input[1])
+                    {
+                        case "p":
+                            break;
+                        case "i":
+                            notes = notes.Inversion().ToArray();
+                            break;
+                        case "r":
+                            notes = notes.Retrograde().ToArray();
+                            break;
+                        case "ri":
+                        case "ir":
+                            notes = notes.Inversion().Retrograde().ToArray();
+                            break;
+                    }
+
+                    if (transposeparsed || (input.Length > 2 && int.TryParse(input[2], out transpose)))
+                    {
+                        notes = notes.Transpose(transpose).ToArray();
+                    }
+                }
+            }
+            foreach (var note in notes)
+            {
+                txtCruelPianoOutput.Text += note.Semitone.GetDescription().Split('/')[note.UseAlternate ? 1 : 0] + @" ";
+            }
+        }
+
+        private void nudVanillaSeed_ValueChanged(object sender, EventArgs e)
+        {
+             RuleManager.Instance.Initialize((int)nudVanillaSeed.Value);
+            _initLettersNotPresent = false;
+            keypadReset_Click(sender, e);
+            Needy_Knob_CheckedChanged(sender, e);
+            Simon_Says_Event();
+            Button_Event(sender, e);
+            Complicated_Wires_Event(sender, e);
+            wsReset_Click(sender, e);
+            simpleWires_Event(sender, e);
+            Password_TextChanged(sender, e);
+            MemoryReset_Click(sender, e);
+            MorseCodeInput_TextChanged(sender, e);
+            mazeSelection_TextChanged(sender, e);
+            wofStep1.Checked = true;
+            wofStep1_CheckedChanged(sender, e);
+            Refresh();
+        }
     }
+
 
     public enum ProbingFrequencies
     {

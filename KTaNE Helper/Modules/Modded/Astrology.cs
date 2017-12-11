@@ -48,15 +48,16 @@ namespace KTaNE_Helper
             new int[12] {-1,0,0,-1,-2,1,2,1,1,0,0,-1}
         };
 
-        public string GetOmen(int element, int planet, int sign, string serial)
+        public string GetOmen(int element, int planet, int sign)
         {
+            var serial = SerialNumber.Serial.ToLowerInvariant();
             var omen = 0;
             omen += _elementPlanets[element][planet];
             omen += _elementSigns[element][sign];
             omen += _planetSigns[planet][sign];
-            omen += _elements[element].ToCharArray().Aggregate(false, (current, x) => current | serial.ToLower().Contains(x.ToString())) ? 1 : -1;
-            omen += _planets[planet].ToCharArray().Aggregate(false, (current, x) => current | serial.ToLower().Contains(x.ToString())) ? 1 : -1;
-            omen += _signs[sign].ToCharArray().Aggregate(false, (current, x) => current | serial.ToLower().Contains(x.ToString())) ? 1 : -1;
+            omen += _elements[element].ToCharArray().Aggregate(false, (current, x) => current | serial.Contains(x.ToString())) ? 1 : -1;
+            omen += _planets[planet].ToCharArray().Aggregate(false, (current, x) => current | serial.Contains(x.ToString())) ? 1 : -1;
+            omen += _signs[sign].ToCharArray().Aggregate(false, (current, x) => current | serial.Contains(x.ToString())) ? 1 : -1;
 
             if (omen == 0) return "No Omen";
             if (omen > 0) return "Good Omen on " + omen;

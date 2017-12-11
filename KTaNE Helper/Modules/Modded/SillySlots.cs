@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using System.Xml.Schema;
 
 namespace KTaNE_Helper
 {
@@ -99,6 +98,19 @@ namespace KTaNE_Helper
             return count;
         }
 
+        private static int CountSlots(SlotData x, string identifier, SlotBool type, string currentKeyword)
+        {
+            var count = 0;
+            for (var i = 0; i < 3; i++)
+            {
+                if (type == SlotBool.Color && x.Slots[i].Color == Slots.SlotColors[currentKeyword][identifier])
+                    count++;
+                else if (type == SlotBool.Shape && x.Slots[i].Shape == Slots.SlotShapes[currentKeyword][identifier])
+                    count++;
+            }
+            return count;
+        }
+
         private static int CountSlots(SlotData x, string color, string shape)
         {
             var count = 0;
@@ -110,6 +122,20 @@ namespace KTaNE_Helper
             }
             return count;
         }
+
+        private static int CountSlots(SlotData x, string color, string shape, string currentKeyword)
+        {
+            var count = 0;
+            for (var i = 0; i < 3; i++)
+            {
+                if (x.Slots[i].Color == Slots.SlotColors[currentKeyword][color] &&
+                    x.Slots[i].Shape == Slots.SlotShapes[currentKeyword][shape])
+                    count++;
+            }
+            return count;
+        }
+
+
 
         private static int CountSlots(SlotData x, string color, string shape, out int position)
         {
@@ -172,7 +198,7 @@ namespace KTaNE_Helper
                 reason += "There is a single Sassy Sally";
                 if ((_currentRound - 2) < 0) return false;
                 var xx = _slotRounds[_currentRound - 2];
-                if (xx.Slots[position].Color != Slots.SlotColors[xx.Keyword][Soggy]) return false;
+                if (xx.Slots[position].Color != Slots.SlotColors[x.Keyword][Soggy]) return false;
                 reason += ", however, That slot 2 stages ago was Soggy. ";
             }   //Unless the slot in the same position 2 Stages ago was Soggy
 
@@ -221,7 +247,7 @@ namespace KTaNE_Helper
             {
                 reason += "There is a single Soggy slot";
                 if (_currentRound == 0) return false; //Not possible to be true on first round.
-                if (CountSlots(_slotRounds[_currentRound - 1], Sausage, SlotBool.Shape) == 0)
+                if (CountSlots(_slotRounds[_currentRound - 1], Sausage, SlotBool.Shape, x.Keyword) == 0)
                     return false;   //Unless the previous stage had any number of Sausage slots
                 reason += ", However, there was at least one Sausage the previous round. ";
             }
@@ -236,7 +262,7 @@ namespace KTaNE_Helper
                     reason += " and symbol";
                     for (var i = _currentRound - 1; i >= 0; i--)
                     {
-                        if (CountSlots(_slotRounds[i], Soggy, Sausage) > 0) break;
+                        if (CountSlots(_slotRounds[i], Soggy, Sausage, x.Keyword) > 0) break;
                         if (i == 0) return false;
                     }
                     reason += ", However, there was a Soggy Sausage present in the past. ";
@@ -251,7 +277,7 @@ namespace KTaNE_Helper
                 if (CountSlots(x, Sally, SlotBool.Shape) == 0)
                 {
                     if (_currentRound == 0) return false; //Not possible to be true on first round.
-                    if (CountSlots(_slotRounds[_currentRound - 1], Silly, Steven) == 0)
+                    if (CountSlots(_slotRounds[_currentRound - 1], Silly, Steven, x.Keyword) == 0)
                         return false;
                     if (flag3)
                         reason += ", ";
@@ -268,10 +294,10 @@ namespace KTaNE_Helper
             if (CountSlots(x, Silly, Simon) > 0)    //There are any number of Silly Simons
             {
                 reason += "There is at least one Silly Simon";
+                if (_currentRound == 0) return false;
                 for (var i = _currentRound - 1; i >= 0; i--)
                 {
-                    if (CountSlots(_slotRounds[i], Sassy, Sausage) > 0) break;
-                    if (i == 0) return false;
+                    if (CountSlots(_slotRounds[i], Sassy, Sausage, x.Keyword) > 0) break;
                 }
                 reason += ", However, there was a Sassy Sausage in the past. ";
             }   //Unless there has been a Sassy Sausage in any previous stage.

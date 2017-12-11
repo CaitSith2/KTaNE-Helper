@@ -11,15 +11,13 @@ namespace KTaNE_Helper
         private readonly bool _useSunstone;
         private readonly bool _useHardDrive;
         private readonly bool _useBattery;
-        private readonly string _serial;
 
-        public AdventureGame(string serial, int litIndicators, int unlitIndicators, int batteries, bool duplicatePorts)
+        public AdventureGame()
         {
-            _useHardDrive = duplicatePorts;
-            _useMoonstone = unlitIndicators >= 2;
-            _useSunstone = litIndicators >= 2;
-            _useBattery = batteries < 2;
-            _serial = serial;
+            _useHardDrive = PortPlate.DuplicatePorts();
+            _useMoonstone = Indicators.UnlitIndicators.Length >= 2;
+            _useSunstone = Indicators.LitIndicators.Length >= 2;
+            _useBattery = Batteries.TotalBatteries < 2;
         }
 
         private static string ItemName(Items i) => i.ToString().Replace("_", " ");
@@ -37,23 +35,6 @@ namespace KTaNE_Helper
         private int GetATM() => _stats[6];
 
         private static int GetWeapon(Weapons w) => (int) w;
-
-
-        private int GetLastDigit()
-        {
-            return
-                _serial.ToCharArray()
-                    .Select(c => "0123456789".IndexOf(c.ToString(), StringComparison.Ordinal))
-                    .LastOrDefault(d => d >= 0);
-        }
-
-        private int GetFirstDigit()
-        {
-            return 
-                _serial.ToCharArray()
-                    .Select(c => "0123456789".IndexOf(c.ToString(), StringComparison.Ordinal))
-                    .FirstOrDefault(d => d >= 0);
-        }
 
         private bool UseThisItem(Items item)
         {
@@ -73,7 +54,7 @@ namespace KTaNE_Helper
                     return false;   //Cheaters never prosper
 
                 case Items.Crystal_Ball:
-                    return GetINT() > GetLastDigit() && _monster != Monsters.Wizard;
+                    return GetINT() > SerialNumber.LastSerialDigit && _monster != Monsters.Wizard;
 
                 case Items.Feather:
                     return GetDEX() > GetINT() || GetDEX() > GetSTR();
@@ -106,7 +87,7 @@ namespace KTaNE_Helper
                     return GetHeight() >= 54 && GetGrav() >= 92 && GetGrav() <= 104;
 
                 case Items.Trophy:
-                    return GetSTR() > GetFirstDigit() || _monster == Monsters.Troll;
+                    return GetSTR() > SerialNumber.FirstSerialDigit || _monster == Monsters.Troll;
 
                 case Items.NotSelected:
                     return false;
@@ -217,9 +198,11 @@ namespace KTaNE_Helper
             }
 
             result += "Use weapons: ";
+            var correctWeaponList = new List<string>();
             for(var i = 0; i < 3; i++)
                 if (correctweapon[i])
-                    result += WeaponName(weapons[i]) + ", ";
+                    correctWeaponList.Add(WeaponName(weapons[i]));
+            result += string.Join(", ", correctWeaponList.ToArray());
 
             return result;
         }

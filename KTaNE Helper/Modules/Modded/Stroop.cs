@@ -87,7 +87,7 @@ namespace KTaNE_Helper
                         if (!condition) continue;
                         for (var j = 0; j < 8; j++)
                         {
-                            if (words[j] != Green) continue;
+                            if (colors[j] != Green) continue;
                             answer = "Press Yes on " + (j + 1) + " (Y1)";
                             break;
                         }

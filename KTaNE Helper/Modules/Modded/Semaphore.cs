@@ -6,18 +6,11 @@ namespace KTaNE_Helper
     {
         private bool _numbers;
         private bool _letters;
-        private readonly string _serial;
-
-        public Semaphore(string serial)
-        {
-            _serial = serial.ToUpper();
-        }
 
         private bool IsAnswer(string letter, string number)
         {
-
-            if (!IsNullOrEmpty(number) && _numbers && _serial.Contains(number)) return false;
-            if (!IsNullOrEmpty(letter) && _letters && _serial.Contains(letter)) return false;
+            if (!IsNullOrEmpty(number) && _numbers && SerialNumber.Serial.Contains(number)) return false;
+            if (!IsNullOrEmpty(letter) && _letters && SerialNumber.Serial.Contains(letter)) return false;
             if (IsNullOrEmpty(letter) && _letters) return false;
             if (IsNullOrEmpty(number) && _numbers) return false;
             if (IsNullOrEmpty(letter) && IsNullOrEmpty(number)) return false;
@@ -26,7 +19,7 @@ namespace KTaNE_Helper
 
         public string GetAnswer(string input)
         {
-            if (_serial.Length < 6) return "";
+            if (SerialNumber.Serial.Length < 6) return "";
             var flags = input.ToUpper().Split(' ');
             
 

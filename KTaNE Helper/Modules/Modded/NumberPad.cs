@@ -8,21 +8,12 @@ namespace KTaNE_Helper
 {
     internal class NumberPad
     {
-        public NumberPad(string colors, int batteries, int ports, bool even, bool vowel)
+        public NumberPad(string colors)
         {
             _colors = colors.ToUpper();
-            _serialEven = even;
-            _serialHasVowel = vowel;
-            _batteries = batteries;
-            _ports = ports;
         }
 
         private readonly string _colors;
-        private readonly bool _serialEven;
-        private readonly bool _serialHasVowel;
-        private readonly int _batteries;
-        private readonly int _ports;
-
 
         private const string Wheel = "22468313395143690979890789940526034176635285026086097984297491480871855832860082003490389675061692920733696061238335";
         private string _workingCode;
@@ -78,7 +69,7 @@ namespace KTaNE_Helper
                         ArrayContains(new[] { ColorWhite, ColorBlue, ColorRed }, GetButtonColor(5)) &&
                         ArrayContains(new[] { ColorWhite, ColorBlue, ColorRed }, GetButtonColor(6)))
                         return 1;
-                    return _serialHasVowel
+                    return SerialNumber.SerialNumberContainsVowel()
                         ? 2
                         : 3;
                 case 1:
@@ -86,7 +77,7 @@ namespace KTaNE_Helper
                         return 0;
                     if (GetButtonColor(5) != ColorBlue && GetButtonColor(5) != ColorWhite)
                         return 1;
-                    if (_ports < 2)
+                    if (PortPlate.CountTotalPorts() < 2)
                         return 2;
                     if (GetButtonColor(7) == ColorGreen || GetButtonColor(8) == ColorGreen || GetButtonColor(9) == ColorGreen)
                         SubtractDigit(0);
@@ -193,7 +184,7 @@ namespace KTaNE_Helper
             //print ("workingcode is " + WorkingCode);
 
             var notMet = true;
-            if (_serialEven)
+            if (SerialNumber.SerialNumberLastDigitEven() )
             {
                 //print ("serial even, swapping 1 and 3");
                 var old = _workingCode.Substring(2, 1);
@@ -201,7 +192,7 @@ namespace KTaNE_Helper
                 _workingCode = _workingCode.ReplaceAt(0, old);
                 notMet = false;
             }
-            if (_batteries % 2 == 1)
+            if (Batteries.TotalBatteries % 2 == 1)
             {
                 //print ("battery count odd, swapping 2 and 3");
                 var old = _workingCode.Substring(2, 1);

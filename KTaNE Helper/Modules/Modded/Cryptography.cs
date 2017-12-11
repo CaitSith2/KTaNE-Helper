@@ -68,32 +68,38 @@ namespace KTaNE_Helper
             if (lens.Count == 0) return result;
 
             var matched = 0;
-            
-            foreach (var x in _christmasCarol)
+            try
             {
-                var offset = 1;
-                if (x.Split(' ').Length != lens[0]) offset = 0;
-
-                var flag = true;
-                var words = x.Split(' ');
-                for (var i = offset; i < lens.Count && (i-offset) < words.Length && flag; i++)
-                        flag &= x.Split(' ')[i - offset].Length == lens[i];
-                if (!flag) continue;
-
-                var order = new List<int>();
-                var orderlist = new Dictionary<int, string>();
-                foreach (var y in letters.ToCharArray())
+                foreach (var x in _christmasCarol)
                 {
-                    var z = x.IndexOf(y);
-                    order.Add(z);
-                    if (z < 0) continue;
-                    orderlist.Add(z, y.ToString());
-                    order.Sort();
-                }
-                if (order.Count != orderlist.Count) continue;
+                    var offset = 1;
+                    if (x.Split(' ').Length != lens[0]) offset = 0;
 
-                result = order.Aggregate(result, (current, y) => current + orderlist[y]);
-                matched++;
+                    var flag = true;
+                    var words = x.Split(' ');
+                    for (var i = offset; i < lens.Count && (i - offset) < words.Length && flag; i++)
+                        flag &= x.Split(' ')[i - offset].Length == lens[i];
+                    if (!flag) continue;
+
+                    var order = new List<int>();
+                    var orderlist = new Dictionary<int, string>();
+                    foreach (var y in letters.ToCharArray())
+                    {
+                        var z = x.IndexOf(y);
+                        order.Add(z);
+                        if (z < 0) continue;
+                        orderlist.Add(z, y.ToString());
+                        order.Sort();
+                    }
+                    if (order.Count != orderlist.Count) continue;
+
+                    result = order.Aggregate(result, (current, y) => current + orderlist[y]);
+                    matched++;
+                }
+            }
+            catch
+            {
+                return "EXCEPTION: no match found";
             }
 
             if (matched == 0)
