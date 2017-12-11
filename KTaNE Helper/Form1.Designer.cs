@@ -65,6 +65,13 @@
             this.txtSimpleWireOutput = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.wireReset = new System.Windows.Forms.Button();
+            this.fpWires = new System.Windows.Forms.FlowLayoutPanel();
+            this.wire1 = new System.Windows.Forms.ComboBox();
+            this.wire2 = new System.Windows.Forms.ComboBox();
+            this.wire3 = new System.Windows.Forms.ComboBox();
+            this.wire4 = new System.Windows.Forms.ComboBox();
+            this.wire5 = new System.Windows.Forms.ComboBox();
+            this.wire6 = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
             this.wires_input = new System.Windows.Forms.MaskedTextBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
@@ -239,10 +246,10 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.wofLook = new System.Windows.Forms.FlowLayoutPanel();
             this.rbWOF1 = new System.Windows.Forms.RadioButton();
-            this.rbWOF3 = new System.Windows.Forms.RadioButton();
-            this.rbWOF5 = new System.Windows.Forms.RadioButton();
             this.rbWOF2 = new System.Windows.Forms.RadioButton();
+            this.rbWOF3 = new System.Windows.Forms.RadioButton();
             this.rbWOF4 = new System.Windows.Forms.RadioButton();
+            this.rbWOF5 = new System.Windows.Forms.RadioButton();
             this.rbWOF6 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.wofStep1Label = new System.Windows.Forms.TextBox();
@@ -559,8 +566,6 @@
             this.txtCruelPianoOutput = new System.Windows.Forms.TextBox();
             this.label53 = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.label55 = new System.Windows.Forms.Label();
-            this.nudVanillaSeed = new System.Windows.Forms.NumericUpDown();
             this.gbBombInformation.SuspendLayout();
             this.groupBox46.SuspendLayout();
             this.groupBox39.SuspendLayout();
@@ -580,6 +585,7 @@
             this.tpWires.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.groupBox11.SuspendLayout();
+            this.fpWires.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tpKeypadsSimonSays.SuspendLayout();
@@ -687,7 +693,6 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudVanillaSeed)).BeginInit();
             this.SuspendLayout();
             // 
             // label16
@@ -726,7 +731,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(553, 5);
+            this.linkLabel1.Location = new System.Drawing.Point(323, 5);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(63, 13);
             this.linkLabel1.TabIndex = 2;
@@ -1076,6 +1081,7 @@
             this.groupBox11.Controls.Add(this.txtSimpleWireOutput);
             this.groupBox11.Controls.Add(this.label1);
             this.groupBox11.Controls.Add(this.wireReset);
+            this.groupBox11.Controls.Add(this.fpWires);
             this.groupBox11.Controls.Add(this.label23);
             this.groupBox11.Controls.Add(this.wires_input);
             this.groupBox11.Location = new System.Drawing.Point(3, 3);
@@ -1120,6 +1126,116 @@
             this.wireReset.Text = "Reset";
             this.wireReset.UseVisualStyleBackColor = true;
             this.wireReset.Click += new System.EventHandler(this.wireReset_Click);
+            // 
+            // fpWires
+            // 
+            this.fpWires.Controls.Add(this.wire1);
+            this.fpWires.Controls.Add(this.wire2);
+            this.fpWires.Controls.Add(this.wire3);
+            this.fpWires.Controls.Add(this.wire4);
+            this.fpWires.Controls.Add(this.wire5);
+            this.fpWires.Controls.Add(this.wire6);
+            this.fpWires.Location = new System.Drawing.Point(504, 20);
+            this.fpWires.Name = "fpWires";
+            this.fpWires.Size = new System.Drawing.Size(108, 20);
+            this.fpWires.TabIndex = 12;
+            this.fpWires.Visible = false;
+            // 
+            // wire1
+            // 
+            this.wire1.FormattingEnabled = true;
+            this.wire1.Items.AddRange(new object[] {
+            "",
+            "Red",
+            "White",
+            "Black",
+            "Blue",
+            "Yellow"});
+            this.wire1.Location = new System.Drawing.Point(3, 3);
+            this.wire1.Name = "wire1";
+            this.wire1.Size = new System.Drawing.Size(10, 21);
+            this.wire1.TabIndex = 1;
+            this.wire1.SelectedIndexChanged += new System.EventHandler(this.simpleWires_Event);
+            // 
+            // wire2
+            // 
+            this.wire2.FormattingEnabled = true;
+            this.wire2.Items.AddRange(new object[] {
+            "",
+            "Red",
+            "White",
+            "Black",
+            "Blue",
+            "Yellow"});
+            this.wire2.Location = new System.Drawing.Point(19, 3);
+            this.wire2.Name = "wire2";
+            this.wire2.Size = new System.Drawing.Size(17, 21);
+            this.wire2.TabIndex = 2;
+            this.wire2.SelectedIndexChanged += new System.EventHandler(this.simpleWires_Event);
+            // 
+            // wire3
+            // 
+            this.wire3.FormattingEnabled = true;
+            this.wire3.Items.AddRange(new object[] {
+            "",
+            "Red",
+            "White",
+            "Black",
+            "Blue",
+            "Yellow"});
+            this.wire3.Location = new System.Drawing.Point(42, 3);
+            this.wire3.Name = "wire3";
+            this.wire3.Size = new System.Drawing.Size(18, 21);
+            this.wire3.TabIndex = 3;
+            this.wire3.SelectedIndexChanged += new System.EventHandler(this.simpleWires_Event);
+            // 
+            // wire4
+            // 
+            this.wire4.FormattingEnabled = true;
+            this.wire4.Items.AddRange(new object[] {
+            "",
+            "Red",
+            "White",
+            "Black",
+            "Blue",
+            "Yellow"});
+            this.wire4.Location = new System.Drawing.Point(66, 3);
+            this.wire4.Name = "wire4";
+            this.wire4.Size = new System.Drawing.Size(17, 21);
+            this.wire4.TabIndex = 4;
+            this.wire4.SelectedIndexChanged += new System.EventHandler(this.simpleWires_Event);
+            // 
+            // wire5
+            // 
+            this.wire5.FormattingEnabled = true;
+            this.wire5.Items.AddRange(new object[] {
+            "",
+            "Red",
+            "White",
+            "Black",
+            "Blue",
+            "Yellow"});
+            this.wire5.Location = new System.Drawing.Point(3, 30);
+            this.wire5.Name = "wire5";
+            this.wire5.Size = new System.Drawing.Size(17, 21);
+            this.wire5.TabIndex = 5;
+            this.wire5.SelectedIndexChanged += new System.EventHandler(this.simpleWires_Event);
+            // 
+            // wire6
+            // 
+            this.wire6.FormattingEnabled = true;
+            this.wire6.Items.AddRange(new object[] {
+            "",
+            "Red",
+            "White",
+            "Black",
+            "Blue",
+            "Yellow"});
+            this.wire6.Location = new System.Drawing.Point(26, 30);
+            this.wire6.Name = "wire6";
+            this.wire6.Size = new System.Drawing.Size(18, 21);
+            this.wire6.TabIndex = 0;
+            this.wire6.SelectedIndexChanged += new System.EventHandler(this.simpleWires_Event);
             // 
             // label23
             // 
@@ -3076,10 +3192,10 @@
             // wofLook
             // 
             this.wofLook.Controls.Add(this.rbWOF1);
-            this.wofLook.Controls.Add(this.rbWOF3);
-            this.wofLook.Controls.Add(this.rbWOF5);
             this.wofLook.Controls.Add(this.rbWOF2);
+            this.wofLook.Controls.Add(this.rbWOF3);
             this.wofLook.Controls.Add(this.rbWOF4);
+            this.wofLook.Controls.Add(this.rbWOF5);
             this.wofLook.Controls.Add(this.rbWOF6);
             this.wofLook.Controls.Add(this.radioButton1);
             this.wofLook.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -3098,45 +3214,45 @@
             this.rbWOF1.UseVisualStyleBackColor = true;
             this.rbWOF1.CheckedChanged += new System.EventHandler(this.rbWOF_CheckedChanged);
             // 
-            // rbWOF3
-            // 
-            this.rbWOF3.AutoSize = true;
-            this.rbWOF3.Location = new System.Drawing.Point(3, 22);
-            this.rbWOF3.Name = "rbWOF3";
-            this.rbWOF3.Size = new System.Drawing.Size(14, 13);
-            this.rbWOF3.TabIndex = 2;
-            this.rbWOF3.UseVisualStyleBackColor = true;
-            this.rbWOF3.CheckedChanged += new System.EventHandler(this.rbWOF_CheckedChanged);
-            // 
-            // rbWOF5
-            // 
-            this.rbWOF5.AutoSize = true;
-            this.rbWOF5.Location = new System.Drawing.Point(3, 41);
-            this.rbWOF5.Name = "rbWOF5";
-            this.rbWOF5.Size = new System.Drawing.Size(14, 13);
-            this.rbWOF5.TabIndex = 4;
-            this.rbWOF5.UseVisualStyleBackColor = true;
-            this.rbWOF5.CheckedChanged += new System.EventHandler(this.rbWOF_CheckedChanged);
-            // 
             // rbWOF2
             // 
             this.rbWOF2.AutoSize = true;
-            this.rbWOF2.Location = new System.Drawing.Point(23, 3);
+            this.rbWOF2.Location = new System.Drawing.Point(3, 22);
             this.rbWOF2.Name = "rbWOF2";
             this.rbWOF2.Size = new System.Drawing.Size(14, 13);
             this.rbWOF2.TabIndex = 1;
             this.rbWOF2.UseVisualStyleBackColor = true;
             this.rbWOF2.CheckedChanged += new System.EventHandler(this.rbWOF_CheckedChanged);
             // 
+            // rbWOF3
+            // 
+            this.rbWOF3.AutoSize = true;
+            this.rbWOF3.Location = new System.Drawing.Point(3, 41);
+            this.rbWOF3.Name = "rbWOF3";
+            this.rbWOF3.Size = new System.Drawing.Size(14, 13);
+            this.rbWOF3.TabIndex = 2;
+            this.rbWOF3.UseVisualStyleBackColor = true;
+            this.rbWOF3.CheckedChanged += new System.EventHandler(this.rbWOF_CheckedChanged);
+            // 
             // rbWOF4
             // 
             this.rbWOF4.AutoSize = true;
-            this.rbWOF4.Location = new System.Drawing.Point(23, 22);
+            this.rbWOF4.Location = new System.Drawing.Point(23, 3);
             this.rbWOF4.Name = "rbWOF4";
             this.rbWOF4.Size = new System.Drawing.Size(14, 13);
             this.rbWOF4.TabIndex = 3;
             this.rbWOF4.UseVisualStyleBackColor = true;
             this.rbWOF4.CheckedChanged += new System.EventHandler(this.rbWOF_CheckedChanged);
+            // 
+            // rbWOF5
+            // 
+            this.rbWOF5.AutoSize = true;
+            this.rbWOF5.Location = new System.Drawing.Point(23, 22);
+            this.rbWOF5.Name = "rbWOF5";
+            this.rbWOF5.Size = new System.Drawing.Size(14, 13);
+            this.rbWOF5.TabIndex = 4;
+            this.rbWOF5.UseVisualStyleBackColor = true;
+            this.rbWOF5.CheckedChanged += new System.EventHandler(this.rbWOF_CheckedChanged);
             // 
             // rbWOF6
             // 
@@ -6645,45 +6761,11 @@
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.label55);
-            this.splitContainer2.Panel2.Controls.Add(this.nudVanillaSeed);
             this.splitContainer2.Panel2.Controls.Add(this.ManualVersionSelect);
             this.splitContainer2.Panel2.Controls.Add(this.linkLabel1);
             this.splitContainer2.Size = new System.Drawing.Size(1126, 547);
             this.splitContainer2.SplitterDistance = 513;
             this.splitContainer2.TabIndex = 5;
-            // 
-            // label55
-            // 
-            this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(327, 5);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(91, 13);
-            this.label55.TabIndex = 4;
-            this.label55.Text = "Vanilla Rule Seed";
-            // 
-            // nudVanillaSeed
-            // 
-            this.nudVanillaSeed.Location = new System.Drawing.Point(424, 3);
-            this.nudVanillaSeed.Maximum = new decimal(new int[] {
-            2147483647,
-            0,
-            0,
-            0});
-            this.nudVanillaSeed.Minimum = new decimal(new int[] {
-            -2147483648,
-            0,
-            0,
-            -2147483648});
-            this.nudVanillaSeed.Name = "nudVanillaSeed";
-            this.nudVanillaSeed.Size = new System.Drawing.Size(120, 20);
-            this.nudVanillaSeed.TabIndex = 3;
-            this.nudVanillaSeed.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudVanillaSeed.ValueChanged += new System.EventHandler(this.nudVanillaSeed_ValueChanged);
             // 
             // Form1
             // 
@@ -6724,6 +6806,7 @@
             this.flowLayoutPanel2.ResumeLayout(false);
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
+            this.fpWires.ResumeLayout(false);
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -6896,7 +6979,6 @@
             this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.nudVanillaSeed)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -7076,6 +7158,13 @@
         private System.Windows.Forms.TextBox txtSimpleWireOutput;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button wireReset;
+        private System.Windows.Forms.FlowLayoutPanel fpWires;
+        private System.Windows.Forms.ComboBox wire1;
+        private System.Windows.Forms.ComboBox wire2;
+        private System.Windows.Forms.ComboBox wire3;
+        private System.Windows.Forms.ComboBox wire4;
+        private System.Windows.Forms.ComboBox wire5;
+        private System.Windows.Forms.ComboBox wire6;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.MaskedTextBox wires_input;
         private System.Windows.Forms.GroupBox groupBox12;
@@ -7432,8 +7521,6 @@
         private System.Windows.Forms.TextBox txtCruelPianoInput;
         private System.Windows.Forms.TextBox txtRPSLSDecoy;
         private System.Windows.Forms.SplitContainer ForgetMeNotSplitContainer;
-        private System.Windows.Forms.Label label55;
-        private System.Windows.Forms.NumericUpDown nudVanillaSeed;
     }
 }
 

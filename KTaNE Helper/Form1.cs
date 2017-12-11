@@ -8,9 +8,6 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using Assets.Scripts.Rules;
-using KTaNE_Helper.Helpers;
-using KTaNE_Helper.Modules;
 using static System.String;
 using static KTaNE_Helper.Indicators;
 using static KTaNE_Helper.PortPlate;
@@ -56,6 +53,47 @@ namespace KTaNE_Helper
         private int _mazeSelection = -1;
         private int _mazeStartXY = 77;
         private int _mazeEndXY = 77;
+
+        private readonly string[] _whosOnFirstStepOneWords =
+        {
+            string.Empty, "BLANK", "C", "CEE", "DISPLAY", "FIRST", "HOLD ON", "LEAD", "LED", "LEED", "NO", "NOTHING","OKAY", "READ",
+            "RED", "REED", "SAYS", "SEE", "THEIR", "THERE", "THEY ARE", "THEY'RE", "UR", "YES", "YOU", "YOU ARE", "YOUR","YOU'RE"
+        };
+
+        private readonly int[] _whosOnFirstStepOneIndex241 =
+        {
+            2,4,3,5,5,3,5,5,1,2,5,1,3,4,4,2,5,5,4,5,1,2,0,1,4,5,4,4
+        };
+
+        private readonly int[] _whosOnFirstStapOneIndex724 =
+        {
+            2,4,2,3,5,0,0,2,5,0,5,0,1,4,3,5,2,2,2,0,2,5,5,2,1,3,1,4
+        };
+
+
+        private readonly string[,] _whosOnFirstStepTwoWords =
+        {
+            {"BLANK","FIRST","LEFT","MIDDLE","NO","NOTHING","OKAY","PRESS","READY","RIGHT","UHHH","WAIT","WHAT","YES"},
+            {"DONE","HOLD","LIKE","NEXT","SURE","U","UH HUH","UH UH","UR","WHAT?","YOU","YOU ARE","YOUR","YOU'RE"}
+        };
+
+        private readonly int[] _whosOnFirstStepTwoWordIndex =
+        {
+            0 + 0, 14 + 0, 0 + 1, 14 + 1, 0 + 2, 14 + 2, 0 + 3, 14 + 3, 0 + 4, 0 + 5, 0 + 6, 0 + 7, 0 + 8, 0 + 9, 14 + 4,
+            14 + 5, 14 + 6, 14 + 7, 0 + 10, 14 + 8, 0 + 11, 0 + 12, 14 + 9, 0 + 13, 14 + 10, 14 + 11, 14 + 12, 14 + 13
+        };
+
+        private readonly int[,,] _whosOnFirstStepTwoIndex241 =
+        {
+            {{11,9,6,3,0,7,8,5,4,12,2,10,13,1},{2,6,13,3,4,9,5,10,11,8,0,12,7,1},{9,2,1,4,3,13,0,12,10,11,7,8,6,5},{0,8,6,12,5,7,4,11,2,3,9,1,10,13},{0,10,11,1,12,8,9,13,5,2,7,6,4,3},{10,9,6,3,13,0,5,7,2,12,11,1,4,8},{3,4,1,13,10,5,11,6,2,8,0,7,12,9},{9,3,13,8,7,6,5,10,0,2,1,12,4,11},{13,6,12,3,2,7,9,0,8,4,1,10,5,11},{13,5,8,7,4,11,12,9,3,2,10,0,6,1},{8,5,2,12,6,13,9,4,7,0,10,3,11,1},{10,4,0,6,13,2,1,7,12,11,5,8,9,3},{10,12,2,5,8,0,3,4,6,1,11,13,7,9},{6,9,10,3,1,12,7,8,5,13,2,0,4,11}},
+            {{4,6,3,9,12,8,13,1,2,10,5,11,7,0},{11,5,0,7,10,8,4,9,13,3,1,6,12,2},{13,3,5,8,1,0,7,9,6,13,2,4,11,12},{9,6,7,12,1,4,3,2,0,11,8,13,5,10},{11,0,2,13,10,1,6,8,4,5,9,3,12,7},{6,4,3,9,13,8,7,0,5,10,2,1,11,12},{6,12,11,10,0,1,7,3,4,2,13,8,5,9},{8,5,11,13,3,7,0,10,6,2,12,4,1,9},{0,5,8,6,9,4,12,1,13,2,3,7,11,10},{10,1,13,12,5,0,7,2,11,6,8,3,9,4},{4,11,12,13,3,6,8,1,9,10,7,2,0,5},{12,3,2,6,9,0,7,1,10,5,13,4,8,11},{7,11,6,12,3,8,4,5,13,10,9,1,2,0},{10,13,8,3,7,11,5,12,9,6,4,0,2,1}}
+        };
+
+        private readonly int[,,] _whosOnFirstStepTwoIndex724 =
+        {
+            {{7,6,8,0,11,10,12,2,9,4,3,13,1,5},{5,9,10,4,0,12,8,3,11,7,2,6,1,13},{2,7,11,10,5,3,4,1,6,12,13,8,9,0},{10,5,1,2,12,13,8,9,4,3,11,0,7,6},{7,11,3,13,4,5,12,0,9,8,1,6,10,2},{11,6,13,8,12,2,9,0,7,5,1,4,10,3},{9,6,1,11,2,8,7,3,12,5,0,13,10,4},{9,5,7,0,2,1,6,3,13,12,11,4,10,8},{1,13,6,10,2,0,5,9,12,3,7,8,11,4},{0,4,2,5,1,13,9,7,6,10,3,11,8,12},{2,13,8,3,9,12,1,7,4,6,11,10,0,5},{1,12,6,2,0,11,10,5,8,4,3,13,7,9},{2,0,11,7,9,3,1,6,4,8,13,10,12,5},{11,13,12,10,8,6,3,7,9,2,1,4,5,0}},
+            {{8,3,5,11,13,4,6,12,2,0,10,9,7,1},{7,11,10,4,8,0,6,1,2,13,12,3,5,9},{12,5,7,8,9,11,10,3,6,13,0,2,4,1},{2,3,6,8,11,13,7,4,5,1,0,12,10,9},{10,6,9,7,5,0,12,4,3,1,2,13,11,8},{9,13,8,11,3,7,6,5,10,0,12,1,2,4},{6,9,7,0,13,1,5,8,3,11,2,10,12,4},{10,11,2,12,8,5,0,4,3,6,7,1,9,13},{0,5,10,6,9,12,7,4,8,2,1,3,13,11},{5,0,4,12,3,11,13,1,2,6,9,7,8,10},{2,10,6,3,13,9,8,7,5,4,0,11,12,1},{11,13,8,12,0,4,7,9,10,1,5,2,3,6},{6,11,5,3,13,12,8,4,1,7,10,2,9,0},{8,12,9,10,7,1,4,6,11,5,2,0,13,3}}
+        };
 
         private int _whosOnFirstLookIndex = 6;
 
@@ -259,21 +297,33 @@ namespace KTaNE_Helper
                 yellowstrip.Text = @"Yellow - 5";
                 whitestrip.Text = @"Other - 1";
                 otherstrip.Text = @"";
-                nudVanillaSeed.Value = 1;
             }
             else
             {
-                
                 linkLabel1.Text = @"http://www.lthummus.com/";
                 button_name.Visible = false;
                 bluestrip.Text = @" Red - 5";
                 yellowstrip.Text = @"Yellow - 3";
                 whitestrip.Text = @"White - 3";
                 otherstrip.Text = @"Other - 4";
-                nudVanillaSeed.Value = 2;
             }
 
-            
+            _initLettersNotPresent = false;
+            keypadReset_Click(sender, e);
+            Needy_Knob_CheckedChanged(sender, e);
+            Simon_Says_Event();
+            Button_Event(sender, e);
+            Complicated_Wires_Event(sender, e);
+            wsReset_Click(sender, e);
+            simpleWires_Event(sender, e);
+            Password_TextChanged(sender, e);
+            MemoryReset_Click(sender, e);
+            MorseCodeInput_TextChanged(sender, e);
+            mazeSelection_TextChanged(sender, e);
+            wofStep1.Checked = true;
+            wofStep1_CheckedChanged(sender, e);
+            Refresh();
+
         }
 
         private readonly Dictionary<string, TabPage> _moduleNameToTab = new Dictionary<string, TabPage>();
@@ -356,12 +406,158 @@ namespace KTaNE_Helper
 
         private void wireReset_Click(object sender, EventArgs e)
         {
+            for (var i = 0; i < 6; i++)
+                ((ComboBox) fpWires.Controls[i]).SelectedIndex = 0;
             wires_input.Text = "";
         }
 
         private void simpleWires_Event(object sender, EventArgs e)
         {
-            wires_Input_TextChanged(sender, e);
+          //  facts_serial_last_digit.SelectedIndex = (wires_serial_odd.Checked ? 0 : 1);
+          //  facts_serial_starts_with_letter.Checked = wires_serial_letter.Checked;
+            var conditions = "";
+            string result;
+            var wires = new int[6];
+            for (var i = 0; i < 6; i++)
+                wires[i] = ((ComboBox) fpWires.Controls[i]).SelectedIndex;
+
+            var wirecounts = new int[6];
+            for (var i = 0; i < 6; i++)
+                if (wires[i] >= 0)
+                    wirecounts[wires[i]]++;
+                else
+                    wirecounts[Wires.None]++;
+
+            var count = 6 - wirecounts[Wires.None];
+
+            if (count < 3) return;
+            if (count < 6)
+            {
+                for (var i = 0; i < 6; i++)
+                {
+                    if (wires[i] != Wires.None) continue;
+                    for (var j = i; j < 5; j++)
+                    {
+                        wires[j] = wires[j + 1];
+                    }
+                    wires[5] = Wires.None;
+                }
+            }
+            if (_manualVersion == 0)
+            {
+                if (count == 3)
+                {
+                    if (wirecounts[Wires.Red] == 0)
+                        result = @"Cut Second Wire";
+                    else if (wires[2] == Wires.White)
+                        result = @"Cut Last Wire";
+                    else if (wirecounts[Wires.Blue] > 1)
+                        result = @"Cut Last Blue Wire";
+                    else
+                        result = @"Cut Last Wire";
+                }
+                else if (count == 4)
+                {
+                    if (wirecounts[Wires.Red] > 1)
+                        conditions = @"Is last digit of Serial Odd?";
+                    if ((wirecounts[Wires.Red] > 1) && SerialNumberLastDigitOdd())
+                        result = @"Cut Last Red Wire";
+                    else if ((wires[3] == Wires.Yellow) && (wirecounts[Wires.Red] == 0))
+                        result = @"Cut First Wire";
+                    else if (wirecounts[Wires.Blue] == 1)
+                        result = @"Cut First Wire";
+                    else if (wirecounts[Wires.Yellow] > 1)
+                        result = @"Cut Last Wire";
+                    else
+                        result = @"Cut Second Wire";
+                }
+                else if (count == 5)
+                {
+                    if (wires[4] == Wires.Black)
+                        conditions = @"Is last digit of Serial Odd?";
+                    if ((wires[4] == Wires.Black) && SerialNumberLastDigitOdd())
+                        result = @"Cut Fourth Wire";
+                    else if ((wirecounts[Wires.Red] == 1) && (wirecounts[Wires.Yellow] > 1))
+                        result = @"Cut First Wire";
+                    else if (wirecounts[Wires.Black] == 0)
+                        result = @"Cut Second Wire";
+                    else
+                        result = @"Cut First Wire";
+                }
+                else
+                {
+                    if (wirecounts[Wires.Yellow] == 0)
+                        conditions = @"Is last digit of Serial Odd?";
+                    if ((wirecounts[Wires.Yellow] == 0) && SerialNumberLastDigitOdd())
+                        result = @"Cut Third Wire";
+                    else if ((wirecounts[Wires.Yellow] == 1) && (wirecounts[Wires.White] > 1))
+                        result = @"Cut Fourth Wire";
+                    else if (wirecounts[Wires.Red] == 0)
+                        result = @"Cut Last Wire";
+                    else
+                        result = @"Cut Fourth Wire";
+                }
+            }
+            else
+            {
+                if (count == 3)
+                {
+                    if(wirecounts[Wires.White] == 0)
+                        conditions = @"Is the first character of Serial a Letter?";
+                    if (wirecounts[Wires.White] == 0 && SerialNumberBeginsWithLetter())
+                        result = @"Cut the Second Wire";
+                    else if (wirecounts[Wires.Red] == 1)
+                        result = @"Cut the First Wire";
+                    else if (wirecounts[Wires.Blue] > 1)
+                        result = @"Cut the First Blue Wire";
+                    else if (wires[2] == Wires.Red)
+                        result = @"Cut the Last Wire";
+                    else
+                        result = @"Cut the Second Wire";
+                }
+                else if (count == 4)
+                {
+                    if (wirecounts[Wires.Yellow] == 1 && wires[3] == Wires.Red)
+                        result = @"Cut the Third Wire";
+                    else if (wires[3] == Wires.White)
+                        result = @"Cut the Second Wire";
+                    else if (wirecounts[Wires.Yellow] == 0)
+                        result = @"Cut the First Wire";
+                    else
+                        result = @"Cut the Last Wire";
+                }
+                else if (count == 5)
+                {
+                    if(wirecounts[Wires.Black] > 1)
+                        conditions = @"Is the first character of Serial a Letter?";
+                    if (wirecounts[Wires.Black] > 1 && SerialNumberBeginsWithLetter())
+                        result = @"Cut the Second Wire";
+                    else if (wires[4] == Wires.Blue && wirecounts[Wires.Red] == 1)
+                        result = @"Cut the First Wire";
+                    else if (wires[4] == Wires.Red)
+                        result = @"Cut the Fourth Wire";
+                    else if (wirecounts[Wires.Red] == 0)
+                        result = @"Cut the Third Wire";
+                    else
+                        result = @"Cut the First Wire";
+                }
+                else
+                {
+                    if (wirecounts[Wires.Red] == 1)
+                        result = @"Cut the Red Wire";
+                    else if (wires[5] == Wires.Red)
+                        result = @"Cut the Last Wire";
+                    else if (wirecounts[Wires.Yellow] == 0)
+                        result = @"Cut the Fourth Wire";
+                    else
+                        result = @"Cut the Second Wire";
+                }
+            }
+
+            txtSimpleWireOutput.Text = result;
+            if (conditions != "")
+                txtSimpleWireOutput.Text += @", " + conditions;
+
         }
 
         private bool _initLettersNotPresent;
@@ -692,7 +888,7 @@ namespace KTaNE_Helper
 
         private void wires_Input_TextChanged(object sender, EventArgs e)
         {
-            /*txtSimpleWireOutput.Text = "";
+            txtSimpleWireOutput.Text = "";
             wires_input.Text = wires_input.Text.ToUpper();
             wires_input.SelectionStart = wires_input.Text.Length;
             var wirecount = wires_input.Text.Length;
@@ -702,10 +898,7 @@ namespace KTaNE_Helper
                 wires[i] = ("|rwkby").IndexOf(wires_input.Text.ToLower().Substring(i, 1), StringComparison.Ordinal);
             }
             for (var i = 0; i < 6; i++)
-                ((ComboBox) fpWires.Controls[i]).SelectedIndex = wires[i];*/
-
-            txtSimpleWireOutput.Text = WireSetComponent.Instance.GetSolution(wires_input.Text.Trim());
-
+                ((ComboBox) fpWires.Controls[i]).SelectedIndex = wires[i];
         }
 
         private void ws_input_TextChanged(object sender, EventArgs e)
@@ -945,8 +1138,8 @@ namespace KTaNE_Helper
             rbWOF_CheckedChanged(sender, e);
             for (var i = 0; i < 28; i++)
             {
-                ((Button) wofButtons.Controls[i]).Text = WhosOnFirstComponent.Instance.WhosOnFirstStep1WordList[i];
-                ((Button)wofButtons.Controls[i]).Tag = WhosOnFirstComponent.Instance.WhosOnFistStep1Index(WhosOnFirstComponent.Instance.WhosOnFirstStep1WordList[i]);
+                ((Button) wofButtons.Controls[i]).Text = _whosOnFirstStepOneWords[i];
+                ((Button) wofButtons.Controls[i]).Tag = i;
             }
         }
 
@@ -957,40 +1150,44 @@ namespace KTaNE_Helper
             wofStep2Label.Text = "";
             for (var i = 0; i < 28; i++)
             {
-                ((Button)wofButtons.Controls[i]).Text = WhosOnFirstComponent.Instance.WhosOnFirstStep2WordList[i];
-                ((Button)wofButtons.Controls[i]).Tag = WhosOnFirstComponent.Instance.Step2WordOrder(WhosOnFirstComponent.Instance.WhosOnFirstStep2WordList[i]);
+                var x = _whosOnFirstStepTwoWordIndex[i] / 14;
+                var y = _whosOnFirstStepTwoWordIndex[i] % 14;
+                ((Button) wofButtons.Controls[i]).Text = _whosOnFirstStepTwoWords[x, y];
+                ((Button) wofButtons.Controls[i]).Tag = _whosOnFirstStepTwoWordIndex[i];
             }
         }
 
         private void wofButton_Click(object sender, EventArgs e)
         {
-            var text = ((Button)sender).Text;
-            var tag = ((Button) sender).Tag;
-
+            var step1Index = (_manualVersion == 0 ? _whosOnFirstStepOneIndex241 : _whosOnFirstStapOneIndex724);
+            var step2Index = (_manualVersion == 0 ? _whosOnFirstStepTwoIndex241 : _whosOnFirstStepTwoIndex724);
+            var text = ((Button) sender).Text;
+            var index = Convert.ToInt32(((Button) sender).Tag);
             if (wofStep1.Checked)
             {
-                _whosOnFirstLookIndex = (int) tag;
+                _whosOnFirstLookIndex = step1Index[index];
                 rbWOF_CheckedChanged(sender, e);
                 wofStep1Label.Text = text;
                 wofStep2.Checked = true;
             }
             else
             {
-                var wordlist = (string[]) tag;
-                wofStep2Label.Text = text;
+                var x = index/14;
+                var y = index%14;
+                wofStep2Label.Text = _whosOnFirstStepTwoWords[x,y];
                 for (var i = 0; i < 9; i++)
                 {
-                    wofOutput.Text += wordlist[i] + Environment.NewLine;
-                    if (wordlist[i].Equals(text)) break;
+                    var z = step2Index[x, y, i];
+                    wofOutput.Text += _whosOnFirstStepTwoWords[x, z] + Environment.NewLine;
+                    if (wofStep2Label.Text == _whosOnFirstStepTwoWords[x, z]) break;
                 }
                 wofStep1.Checked = true;
-            } 
+            }
         }
 
         private void rbWOF_CheckedChanged(object sender, EventArgs e)
         {
-            var buttons = new[] {rbWOF1, rbWOF2, rbWOF3, rbWOF4, rbWOF5, rbWOF6, rbWOF6};
-            buttons[_whosOnFirstLookIndex].Checked = true;
+            ((RadioButton) wofLook.Controls[_whosOnFirstLookIndex]).Checked = true;
         }
 
         private void cw_reset_Click(object sender, EventArgs e)
@@ -1261,15 +1458,57 @@ namespace KTaNE_Helper
             }
         }
 
-        
+        private readonly List<string> _twoBitLookup = new List<string>
+            {
+                "kb","dk","gv","tk","pv","kp","bv","vt","pz","dt",
+                "ee","zk","ke","ck","zp","pp","tp","tg","pd","pt",
+                "tz","eb","ec","cc","cz","zv","cv","gc","bt","gt",
+                "bz","pk","kz","kg","vd","ce","vb","kd","gg","dg",
+                "pb","vv","ge","kv","dz","pe","db","cd","td","cb",
+                "gb","tv","kk","bg","bp","vp","ep","tt","ed","zg",
+                "de","dd","ev","te","zd","bb","pc","bd","kc","zb",
+                "eg","bc","tc","ze","zc","gp","et","vc","tb","vz",
+                "ez","ek","dv","cg","ve","dp","bk","pg","gk","gz",
+                "kt","ct","zz","vg","gd","cp","be","zt","vk","dc"
+            };
 
         private void txtTwoBitsIN_TextChanged(object sender, EventArgs e)
         {
             var lookup = GetDigitFromCharacter(txtTwoBitsIN.Text);
-            txtTwoBitsOUT.Text = TwoBits.Instance.TwoBitsLookup(lookup);
+            txtTwoBitsOUT.Text = lookup > -1 ? _twoBitLookup[lookup] : "";
         }
 
-        
+        private void CalculateInitialTwoBitsCode()
+        {
+            var batts = Batteries.TotalBatteries;
+            if (!IsSerialValid)
+            {
+                txtTwoBitsInitialValue.Text = "";
+                return;
+            }
+            var dict = new Dictionary<string, int>
+            {
+                {"0", 0},{"1", 0},{"2", 0},{"3", 0},{"4", 0},{"5", 0},
+                {"6", 0},{"7", 0},{"8", 0},{"9", 0},{"A", 1},{"B", 2},
+                {"C", 3},{"D", 4},{"E", 5},{"F", 6},{"G", 7},{"H", 8},
+                {"I", 9},{"J", 10},{"K", 11},{"L", 12},{"M", 13},{"N", 14},
+                {"O", 15},{"P", 16},{"Q", 17},{"R", 18},{"S", 19},{"T", 20},
+                {"U", 21},{"V", 22},{"W", 23},{"X", 24},{"Y", 25},{"Z", 26},
+            };
+
+            var initial = 0;
+            for (var i = 0; i < Serial.Length; i++)
+            {
+                if (dict[Serial.Substring(i, 1).ToUpper()] <= 0) continue;
+                initial = dict[Serial.Substring(i, 1).ToUpper()];
+                break;
+            }
+            initial += ( batts * GetDigitFromCharacter(Serial.Substring(Serial.Length - 1, 1)));
+            if (IsPortPresent(PortTypes.StereoRCA) && !IsPortPresent(PortTypes.RJ45))
+                initial *= 2;
+            txtTwoBitsInitialValue.Text = _twoBitLookup[initial%100] + @" / " + (initial % 100);
+
+        }
 
         private bool IsInputValid(string input, string pattern, bool serialRequired=false)
         {
@@ -1494,7 +1733,7 @@ namespace KTaNE_Helper
             txtLogicAND_TextChanged(txtLogicAND, null); txtLogicAND_TextChanged(txtLogicOR, null);
             cbPlumbingRedIn_CheckedChanged();
             CalculateSafetySafe();
-            txtTwoBitsInitialValue.Text = TwoBits.Instance.CalculateInitialTwoBitsCode();
+            CalculateInitialTwoBitsCode();
             cbBlindAlleyTM_CheckedChanged(null, null);
             txtBattleShipSafeSpots_TextChanged(null, null);
 
@@ -3663,26 +3902,6 @@ namespace KTaNE_Helper
             {
                 txtCruelPianoOutput.Text += note.Semitone.GetDescription().Split('/')[note.UseAlternate ? 1 : 0] + @" ";
             }
-        }
-
-        private void nudVanillaSeed_ValueChanged(object sender, EventArgs e)
-        {
-             RuleManager.Instance.Initialize((int)nudVanillaSeed.Value);
-            _initLettersNotPresent = false;
-            keypadReset_Click(sender, e);
-            Needy_Knob_CheckedChanged(sender, e);
-            Simon_Says_Event();
-            Button_Event(sender, e);
-            Complicated_Wires_Event(sender, e);
-            wsReset_Click(sender, e);
-            simpleWires_Event(sender, e);
-            Password_TextChanged(sender, e);
-            MemoryReset_Click(sender, e);
-            MorseCodeInput_TextChanged(sender, e);
-            mazeSelection_TextChanged(sender, e);
-            wofStep1.Checked = true;
-            wofStep1_CheckedChanged(sender, e);
-            Refresh();
         }
     }
 
