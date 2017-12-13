@@ -5,18 +5,22 @@ using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using Assets.Scripts.Components.VennWire;
-using Assets.Scripts.Rules;
-using BombGame;
+using KTaNE_Helper.Edgework;
+using KTaNE_Helper.Extensions;
 using KTaNE_Helper.Helpers;
 using KTaNE_Helper.Modules;
+using KTaNE_Helper.Modules.Modded;
+using KTaNE_Helper.Modules.Vanilla;
+using KTaNE_Helper.VanillaRuleSetGenerator;
+using KTaNE_Helper.VanillaRuleSetGenerator.BombGame;
+using KTaNE_Helper.VanillaRuleSetGenerator.RuleSetGenerators;
+using KTaNE_Helper.VanillaRuleSetGenerator.RuleSets;
 using static System.String;
-using static KTaNE_Helper.Indicators;
-using static KTaNE_Helper.PortPlate;
-using static KTaNE_Helper.SerialNumber;
+using static KTaNE_Helper.Edgework.Indicators;
+using static KTaNE_Helper.Edgework.PortPlate;
+using static KTaNE_Helper.Edgework.SerialNumber;
 
 namespace KTaNE_Helper
 {
@@ -193,63 +197,84 @@ namespace KTaNE_Helper
             Simon_Says_Set_Label(ss_yellow, yellow[i]);
         }
 
+        
+
         private void Button_Event(object sender, EventArgs e)
         {
-            var color = button_color.SelectedIndex;
-            var name = button_name.SelectedIndex;
-            var batts = Batteries.TotalBatteries;
-
+            ButtonComponent.Instance.InitializeHoldRules(ButtonHoldRulesFlowLayoutPanel, button_label, button_color, button_name);
             var ruleSet = RuleManager.Instance.ButtonRuleSet;
             var component = ButtonComponent.Instance;
-            component.ButtonColor = (ButtonColor) color;
-            component.ButtonInstruction = (ButtonInstruction) name;
+            component.ButtonColor = (ButtonColor)button_color.SelectedIndex;
+            component.ButtonInstruction = (ButtonInstruction)button_name.SelectedIndex;
             var pressResult = ruleSet.ExecuteRuleList(component, ruleSet.RuleList);
-
-            component.IndicatorColor = BigButtonLEDColor.Blue;
-            var blueResult = ruleSet.ExecuteRuleList(component, ruleSet.HoldRuleList);
-
-            component.IndicatorColor = BigButtonLEDColor.Red;
-            var redResult = ruleSet.ExecuteRuleList(component, ruleSet.HoldRuleList);
-
-            component.IndicatorColor = BigButtonLEDColor.White;
-            var whiteResult = ruleSet.ExecuteRuleList(component, ruleSet.HoldRuleList);
-
-            component.IndicatorColor = BigButtonLEDColor.Yellow;
-            var yellowResult = ruleSet.ExecuteRuleList(component, ruleSet.HoldRuleList);
-
             button_label.Text = ButtonSolutions.PressSolutions[pressResult].Text;
-            bluestrip.Text = "Blue - " + ButtonSolutions.HoldSolutions[blueResult].Text;
-            yellowstrip.Text = "Yellow - " + ButtonSolutions.HoldSolutions[yellowResult].Text;
-            whitestrip.Text = "White - " + ButtonSolutions.HoldSolutions[whiteResult].Text;
-            otherstrip.Text = "Red - " + ButtonSolutions.HoldSolutions[redResult].Text;
         }
 
         private void ManualVersionSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
             _manualVersion = ManualVersionSelect.SelectedIndex;
-            if (_manualVersion == 0)
+            var seeds = new[] {1, 2, 666, 6502};
+            if (_manualVersion > 0 && _manualVersion < 4 && (int) nudVanillaSeed.Value != seeds[_manualVersion])
+                nudVanillaSeed.Value = seeds[_manualVersion];
+            switch (_manualVersion)
             {
-                linkLabel1.Text = @"http://www.bombmanual.com";
-                button_name.Visible = true;
-                bluestrip.Text = @"Blue - 4";
-                yellowstrip.Text = @"Yellow - 5";
-                whitestrip.Text = @"Other - 1";
-                otherstrip.Text = @"";
-                nudVanillaSeed.Value = 1;
+                case 0:
+                    linkLabel1.Text = @"http://www.bombmanual.com";
+                    BigButtonEdgework.Text = @"Battery Count? Lit CAR/FRK Indicators?";
+                    break;
+                case 1:
+                    BigButtonEdgework.Text = @"Battery Count? Lit BOB Indicator?";
+                    linkLabel1.Text = @"http://www.lthummus.com/";
+                    break;
+                default:
+                    BigButtonEdgework.Text = @"Need to know about all Edgework";
+                    linkLabel1.Text = @"http://steamcommunity.com/sharedfiles/filedetails/?id=1224413364";
+                    break;
             }
-            else
+        }
+
+        private void GenerateManual_Click(object sender, EventArgs e)
+        {
+            ManualGenerator.Instance.WriteManual((int)nudVanillaSeed.Value);
+        }
+
+        private void nudVanillaSeed_ValueChanged(object sender, EventArgs e)
+        {
+            switch ((int) nudVanillaSeed.Value)
             {
-                
-                linkLabel1.Text = @"http://www.lthummus.com/";
-                button_name.Visible = false;
-                bluestrip.Text = @" Red - 5";
-                yellowstrip.Text = @"Yellow - 3";
-                whitestrip.Text = @"White - 3";
-                otherstrip.Text = @"Other - 4";
-                nudVanillaSeed.Value = 2;
+                case 1:
+                    ManualVersionSelect.SelectedIndex = 0;
+                    break;
+                case 2:
+                    ManualVersionSelect.SelectedIndex = 1;
+                    break;
+                case 666:
+                    ManualVersionSelect.SelectedIndex = 2;
+                    break;
+                case 6502:
+                    ManualVersionSelect.SelectedIndex = 3;
+                    break;
+                default:
+                    ManualVersionSelect.SelectedIndex = 4;
+                    break;
             }
 
-            
+            RuleManager.Instance.Initialize((int)nudVanillaSeed.Value);
+            _initLettersNotPresent = false;
+            keypadReset_Click(sender, e);
+            Needy_Knob_CheckedChanged(sender, e);
+            Simon_Says_Event();
+            Button_Event(sender, e);
+            Complicated_Wires_Event(sender, e);
+            wsReset_Click(sender, e);
+            simpleWires_Event(sender, e);
+            Password_TextChanged(sender, e);
+            MemoryReset_Click(sender, e);
+            MorseCodeInput_TextChanged(sender, e);
+            mazeSelection_TextChanged(sender, e);
+            wofStep1.Checked = true;
+            wofStep1_CheckedChanged(sender, e);
+            Refresh();
         }
 
         private readonly Dictionary<string, TabPage> _moduleNameToTab = new Dictionary<string, TabPage>();
@@ -263,6 +288,7 @@ namespace KTaNE_Helper
 
             ManualVersionSelect.SelectedIndex = 0;
             ManualVersionSelect_SelectedIndexChanged(sender, e);
+            nudVanillaSeed_ValueChanged(sender, e);
             wireReset_Click(sender, e);
             PasswordClear_Click(sender, e);
 
@@ -563,24 +589,34 @@ namespace KTaNE_Helper
 
         private void Needy_Knob_CheckedChanged(object sender, EventArgs e)
         {
-            var total = 0;
-            var directions = new [] { "Up", "Up", "Down", "Down", "Left", "Left", "Right", "Right", ""};
-            for(var i = 0; i<6; i++)
-                if (((CheckBox) fpKnob.Controls[i]).Checked) total += 1 << i;
-            if (_manualVersion == 1 && nk64.Checked) total += 0x40;
-            var nkLeds = new[] {0x3C, 0x35, 0x3E, 0x15, 0x08, 0x00, 0x3D, 0x3D};
-            if (_manualVersion == 1)
-                nkLeds = new[] {0xE2, 0x6D, 0xA2, 0x1E, 0x70, 0x36, 0x77, 0x55 };
-            int result;
-            for (result = 0; result < 8; result++)
+            var totalChecked = 0;
+            var totalMask = 0;
+            for (var i = 0; i < 12; i++)
             {
-                var mask = ((nkLeds[result] & 128) == 128) ? 127 : 63;
-                nk64.Visible = ((nkLeds[result] & 128) == 128);
-                if ((total & mask) == (nkLeds[result] & mask))
-                    break;
+                if (((CheckBox) fpKnob.Controls[i]).CheckState == CheckState.Checked) totalChecked += 1 << (11 - i);
+                if (((CheckBox) fpKnob.Controls[i]).CheckState != CheckState.Indeterminate) totalMask += 1 << (11 - i);
             }
+            var Checked = NeedyKnobRuleSetGenerator.intToBoolArray(totalChecked, 12);
+            var Masked = NeedyKnobRuleSetGenerator.intToBoolArray(totalMask, 12);
+            var solution = new List<string>();
+            foreach (var rule in RuleManager.Instance.NeedyKnobRuleSet.Rules)
+            {
+                var match = true;
+                foreach (var query in rule.Queries)
+                {
+                    var leds = (bool[])query.Args[NeedyKnobRuleSet.LED_CONFIG_ARG_KEY];
+                    
+                    for (var i = 0; i < 12 && match; i++)
+                    {
+                        if (!Masked[i]) continue;
+                        match &= (leds[i] == Checked[i]);
+                    }
+                }
+                if (match && !solution.Contains(rule.GetSolutionString()))
+                    solution.Add(rule.GetSolutionString());
+            }
+            txtNeedyKnobOut.Text = solution.Count == 1 ? solution[0] : $@"{solution.Count} Possible Directions";
 
-            txtNeedyKnobOut.Text = directions[result];
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -635,20 +671,7 @@ namespace KTaNE_Helper
 
         private void wires_Input_TextChanged(object sender, EventArgs e)
         {
-            /*txtSimpleWireOutput.Text = "";
-            wires_input.Text = wires_input.Text.ToUpper();
-            wires_input.SelectionStart = wires_input.Text.Length;
-            var wirecount = wires_input.Text.Length;
-            var wires = new int[6];
-            for (var i = 0; i < wirecount; i++)
-            {
-                wires[i] = ("|rwkby").IndexOf(wires_input.Text.ToLower().Substring(i, 1), StringComparison.Ordinal);
-            }
-            for (var i = 0; i < 6; i++)
-                ((ComboBox) fpWires.Controls[i]).SelectedIndex = wires[i];*/
-
             txtSimpleWireOutput.Text = WireSetComponent.Instance.GetSolution(wires_input.Text.Trim());
-
         }
 
         private void ws_input_TextChanged(object sender, EventArgs e)
@@ -3606,25 +3629,12 @@ namespace KTaNE_Helper
             }
         }
 
-        private void nudVanillaSeed_ValueChanged(object sender, EventArgs e)
+        private void nkReset_Click(object sender, EventArgs e)
         {
-             RuleManager.Instance.Initialize((int)nudVanillaSeed.Value);
-            ManualGenerator.Instance.WriteManual((int)nudVanillaSeed.Value);
-            _initLettersNotPresent = false;
-            keypadReset_Click(sender, e);
-            Needy_Knob_CheckedChanged(sender, e);
-            Simon_Says_Event();
-            Button_Event(sender, e);
-            Complicated_Wires_Event(sender, e);
-            wsReset_Click(sender, e);
-            simpleWires_Event(sender, e);
-            Password_TextChanged(sender, e);
-            MemoryReset_Click(sender, e);
-            MorseCodeInput_TextChanged(sender, e);
-            mazeSelection_TextChanged(sender, e);
-            wofStep1.Checked = true;
-            wofStep1_CheckedChanged(sender, e);
-            Refresh();
+            foreach (var cb in fpKnob.Controls.Cast<Control>().Select(x => (x as CheckBox)).Where(y => y != null).ToList())
+            {
+                cb.CheckState = CheckState.Indeterminate;
+            }
         }
     }
 

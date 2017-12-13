@@ -169,13 +169,19 @@
             this.MorseCodeInput = new System.Windows.Forms.TextBox();
             this.MorseCodeOutput = new System.Windows.Forms.TextBox();
             this.tpButtonV1 = new System.Windows.Forms.TabPage();
-            this.label60 = new System.Windows.Forms.Label();
-            this.whitestrip = new System.Windows.Forms.Label();
-            this.button_name = new System.Windows.Forms.ComboBox();
+            this.ButtonTableLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.button_color = new System.Windows.Forms.ComboBox();
-            this.otherstrip = new System.Windows.Forms.Label();
-            this.yellowstrip = new System.Windows.Forms.Label();
-            this.bluestrip = new System.Windows.Forms.Label();
+            this.button_name = new System.Windows.Forms.ComboBox();
+            this.BigButtonEdgework = new System.Windows.Forms.Label();
+            this.groupBox55 = new System.Windows.Forms.GroupBox();
+            this.ButtonHoldRulesFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.label56 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
+            this.label59 = new System.Windows.Forms.Label();
+            this.label61 = new System.Windows.Forms.Label();
+            this.groupBox54 = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
             this.button_label = new System.Windows.Forms.Label();
             this.tpMemoryWhosOnFirst = new System.Windows.Forms.TabPage();
             this.groupBox21 = new System.Windows.Forms.GroupBox();
@@ -185,6 +191,7 @@
             this.label77 = new System.Windows.Forms.Label();
             this.Num2 = new System.Windows.Forms.Button();
             this.groupBox23 = new System.Windows.Forms.GroupBox();
+            this.nkReset = new System.Windows.Forms.Button();
             this.txtNeedyKnobOut = new System.Windows.Forms.TextBox();
             this.fpKnob = new System.Windows.Forms.FlowLayoutPanel();
             this.nk1 = new System.Windows.Forms.CheckBox();
@@ -194,6 +201,11 @@
             this.nk16 = new System.Windows.Forms.CheckBox();
             this.nk32 = new System.Windows.Forms.CheckBox();
             this.nk64 = new System.Windows.Forms.CheckBox();
+            this.nk128 = new System.Windows.Forms.CheckBox();
+            this.nk256 = new System.Windows.Forms.CheckBox();
+            this.nk512 = new System.Windows.Forms.CheckBox();
+            this.nk1024 = new System.Windows.Forms.CheckBox();
+            this.nk2048 = new System.Windows.Forms.CheckBox();
             this.MemoryReset = new System.Windows.Forms.Button();
             this.Num3 = new System.Windows.Forms.Button();
             this.Num4 = new System.Windows.Forms.Button();
@@ -557,6 +569,7 @@
             this.txtCruelPianoOutput = new System.Windows.Forms.TextBox();
             this.label53 = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.GenerateManual = new System.Windows.Forms.Button();
             this.label55 = new System.Windows.Forms.Label();
             this.nudVanillaSeed = new System.Windows.Forms.NumericUpDown();
             this.gbBombInformation.SuspendLayout();
@@ -608,6 +621,12 @@
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
             this.tpButtonV1.SuspendLayout();
+            this.ButtonTableLayout.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.groupBox55.SuspendLayout();
+            this.ButtonHoldRulesFlowLayoutPanel.SuspendLayout();
+            this.groupBox54.SuspendLayout();
+            this.flowLayoutPanel8.SuspendLayout();
             this.tpMemoryWhosOnFirst.SuspendLayout();
             this.groupBox21.SuspendLayout();
             this.groupBox23.SuspendLayout();
@@ -713,7 +732,10 @@
             this.ManualVersionSelect.FormattingEnabled = true;
             this.ManualVersionSelect.Items.AddRange(new object[] {
             "Manual Version 1 (Official) - Verification Code 241",
-            "Manual Version 990 (Unofficial) - Verification Code 724"});
+            "Manual Version 990 (Unofficial) - Verification Code 724",
+            "All Hail the Maker of Vanilla rule Modifier and this program",
+            "Vanilla Rule Modifier Default Seed.",
+            "Custom Seed"});
             this.ManualVersionSelect.Location = new System.Drawing.Point(6, 2);
             this.ManualVersionSelect.Name = "ManualVersionSelect";
             this.ManualVersionSelect.Size = new System.Drawing.Size(314, 21);
@@ -724,7 +746,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(553, 5);
+            this.linkLabel1.Location = new System.Drawing.Point(657, 7);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(63, 13);
             this.linkLabel1.TabIndex = 2;
@@ -2307,14 +2329,7 @@
             // 
             // tpButtonV1
             // 
-            this.tpButtonV1.Controls.Add(this.label60);
-            this.tpButtonV1.Controls.Add(this.whitestrip);
-            this.tpButtonV1.Controls.Add(this.button_name);
-            this.tpButtonV1.Controls.Add(this.button_color);
-            this.tpButtonV1.Controls.Add(this.otherstrip);
-            this.tpButtonV1.Controls.Add(this.yellowstrip);
-            this.tpButtonV1.Controls.Add(this.bluestrip);
-            this.tpButtonV1.Controls.Add(this.button_label);
+            this.tpButtonV1.Controls.Add(this.ButtonTableLayout);
             this.tpButtonV1.Location = new System.Drawing.Point(4, 130);
             this.tpButtonV1.Name = "tpButtonV1";
             this.tpButtonV1.Size = new System.Drawing.Size(650, 379);
@@ -2322,40 +2337,33 @@
             this.tpButtonV1.Text = "The Button";
             this.tpButtonV1.UseVisualStyleBackColor = true;
             // 
-            // label60
+            // ButtonTableLayout
             // 
-            this.label60.AutoSize = true;
-            this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label60.Location = new System.Drawing.Point(8, 326);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(366, 25);
-            this.label60.TabIndex = 20;
-            this.label60.Text = "Need to Know about all Edgework";
+            this.ButtonTableLayout.ColumnCount = 1;
+            this.ButtonTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.ButtonTableLayout.Controls.Add(this.panel1, 0, 0);
+            this.ButtonTableLayout.Controls.Add(this.groupBox55, 0, 2);
+            this.ButtonTableLayout.Controls.Add(this.groupBox54, 0, 1);
+            this.ButtonTableLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ButtonTableLayout.Location = new System.Drawing.Point(0, 0);
+            this.ButtonTableLayout.Name = "ButtonTableLayout";
+            this.ButtonTableLayout.RowCount = 3;
+            this.ButtonTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.ButtonTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.ButtonTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.ButtonTableLayout.Size = new System.Drawing.Size(650, 379);
+            this.ButtonTableLayout.TabIndex = 24;
             // 
-            // whitestrip
+            // panel1
             // 
-            this.whitestrip.AutoSize = true;
-            this.whitestrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.whitestrip.Location = new System.Drawing.Point(30, 153);
-            this.whitestrip.Name = "whitestrip";
-            this.whitestrip.Size = new System.Drawing.Size(93, 24);
-            this.whitestrip.TabIndex = 19;
-            this.whitestrip.Text = "White - 3";
-            // 
-            // button_name
-            // 
-            this.button_name.FormattingEnabled = true;
-            this.button_name.Items.AddRange(new object[] {
-            "Press",
-            "Hold",
-            "Abort",
-            "Detonate"});
-            this.button_name.Location = new System.Drawing.Point(111, 12);
-            this.button_name.Name = "button_name";
-            this.button_name.Size = new System.Drawing.Size(84, 21);
-            this.button_name.TabIndex = 18;
-            this.button_name.Text = "Press";
-            this.button_name.SelectedIndexChanged += new System.EventHandler(this.Button_Event);
+            this.panel1.Controls.Add(this.button_color);
+            this.panel1.Controls.Add(this.button_name);
+            this.panel1.Controls.Add(this.BigButtonEdgework);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(644, 30);
+            this.panel1.TabIndex = 21;
             // 
             // button_color
             // 
@@ -2365,52 +2373,132 @@
             "Blue",
             "Yellow",
             "White"});
-            this.button_color.Location = new System.Drawing.Point(15, 12);
+            this.button_color.Location = new System.Drawing.Point(3, 3);
             this.button_color.Name = "button_color";
             this.button_color.Size = new System.Drawing.Size(90, 21);
             this.button_color.TabIndex = 14;
             this.button_color.Text = "Red";
             this.button_color.SelectedIndexChanged += new System.EventHandler(this.Button_Event);
             // 
-            // otherstrip
+            // button_name
             // 
-            this.otherstrip.AutoSize = true;
-            this.otherstrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.otherstrip.Location = new System.Drawing.Point(31, 177);
-            this.otherstrip.Name = "otherstrip";
-            this.otherstrip.Size = new System.Drawing.Size(92, 24);
-            this.otherstrip.TabIndex = 13;
-            this.otherstrip.Text = "Other - 1";
+            this.button_name.FormattingEnabled = true;
+            this.button_name.Items.AddRange(new object[] {
+            "Press",
+            "Hold",
+            "Abort",
+            "Detonate"});
+            this.button_name.Location = new System.Drawing.Point(99, 3);
+            this.button_name.Name = "button_name";
+            this.button_name.Size = new System.Drawing.Size(84, 21);
+            this.button_name.TabIndex = 18;
+            this.button_name.Text = "Press";
+            this.button_name.SelectedIndexChanged += new System.EventHandler(this.Button_Event);
             // 
-            // yellowstrip
+            // BigButtonEdgework
             // 
-            this.yellowstrip.AutoSize = true;
-            this.yellowstrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.yellowstrip.Location = new System.Drawing.Point(21, 128);
-            this.yellowstrip.Name = "yellowstrip";
-            this.yellowstrip.Size = new System.Drawing.Size(102, 24);
-            this.yellowstrip.TabIndex = 12;
-            this.yellowstrip.Text = "Yellow - 5";
+            this.BigButtonEdgework.AutoSize = true;
+            this.BigButtonEdgework.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BigButtonEdgework.Location = new System.Drawing.Point(189, 0);
+            this.BigButtonEdgework.Name = "BigButtonEdgework";
+            this.BigButtonEdgework.Size = new System.Drawing.Size(366, 25);
+            this.BigButtonEdgework.TabIndex = 20;
+            this.BigButtonEdgework.Text = "Need to Know about all Edgework";
             // 
-            // bluestrip
+            // groupBox55
             // 
-            this.bluestrip.AutoSize = true;
-            this.bluestrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.bluestrip.Location = new System.Drawing.Point(41, 104);
-            this.bluestrip.Name = "bluestrip";
-            this.bluestrip.Size = new System.Drawing.Size(82, 24);
-            this.bluestrip.TabIndex = 11;
-            this.bluestrip.Text = "Blue - 4";
+            this.groupBox55.Controls.Add(this.ButtonHoldRulesFlowLayoutPanel);
+            this.groupBox55.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox55.Location = new System.Drawing.Point(3, 117);
+            this.groupBox55.Name = "groupBox55";
+            this.groupBox55.Size = new System.Drawing.Size(644, 259);
+            this.groupBox55.TabIndex = 23;
+            this.groupBox55.TabStop = false;
+            this.groupBox55.Text = "Releasing a Held Button";
+            // 
+            // ButtonHoldRulesFlowLayoutPanel
+            // 
+            this.ButtonHoldRulesFlowLayoutPanel.Controls.Add(this.label56);
+            this.ButtonHoldRulesFlowLayoutPanel.Controls.Add(this.label57);
+            this.ButtonHoldRulesFlowLayoutPanel.Controls.Add(this.label59);
+            this.ButtonHoldRulesFlowLayoutPanel.Controls.Add(this.label61);
+            this.ButtonHoldRulesFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ButtonHoldRulesFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.ButtonHoldRulesFlowLayoutPanel.Location = new System.Drawing.Point(3, 16);
+            this.ButtonHoldRulesFlowLayoutPanel.Name = "ButtonHoldRulesFlowLayoutPanel";
+            this.ButtonHoldRulesFlowLayoutPanel.Size = new System.Drawing.Size(638, 240);
+            this.ButtonHoldRulesFlowLayoutPanel.TabIndex = 0;
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.label56.Location = new System.Drawing.Point(3, 0);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(551, 20);
+            this.label56.TabIndex = 11;
+            this.label56.Text = "Press and Immediately Release when the two seconds digits match.";
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.label57.Location = new System.Drawing.Point(3, 20);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(551, 20);
+            this.label57.TabIndex = 12;
+            this.label57.Text = "Press and Immediately Release when the two seconds digits match.";
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.label59.Location = new System.Drawing.Point(3, 40);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(551, 20);
+            this.label59.TabIndex = 13;
+            this.label59.Text = "Press and Immediately Release when the two seconds digits match.";
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.label61.Location = new System.Drawing.Point(3, 60);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(551, 20);
+            this.label61.TabIndex = 14;
+            this.label61.Text = "Press and Immediately Release when the two seconds digits match.";
+            // 
+            // groupBox54
+            // 
+            this.groupBox54.Controls.Add(this.flowLayoutPanel8);
+            this.groupBox54.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox54.Location = new System.Drawing.Point(3, 39);
+            this.groupBox54.Name = "groupBox54";
+            this.groupBox54.Size = new System.Drawing.Size(644, 72);
+            this.groupBox54.TabIndex = 22;
+            this.groupBox54.TabStop = false;
+            this.groupBox54.Text = "Press Instruction";
+            // 
+            // flowLayoutPanel8
+            // 
+            this.flowLayoutPanel8.AutoSize = true;
+            this.flowLayoutPanel8.Controls.Add(this.button_label);
+            this.flowLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel8.Location = new System.Drawing.Point(3, 16);
+            this.flowLayoutPanel8.Name = "flowLayoutPanel8";
+            this.flowLayoutPanel8.Size = new System.Drawing.Size(638, 53);
+            this.flowLayoutPanel8.TabIndex = 0;
             // 
             // button_label
             // 
             this.button_label.AutoSize = true;
-            this.button_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.button_label.Location = new System.Drawing.Point(8, 59);
+            this.button_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.button_label.Location = new System.Drawing.Point(3, 0);
             this.button_label.Name = "button_label";
-            this.button_label.Size = new System.Drawing.Size(154, 24);
+            this.button_label.Size = new System.Drawing.Size(551, 20);
             this.button_label.TabIndex = 10;
-            this.button_label.Text = "Hold the Button";
+            this.button_label.Text = "Press and Immediately Release when the two seconds digits match.";
             // 
             // tpMemoryWhosOnFirst
             // 
@@ -2478,7 +2566,7 @@
             // label77
             // 
             this.label77.AutoSize = true;
-            this.label77.Location = new System.Drawing.Point(437, 87);
+            this.label77.Location = new System.Drawing.Point(435, 112);
             this.label77.Name = "label77";
             this.label77.Size = new System.Drawing.Size(105, 52);
             this.label77.TabIndex = 28;
@@ -2498,21 +2586,31 @@
             // 
             // groupBox23
             // 
+            this.groupBox23.Controls.Add(this.nkReset);
             this.groupBox23.Controls.Add(this.txtNeedyKnobOut);
             this.groupBox23.Controls.Add(this.fpKnob);
-            this.groupBox23.Controls.Add(this.nk64);
             this.groupBox23.Location = new System.Drawing.Point(424, 9);
             this.groupBox23.Name = "groupBox23";
-            this.groupBox23.Size = new System.Drawing.Size(213, 70);
+            this.groupBox23.Size = new System.Drawing.Size(213, 100);
             this.groupBox23.TabIndex = 7;
             this.groupBox23.TabStop = false;
             this.groupBox23.Text = "Needy Knob";
             // 
+            // nkReset
+            // 
+            this.nkReset.Location = new System.Drawing.Point(155, 19);
+            this.nkReset.Name = "nkReset";
+            this.nkReset.Size = new System.Drawing.Size(55, 44);
+            this.nkReset.TabIndex = 20;
+            this.nkReset.Text = "Reset";
+            this.nkReset.UseVisualStyleBackColor = true;
+            this.nkReset.Click += new System.EventHandler(this.nkReset_Click);
+            // 
             // txtNeedyKnobOut
             // 
-            this.txtNeedyKnobOut.Location = new System.Drawing.Point(82, 41);
+            this.txtNeedyKnobOut.Location = new System.Drawing.Point(11, 69);
             this.txtNeedyKnobOut.Name = "txtNeedyKnobOut";
-            this.txtNeedyKnobOut.Size = new System.Drawing.Size(117, 20);
+            this.txtNeedyKnobOut.Size = new System.Drawing.Size(199, 20);
             this.txtNeedyKnobOut.TabIndex = 19;
             // 
             // fpKnob
@@ -2523,81 +2621,172 @@
             this.fpKnob.Controls.Add(this.nk8);
             this.fpKnob.Controls.Add(this.nk16);
             this.fpKnob.Controls.Add(this.nk32);
+            this.fpKnob.Controls.Add(this.nk64);
+            this.fpKnob.Controls.Add(this.nk128);
+            this.fpKnob.Controls.Add(this.nk256);
+            this.fpKnob.Controls.Add(this.nk512);
+            this.fpKnob.Controls.Add(this.nk1024);
+            this.fpKnob.Controls.Add(this.nk2048);
             this.fpKnob.Location = new System.Drawing.Point(11, 21);
             this.fpKnob.Name = "fpKnob";
-            this.fpKnob.Size = new System.Drawing.Size(65, 42);
+            this.fpKnob.Size = new System.Drawing.Size(138, 42);
             this.fpKnob.TabIndex = 18;
             // 
             // nk1
             // 
             this.nk1.AutoSize = true;
+            this.nk1.Checked = true;
+            this.nk1.CheckState = System.Windows.Forms.CheckState.Indeterminate;
             this.nk1.Location = new System.Drawing.Point(3, 3);
             this.nk1.Name = "nk1";
             this.nk1.Size = new System.Drawing.Size(15, 14);
             this.nk1.TabIndex = 9;
+            this.nk1.ThreeState = true;
             this.nk1.UseVisualStyleBackColor = true;
-            this.nk1.CheckedChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
+            this.nk1.CheckStateChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
             // 
             // nk2
             // 
             this.nk2.AutoSize = true;
+            this.nk2.Checked = true;
+            this.nk2.CheckState = System.Windows.Forms.CheckState.Indeterminate;
             this.nk2.Location = new System.Drawing.Point(24, 3);
             this.nk2.Name = "nk2";
             this.nk2.Size = new System.Drawing.Size(15, 14);
             this.nk2.TabIndex = 10;
+            this.nk2.ThreeState = true;
             this.nk2.UseVisualStyleBackColor = true;
-            this.nk2.CheckedChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
+            this.nk2.CheckStateChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
             // 
             // nk4
             // 
             this.nk4.AutoSize = true;
+            this.nk4.Checked = true;
+            this.nk4.CheckState = System.Windows.Forms.CheckState.Indeterminate;
             this.nk4.Location = new System.Drawing.Point(45, 3);
             this.nk4.Name = "nk4";
             this.nk4.Size = new System.Drawing.Size(15, 14);
             this.nk4.TabIndex = 11;
+            this.nk4.ThreeState = true;
             this.nk4.UseVisualStyleBackColor = true;
-            this.nk4.CheckedChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
+            this.nk4.CheckStateChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
             // 
             // nk8
             // 
             this.nk8.AutoSize = true;
-            this.nk8.Location = new System.Drawing.Point(3, 23);
+            this.nk8.Checked = true;
+            this.nk8.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.nk8.Location = new System.Drawing.Point(66, 3);
             this.nk8.Name = "nk8";
             this.nk8.Size = new System.Drawing.Size(15, 14);
             this.nk8.TabIndex = 12;
+            this.nk8.ThreeState = true;
             this.nk8.UseVisualStyleBackColor = true;
-            this.nk8.CheckedChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
+            this.nk8.CheckStateChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
             // 
             // nk16
             // 
             this.nk16.AutoSize = true;
-            this.nk16.Location = new System.Drawing.Point(24, 23);
+            this.nk16.Checked = true;
+            this.nk16.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.nk16.Location = new System.Drawing.Point(87, 3);
             this.nk16.Name = "nk16";
             this.nk16.Size = new System.Drawing.Size(15, 14);
             this.nk16.TabIndex = 13;
+            this.nk16.ThreeState = true;
             this.nk16.UseVisualStyleBackColor = true;
-            this.nk16.CheckedChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
+            this.nk16.CheckStateChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
             // 
             // nk32
             // 
             this.nk32.AutoSize = true;
-            this.nk32.Location = new System.Drawing.Point(45, 23);
+            this.nk32.Checked = true;
+            this.nk32.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.nk32.Location = new System.Drawing.Point(108, 3);
             this.nk32.Name = "nk32";
             this.nk32.Size = new System.Drawing.Size(15, 14);
             this.nk32.TabIndex = 14;
+            this.nk32.ThreeState = true;
             this.nk32.UseVisualStyleBackColor = true;
-            this.nk32.CheckedChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
+            this.nk32.CheckStateChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
             // 
             // nk64
             // 
             this.nk64.AutoSize = true;
-            this.nk64.Location = new System.Drawing.Point(82, 21);
+            this.nk64.Checked = true;
+            this.nk64.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.nk64.Location = new System.Drawing.Point(3, 23);
             this.nk64.Name = "nk64";
-            this.nk64.Size = new System.Drawing.Size(107, 17);
-            this.nk64.TabIndex = 17;
-            this.nk64.Text = "Upper Right LED";
+            this.nk64.Size = new System.Drawing.Size(15, 14);
+            this.nk64.TabIndex = 15;
+            this.nk64.ThreeState = true;
             this.nk64.UseVisualStyleBackColor = true;
-            this.nk64.CheckedChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
+            this.nk64.CheckStateChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
+            // 
+            // nk128
+            // 
+            this.nk128.AutoSize = true;
+            this.nk128.Checked = true;
+            this.nk128.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.nk128.Location = new System.Drawing.Point(24, 23);
+            this.nk128.Name = "nk128";
+            this.nk128.Size = new System.Drawing.Size(15, 14);
+            this.nk128.TabIndex = 16;
+            this.nk128.ThreeState = true;
+            this.nk128.UseVisualStyleBackColor = true;
+            this.nk128.CheckStateChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
+            // 
+            // nk256
+            // 
+            this.nk256.AutoSize = true;
+            this.nk256.Checked = true;
+            this.nk256.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.nk256.Location = new System.Drawing.Point(45, 23);
+            this.nk256.Name = "nk256";
+            this.nk256.Size = new System.Drawing.Size(15, 14);
+            this.nk256.TabIndex = 17;
+            this.nk256.ThreeState = true;
+            this.nk256.UseVisualStyleBackColor = true;
+            this.nk256.CheckStateChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
+            // 
+            // nk512
+            // 
+            this.nk512.AutoSize = true;
+            this.nk512.Checked = true;
+            this.nk512.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.nk512.Location = new System.Drawing.Point(66, 23);
+            this.nk512.Name = "nk512";
+            this.nk512.Size = new System.Drawing.Size(15, 14);
+            this.nk512.TabIndex = 18;
+            this.nk512.ThreeState = true;
+            this.nk512.UseVisualStyleBackColor = true;
+            this.nk512.CheckStateChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
+            // 
+            // nk1024
+            // 
+            this.nk1024.AutoSize = true;
+            this.nk1024.Checked = true;
+            this.nk1024.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.nk1024.Location = new System.Drawing.Point(87, 23);
+            this.nk1024.Name = "nk1024";
+            this.nk1024.Size = new System.Drawing.Size(15, 14);
+            this.nk1024.TabIndex = 19;
+            this.nk1024.ThreeState = true;
+            this.nk1024.UseVisualStyleBackColor = true;
+            this.nk1024.CheckStateChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
+            // 
+            // nk2048
+            // 
+            this.nk2048.AutoSize = true;
+            this.nk2048.Checked = true;
+            this.nk2048.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.nk2048.Location = new System.Drawing.Point(108, 23);
+            this.nk2048.Name = "nk2048";
+            this.nk2048.Size = new System.Drawing.Size(15, 14);
+            this.nk2048.TabIndex = 20;
+            this.nk2048.ThreeState = true;
+            this.nk2048.UseVisualStyleBackColor = true;
+            this.nk2048.CheckStateChanged += new System.EventHandler(this.Needy_Knob_CheckedChanged);
             // 
             // MemoryReset
             // 
@@ -6619,6 +6808,7 @@
             // 
             // splitContainer2.Panel2
             // 
+            this.splitContainer2.Panel2.Controls.Add(this.GenerateManual);
             this.splitContainer2.Panel2.Controls.Add(this.label55);
             this.splitContainer2.Panel2.Controls.Add(this.nudVanillaSeed);
             this.splitContainer2.Panel2.Controls.Add(this.ManualVersionSelect);
@@ -6627,10 +6817,20 @@
             this.splitContainer2.SplitterDistance = 513;
             this.splitContainer2.TabIndex = 5;
             // 
+            // GenerateManual
+            // 
+            this.GenerateManual.Location = new System.Drawing.Point(549, 2);
+            this.GenerateManual.Name = "GenerateManual";
+            this.GenerateManual.Size = new System.Drawing.Size(102, 23);
+            this.GenerateManual.TabIndex = 5;
+            this.GenerateManual.Text = "Generate Manual";
+            this.GenerateManual.UseVisualStyleBackColor = true;
+            this.GenerateManual.Click += new System.EventHandler(this.GenerateManual_Click);
+            // 
             // label55
             // 
             this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(327, 5);
+            this.label55.Location = new System.Drawing.Point(326, 5);
             this.label55.Name = "label55";
             this.label55.Size = new System.Drawing.Size(91, 13);
             this.label55.TabIndex = 4;
@@ -6638,7 +6838,7 @@
             // 
             // nudVanillaSeed
             // 
-            this.nudVanillaSeed.Location = new System.Drawing.Point(424, 3);
+            this.nudVanillaSeed.Location = new System.Drawing.Point(423, 3);
             this.nudVanillaSeed.Maximum = new decimal(new int[] {
             2147483647,
             0,
@@ -6738,7 +6938,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
             this.tpButtonV1.ResumeLayout(false);
-            this.tpButtonV1.PerformLayout();
+            this.ButtonTableLayout.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.groupBox55.ResumeLayout(false);
+            this.ButtonHoldRulesFlowLayoutPanel.ResumeLayout(false);
+            this.ButtonHoldRulesFlowLayoutPanel.PerformLayout();
+            this.groupBox54.ResumeLayout(false);
+            this.groupBox54.PerformLayout();
+            this.flowLayoutPanel8.ResumeLayout(false);
+            this.flowLayoutPanel8.PerformLayout();
             this.tpMemoryWhosOnFirst.ResumeLayout(false);
             this.groupBox21.ResumeLayout(false);
             this.groupBox21.PerformLayout();
@@ -6885,7 +7094,6 @@
         private System.Windows.Forms.CheckBox nk8;
         private System.Windows.Forms.CheckBox nk16;
         private System.Windows.Forms.CheckBox nk32;
-        private System.Windows.Forms.CheckBox nk64;
         private System.Windows.Forms.GroupBox gbBombInformation;
         private System.Windows.Forms.ComboBox facts_strike;
         private System.Windows.Forms.Label label16;
@@ -6903,13 +7111,9 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TabPage tpButtonV1;
-        private System.Windows.Forms.Label label60;
-        private System.Windows.Forms.Label whitestrip;
+        private System.Windows.Forms.Label BigButtonEdgework;
         private System.Windows.Forms.ComboBox button_name;
         private System.Windows.Forms.ComboBox button_color;
-        private System.Windows.Forms.Label otherstrip;
-        private System.Windows.Forms.Label yellowstrip;
-        private System.Windows.Forms.Label bluestrip;
         private System.Windows.Forms.Label button_label;
         private System.Windows.Forms.TabPage tpKeypadsSimonSays;
         private System.Windows.Forms.GroupBox gbKeypads;
@@ -7406,6 +7610,24 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TableLayoutPanel ButtonTableLayout;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.GroupBox groupBox55;
+        private System.Windows.Forms.FlowLayoutPanel ButtonHoldRulesFlowLayoutPanel;
+        private System.Windows.Forms.GroupBox groupBox54;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
+        private System.Windows.Forms.Button GenerateManual;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.Label label61;
+        private System.Windows.Forms.Button nkReset;
+        private System.Windows.Forms.CheckBox nk64;
+        private System.Windows.Forms.CheckBox nk128;
+        private System.Windows.Forms.CheckBox nk256;
+        private System.Windows.Forms.CheckBox nk512;
+        private System.Windows.Forms.CheckBox nk1024;
+        private System.Windows.Forms.CheckBox nk2048;
     }
 }
 
