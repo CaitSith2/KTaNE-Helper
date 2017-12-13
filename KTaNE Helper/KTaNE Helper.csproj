@@ -65,8 +65,10 @@
     <Compile Include="Edgework\KMBombInfo.cs" />
     <Compile Include="Edgework\Indicators.cs" />
     <Compile Include="Edgework\KMBombInfoExtension.cs" />
+    <Compile Include="Extensions\ControlExtension.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\DebugExtensions.cs" />
+    <Compile Include="Extensions\ListExtension.cs" />
     <Compile Include="Extensions\ReplaceText.cs" />
     <Compile Include="Helpers\ManualFileName.cs" />
     <Compile Include="Helpers\ManualGenerator.cs" />
