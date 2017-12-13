@@ -13,6 +13,7 @@ using KTaNE_Helper.Helpers;
 using KTaNE_Helper.Modules;
 using KTaNE_Helper.Modules.Modded;
 using KTaNE_Helper.Modules.Vanilla;
+using KTaNE_Helper.Properties;
 using KTaNE_Helper.VanillaRuleSetGenerator;
 using KTaNE_Helper.VanillaRuleSetGenerator.BombGame;
 using KTaNE_Helper.VanillaRuleSetGenerator.RuleSetGenerators;
@@ -64,12 +65,6 @@ namespace KTaNE_Helper
         private int _mazeEndXY = 77;
 
         private int _whosOnFirstLookIndex = 6;
-
-        private readonly string[] _keypadOrder241 = { "ϘѦƛϞѬϗϿ", "ӬϘϿҨ☆ϗ¿", "©ѼҨҖԆƛ☆", "Ϭ¶ѣѬҖ¿ټ", "ΨټѣϾ¶ѯ★", "ϬӬ҂ӕΨҊΩ" };
-        private readonly string[] _keypadOrder724 = { "ϬҨҖ☆¶Ͽζ", "ҨҊƛѦϫ¶Җ", "ѬϬϗζΨƛѼ", "Ѭټ◌©ϞϿϗ", "Ϙ©¿Ѫ☆★ϫ", "ӕԆӬѪѣѼΨ" };
-
-        private readonly string[] _keypadSymbols241 = { "¿","©","¶","☆","★","҂","ƛ","Ͼ","Ͽ","Ψ","Ω","Ϟ","Ϙ","ϗ","Ϭ","Җ","Ҋ","Ҩ","Ӭ","ѣ","Ѧ","Ѭ","ѯ","Ѽ","ӕ","Ԇ","ټ"};
-        private readonly string[] _keypadSymbols724 = { "¿","©","¶","☆","★","◌","ƛ","ζ","Ͽ","Ψ","Ϟ","Ϙ","ϗ","ϫ","Ϭ","Җ","Ҋ","Ҩ","Ӭ","ѣ","Ѧ","Ѫ","Ѭ","Ѽ","ӕ","Ԇ","ټ"};
 
         private int _manualVersion;
 
@@ -564,26 +559,13 @@ namespace KTaNE_Helper
             _memoryPositions = new int[5];
             MemoryButtonStates(true);
 
-            if (_manualVersion == 0)
-                _memoryRules = new[]
-                {
-                    MemoryRules.SecondPos, MemoryRules.SecondPos, MemoryRules.ThirdPos, MemoryRules.FourthPos,
-                    MemoryRules.Four, MemoryRules.StageOnePos, MemoryRules.FirstPos, MemoryRules.StageOnePos,
-                    MemoryRules.StageTwoLabel, MemoryRules.StageOneLabel, MemoryRules.ThirdPos, MemoryRules.Four,
-                    MemoryRules.StageOnePos, MemoryRules.FirstPos, MemoryRules.StageTwoPos, MemoryRules.StageTwoPos,
-                    MemoryRules.StageOneLabel,MemoryRules.StageTwoLabel,MemoryRules.StageFourLabel,MemoryRules.StageThreeLabel
-                };
-            else
+            var memoryRules = new List<int>();
+            for (var i = 0; i < 5; i++)
             {
-                _memoryRules = new[]
-                {
-                    MemoryRules.FirstPos, MemoryRules.ThirdPos, MemoryRules.SecondPos, MemoryRules.FourthPos,
-                    MemoryRules.StageOnePos, MemoryRules.Four, MemoryRules.StageOnePos, MemoryRules.FirstPos,
-                    MemoryRules.StageOneLabel, MemoryRules.SecondPos, MemoryRules.Four, MemoryRules.ThirdPos,
-                    MemoryRules.StageThreePos, MemoryRules.StageOnePos, MemoryRules.StageTwoPos,MemoryRules.StageThreePos,
-                    MemoryRules.StageTwoLabel, MemoryRules.StageFourLabel, MemoryRules.StageOneLabel,MemoryRules.StageThreeLabel
-                };
+                memoryRules.AddRange(RuleManager.Instance.MemoryRuleSet.RulesDictionary[i].Select(rule => rule.Solution.SolutionMethod(new BombComponent(), rule.SolutionArgs)));
             }
+
+            _memoryRules = memoryRules.ToArray();
 
         }
 
@@ -593,8 +575,8 @@ namespace KTaNE_Helper
             var totalMask = 0;
             for (var i = 0; i < 12; i++)
             {
-                if (((CheckBox) fpKnob.Controls[i]).CheckState == CheckState.Checked) totalChecked += 1 << (11 - i);
-                if (((CheckBox) fpKnob.Controls[i]).CheckState != CheckState.Indeterminate) totalMask += 1 << (11 - i);
+                if (((CheckBox) fpKnob.Controls[i]).CheckState == CheckState.Checked) totalChecked += 1 << i;
+                if (((CheckBox) fpKnob.Controls[i]).CheckState != CheckState.Indeterminate) totalMask += 1 << i;
             }
             var Checked = NeedyKnobRuleSetGenerator.intToBoolArray(totalChecked, 12);
             var Masked = NeedyKnobRuleSetGenerator.intToBoolArray(totalMask, 12);
@@ -712,6 +694,8 @@ namespace KTaNE_Helper
 
         }
 
+        private static MazeRuleSet MorseAMazeSetOne = (MazeRuleSet) new MazeRuleSetGenerator().GenerateRuleSet(1);
+        private static MazeRuleSet MorseAMazeSetTwo = (MazeRuleSet) new MazeRuleSetGenerator().GenerateRuleSet(2);
         private void mazeSelection_TextChanged(object sender, EventArgs e)
         {
             var coordinates = (_manualVersion == 0 ? _manual241Coordinates : _manual724Coordinates);
@@ -967,49 +951,58 @@ namespace KTaNE_Helper
             cw_input.Text = @"W WS WL WSL\R RS RL RSL\B BS BL BSL\RB RBS RBL RBSL";
         }
 
+
         readonly string[] _keypadSelection = {"","","","","","","",""};
+        private readonly Bitmap[] _keypadImages = {new Bitmap(1, 1), new Bitmap(1, 1), new Bitmap(1, 1), new Bitmap(1, 1), new Bitmap(1, 1), new Bitmap(1, 1), new Bitmap(1, 1), new Bitmap(1, 1)};
 
         private void keypadReset_Click(object sender, EventArgs e)
         {
-            var keypadsymbols = (_manualVersion == 0 ? _keypadSymbols241 : _keypadSymbols724);
-            
-
-            for (var i = 0; i < 27; i++)
+            for (var i = 0; i < 31; i++)
             {
-                ((Button) fpKeypadSymbols.Controls[i]).Text = keypadsymbols[i];
+                ((Button) fpKeypadSymbols.Controls[i]).BackgroundImage = SymbolPool.GetImage(SymbolPool.Symbols[i]);
+                ((Button) fpKeypadSymbols.Controls[i]).Tag = SymbolPool.Symbols[i];
             }
 
             for (var i = 0; i < 6; i++)
                 ((Button)fpKeypadOrder.Controls[i]).Visible = false;
 
             for (var i = 0; i < 8; i++)
-                ((Button) fpKeypadSelection.Controls[i]).Text = _keypadSelection[i] = "";
-                
+            {
+                ((Button) fpKeypadSelection.Controls[i]).Tag = _keypadSelection[i] = "";
+                ((Button) fpKeypadSelection.Controls[i]).BackgroundImage = _keypadImages[i] = new Bitmap(1, 1);
+            }
+
             fpKeypadLabel.Visible = false;
         }
 
-        
+        private static KeypadRuleSet RoundKeypadRules = (KeypadRuleSet) new KeypadRuleSetGenerator().GenerateRuleSet(1);
 
         private void KeypadSymbol_Click(object sender, EventArgs e)
         {
             var max = cbShowAddonModules.Checked ? 8 : 4;
-            var keypadorder = (_manualVersion == 0 ? _keypadOrder241 : _keypadOrder724);
 
             for (var i = 0; i < max; i++)
-                if (((Button) sender).Text == _keypadSelection[i])
-                {
-                    keypadSelection_Click(fpKeypadSelection.Controls[i], e);
-                    break;
-                }
+            {
+                if ((string) (((Button) sender).Tag) != _keypadSelection[i]) continue;
+                keypadSelection_Click(fpKeypadSelection.Controls[i], e);
+                break;
+            }
 
             for (var i = max - 1; i > 0; i--)
+            {
                 _keypadSelection[i] = _keypadSelection[i - 1];
+                _keypadImages[i] = _keypadImages[i - 1];
+            }
 
-            _keypadSelection[0] = ((Button) sender).Text;
+            _keypadSelection[0] = (string)((Button) sender).Tag;
+            _keypadImages[0] = (Bitmap)((Button) sender).BackgroundImage;
 
             for (var i = 0; i < max; i++)
-                ((Button) fpKeypadSelection.Controls[i]).Text = _keypadSelection[i];
-            
+            {
+                ((Button) fpKeypadSelection.Controls[i]).Tag = _keypadSelection[i];
+                ((Button) fpKeypadSelection.Controls[i]).BackgroundImage = _keypadImages[i];
+            }
+
 
             if (_keypadSelection[3] == "") return;
             var keypadFound = true;
@@ -1020,13 +1013,13 @@ namespace KTaNE_Helper
                     keypadFound = true;
                     for (var j = 0; keypadFound && j < 4; j++)
                     {
-                        keypadFound = keypadorder[i].Contains(_keypadSelection[j]);
+                        keypadFound = RuleManager.Instance.KeypadRuleSet.PrecedenceLists[i].Contains(_keypadSelection[j]);
                     }
                     if (!keypadFound) continue;
                     var order = new Dictionary<int, string>();
                     for (var j = 0; j < 4; j++)
                     {
-                        order.Add(keypadorder[i].IndexOf(_keypadSelection[j], StringComparison.Ordinal),
+                        order.Add(RuleManager.Instance.KeypadRuleSet.PrecedenceLists[i].IndexOf(_keypadSelection[j]),
                             _keypadSelection[j]);
                     }
                     var k = 0;
@@ -1035,7 +1028,9 @@ namespace KTaNE_Helper
                         string result;
                         if (!order.TryGetValue(j, out result)) continue;
                         ((Button) fpKeypadOrder.Controls[k]).Visible = true;
-                        ((Button) fpKeypadOrder.Controls[k++]).Text = result;
+                        ((Button) fpKeypadOrder.Controls[k]).BackgroundImage = SymbolPool.GetImage(result);
+                        ((Button) fpKeypadOrder.Controls[k++]).Tag = result;
+
                     }
                     break;
                 }
@@ -1045,6 +1040,7 @@ namespace KTaNE_Helper
                 for (var i = 0; i < 6; i++)
                 {
                     ((Button)fpKeypadOrder.Controls[i]).Visible = false;
+                    ((Button) fpKeypadOrder.Controls[i]).BackgroundImage = new Bitmap(1, 1);
                 }
                 
             }
@@ -1059,7 +1055,7 @@ namespace KTaNE_Helper
                 {
                     for (var j = 0; j < 8; j++)
                     {
-                        if (keypadorder[i].Contains(_keypadSelection[j]))
+                        if (RoundKeypadRules.PrecedenceLists[i].Contains(_keypadSelection[j]))
                             keypadsmatched[i]++;
                     }
                 }
@@ -1074,9 +1070,10 @@ namespace KTaNE_Helper
                 var k = 0;
                 for (var i = 0; i < 8 && k < 6; i++)
                 {
-                    if (keypadorder[keypadtouse].Contains(_keypadSelection[i])) continue;
+                    if (RoundKeypadRules.PrecedenceLists[keypadtouse].Contains(_keypadSelection[i])) continue;
                     ((Button) fpKeypadOrder.Controls[k]).Visible = true;
-                    ((Button) fpKeypadOrder.Controls[k++]).Text = _keypadSelection[i];
+                    ((Button) fpKeypadOrder.Controls[k]).BackgroundImage = _keypadImages[i];
+                    ((Button) fpKeypadOrder.Controls[k++]).Tag = _keypadSelection[i];
                 }
             }
             
@@ -1091,15 +1088,24 @@ namespace KTaNE_Helper
         {
             var i = 0;
             var selection = new string[7];
-            for (var j=0;j<8;j++)
-                if (_keypadSelection[j] != ((Button) sender).Text)
-                    selection[i++] = _keypadSelection[j];
-            for (var j = 0; j < 7; j++)
-                _keypadSelection[j] = selection[j];
-            _keypadSelection[7] = "";
+            var images = new Bitmap[7];
             for (var j = 0; j < 8; j++)
             {
-                ((Button) fpKeypadSelection.Controls[j]).Text = _keypadSelection[j];
+                if (_keypadSelection[j] == (string) ((Button) sender).Tag) continue;
+                images[i] = _keypadImages[j];
+                selection[i++] = _keypadSelection[j];
+            }
+            for (var j = 0; j < 7; j++)
+            {
+                _keypadSelection[j] = selection[j];
+                _keypadImages[j] = images[j];
+            }
+            _keypadSelection[7] = "";
+            _keypadImages[7] = new Bitmap(1, 1);
+            for (var j = 0; j < 8; j++)
+            {
+                ((Button) fpKeypadSelection.Controls[j]).Tag = _keypadSelection[j];
+                ((Button) fpKeypadSelection.Controls[j]).BackgroundImage = _keypadImages[j];
             }
             for (var j = 0; j < 6; j++)
                 ((Button)fpKeypadOrder.Controls[j]).Visible = false;

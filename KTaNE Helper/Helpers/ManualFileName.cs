@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using KTaNE_Helper.Extensions;
@@ -13,6 +14,15 @@ namespace KTaNE_Helper.Helpers
         public bool IsText;
         public byte[] Bytes;
         public string Text;
+
+        public ManualFileName(string name, Bitmap image)
+        {
+            Name = name;
+            IsText = false;
+            var stream = new MemoryStream();
+            image.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+            Bytes = stream.ToArray();
+        }
 
         public ManualFileName(string name, byte[] bytes)
         {

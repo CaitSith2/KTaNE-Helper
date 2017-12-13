@@ -273,6 +273,37 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Manual\img\Keypads\31-bt.png" />
+    <None Include="Manual\img\Keypads\30-upsidedowny.png" />
+    <None Include="Manual\img\Keypads\29-weirdnose.png" />
+    <None Include="Manual\img\Keypads\28-balloon.png" />
+    <None Include="Manual\img\Keypads\27-tracks.png" />
+    <None Include="Manual\img\Keypads\26-cursive.png" />
+    <None Include="Manual\img\Keypads\25-tripod.png" />
+    <None Include="Manual\img\Keypads\24-pitchfork.png" />
+    <None Include="Manual\img\Keypads\23-leftc.png" />
+    <None Include="Manual\img\Keypads\22-rightc.png" />
+    <None Include="Manual\img\Keypads\21-paragraph.png" />
+    <None Include="Manual\img\Keypads\20-questionmark.png" />
+    <None Include="Manual\img\Keypads\19-dragon.png" />
+    <None Include="Manual\img\Keypads\18-nwithhat.png" />
+    <None Include="Manual\img\Keypads\17-circle.png" />
+    <None Include="Manual\img\Keypads\16-euro.png" />
+    <None Include="Manual\img\Keypads\15-meltedthree.png" />
+    <None Include="Manual\img\Keypads\14-ae.png" />
+    <None Include="Manual\img\Keypads\13-at.png" />
+    <None Include="Manual\img\Keypads\12-squigglyn.png" />
+    <None Include="Manual\img\Keypads\11-six.png" />
+    <None Include="Manual\img\Keypads\10-teepee.png" />
+    <None Include="Manual\img\Keypads\9-hookn.png" />
+    <None Include="Manual\img\Keypads\8-pumpkin.png" />
+    <None Include="Manual\img\Keypads\7-squidknife.png" />
+    <None Include="Manual\img\Keypads\6-omega.png" />
+    <None Include="Manual\img\Keypads\5-doublek.png" />
+    <None Include="Manual\img\Keypads\4-smileyface.png" />
+    <None Include="Manual\img\Keypads\3-hollowstar.png" />
+    <None Include="Manual\img\Keypads\2-filledstar.png" />
+    <None Include="Manual\img\Keypads\1-copyright.png" />
     <None Include="Manual\js\jquery-ui.1.12.1.min.js.txt" />
     <None Include="Manual\js\jquery.3.1.1.min.js.txt" />
     <None Include="Manual\js\highlighter.js.txt" />

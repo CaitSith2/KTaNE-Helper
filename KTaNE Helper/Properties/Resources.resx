@@ -371,96 +371,96 @@
     <value>..\Manual\img\Component\Wire Sequences.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="_10_teepee" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\10-teepee.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\10-teepee.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_11_six" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\11-six.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\11-six.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_12_squigglyn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\12-squigglyn.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\12-squigglyn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_13_at" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\13-at.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\13-at.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_14_ae" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\14-ae.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\14-ae.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_15_meltedthree" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\15-meltedthree.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\15-meltedthree.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_16_euro" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\16-euro.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\16-euro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_17_circle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\17-circle.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\17-circle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_18_nwithhat" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\18-nwithhat.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\18-nwithhat.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_19_dragon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\19-dragon.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\19-dragon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_1_copyright" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\1-copyright.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\1-copyright.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_20_questionmark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\20-questionmark.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\20-questionmark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_21_paragraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\21-paragraph.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\21-paragraph.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_22_rightc" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\22-rightc.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\22-rightc.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_23_leftc" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\23-leftc.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\23-leftc.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_24_pitchfork" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\24-pitchfork.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\24-pitchfork.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_25_tripod" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\25-tripod.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\25-tripod.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_26_cursive" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\26-cursive.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\26-cursive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_27_tracks" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\27-tracks.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\27-tracks.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_28_balloon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\28-balloon.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\28-balloon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_29_weirdnose" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\29-weirdnose.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\29-weirdnose.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_2_filledstar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\2-filledstar.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\2-filledstar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_30_upsidedowny" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\30-upsidedowny.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\30-upsidedowny.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_31_bt" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\31-bt.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\31-bt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_3_hollowstar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\3-hollowstar.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\3-hollowstar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_4_smileyface" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\4-smileyface.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\4-smileyface.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_5_doublek" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\5-doublek.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\5-doublek.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_6_omega" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\6-omega.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\6-omega.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_7_squidknife" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\7-squidknife.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\7-squidknife.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_8_pumpkin" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\8-pumpkin.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\8-pumpkin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_9_hookn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Manual\img\Keypads\9-hookn.bytes;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Manual\img\Keypads\9-hookn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

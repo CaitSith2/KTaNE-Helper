@@ -32,19 +32,19 @@ namespace KTaNE_Helper.VanillaRuleSetGenerator
 		public static Solution ButtonLabelled = new Solution
 		{
 			Text = "press the button labeled \"{digit}\"",
-			SolutionMethod = ((BombComponent comp, Dictionary<string, object> args) => ((MemoryComponent)comp).GetIndexOfButtonLabelled((int)args["digit"]))
+			SolutionMethod = ((BombComponent comp, Dictionary<string, object> args) => (4 + (int)args["digit"] - 1))
 		};
 
 		public static Solution ButtonIndexPushedInPreviousStage = new Solution
 		{
 			Text = "press the button in the same position as you pressed in stage {stage}",
-			SolutionMethod = ((BombComponent comp, Dictionary<string, object> args) => ((MemoryComponent)comp).GetIndexOfButtonPressedInStage((int)args["stage"]))
+			SolutionMethod = ((BombComponent comp, Dictionary<string, object> args) => (8 + (int)args["stage"] - 1))
 		};
 
 		public static Solution ButtonLabelPushedInPreviousStage = new Solution
 		{
 			Text = "press the button with the same label you pressed in stage {stage}",
-			SolutionMethod = ((BombComponent comp, Dictionary<string, object> args) => ((MemoryComponent)comp).GetIndexOfButtonWithSameLabelPressedInStage((int)args["stage"]))
+			SolutionMethod = ((BombComponent comp, Dictionary<string, object> args) => (12 + (int)args["stage"] - 1))
 		};
 	}
 }
