@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Text;
 
-namespace Assets.Scripts.Utility
+namespace KTaNE_Helper.Extensions
 {
 	public class Util
 	{

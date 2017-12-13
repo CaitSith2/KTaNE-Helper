@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Rules;
+﻿using KTaNE_Helper.Extensions;
 
 namespace KTaNE_Helper.VanillaRuleSetGenerator
 {

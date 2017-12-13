@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml.XPath;
+using KTaNE_Helper.Extensions;
 
-namespace KTaNE_Helper
+namespace KTaNE_Helper.Modules.Modded
 {
     public class _3DMaze
     {

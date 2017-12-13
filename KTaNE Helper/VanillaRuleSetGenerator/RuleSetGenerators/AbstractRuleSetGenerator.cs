@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using KTaNE_Helper.VanillaRuleSetGenerator.RuleSets;
 using Random = KTaNE_Helper.Helpers.MonoRandom;
 
-namespace Assets.Scripts.Rules
+namespace KTaNE_Helper.VanillaRuleSetGenerator.RuleSetGenerators
 {
 	public abstract class AbstractRuleSetGenerator
 	{

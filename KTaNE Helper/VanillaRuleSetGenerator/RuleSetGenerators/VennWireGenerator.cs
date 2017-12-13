@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets.Scripts.Components.VennWire;
-using Assets.Scripts.Rules;
+using KTaNE_Helper.VanillaRuleSetGenerator.RuleSets;
 
-namespace VanillaRuleModifierAssembly.RuleSetGenerators
+namespace KTaNE_Helper.VanillaRuleSetGenerator.RuleSetGenerators
 {
     public class VennWireGenerator : AbstractRuleSetGenerator
     {

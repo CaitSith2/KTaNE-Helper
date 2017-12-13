@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using KTaNE_Helper.Modules;
 
-namespace Assets.Scripts.Rules
+namespace KTaNE_Helper.VanillaRuleSetGenerator
 {
 	public delegate bool QueryFunc(BombComponent comp, Dictionary<string, object> args);
 }

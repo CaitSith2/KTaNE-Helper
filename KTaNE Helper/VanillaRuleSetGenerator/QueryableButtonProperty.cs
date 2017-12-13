@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using BombGame;
+﻿using System.Collections.Generic;
 using KTaNE_Helper.Modules;
+using KTaNE_Helper.VanillaRuleSetGenerator.BombGame;
 
-namespace Assets.Scripts.Rules
+namespace KTaNE_Helper.VanillaRuleSetGenerator
 {
 	public class QueryableButtonProperty : QueryableProperty
 	{

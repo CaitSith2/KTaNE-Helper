@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BombGame
+﻿namespace KTaNE_Helper.VanillaRuleSetGenerator.BombGame
 {
 	public enum Direction
 	{

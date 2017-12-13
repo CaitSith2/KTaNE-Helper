@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using KTaNE_Helper;
+﻿using System.Collections.Generic;
+using KTaNE_Helper.Edgework;
 using KTaNE_Helper.Modules;
 
-namespace Assets.Scripts.Rules
+namespace KTaNE_Helper.VanillaRuleSetGenerator
 {
 	public class QueryableProperty
 	{

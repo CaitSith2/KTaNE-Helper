@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Windows.Forms;
 
-namespace KTaNE_Helper
+namespace KTaNE_Helper.Extensions
 {
     //Faking the Debug calls to make direct copy/paste code much easier.
     public static class Debug

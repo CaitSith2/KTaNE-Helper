@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
-namespace KTaNE_Helper
+namespace KTaNE_Helper.Edgework
 {
     public class PortPlate
     {

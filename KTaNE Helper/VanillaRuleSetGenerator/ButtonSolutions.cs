@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using KTaNE_Helper.Modules;
-using VanillaRuleModifierAssembly.RuleSetGenerators;
+using KTaNE_Helper.VanillaRuleSetGenerator.RuleSetGenerators;
 
-namespace Assets.Scripts.Rules
+namespace KTaNE_Helper.VanillaRuleSetGenerator
 {
 	public class ButtonSolutions
 	{

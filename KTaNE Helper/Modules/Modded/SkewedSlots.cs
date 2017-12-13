@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using static KTaNE_Helper.Indicators;
-using static KTaNE_Helper.PortPlate;
-using static KTaNE_Helper.SerialNumber;
+﻿using System.Collections.Generic;
 using System.Linq;
+using KTaNE_Helper.Edgework;
 
-namespace KTaNE_Helper
+namespace KTaNE_Helper.Modules.Modded
 {
     public class SkewedSlots
     {
@@ -48,7 +45,7 @@ namespace KTaNE_Helper
 
         public string GetAnswer(string originalNumbers)
         {
-            if (!IsSerialValid) return "";
+            if (!SerialNumber.IsSerialValid) return "";
             if (originalNumbers.Trim().Length != 3) return "";
             var originalDigitsInt = new int[3];
             var newDigits = new int[3];
@@ -65,8 +62,8 @@ namespace KTaNE_Helper
                 else
                     newDigits[i] = originalDigitsInt[i];
 
-                newDigits[i] += LitIndicators.Length;
-                newDigits[i] -= UnlitIndicators.Length;
+                newDigits[i] += Indicators.LitIndicators.Length;
+                newDigits[i] -= Indicators.UnlitIndicators.Length;
 
                 if (newDigits[i] % 3 == 0)
                     newDigits[i] += 4;
@@ -74,7 +71,7 @@ namespace KTaNE_Helper
                     newDigits[i] *= 2;
                 else if ((newDigits[i] < 3) && (newDigits[i] % 2 == 0))
                     newDigits[i] /= 2;
-                else if (!IsPortPresent(PortTypes.PS2) && !IsPortPresent(PortTypes.StereoRCA))
+                else if (!PortPlate.IsPortPresent(PortTypes.PS2) && !PortPlate.IsPortPresent(PortTypes.StereoRCA))
                     newDigits[i] = originalDigitsInt[i] + Batteries.TotalBatteries;
             }
 
@@ -83,14 +80,14 @@ namespace KTaNE_Helper
                 newDigits[0] /= 2;
 
             else if (IsPrime(newDigits[0]))
-                newDigits[0] += LastSerialDigit;
-            else if (IsPortPresent(PortTypes.Parallel))
+                newDigits[0] += SerialNumber.LastSerialDigit;
+            else if (PortPlate.IsPortPresent(PortTypes.Parallel))
                 newDigits[0] *= -1;
             else if (originalDigitsInt[1] % 2 == 0)
                 newDigits[0] -= 2;
 
             //2nd Slot
-            if (!UnlitIndicators.Contains("BOB"))
+            if (!Indicators.UnlitIndicators.Contains("BOB"))
             {
                 if (newDigits[1] == 0)
                     newDigits[1] += originalDigitsInt[0];
@@ -103,8 +100,8 @@ namespace KTaNE_Helper
             }
 
             //3rd Slot
-            if (IsPortPresent(PortTypes.Serial))
-                newDigits[2] += LargestSerialDigit;
+            if (PortPlate.IsPortPresent(PortTypes.Serial))
+                newDigits[2] += SerialNumber.LargestSerialDigit;
             else if (originalDigitsInt[2] != originalDigitsInt[1] && originalDigitsInt[2] != originalDigitsInt[0])
             {
                 var binary = new int[]

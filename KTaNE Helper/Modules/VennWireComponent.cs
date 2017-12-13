@@ -1,4 +1,6 @@
-﻿namespace KTaNE_Helper.Modules
+﻿using KTaNE_Helper.VanillaRuleSetGenerator;
+
+namespace KTaNE_Helper.Modules
 {
     public class VennWireComponent
     {

@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
 using System.Xml;
-using Assets.Scripts.Utility;
+using KTaNE_Helper.Extensions;
 
-namespace Assets.Scripts.Manual
+namespace KTaNE_Helper.VanillaRuleSetGenerator
 {
 	public class SVGGenerator
 	{

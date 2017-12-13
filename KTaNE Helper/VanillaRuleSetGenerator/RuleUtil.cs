@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using BombGame;
+using KTaNE_Helper.VanillaRuleSetGenerator.BombGame;
 
-namespace Assets.Scripts.Rules
+namespace KTaNE_Helper.VanillaRuleSetGenerator
 {
 	public class RuleUtil
 	{

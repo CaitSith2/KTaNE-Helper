@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
-using Assets.Scripts.Utility;
-using BombGame;
+using KTaNE_Helper.Extensions;
+using KTaNE_Helper.VanillaRuleSetGenerator.BombGame;
+using KTaNE_Helper.VanillaRuleSetGenerator.RuleSetGenerators;
 
-namespace Assets.Scripts.Rules
+namespace KTaNE_Helper.VanillaRuleSetGenerator.RuleSets
 {
 	public class WireSequenceRuleSet : AbstractRuleSet
 	{

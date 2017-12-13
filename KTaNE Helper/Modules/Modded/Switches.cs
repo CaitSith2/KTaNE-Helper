@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
+using KTaNE_Helper.Extensions;
 
-namespace KTaNE_Helper
+namespace KTaNE_Helper.Modules.Modded
 {
     public static class Switches
     {

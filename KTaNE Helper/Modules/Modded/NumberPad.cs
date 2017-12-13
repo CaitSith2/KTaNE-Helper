@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using KTaNE_Helper.Edgework;
+using KTaNE_Helper.Extensions;
 
-namespace KTaNE_Helper
+namespace KTaNE_Helper.Modules.Modded
 {
     internal class NumberPad
     {

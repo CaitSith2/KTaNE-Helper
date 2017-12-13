@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.Rules;
-using KTaNE_Helper;
+using KTaNE_Helper.Edgework;
 using KTaNE_Helper.Modules;
-using Newtonsoft.Json;
 
-namespace VanillaRuleModifierAssembly
+namespace KTaNE_Helper.VanillaRuleSetGenerator
 {
     public class QueryablePorts
     {

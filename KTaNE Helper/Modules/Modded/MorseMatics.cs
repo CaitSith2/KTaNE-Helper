@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
+using KTaNE_Helper.Edgework;
+using KTaNE_Helper.Extensions;
 using Newtonsoft.Json;
 
-namespace KTaNE_Helper
+namespace KTaNE_Helper.Modules.Modded
 {
     public class MorseMatics
     {

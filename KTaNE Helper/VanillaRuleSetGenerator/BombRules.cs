@@ -1,7 +1,6 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using KTaNE_Helper.VanillaRuleSetGenerator.RuleSets;
 
-namespace Assets.Scripts.Rules
+namespace KTaNE_Helper.VanillaRuleSetGenerator
 {
 	public class BombRules
 	{

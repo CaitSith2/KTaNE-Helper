@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Assets.Scripts.Components.VennWire
+﻿namespace KTaNE_Helper.VanillaRuleSetGenerator
 {
 	public struct VennWireState
 	{

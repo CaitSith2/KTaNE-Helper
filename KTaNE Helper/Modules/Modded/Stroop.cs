@@ -1,8 +1,7 @@
 using System;
 using System.Text.RegularExpressions;
-using static System.String;
 
-namespace KTaNE_Helper
+namespace KTaNE_Helper.Modules.Modded
 {
     public class Stroop
     {
@@ -19,7 +18,7 @@ namespace KTaNE_Helper
             const string colorLookup = "RYGBMW";
             var answer = "";
             var regex = new Regex("[BGMRWY]{8}");
-            if (!regex.IsMatch(stroopColors) || !regex.IsMatch(stroopWords)) return Empty;
+            if (!regex.IsMatch(stroopColors) || !regex.IsMatch(stroopWords)) return String.Empty;
             var colors = new int[8];
             var words = new int[8];
             var colorMatchesWord = new bool[8];
@@ -244,7 +243,7 @@ namespace KTaNE_Helper
                         answer = "Press No (W3)";
                     break;
                 default:
-                    return Empty;
+                    return String.Empty;
             }
             return answer;
         }

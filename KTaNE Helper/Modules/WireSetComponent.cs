@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.Rules;
-using BombGame;
+using KTaNE_Helper.VanillaRuleSetGenerator;
+using KTaNE_Helper.VanillaRuleSetGenerator.BombGame;
 
 namespace KTaNE_Helper.Modules
 {

@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Linq;
-using System.Net.Mime;
-using static KTaNE_Helper.SerialNumber;
+using KTaNE_Helper.Edgework;
 
-namespace KTaNE_Helper
+namespace KTaNE_Helper.Modules.Modded
 {
     public static class LightCycle
     {
@@ -53,14 +52,14 @@ GY;31;5M;R2;6W;MB;Y6;24;4G;B5;1R;W3
 
         public static string GetAnswer(char[] solution)
         {
-            if (!IsSerialValid) return "";
+            if (!SerialNumber.IsSerialValid) return "";
             var answer = "";
 
 
             for (var i = 0; i < 6; i++)
             {
-                var ch1 = convert(Serial[i]);
-                var ch2 = convert(Serial[5 - i]);
+                var ch1 = convert(SerialNumber.Serial[i]);
+                var ch2 = convert(SerialNumber.Serial[5 - i]);
                 var entry = LightCycleTable[ch1][ch2 / 3];
                 if (solution.Length != 6)
                 {

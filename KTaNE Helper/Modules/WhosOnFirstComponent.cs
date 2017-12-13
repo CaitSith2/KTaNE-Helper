@@ -1,5 +1,6 @@
 ﻿using System.Linq;
-using Assets.Scripts.Rules;
+using KTaNE_Helper.VanillaRuleSetGenerator;
+using KTaNE_Helper.VanillaRuleSetGenerator.RuleSets;
 
 namespace KTaNE_Helper.Modules
 {

@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel;
 
-namespace KTaNE_Helper
+namespace KTaNE_Helper.Extensions
 {
     public static class EnumExtensions
     {

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Net.Mime;
 
-namespace KTaNE_Helper
+namespace KTaNE_Helper.Edgework
 {
     public static class EdgeWork
     {

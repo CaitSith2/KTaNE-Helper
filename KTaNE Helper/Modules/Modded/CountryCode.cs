@@ -1,6 +1,6 @@
-using static System.String;
+using System;
 
-namespace KTaNE_Helper
+namespace KTaNE_Helper.Modules.Modded
 {
     internal struct CountryCode
     {
@@ -37,7 +37,7 @@ namespace KTaNE_Helper
                 if (c.Code == code)
                     return c.ISO4217;
             }
-            return Empty;
+            return String.Empty;
         }
 
         public static string GetISO4217CountryCode(string num)
@@ -47,7 +47,7 @@ namespace KTaNE_Helper
                 if (c.ISO4217 == num)
                     return c.Code;
             }
-            return Empty;
+            return String.Empty;
         }
 
         public static string GetConversionURL(string baseCode, string targetCode)

@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.Rules;
-using KTaNE_Helper.VanillaRuleSetGenerator;
+using KTaNE_Helper.VanillaRuleSetGenerator.RuleSets;
 
-namespace VanillaRuleModifierAssembly.RuleSetGenerators
+namespace KTaNE_Helper.VanillaRuleSetGenerator.RuleSetGenerators
 {
     public class MorseCodeRuleGenerator : AbstractRuleSetGenerator
     {

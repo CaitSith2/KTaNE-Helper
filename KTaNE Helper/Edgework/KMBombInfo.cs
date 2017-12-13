@@ -2,7 +2,7 @@
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace KTaNE_Helper
+namespace KTaNE_Helper.Edgework
 {
     public class KMBombInfo
     {

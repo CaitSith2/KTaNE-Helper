@@ -1,6 +1,7 @@
-﻿using static System.String;
+﻿using System;
+using KTaNE_Helper.Edgework;
 
-namespace KTaNE_Helper
+namespace KTaNE_Helper.Modules.Modded
 {
     public class Semaphore
     {
@@ -9,11 +10,11 @@ namespace KTaNE_Helper
 
         private bool IsAnswer(string letter, string number)
         {
-            if (!IsNullOrEmpty(number) && _numbers && SerialNumber.Serial.Contains(number)) return false;
-            if (!IsNullOrEmpty(letter) && _letters && SerialNumber.Serial.Contains(letter)) return false;
-            if (IsNullOrEmpty(letter) && _letters) return false;
-            if (IsNullOrEmpty(number) && _numbers) return false;
-            if (IsNullOrEmpty(letter) && IsNullOrEmpty(number)) return false;
+            if (!String.IsNullOrEmpty(number) && _numbers && SerialNumber.Serial.Contains(number)) return false;
+            if (!String.IsNullOrEmpty(letter) && _letters && SerialNumber.Serial.Contains(letter)) return false;
+            if (String.IsNullOrEmpty(letter) && _letters) return false;
+            if (String.IsNullOrEmpty(number) && _numbers) return false;
+            if (String.IsNullOrEmpty(letter) && String.IsNullOrEmpty(number)) return false;
             return true;
         }
 

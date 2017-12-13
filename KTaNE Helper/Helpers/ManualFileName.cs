@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using KTaNE_Helper.Extensions;
 using KTaNE_Helper.VanillaRuleSetGenerator;
 
-namespace VanillaRuleModifierAssembly
+namespace KTaNE_Helper.Helpers
 {
     public class ManualFileName
     {

@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Assets.Scripts.Components.VennWire;
-using Assets.Scripts.Manual;
-using Assets.Scripts.Rules;
-using Assets.Scripts.Utility;
-using BombGame;
+using KTaNE_Helper.Extensions;
 using KTaNE_Helper.Properties;
 using KTaNE_Helper.VanillaRuleSetGenerator;
-using VanillaRuleModifierAssembly;
+using KTaNE_Helper.VanillaRuleSetGenerator.BombGame;
+using KTaNE_Helper.VanillaRuleSetGenerator.RuleSetGenerators;
+using KTaNE_Helper.VanillaRuleSetGenerator.RuleSets;
 
 namespace KTaNE_Helper.Helpers
 {

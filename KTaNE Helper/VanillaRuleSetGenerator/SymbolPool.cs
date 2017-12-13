@@ -1,173 +1,175 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-public class SymbolPool
+namespace KTaNE_Helper.VanillaRuleSetGenerator
 {
-    public static string GetFileName(string symbol)
+    public class SymbolPool
     {
-        return SymbolPool.FileMap[symbol];
-    }
+        public static string GetFileName(string symbol)
+        {
+            return SymbolPool.FileMap[symbol];
+        }
 
-    public static List<string> Symbols = new List<string>
-    {
-        "©",
-        "★",
-        "☆",
-        "ټ",
-        "Җ",
-        "Ω",
-        "Ѭ",
-        "Ѽ",
-        "ϗ",
-        "ϫ",
-        "Ϭ",
-        "Ϟ",
-        "Ѧ",
-        "ӕ",
-        "Ԇ",
-        "Ӭ",
-        "҈",
-        "Ҋ",
-        "ѯ",
-        "¿",
-        "¶",
-        "Ͼ",
-        "Ͽ",
-        "Ψ",
-        "Ѫ",
-        "Ҩ",
-        "҂",
-        "Ϙ",
-        "ζ",
-        "ƛ",
-        "ѣ"
-    };
-
-    public static Dictionary<string, string> FileMap = new Dictionary<string, string>
-    {
+        public static List<string> Symbols = new List<string>
         {
             "©",
-            "1-copyright.png"
-        },
-        {
             "★",
-            "2-filledstar.png"
-        },
-        {
             "☆",
-            "3-hollowstar.png"
-        },
-        {
             "ټ",
-            "4-smileyface.png"
-        },
-        {
             "Җ",
-            "5-doublek.png"
-        },
-        {
             "Ω",
-            "6-omega.png"
-        },
-        {
             "Ѭ",
-            "7-squidknife.png"
-        },
-        {
             "Ѽ",
-            "8-pumpkin.png"
-        },
-        {
             "ϗ",
-            "9-hookn.png"
-        },
-        {
             "ϫ",
-            "10-teepee.png"
-        },
-        {
             "Ϭ",
-            "11-six.png"
-        },
-        {
             "Ϟ",
-            "12-squigglyn.png"
-        },
-        {
             "Ѧ",
-            "13-at.png"
-        },
-        {
             "ӕ",
-            "14-ae.png"
-        },
-        {
             "Ԇ",
-            "15-meltedthree.png"
-        },
-        {
             "Ӭ",
-            "16-euro.png"
-        },
-        {
             "҈",
-            "17-circle.png"
-        },
-        {
             "Ҋ",
-            "18-nwithhat.png"
-        },
-        {
             "ѯ",
-            "19-dragon.png"
-        },
-        {
             "¿",
-            "20-questionmark.png"
-        },
-        {
             "¶",
-            "21-paragraph.png"
-        },
-        {
             "Ͼ",
-            "22-rightc.png"
-        },
-        {
             "Ͽ",
-            "23-leftc.png"
-        },
-        {
             "Ψ",
-            "24-pitchfork.png"
-        },
-        {
             "Ѫ",
-            "25-tripod.png"
-        },
-        {
             "Ҩ",
-            "26-cursive.png"
-        },
-        {
             "҂",
-            "27-tracks.png"
-        },
-        {
             "Ϙ",
-            "28-balloon.png"
-        },
-        {
             "ζ",
-            "29-weirdnose.png"
-        },
-        {
             "ƛ",
-            "30-upsidedowny.png"
-        },
+            "ѣ"
+        };
+
+        public static Dictionary<string, string> FileMap = new Dictionary<string, string>
         {
-            "ѣ",
-            "31-bt.png"
-        }
-    };
+            {
+                "©",
+                "1-copyright.png"
+            },
+            {
+                "★",
+                "2-filledstar.png"
+            },
+            {
+                "☆",
+                "3-hollowstar.png"
+            },
+            {
+                "ټ",
+                "4-smileyface.png"
+            },
+            {
+                "Җ",
+                "5-doublek.png"
+            },
+            {
+                "Ω",
+                "6-omega.png"
+            },
+            {
+                "Ѭ",
+                "7-squidknife.png"
+            },
+            {
+                "Ѽ",
+                "8-pumpkin.png"
+            },
+            {
+                "ϗ",
+                "9-hookn.png"
+            },
+            {
+                "ϫ",
+                "10-teepee.png"
+            },
+            {
+                "Ϭ",
+                "11-six.png"
+            },
+            {
+                "Ϟ",
+                "12-squigglyn.png"
+            },
+            {
+                "Ѧ",
+                "13-at.png"
+            },
+            {
+                "ӕ",
+                "14-ae.png"
+            },
+            {
+                "Ԇ",
+                "15-meltedthree.png"
+            },
+            {
+                "Ӭ",
+                "16-euro.png"
+            },
+            {
+                "҈",
+                "17-circle.png"
+            },
+            {
+                "Ҋ",
+                "18-nwithhat.png"
+            },
+            {
+                "ѯ",
+                "19-dragon.png"
+            },
+            {
+                "¿",
+                "20-questionmark.png"
+            },
+            {
+                "¶",
+                "21-paragraph.png"
+            },
+            {
+                "Ͼ",
+                "22-rightc.png"
+            },
+            {
+                "Ͽ",
+                "23-leftc.png"
+            },
+            {
+                "Ψ",
+                "24-pitchfork.png"
+            },
+            {
+                "Ѫ",
+                "25-tripod.png"
+            },
+            {
+                "Ҩ",
+                "26-cursive.png"
+            },
+            {
+                "҂",
+                "27-tracks.png"
+            },
+            {
+                "Ϙ",
+                "28-balloon.png"
+            },
+            {
+                "ζ",
+                "29-weirdnose.png"
+            },
+            {
+                "ƛ",
+                "30-upsidedowny.png"
+            },
+            {
+                "ѣ",
+                "31-bt.png"
+            }
+        };
+    }
 }

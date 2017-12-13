@@ -1,6 +1,6 @@
 using System.Drawing;
 
-namespace KTaNE_Helper
+namespace KTaNE_Helper.Extensions
 {
     public static class GraphicsExtensions
     {

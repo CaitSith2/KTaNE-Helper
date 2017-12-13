@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace KTaNE_Helper
+namespace KTaNE_Helper.Modules.Modded
 {
     public static class AdjacentLetters
     {

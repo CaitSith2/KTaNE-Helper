@@ -1,8 +1,7 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Text;
 
-namespace Assets.Scripts.Utility
+namespace KTaNE_Helper.Extensions
 {
 	public sealed class StringWriterWithEncoding : StringWriter
 	{

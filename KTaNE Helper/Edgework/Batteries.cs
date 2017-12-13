@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 
-namespace KTaNE_Helper
+namespace KTaNE_Helper.Edgework
 {
     public class Batteries
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace KTaNE_Helper
+namespace KTaNE_Helper.Edgework
 {
     public class Indicators
     {

@@ -1,5 +1,5 @@
 
-    namespace VanillaRuleModifierAssembly
+    namespace KTaNE_Helper.Extensions
     {
         public class ReplaceText
         {

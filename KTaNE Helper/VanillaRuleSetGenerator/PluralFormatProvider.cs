@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Assets.Scripts.Rules
+namespace KTaNE_Helper.VanillaRuleSetGenerator
 {
 	public class PluralFormatProvider : IFormatProvider, ICustomFormatter
 	{

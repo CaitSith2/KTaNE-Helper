@@ -1,4 +1,4 @@
-namespace KTaNE_Helper
+namespace KTaNE_Helper.Modules.Vanilla
 {
     public static class Wires
     {

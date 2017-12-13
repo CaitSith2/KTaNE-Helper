@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Linq;
+using KTaNE_Helper.Edgework;
+using KTaNE_Helper.Extensions;
 
-namespace KTaNE_Helper
+namespace KTaNE_Helper.Modules.Modded
 {
     public class Neutralization
     {
