@@ -8,16 +8,16 @@ namespace Assets.Scripts.Rules
 	{
 		public AbstractRuleSetGenerator()
 		{
-			this.solutionWeights = new Dictionary<Solution, float>();
-			this.queryPropertyWeights = new Dictionary<QueryableProperty, float>();
+			solutionWeights = new Dictionary<Solution, float>();
+			queryPropertyWeights = new Dictionary<QueryableProperty, float>();
 		}
 
 		public AbstractRuleSet GenerateRuleSet(int seed)
 		{
-			this.solutionWeights.Clear();
-			this.queryPropertyWeights.Clear();
-			this.rand = new Random(seed);
-			return this.CreateRules(seed == DEFAULT_SEED);
+			solutionWeights.Clear();
+			queryPropertyWeights.Clear();
+			rand = new Random(seed);
+			return CreateRules(seed == RuleManager.DefaultSeed);
 		}
 
 		protected abstract AbstractRuleSet CreateRules(bool useDefault);
@@ -27,21 +27,21 @@ namespace Assets.Scripts.Rules
 			float num = 0f;
 			foreach (Solution key in possibleSolutions)
 			{
-				num += this.solutionWeights[key];
+				num += solutionWeights[key];
 			}
-			double num2 = this.rand.NextDouble() * (double)num;
+			double num2 = rand.NextDouble() * (double)num;
 			foreach (Solution solution in possibleSolutions)
 			{
-				if (num2 < (double)this.solutionWeights[solution])
+				if (num2 < (double)solutionWeights[solution])
 				{
 					Dictionary<Solution, float> dictionary;
 					Solution key2;
-					(dictionary = this.solutionWeights)[key2 = solution] = dictionary[key2] * 0.05f;
+					(dictionary = solutionWeights)[key2 = solution] = dictionary[key2] * 0.05f;
 					return solution;
 				}
-				num2 -= (double)this.solutionWeights[solution];
+				num2 -= (double)solutionWeights[solution];
 			}
-			return possibleSolutions[this.rand.Next(0, possibleSolutions.Count)];
+			return possibleSolutions[rand.Next(0, possibleSolutions.Count)];
 		}
 
 		protected QueryableProperty SelectQueryableProperty(List<QueryableProperty> possibleQueryableProperties)
@@ -49,30 +49,30 @@ namespace Assets.Scripts.Rules
 			float num = 0f;
 			foreach (QueryableProperty key in possibleQueryableProperties)
 			{
-				if (!this.queryPropertyWeights.ContainsKey(key))
+				if (!queryPropertyWeights.ContainsKey(key))
 				{
-					this.queryPropertyWeights.Add(key, 1f);
+					queryPropertyWeights.Add(key, 1f);
 				}
-				num += this.queryPropertyWeights[key];
+				num += queryPropertyWeights[key];
 			}
-			double num2 = this.rand.NextDouble() * (double)num;
+			double num2 = rand.NextDouble() * (double)num;
 			foreach (QueryableProperty queryableProperty in possibleQueryableProperties)
 			{
-				if (num2 < (double)this.queryPropertyWeights[queryableProperty])
+				if (num2 < (double)queryPropertyWeights[queryableProperty])
 				{
 					Dictionary<QueryableProperty, float> dictionary;
 					QueryableProperty key2;
-					(dictionary = this.queryPropertyWeights)[key2 = queryableProperty] = dictionary[key2] * 0.1f;
+					(dictionary = queryPropertyWeights)[key2 = queryableProperty] = dictionary[key2] * 0.1f;
 					return queryableProperty;
 				}
-				num2 -= (double)this.queryPropertyWeights[queryableProperty];
+				num2 -= (double)queryPropertyWeights[queryableProperty];
 			}
-			return possibleQueryableProperties[this.rand.Next(0, possibleQueryableProperties.Count)];
+			return possibleQueryableProperties[rand.Next(0, possibleQueryableProperties.Count)];
 		}
 
 		protected int GetNumRules()
 		{
-			double num = this.rand.NextDouble();
+			double num = rand.NextDouble();
 			if (num < 0.6)
 			{
 				return 3;
@@ -82,7 +82,7 @@ namespace Assets.Scripts.Rules
 
 		protected int GetNumQueriesForRule()
 		{
-			double num = this.rand.NextDouble();
+			double num = rand.NextDouble();
 			if (num < 0.6)
 			{
 				return 1;
@@ -95,6 +95,5 @@ namespace Assets.Scripts.Rules
 		protected Dictionary<QueryableProperty, float> queryPropertyWeights;
 
 		protected Random rand;
-	    protected static int DEFAULT_SEED = 1;
 	}
 }

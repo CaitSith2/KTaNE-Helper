@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 namespace KTaNE_Helper
 {
@@ -34,5 +35,9 @@ namespace KTaNE_Helper
             return input.ReplaceAt(index, newChar.ToCharArray()[0]);
         }
 
+        public static string Capitalize(this string data)
+        {
+            return char.ToUpperInvariant(data.First()) + data.Substring(1).ToLowerInvariant();
+        }
     }
 }

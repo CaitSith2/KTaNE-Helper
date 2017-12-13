@@ -8,7 +8,9 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using Assets.Scripts.Components.VennWire;
 using Assets.Scripts.Rules;
+using BombGame;
 using KTaNE_Helper.Helpers;
 using KTaNE_Helper.Modules;
 using static System.String;
@@ -58,19 +60,6 @@ namespace KTaNE_Helper
         private int _mazeEndXY = 77;
 
         private int _whosOnFirstLookIndex = 6;
-
-
-        private readonly int[] _wireSequenceRed241 = { 4, 2, 1, 5, 2, 5, 7, 3, 2 };
-        private readonly int[] _wireSequenceBlue241 = { 2, 5, 2, 1, 2, 6, 4, 5, 1 };
-        private readonly int[] _wireSequenceBlack241 = { 7, 5, 2, 5, 2, 6, 3, 4, 4 };
-
-        private readonly int[] _wireSequenceRed724 = { 5, 2, 5, 7, 2, 0, 6, 6, 7 };
-        private readonly int[] _wireSequenceBlue724 = { 4, 0, 5, 7, 0, 6, 1, 4, 3 };
-        private readonly int[] _wireSequenceBlack724 = { 5, 0, 6, 1, 0, 2, 4, 4, 4 };
-
-
-        private readonly int[] _complicatedWires241 = { 0, 1, 1, 1, 2, 3, 4, 1, 0, 0, 2, 4, 3, 3, 4, 2 };
-        private readonly int[] _complicatedWires724 = { 0, 1, 2, 1, 3, 3, 1, 0, 0, 3, 0, 4, 4, 2, 4, 0 };
 
         private readonly string[] _keypadOrder241 = { "ϘѦƛϞѬϗϿ", "ӬϘϿҨ☆ϗ¿", "©ѼҨҖԆƛ☆", "Ϭ¶ѣѬҖ¿ټ", "ΨټѣϾ¶ѯ★", "ϬӬ҂ӕΨҊΩ" };
         private readonly string[] _keypadOrder724 = { "ϬҨҖ☆¶Ͽζ", "ҨҊƛѦϫ¶Җ", "ѬϬϗζΨƛѼ", "Ѭټ◌©ϞϿϗ", "Ϙ©¿Ѫ☆★ϫ", "ӕԆӬѪѣѼΨ" };
@@ -131,9 +120,6 @@ namespace KTaNE_Helper
             cw_input.Text = cw_input.Text.ToUpper();
             cw_input.SelectionStart = cw_input.Text.Length;
 
-
-            var cwcode = (_manualVersion == 0 ? _complicatedWires241 : _complicatedWires724);
-
             cw_output.Text = "";
             if (cw_input.Text == "") return;
             var cwWireGroups = cw_input.Text.ToLower().Split('\\');
@@ -145,34 +131,30 @@ namespace KTaNE_Helper
                 foreach (var wire in cwWires.Where(wire => wire.Length != 0))
                 {
                     if (outputStr != "") outputStr += @", ";
-                    var i = 0;
-                    if (wire.Contains("r")) i += 1;
-                    if (wire.Contains("b")) i += 2;
-                    if (wire.Contains("l")) i += 4;
-                    if (wire.Contains("s")) i += 8;
-                    switch (cwcode[i])
+                    VennWireState state = new VennWireState(wire.Contains("r"), wire.Contains("b"), wire.Contains("s"),wire.Contains("l"));
+                    switch (RuleManager.Instance.VennWireRuleSet.RuleDict[state])
                     {
-                        case 0:
+                        case CutInstruction.Cut:
                             //Cut, period.
                             outputStr += @"Cut";
                             typestr += @"C";
                             break;
-                        case 1:
+                        case CutInstruction.CutIfSerialEven:
                             outputStr += (!SerialNumberLastDigitOdd() ? "Cut" : "Leave");
                             typestr += @"S";
                             //Cut if last digit of serial is Even
                             break;
-                        case 2:
+                        case CutInstruction.DoNotCut:
                             outputStr += @"Leave";
                             typestr += @"D";
                             //Don't Cut, Period.
                             break;
-                        case 3:
+                        case CutInstruction.CutIfTwoOrMoreBatteriesPresent:
                             outputStr += (batts >= 2 ? "Cut" : "Leave");
                             typestr += @"B";
                             //Cut if 2 or more Batteries
                             break;
-                        case 4:
+                        case CutInstruction.CutIfParallelPortPresent:
                             outputStr += (IsPortPresent(PortTypes.Parallel) ? "Cut" : "Leave");
                             typestr += @"P";
                             //Cut if parallel port
@@ -217,35 +199,29 @@ namespace KTaNE_Helper
             var name = button_name.SelectedIndex;
             var batts = Batteries.TotalBatteries;
 
-            if (_manualVersion == 0)
-            {
-                //button_color.Visible = name != 1;
+            var ruleSet = RuleManager.Instance.ButtonRuleSet;
+            var component = ButtonComponent.Instance;
+            component.ButtonColor = (ButtonColor) color;
+            component.ButtonInstruction = (ButtonInstruction) name;
+            var pressResult = ruleSet.ExecuteRuleList(component, ruleSet.RuleList);
 
-                if (color == 1) lblButtonQuery.Text += @"Look for a Lit CAR" + Environment.NewLine;
+            component.IndicatorColor = BigButtonLEDColor.Blue;
+            var blueResult = ruleSet.ExecuteRuleList(component, ruleSet.HoldRuleList);
 
-                if ((color == 0) && (name == 0)) lblButtonQuery.Text = "";
-                else if (name == 1) lblButtonQuery.Text = @"Is there at least 2 Batteries?";
-                else if ((color == 1))
-                    lblButtonQuery.Text = @"Is there a Lit CAR Indicator" + Environment.NewLine +
-                                          @"If Not, is there at least 3 batteries" + Environment.NewLine + @"and Lit FRK Indicator?";
-                else if (color == 2) lblButtonQuery.Text = @"Is there at least 3 batteries"+Environment.NewLine+@"and Lit FRK Indicator?";
-                else if ((color == 3) && (name == 3)) lblButtonQuery.Text = "";
-                else lblButtonQuery.Text = @"Is there at least 3 batteries" + Environment.NewLine + @"and Lit FRK Indicator?";
+            component.IndicatorColor = BigButtonLEDColor.Red;
+            var redResult = ruleSet.ExecuteRuleList(component, ruleSet.HoldRuleList);
 
-                if ((color == 0) && (name == 0)) button_label.Text = @"Hold the Button";
-                else if ((name == 1) && (batts > 1)) button_label.Text = @"Press and Release";
-                else if ((color == 1) && IsIndicatorLit("CAR")) button_label.Text = @"Hold the Button";
-                else if ((batts > 2) && IsIndicatorLit("FRK")) button_label.Text = @"Press and Release";
-                else if (color == 2) button_label.Text = @"Hold the Button";
-                else if ((color == 3) && (name == 3)) button_label.Text = @"Press and Release";
-                else button_label.Text = @"Hold the Button";
-            }
-            else
-            {
-                if ((color == 1) && IsIndicatorLit("CAR")) button_label.Text = @"Press and Release";
-                else if ((color == 3) && (batts < 2)) button_label.Text = @"Press and Release";
-                else button_label.Text = @"Hold the Button";
-            }
+            component.IndicatorColor = BigButtonLEDColor.White;
+            var whiteResult = ruleSet.ExecuteRuleList(component, ruleSet.HoldRuleList);
+
+            component.IndicatorColor = BigButtonLEDColor.Yellow;
+            var yellowResult = ruleSet.ExecuteRuleList(component, ruleSet.HoldRuleList);
+
+            button_label.Text = ButtonSolutions.PressSolutions[pressResult].Text;
+            bluestrip.Text = "Blue - " + ButtonSolutions.HoldSolutions[blueResult].Text;
+            yellowstrip.Text = "Yellow - " + ButtonSolutions.HoldSolutions[yellowResult].Text;
+            whitestrip.Text = "White - " + ButtonSolutions.HoldSolutions[whiteResult].Text;
+            otherstrip.Text = "Red - " + ButtonSolutions.HoldSolutions[redResult].Text;
         }
 
         private void ManualVersionSelect_SelectedIndexChanged(object sender, EventArgs e)
@@ -367,25 +343,7 @@ namespace KTaNE_Helper
         private bool _initLettersNotPresent;
         private void Password_TextChanged(object sender, EventArgs e)
         {
-            var passwords = new List<string>
-            {
-                "about","after","again","below","could","every","first",
-                "found","great","house","large","learn","never","other",
-                "place","plant","point","right","small","sound","spell",
-                "still","study","their","there","these","thing","think",
-                "three","water","where","which","world","would","write"
-            };
-            if(_manualVersion == 1)
-            {
-                passwords = new List<string>
-                {
-                    "aloof","arena","bleat","boxed","butts","caley","crate",
-                    "feret","freak","humus","jewej","joule","joust","knobs",
-                    "local","pause","press","prime","rings","sails","snake",
-                    "space","splat","spoon","steel","tangy","texas","these",
-                    "those","toons","tunes","walks","weird","wodar","words"
-                };
-            }
+            var passwords = RuleManager.Instance.PasswordRuleSet.possibilities;
 
             const string letters = "abcdefghijklmnopqrstuvwxyz";
 
@@ -660,28 +618,13 @@ namespace KTaNE_Helper
 
         private void MorseCodeInput_TextChanged(object sender, EventArgs e)
         {
-            var words = new Dictionary<string, int>
-            {
-                {"shell",505},{"halls",515},{"slick",522},{"sting",592},
-                {"steak",582},{"vector",595},{"strobe",545},{"flick",555},
-                {"leaks",542},{"bistro",552},{"beats",600},{"brick",575},
-                {"break",572},{"bombs",565},{"trick",532},{"boxes",535}
-            };
-            if (_manualVersion == 1)
-            {
-                words = new Dictionary<string, int>
-                {
-                    {"shell",562},{"halls",552},{"slick",512},{"sting",595},
-                    {"vector",565},{"strobe",515},{"flick",582},{"beats",535},
-                    {"brick",572},{"break",532},{"bombs",545},{"trick",600},
-                    {"bravo",502},{"alien",505},{"hello",575},{"brain",585}
-                };
-            }
+            var words = RuleManager.Instance.MorseCodeRuleSet.WordDict;
+
             MorseCodeOutput.Text = "";
 
             // ReSharper disable once InconsistentNaming
             foreach (var code in words.Select(Entry => 
-                new {Entry}).Select(word => WordToMorseCode(word.Entry.Key, word.Entry.Value)).Where(code => code.Split(',')[0].Contains(MorseCodeInput.Text)))
+                new {Entry}).OrderBy(x => x.Entry.Key).Select(word => WordToMorseCode(word.Entry.Value, word.Entry.Key)).Where(code => code.Split(',')[0].Contains(MorseCodeInput.Text)))
             {
                 if (txtPasswordSubmitID.Text == "")
                     MorseCodeOutput.Text += code.Split(',')[1];
@@ -710,11 +653,9 @@ namespace KTaNE_Helper
 
         private void ws_input_TextChanged(object sender, EventArgs e)
         {
+            WireSequenceRuleSet ruleSet = RuleManager.Instance.CurrentRules.WireSequenceRuleSet;
             ws_input.Text = ws_input.Text.ToUpper();
             ws_input.SelectionStart = ws_input.Text.Length;
-            var sequenceRed = (_manualVersion == 0 ? _wireSequenceRed241 : _wireSequenceRed724);
-            var sequenceBlue = (_manualVersion == 0 ? _wireSequenceBlue241 : _wireSequenceBlue724);
-            var sequenceBlack = (_manualVersion == 0 ? _wireSequenceBlack241 : _wireSequenceBlack724);
 
             var wirePairs = ws_input.Text.ToLower().Split(' ');
             
@@ -727,20 +668,20 @@ namespace KTaNE_Helper
             foreach (var wire in wirePairs.Where(wire => wire.Length >= 2))
             {
                 if (ws_output.Text != "") ws_output.Text += @", ";
-                var i = (" ab c").IndexOf(wire.Substring(1, 1), StringComparison.Ordinal);
+                var i = ("abc").IndexOf(wire.Substring(1, 1), StringComparison.Ordinal);
                 switch (wire.Substring(0, 1))
                 {
                     case "r":
                         if (redCount == 9) continue;
-                        ws_output.Text += (sequenceRed[redCount++] & i) == i ? @"Cut" : @"Leave";
+                        ws_output.Text += ruleSet.ShouldBeSnipped(WireColor.red,redCount++,i) ? @"Cut" : @"Leave";
                         break;
                     case "b":
                         if (blueCount == 9) continue;
-                        ws_output.Text += (sequenceBlue[blueCount++] & i) == i ? @"Cut" : @"Leave";
+                        ws_output.Text += ruleSet.ShouldBeSnipped(WireColor.blue, blueCount++, i) ? @"Cut" : @"Leave";
                         break;
                     case "k":
                         if (blackCount == 9) continue;
-                        ws_output.Text += (sequenceBlack[blackCount++] & i) == i ? @"Cut" : @"Leave";
+                        ws_output.Text += ruleSet.ShouldBeSnipped(WireColor.black, blackCount++, i) ? @"Cut" : @"Leave";
                         break;
 
                 }
@@ -3668,6 +3609,7 @@ namespace KTaNE_Helper
         private void nudVanillaSeed_ValueChanged(object sender, EventArgs e)
         {
              RuleManager.Instance.Initialize((int)nudVanillaSeed.Value);
+            ManualGenerator.Instance.WriteManual((int)nudVanillaSeed.Value);
             _initLettersNotPresent = false;
             keypadReset_Click(sender, e);
             Needy_Knob_CheckedChanged(sender, e);

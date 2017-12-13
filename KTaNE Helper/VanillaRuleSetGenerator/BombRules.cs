@@ -11,7 +11,7 @@ namespace Assets.Scripts.Rules
 			{
 				this.WireRuleSet.CacheStringValues();
 				this.WhosOnFirstRuleSet.CacheStringValues();
-				/*this.KeypadRuleSet.CacheStringValues();
+				this.KeypadRuleSet.CacheStringValues();
 				this.MemoryRuleSet.CacheStringValues();
 				this.NeedyKnobRuleSet.CacheStringValues();
 				this.ButtonRuleSet.CacheStringValues();
@@ -20,7 +20,7 @@ namespace Assets.Scripts.Rules
 				this.MorseCodeRuleSet.CacheStringValues();
 				this.VennWireRuleSet.CacheStringValues();
 				this.MazeRuleSet.CacheStringValues();
-				this.SimonRuleSet.CacheStringValues();*/
+				this.SimonRuleSet.CacheStringValues();
 				this.hasCachedStringValues = true;
 			}
 		}
@@ -48,7 +48,7 @@ namespace Assets.Scripts.Rules
 
 		public WhosOnFirstRuleSet WhosOnFirstRuleSet;
 
-		/*public KeypadRuleSet KeypadRuleSet;
+		public KeypadRuleSet KeypadRuleSet;
 
 		public MemoryRuleSet MemoryRuleSet;
 
@@ -66,7 +66,7 @@ namespace Assets.Scripts.Rules
 
 		public MazeRuleSet MazeRuleSet;
 
-		public SimonRuleSet SimonRuleSet;*/
+		public SimonRuleSet SimonRuleSet;
 
 		protected bool hasCachedStringValues;
 	}

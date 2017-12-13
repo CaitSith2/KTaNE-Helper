@@ -169,8 +169,6 @@
             this.MorseCodeInput = new System.Windows.Forms.TextBox();
             this.MorseCodeOutput = new System.Windows.Forms.TextBox();
             this.tpButtonV1 = new System.Windows.Forms.TabPage();
-            this.lblButtonQuery = new System.Windows.Forms.Label();
-            this.label61 = new System.Windows.Forms.Label();
             this.label60 = new System.Windows.Forms.Label();
             this.whitestrip = new System.Windows.Forms.Label();
             this.button_name = new System.Windows.Forms.ComboBox();
@@ -2154,7 +2152,7 @@
             // 
             // txtPasswordSubmitID
             // 
-            this.txtPasswordSubmitID.Location = new System.Drawing.Point(418, 3);
+            this.txtPasswordSubmitID.Location = new System.Drawing.Point(454, 42);
             this.txtPasswordSubmitID.MaxLength = 2;
             this.txtPasswordSubmitID.Name = "txtPasswordSubmitID";
             this.txtPasswordSubmitID.Size = new System.Drawing.Size(94, 20);
@@ -2164,7 +2162,7 @@
             // passwordClear
             // 
             this.passwordClear.Dock = System.Windows.Forms.DockStyle.Left;
-            this.passwordClear.Location = new System.Drawing.Point(291, 39);
+            this.passwordClear.Location = new System.Drawing.Point(392, 39);
             this.passwordClear.Name = "passwordClear";
             this.passwordClear.Size = new System.Drawing.Size(50, 52);
             this.passwordClear.TabIndex = 6;
@@ -2176,7 +2174,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label15.Location = new System.Drawing.Point(291, 0);
+            this.label15.Location = new System.Drawing.Point(392, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(83, 39);
             this.label15.TabIndex = 10;
@@ -2193,59 +2191,59 @@
             this.fpPasswordLettersNotPresent.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.fpPasswordLettersNotPresent.Location = new System.Drawing.Point(0, 0);
             this.fpPasswordLettersNotPresent.Name = "fpPasswordLettersNotPresent";
-            this.fpPasswordLettersNotPresent.Size = new System.Drawing.Size(291, 91);
+            this.fpPasswordLettersNotPresent.Size = new System.Drawing.Size(392, 91);
             this.fpPasswordLettersNotPresent.TabIndex = 9;
             this.fpPasswordLettersNotPresent.Enter += new System.EventHandler(this.MaskTextBox_Enter);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
             this.label10.Location = new System.Drawing.Point(3, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(82, 25);
+            this.label10.Size = new System.Drawing.Size(382, 25);
             this.label10.TabIndex = 8;
-            this.label10.Text = "label10";
+            this.label10.Text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
             this.label11.Location = new System.Drawing.Point(3, 25);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(82, 25);
+            this.label11.Size = new System.Drawing.Size(382, 25);
             this.label11.TabIndex = 9;
-            this.label11.Text = "label11";
+            this.label11.Text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
             this.label12.Location = new System.Drawing.Point(3, 50);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(82, 25);
+            this.label12.Size = new System.Drawing.Size(382, 25);
             this.label12.TabIndex = 10;
-            this.label12.Text = "label12";
+            this.label12.Text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(91, 0);
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.label13.Location = new System.Drawing.Point(391, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(82, 25);
+            this.label13.Size = new System.Drawing.Size(382, 25);
             this.label13.TabIndex = 11;
-            this.label13.Text = "label13";
+            this.label13.Text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(91, 25);
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.label14.Location = new System.Drawing.Point(391, 25);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(82, 25);
+            this.label14.Size = new System.Drawing.Size(382, 25);
             this.label14.TabIndex = 12;
-            this.label14.Text = "label14";
+            this.label14.Text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             // 
             // passResults
             // 
@@ -2309,8 +2307,6 @@
             // 
             // tpButtonV1
             // 
-            this.tpButtonV1.Controls.Add(this.lblButtonQuery);
-            this.tpButtonV1.Controls.Add(this.label61);
             this.tpButtonV1.Controls.Add(this.label60);
             this.tpButtonV1.Controls.Add(this.whitestrip);
             this.tpButtonV1.Controls.Add(this.button_name);
@@ -2326,43 +2322,23 @@
             this.tpButtonV1.Text = "The Button";
             this.tpButtonV1.UseVisualStyleBackColor = true;
             // 
-            // lblButtonQuery
-            // 
-            this.lblButtonQuery.AutoSize = true;
-            this.lblButtonQuery.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblButtonQuery.Location = new System.Drawing.Point(195, 106);
-            this.lblButtonQuery.Name = "lblButtonQuery";
-            this.lblButtonQuery.Size = new System.Drawing.Size(406, 25);
-            this.lblButtonQuery.TabIndex = 22;
-            this.lblButtonQuery.Text = "Need to know the number of batteries";
-            // 
-            // label61
-            // 
-            this.label61.AutoSize = true;
-            this.label61.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label61.Location = new System.Drawing.Point(8, 352);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(406, 25);
-            this.label61.TabIndex = 21;
-            this.label61.Text = "Need to know the number of batteries";
-            // 
             // label60
             // 
             this.label60.AutoSize = true;
             this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label60.Location = new System.Drawing.Point(8, 326);
             this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(593, 25);
+            this.label60.Size = new System.Drawing.Size(366, 25);
             this.label60.TabIndex = 20;
-            this.label60.Text = "Need to know the indicators present, (Lit CAR, Lit FRK)";
+            this.label60.Text = "Need to Know about all Edgework";
             // 
             // whitestrip
             // 
             this.whitestrip.AutoSize = true;
-            this.whitestrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.whitestrip.Location = new System.Drawing.Point(21, 180);
+            this.whitestrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.whitestrip.Location = new System.Drawing.Point(30, 153);
             this.whitestrip.Name = "whitestrip";
-            this.whitestrip.Size = new System.Drawing.Size(154, 37);
+            this.whitestrip.Size = new System.Drawing.Size(93, 24);
             this.whitestrip.TabIndex = 19;
             this.whitestrip.Text = "White - 3";
             // 
@@ -2370,71 +2346,69 @@
             // 
             this.button_name.FormattingEnabled = true;
             this.button_name.Items.AddRange(new object[] {
-            "Abort",
-            "Detonate",
             "Press",
             "Hold",
-            "Other"});
+            "Abort",
+            "Detonate"});
             this.button_name.Location = new System.Drawing.Point(111, 12);
             this.button_name.Name = "button_name";
             this.button_name.Size = new System.Drawing.Size(84, 21);
             this.button_name.TabIndex = 18;
-            this.button_name.Text = "Abort";
+            this.button_name.Text = "Press";
             this.button_name.SelectedIndexChanged += new System.EventHandler(this.Button_Event);
             // 
             // button_color
             // 
             this.button_color.FormattingEnabled = true;
             this.button_color.Items.AddRange(new object[] {
-            "Blue",
-            "White",
-            "Yellow",
             "Red",
-            "Other"});
+            "Blue",
+            "Yellow",
+            "White"});
             this.button_color.Location = new System.Drawing.Point(15, 12);
             this.button_color.Name = "button_color";
             this.button_color.Size = new System.Drawing.Size(90, 21);
             this.button_color.TabIndex = 14;
-            this.button_color.Text = "Blue";
+            this.button_color.Text = "Red";
             this.button_color.SelectedIndexChanged += new System.EventHandler(this.Button_Event);
             // 
             // otherstrip
             // 
             this.otherstrip.AutoSize = true;
-            this.otherstrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.otherstrip.Location = new System.Drawing.Point(23, 217);
+            this.otherstrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.otherstrip.Location = new System.Drawing.Point(31, 177);
             this.otherstrip.Name = "otherstrip";
-            this.otherstrip.Size = new System.Drawing.Size(150, 37);
+            this.otherstrip.Size = new System.Drawing.Size(92, 24);
             this.otherstrip.TabIndex = 13;
             this.otherstrip.Text = "Other - 1";
             // 
             // yellowstrip
             // 
             this.yellowstrip.AutoSize = true;
-            this.yellowstrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.yellowstrip.Location = new System.Drawing.Point(8, 143);
+            this.yellowstrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.yellowstrip.Location = new System.Drawing.Point(21, 128);
             this.yellowstrip.Name = "yellowstrip";
-            this.yellowstrip.Size = new System.Drawing.Size(167, 37);
+            this.yellowstrip.Size = new System.Drawing.Size(102, 24);
             this.yellowstrip.TabIndex = 12;
             this.yellowstrip.Text = "Yellow - 5";
             // 
             // bluestrip
             // 
             this.bluestrip.AutoSize = true;
-            this.bluestrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bluestrip.Location = new System.Drawing.Point(41, 106);
+            this.bluestrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.bluestrip.Location = new System.Drawing.Point(41, 104);
             this.bluestrip.Name = "bluestrip";
-            this.bluestrip.Size = new System.Drawing.Size(134, 37);
+            this.bluestrip.Size = new System.Drawing.Size(82, 24);
             this.bluestrip.TabIndex = 11;
             this.bluestrip.Text = "Blue - 4";
             // 
             // button_label
             // 
             this.button_label.AutoSize = true;
-            this.button_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
             this.button_label.Location = new System.Drawing.Point(8, 59);
             this.button_label.Name = "button_label";
-            this.button_label.Size = new System.Drawing.Size(253, 37);
+            this.button_label.Size = new System.Drawing.Size(154, 24);
             this.button_label.TabIndex = 10;
             this.button_label.Text = "Hold the Button";
             // 
@@ -6929,8 +6903,6 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TabPage tpButtonV1;
-        private System.Windows.Forms.Label lblButtonQuery;
-        private System.Windows.Forms.Label label61;
         private System.Windows.Forms.Label label60;
         private System.Windows.Forms.Label whitestrip;
         private System.Windows.Forms.ComboBox button_name;
@@ -7108,12 +7080,6 @@
         private System.Windows.Forms.MaskedTextBox pass5;
         private System.Windows.Forms.Button passwordClear;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.FlowLayoutPanel fpPasswordLettersNotPresent;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox passResults;
         private System.Windows.Forms.GroupBox groupBox14;
         private System.Windows.Forms.SplitContainer splitContainer3;
@@ -7434,6 +7400,12 @@
         private System.Windows.Forms.SplitContainer ForgetMeNotSplitContainer;
         private System.Windows.Forms.Label label55;
         private System.Windows.Forms.NumericUpDown nudVanillaSeed;
+        private System.Windows.Forms.FlowLayoutPanel fpPasswordLettersNotPresent;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
     }
 }
 
