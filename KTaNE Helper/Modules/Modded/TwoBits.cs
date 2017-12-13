@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using KTaNE_Helper.Edgework;
 using KTaNE_Helper.Helpers;
-using static KTaNE_Helper.PortPlate;
-using static KTaNE_Helper.SerialNumber;
+using KTaNE_Helper.Extensions;
 
-namespace KTaNE_Helper
+namespace KTaNE_Helper.Modules.Modded
 {
     public class TwoBits
     {
@@ -44,7 +43,7 @@ namespace KTaNE_Helper
         public string CalculateInitialTwoBitsCode()
         {
             var batts = Batteries.TotalBatteries;
-            if (!IsSerialValid)
+            if (!SerialNumber.IsSerialValid)
             {
                 return "";
             }
@@ -59,33 +58,17 @@ namespace KTaNE_Helper
             };
 
             var initial = 0;
-            for (var i = 0; i < Serial.Length; i++)
+            for (var i = 0; i < SerialNumber.Serial.Length; i++)
             {
-                if (dict[Serial.Substring(i, 1).ToUpper()] <= 0) continue;
-                initial = dict[Serial.Substring(i, 1).ToUpper()];
+                if (dict[SerialNumber.Serial.Substring(i, 1).ToUpper()] <= 0) continue;
+                initial = dict[SerialNumber.Serial.Substring(i, 1).ToUpper()];
                 break;
             }
             initial += (batts * bombInfo.GetSerialNumberNumbers().Last());
-            if (IsPortPresent(PortTypes.StereoRCA) && !IsPortPresent(PortTypes.RJ45))
+            if (PortPlate.IsPortPresent(PortTypes.StereoRCA) && !PortPlate.IsPortPresent(PortTypes.RJ45))
                 initial *= 2;
-             return TwoBitsLookup(initial % 100) + @" / " + (initial % 100);
+            return TwoBitsLookup(initial % 100) + @" / " + (initial % 100);
 
-        }
-    }
-}
-
-public static class Extensions
-{
-    public static void Shuffle<T>(this IList<T> list, MonoRandom random)
-    {
-        int n = list.Count;
-        while (n > 1)
-        {
-            n--;
-            int k = random.Next(0, n + 1);
-            T value = list[k];
-            list[k] = list[n];
-            list[n] = value;
         }
     }
 }
