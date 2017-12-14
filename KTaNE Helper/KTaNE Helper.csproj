@@ -61,24 +61,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Edgework\Batteries.cs" />
-    <Compile Include="Edgework\KMBombInfo.cs" />
-    <Compile Include="Edgework\Indicators.cs" />
-    <Compile Include="Edgework\KMBombInfoExtension.cs" />
-    <Compile Include="Extensions\ControlExtension.cs" />
-    <Compile Include="Extensions\EnumExtensions.cs" />
-    <Compile Include="Extensions\DebugExtensions.cs" />
-    <Compile Include="Extensions\ListExtension.cs" />
-    <Compile Include="Extensions\ReplaceText.cs" />
-    <Compile Include="Helpers\ManualFileName.cs" />
-    <Compile Include="Helpers\ManualGenerator.cs" />
-    <Compile Include="Modules\NeedyKnobComponent.cs" />
-    <Compile Include="Extensions\StringWriterWithEncoding.cs" />
-    <Compile Include="Extensions\Util.cs" />
-    <Compile Include="Helpers\MonoRandom.cs" />
-    <Compile Include="Modules\BombComponent.cs" />
-    <Compile Include="Modules\ButtonComponent.cs" />
-    <Compile Include="Modules\MemoryComponent.cs" />
+    <None Include="Edgework\Batteries.cs" />
+    <None Include="Edgework\KMBombInfo.cs" />
+    <None Include="Edgework\Indicators.cs" />
+    <None Include="Edgework\KMBombInfoExtension.cs" />
+    <None Include="Extensions\ControlExtension.cs" />
+    <None Include="Extensions\EnumExtensions.cs" />
+    <None Include="Extensions\DebugExtensions.cs" />
+    <None Include="Extensions\ListExtension.cs" />
+    <None Include="Extensions\ReplaceText.cs" />
+    <None Include="Helpers\ManualFileName.cs" />
+    <None Include="Helpers\ManualGenerator.cs" />
+    <None Include="Modules\NeedyKnobComponent.cs" />
+    <None Include="Extensions\StringWriterWithEncoding.cs" />
+    <None Include="Extensions\Util.cs" />
+    <None Include="Helpers\MonoRandom.cs" />
+    <None Include="Modules\BombComponent.cs" />
+    <None Include="Modules\ButtonComponent.cs" />
+    <None Include="Modules\MemoryComponent.cs" />
     <Compile Include="Modules\Modded\3DMaze.cs" />
     <Compile Include="Modules\Modded\AdjacentLetters.cs" />
     <Compile Include="Modules\Modded\AdventureGame.cs" />
@@ -88,14 +88,14 @@
     <Compile Include="Modules\Modded\ChessPieces.cs" />
     <Compile Include="Modules\Modded\CountryCode.cs" />
     <Compile Include="Modules\Modded\Cryptography.cs" />
-    <Compile Include="Edgework\EdgeWork.cs" />
+    <Compile Include="Edgework\RequiredEdgeWork.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Extensions\GraphicsExtensions.cs" />
+    <None Include="Extensions\GraphicsExtensions.cs" />
     <Compile Include="Modules\Modded\LightCycle.cs" />
     <Compile Include="Modules\Modded\MorseMatics.cs" />
     <Compile Include="Modules\Modded\PianoKeys.cs" />
@@ -106,86 +106,86 @@
     <Compile Include="Modules\Vanilla\MemoryRules.cs" />
     <Compile Include="Modules\Modded\Neutralization.cs" />
     <Compile Include="Modules\Modded\NumberPad.cs" />
-    <Compile Include="Edgework\PortPlate.cs" />
-    <Compile Include="Modules\VennWireComponent.cs" />
-    <Compile Include="Modules\WhosOnFirstComponent.cs" />
-    <Compile Include="Modules\WireSetComponent.cs" />
+    <None Include="Edgework\PortPlate.cs" />
+    <None Include="Modules\VennWireComponent.cs" />
+    <None Include="Modules\WhosOnFirstComponent.cs" />
+    <None Include="Modules\WireSetComponent.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Modules\Modded\Semaphore.cs" />
-    <Compile Include="Edgework\SerialNumber.cs" />
+    <None Include="Edgework\SerialNumber.cs" />
     <Compile Include="Modules\Modded\SillySlots.cs" />
-    <Compile Include="Extensions\StringExtension.cs" />
+    <None Include="Extensions\StringExtension.cs" />
     <Compile Include="Modules\Modded\Stroop.cs" />
     <Compile Include="Modules\Modded\Switches.cs" />
     <Compile Include="TablessControl.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Modules\Vanilla\Wires.cs" />
-    <Compile Include="VanillaRuleSetGenerator\RuleSets\AbstractRuleSet.cs" />
-    <Compile Include="VanillaRuleSetGenerator\RuleSetGenerators\AbstractRuleSetGenerator.cs" />
-    <Compile Include="VanillaRuleSetGenerator\BombGame\BigButtonLEDColor.cs" />
-    <Compile Include="VanillaRuleSetGenerator\BombGame\ButtonColor.cs" />
-    <Compile Include="VanillaRuleSetGenerator\BombGame\ButtonInstruction.cs" />
-    <Compile Include="VanillaRuleSetGenerator\BombGame\Direction.cs" />
-    <Compile Include="VanillaRuleSetGenerator\BombGame\ResultCode.cs" />
-    <Compile Include="VanillaRuleSetGenerator\BombGame\SimonColor.cs" />
-    <Compile Include="VanillaRuleSetGenerator\BombGame\VoidDelegate.cs" />
-    <Compile Include="VanillaRuleSetGenerator\BombGame\WireColor.cs" />
-    <Compile Include="VanillaRuleSetGenerator\BombRules.cs" />
-    <Compile Include="VanillaRuleSetGenerator\ButtonSolutions.cs" />
-    <Compile Include="VanillaRuleSetGenerator\CommonReflectedTypeInfo.cs" />
-    <Compile Include="VanillaRuleSetGenerator\CutInstruction.cs" />
-    <Compile Include="VanillaRuleSetGenerator\Maze.cs" />
-    <Compile Include="VanillaRuleSetGenerator\MazeBuilder.cs" />
-    <Compile Include="VanillaRuleSetGenerator\MazeCell.cs" />
-    <Compile Include="VanillaRuleSetGenerator\MemorySolutions.cs" />
-    <Compile Include="VanillaRuleSetGenerator\NeedyKnobSolutions.cs" />
-    <Compile Include="VanillaRuleSetGenerator\PluralFormatProvider.cs" />
-    <Compile Include="VanillaRuleSetGenerator\Query.cs" />
-    <Compile Include="VanillaRuleSetGenerator\QueryableButtonProperty.cs" />
-    <Compile Include="VanillaRuleSetGenerator\QueryableMemoryProperty.cs" />
-    <Compile Include="VanillaRuleSetGenerator\QueryableNeedyKnobProperty.cs" />
-    <Compile Include="VanillaRuleSetGenerator\QueryablePorts.cs" />
-    <Compile Include="VanillaRuleSetGenerator\QueryableProperty.cs" />
-    <Compile Include="VanillaRuleSetGenerator\QueryableWireProperty.cs" />
-    <Compile Include="VanillaRuleSetGenerator\QueryFunc.cs" />
-    <Compile Include="VanillaRuleSetGenerator\QuerySet.cs" />
-    <Compile Include="VanillaRuleSetGenerator\Rule.cs" />
-    <Compile Include="VanillaRuleSetGenerator\RuleManager.cs" />
-    <Compile Include="VanillaRuleSetGenerator\RuleSetGenerators\ButtonRuleGenerator.cs" />
-    <Compile Include="VanillaRuleSetGenerator\RuleSetGenerators\KeypadRuleSetGenerator.cs" />
-    <Compile Include="VanillaRuleSetGenerator\RuleSetGenerators\MazeRuleSetGenerator.cs" />
-    <Compile Include="VanillaRuleSetGenerator\RuleSetGenerators\MemoryRuleSetGenerator.cs" />
-    <Compile Include="VanillaRuleSetGenerator\RuleSetGenerators\MorseCodeRuleGenerator.cs" />
-    <Compile Include="VanillaRuleSetGenerator\RuleSetGenerators\NeedyKnobRuleSetGenerator.cs" />
-    <Compile Include="VanillaRuleSetGenerator\RuleSetGenerators\PasswordRuleGenerator.cs" />
-    <Compile Include="VanillaRuleSetGenerator\RuleSetGenerators\SimonRuleGenerator.cs" />
-    <Compile Include="VanillaRuleSetGenerator\RuleSetGenerators\VennWireGenerator.cs" />
-    <Compile Include="VanillaRuleSetGenerator\RuleSetGenerators\WhosOnFirstRuleSetGenerator.cs" />
-    <Compile Include="VanillaRuleSetGenerator\RuleSetGenerators\WireRuleGenerator.cs" />
-    <Compile Include="VanillaRuleSetGenerator\RuleSetGenerators\WireSequenceRuleSetGenerator.cs" />
-    <Compile Include="VanillaRuleSetGenerator\RuleSets\ButtonRuleSet.cs" />
-    <Compile Include="VanillaRuleSetGenerator\RuleSets\KeypadRuleSet.cs" />
-    <Compile Include="VanillaRuleSetGenerator\RuleSets\MazeRuleSet.cs" />
-    <Compile Include="VanillaRuleSetGenerator\RuleSets\MemoryRuleSet.cs" />
-    <Compile Include="VanillaRuleSetGenerator\RuleSets\MorseCodeRuleSet.cs" />
-    <Compile Include="VanillaRuleSetGenerator\RuleSets\NeedyKnobRuleSet.cs" />
-    <Compile Include="VanillaRuleSetGenerator\RuleSets\PasswordRuleSet.cs" />
-    <Compile Include="VanillaRuleSetGenerator\RuleSets\SimonRuleSet.cs" />
-    <Compile Include="VanillaRuleSetGenerator\RuleSets\VennWireRuleSet.cs" />
-    <Compile Include="VanillaRuleSetGenerator\RuleSets\WhosOnFirstRuleSet.cs" />
-    <Compile Include="VanillaRuleSetGenerator\RuleSets\WireRuleSet.cs" />
-    <Compile Include="VanillaRuleSetGenerator\RuleSets\WireSequenceRuleSet.cs" />
-    <Compile Include="VanillaRuleSetGenerator\RuleUtil.cs" />
-    <Compile Include="VanillaRuleSetGenerator\Solution.cs" />
-    <Compile Include="VanillaRuleSetGenerator\SolutionMethod.cs" />
-    <Compile Include="VanillaRuleSetGenerator\SVGGenerator.cs" />
-    <Compile Include="VanillaRuleSetGenerator\SymbolPool.cs" />
-    <Compile Include="VanillaRuleSetGenerator\VennSnippableWire.cs" />
-    <Compile Include="VanillaRuleSetGenerator\VennWireColor.cs" />
-    <Compile Include="VanillaRuleSetGenerator\VennWireState.cs" />
-    <Compile Include="VanillaRuleSetGenerator\WireSolutions.cs" />
+    <None Include="VanillaRuleSetGenerator\RuleSets\AbstractRuleSet.cs" />
+    <None Include="VanillaRuleSetGenerator\RuleSetGenerators\AbstractRuleSetGenerator.cs" />
+    <None Include="VanillaRuleSetGenerator\BombGame\BigButtonLEDColor.cs" />
+    <None Include="VanillaRuleSetGenerator\BombGame\ButtonColor.cs" />
+    <None Include="VanillaRuleSetGenerator\BombGame\ButtonInstruction.cs" />
+    <None Include="VanillaRuleSetGenerator\BombGame\Direction.cs" />
+    <None Include="VanillaRuleSetGenerator\BombGame\ResultCode.cs" />
+    <None Include="VanillaRuleSetGenerator\BombGame\SimonColor.cs" />
+    <None Include="VanillaRuleSetGenerator\BombGame\VoidDelegate.cs" />
+    <None Include="VanillaRuleSetGenerator\BombGame\WireColor.cs" />
+    <None Include="VanillaRuleSetGenerator\BombRules.cs" />
+    <None Include="VanillaRuleSetGenerator\ButtonSolutions.cs" />
+    <None Include="VanillaRuleSetGenerator\CommonReflectedTypeInfo.cs" />
+    <None Include="VanillaRuleSetGenerator\CutInstruction.cs" />
+    <None Include="VanillaRuleSetGenerator\Maze.cs" />
+    <None Include="VanillaRuleSetGenerator\MazeBuilder.cs" />
+    <None Include="VanillaRuleSetGenerator\MazeCell.cs" />
+    <None Include="VanillaRuleSetGenerator\MemorySolutions.cs" />
+    <None Include="VanillaRuleSetGenerator\NeedyKnobSolutions.cs" />
+    <None Include="VanillaRuleSetGenerator\PluralFormatProvider.cs" />
+    <None Include="VanillaRuleSetGenerator\Query.cs" />
+    <None Include="VanillaRuleSetGenerator\QueryableButtonProperty.cs" />
+    <None Include="VanillaRuleSetGenerator\QueryableMemoryProperty.cs" />
+    <None Include="VanillaRuleSetGenerator\QueryableNeedyKnobProperty.cs" />
+    <None Include="VanillaRuleSetGenerator\QueryablePorts.cs" />
+    <None Include="VanillaRuleSetGenerator\QueryableProperty.cs" />
+    <None Include="VanillaRuleSetGenerator\QueryableWireProperty.cs" />
+    <None Include="VanillaRuleSetGenerator\QueryFunc.cs" />
+    <None Include="VanillaRuleSetGenerator\QuerySet.cs" />
+    <None Include="VanillaRuleSetGenerator\Rule.cs" />
+    <None Include="VanillaRuleSetGenerator\RuleManager.cs" />
+    <None Include="VanillaRuleSetGenerator\RuleSetGenerators\ButtonRuleGenerator.cs" />
+    <None Include="VanillaRuleSetGenerator\RuleSetGenerators\KeypadRuleSetGenerator.cs" />
+    <None Include="VanillaRuleSetGenerator\RuleSetGenerators\MazeRuleSetGenerator.cs" />
+    <None Include="VanillaRuleSetGenerator\RuleSetGenerators\MemoryRuleSetGenerator.cs" />
+    <None Include="VanillaRuleSetGenerator\RuleSetGenerators\MorseCodeRuleGenerator.cs" />
+    <None Include="VanillaRuleSetGenerator\RuleSetGenerators\NeedyKnobRuleSetGenerator.cs" />
+    <None Include="VanillaRuleSetGenerator\RuleSetGenerators\PasswordRuleGenerator.cs" />
+    <None Include="VanillaRuleSetGenerator\RuleSetGenerators\SimonRuleGenerator.cs" />
+    <None Include="VanillaRuleSetGenerator\RuleSetGenerators\VennWireGenerator.cs" />
+    <None Include="VanillaRuleSetGenerator\RuleSetGenerators\WhosOnFirstRuleSetGenerator.cs" />
+    <None Include="VanillaRuleSetGenerator\RuleSetGenerators\WireRuleGenerator.cs" />
+    <None Include="VanillaRuleSetGenerator\RuleSetGenerators\WireSequenceRuleSetGenerator.cs" />
+    <None Include="VanillaRuleSetGenerator\RuleSets\ButtonRuleSet.cs" />
+    <None Include="VanillaRuleSetGenerator\RuleSets\KeypadRuleSet.cs" />
+    <None Include="VanillaRuleSetGenerator\RuleSets\MazeRuleSet.cs" />
+    <None Include="VanillaRuleSetGenerator\RuleSets\MemoryRuleSet.cs" />
+    <None Include="VanillaRuleSetGenerator\RuleSets\MorseCodeRuleSet.cs" />
+    <None Include="VanillaRuleSetGenerator\RuleSets\NeedyKnobRuleSet.cs" />
+    <None Include="VanillaRuleSetGenerator\RuleSets\PasswordRuleSet.cs" />
+    <None Include="VanillaRuleSetGenerator\RuleSets\SimonRuleSet.cs" />
+    <None Include="VanillaRuleSetGenerator\RuleSets\VennWireRuleSet.cs" />
+    <None Include="VanillaRuleSetGenerator\RuleSets\WhosOnFirstRuleSet.cs" />
+    <None Include="VanillaRuleSetGenerator\RuleSets\WireRuleSet.cs" />
+    <None Include="VanillaRuleSetGenerator\RuleSets\WireSequenceRuleSet.cs" />
+    <None Include="VanillaRuleSetGenerator\RuleUtil.cs" />
+    <None Include="VanillaRuleSetGenerator\Solution.cs" />
+    <None Include="VanillaRuleSetGenerator\SolutionMethod.cs" />
+    <None Include="VanillaRuleSetGenerator\SVGGenerator.cs" />
+    <None Include="VanillaRuleSetGenerator\SymbolPool.cs" />
+    <None Include="VanillaRuleSetGenerator\VennSnippableWire.cs" />
+    <None Include="VanillaRuleSetGenerator\VennWireColor.cs" />
+    <None Include="VanillaRuleSetGenerator\VennWireState.cs" />
+    <None Include="VanillaRuleSetGenerator\WireSolutions.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -360,7 +360,12 @@
     <None Include="Manual\Complicated Wires.html" />
     <None Include="Manual\Capacitor Discharge.html" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\VanillaRuleGenerator\VanillaRuleGenerator.csproj">
+      <Project>{85843dca-c0f9-4205-a355-382cf2de84ca}</Project>
+      <Name>VanillaRuleGenerator</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

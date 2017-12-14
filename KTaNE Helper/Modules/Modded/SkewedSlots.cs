@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using KTaNE_Helper.Edgework;
+using VanillaRuleGenerator.Edgework;
 
 namespace KTaNE_Helper.Modules.Modded
 {

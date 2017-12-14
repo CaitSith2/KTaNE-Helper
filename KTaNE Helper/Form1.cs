@@ -8,20 +8,18 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using KTaNE_Helper.Edgework;
-using KTaNE_Helper.Extensions;
-using KTaNE_Helper.Helpers;
-using KTaNE_Helper.Modules;
+using VanillaRuleGenerator.Edgework;
+using VanillaRuleGenerator.Extensions;
+using VanillaRuleGenerator.Modules;
 using KTaNE_Helper.Modules.Modded;
 using KTaNE_Helper.Modules.Vanilla;
-using KTaNE_Helper.Properties;
-using KTaNE_Helper.VanillaRuleSetGenerator;
-using KTaNE_Helper.VanillaRuleSetGenerator.BombGame;
-using KTaNE_Helper.VanillaRuleSetGenerator.RuleSetGenerators;
-using KTaNE_Helper.VanillaRuleSetGenerator.RuleSets;
+using VanillaRuleGenerator.Rules.BombGame;
+using VanillaRuleGenerator.Rules;
+using VanillaRuleGenerator;
 using static System.String;
-using static KTaNE_Helper.Edgework.Indicators;
-using static KTaNE_Helper.Edgework.PortPlate;
-using static KTaNE_Helper.Edgework.SerialNumber;
+using static VanillaRuleGenerator.Edgework.Indicators;
+using static VanillaRuleGenerator.Edgework.PortPlate;
+using static VanillaRuleGenerator.Edgework.SerialNumber;
 
 namespace KTaNE_Helper
 {
@@ -568,7 +566,7 @@ namespace KTaNE_Helper
             Process.Start(linkLabel1.Text);
         }
 
-        private static string WordToMorseCode(string word, int freq)
+        private static string WordToMorseCode(string word, int freq, bool morseAMaze = false)
         {
             var morseCode = new Dictionary<string, string>
             {
@@ -586,14 +584,15 @@ namespace KTaNE_Helper
             for (var i = 0; i < word.Length; i++)
             {
                 string letter;
-                if (!morseCode.TryGetValue(word.Substring(i, 1), out letter)) continue;
+                if (!morseCode.TryGetValue(word.Substring(i, 1).ToLowerInvariant(), out letter)) continue;
                 morse += letter;
                 if (spacedMorse != "")
                     spacedMorse += " ";
                 spacedMorse += letter;
             }
-            return "|" + spacedMorse + "|" + morse + "|" + word +  "," 
-                + word + " - 3." + freq + " Mhz" +  Environment.NewLine + @"," + freq + Environment.NewLine;
+            return morseAMaze
+                ? $"|{spacedMorse}|{morse}|{word},{freq}" 
+                : $"|{spacedMorse}|{morse}|{word},{word} - 3.{freq} Mhz{Environment.NewLine},{freq}{Environment.NewLine}";
         }
 
         private void MorseCodeInput_TextChanged(object sender, EventArgs e)
@@ -656,29 +655,35 @@ namespace KTaNE_Helper
 
         }
 
-        private static MazeRuleSet MorseAMazeSetOne = (MazeRuleSet) new MazeRuleSetGenerator().GenerateRuleSet(1);
-        private static MazeRuleSet MorseAMazeSetTwo = (MazeRuleSet) new MazeRuleSetGenerator().GenerateRuleSet(2);
+        private bool _mazeRefreshing;
         private void mazeSelection_TextChanged(object sender, EventArgs e)
         {
+            if (_mazeRefreshing) return;
+            _mazeRefreshing = true;
             var ruleSet = RuleManager.Instance.MazeRuleSet.GetMazes();
-            if (mazeSelection.Text.Length < 2) return;
-
-            var x = Convert.ToInt32(mazeSelection.Text.Substring(0, 1));
-            var y = Convert.ToInt32(mazeSelection.Text.Substring(1, 1));
-
-
-            _mazeSelection = -1;
-            for (var i = 0; i < 9; i++)
+            int x;
+            int y;
+            UseMorseAMaze &= mazeSelection.Text.Length == 0;
+            if (!UseMorseAMaze) txtMorseAMaze.Text = "";
+            if (mazeSelection.Text.Length == 2)
             {
-                if (!ruleSet[i].GetCell(x-1,y-1).IsIdentifier) continue;
-                _mazeSelection = i;
-                break;
-            }
-            if (_mazeSelection == -1)
-            {
-                mazeSelection.Text = "";
-                Refresh();
-                return;
+                x = Convert.ToInt32(mazeSelection.Text.Substring(0, 1));
+                y = Convert.ToInt32(mazeSelection.Text.Substring(1, 1));
+
+
+                _mazeSelection = -1;
+                for (var i = 0; i < 9; i++)
+                {
+                    if (!ruleSet[i].GetCell(x - 1, y - 1).IsIdentifier) continue;
+                    _mazeSelection = i;
+                    break;
+                }
+                if (_mazeSelection == -1)
+                {
+                    mazeSelection.Text = "";
+                    Refresh();
+                    return;
+                }
             }
 
             if (mazeStart.Text.Length >= 2)
@@ -704,12 +709,33 @@ namespace KTaNE_Helper
             }
 
             Refresh();
+            _mazeRefreshing = false;
         }
 
+        private static List<Maze> _morseAMazeSet;
+
+        private static List<Maze> MorseAMazeSet
+        {
+            get
+            {
+                if (_morseAMazeSet != null) return _morseAMazeSet;
+                var mazeGenerator = new MazeRuleSetGenerator();
+                var set1 = (MazeRuleSet) mazeGenerator.GenerateRuleSet(1);
+                var set2 = (MazeRuleSet) mazeGenerator.GenerateRuleSet(2);
+                _morseAMazeSet = new List<Maze>(set1.GetMazes())
+                {
+                    set2.GetMazes()[2], set2.GetMazes()[3], set2.GetMazes()[8],
+                    set2.GetMazes()[6], set2.GetMazes()[1], set2.GetMazes()[0],
+                    set2.GetMazes()[4], set2.GetMazes()[5], set2.GetMazes()[7]
+                };
+                return _morseAMazeSet;
+            }
+        }
+        private bool UseMorseAMaze;
         private void pbMaze_Paint(object sender, PaintEventArgs e)
         {
-            var mazes = RuleManager.Instance.MazeRuleSet.GetMazes();
-            
+            var mazes = UseMorseAMaze ? MorseAMazeSet : RuleManager.Instance.MazeRuleSet.GetMazes();
+
             e.Graphics.FillRectangle(new SolidBrush(Color.Black),0,0,pbMaze.Size.Width,pbMaze.Size.Height );
             int x;
             int y;
@@ -736,7 +762,7 @@ namespace KTaNE_Helper
             {
                 for (var j = 0; j < 6; j++)
                 {
-                    var cell = mazes[_mazeSelection].GetCell(i, j);
+                    var cell = mazes[_mazeSelection % mazes.Count].GetCell(i, j);
                     
 
                     if(cell.WallAbove)
@@ -750,7 +776,7 @@ namespace KTaNE_Helper
 
                     e.Graphics.FillRectangle(new SolidBrush(Color.DarkSlateGray), (j * 47) + 18, (i * 47) + 18, 10, 10);
 
-                    if(cell.IsIdentifier)
+                    if(cell.IsIdentifier && !UseMorseAMaze)
                         e.Graphics.DrawEllipse(new Pen(Color.Green, 3f), (i * 47) + 10, (j * 47) + 10, 47 - 20, 47 - 20);
 
                 }
@@ -791,13 +817,13 @@ namespace KTaNE_Helper
         private int _endXY;
         private bool GenerateMazeSolution(int startXY)
         {
-            var mazes = RuleManager.Instance.MazeRuleSet.GetMazes();
+            var mazes = UseMorseAMaze ? MorseAMazeSet : RuleManager.Instance.MazeRuleSet.GetMazes();
             var maze = _mazeSelection;
             var x = startXY%10;
             var y = startXY/10;
 
             if ((x > 5) || (y > 5) || (maze == -1) || (_endXY == 66)) return false;
-            var cell = mazes[maze].GetCell(x, y);
+            var cell = mazes[maze % mazes.Count].GetCell(x, y);
             if (startXY == _endXY) return true;
             _explored[startXY] = true;
 
@@ -2635,7 +2661,7 @@ namespace KTaNE_Helper
             }
             else
             {
-                Text += EdgeWork.GetRequiredEdgeWork(name);
+                Text += RequiredEdgeWork.GetRequiredEdgeWork(name);
             }
             tcTabs.TabPages.Clear();
             tcTabs.TabPages.Add(page);
@@ -3509,7 +3535,48 @@ namespace KTaNE_Helper
 
         private void txtMorseAMaze_TextChanged(object sender, EventArgs e)
         {
+            if (_mazeRefreshing) return;
+            _mazeRefreshing = true;
+            UseMorseAMaze = true;
+            mazeSelection.Text = "";
+            var DirectWords = new Dictionary<int,string>
+            {
+                {0,"KABOOM"}, {1,"UNICORN"}, {2,"QUEBEC"}, {3,"BASHLY"}, {4,"SLICK"}, {5,"VECTOR"}, {6,"FLICK"}, {7,"TIMWI"}, {8,"STROBE"},
+                {9,"BOMBS"}, {10,"BRAVO"}, {11,"LAUNDRY"}, {12,"BRICK"}, {13,"KITTY"}, {14,"HALLS"}, {15,"STEAK"}, {16,"BREAK"}, {17,"BEATS"},
+                {-1,"SHELL"}, {-2,"LEAKS"}, {-3,"STRIKE"}, {-4,"HELLO"}, {-5,"VICTOR"}, {-6,"ALIEN3"}, {-7,"BISTRO"}, {-8,"TANGO"},{-9,"TIMER"},
+                {-10,"BOXES"}, {-11,"TRICK"}, {-12,"PENGUIN"}, {-13,"STING"}, {-14,"ELIAS"}, {-15,"KTANE"}, {-16,"MANUAL"}, {-17,"ZULU"},{-18,"NOVEMBER"},
+            };
+            var code = txtMorseAMaze.Text.ToLowerInvariant();
 
+            var wordList = DirectWords.Select(x => WordToMorseCode(x.Value.ToLowerInvariant(), x.Key, true)).Where(word => word.Contains(code)).ToList();
+            if (wordList.Count != 1)
+            {
+                _mazeRefreshing = false;
+                if (_mazeSelection < 0) return;
+                _mazeSelection = -1;
+                Refresh();
+                return;
+            }
+
+            var selection = int.Parse(wordList[0].Split(',')[1]);
+            if (selection >= 0)
+            {
+                
+            }
+            else
+            {
+                switch (selection * -1)
+                {
+                    default:
+                        selection = -1;
+                        break;
+                }
+            }
+            if (_mazeSelection == selection) return;
+            _mazeSelection = selection;
+            rbStart.Checked = true;
+            Refresh();
+            _mazeRefreshing = false;
         }
 
         private void txtCruelPianoInput_TextChanged(object sender, EventArgs e)

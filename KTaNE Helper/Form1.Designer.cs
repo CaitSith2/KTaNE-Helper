@@ -1707,6 +1707,7 @@
             this.button43.Size = new System.Drawing.Size(48, 43);
             this.button43.TabIndex = 27;
             this.button43.UseVisualStyleBackColor = true;
+            this.button43.Click += new System.EventHandler(this.KeypadSymbol_Click);
             // 
             // button45
             // 
@@ -1717,6 +1718,7 @@
             this.button45.Size = new System.Drawing.Size(48, 43);
             this.button45.TabIndex = 28;
             this.button45.UseVisualStyleBackColor = true;
+            this.button45.Click += new System.EventHandler(this.KeypadSymbol_Click);
             // 
             // button46
             // 
@@ -1727,6 +1729,7 @@
             this.button46.Size = new System.Drawing.Size(48, 43);
             this.button46.TabIndex = 29;
             this.button46.UseVisualStyleBackColor = true;
+            this.button46.Click += new System.EventHandler(this.KeypadSymbol_Click);
             // 
             // button47
             // 
@@ -1737,6 +1740,7 @@
             this.button47.Size = new System.Drawing.Size(48, 43);
             this.button47.TabIndex = 30;
             this.button47.UseVisualStyleBackColor = true;
+            this.button47.Click += new System.EventHandler(this.KeypadSymbol_Click);
             // 
             // fpKeypadOrder
             // 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
-using KTaNE_Helper.Edgework;
-using KTaNE_Helper.Extensions;
+using VanillaRuleGenerator.Edgework;
+using VanillaRuleGenerator.Extensions;
 
 namespace KTaNE_Helper.Modules.Modded
 {
