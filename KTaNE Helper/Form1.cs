@@ -28,38 +28,6 @@ namespace KTaNE_Helper
     public partial class Form1 : Form
     {
 
-        readonly string[,,] _manual241Mazes = 
-        {
-            {{"rd", "lr", "ld", "rd", "lr", "l"},{"ud", "rd", "ul", "ur", "lr", "ld"},{"ud", "ur", "ld", "rd", "lr", "uld"},{"ud", "r", "ulr", "lu", "r", "uld"},{"urd", "lr", "ld", "rd", "l", "ud"},{"ur", "l", "ur", "ul", "r", "ul"}},
-            {{"r", "lrd", "l", "rd", "lrd", "l"},{"rd", "ul", "rd", "ul", "ur", "ld"},{"ud", "rd", "ul", "rd", "lr", "uld"},{"urd", "ul", "rd", "ul", "d", "ud"},{"ud", "d", "ud", "rd", "ul", "ud"},{"u", "ur", "ul", "ur", "lr", "lu"}},
-            {{"dr", "lr", "ld", "d", "dr", "dl"},{"u", "d", "ud", "ur", "lu", "ud"},{"dr", "uld", "ud", "rd", "ld", "ud"},{"ud", "ud", "ud", "ud", "ud", "ud"},{"ud", "ur", "ul", "ud", "ud", "ud"},{"ur", "lr", "lr", "ul", "ur", "ul"}},
-            {{"rd", "ld", "r", "lr", "lr", "ld"},{"ud", "ud", "dr", "lr", "lr", "uld"},{"ud", "ur", "lu", "rd", "l", "ud"},{"ud", "r", "lr", "lru", "lr", "lud"},{"udr", "lr", "lr", "lr", "ld", "ud"},{"ur", "lr", "l", "r", "ul", "u"}},
-            {{"r", "lr", "lr", "lr", "lrd", "ld"},{"rd", "lr", "lr", "lrd", "lu", "u"},{"udr", "ld", "r", "ul", "rd", "ld"},{"ud", "ur", "lr", "ld", "u", "ud"},{"ud", "rd", "lr", "ulr", "l", "ud"},{"u", "ur", "lr", "lr", "lr", "lu"}},
-            {{"d", "dr", "ld", "r", "ldr", "ld"},{"ud", "ud", "ud", "rd", "ul", "ud"},{"udr", "ul", "u", "ud", "rd", "ul"},{"ur", "ld", "dr", "udl", "ud", "d"},{"rd", "ul", "u", "ud", "ur", "uld"},{"ur", "lr", "lr", "ul", "r", "ul"}},
-            {{"dr", "lr", "lr", "ld", "dr", "ld"},{"ud", "rd", "l", "ur", "lu", "ud"},{"ur", "ul", "rd", "l", "rd", "ul"},{"dr", "ld", "udr", "lr", "ul", "d"},{"ud", "u", "ur", "lr", "ld", "ud"},{"ur", "lr", "lr", "lr", "ulr", "ul"}},
-            {{"d", "dr", "lr", "ld", "dr", "ld"},{"udr", "ulr", "l", "ur", "ul", "ud"},{"ud", "dr", "lr", "lr", "ld", "ud"},{"ud", "ur", "ld", "r", "ulr", "ul"},{"ud", "d", "ur", "lr", "lr", "l"},{"ur", "ulr", "lr", "lr", "lr", "l"}},
-            {{"d", "dr", "lr", "lr", "ldr", "ld"},{"ud", "ud", "rd", "l", "ud", "ud"},{"udr", "ulr", "ul", "rd", "ul", "ud"},{"ud", "d", "dr", "ul", "r", "uld"},{"ud", "ud", "ud", "dr", "dl", "u"},{"ur", "ul", "ur", "ul", "ur", "l"}}
-        };
-
-        private readonly string[,,] _manual724Mazes = 
-        {
-            {{"d","rd","ld","r","ldr","l"},{"ud","u","ur","ld","ur","ld"},{"urd","lr","l","ud","rd","uld"},{"ud","rd","ld","ud","ud","ud"},{"ud","ud","ud","ur","ul","ud"},{"ur","ul","ur","lr","lr","ul"}},
-            {{"rd","lr","ld","d","r","ld"},{"ur","ld","ud","ur","lr","uld"},{"rd","ul","ur","lr","l","ud"},{"ud","rd","ld","rd","lr","ul"},{"urd","ul","ud","ur","ld","d"},{"ur","l","ur","lr","ulr","ul"}},
-            {{"rd","rl","rl","rl","rl","ld"},{"ur","rl","rld","ld","r","uld"},{"rd","ld","u","ur","ld","u"},{"ud","ur","lr","lrd","lu","d"},{"ud","r","lr","lu","rd","lu"},{"ur","lr","lr","lr","ulr","l"}},
-            {{"rd","lr","lr","lrd","lr","ld"},{"ur","lr","ld","ud","d","ud"},{"r","ld","ud","ud","ud","ud"},{"d","ud","u","ud","ud","ud"},{"ud","ud","rd","lu","urd","lu"},{"ur","lur","lu","r","lur","l"}},
-            {{"rd","lr","lr","lr","lr","ld"},{"ur","lr","ld","r","ld","ud"},{"d","rd","lur","lr","ul","ud"},{"ur","ul","rd","lr","lr","uld"},{"rd","ld","ud","rd","lr","ul"},{"u","ur","ul","ur","lr","l"}},
-            {{"rd","lr","ldr","lr","ld","d"},{"ur","ld","ud","r","lur","uld"},{"d","ud","ur","lr","ld","ud"},{"urd","lur","l","rd","ul","ud"},{"ur","ld","rd","ul","rd","ul"},{"r","ul","u","r","lur","l"}},
-            {{"rd","lr","ld","r","lrd","ld"},{"ud","r","lur","lr","lu","ud"},{"urd","lr","ld","rd","lr","ul"},{"ur","ld","ud","u","rd","ld"},{"rd","lu","ud","r","lu","ud"},{"ur","l","ur","lr","lr","lu"}},
-            {{"rd","ld","rd","lrd","ld","d"},{"ud","ur","lu","ud","ud","ud"},{"ur","lr","ld","ud","ur","uld"},{"d","rd","lu","ur","ld","u"},{"ud","ud","rd","ld","ud","d"},{"ur","lur","lu","u","ur","lu"}},
-            {{"rd","lr","lr","ldr","lr","ld"},{"u","rd","lr","lu","rd","lu"},{"d","ur","lr","ld","ud","d"},{"ur","ld","rd","lu","ur","uld"},{"rd","lu","ud","d","rd","lu"},{"ur","lr","lu","ur","lur","l"}}
-        };
-
-        private readonly int[,] _manual241Coordinates = 
-            {{21,36},{25,42},{44,46},{11,41},{35,64},{15,53},{12,62},{14,43},{23,51}};
-
-        private readonly int[,] _manual724Coordinates = 
-            {{36,63},{11,64},{55,65},{31,66},{43,44},{14,61},{41,16},{22,56},{23,45}};
-
         private int _mazeSelection = -1;
         private int _mazeStartXY = 77;
         private int _mazeEndXY = 77;
@@ -166,30 +134,24 @@ namespace KTaNE_Helper
             }
         }
 
-        private static void Simon_Says_Set_Label(Control label, int color)
+        private static void Simon_Says_Set_Label(Control label, SimonColor color)
         {
-            var labelText = new[] { "Blue", "Red", "Green", "Yellow" };
-            var labelColor = new[] { Color.DodgerBlue, Color.Red, Color.Green, Color.Yellow };
-            if (color > 3) return;
-            label.Text = labelText[color];
-            label.ForeColor = labelColor[color];
+            var labelText = new[] { "Red", "Blue", "Green", "Yellow" };
+            var labelColor = new[] { Color.Red, Color.DodgerBlue, Color.Green, Color.Yellow };
+            if (color > SimonColor.Yellow) return;
+            label.Text = labelText[(int)color];
+            label.ForeColor = labelColor[(int)color];
         }
 
         private void Simon_Says_Event()
         {
             var strikes = facts_strike.SelectedIndex;
+            var ruleSet = RuleManager.Instance.SimonRuleSet.RuleList[SerialNumberContainsVowel() ? SimonRuleSet.HAS_VOWEL_STRING : SimonRuleSet.OTHERWISE_STRING][strikes];
 
-            var red    = (_manualVersion == 0 ? new[] { 0,3,2,0,1,3 } : new[] { 3,2,3,1,0,3 });
-            var blue   = (_manualVersion == 0 ? new[] { 1,2,1,3,0,2 } : new[] { 1,1,3,3,0,1 });
-            var green  = (_manualVersion == 0 ? new[] { 3,0,3,2,3,0 } : new[] { 3,2,3,1,0,3 });
-            var yellow = (_manualVersion == 0 ? new[] { 2,1,0,1,2,1 } : new[] { 0,2,2,1,2,3 });
-
-            var i = (SerialNumberContainsVowel() ? 0 : 3) + strikes;
-
-            Simon_Says_Set_Label(ss_red, red[i]);
-            Simon_Says_Set_Label(ss_green, green[i]);
-            Simon_Says_Set_Label(ss_blue, blue[i]);
-            Simon_Says_Set_Label(ss_yellow, yellow[i]);
+            Simon_Says_Set_Label(ss_red, ruleSet[0]);
+            Simon_Says_Set_Label(ss_blue, ruleSet[1]);
+            Simon_Says_Set_Label(ss_green, ruleSet[2]);
+            Simon_Says_Set_Label(ss_yellow, ruleSet[3]);
         }
 
         
@@ -698,16 +660,17 @@ namespace KTaNE_Helper
         private static MazeRuleSet MorseAMazeSetTwo = (MazeRuleSet) new MazeRuleSetGenerator().GenerateRuleSet(2);
         private void mazeSelection_TextChanged(object sender, EventArgs e)
         {
-            var coordinates = (_manualVersion == 0 ? _manual241Coordinates : _manual724Coordinates);
+            var ruleSet = RuleManager.Instance.MazeRuleSet.GetMazes();
             if (mazeSelection.Text.Length < 2) return;
 
             var x = Convert.ToInt32(mazeSelection.Text.Substring(0, 1));
             var y = Convert.ToInt32(mazeSelection.Text.Substring(1, 1));
-            var xy = (y*10) + x;
+
+
             _mazeSelection = -1;
             for (var i = 0; i < 9; i++)
             {
-                if (coordinates[i, 0] != xy && coordinates[i, 1] != xy) continue;
+                if (!ruleSet[i].GetCell(x-1,y-1).IsIdentifier) continue;
                 _mazeSelection = i;
                 break;
             }
@@ -745,8 +708,8 @@ namespace KTaNE_Helper
 
         private void pbMaze_Paint(object sender, PaintEventArgs e)
         {
-            var mazes = (_manualVersion == 0 ? _manual241Mazes : _manual724Mazes);
-            var coordinates = (_manualVersion == 0 ? _manual241Coordinates : _manual724Coordinates);
+            var mazes = RuleManager.Instance.MazeRuleSet.GetMazes();
+            
             e.Graphics.FillRectangle(new SolidBrush(Color.Black),0,0,pbMaze.Size.Width,pbMaze.Size.Height );
             int x;
             int y;
@@ -772,26 +735,25 @@ namespace KTaNE_Helper
             for (var i = 0; i < 6; i++)
             {
                 for (var j = 0; j < 6; j++)
-                { 
-                    if(!mazes[_mazeSelection,j,i].Contains("u"))
+                {
+                    var cell = mazes[_mazeSelection].GetCell(i, j);
+                    
+
+                    if(cell.WallAbove)
                         e.Graphics.DrawWall(i, j, "Up");
-                    if (!mazes[_mazeSelection, j, i].Contains("d"))
+                    if(cell.WallBelow)
                         e.Graphics.DrawWall(i, j, "Down");
-                    if (!mazes[_mazeSelection, j, i].Contains("l"))
+                    if(cell.WallLeft)
                         e.Graphics.DrawWall(i, j, "Left");
-                    if (!mazes[_mazeSelection, j, i].Contains("r"))
+                    if(cell.WallRight)
                         e.Graphics.DrawWall(i, j, "Right");
 
                     e.Graphics.FillRectangle(new SolidBrush(Color.DarkSlateGray), (j * 47) + 18, (i * 47) + 18, 10, 10);
+
+                    if(cell.IsIdentifier)
+                        e.Graphics.DrawEllipse(new Pen(Color.Green, 3f), (i * 47) + 10, (j * 47) + 10, 47 - 20, 47 - 20);
+
                 }
-            }
-            for (var i = 0; i < 2; i++)
-            {
-                x = coordinates[_mazeSelection, i]%10;
-                y = coordinates[_mazeSelection, i]/10;
-                x--;
-                y--;
-                e.Graphics.DrawEllipse(new Pen(Color.Green,3f),(x*47)+10,(y*47)+10,47-20,47-20 );
             }
 
             x = _mazeEndXY % 10;
@@ -829,24 +791,24 @@ namespace KTaNE_Helper
         private int _endXY;
         private bool GenerateMazeSolution(int startXY)
         {
-            var mazes = (_manualVersion == 0 ? _manual241Mazes : _manual724Mazes);
+            var mazes = RuleManager.Instance.MazeRuleSet.GetMazes();
             var maze = _mazeSelection;
             var x = startXY%10;
             var y = startXY/10;
 
             if ((x > 5) || (y > 5) || (maze == -1) || (_endXY == 66)) return false;
-            var directions = mazes[maze, y, x];
+            var cell = mazes[maze].GetCell(x, y);
             if (startXY == _endXY) return true;
             _explored[startXY] = true;
 
 
-            var directionLetter = new[] {"u", "d", "l", "r"};
+            var wallDirection = new[] {cell.WallAbove, cell.WallBelow, cell.WallLeft, cell.WallRight};
             var directionInt = new[] {-10, 10, -1, 1};
             var directionReturn = new[] {"Up", "Down", "Left", "Right"};
 
             for (var i = 0; i < 4; i++)
             {
-                if (!directions.Contains(directionLetter[i])) continue;
+                if (wallDirection[i]) continue;
                 if (_explored[startXY + directionInt[i]]) continue;
                 if (!GenerateMazeSolution(startXY + directionInt[i])) continue;
                 _mazeStack.Push(directionReturn[i]);

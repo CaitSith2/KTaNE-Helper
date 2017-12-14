@@ -2465,6 +2465,7 @@
             // 
             this.groupBox55.Controls.Add(this.ButtonHoldRulesFlowLayoutPanel);
             this.groupBox55.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox55.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.groupBox55.Location = new System.Drawing.Point(3, 117);
             this.groupBox55.Name = "groupBox55";
             this.groupBox55.Size = new System.Drawing.Size(644, 259);
@@ -2480,9 +2481,9 @@
             this.ButtonHoldRulesFlowLayoutPanel.Controls.Add(this.label61);
             this.ButtonHoldRulesFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ButtonHoldRulesFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.ButtonHoldRulesFlowLayoutPanel.Location = new System.Drawing.Point(3, 16);
+            this.ButtonHoldRulesFlowLayoutPanel.Location = new System.Drawing.Point(3, 22);
             this.ButtonHoldRulesFlowLayoutPanel.Name = "ButtonHoldRulesFlowLayoutPanel";
-            this.ButtonHoldRulesFlowLayoutPanel.Size = new System.Drawing.Size(638, 240);
+            this.ButtonHoldRulesFlowLayoutPanel.Size = new System.Drawing.Size(638, 234);
             this.ButtonHoldRulesFlowLayoutPanel.TabIndex = 0;
             // 
             // label56
@@ -2491,9 +2492,9 @@
             this.label56.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.label56.Location = new System.Drawing.Point(3, 0);
             this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(551, 20);
+            this.label56.Size = new System.Drawing.Size(476, 20);
             this.label56.TabIndex = 11;
-            this.label56.Text = "Press and Immediately Release when the two seconds digits match.";
+            this.label56.Text = "Blue Strip: Release when the timer has a 4 in any position.";
             // 
             // label57
             // 
@@ -2501,9 +2502,9 @@
             this.label57.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.label57.Location = new System.Drawing.Point(3, 20);
             this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(551, 20);
+            this.label57.Size = new System.Drawing.Size(486, 20);
             this.label57.TabIndex = 12;
-            this.label57.Text = "Press and Immediately Release when the two seconds digits match.";
+            this.label57.Text = "White Strip: Release when the timer has a 1 in any position.";
             // 
             // label59
             // 
@@ -2511,9 +2512,9 @@
             this.label59.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.label59.Location = new System.Drawing.Point(3, 40);
             this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(551, 20);
+            this.label59.Size = new System.Drawing.Size(492, 20);
             this.label59.TabIndex = 13;
-            this.label59.Text = "Press and Immediately Release when the two seconds digits match.";
+            this.label59.Text = "Yellow Strip: Release when the timer has a 5 in any position.";
             // 
             // label61
             // 
@@ -2521,14 +2522,15 @@
             this.label61.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.label61.Location = new System.Drawing.Point(3, 60);
             this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(551, 20);
+            this.label61.Size = new System.Drawing.Size(561, 20);
             this.label61.TabIndex = 14;
-            this.label61.Text = "Press and Immediately Release when the two seconds digits match.";
+            this.label61.Text = "Any other color Strip: Release when the timer has a 1 in any position.";
             // 
             // groupBox54
             // 
             this.groupBox54.Controls.Add(this.flowLayoutPanel8);
             this.groupBox54.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox54.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.groupBox54.Location = new System.Drawing.Point(3, 39);
             this.groupBox54.Name = "groupBox54";
             this.groupBox54.Size = new System.Drawing.Size(644, 72);
@@ -2541,9 +2543,9 @@
             this.flowLayoutPanel8.AutoSize = true;
             this.flowLayoutPanel8.Controls.Add(this.button_label);
             this.flowLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel8.Location = new System.Drawing.Point(3, 16);
+            this.flowLayoutPanel8.Location = new System.Drawing.Point(3, 22);
             this.flowLayoutPanel8.Name = "flowLayoutPanel8";
-            this.flowLayoutPanel8.Size = new System.Drawing.Size(638, 53);
+            this.flowLayoutPanel8.Size = new System.Drawing.Size(638, 47);
             this.flowLayoutPanel8.TabIndex = 0;
             // 
             // button_label
@@ -2552,9 +2554,9 @@
             this.button_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.button_label.Location = new System.Drawing.Point(3, 0);
             this.button_label.Name = "button_label";
-            this.button_label.Size = new System.Drawing.Size(551, 20);
+            this.button_label.Size = new System.Drawing.Size(443, 20);
             this.button_label.TabIndex = 10;
-            this.button_label.Text = "Press and Immediately Release when the two seconds digits match.";
+            this.button_label.Text = "Hold the button and refer to \"Releasing a held button\"";
             // 
             // tpMemoryWhosOnFirst
             // 

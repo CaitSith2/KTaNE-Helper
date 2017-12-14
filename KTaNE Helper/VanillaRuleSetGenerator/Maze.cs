@@ -7,7 +7,14 @@ namespace KTaNE_Helper.VanillaRuleSetGenerator
     {
         public MazeCell GetCell(int x, int y)
         {
-            return this.CellGrid[x][y];
+            try
+            {
+                return this.CellGrid[x][y];
+            }
+            catch
+            {
+                return new MazeCell(x,y);
+            }
         }
 
         public MazeCell GetNextNeighbour(MazeCell cell, Random rand)
