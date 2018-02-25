@@ -12,33 +12,33 @@ namespace KTaNE_Helper.Modules.Modded
         {
             for (var i = 0; i < 100; i++)
             {
-                responses.Add(i);
-                queries.Add($"{buttonLabels[i / 10]}{buttonLabels[i % 10]}");
+                _responses.Add(i);
+                _queries.Add($"{ButtonLabels[i / 10]}{ButtonLabels[i % 10]}");
             }
             var rand = new MonoRandom(0);
-            responses.Shuffle(rand);
+            _responses.Shuffle(rand);
 
             for (var i = 0; i < 100; i++)
             {
-                queryLookups.Add(responses[i], queries[i]);
+                _queryLookups.Add(_responses[i], _queries[i]);
             }
         }
 
-        Dictionary<int, string> queryLookups = new Dictionary<int, string>();
-        List<int> responses = new List<int>();
-        List<string> queries = new List<string>();
+	    private readonly Dictionary<int, string> _queryLookups = new Dictionary<int, string>();
+	    private readonly List<int> _responses = new List<int>();
+	    private readonly List<string> _queries = new List<string>();
 
         private static TwoBits _instance;
         public static TwoBits Instance => _instance ?? (_instance = new TwoBits());
 
-        private KMBombInfo bombInfo = new KMBombInfo();
+        private readonly KMBombInfo _bombInfo = new KMBombInfo();
 
         public string TwoBitsLookup(int number)
         {
-            return queryLookups.ContainsKey(number) ? queryLookups[number] : "";
+            return _queryLookups.ContainsKey(number) ? _queryLookups[number] : "";
         }
 
-        protected static char[] buttonLabels = new char[] { 'b', 'c', 'd', 'e', 'g', 'k', 'p', 't', 'v', 'z' };
+        protected static char[] ButtonLabels = new char[] { 'b', 'c', 'd', 'e', 'g', 'k', 'p', 't', 'v', 'z' };
 
         public string CalculateInitialTwoBitsCode()
         {
@@ -64,7 +64,7 @@ namespace KTaNE_Helper.Modules.Modded
                 initial = dict[SerialNumber.Serial.Substring(i, 1).ToUpper()];
                 break;
             }
-            initial += (batts * bombInfo.GetSerialNumberNumbers().Last());
+            initial += (batts * _bombInfo.GetSerialNumberNumbers().Last());
             if (PortPlate.IsPortPresent(PortTypes.StereoRCA) && !PortPlate.IsPortPresent(PortTypes.RJ45))
                 initial *= 2;
             return TwoBitsLookup(initial % 100) + @" / " + (initial % 100);

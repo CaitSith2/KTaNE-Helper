@@ -9,12 +9,12 @@ namespace KTaNE_Helper.Modules.Modded
 {
     public class MorseMatics
     {
-        private KMBombInfo Info = new KMBombInfo();
+        private readonly KMBombInfo _info = new KMBombInfo();
 
-        public static int loggingID = 1;
-        public int thisLoggingID;
+        public static int LoggingID = 1;
+        public int ThisLoggingID;
 
-        private static char[] PRIME = new char[]{
+        private static readonly char[] Prime = {
             (char)2,
             (char)3,
             (char)5,
@@ -26,7 +26,7 @@ namespace KTaNE_Helper.Modules.Modded
             (char)23
         };
 
-        private static char[] SQUARE = new char[]{
+        private static readonly char[] Square = {
             (char)1,
             (char)4,
             (char)9,
@@ -34,7 +34,7 @@ namespace KTaNE_Helper.Modules.Modded
             (char)25
         };
 
-        List<string> charList = new List<string>(){
+	    private readonly List<string> _charList = new List<string>(){
             "A", "B", "C", "D", "E", "F",
             "G", "H", "I", "J", "K", "L",
             "M", "N", "O", "P", "Q", "R",
@@ -47,7 +47,7 @@ namespace KTaNE_Helper.Modules.Modded
             if (!SerialNumber.IsSerialValid)
                 return "";
 
-            var Answer = "";
+            string answer;
 
             if (morsecharacters.Contains(".") || morsecharacters.Contains("-"))
             {
@@ -59,25 +59,25 @@ namespace KTaNE_Helper.Modules.Modded
             {
                 return "";
             }
-            var DisplayCharsRaw = new string[3];
+            var displayCharsRaw = new string[3];
 
             for (var i = 0; i < 3; i++)
             {
-                if (!charList.Contains(morsecharacters[i].ToString()))
+                if (!_charList.Contains(morsecharacters[i].ToString()))
                     return "Invalid or Duplicate characters detected";
-                charList.Remove(morsecharacters[i].ToString());
-                DisplayCharsRaw[i] = morsecharacters[i].ToString();
+                _charList.Remove(morsecharacters[i].ToString());
+                displayCharsRaw[i] = morsecharacters[i].ToString();
             }
            
 
-            Debug.Log("[Morsematics #" + thisLoggingID + "] Morsematics display characters: " + DisplayCharsRaw[0] + DisplayCharsRaw[1] + DisplayCharsRaw[2]);
+            Debug.Log("[Morsematics #" + ThisLoggingID + "] Morsematics display characters: " + displayCharsRaw[0] + displayCharsRaw[1] + displayCharsRaw[2]);
 
-            int disp1base = DisplayCharsRaw[0][0] - 'A' + 1;
-            int disp2base = DisplayCharsRaw[1][0] - 'A' + 1;
-            int disp3base = DisplayCharsRaw[2][0] - 'A' + 1;
+            int disp1Base = displayCharsRaw[0][0] - 'A' + 1;
+            int disp2Base = displayCharsRaw[1][0] - 'A' + 1;
+            int disp3Base = displayCharsRaw[2][0] - 'A' + 1;
 
             string serial = "AB1CD2";
-            List<string> data = Info.QueryWidgets(KMBombInfo.QUERYKEY_GET_SERIAL_NUMBER, null);
+            List<string> data = _info.QueryWidgets(KMBombInfo.QUERYKEY_GET_SERIAL_NUMBER, null);
             foreach (string response in data)
             {
                 Dictionary<string, string> responseDict = JsonConvert.DeserializeObject<Dictionary<string, string>>(response);
@@ -88,7 +88,7 @@ namespace KTaNE_Helper.Modules.Modded
             List<string> indOn = new List<string>();
             List<string> indOff = new List<string>();
 
-            data = Info.QueryWidgets(KMBombInfo.QUERYKEY_GET_INDICATOR, null);
+            data = _info.QueryWidgets(KMBombInfo.QUERYKEY_GET_INDICATOR, null);
             foreach (string response in data)
             {
                 Dictionary<string, string> responseDict = JsonConvert.DeserializeObject<Dictionary<string, string>>(response);
@@ -99,7 +99,7 @@ namespace KTaNE_Helper.Modules.Modded
 
             int batteries = 0;
 
-            data = Info.QueryWidgets(KMBombInfo.QUERYKEY_GET_BATTERIES, null);
+            data = _info.QueryWidgets(KMBombInfo.QUERYKEY_GET_BATTERIES, null);
             foreach (string response in data)
             {
                 Dictionary<string, int> responseDict = JsonConvert.DeserializeObject<Dictionary<string, int>>(response);
@@ -109,167 +109,185 @@ namespace KTaNE_Helper.Modules.Modded
             char firstChar = serial[3];
             char secondChar = serial[4];
 
-            Debug.Log("[Morsematics #" + thisLoggingID + "] Initial character pair: " + firstChar + secondChar + "(" + (int)(firstChar - 'A' + 1) + "," + (int)(secondChar - 'A' + 1) + ")");
+            Debug.Log("[Morsematics #" + ThisLoggingID + "] Initial character pair: " + firstChar + secondChar + "(" + (firstChar - 'A' + 1) + "," + (secondChar - 'A' + 1) + ")");
 
             foreach (string ind in indOn)
             {
-                if (ind.Contains(DisplayCharsRaw[0]) ||
-                    ind.Contains(DisplayCharsRaw[1]) ||
-                    ind.Contains(DisplayCharsRaw[2]))
+                if (ind.Contains(displayCharsRaw[0]) ||
+                    ind.Contains(displayCharsRaw[1]) ||
+                    ind.Contains(displayCharsRaw[2]))
                 {
-                    Debug.Log("[Morsematics #" + thisLoggingID + "] Matching indicator: " + ind + " (ON)");
+                    Debug.Log("[Morsematics #" + ThisLoggingID + "] Matching indicator: " + ind + " (ON)");
                     firstChar++;
                 }
             }
             foreach (string ind in indOff)
             {
-                if (ind.Contains(DisplayCharsRaw[0]) ||
-                    ind.Contains(DisplayCharsRaw[1]) ||
-                    ind.Contains(DisplayCharsRaw[2]))
+                if (ind.Contains(displayCharsRaw[0]) ||
+                    ind.Contains(displayCharsRaw[1]) ||
+                    ind.Contains(displayCharsRaw[2]))
                 {
-                    Debug.Log("[Morsematics #" + thisLoggingID + "] Matching indicator: " + ind + " (OFF)");
+                    Debug.Log("[Morsematics #" + ThisLoggingID + "] Matching indicator: " + ind + " (OFF)");
                     secondChar++;
                 }
             }
             if (firstChar > 'Z') firstChar -= (char)26;
             if (secondChar > 'Z') secondChar -= (char)26;
 
-            Debug.Log("[Morsematics #" + thisLoggingID + "] After indicators: " + firstChar + secondChar + "(" + (int)(firstChar - 'A' + 1) + "," + (int)(secondChar - 'A' + 1) + ")");
+            Debug.Log("[Morsematics #" + ThisLoggingID + "] After indicators: " + firstChar + secondChar + "(" + (firstChar - 'A' + 1) + "," + (secondChar - 'A' + 1) + ")");
 
             int sum = ((firstChar - 'A') + (secondChar - 'A') + 1) % 26 + 1;
             int root = (int)Math.Sqrt(sum);
             if (root * root == sum)
             {
-                Debug.Log("[Morsematics #" + thisLoggingID + "] Character sum is square");
+                Debug.Log("[Morsematics #" + ThisLoggingID + "] Character sum is square");
                 firstChar += (char)4;
                 if (firstChar > 'Z') firstChar -= (char)26;
             }
             else
             {
-                Debug.Log("[Morsematics #" + thisLoggingID + "] Character sum is not square");
+                Debug.Log("[Morsematics #" + ThisLoggingID + "] Character sum is not square");
                 secondChar -= (char)4;
                 if (secondChar < 'A') secondChar += (char)26;
             }
 
-            Debug.Log("[Morsematics #" + thisLoggingID + "] After square check: " + firstChar + secondChar + "(" + (int)(firstChar - 'A' + 1) + "," + (int)(secondChar - 'A' + 1) + ")");
+            Debug.Log("[Morsematics #" + ThisLoggingID + "] After square check: " + firstChar + secondChar + "(" + (firstChar - 'A' + 1) + "," + (secondChar - 'A' + 1) + ")");
 
             int largest;
-            if (disp1base > disp2base && disp1base > disp3base)
+            if (disp1Base > disp2Base && disp1Base > disp3Base)
             {
-                Debug.Log("[Morsematics #" + thisLoggingID + "] " + DisplayCharsRaw[0] + " is largest");
-                largest = disp1base;
+                Debug.Log("[Morsematics #" + ThisLoggingID + "] " + displayCharsRaw[0] + " is largest");
+                largest = disp1Base;
             }
-            else if (disp2base > disp3base)
+            else if (disp2Base > disp3Base)
             {
-                Debug.Log("[Morsematics #" + thisLoggingID + "] " + DisplayCharsRaw[1] + " is largest");
-                largest = disp2base;
+                Debug.Log("[Morsematics #" + ThisLoggingID + "] " + displayCharsRaw[1] + " is largest");
+                largest = disp2Base;
             }
             else
             {
-                Debug.Log("[Morsematics #" + thisLoggingID + "] " + DisplayCharsRaw[2] + " is largest");
-                largest = disp3base;
+                Debug.Log("[Morsematics #" + ThisLoggingID + "] " + displayCharsRaw[2] + " is largest");
+                largest = disp3Base;
             }
             firstChar += (char)largest;
             if (firstChar > 'Z') firstChar -= (char)26;
 
-            Debug.Log("[Morsematics #" + thisLoggingID + "] After big add: " + firstChar + secondChar + "(" + (int)(firstChar - 'A' + 1) + "," + (int)(secondChar - 'A' + 1) + ")");
+            Debug.Log("[Morsematics #" + ThisLoggingID + "] After big add: " + firstChar + secondChar + "(" + (firstChar - 'A' + 1) + "," + (secondChar - 'A' + 1) + ")");
 
-            foreach (char p in PRIME)
+            foreach (char p in Prime)
             {
-                if (disp1base == p)
+                if (disp1Base == p)
                 {
-                    Debug.Log("[Morsematics #" + thisLoggingID + "] " + DisplayCharsRaw[0] + " is prime");
+                    Debug.Log("[Morsematics #" + ThisLoggingID + "] " + displayCharsRaw[0] + " is prime");
                     firstChar -= p;
                 }
-                if (disp2base == p)
+                if (disp2Base == p)
                 {
-                    Debug.Log("[Morsematics #" + thisLoggingID + "] " + DisplayCharsRaw[1] + " is prime");
+                    Debug.Log("[Morsematics #" + ThisLoggingID + "] " + displayCharsRaw[1] + " is prime");
                     firstChar -= p;
                 }
-                if (disp3base == p)
+                if (disp3Base == p)
                 {
-                    Debug.Log("[Morsematics #" + thisLoggingID + "] " + DisplayCharsRaw[2] + " is prime");
+                    Debug.Log("[Morsematics #" + ThisLoggingID + "] " + displayCharsRaw[2] + " is prime");
                     firstChar -= p;
                 }
             }
 
-            while (firstChar < 'A') firstChar += (char)26;
-            while (secondChar < 'A') secondChar += (char)26;
-
-            Debug.Log("[Morsematics #" + thisLoggingID + "] After prime: " + firstChar + secondChar + "(" + (int)(firstChar - 'A' + 1) + "," + (int)(secondChar - 'A' + 1) + ")");
-
-            foreach (char s in SQUARE)
+            while (firstChar < 'A')
             {
-                if (disp1base == s)
+	            firstChar += (char)26;
+            }
+	        while (secondChar < 'A')
+	        {
+		        secondChar += (char)26;
+	        }
+
+	        Debug.Log("[Morsematics #" + ThisLoggingID + "] After prime: " + firstChar + secondChar + "(" + (firstChar - 'A' + 1) + "," + (secondChar - 'A' + 1) + ")");
+
+            foreach (char s in Square)
+            {
+                if (disp1Base == s)
                 {
-                    Debug.Log("[Morsematics #" + thisLoggingID + "] " + DisplayCharsRaw[0] + " is square");
+                    Debug.Log("[Morsematics #" + ThisLoggingID + "] " + displayCharsRaw[0] + " is square");
                     secondChar -= s;
                 }
-                if (disp2base == s)
+                if (disp2Base == s)
                 {
-                    Debug.Log("[Morsematics #" + thisLoggingID + "] " + DisplayCharsRaw[1] + " is square");
+                    Debug.Log("[Morsematics #" + ThisLoggingID + "] " + displayCharsRaw[1] + " is square");
                     secondChar -= s;
                 }
-                if (disp3base == s)
+                if (disp3Base == s)
                 {
-                    Debug.Log("[Morsematics #" + thisLoggingID + "] " + DisplayCharsRaw[2] + " is square");
+                    Debug.Log("[Morsematics #" + ThisLoggingID + "] " + displayCharsRaw[2] + " is square");
                     secondChar -= s;
                 }
             }
 
-            while (firstChar < 'A') firstChar += (char)26;
-            while (secondChar < 'A') secondChar += (char)26;
+            while (firstChar < 'A')
+            {
+	            firstChar += (char)26;
+            }
+	        while (secondChar < 'A')
+	        {
+		        secondChar += (char)26;
+	        }
 
-            Debug.Log("[Morsematics #" + thisLoggingID + "] After square: " + firstChar + secondChar + "(" + (int)(firstChar - 'A' + 1) + "," + (int)(secondChar - 'A' + 1) + ")");
+	        Debug.Log("[Morsematics #" + ThisLoggingID + "] After square: " + firstChar + secondChar + "(" + (firstChar - 'A' + 1) + "," + (secondChar - 'A' + 1) + ")");
 
             if (batteries > 0)
             {
-                if (disp1base % batteries == 0)
+                if (disp1Base % batteries == 0)
                 {
-                    Debug.Log("[Morsematics #" + thisLoggingID + "] " + DisplayCharsRaw[0] + " is divisible");
-                    firstChar -= (char)disp1base;
-                    secondChar -= (char)disp1base;
+                    Debug.Log("[Morsematics #" + ThisLoggingID + "] " + displayCharsRaw[0] + " is divisible");
+                    firstChar -= (char)disp1Base;
+                    secondChar -= (char)disp1Base;
                 }
-                if (disp2base % batteries == 0)
+                if (disp2Base % batteries == 0)
                 {
-                    Debug.Log("[Morsematics #" + thisLoggingID + "] " + DisplayCharsRaw[1] + " is divisible");
-                    firstChar -= (char)disp2base;
-                    secondChar -= (char)disp2base;
+                    Debug.Log("[Morsematics #" + ThisLoggingID + "] " + displayCharsRaw[1] + " is divisible");
+                    firstChar -= (char)disp2Base;
+                    secondChar -= (char)disp2Base;
                 }
-                if (disp3base % batteries == 0)
+                if (disp3Base % batteries == 0)
                 {
-                    Debug.Log("[Morsematics #" + thisLoggingID + "] " + DisplayCharsRaw[2] + " is divisible");
-                    firstChar -= (char)disp3base;
-                    secondChar -= (char)disp3base;
+                    Debug.Log("[Morsematics #" + ThisLoggingID + "] " + displayCharsRaw[2] + " is divisible");
+                    firstChar -= (char)disp3Base;
+                    secondChar -= (char)disp3Base;
                 }
             }
 
-            while (firstChar < 'A') firstChar += (char)26;
-            while (secondChar < 'A') secondChar += (char)26;
+            while (firstChar < 'A')
+            {
+	            firstChar += (char)26;
+            }
+	        while (secondChar < 'A')
+	        {
+		        secondChar += (char)26;
+	        }
 
-            Debug.Log("[Morsematics #" + thisLoggingID + "] After batteries: " + firstChar + secondChar + "(" + (int)(firstChar - 'A' + 1) + "," + (int)(secondChar - 'A' + 1) + ")");
+	        Debug.Log("[Morsematics #" + ThisLoggingID + "] After batteries: " + firstChar + secondChar + "(" + (firstChar - 'A' + 1) + "," + (secondChar - 'A' + 1) + ")");
 
             if (firstChar == secondChar)
             {
-                Answer = "" + firstChar;
-                Debug.Log("[Morsematics #" + thisLoggingID + "] Characters match, answer: " + Answer);
+                answer = "" + firstChar;
+                Debug.Log("[Morsematics #" + ThisLoggingID + "] Characters match, answer: " + answer);
             }
             else if (firstChar > secondChar)
             {
                 char finalVal = (char)(firstChar - secondChar + 'A' - 1);
-                Answer = "" + finalVal;
-                Debug.Log("[Morsematics #" + thisLoggingID + "] First character is larger (diff), answer: " + Answer);
+                answer = "" + finalVal;
+                Debug.Log("[Morsematics #" + ThisLoggingID + "] First character is larger (diff), answer: " + answer);
             }
             else
             {
                 char finalVal = (char)(firstChar + secondChar - 'A' + 1);
                 if (finalVal > 'Z') finalVal -= (char)26;
-                Answer = "" + finalVal;
-                Debug.Log("[Morsematics #" + thisLoggingID + "] Second character is larger (sum), answer: " + Answer);
+                answer = "" + finalVal;
+                Debug.Log("[Morsematics #" + ThisLoggingID + "] Second character is larger (sum), answer: " + answer);
             }
-            var morsecode = Morsify(Answer);
-            Answer += ": ";
-            return morsecode.Aggregate(Answer, (current, dit) => current + (dit == 1 ? "-" : "."));
+            var morsecode = Morsify(answer);
+            answer += ": ";
+            return morsecode.Aggregate(answer, (current, dit) => current + (dit == 1 ? "-" : "."));
         }
 
         private static int[] Morsify(string text)
@@ -498,30 +516,50 @@ namespace KTaNE_Helper.Modules.Modded
         {
             var data = new int[morse.Length];
             for (var i = 0; i < morse.Length; i++)
-                data[i] = morse[i] == '.' ? 0 : morse[i] == '-' ? 1 : 2;
-            return data.Max() < 2 ? GetLetter(data) : "?";
+            {
+	            data[i] = morse[i] == '.' ? 0 : morse[i] == '-' ? 1 : 2;
+            }
+	        return data.Max() < 2 ? GetLetter(data) : "?";
         }
 
         private string GetLetter(int[] val)
         {
-            if (val.Length == 0) return "?";
-            else if (val.Length > 5) return "?";
+            if (val.Length == 0)
+            {
+	            return "?";
+            }
+            else if (val.Length > 5)
+            {
+	            return "?";
+            }
             else if (val[0] == 0)
             {
                 //.
-                if (val.Length == 1) return "E";
+                if (val.Length == 1)
+                {
+	                return "E";
+                }
                 else if (val[1] == 0)
                 {
                     //..
-                    if (val.Length == 2) return "I";
+                    if (val.Length == 2)
+                    {
+	                    return "I";
+                    }
                     else if (val[2] == 0)
                     {
                         //...
-                        if (val.Length == 3) return "S";
+                        if (val.Length == 3)
+                        {
+	                        return "S";
+                        }
                         else if (val[3] == 0)
                         {
                             //....
-                            if (val.Length == 4) return "H";
+                            if (val.Length == 4)
+                            {
+	                            return "H";
+                            }
                             else if (val[4] == 0)
                             {
                                 //.....
@@ -538,8 +576,14 @@ namespace KTaNE_Helper.Modules.Modded
                         else
                         {
                             //...-
-                            if (val.Length == 4) return "V";
-                            else if (val[4] == 0) return "?";
+                            if (val.Length == 4)
+                            {
+	                            return "V";
+                            }
+                            else if (val[4] == 0)
+                            {
+	                            return "?";
+                            }
                             else
                             {
                                 //...--
@@ -551,7 +595,10 @@ namespace KTaNE_Helper.Modules.Modded
                     else
                     {
                         //..-
-                        if (val.Length == 3) return "U";
+                        if (val.Length == 3)
+                        {
+	                        return "U";
+                        }
                         else if (val[3] == 0)
                         {
                             //..-.
@@ -561,7 +608,10 @@ namespace KTaNE_Helper.Modules.Modded
                         else
                         {
                             //..--
-                            if (val.Length == 4 || val[4] == 0) return "?";
+                            if (val.Length == 4 || val[4] == 0)
+                            {
+	                            return "?";
+                            }
                             else
                             {
                                 //..---
@@ -574,7 +624,10 @@ namespace KTaNE_Helper.Modules.Modded
                 else
                 {
                     //.-
-                    if (val.Length == 2) return "A";
+                    if (val.Length == 2)
+                    {
+	                    return "A";
+                    }
                     else if (val[2] == 0)
                     {
                         //.-.
@@ -590,7 +643,10 @@ namespace KTaNE_Helper.Modules.Modded
                     else
                     {
                         //.--
-                        if (val.Length == 3) return "W";
+                        if (val.Length == 3)
+                        {
+	                        return "W";
+                        }
                         else if (val[3] == 0)
                         {
                             //.--.
@@ -600,8 +656,14 @@ namespace KTaNE_Helper.Modules.Modded
                         else
                         {
                             //.---
-                            if (val.Length == 4) return "J";
-                            else if (val[4] == 0) return "?";
+                            if (val.Length == 4)
+                            {
+	                            return "J";
+                            }
+                            else if (val[4] == 0)
+                            {
+	                            return "?";
+                            }
                             else
                             {
                                 //.----
@@ -615,15 +677,24 @@ namespace KTaNE_Helper.Modules.Modded
             else
             {
                 //-
-                if (val.Length == 1) return "T";
+                if (val.Length == 1)
+                {
+	                return "T";
+                }
                 else if (val[1] == 0)
                 {
                     //-.
-                    if (val.Length == 2) return "N";
+                    if (val.Length == 2)
+                    {
+	                    return "N";
+                    }
                     else if (val[2] == 0)
                     {
                         //-..
-                        if (val.Length == 3) return "D";
+                        if (val.Length == 3)
+                        {
+	                        return "D";
+                        }
                         else if (val[3] == 0)
                         {
                             //-...
@@ -645,7 +716,10 @@ namespace KTaNE_Helper.Modules.Modded
                     else
                     {
                         //-.-
-                        if (val.Length == 3) return "K";
+                        if (val.Length == 3)
+                        {
+	                        return "K";
+                        }
                         else if (val[3] == 0)
                         {
                             //-.-.
@@ -664,11 +738,17 @@ namespace KTaNE_Helper.Modules.Modded
                 {
                     //--
                     //O890
-                    if (val.Length == 2) return "M";
+                    if (val.Length == 2)
+                    {
+	                    return "M";
+                    }
                     else if (val[2] == 0)
                     {
                         //--.
-                        if (val.Length == 3) return "G";
+                        if (val.Length == 3)
+                        {
+	                        return "G";
+                        }
                         else if (val[3] == 0)
                         {
                             //--..
@@ -690,11 +770,17 @@ namespace KTaNE_Helper.Modules.Modded
                     else
                     {
                         //---
-                        if (val.Length == 3) return "O";
+                        if (val.Length == 3)
+                        {
+	                        return "O";
+                        }
                         else if (val[3] == 0)
                         {
                             //---.
-                            if (val.Length == 4 || val[4] == 1) return "?";
+                            if (val.Length == 4 || val[4] == 1)
+                            {
+	                            return "?";
+                            }
                             else
                             {
                                 //---..
@@ -705,7 +791,10 @@ namespace KTaNE_Helper.Modules.Modded
                         else
                         {
                             //----
-                            if (val.Length == 4) return "?";
+                            if (val.Length == 4)
+                            {
+	                            return "?";
+                            }
                             else if (val[4] == 0)
                             {
                                 //----.

@@ -77,8 +77,10 @@ namespace KTaNE_Helper.Modules.Modded
                     var flag = true;
                     var words = x.Split(' ');
                     for (var i = offset; i < lens.Count && (i - offset) < words.Length && flag; i++)
-                        flag &= x.Split(' ')[i - offset].Length == lens[i];
-                    if (!flag) continue;
+                    {
+	                    flag &= x.Split(' ')[i - offset].Length == lens[i];
+                    }
+	                if (!flag) continue;
 
                     var order = new List<int>();
                     var orderlist = new Dictionary<int, string>();

@@ -199,9 +199,10 @@ namespace KTaNE_Helper.Modules.Modded
                     {
                         condition = true;
                         for (var i = 0; i < 8; i++)
-                            if (words[i] == Yellow)
-                                answer = "Press No on " + (i + 1) + " (M2)";
-
+                        {
+	                        if (words[i] == Yellow)
+		                        answer = "Press No on " + (i + 1) + " (M2)";
+                        }
                     }
                     if (!condition)
                     {

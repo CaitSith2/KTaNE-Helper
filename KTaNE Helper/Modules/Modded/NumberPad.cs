@@ -6,7 +6,7 @@ using VanillaRuleGenerator.Extensions;
 
 namespace KTaNE_Helper.Modules.Modded
 {
-    internal class NumberPad
+	class NumberPad
     {
         public NumberPad(string colors)
         {
@@ -44,15 +44,19 @@ namespace KTaNE_Helper.Modules.Modded
             if (c == ColorAll)
             {
                 while (c-- > 0)
-                    j += GetColorCount(c);
-                return j;
+                {
+	                j += GetColorCount(c);
+                }
+	            return j;
             }
 
             var color = ("WGYBR").Substring(c, 1);
             for (var i = 0; i < 10; i++)
-                if (_colors.Substring(i, 1) == color)
-                    j++;
-            return j;
+            {
+	            if (_colors.Substring(i, 1) == color)
+		            j++;
+            }
+	        return j;
         }
 
 

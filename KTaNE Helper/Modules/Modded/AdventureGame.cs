@@ -122,21 +122,25 @@ namespace KTaNE_Helper.Modules.Modded
             _monster = monster;
             var result = "";
             for(var i = 0; i < 3; i++)
-                for (var j = i + 1; j < 3; j++)
-                {
-                    if (weapons[i] != weapons[j]) continue;
-                    return "Please Select 3 different Weapons";
-                }
+            {
+	            for (var j = i + 1; j < 3; j++)
+	            {
+		            if (weapons[i] != weapons[j]) continue;
+		            return "Please Select 3 different Weapons";
+	            }
+            }
 
-            for (var i = 0; i < 5; i++)
-                for (var j = i + 1; j < 5; j++)
-                {
-                    if (items[i] != items[j]) continue;
-                    if (items[i] == Items.NotSelected) continue;
-                    return "Please Select 5 different items";
-                }
+	        for (var i = 0; i < 5; i++)
+	        {
+		        for (var j = i + 1; j < 5; j++)
+		        {
+			        if (items[i] != items[j]) continue;
+			        if (items[i] == Items.NotSelected) continue;
+			        return "Please Select 5 different items";
+		        }
+	        }
 
-            var itemsToUse = items.Where(UseThisItem).ToList();
+	        var itemsToUse = items.Where(UseThisItem).ToList();
            
             if (itemsToUse.Count > 0)
             {
@@ -156,8 +160,10 @@ namespace KTaNE_Helper.Modules.Modded
                 else if (ws > weaponscore)
                 {
                     for (var j = 0; j < i; j++)
-                        correctweapon[j] = false;
-                    correctweapon[i] = true;
+                    {
+	                    correctweapon[j] = false;
+                    }
+	                correctweapon[i] = true;
                     weaponscore = ws;
                 }
             }
@@ -169,40 +175,50 @@ namespace KTaNE_Helper.Modules.Modded
                 var dex = GetDEX();
                 var potionaffectscorrectweapon = false;
                 for(_stats[0] = str - 1; _stats[0] < (str+4) && !potionaffectscorrectweapon; _stats[0]++)
-                    for(_stats[1] = dex - 1; _stats[1] < (dex+4) && !potionaffectscorrectweapon; _stats[1]++)
-                        for (_stats[2] = Int - 1; _stats[2] < (Int + 4) && !potionaffectscorrectweapon; _stats[2]++)
-                        {
-                            var potionweaponscore = -999;
-                            var potioncorrectweapon = new bool[3];
-                            for (var i = 0; i < 3; i++)
-                            {
-                                var pws = CalculateWeaponScore(weapons[i]);
-                                if (pws == potionweaponscore)
-                                {
-                                    potioncorrectweapon[i] = true;
-                                    potionweaponscore = pws;
-                                }
-                                else if (pws > potionweaponscore)
-                                {
-                                    for (var j = 0; j < i; j++)
-                                        potioncorrectweapon[j] = false;
-                                    potioncorrectweapon[i] = true;
-                                    potionweaponscore = pws;
-                                }
-                            }
-                            for ( var i = 0; i < 3; i++)
-                                potionaffectscorrectweapon |= correctweapon[i] && !potioncorrectweapon[i];
-                        }
-                if (potionaffectscorrectweapon)
+                {
+	                for(_stats[1] = dex - 1; _stats[1] < (dex+4) && !potionaffectscorrectweapon; _stats[1]++)
+	                {
+		                for (_stats[2] = Int - 1; _stats[2] < (Int + 4) && !potionaffectscorrectweapon; _stats[2]++)
+		                {
+			                var potionweaponscore = -999;
+			                var potioncorrectweapon = new bool[3];
+			                for (var i = 0; i < 3; i++)
+			                {
+				                var pws = CalculateWeaponScore(weapons[i]);
+				                if (pws == potionweaponscore)
+				                {
+					                potioncorrectweapon[i] = true;
+					                potionweaponscore = pws;
+				                }
+				                else if (pws > potionweaponscore)
+				                {
+					                for (var j = 0; j < i; j++)
+					                {
+						                potioncorrectweapon[j] = false;
+					                }
+					                potioncorrectweapon[i] = true;
+					                potionweaponscore = pws;
+				                }
+			                }
+			                for ( var i = 0; i < 3; i++)
+			                {
+				                potionaffectscorrectweapon |= correctweapon[i] && !potioncorrectweapon[i];
+			                }
+		                }
+	                }
+                }
+	            if (potionaffectscorrectweapon)
                     result += "Ask Defuser for STR,DEX,INT again. ";
             }
 
             result += "Use weapons: ";
             var correctWeaponList = new List<string>();
             for(var i = 0; i < 3; i++)
-                if (correctweapon[i])
-                    correctWeaponList.Add(WeaponName(weapons[i]));
-            result += string.Join(", ", correctWeaponList.ToArray());
+            {
+	            if (correctweapon[i])
+		            correctWeaponList.Add(WeaponName(weapons[i]));
+            }
+	        result += string.Join(", ", correctWeaponList.ToArray());
 
             return result;
         }
@@ -220,8 +236,10 @@ namespace KTaNE_Helper.Modules.Modded
                     h += i;
             }
             else if (height.Length > 0 && int.TryParse(height, out i))
-                h = i;
-            return h;
+            {
+	            h = i;
+            }
+	        return h;
         }
 
         public int ParseGravity(string gravity)
@@ -237,8 +255,10 @@ namespace KTaNE_Helper.Modules.Modded
                     h += i;
             }
             else if (gravity.Length > 0 && int.TryParse(gravity, out i))
-                h = i;
-            return h;
+            {
+	            h = i;
+            }
+	        return h;
         }
     }
 

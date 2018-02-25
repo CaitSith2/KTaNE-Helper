@@ -152,6 +152,7 @@ namespace KTaNE_Helper.Modules.Modded
 
         public bool CheckSlots(int keyWord, Slot slot1, Slot slot2, Slot slot3)
         {
+	        // ReSharper disable once UnusedVariable
 			return CheckSlots(keyWord, slot1, slot2, slot3, out string reason);
 		}
 
@@ -265,9 +266,11 @@ namespace KTaNE_Helper.Modules.Modded
                     flag3 = true;
                 } //Unless there has been a Soggy Sausage in any previous Stage
                 else
-                    reason += ", but with different symbols. ";
+                {
+	                reason += ", but with different symbols. ";
+                }
 
-                if (flag3)
+	            if (flag3)
                     reason += "All 3 slots are the same color";
                 //All 3 slots are the same Color
                 if (CountSlots(x, Sally, SlotBool.Shape) == 0)

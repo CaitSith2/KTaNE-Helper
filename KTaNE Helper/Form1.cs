@@ -5,7 +5,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using KTaNE_Helper.Edgework;
@@ -21,7 +20,6 @@ using static System.String;
 using static VanillaRuleGenerator.Edgework.Indicators;
 using static VanillaRuleGenerator.Edgework.PortPlate;
 using static VanillaRuleGenerator.Edgework.SerialNumber;
-using VanillaRuleGenerator = VanillaRuleGenerator.VanillaRuleGenerator;
 
 namespace KTaNE_Helper
 {
@@ -52,15 +50,9 @@ namespace KTaNE_Helper
             ws_input.Text = "";
         }
 
-        private int GetModuleCount
-        {
-            get
-            {
-				return int.TryParse(txtModuleCount.Text, out int x) ? x : 0;
-			}
-        }
+        private int GetModuleCount => int.TryParse(txtModuleCount.Text, out int x) ? x : 0;
 
-        public int GetBombTime
+	    public int GetBombTime
         {
             get
             {
@@ -223,7 +215,7 @@ namespace KTaNE_Helper
             Password_TextChanged(sender, e);
             MemoryReset_Click(sender, e);
             MorseCodeInput_TextChanged(sender, e);
-            mazeSelection_TextChanged(sender, e);
+            mazeSelection_TextChanged();
             wofStep1.Checked = true;
             wofStep1_CheckedChanged(sender, e);
             Refresh();
@@ -283,11 +275,15 @@ namespace KTaNE_Helper
                 {
                     var sm = m.Split(new[] {"|"}, StringSplitOptions.RemoveEmptyEntries);
                     foreach(var x in sm)
-                        _moduleNameToTab.Add(x.Trim(), p);
+                    {
+	                    _moduleNameToTab.Add(x.Trim(), p);
+                    }
 
-                    if (sm[0].Trim() == "About") continue;
-                    if ((string) p?.Tag == "mods")
-                        _moduleNames.Add("  " + sm[0].Trim());
+	                if (sm[0].Trim() == "About") continue;
+                    if ((string) p.Tag == "mods")
+                    {
+	                    _moduleNames.Add("  " + sm[0].Trim());
+                    }
                     else
                     {
                         _stockModules.Add("  " + sm[0].Trim());
@@ -353,9 +349,11 @@ namespace KTaNE_Helper
             {
                 var includePassword = true;
                 for(var i = 0; i < 5 && includePassword; i++)
-                    if (((MaskedTextBox)fpPassword.Controls[i]).Text != Empty)
-                        includePassword = ((MaskedTextBox) fpPassword.Controls[i]).Text.ToLower().Contains(pass.Substring(i, 1));
-                if(includePassword)
+                {
+	                if (((MaskedTextBox)fpPassword.Controls[i]).Text != Empty)
+		                includePassword = ((MaskedTextBox) fpPassword.Controls[i]).Text.ToLower().Contains(pass.Substring(i, 1));
+                }
+	            if(includePassword)
                     result.Add(pass);
             }
 
@@ -383,8 +381,10 @@ namespace KTaNE_Helper
         private void PasswordClear_Click(object sender, EventArgs e)
         {
             foreach (var textbox in fpPassword.Controls)
-                ((MaskedTextBox) textbox).Text = Empty;
-            Password_TextChanged(sender, e);
+            {
+	            ((MaskedTextBox) textbox).Text = Empty;
+            }
+	        Password_TextChanged(sender, e);
         }
 
         private string _memoryInstruction;
@@ -395,7 +395,7 @@ namespace KTaNE_Helper
         private int[] _memoryPositions = new int[5];
         private int[] _memoryRules = new int[20];
 
-        void MemoryButtonStates(bool state)
+	    private void MemoryButtonStates(bool state)
         {
             _memoryState = state;
 
@@ -415,7 +415,7 @@ namespace KTaNE_Helper
 
         }
 
-        void ProcessNumberRules(int number)
+	    private void ProcessNumberRules(int number)
         {
             _memoryStageNumber = number;
             var rule = _memoryRules[(_memoryStage*4) + number];
@@ -474,7 +474,7 @@ namespace KTaNE_Helper
                 ProcessPositionRules(Convert.ToInt32(((Button)sender).Tag));
         }
 
-        void ProcessPositionRules(int number)
+	    private void ProcessPositionRules(int number)
         {
             var rule = _memoryRules[(_memoryStage * 4) + _memoryStageNumber];
             switch (rule)
@@ -536,7 +536,7 @@ namespace KTaNE_Helper
                 if (((CheckBox) fpKnob.Controls[i]).CheckState != CheckState.Indeterminate) totalMask += 1 << i;
             }
             var Checked = NeedyKnobRuleSetGenerator.intToBoolArray(totalChecked, 12);
-            var Masked = NeedyKnobRuleSetGenerator.intToBoolArray(totalMask, 12);
+            var masked = NeedyKnobRuleSetGenerator.intToBoolArray(totalMask, 12);
             var solution = new List<string>();
             foreach (var rule in RuleManager.Instance.NeedyKnobRuleSet.Rules)
             {
@@ -547,7 +547,7 @@ namespace KTaNE_Helper
                     
                     for (var i = 0; i < 12 && match; i++)
                     {
-                        if (!Masked[i]) continue;
+                        if (!masked[i]) continue;
                         match &= (leds[i] == Checked[i]);
                     }
                 }
@@ -655,14 +655,14 @@ namespace KTaNE_Helper
         private string _mazeStartText = Empty;
         private string _mazeEndText = Empty;
         private bool _mazeRefreshing;
-        private void mazeSelection_TextChanged(object sender, EventArgs e)
+        private void mazeSelection_TextChanged()
         {
             if (_mazeRefreshing) return;
             var ruleSet = RuleManager.Instance.MazeRuleSet.GetMazes();
             int x;
             int y;
-            UseMorseAMaze &= IsNullOrEmpty(_mazeSelectionText);
-            if (!UseMorseAMaze)
+            _useMorseAMaze &= IsNullOrEmpty(_mazeSelectionText);
+            if (!_useMorseAMaze)
             {
                 _mazeRefreshing = true;
                 txtMorseAMaze.Text = "";
@@ -759,16 +759,14 @@ namespace KTaNE_Helper
                 return _morseAMazeSet;
             }
         }
-        private bool UseMorseAMaze;
+        private bool _useMorseAMaze;
         private void pbMaze_Paint(object sender, PaintEventArgs e)
         {
-            var mazes = UseMorseAMaze ? MorseAMazeSet : RuleManager.Instance.MazeRuleSet.GetMazes();
+            var mazes = _useMorseAMaze ? MorseAMazeSet : RuleManager.Instance.MazeRuleSet.GetMazes();
 
             e.Graphics.FillRectangle(new SolidBrush(Color.Black),0,0,pbMaze.Size.Width,pbMaze.Size.Height );
-            int x;
-            int y;
 
-            if (_mazeSelection < 0)
+	        if (_mazeSelection < 0)
             {
                 for (var i = 0; i < 6; i++)
                 {
@@ -804,14 +802,14 @@ namespace KTaNE_Helper
 
                     e.Graphics.FillRectangle(new SolidBrush(Color.DarkSlateGray), (j * 47) + 18, (i * 47) + 18, 10, 10);
 
-                    if(cell.IsIdentifier && !UseMorseAMaze)
+                    if(cell.IsIdentifier && !_useMorseAMaze)
                         e.Graphics.DrawEllipse(new Pen(Color.Green, 3f), (i * 47) + 10, (j * 47) + 10, 47 - 20, 47 - 20);
 
                 }
             }
 
-            x = _mazeEndXY % 10;
-            y = _mazeEndXY / 10;
+            int x = _mazeEndXY % 10;
+            int y = _mazeEndXY / 10;
             x--;
             y--;
             e.Graphics.FillRectangle(new SolidBrush(Color.Red), (x * 47) + 15, (y * 47) + 15, 16, 16);
@@ -845,7 +843,7 @@ namespace KTaNE_Helper
         private int _endXY;
         private bool GenerateMazeSolution(int startXY)
         {
-            var mazes = UseMorseAMaze ? MorseAMazeSet : RuleManager.Instance.MazeRuleSet.GetMazes();
+            var mazes = _useMorseAMaze ? MorseAMazeSet : RuleManager.Instance.MazeRuleSet.GetMazes();
             var maze = _mazeSelection;
             var x = startXY%10;
             var y = startXY/10;
@@ -896,7 +894,7 @@ namespace KTaNE_Helper
                 _mazeEndText = xy.ToString();
                 rbGreenCircle.Checked = cbAutoAdvance.Checked;
             }
-            mazeSelection_TextChanged(sender, e);
+            mazeSelection_TextChanged();
         }
 
         private void wofStep1_CheckedChanged(object sender, EventArgs e)
@@ -969,7 +967,7 @@ namespace KTaNE_Helper
         }
 
 
-        readonly string[] _keypadSelection = {"","","","","","","",""};
+	    private readonly string[] _keypadSelection = {"","","","","","","",""};
         private readonly Bitmap[] _keypadImages = {new Bitmap(1, 1), new Bitmap(1, 1), new Bitmap(1, 1), new Bitmap(1, 1), new Bitmap(1, 1), new Bitmap(1, 1), new Bitmap(1, 1), new Bitmap(1, 1)};
 
         private void keypadReset_Click(object sender, EventArgs e)
@@ -981,9 +979,11 @@ namespace KTaNE_Helper
             }
 
             for (var i = 0; i < 6; i++)
-                ((Button)fpKeypadOrder.Controls[i]).Visible = false;
+            {
+	            ((Button)fpKeypadOrder.Controls[i]).Visible = false;
+            }
 
-            for (var i = 0; i < 8; i++)
+	        for (var i = 0; i < 8; i++)
             {
                 ((Button) fpKeypadSelection.Controls[i]).Tag = _keypadSelection[i] = "";
                 ((Button) fpKeypadSelection.Controls[i]).BackgroundImage = _keypadImages[i] = new Bitmap(1, 1);
@@ -992,7 +992,7 @@ namespace KTaNE_Helper
             fpKeypadLabel.Visible = false;
         }
 
-        private static KeypadRuleSet RoundKeypadRules = (KeypadRuleSet) new KeypadRuleSetGenerator().GenerateRuleSet(1);
+        private static readonly KeypadRuleSet RoundKeypadRules = (KeypadRuleSet) new KeypadRuleSetGenerator().GenerateRuleSet(1);
 
         private void KeypadSymbol_Click(object sender, EventArgs e)
         {
@@ -1124,8 +1124,10 @@ namespace KTaNE_Helper
                 ((Button) fpKeypadSelection.Controls[j]).BackgroundImage = _keypadImages[j];
             }
             for (var j = 0; j < 6; j++)
-                ((Button)fpKeypadOrder.Controls[j]).Visible = false;
-            fpKeypadLabel.Visible = false;
+            {
+	            ((Button)fpKeypadOrder.Controls[j]).Visible = false;
+            }
+	        fpKeypadLabel.Visible = false;
         }
 
         private int GetDigitFromCharacter(string text)
@@ -1221,15 +1223,21 @@ namespace KTaNE_Helper
                             break;
                         default:
                             if ((solution[i - 1] == 0) || (solution[i - 2] == 0))
-                                solution[i] = num + largestDigit;
+                            {
+	                            solution[i] = num + largestDigit;
+                            }
                             else if (((solution[i - 1] % 2) == 0) && ((solution[i - 2] % 2) == 0))
-                                solution[i] = num + smallestOdd;
+                            {
+	                            solution[i] = num + smallestOdd;
+                            }
                             else
                             {
                                 var x = solution[i - 1] + solution[i - 2];
                                 while (x >= 10)
-                                    x /= 10;
-                                solution[i] = num + x;
+                                {
+	                                x /= 10;
+                                }
+	                            solution[i] = num + x;
                             }
                             break;
                     }
@@ -1285,13 +1293,17 @@ namespace KTaNE_Helper
             var counts = new int[8];
             var digits = new[] {'1', '2', '3', '4', '5', '6', '7', '8'};
             for (var i = 0; i < 8; i++)
-                counts[i] = txtConnections.Text.Count(f => f == digits[i]);
-            var unique = 0;
+            {
+	            counts[i] = txtConnections.Text.Count(f => f == digits[i]);
+            }
+	        var unique = 0;
             for (var i = 0; i < 8; i++)
-                if (counts[i] > 0)
-                    unique++;
+            {
+	            if (counts[i] > 0)
+		            unique++;
+            }
 
-            if (unique == 8)
+	        if (unique == 8)
                 serialdigit = 6;
             else if (counts[0] > 1)
                 serialdigit = 1;
@@ -1311,10 +1323,12 @@ namespace KTaNE_Helper
             var serialchar = Serial.Substring(serialdigit - 1, 1);
             var group = -1;
             for(var i=0;i<8 && group == -1;i++)
-                if (serials[i].Contains(serialchar))
-                    group = i;
+            {
+	            if (serials[i].Contains(serialchar))
+		            group = i;
+            }
 
-            if (group == -1) return;
+	        if (group == -1) return;
 
             var sanity = "";
             foreach (var entry in entries)
@@ -1410,9 +1424,11 @@ namespace KTaNE_Helper
 
                 if (i == 5)
                     for (var j = 0; j < 5; j++)
-                        x += safeOffsets[Serial.Substring(j, 1).ToUpper()][5];
+	                    {
+		                    x += safeOffsets[Serial.Substring(j, 1).ToUpper()][5];
+	                    }
 
-                x %= 12;
+	            x %= 12;
                 txtSafetySafe.Text += x + @" ";
             }
 
@@ -1479,8 +1495,8 @@ namespace KTaNE_Helper
             cbPlumbingRedIn_CheckedChanged();
             CalculateSafetySafe();
             txtTwoBitsInitialValue.Text = TwoBits.Instance.CalculateInitialTwoBitsCode();
-            cbBlindAlleyTM_CheckedChanged(null, null);
-            txtBattleShipSafeSpots_TextChanged(null, null);
+            cbBlindAlleyTM_CheckedChanged();
+            txtBattleShipSafeSpots_TextChanged();
 
             //--- Adventure Game, Alphabet, Anagram, Silly Slots, Word Scramble ---//
             txtAdventureGameSTR_TextChanged(null, null);
@@ -1507,6 +1523,7 @@ namespace KTaNE_Helper
             txtLaundryIn_TextChanged(null, null);
             cbAcidColor_SelectedIndexChanged(null, null);
 
+	        // ReSharper disable once InconsistentNaming
             var RPSLS = new RockPaperScissorsLizardSpock();
             txtRPSLSPrimary.Text = RPSLS.GetPrimaryAnswer();
             txtRPSLSSecondary.Text = RPSLS.GetSecondaryAnswer();
@@ -1786,11 +1803,23 @@ namespace KTaNE_Helper
                 switch (pieces[i])
                 {
                     case ChessPieces.Rook:
-                        for (j = x + 1; j < 6 && chessboard[j, y] != 1; j++) chessboard[j, y] = 2;
-                        for (j = x - 1; j >= 0 && chessboard[j, y] != 1; j--) chessboard[j, y] = 2;
-                        for (j = y + 1; j < 6 && chessboard[x, j] != 1; j++) chessboard[x, j] = 2;
-                        for (j = y - 1; j >= 0 && chessboard[x, j] != 1; j--) chessboard[x, j] = 2;
-                        break;
+                        for (j = x + 1; j < 6 && chessboard[j, y] != 1; j++)
+                        {
+	                        chessboard[j, y] = 2;
+                        }
+	                    for (j = x - 1; j >= 0 && chessboard[j, y] != 1; j--)
+	                    {
+		                    chessboard[j, y] = 2;
+	                    }
+	                    for (j = y + 1; j < 6 && chessboard[x, j] != 1; j++)
+	                    {
+		                    chessboard[x, j] = 2;
+	                    }
+	                    for (j = y - 1; j >= 0 && chessboard[x, j] != 1; j--)
+	                    {
+		                    chessboard[x, j] = 2;
+	                    }
+	                    break;
                     case ChessPieces.Knight:
                         for (j = 0; j < 8; j++)
                         {
@@ -1801,21 +1830,57 @@ namespace KTaNE_Helper
                         }
                         break;
                     case ChessPieces.Bishop:
-                        for (j = x + 1, k = y + 1; j < 6 && k < 6 && chessboard[j, k] != 1; j++, k++) chessboard[j, k] = 2;
-                        for (j = x - 1, k = y + 1; j >= 0 && k < 6 && chessboard[j, k] != 1; j--, k++) chessboard[j, k] = 2;
-                        for (j = x + 1, k = y - 1; j < 6 && k >= 0 && chessboard[j, k] != 1; j++, k--) chessboard[j, k] = 2;
-                        for (j = x - 1, k = y - 1; j >= 0 && k >= 0 && chessboard[j, k] != 1; j--, k--) chessboard[j, k] = 2;
-                        break;
+                        for (j = x + 1, k = y + 1; j < 6 && k < 6 && chessboard[j, k] != 1; j++, k++)
+                        {
+	                        chessboard[j, k] = 2;
+                        }
+	                    for (j = x - 1, k = y + 1; j >= 0 && k < 6 && chessboard[j, k] != 1; j--, k++)
+	                    {
+		                    chessboard[j, k] = 2;
+	                    }
+	                    for (j = x + 1, k = y - 1; j < 6 && k >= 0 && chessboard[j, k] != 1; j++, k--)
+	                    {
+		                    chessboard[j, k] = 2;
+	                    }
+	                    for (j = x - 1, k = y - 1; j >= 0 && k >= 0 && chessboard[j, k] != 1; j--, k--)
+	                    {
+		                    chessboard[j, k] = 2;
+	                    }
+	                    break;
                     case ChessPieces.Queen:
-                        for (j = x + 1; j < 6 && chessboard[j, y] != 1; j++) chessboard[j, y] = 2;
-                        for (j = x - 1; j >= 0 && chessboard[j, y] != 1; j--) chessboard[j, y] = 2;
-                        for (j = y + 1; j < 6 && chessboard[x, j] != 1; j++) chessboard[x, j] = 2;
-                        for (j = y - 1; j >= 0 && chessboard[x, j] != 1; j--) chessboard[x, j] = 2;
-                        for (j = x + 1, k = y + 1; j < 6 && k < 6 && chessboard[j, k] != 1; j++, k++) chessboard[j, k] = 2;
-                        for (j = x - 1, k = y + 1; j >= 0 && k < 6 && chessboard[j, k] != 1; j--, k++) chessboard[j, k] = 2;
-                        for (j = x + 1, k = y - 1; j < 6 && k >= 0 && chessboard[j, k] != 1; j++, k--) chessboard[j, k] = 2;
-                        for (j = x - 1, k = y - 1; j >= 0 && k >= 0 && chessboard[j, k] != 1; j--, k--) chessboard[j, k] = 2;
-                        break;
+                        for (j = x + 1; j < 6 && chessboard[j, y] != 1; j++)
+                        {
+	                        chessboard[j, y] = 2;
+                        }
+	                    for (j = x - 1; j >= 0 && chessboard[j, y] != 1; j--)
+	                    {
+		                    chessboard[j, y] = 2;
+	                    }
+	                    for (j = y + 1; j < 6 && chessboard[x, j] != 1; j++)
+	                    {
+		                    chessboard[x, j] = 2;
+	                    }
+	                    for (j = y - 1; j >= 0 && chessboard[x, j] != 1; j--)
+	                    {
+		                    chessboard[x, j] = 2;
+	                    }
+	                    for (j = x + 1, k = y + 1; j < 6 && k < 6 && chessboard[j, k] != 1; j++, k++)
+	                    {
+		                    chessboard[j, k] = 2;
+	                    }
+	                    for (j = x - 1, k = y + 1; j >= 0 && k < 6 && chessboard[j, k] != 1; j--, k++)
+	                    {
+		                    chessboard[j, k] = 2;
+	                    }
+	                    for (j = x + 1, k = y - 1; j < 6 && k >= 0 && chessboard[j, k] != 1; j++, k--)
+	                    {
+		                    chessboard[j, k] = 2;
+	                    }
+	                    for (j = x - 1, k = y - 1; j >= 0 && k >= 0 && chessboard[j, k] != 1; j--, k--)
+	                    {
+		                    chessboard[j, k] = 2;
+	                    }
+	                    break;
                     case ChessPieces.King:
                         for (j = 0; j < 8; j++)
                         {
@@ -1828,10 +1893,13 @@ namespace KTaNE_Helper
                 }
             }
             for (var i = 0; i < 6; i++)
-                for (var j = 0; j < 6; j++)
-                    if (chessboard[i, j] == 0)
-                        txtChessSolution.Text += positionsLetters.Substring(i, 1)+positionNumbers.Substring(j, 1);
-
+            {
+	            for (var j = 0; j < 6; j++)
+	            {
+		            if (chessboard[i, j] == 0)
+			            txtChessSolution.Text += positionsLetters.Substring(i, 1)+positionNumbers.Substring(j, 1);
+	            }
+            }
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -1866,13 +1934,17 @@ namespace KTaNE_Helper
             if (cbShowStockModules.Checked)
             {
                 foreach (var m in _stockModules)
-                    lbModules.Items.Add(m);
+                {
+	                lbModules.Items.Add(m);
+                }
             }
 
             if (cbShowAddonModules.Checked)
             {
                 foreach (var m in _moduleNames)
-                    lbModules.Items.Add(m);
+                {
+	                lbModules.Items.Add(m);
+                }
             }
 
             var index = lbModules.Items.IndexOf(selected);
@@ -1881,10 +1953,14 @@ namespace KTaNE_Helper
 
             //Keypad specific mod
             for (var i = 4; i < 8; i++)
-                ((Button) fpKeypadSelection.Controls[i]).Visible = cbShowAddonModules.Checked;
-            while (!cbShowAddonModules.Checked && _keypadSelection[4] != "")
-                keypadSelection_Click(fpKeypadSelection.Controls[4], e);
-            if (cbShowStockModules.Checked && cbShowAddonModules.Checked)
+            {
+	            ((Button) fpKeypadSelection.Controls[i]).Visible = cbShowAddonModules.Checked;
+            }
+	        while (!cbShowAddonModules.Checked && _keypadSelection[4] != "")
+	        {
+		        keypadSelection_Click(fpKeypadSelection.Controls[4], e);
+	        }
+	        if (cbShowStockModules.Checked && cbShowAddonModules.Checked)
                 gbKeypads.Text = @"Keypads, Round Keypads";
             else if (cbShowStockModules.Checked)
                 gbKeypads.Text = @"Keypads";
@@ -2120,7 +2196,9 @@ namespace KTaNE_Helper
                     digitFound = true;
                 }
                 else
-                    break;
+                {
+	                break;
+                }
             }
             resistance *= (ulong) Math.Pow(10.0f, batts);
             if (targetOut < 0)
@@ -2181,7 +2259,7 @@ namespace KTaNE_Helper
 
         }
 
-        private bool[] txtContainsFrequencies(string text)
+        private bool[] TxtContainsFrequencies(string text)
         {
             var frequencies = new bool[5];
             switch (text.Trim())
@@ -2313,14 +2391,14 @@ namespace KTaNE_Helper
                 if (i == 0 && textBoxes[i].Equals(textBoxes[3])) continue;
 
                 if (textBoxes[i].Trim().Length != 5) continue;
-                if (txtContainsFrequencies(textBoxes[i])[4])
+                if (TxtContainsFrequencies(textBoxes[i])[4])
                 {
                     wires[pairs[i][1]].Even = true;
                     continue;
                 }
                 for (var j = i+1; j < 5; j++)
                 {
-                    if (txtContainsFrequencies(textBoxes[j])[4])
+                    if (TxtContainsFrequencies(textBoxes[j])[4])
                     {
                         wires[pairs[j][1]].Even = true;
                         continue;
@@ -2377,18 +2455,21 @@ namespace KTaNE_Helper
             if (wiresComplete == 5)
             {
                 var missing = -1;
+	            // ReSharper disable once NotAccessedVariable
                 var missingCount = 4;
                 for(var j = 0; j < 4; j++)
-                    if (!missingFreqs[j])
-                    {
-                        missing = j;
-                    }
-                    else
-                    {
-                        missingCount--;
-                    }
+                {
+	                if (!missingFreqs[j])
+	                {
+		                missing = j;
+	                }
+	                else
+	                {
+		                missingCount--;
+	                }
+                }
 
-                wires[incomplete].Missing = (ProbingFrequencies) missing;
+	            wires[incomplete].Missing = (ProbingFrequencies) missing;
             }
 
             
@@ -2571,9 +2652,11 @@ namespace KTaNE_Helper
             {
                 if (!w.Contains(txtWordScrambleIn.Text.ToLower())) continue;
                 foreach (var ww in w)
-                    if (ww != txtWordScrambleIn.Text.ToLower())
-                        txtWordScrambleOut.Text += ww + @" ";
-                return;
+                {
+	                if (ww != txtWordScrambleIn.Text.ToLower())
+		                txtWordScrambleOut.Text += ww + @" ";
+                }
+	            return;
             }
             var x = Concat(txtWordScrambleIn.Text.ToLower().OrderBy(c => c));
             foreach (var w in wordsScramble)
@@ -2719,9 +2802,8 @@ namespace KTaNE_Helper
         {
             //This method will prevent the cursor from being positioned in the middle 
             //of a textbox when the user clicks in it.
-            var textBox = sender as MaskedTextBox;
 
-            if (textBox != null)
+	        if (sender is MaskedTextBox textBox)
             {
                 BeginInvoke((MethodInvoker)delegate
                 {
@@ -2792,7 +2874,9 @@ namespace KTaNE_Helper
             txtAdventrueGameHeight.Text = "";
             txtAdventrueGameINT.Text = "";
             foreach (var c in flpAdventureGameCBO.Controls)
-                ((ComboBox)c).SelectedIndex = 0;
+            {
+	            ((ComboBox)c).SelectedIndex = 0;
+            }
         }
 
         private void btnResetAlphabet_Click(object sender, EventArgs e)
@@ -2843,7 +2927,7 @@ namespace KTaNE_Helper
                 "Revolver","Rope","Spanner"
             };
 
-            var rows = new int[][]
+            var rows = new[]
             {
                 new[] {3,6,7,5,8,2},
                 new[] {8,4,1,7,5,6},
@@ -2898,14 +2982,16 @@ namespace KTaNE_Helper
 
             txtMurderOut.Text = @"Possible Accusations:" + Environment.NewLine;
             for(var i = 0; i < 6; i++)
-                for (var j = 0; j < 6; j++)
-                {
-                    if (rows[suspects][i] != rows[weapons][j]) continue;
-                    txtMurderOut.Text += Environment.NewLine;
-                    txtMurderOut.Text += @"It was " + suspectList[i] + 
-                        @", with the " + weaponList[j] + 
-                        @", in the " + roomList[rows[suspects][i]];
-                }
+            {
+	            for (var j = 0; j < 6; j++)
+	            {
+		            if (rows[suspects][i] != rows[weapons][j]) continue;
+		            txtMurderOut.Text += Environment.NewLine;
+		            txtMurderOut.Text += @"It was " + suspectList[i] + 
+		                                 @", with the " + weaponList[j] + 
+		                                 @", in the " + roomList[rows[suspects][i]];
+	            }
+            }
         }
 
         private void cbMicrocontroller_SelectedIndexChanged(object sender, EventArgs e)
@@ -3157,9 +3243,11 @@ namespace KTaNE_Helper
 
                 x = digits.IndexOf(Serial.Substring(5, 1), StringComparison.Ordinal);
                 for (var i = 0; i < 6 && y < 0; i++)
-                    y = digits.IndexOf(Serial.Substring(i, 1), StringComparison.Ordinal);
+                {
+	                y = digits.IndexOf(Serial.Substring(i, 1), StringComparison.Ordinal);
+                }
 
-                if (x >= 0 && y >= 0)
+	            if (x >= 0 && y >= 0)
                 {
                     y += UnlitIndicators.Count(indicator => indicator.Any(l => "MAZE GAMER".Contains(l)));
                     x += LitIndicators.Count(indicator => indicator.Any(l => "HELP IM LOST".Contains(l)));
@@ -3175,9 +3263,13 @@ namespace KTaNE_Helper
                 if (maze?[0].Length == 1)
                 {
                     for (var i = 0; i < 8; i++)
-                        e.Graphics.DrawString(i.ToString(), txt3DMazeLetters.Font, Brushes.Red, new Point((i * 47) + 10, (0 * 47) + 10));
-                    for (var j = 1; j < 8; j++)
-                        e.Graphics.DrawString(j.ToString(), txt3DMazeLetters.Font, Brushes.Red, new Point((0 * 47) + 10, (j * 47) + 10));
+                    {
+	                    e.Graphics.DrawString(i.ToString(), txt3DMazeLetters.Font, Brushes.Red, new Point((i * 47) + 10, (0 * 47) + 10));
+                    }
+	                for (var j = 1; j < 8; j++)
+	                {
+		                e.Graphics.DrawString(j.ToString(), txt3DMazeLetters.Font, Brushes.Red, new Point((0 * 47) + 10, (j * 47) + 10));
+	                }
                 }
                 for (var i = 0; i < 8; i++)
                 {
@@ -3211,10 +3303,12 @@ namespace KTaNE_Helper
                 {
                     const string directions = "UDLR";
                     for(var k = 0; k < 4; k++)
-                        if(!_3Dmaze.IsTravelPossible(maze,i,j,directions.Substring(k,1)))
-                            e.Graphics.DrawWall(Color.Red, 7f, j, i, directions.Substring(k,1));
+                    {
+	                    if(!_3Dmaze.IsTravelPossible(maze,i,j,directions.Substring(k,1)))
+		                    e.Graphics.DrawWall(Color.Red, 7f, j, i, directions.Substring(k,1));
+                    }
 
-                    e.Graphics.DrawString(_3Dmaze.MazeLetterAtLocation(maze,j,i).ToUpper(),
+	                e.Graphics.DrawString(_3Dmaze.MazeLetterAtLocation(maze,j,i).ToUpper(),
                         txt3DMazeLetters.Font,Brushes.Red,new Point((i*47)+10,(j*47)+10) );
                 }
             }
@@ -3291,15 +3385,15 @@ namespace KTaNE_Helper
             txtLightCycleOut.Text = LightCycle.GetAnswer(txtLightCycleIn.Text.Trim().ToCharArray());
         }
 
-        private void cbBlindAlleyTM_CheckedChanged(object sender, EventArgs e)
+        private void cbBlindAlleyTM_CheckedChanged()
         {
             var score = new int[10];
-            var IndicatorNames = new[]
+            var indicatorNames = new[]
             {
                 "BOB", "CAR", "CLR", "FRK", "FRQ", "IND", "MSA", "NSA", "SIG", "SND", "TRN"
             };
-            var UnlitIndex = new[] {1, 2, 9, 8, 4, 4, 9, 2, 5, 5, 4};
-            var LitIndex = new[] {6, 1, 6, 2, 7, 1, 8, 5, 7, 9, 7};
+            var unlitIndex = new[] {1, 2, 9, 8, 4, 4, 9, 2, 5, 5, 4};
+            var litIndex = new[] {6, 1, 6, 2, 7, 1, 8, 5, 7, 9, 7};
 
             var ports = new[]
             {
@@ -3315,12 +3409,12 @@ namespace KTaNE_Helper
                 score[7]++;
             if (SerialNumberContainsVowel())
                 score[8]++;
-            for (var i = 0; i < IndicatorNames.Length; i++)
+            for (var i = 0; i < indicatorNames.Length; i++)
             {
-                if (UnlitIndicators.Contains(IndicatorNames[i]))
-                    score[UnlitIndex[i]]++;
-                if (LitIndicators.Contains(IndicatorNames[i]))
-                    score[LitIndex[i]]++;
+                if (UnlitIndicators.Contains(indicatorNames[i]))
+                    score[unlitIndex[i]]++;
+                if (LitIndicators.Contains(indicatorNames[i]))
+                    score[litIndex[i]]++;
             }
             for (var i = 0; i < ports.Length; i++)
             {
@@ -3340,10 +3434,10 @@ namespace KTaNE_Helper
             }
         }
 
-        private void txtBattleShipSafeSpots_TextChanged(object sender, EventArgs e)
+        private void txtBattleShipSafeSpots_TextChanged()
         {
-            var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            var numbers = "1234567890";
+            const string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            const string numbers = "1234567890";
             txtBattleShipSafeSpots.Text = "";
             for (var i = 0; i < SerialNumberDigits.Length && i < SerialNumberLetters.Length; i++)
             {
@@ -3367,7 +3461,7 @@ namespace KTaNE_Helper
 
         private void ComputeBitWiseOperators()
         {
-            var Byte1 = new bool[]
+            var byte1 = new[]
             {
                 Batteries.AABatteries == 0,
                 IsPortPresent(PortTypes.Parallel),
@@ -3378,7 +3472,7 @@ namespace KTaNE_Helper
                 Batteries.DBatteries < 2,
                 CountTotalPorts() < 4
             };
-            var Byte2 = new bool[]
+            var byte2 = new[]
             {
                 Batteries.DBatteries > 0,
                 CountTotalPorts() >= 3,
@@ -3395,10 +3489,10 @@ namespace KTaNE_Helper
             txtBitWiseOperatorsXOR.Text = "";
             for (var i = 0; i < 8; i++)
             {
-                txtBitWiseOperatorsAND.Text += Byte1[i] && Byte2[i] ? "1" : "0";
-                txtBitWiseOperatorsOR.Text  += Byte1[i] || Byte2[i] ? "1" : "0";
-                txtBitWiseOperatorsXOR.Text += (Byte1[i] && !Byte2[i]) || (!Byte1[i] && Byte2[i]) ? "1" : "0";
-                txtBitWiseOperatorsNOT.Text += !Byte1[i] ? "1" : "0";
+                txtBitWiseOperatorsAND.Text += byte1[i] && byte2[i] ? "1" : "0";
+                txtBitWiseOperatorsOR.Text  += byte1[i] || byte2[i] ? "1" : "0";
+                txtBitWiseOperatorsXOR.Text += (byte1[i] && !byte2[i]) || (!byte1[i] && byte2[i]) ? "1" : "0";
+                txtBitWiseOperatorsNOT.Text += !byte1[i] ? "1" : "0";
             }
         }
 
@@ -3485,56 +3579,60 @@ namespace KTaNE_Helper
 				return;
 			}
 
-			var Item = GetModuleCount - x + UnlitIndicators.Length + LitIndicators.Length;
-            var Material = PortCount(PortTypes.ALL) + x - Batteries.Holders.Length;
-            var Color = LastSerialDigit + Batteries.TotalBatteries;
+			var item = GetModuleCount - x + UnlitIndicators.Length + LitIndicators.Length;
+            var material = PortCount(PortTypes.ALL) + x - Batteries.Holders.Length;
+            var color = LastSerialDigit + Batteries.TotalBatteries;
 
-            while (Item < 0)
-                Item += 6;
-            while (Material < 0)
-                Material += 6;
-            Item %= 6;
-            Material %= 6;
-            Color %= 6;
-
-            var MaterialNames = new[] {"POLYESTER", "COTTON", "WOOL", "NYLON", "CORDUROY", "LEATHER"};
-            bool SerialMatchesMaterial = SerialNumberLetters.Any(letter => MaterialNames[Material].Contains(letter));
-
-            var Washing = new[] {6, 9, 2, 4, 5, 4};
-            var MaterialSpecial = new[] {6, 8, 10, 11, 7, 5};
-            var Drying = new[] {3, 3, 0, 10, 1, 2};
-            var ColorSpecial = new[] {4, 11, 9, 12, 2, 2};
-            var Ironing = new[] {3, 5, 0, 4, 3, 2};
-            var ItemSpecial = new[] {0, 5, 10, 10, 1, 8};
-
-            var SpecialtInstructionsText = "Item";
-            var SpecialInstructions = ItemSpecial[Item];
-            if (Color == 4)
+            while (item < 0)
             {
-                SpecialInstructions = 2;
-                SpecialtInstructionsText = "Color==4";
+	            item += 6;
             }
-            else if (Item == 0 || Material == 4)
+	        while (material < 0)
+	        {
+		        material += 6;
+	        }
+	        item %= 6;
+            material %= 6;
+            color %= 6;
+
+            var materialNames = new[] {"POLYESTER", "COTTON", "WOOL", "NYLON", "CORDUROY", "LEATHER"};
+            bool serialMatchesMaterial = SerialNumberLetters.Any(letter => materialNames[material].Contains(letter));
+
+            var washing = new[] {6, 9, 2, 4, 5, 4};
+            var materialSpecial = new[] {6, 8, 10, 11, 7, 5};
+            var drying = new[] {3, 3, 0, 10, 1, 2};
+            var colorSpecial = new[] {4, 11, 9, 12, 2, 2};
+            var ironing = new[] {3, 5, 0, 4, 3, 2};
+            var itemSpecial = new[] {0, 5, 10, 10, 1, 8};
+
+            var specialtInstructionsText = "Item";
+            var specialInstructions = itemSpecial[item];
+            if (color == 4)
             {
-                SpecialInstructions = MaterialSpecial[Material];
-                SpecialtInstructionsText = "Material";
+                specialInstructions = 2;
+                specialtInstructionsText = "Color==4";
             }
-            else if (SerialMatchesMaterial)
+            else if (item == 0 || material == 4)
             {
-                SpecialInstructions = ColorSpecial[Color];
-                SpecialtInstructionsText = "Color";
+                specialInstructions = materialSpecial[material];
+                specialtInstructionsText = "Material";
+            }
+            else if (serialMatchesMaterial)
+            {
+                specialInstructions = colorSpecial[color];
+                specialtInstructionsText = "Color";
             }
 
-            var WashingInstructions = Color == 3 ? 4 : Washing[Material];
-            var WashingOverride = Color == 3 ? "Washing" : "";
-            var DryingInstructions = Material == 2 ? 3 : Drying[Color];
-            var DryingOverride = Material == 2 ? "Drying" : "";
-            var IroningInstructions = Ironing[Item];
-            var OverrideText = WashingOverride == "" && DryingOverride == "" ? "" : " Override:";
-            var OverrideSeperator = WashingOverride != "" && DryingOverride != "" ? "," : "";
+            var washingInstructions = color == 3 ? 4 : washing[material];
+            var washingOverride = color == 3 ? "Washing" : "";
+            var dryingInstructions = material == 2 ? 3 : drying[color];
+            var dryingOverride = material == 2 ? "Drying" : "";
+            var ironingInstructions = ironing[item];
+            var overrideText = washingOverride == "" && dryingOverride == "" ? "" : " Override:";
+            var overrideSeperator = washingOverride != "" && dryingOverride != "" ? "," : "";
 
-            txtLaundryOut.Text = $@"set all {WashingInstructions},{DryingInstructions},{IroningInstructions},{SpecialInstructions}";
-            txtLaundryOut.Text += $@" -- I:{Item}, M:{Material}, C:{Color}, Special:{SpecialtInstructionsText}{OverrideText}{WashingOverride}{OverrideSeperator}{DryingOverride}";
+            txtLaundryOut.Text = $@"set all {washingInstructions},{dryingInstructions},{ironingInstructions},{specialInstructions}";
+            txtLaundryOut.Text += $@" -- I:{item}, M:{material}, C:{color}, Special:{specialtInstructionsText}{overrideText}{washingOverride}{overrideSeperator}{dryingOverride}";
         }
 
         private void txtAdjacentLettersIN_TextChanged(object sender, EventArgs e)
@@ -3561,7 +3659,7 @@ namespace KTaNE_Helper
         {
             if (_mazeRefreshing) return;
             
-            UseMorseAMaze = true;
+            _useMorseAMaze = true;
             _mazeRefreshing = true;
             _mazeSelectionText = "";
             _mazeRefreshing = false;

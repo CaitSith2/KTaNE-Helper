@@ -7,16 +7,19 @@ namespace KTaNE_Helper.Modules.Modded
 {
     public class Neutralization
     {
-        private Acid acidType;
-        private Base baseType;
-        private int acidVol;
-        private int baseVol;
-        private bool soluType;
-        private KMBombInfo Info = new KMBombInfo();
-        private bool Invalid;
+        private readonly Acid _acidType;
+        private Base _baseType;
+        private readonly int _acidVol;
+        private int _baseVol;
+        private bool _soluType;
+        private readonly KMBombInfo _info = new KMBombInfo();
+        private readonly bool _invalid;
 
-        private string[] _acidForm = { "HF", "HCl", "HBr", "HI" }, _baseForm = { "NH3", "LiOH", "NaOH", "KOH" }, _dispForm = { "NH\u2083", "LiOH", "NaOH", "KOH" }, clrName = { "Yellow", "Green", "Red", "Blue" };
-        private bool[,] solubility = new bool[4, 4] {
+        private readonly string[] _acidForm = { "HF", "HCl", "HBr", "HI" };
+	    private readonly string[] _baseForm = { "NH3", "LiOH", "NaOH", "KOH" };
+	    private string[] _dispForm = { "NH\u2083", "LiOH", "NaOH", "KOH" }, _clrName = { "Yellow", "Green", "Red", "Blue" };
+
+	    private readonly bool[,] _solubility = {
         {true,true,false,false},
         {true,false,true,true},
         {false,true,false,true},
@@ -30,86 +33,85 @@ namespace KTaNE_Helper.Modules.Modded
         {
             _moduleId = _moduleCounter;
             _moduleCounter++;
-            acidType = (Acid)acid;
-            acidVol = (volume+1)*5;
+            _acidType = (Acid)acid;
+            _acidVol = (volume+1)*5;
 
             if (volume < 0 || acid < 0 || volume > 3 || acid > 3)
-                Invalid = true;
+                _invalid = true;
 
-            prepareBase();
-            prepareConc();
+            PrepareBase();
+            PrepareConc();
         }
 
         public string GetAnswer()
         {
-            return !Invalid ? $@"base {baseType}{Environment.NewLine}conc set {baseVol}{Environment.NewLine}{(soluType ? "filter" + Environment.NewLine : "")}titrate" : "";
+            return !_invalid ? $@"base {_baseType}{Environment.NewLine}conc set {_baseVol}{Environment.NewLine}{(_soluType ? "filter" + Environment.NewLine : "")}titrate" : "";
         }
 
-        void prepareBase()
+	    private void PrepareBase()
         {
-            string temp = string.Join("", Info.GetIndicators().ToArray());
+            string temp = string.Join("", _info.GetIndicators().ToArray());
 
             Debug.LogFormat("[Neutralization #{0}] >Report B: Base preparation", _moduleId);
 
-            if (Info.IsIndicatorPresent(KMBombInfoExtensions.KnownIndicatorLabel.NSA) && Info.GetBatteryCount() == 3)
+            if (_info.IsIndicatorPresent(KMBombInfoExtensions.KnownIndicatorLabel.NSA) && _info.GetBatteryCount() == 3)
             {
-                baseType = Base.NH3;
+                _baseType = Base.Nh3;
             }
-            else if (Info.IsIndicatorOn(KMBombInfoExtensions.KnownIndicatorLabel.CAR) || 
-                Info.IsIndicatorOn(KMBombInfoExtensions.KnownIndicatorLabel.FRQ) || 
-                Info.IsIndicatorOn(KMBombInfoExtensions.KnownIndicatorLabel.IND))
+            else if (_info.IsIndicatorOn(KMBombInfoExtensions.KnownIndicatorLabel.CAR) || 
+                _info.IsIndicatorOn(KMBombInfoExtensions.KnownIndicatorLabel.FRQ) || 
+                _info.IsIndicatorOn(KMBombInfoExtensions.KnownIndicatorLabel.IND))
             {
-                baseType = Base.KOH;
-                Debug.LogFormat("[Neutralization #{0}] B:\\>CAR, FRQ, or IND: {1}", _moduleId, _baseForm[(int)baseType]);
+                _baseType = Base.Koh;
+                Debug.LogFormat("[Neutralization #{0}] B:\\>CAR, FRQ, or IND: {1}", _moduleId, _baseForm[(int)_baseType]);
             }
-            else if (Info.GetPortCount() == 0 && Info.GetSerialNumberLetters().Any("AEIOU".Contains))
+            else if (_info.GetPortCount() == 0 && _info.GetSerialNumberLetters().Any("AEIOU".Contains))
             {
-                baseType = Base.LiOH;
-                Debug.LogFormat("[Neutralization #{0}] B:\\>No ports and vowel in S/N: {1}", _moduleId, _baseForm[(int)baseType]);
+                _baseType = Base.LiOh;
+                Debug.LogFormat("[Neutralization #{0}] B:\\>No ports and vowel in S/N: {1}", _moduleId, _baseForm[(int)_baseType]);
             }
-            else if (temp.Any(_acidForm[(int)acidType].ToUpper().Contains))
+            else if (temp.Any(_acidForm[(int)_acidType].ToUpper().Contains))
             {
-                baseType = Base.KOH;
-                Debug.LogFormat("[Neutralization #{0}] B:\\>Acid formular has letter in common with an indicator: {1}", _moduleId, _baseForm[(int)baseType]);
+                _baseType = Base.Koh;
+                Debug.LogFormat("[Neutralization #{0}] B:\\>Acid formular has letter in common with an indicator: {1}", _moduleId, _baseForm[(int)_baseType]);
             }
-            else if (Info.GetBatteryCount(KMBombInfoExtensions.KnownBatteryType.D) > Info.GetBatteryCount(KMBombInfoExtensions.KnownBatteryType.AA))
+            else if (_info.GetBatteryCount(KMBombInfoExtensions.KnownBatteryType.D) > _info.GetBatteryCount(KMBombInfoExtensions.KnownBatteryType.AA))
             {
-                baseType = Base.NH3;
-                Debug.LogFormat("[Neutralization #{0}] B:\\>D batt > AA batt: {1}", _moduleId, _baseForm[(int)baseType]);
+                _baseType = Base.Nh3;
+                Debug.LogFormat("[Neutralization #{0}] B:\\>D batt > AA batt: {1}", _moduleId, _baseForm[(int)_baseType]);
             }
-            else if (acidType == Acid.HF || acidType == Acid.HCl)
+            else if (_acidType == Acid.Hf || _acidType == Acid.HCl)
             {
-                baseType = Base.NaOH;
-                Debug.LogFormat("[Neutralization #{0}] B:\\>Anion < 20: {1}", _moduleId, _baseForm[(int)baseType]);
+                _baseType = Base.NaOh;
+                Debug.LogFormat("[Neutralization #{0}] B:\\>Anion < 20: {1}", _moduleId, _baseForm[(int)_baseType]);
             }
             else
             {
-                baseType = Base.LiOH;
-                Debug.LogFormat("[Neutralization #{0}] B:\\>Otherwise: {1}", _moduleId, _baseForm[(int)baseType]);
+                _baseType = Base.LiOh;
+                Debug.LogFormat("[Neutralization #{0}] B:\\>Otherwise: {1}", _moduleId, _baseForm[(int)_baseType]);
             }
         }
 
-        void prepareConc()
+	    private void PrepareConc()
         {
             int[] anion = { 9, 17, 35, 53 }, cation = { 1, 3, 11, 19 }, len = { 1, 2, 2, 1 };
-            int bh = Info.GetBatteryHolderCount(), port = Info.GetPorts().Distinct().Count(), indc = Info.GetIndicators().Count();
+            int bh = _info.GetBatteryHolderCount(), port = _info.GetPorts().Distinct().Count(), indc = _info.GetIndicators().Count();
 
-            int acidConc;
-            int baseConc;
+	        int baseConc;
 
             Debug.LogFormat("[Neutralization #{0}] >Report C: Concentration calculation", _moduleId);
 
             //acid
-            acidConc = anion[(int)acidType];
-            Debug.LogFormat("[Neutralization #{0}] C:\\acid>Starts with anion: {1} [current = {2}]", _moduleId, anion[(int)acidType], acidConc);
-            acidConc -= cation[(int)baseType];
-            Debug.LogFormat("[Neutralization #{0}] C:\\acid>Sub with cation: -{1} [current = {2}]", _moduleId, cation[(int)baseType], acidConc);
-            if (acidType == Acid.HI || baseType == Base.LiOH || baseType == Base.NaOH)
+            int acidConc = anion[(int)_acidType];
+            Debug.LogFormat("[Neutralization #{0}] C:\\acid>Starts with anion: {1} [current = {2}]", _moduleId, anion[(int)_acidType], acidConc);
+            acidConc -= cation[(int)_baseType];
+            Debug.LogFormat("[Neutralization #{0}] C:\\acid>Sub with cation: -{1} [current = {2}]", _moduleId, cation[(int)_baseType], acidConc);
+            if (_acidType == Acid.Hi || _baseType == Base.LiOh || _baseType == Base.NaOh)
             {
                 acidConc -= 4;
                 Debug.LogFormat("[Neutralization #{0}] C:\\acid>Anion/Cation contains vowels: -4 [current = {1}]", _moduleId, acidConc);
             }
-            if (len[(int)acidType] == len[(int)baseType])
+            if (len[(int)_acidType] == len[(int)_baseType])
             {
                 acidConc *= 3;
                 Debug.LogFormat("[Neutralization #{0}] C:\\acid>Length of anion = cation: x3 [current = {1}]", _moduleId, acidConc);
@@ -123,13 +125,13 @@ namespace KTaNE_Helper.Modules.Modded
             Debug.LogFormat("[Neutralization #{0}] C:\\acid>Take LSD: {1}", _moduleId, acidConc);
             if (acidConc == 0)
             {
-                acidConc = (acidVol * 2) / 5;
+                acidConc = (_acidVol * 2) / 5;
                 Debug.LogFormat("[Neutralization #{0}] C:\\acid>LSD is 0, use (Acid vol x2)/5: {1}", _moduleId, acidConc);
             }
             Debug.LogFormat("[Neutralization #{0}] C:\\acid>Final acid conc = {1}", _moduleId, acidConc / 10f);
 
             //base
-            if ((acidType == Acid.HI && baseType == Base.KOH) || (acidType == Acid.HCl && baseType == Base.NH3))
+            if ((_acidType == Acid.Hi && _baseType == Base.Koh) || (_acidType == Acid.HCl && _baseType == Base.Nh3))
             {
                 baseConc = 20;
                 Debug.LogFormat("[Neutralization #{0}] C:\\base>Special pair, use constant conc. 20", _moduleId);
@@ -149,12 +151,12 @@ namespace KTaNE_Helper.Modules.Modded
                 baseConc = 20;
                 Debug.LogFormat("[Neutralization #{0}] C:\\base>Indicators win, use conc. 20", _moduleId);
             }
-            else if (baseType == Base.NaOH)
+            else if (_baseType == Base.NaOh)
             {
                 baseConc = 10;
                 Debug.LogFormat("[Neutralization #{0}] C:\\base>Tie, use 10 because it's closest to 11", _moduleId);
             }
-            else if (baseType == Base.KOH)
+            else if (_baseType == Base.Koh)
             {
                 baseConc = 20;
                 Debug.LogFormat("[Neutralization #{0}] C:\\base>Tie, use 20 because it's closest to 19", _moduleId);
@@ -166,14 +168,15 @@ namespace KTaNE_Helper.Modules.Modded
             }
 
             //drop cnt & solu
-            baseVol = 20 / baseConc;
-            Debug.LogFormat("[Neutralization #{0}] C:\\drop>Starts with 20 / Base conc. {1} = {2}", _moduleId, baseConc, baseVol);
-            baseVol *= (acidVol * acidConc) / 10;
-            Debug.LogFormat("[Neutralization #{0}] C:\\drop>Then mult with Acid vol {1} and Acid conc. {2} = {3}", _moduleId, acidVol, acidConc / 10f, baseVol);
-            Debug.LogFormat("[Neutralization #{0}] C:\\drop>Final drop count is {1}", _moduleId, baseVol);
-            soluType = solubility[(int)acidType, (int)baseType];
-            if (soluType == true) Debug.LogFormat("[Neutralization #{0}] C:\\solu>Pair of {1} and {2} is not soluble, turn filter on.", _moduleId, _acidForm[(int)acidType], _baseForm[(int)baseType]);
-            else Debug.LogFormat("[Neutralization #{0}] C:\\solu>Pair of {1} and {2} is soluble, turn filter off.", _moduleId, _acidForm[(int)acidType], _baseForm[(int)baseType]);
+            _baseVol = 20 / baseConc;
+            Debug.LogFormat("[Neutralization #{0}] C:\\drop>Starts with 20 / Base conc. {1} = {2}", _moduleId, baseConc, _baseVol);
+            _baseVol *= (_acidVol * acidConc) / 10;
+            Debug.LogFormat("[Neutralization #{0}] C:\\drop>Then mult with Acid vol {1} and Acid conc. {2} = {3}", _moduleId, _acidVol, acidConc / 10f, _baseVol);
+            Debug.LogFormat("[Neutralization #{0}] C:\\drop>Final drop count is {1}", _moduleId, _baseVol);
+            _soluType = _solubility[(int)_acidType, (int)_baseType];
+	        Debug.LogFormat(_soluType 
+				? "[Neutralization #{0}] C:\\solu>Pair of {1} and {2} is not soluble, turn filter on." 
+				: "[Neutralization #{0}] C:\\solu>Pair of {1} and {2} is soluble, turn filter off.", _moduleId, _acidForm[(int) _acidType], _baseForm[(int) _baseType]);
         }
 
 
@@ -181,17 +184,17 @@ namespace KTaNE_Helper.Modules.Modded
 
     public enum Acid
     {
-        HF,
+        Hf,
         HCl,
         HBr,
-        HI
+        Hi
     }
 
     public enum Base
     {
-        NH3,
-        LiOH,
-        NaOH,
-        KOH
+        Nh3,
+        LiOh,
+        NaOh,
+        Koh
     }
 }

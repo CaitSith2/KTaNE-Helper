@@ -51,7 +51,7 @@ namespace KTaNE_Helper.Edgework
         public static string GetRequiredEdgeWork(string name)
         {
             var text = "";
-            foreach (var item in RequiredEdgeWork.ModuleEdgeWorkRequired)
+            foreach (var item in ModuleEdgeWorkRequired)
             {
                 if (item.ModuleName != name.Trim()) continue;
                 if (item.Nothing)
@@ -60,7 +60,10 @@ namespace KTaNE_Helper.Edgework
                     break;
                 }
                 text += " - Edgework required for \"" + item.ModuleName + "\"";
-                if (item.Everything) text += " - ALL Edgework Requried";
+                if (item.Everything)
+                {
+	                text += " - ALL Edgework Requried";
+                }
                 else
                 {
                     if (item.TwoFactor) text += ", Two Factor";

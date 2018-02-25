@@ -7,7 +7,7 @@ namespace KTaNE_Helper.Modules.Modded
 {
     sealed class FaceRotation
     {
-        public string Name { get; private set; }
+        public string Name { get; }
         public FaceRotation(string name)
         {
             Name = name;
@@ -18,15 +18,15 @@ namespace KTaNE_Helper.Modules.Modded
 
     public class RubiksCube
     {
-        private KMBombInfo Bomb = new KMBombInfo();
+        private readonly KMBombInfo _bomb = new KMBombInfo();
 
         public string GetAnswer(string faceColors)
         {
-            var table = @"L’,F’;D’,U’;U,B’;F,B;L,D;R’,U;U’,F;B’,L’;B,R;D,L;R,D’;F’,R’".Split(';').Select(row => row.Split(',').Select(str => _moves[str]).ToArray()).ToArray();
+            var table = @"L’,F’;D’,U’;U,B’;F,B;L,D;R’,U;U’,F;B’,L’;B,R;D,L;R,D’;F’,R’".Split(';').Select(row => row.Split(',').Select(str => Moves[str]).ToArray()).ToArray();
 
             var colorLetters = "YBRGOW".ToArray().ToList();
             var colorLettersIndex = "YBRGOW".ToArray().ToList();
-            if (faceColors.Length < 5 || Bomb.GetSerialNumber().Length != 6)
+            if (faceColors.Length < 5 || _bomb.GetSerialNumber().Length != 6)
                 return "Input U L F D R colors";
 
             var colors = new int[6];
@@ -38,11 +38,11 @@ namespace KTaNE_Helper.Modules.Modded
             }
             colors[5] = colorLettersIndex.IndexOf(colorLetters[0]);
 
-            var columnShifts = newArray(colors[0] + 1, colors[1] + 1, colors[2] + 1);
+            var columnShifts = NewArray(colors[0] + 1, colors[1] + 1, colors[2] + 1);
             var serialIgnore = colors[3];
             var colR = colors[4];   // color of the R (right) face
 
-            var ser = Bomb.GetSerialNumber().Remove(serialIgnore, 1);
+            var ser = _bomb.GetSerialNumber().Remove(serialIgnore, 1);
             var rows = ser.Select(ch => ch >= '0' && ch <= '9' ? ch - '0' : ch - 'A' + 10).Select(n => (n / 3 + columnShifts[n % 3]) % table.Length).ToArray();
             var moves1 = (colR >= 1 && colR <= 3)
                 ? rows.SelectMany(r => table[r]).ToList()
@@ -54,8 +54,10 @@ namespace KTaNE_Helper.Modules.Modded
                 case 2: // red
                 case 0: // yellow
                     for (int i = 0; i < 5; i++)
-                        moves2[i] = moves2[i].Reverse;
-                    break;
+                    {
+	                    moves2[i] = moves2[i].Reverse;
+                    }
+	                break;
 
                 case 3: // green
                 case 5: // white
@@ -88,7 +90,9 @@ namespace KTaNE_Helper.Modules.Modded
                         affected.Add(j);
                     }
                     else if (!moves[ix].OppositeSide.Contains(moves[j]))
-                        break;
+                    {
+	                    break;
+                    }
                 }
 
                 switch ((n % 4 + 4) % 4)
@@ -96,16 +100,20 @@ namespace KTaNE_Helper.Modules.Modded
                     case 0:
                         // the moves cancel each other out completely.
                         for (int k = affected.Count - 1; k >= 0; k--)
-                            moves.RemoveAt(affected[k]);
-                        moves.RemoveAt(ix);
+                        {
+	                        moves.RemoveAt(affected[k]);
+                        }
+	                    moves.RemoveAt(ix);
                         ix = 0;
                         continue;
 
                     case 3:
                         // e.g. 3 of the same move ⇒ reverse move
                         for (int k = affected.Count - 1; k >= 0; k--)
-                            moves.RemoveAt(affected[k]);
-                        moves[ix] = moves[ix].Reverse;
+                        {
+	                        moves.RemoveAt(affected[k]);
+                        }
+	                    moves[ix] = moves[ix].Reverse;
                         ix = 0;
                         continue;
                 }
@@ -116,16 +124,16 @@ namespace KTaNE_Helper.Modules.Modded
             return moves.Aggregate("", (current, m) => current + (m.Name + " ")).Trim();
         }
 
-        private static T[] newArray<T>(params T[] array)
+        private static T[] NewArray<T>(params T[] array)
         {
             return array;
         }
 
-        private static Dictionary<string, FaceRotation> _moves;
+        private static readonly Dictionary<string, FaceRotation> Moves;
 
         static RubiksCube()
         {
-            var moves = newArray(
+            var moves = NewArray(
                 new FaceRotation("F"),
                 new FaceRotation("F’"),
                 new FaceRotation("B"),
@@ -145,7 +153,7 @@ namespace KTaNE_Helper.Modules.Modded
                 moves[i].OppositeSide = new[] { moves[i ^ 2], moves[i ^ 3] };
             }
 
-            _moves = moves.ToDictionary(f => f.Name, StringComparer.InvariantCultureIgnoreCase);
+            Moves = moves.ToDictionary(f => f.Name, StringComparer.InvariantCultureIgnoreCase);
         }
     }
 }

@@ -2,7 +2,7 @@ using System;
 
 namespace KTaNE_Helper.Modules.Modded
 {
-    internal struct CountryCode
+	struct CountryCode
     {
         public string Code;
         public string ISO4217;
@@ -16,6 +16,7 @@ namespace KTaNE_Helper.Modules.Modded
 
     public static class CountryCodes
     {
+	    // ReSharper disable once InconsistentNaming
         private static readonly CountryCode[] _countryCodes = {
             new CountryCode("AUD", "036"), new CountryCode("BGN", "975"), new CountryCode("BRL", "986"),
             new CountryCode("CAD", "124"), new CountryCode("CHF", "756"), new CountryCode("CNY", "156"),

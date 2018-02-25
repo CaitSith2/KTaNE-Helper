@@ -6,31 +6,29 @@ namespace KTaNE_Helper.Modules.Modded
 {
     public class SkewedSlots
     {
-        private bool InFibonacci(int number)
+        private static bool InFibonacci(int number)
         {
             int fibonacci = 1;
-            int cur = 0;
-            int prev = 0;
+	        int prev = 0;
             do
             {
                 if (number == fibonacci)
                     return true;
-                cur = fibonacci;
+                int cur = fibonacci;
                 fibonacci += prev;
                 prev = cur;
             } while (fibonacci <= number);
             return false;
         }
 
-        private int NextFibonacci(int number)
+        private static int NextFibonacci(int number)
         {
             if (number == 1) return 1;  //Special case to comply with skewed slot rules of First encountered digit.
             int fibonacci = 1;
-            int cur = 0;
-            int prev = 0;
+	        int prev = 0;
             do
             {
-                cur = fibonacci;
+                int cur = fibonacci;
                 fibonacci += prev;
                 prev = cur;
             } while (fibonacci < number);
@@ -101,10 +99,12 @@ namespace KTaNE_Helper.Modules.Modded
 
             //3rd Slot
             if (PortPlate.IsPortPresent(PortTypes.Serial))
-                newDigits[2] += SerialNumber.LargestSerialDigit;
+            {
+	            newDigits[2] += SerialNumber.LargestSerialDigit;
+            }
             else if (originalDigitsInt[2] != originalDigitsInt[1] && originalDigitsInt[2] != originalDigitsInt[0])
             {
-                var binary = new int[]
+                var binary = new[]
                 {
                     0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2
                 };
@@ -117,9 +117,13 @@ namespace KTaNE_Helper.Modules.Modded
             for (var i = 0; i < 3; i++)
             {
                 while (newDigits[i] >= 10)
-                    newDigits[i] -= 10;
-                while (newDigits[i] < 0)
-                    newDigits[i] += 10;
+                {
+	                newDigits[i] -= 10;
+                }
+	            while (newDigits[i] < 0)
+	            {
+		            newDigits[i] += 10;
+	            }
             }
 
             return $"{newDigits[0]}{newDigits[1]}{newDigits[2]}";
