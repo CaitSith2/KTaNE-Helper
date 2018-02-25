@@ -129,7 +129,7 @@
     <Content Include="icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\VanillaRuleGenerator\VanillaRuleGenerator.csproj">
+    <ProjectReference Include="H:\DevProjects\VanillaRuleGenerator\VanillaRuleGenerator.csproj">
       <Project>{85843dca-c0f9-4205-a355-382cf2de84ca}</Project>
       <Name>VanillaRuleGenerator</Name>
     </ProjectReference>
