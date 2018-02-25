@@ -5,6 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using KTaNE_Helper.Edgework;
@@ -20,6 +21,7 @@ using static System.String;
 using static VanillaRuleGenerator.Edgework.Indicators;
 using static VanillaRuleGenerator.Edgework.PortPlate;
 using static VanillaRuleGenerator.Edgework.SerialNumber;
+using VanillaRuleGenerator = VanillaRuleGenerator.VanillaRuleGenerator;
 
 namespace KTaNE_Helper
 {
@@ -37,11 +39,12 @@ namespace KTaNE_Helper
         private readonly List<TabPage> _allPages = new List<TabPage>();
         private readonly List<TabPage> _noModPages = new List<TabPage>();
 
-        
+        public static Form1 Instance { get; private set; }
 
         public Form1()
         {
             InitializeComponent();
+            Instance = this;
         }
 
         private void wsReset_Click(object sender, EventArgs e)
@@ -53,31 +56,25 @@ namespace KTaNE_Helper
         {
             get
             {
-                int x;
-                return int.TryParse(txtModuleCount.Text, out x) ? x : 0;
-            }
+				return int.TryParse(txtModuleCount.Text, out int x) ? x : 0;
+			}
         }
 
-        private int GetBombTime
+        public int GetBombTime
         {
             get
             {
                 var split = txtBombTime.Text.Split(':');
-                int minutes;
-                var seconds=0;
-                int.TryParse(split[1], out seconds);
-                seconds /= 30;
+				int.TryParse(split[1], out int seconds);
+				seconds /= 30;
                 seconds *= 30;
-                if (int.TryParse(split[0], out minutes))
+                if (int.TryParse(split[0], out int minutes))
                     seconds += minutes * 60;
                 return seconds;
             }
         }
 
-        private int GetBombMinutes
-        {
-            get { return GetBombTime / 60; }
-        }
+        public int GetBombMinutes => GetBombTime / 60;
 
         private void Complicated_Wires_Event(object sender, EventArgs e)
         {
@@ -566,7 +563,7 @@ namespace KTaNE_Helper
             Process.Start(linkLabel1.Text);
         }
 
-        private static string WordToMorseCode(string word, int freq, bool morseAMaze = false)
+        public static string WordToMorseCode(string word, int freq, bool morseAMaze = false)
         {
             var morseCode = new Dictionary<string, string>
             {
@@ -583,9 +580,8 @@ namespace KTaNE_Helper
 
             for (var i = 0; i < word.Length; i++)
             {
-                string letter;
-                if (!morseCode.TryGetValue(word.Substring(i, 1).ToLowerInvariant(), out letter)) continue;
-                morse += letter;
+				if (!morseCode.TryGetValue(word.Substring(i, 1).ToLowerInvariant(), out string letter)) continue;
+				morse += letter;
                 if (spacedMorse != "")
                     spacedMorse += " ";
                 spacedMorse += letter;
@@ -655,20 +651,28 @@ namespace KTaNE_Helper
 
         }
 
+        private string _mazeSelectionText = Empty;
+        private string _mazeStartText = Empty;
+        private string _mazeEndText = Empty;
         private bool _mazeRefreshing;
         private void mazeSelection_TextChanged(object sender, EventArgs e)
         {
             if (_mazeRefreshing) return;
-            _mazeRefreshing = true;
             var ruleSet = RuleManager.Instance.MazeRuleSet.GetMazes();
             int x;
             int y;
-            UseMorseAMaze &= mazeSelection.Text.Length == 0;
-            if (!UseMorseAMaze) txtMorseAMaze.Text = "";
-            if (mazeSelection.Text.Length == 2)
+            UseMorseAMaze &= IsNullOrEmpty(_mazeSelectionText);
+            if (!UseMorseAMaze)
             {
-                x = Convert.ToInt32(mazeSelection.Text.Substring(0, 1));
-                y = Convert.ToInt32(mazeSelection.Text.Substring(1, 1));
+                _mazeRefreshing = true;
+                txtMorseAMaze.Text = "";
+                txtMorseAMazeParams.Text = "";
+                _mazeRefreshing = false;
+            }
+            if (_mazeSelectionText.Length == 2)
+            {
+                x = Convert.ToInt32(_mazeSelectionText.Substring(0, 1));
+                y = Convert.ToInt32(_mazeSelectionText.Substring(1, 1));
 
 
                 _mazeSelection = -1;
@@ -680,16 +684,16 @@ namespace KTaNE_Helper
                 }
                 if (_mazeSelection == -1)
                 {
-                    mazeSelection.Text = "";
+                    _mazeSelectionText = "";
                     Refresh();
                     return;
                 }
             }
 
-            if (mazeStart.Text.Length >= 2)
+            if (_mazeStartText.Length >= 2)
             {
-                x = Convert.ToInt32(mazeStart.Text.Substring(0, 1));
-                y = Convert.ToInt32(mazeStart.Text.Substring(1, 1));
+                x = Convert.ToInt32(_mazeStartText.Substring(0, 1));
+                y = Convert.ToInt32(_mazeStartText.Substring(1, 1));
                 _mazeStartXY = (y*10) + x;
             }
             else
@@ -697,10 +701,10 @@ namespace KTaNE_Helper
                 _mazeStartXY = 77;
             }
 
-            if (mazeEnd.Text.Length >= 2)
+            if (_mazeEndText.Length >= 2)
             {
-                x = Convert.ToInt32(mazeEnd.Text.Substring(0, 1));
-                y = Convert.ToInt32(mazeEnd.Text.Substring(1, 1));
+                x = Convert.ToInt32(_mazeEndText.Substring(0, 1));
+                y = Convert.ToInt32(_mazeEndText.Substring(1, 1));
                 _mazeEndXY = (y*10) + x;
             }
             else
@@ -709,25 +713,49 @@ namespace KTaNE_Helper
             }
 
             Refresh();
-            _mazeRefreshing = false;
         }
 
         private static List<Maze> _morseAMazeSet;
+        private static int _morseAMazeSeed=1;
 
         private static List<Maze> MorseAMazeSet
         {
             get
             {
-                if (_morseAMazeSet != null) return _morseAMazeSet;
+                if (_morseAMazeSet != null && _morseAMazeSeed == Instance.nudVanillaSeed.Value) return _morseAMazeSet;
+                _morseAMazeSeed = (int)Instance.nudVanillaSeed.Value;
                 var mazeGenerator = new MazeRuleSetGenerator();
-                var set1 = (MazeRuleSet) mazeGenerator.GenerateRuleSet(1);
-                var set2 = (MazeRuleSet) mazeGenerator.GenerateRuleSet(2);
-                _morseAMazeSet = new List<Maze>(set1.GetMazes())
+                switch (_morseAMazeSeed)
                 {
-                    set2.GetMazes()[2], set2.GetMazes()[3], set2.GetMazes()[8],
-                    set2.GetMazes()[6], set2.GetMazes()[1], set2.GetMazes()[0],
-                    set2.GetMazes()[4], set2.GetMazes()[5], set2.GetMazes()[7]
-                };
+                    case 1:
+                        var set1 = (MazeRuleSet) mazeGenerator.GenerateRuleSet(1);
+                        var set2 = (MazeRuleSet) mazeGenerator.GenerateRuleSet(2);
+                        _morseAMazeSet = new List<Maze>(set1.GetMazes())
+                        {
+                            set2.GetMazes()[2],
+                            set2.GetMazes()[3],
+                            set2.GetMazes()[8],
+                            set2.GetMazes()[6],
+                            set2.GetMazes()[1],
+                            set2.GetMazes()[0],
+                            set2.GetMazes()[4],
+                            set2.GetMazes()[5],
+                            set2.GetMazes()[7]
+                        };
+                        break;
+                    case 2:
+                        var seed2 = (MazeRuleSet) mazeGenerator.GenerateRuleSet(2);
+                        seed2.ClearMazes();
+                        mazeGenerator.MakeMazes(seed2);
+                        mazeGenerator.MakeMazes(seed2);
+                        _morseAMazeSet = new List<Maze>(seed2.GetMazes());
+                        break;
+                    default:
+                        var seedDefault = (MazeRuleSet) mazeGenerator.GenerateRuleSet(_morseAMazeSeed);
+                        mazeGenerator.MakeMazes(seedDefault);
+                        _morseAMazeSet = new List<Maze>(seedDefault.GetMazes());
+                        break;
+                }
                 return _morseAMazeSet;
             }
         }
@@ -856,18 +884,19 @@ namespace KTaNE_Helper
             if (rbGreenCircle.Checked)
             {
                 rbStart.Checked = cbAutoAdvance.Checked;
-                mazeSelection.Text = xy.ToString();
+                _mazeSelectionText = xy.ToString();
             }
             else if (rbStart.Checked)
             {
-                mazeStart.Text = xy.ToString();
+                _mazeStartText = xy.ToString();
                 rbEnd.Checked = cbAutoAdvance.Checked;
             }
             else
             {
-                mazeEnd.Text = xy.ToString();
+                _mazeEndText = xy.ToString();
                 rbGreenCircle.Checked = cbAutoAdvance.Checked;
             }
+            mazeSelection_TextChanged(sender, e);
         }
 
         private void wofStep1_CheckedChanged(object sender, EventArgs e)
@@ -1013,9 +1042,8 @@ namespace KTaNE_Helper
                     var k = 0;
                     for (var j = 0; j < 7 && k < 4; j++)
                     {
-                        string result;
-                        if (!order.TryGetValue(j, out result)) continue;
-                        ((Button) fpKeypadOrder.Controls[k]).Visible = true;
+						if (!order.TryGetValue(j, out string result)) continue;
+						((Button) fpKeypadOrder.Controls[k]).Visible = true;
                         ((Button) fpKeypadOrder.Controls[k]).BackgroundImage = SymbolPool.GetImage(result);
                         ((Button) fpKeypadOrder.Controls[k++]).Tag = result;
 
@@ -1102,9 +1130,8 @@ namespace KTaNE_Helper
 
         private int GetDigitFromCharacter(string text)
         {
-            int result;
-            if (int.TryParse(text, out result)) return result;
-            return -1;
+			if (int.TryParse(text, out int result)) return result;
+			return -1;
         }
 
         private int NumberUnlitIndicators()
@@ -1161,10 +1188,9 @@ namespace KTaNE_Helper
                 var fmnNumbers = new List<int>();
                 foreach (var c in lineData)
                 {
-                    int test;
-                    if (int.TryParse(c.ToString(), out test))
-                        fmnNumbers.Add(test);
-                }
+					if (int.TryParse(c.ToString(), out int test))
+						fmnNumbers.Add(test);
+				}
 
                 var solution = new int[fmnNumbers.Count];
                 
@@ -2644,26 +2670,25 @@ namespace KTaNE_Helper
         {
             Text = @"Keep Talking and Nobody Explodes Helper";
             var name = lbModules.SelectedItem.ToString().Trim();
-            TabPage page;
-            if (!_moduleNameToTab.TryGetValue(name, out page))
-            {
-                for (var i = lbModules.SelectedIndex; i < lbModules.Items.Count; i++)
-                {
-                    if (!_moduleNameToTab.TryGetValue(lbModules.Items[i].ToString().Trim(), out page)) continue;
-                    lbModules.SelectedIndex = i;
-                    break;
-                }
-                if (page == null)
-                {
-                    lbModules.SelectedIndex = lbModules.Items.Count > 0 ? 0 : -1;
-                    page = _moduleNameToTab["About"];
-                }
-            }
-            else
-            {
-                Text += RequiredEdgeWork.GetRequiredEdgeWork(name);
-            }
-            tcTabs.TabPages.Clear();
+			if (!_moduleNameToTab.TryGetValue(name, out TabPage page))
+			{
+				for (var i = lbModules.SelectedIndex; i < lbModules.Items.Count; i++)
+				{
+					if (!_moduleNameToTab.TryGetValue(lbModules.Items[i].ToString().Trim(), out page)) continue;
+					lbModules.SelectedIndex = i;
+					break;
+				}
+				if (page == null)
+				{
+					lbModules.SelectedIndex = lbModules.Items.Count > 0 ? 0 : -1;
+					page = _moduleNameToTab["About"];
+				}
+			}
+			else
+			{
+				Text += RequiredEdgeWork.GetRequiredEdgeWork(name);
+			}
+			tcTabs.TabPages.Clear();
             tcTabs.TabPages.Add(page);
             Update();
         }
@@ -3454,14 +3479,13 @@ namespace KTaNE_Helper
                 return;
             }
 
-            int x;
-            if (!int.TryParse(txtLaundryIn.Text, out x))
-            {
-                txtLaundryOut.Text = "";
-                return;
-            }
+			if (!int.TryParse(txtLaundryIn.Text, out int x))
+			{
+				txtLaundryOut.Text = "";
+				return;
+			}
 
-            var Item = GetModuleCount - x + UnlitIndicators.Length + LitIndicators.Length;
+			var Item = GetModuleCount - x + UnlitIndicators.Length + LitIndicators.Length;
             var Material = PortCount(PortTypes.ALL) + x - Batteries.Holders.Length;
             var Color = LastSerialDigit + Batteries.TotalBatteries;
 
@@ -3536,47 +3560,18 @@ namespace KTaNE_Helper
         private void txtMorseAMaze_TextChanged(object sender, EventArgs e)
         {
             if (_mazeRefreshing) return;
-            _mazeRefreshing = true;
+            
             UseMorseAMaze = true;
-            mazeSelection.Text = "";
-            var DirectWords = new Dictionary<int,string>
-            {
-                {0,"KABOOM"}, {1,"UNICORN"}, {2,"QUEBEC"}, {3,"BASHLY"}, {4,"SLICK"}, {5,"VECTOR"}, {6,"FLICK"}, {7,"TIMWI"}, {8,"STROBE"},
-                {9,"BOMBS"}, {10,"BRAVO"}, {11,"LAUNDRY"}, {12,"BRICK"}, {13,"KITTY"}, {14,"HALLS"}, {15,"STEAK"}, {16,"BREAK"}, {17,"BEATS"},
-                {-1,"SHELL"}, {-2,"LEAKS"}, {-3,"STRIKE"}, {-4,"HELLO"}, {-5,"VICTOR"}, {-6,"ALIEN3"}, {-7,"BISTRO"}, {-8,"TANGO"},{-9,"TIMER"},
-                {-10,"BOXES"}, {-11,"TRICK"}, {-12,"PENGUIN"}, {-13,"STING"}, {-14,"ELIAS"}, {-15,"KTANE"}, {-16,"MANUAL"}, {-17,"ZULU"},{-18,"NOVEMBER"},
-            };
-            var code = txtMorseAMaze.Text.ToLowerInvariant();
-
-            var wordList = DirectWords.Select(x => WordToMorseCode(x.Value.ToLowerInvariant(), x.Key, true)).Where(word => word.Contains(code)).ToList();
-            if (wordList.Count != 1)
-            {
-                _mazeRefreshing = false;
-                if (_mazeSelection < 0) return;
-                _mazeSelection = -1;
-                Refresh();
-                return;
-            }
-
-            var selection = int.Parse(wordList[0].Split(',')[1]);
-            if (selection >= 0)
-            {
-                
-            }
-            else
-            {
-                switch (selection * -1)
-                {
-                    default:
-                        selection = -1;
-                        break;
-                }
-            }
+            _mazeRefreshing = true;
+            _mazeSelectionText = "";
+            _mazeRefreshing = false;
+            
+            var selection = MorseAMaze.Instance.GetMaze(txtMorseAMaze.Text, txtMorseAMazeParams.Text, lblMorseAMazeParameters);
+            flpMorseAMazeParameters.Visible = lblMorseAMazeParameters.Text != Empty;
             if (_mazeSelection == selection) return;
             _mazeSelection = selection;
             rbStart.Checked = true;
             Refresh();
-            _mazeRefreshing = false;
         }
 
         private void txtCruelPianoInput_TextChanged(object sender, EventArgs e)
@@ -3585,9 +3580,8 @@ namespace KTaNE_Helper
             var input = txtCruelPianoInput.Text.Trim().ToLowerInvariant().Split(new [] {" "},StringSplitOptions.RemoveEmptyEntries);
             if (input.Length <= 0) return;
 
-            int index;
-            Note[] notes;
-            if (!int.TryParse(input[0], out index))
+			Note[] notes;
+			if (!int.TryParse(input[0], out int index))
             {
                 switch (txtCruelPianoInput.Text.ToLowerInvariant())
                 {
@@ -3634,9 +3628,8 @@ namespace KTaNE_Helper
                 notes = MelodyDatabase.SerialismMelodies[index].Notes;
                 if (input.Length > 1)
                 {
-                    int transpose;
-                    var transposeparsed = int.TryParse(input[1], out transpose);
-                    switch (input[1])
+					var transposeparsed = int.TryParse(input[1], out int transpose);
+					switch (input[1])
                     {
                         case "p":
                             break;

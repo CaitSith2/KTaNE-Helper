@@ -72,9 +72,8 @@ namespace KTaNE_Helper.Modules.Modded
                         clipboard += ", ";
                 }
                 clipboard += xx.Result == 0 ? "\t//Spin\t" : "\t//Keep\t";
-                string reason;
-                var s = new Slot(SlotShape.Bomb, SlotColor.Blue);
-                CheckSlots(0, s, s, s, out reason, j);
+				var s = new Slot(SlotShape.Bomb, SlotColor.Blue);
+				CheckSlots(0, s, s, s, out string reason, j);
                 clipboard += reason + Environment.NewLine;
             }
 
@@ -153,9 +152,8 @@ namespace KTaNE_Helper.Modules.Modded
 
         public bool CheckSlots(int keyWord, Slot slot1, Slot slot2, Slot slot3)
         {
-            string reason;
-            return CheckSlots(keyWord, slot1, slot2, slot3, out reason);
-        }
+			return CheckSlots(keyWord, slot1, slot2, slot3, out string reason);
+		}
 
 
         public bool CheckSlots(int keyWord, Slot slot1, Slot slot2, Slot slot3, out string reason, int debug = -1)
@@ -191,17 +189,16 @@ namespace KTaNE_Helper.Modules.Modded
                 return false; //There is a Single Silly Sausage
             }
 
-            int position;
-            if (CountSlots(x, Sassy, Sally, out position) == 1)
-            {   //There is a single Sasy Sally
-                reason += "There is a single Sassy Sally";
-                if ((_currentRound - 2) < 0) return false;
-                var xx = _slotRounds[_currentRound - 2];
-                if (xx.Slots[position].Color != Slots.SlotColors[x.Keyword][Soggy]) return false;
-                reason += ", however, That slot 2 stages ago was Soggy. ";
-            }   //Unless the slot in the same position 2 Stages ago was Soggy
+			if (CountSlots(x, Sassy, Sally, out int position) == 1)
+			{   //There is a single Sasy Sally
+				reason += "There is a single Sassy Sally";
+				if ((_currentRound - 2) < 0) return false;
+				var xx = _slotRounds[_currentRound - 2];
+				if (xx.Slots[position].Color != Slots.SlotColors[x.Keyword][Soggy]) return false;
+				reason += ", however, That slot 2 stages ago was Soggy. ";
+			}   //Unless the slot in the same position 2 Stages ago was Soggy
 
-            if (CountSlots(x, Soggy, Steven) > 1)
+			if (CountSlots(x, Soggy, Steven) > 1)
             {
                 reason += "There are 2 or more Soggy Stevens";
                 return false; //There are 2 or more Soggy Stevens

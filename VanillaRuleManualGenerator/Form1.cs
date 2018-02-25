@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 using VanillaRuleGenerator;
-using VanillaRuleGenerator.Rules;
 
 namespace VanillaRuleManualGenerator
 {
@@ -24,7 +17,7 @@ namespace VanillaRuleManualGenerator
             var manager = RuleManager.Instance;
             manager.Initialize((int) numericUpDown1.Value);
             var manaulgen = ManualGenerator.Instance;
-            manaulgen.WriteManual((int) numericUpDown1.Value);
+            manaulgen.WriteAllManuals((int) numericUpDown1.Value);
         }
 
         private void Form1_Load(object sender, EventArgs e)

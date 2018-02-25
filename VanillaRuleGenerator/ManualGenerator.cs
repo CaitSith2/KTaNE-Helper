@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using VanillaRuleGenerator.Extensions;
 using VanillaRuleGenerator.Helpers;
 using VanillaRuleGenerator.Properties;
@@ -9,7 +11,7 @@ using VanillaRuleGenerator.Rules.BombGame;
 
 namespace VanillaRuleGenerator
 {
-    public class ManualGenerator
+    public sealed class ManualGenerator
     {
         //public TextAsset[] ManualDataFiles;
         private readonly List<ManualFileName> _manualFileNames = new List<ManualFileName>()
@@ -17,17 +19,17 @@ namespace VanillaRuleGenerator
             //HTML Manuals
             new ManualFileName("Capacitor Discharge.html", Resources.Capacitor_Discharge),
             new ManualFileName("Complicated Wires.html", Resources.Complicated_Wires),
-            new ManualFileName("Keypads.html", Resources.Keypads),
-            new ManualFileName("Knobs.html", Resources.Knobs),
-            new ManualFileName("Mazes.html", Resources.Mazes),
+            new ManualFileName("Keypad.html", Resources.Keypads),
+            new ManualFileName("Knob.html", Resources.Knobs),
+            new ManualFileName("Maze.html", Resources.Mazes),
             new ManualFileName("Memory.html", Resources.Memory),
             new ManualFileName("Morse Code.html", Resources.Morse_Code),
-            new ManualFileName("Passwords.html", Resources.Passwords),
+            new ManualFileName("Password.html", Resources.Passwords),
             new ManualFileName("Simon Says.html", Resources.Simon_Says),
             new ManualFileName("The Button.html", Resources.The_Button),
             new ManualFileName("Venting Gas.html", Resources.Venting_Gas),
             new ManualFileName("Who’s on First.html", Resources.Whos_on_First),
-            new ManualFileName("Wire Sequences.html", Resources.Wire_Sequences),
+            new ManualFileName("Wire Sequence.html", Resources.Wire_Sequences),
             new ManualFileName("Wires.html", Resources.Wires),
             new ManualFileName("index.html", Resources.index),
 
@@ -41,19 +43,7 @@ namespace VanillaRuleGenerator
             new ManualFileName(Path.Combine("css", "normalize.css"), Resources.normalize),
 
             //Font
-            new ManualFileName(Path.Combine("font", "AnonymousPro-Bold.ttf"), Resources.AnonymousPro_Bold),
-            new ManualFileName(Path.Combine("font", "AnonymousPro-BoldItalic.ttf"), Resources.AnonymousPro_BoldItalic),
-            new ManualFileName(Path.Combine("font", "AnonymousPro-Italic.ttf"), Resources.AnonymousPro_Italic),
-            new ManualFileName(Path.Combine("font", "AnonymousPro-Regular.ttf"), Resources.AnonymousPro_Regular),
-            new ManualFileName(Path.Combine("font", "CALIFB.TTF"), Resources.CALIFB),
-            new ManualFileName(Path.Combine("font", "CALIFI.TTF"), Resources.CALIFI),
-            new ManualFileName(Path.Combine("font", "CALIFR.TTF"), Resources.CALIFR),
-            new ManualFileName(Path.Combine("font", "Morse_Font.ttf"), Resources.Morse_Font),
-            new ManualFileName(Path.Combine("font", "OpusChordsSansStd.otf"), Resources.OpusChordsSansStd),
-            new ManualFileName(Path.Combine("font", "OpusStd.otf"), Resources.OpusStd),
-            new ManualFileName(Path.Combine("font", "OstrichSans-Heavy_90.otf"), Resources.OstrichSans_Heavy_90),
             new ManualFileName(Path.Combine("font", "SpecialElite.ttf"), Resources.SpecialElite),
-            new ManualFileName(Path.Combine("font", "specialelite-cyrillic.woff2"), Resources.specialelite_cyrillic),
             new ManualFileName(Path.Combine("font", "trebuc.ttf"), Resources.trebuc),
             new ManualFileName(Path.Combine("font", "trebucbd.ttf"), Resources.trebucbd),
             new ManualFileName(Path.Combine("font", "trebucbi.ttf"), Resources.trebucbi),
@@ -142,60 +132,132 @@ namespace VanillaRuleGenerator
             new ManualFileName(Path.Combine("img", Path.Combine("Round Keypad", "31-bt.png")), Resources._31_bt),
         };
 
-        private const string KeypadSymbols = "©★☆ټҖΩѬѼϗϫϬϞѦӕԆӬ҈Ҋѯ¿¶ϾϿΨѪҨ҂Ϙζƛѣ";
+        private Dictionary<string,object> HTMLManualGenerators = new Dictionary<string, object>();
 
-        protected ManualGenerator() { }
-        private static ManualGenerator _instance;
-        public static ManualGenerator Instance => _instance ?? (_instance = new ManualGenerator()); 
+        private ManualGenerator()
+        {
+            for (var i = 0; i <= (int) HTMLManualNames.Index; i++)
+            {
+                HTMLManualGenerators[_manualFileNames[i].Name] = (HTMLManualNames) i;
+            }
 
-        private int _currentSeed;
+            if (Directory.Exists("ModAssemblies"))
+            {
+                foreach (var file in Directory.GetFiles("ModAssemblies"))
+                {
+                    var modRuleGenerator = LoadModRuleGeneratorAssembly(file);
+                    if (modRuleGenerator == null)
+                        continue;
+                    var manualName = modRuleGenerator.GetHTMLFileName();
+                    HTMLManualGenerators[manualName] = modRuleGenerator;
+                }
+            }
 
+
+        }
+        public static ManualGenerator Instance => Nested.instance;
+
+        // ReSharper disable once ClassNeverInstantiated.Local
+        private class Nested
+        {
+            static Nested() { }
+            // ReSharper disable once InconsistentNaming
+            internal static readonly ManualGenerator instance = new ManualGenerator();
+        }
 
         public static void DebugLog(string message, params object[] args)
         {
             CommonReflectedTypeInfo.DebugLog(message, args);
         }
 
-        private void WriteComplicatedWiresManual(string path)
+        private static Dictionary<string, ModRuleGenerator> _ruleGenerators = new Dictionary<string, ModRuleGenerator>();
+        private static Dictionary<string, bool> _assemblyLoadFailure = new Dictionary<string, bool>();
+
+        public static ModRuleGenerator LoadModRuleGeneratorAssembly(string assemblyName)
         {
-            var vennpath = Path.Combine(path, Path.Combine("img", "Complicated Wires"));
-            Directory.CreateDirectory(vennpath);
+            if (_assemblyLoadFailure.ContainsKey(assemblyName))
+                return null;
+
+			if (!_ruleGenerators.TryGetValue(assemblyName, out ModRuleGenerator ruleGenerator))
+			{
+				try
+				{
+					ruleGenerator = ModRuleGenerator.GetRuleGenerator(Assembly.LoadFrom(assemblyName));
+					if (ruleGenerator != null)
+					{
+						_ruleGenerators[assemblyName] = ruleGenerator;
+					}
+					else
+					{
+						_assemblyLoadFailure[assemblyName] = true;
+						return null;
+					}
+				}
+				catch (FileNotFoundException)
+				{
+					return null;
+				}
+				catch (FileLoadException)
+				{
+					return null;
+				}
+				catch (Exception ex)
+				{
+					_assemblyLoadFailure[assemblyName] = true;
+					return null;
+				}
+			}
+			return ruleGenerator;
+        }
+
+        public static bool GenerateModManual(string assemblyName, int seed)
+        {
+            var ruleGenerator = LoadModRuleGeneratorAssembly(assemblyName);
+            if (ruleGenerator == null) return false;
+
+            var manualPath = ManualGenerator.GetManualPath(seed);
+            ruleGenerator.WriteAllFiles(seed, manualPath);
+            return true;
+        }
+
+        private void WriteComplicatedWiresManual(string path, ManualFileName file, ref List<ReplaceText> replacements, bool outputFile = true)
+        {
 
             var lineTypes = new List<string>
-        {
-            "15,40,4,10",
-            string.Empty,
-            "3",
-            "8"
-        };
+            {
+                "15,40,4,10",
+                string.Empty,
+                "3",
+                "8"
+            };
             var labels = new List<string>
-        {
-            "Wire has red\ncoloring",
-            "Wire has blue\ncoloring",
-            "Has ★ symbol",
-            "LED is on"
-        };
+            {
+                "Wire has red\ncoloring",
+                "Wire has blue\ncoloring",
+                "Has ★ symbol",
+                "LED is on"
+            };
 
             var ruleset = _ruleManager.VennWireRuleSet;
             var cutInstructionList = new List<CutInstruction>
-        {
-            ruleset.RuleDict[new VennWireState(true, false, false, false)],
-            ruleset.RuleDict[new VennWireState(false, true, false, false)],
-            ruleset.RuleDict[new VennWireState(false, false, true, false)],
-            ruleset.RuleDict[new VennWireState(false, false, false, true)],
-            ruleset.RuleDict[new VennWireState(true, false, true, false)],
-            ruleset.RuleDict[new VennWireState(true, true, false, false)],
-            ruleset.RuleDict[new VennWireState(false, true, false, true)],
-            ruleset.RuleDict[new VennWireState(false, false, true, true)],
-            ruleset.RuleDict[new VennWireState(false, true, true, false)],
-            ruleset.RuleDict[new VennWireState(true, false, false, true)],
-            ruleset.RuleDict[new VennWireState(true, true, true, false)],
-            ruleset.RuleDict[new VennWireState(true, true, false, true)],
-            ruleset.RuleDict[new VennWireState(false, true, true, true)],
-            ruleset.RuleDict[new VennWireState(true, false, true, true)],
-            ruleset.RuleDict[new VennWireState(true, true, true, true)],
-            ruleset.RuleDict[new VennWireState(false, false, false, false)]
-        };
+            {
+                ruleset.RuleDict[new VennWireState(true, false, false, false)],
+                ruleset.RuleDict[new VennWireState(false, true, false, false)],
+                ruleset.RuleDict[new VennWireState(false, false, true, false)],
+                ruleset.RuleDict[new VennWireState(false, false, false, true)],
+                ruleset.RuleDict[new VennWireState(true, false, true, false)],
+                ruleset.RuleDict[new VennWireState(true, true, false, false)],
+                ruleset.RuleDict[new VennWireState(false, true, false, true)],
+                ruleset.RuleDict[new VennWireState(false, false, true, true)],
+                ruleset.RuleDict[new VennWireState(false, true, true, false)],
+                ruleset.RuleDict[new VennWireState(true, false, false, true)],
+                ruleset.RuleDict[new VennWireState(true, true, true, false)],
+                ruleset.RuleDict[new VennWireState(true, true, false, true)],
+                ruleset.RuleDict[new VennWireState(false, true, true, true)],
+                ruleset.RuleDict[new VennWireState(true, false, true, true)],
+                ruleset.RuleDict[new VennWireState(true, true, true, true)],
+                ruleset.RuleDict[new VennWireState(false, false, false, false)]
+            };
 
             var vennList = new List<string>();
             using (var enumerator = cutInstructionList.GetEnumerator())
@@ -228,23 +290,22 @@ namespace VanillaRuleGenerator
             var legendSVG = new SVGGenerator(275, 200);
             vennSVG.Draw4SetVennDiagram(vennList, lineTypes);
             legendSVG.DrawVennDiagramLegend(labels, lineTypes);
-
-            File.WriteAllText(Path.Combine(vennpath, $"venndiagram-{_currentSeed}.svg"), vennSVG.ToString());
-            File.WriteAllText(Path.Combine(vennpath, $"legend-{_currentSeed}.svg"), legendSVG.ToString());
+            replacements.Add(new ReplaceText {Original = "VENNDIAGRAMSVGDATA", Replacement = vennSVG.ToString()});
+            replacements.Add(new ReplaceText {Original = "VENNLEGENDSVGDATA", Replacement = legendSVG.ToString()});
+            file.WriteFile(path, replacements, outputFile);
         }
 
-        private void WriteMazesManual(string path)
+        private void WriteMazesManual(string path, ManualFileName file, ref List<ReplaceText> replacements, bool outputFile = true)
         {
-            var mazepath = Path.Combine(path, Path.Combine("img", "Mazes"));
-            Directory.CreateDirectory(mazepath);
             var mazes = _ruleManager.MazeRuleSet.GetMazes();
             for (var i = 0; i < mazes.Count; i++)
             {
-                File.WriteAllText(Path.Combine(mazepath, $"maze{i}-{_currentSeed}.svg"), mazes[i].ToSVG());
+                replacements.Add(new ReplaceText {Original = $"MAZE{i}SVGDATA", Replacement = mazes[i].ToSVG().Replace("<svg ", "<svg class=\"maze\" ") });
             }
+            file.WriteFile(path, replacements, outputFile);
         }
 
-        private void WriteSimonSaysManual(string path, ManualFileName file, ref List<ReplaceText> replacements)
+        private void WriteSimonSaysManual(string path, ManualFileName file, ref List<ReplaceText> replacements, bool outputFile = true)
         {
             var rules = _ruleManager.SimonRuleSet.RuleList;
             foreach (var keyValuePair in rules)
@@ -258,10 +319,10 @@ namespace VanillaRuleGenerator
                     }
                 }
             }
-            file.WriteFile(path, replacements);
+            file.WriteFile(path, replacements, outputFile);
         }
 
-        private void WritePasswordManual(string path, ManualFileName file, ref List<ReplaceText> replacements)
+        private void WritePasswordManual(string path, ManualFileName file, ref List<ReplaceText> replacements, bool outputFile = true)
         {
             var passwordrules = _ruleManager.PasswordRuleSet.possibilities;
             for (var i = 0; i < passwordrules.Count; i++)
@@ -269,10 +330,10 @@ namespace VanillaRuleGenerator
                 replacements.Add(new ReplaceText { Original = $"PASSWORD{i:00}", Replacement = passwordrules[i] });
             }
 
-            file.WriteFile(path, replacements);
+            file.WriteFile(path, replacements, outputFile);
         }
 
-        private void WriteNeedyKnobManual(string path, ManualFileName file, ref List<ReplaceText> replacements)
+        private void WriteNeedyKnobManual(string path, ManualFileName file, ref List<ReplaceText> replacements, bool outputFile = true)
         {
             var replacement = string.Empty;
             var currentDirection = string.Empty;
@@ -310,11 +371,11 @@ namespace VanillaRuleGenerator
 
 
             replacements.Add(new ReplaceText { Original = "NEEDYKNOBLIGHTCONFIGURATION", Replacement = replacement });
-            file.WriteFile(path, replacements);
+            file.WriteFile(path, replacements, outputFile);
 
         }
 
-        private void WriteKeypadsManual(string path, ManualFileName file, ref List<ReplaceText> replacements)
+        private void WriteKeypadsManual(string path, ManualFileName file, ref List<ReplaceText> replacements, bool outputFile = true)
         {
             var table = string.Empty;
             var rules = _ruleManager.KeypadRuleSet.PrecedenceLists;
@@ -339,13 +400,13 @@ namespace VanillaRuleGenerator
             replacements.Add(new ReplaceText() { Original = "<!--KEYPADTABLE GOES HERE-->", Replacement = table });
             foreach (var imagefile in _keypadFiles)
             {
-                imagefile.WriteFile(path);
+                imagefile.WriteFile(path, outputFile);
             }
 
-            file.WriteFile(path, replacements);
+            file.WriteFile(path, replacements, outputFile);
         }
 
-        private void WriteWhosOnFirstManual(string path, ManualFileName file, ref List<ReplaceText> replacements)
+        private void WriteWhosOnFirstManual(string path, ManualFileName file, ref List<ReplaceText> replacements, bool outputFile = true)
         {
             var step1Precedentlist = _ruleManager.WhosOnFirstRuleSet.displayWordToButtonIndexMap;
 
@@ -407,10 +468,10 @@ namespace VanillaRuleGenerator
             }
             replacements.Add(new ReplaceText { Original = "PRECEDENTMAP", Replacement = replace });
 
-            file.WriteFile(path, replacements);
+            file.WriteFile(path, replacements, outputFile);
         }
 
-        private void WriteWireSequenceManual(string path, ManualFileName file, ref List<ReplaceText> replacements)
+        private void WriteWireSequenceManual(string path, ManualFileName file, ref List<ReplaceText> replacements, bool outputFile = true)
         {
             var wiresequencetable = string.Empty;
             var wireLetters = new[] { "A", "B", "C" };
@@ -447,19 +508,19 @@ namespace VanillaRuleGenerator
             }
 
             replacements.Add(new ReplaceText { Original = "WIRESEQUENCETABLES", Replacement = wiresequencetable });
-            file.WriteFile(path, replacements);
+            file.WriteFile(path, replacements, outputFile);
         }
 
-        private void WriteMorseCodeManaul(string path, ManualFileName file, ref List<ReplaceText> replacements)
+        private void WriteMorseCodeManaul(string path, ManualFileName file, ref List<ReplaceText> replacements, bool outputFile = true)
         {
             var worddict = _ruleManager.MorseCodeRuleSet.WordDict;
             var validFreqs = _ruleManager.MorseCodeRuleSet.ValidFrequencies;
             var morsecodetable = validFreqs.Aggregate(string.Empty, (current, freq) => current + $"<tr><td>{worddict[freq]}</td><td>3.{freq} MHz</td></tr>\n");
             replacements.Add(new ReplaceText { Original = "MORSECODELOOKUP", Replacement = morsecodetable });
-            file.WriteFile(path, replacements);
+            file.WriteFile(path, replacements, outputFile);
         }
 
-        private void WriteWiresManual(string path, ManualFileName file, ref List<ReplaceText> replacements)
+        private void WriteWiresManual(string path, ManualFileName file, ref List<ReplaceText> replacements, bool outputFile = true)
         {
             var wirecuttinginstructions = string.Empty;
             var wirerules = _ruleManager.WireRuleSet.RulesDictionary;
@@ -486,10 +547,10 @@ namespace VanillaRuleGenerator
 
 
             replacements.Add(new ReplaceText { Original = "WIRECUTTINGINSTRUCTIONS", Replacement = wirecuttinginstructions });
-            file.WriteFile(path, replacements);
+            file.WriteFile(path, replacements, outputFile);
         }
 
-        private void WriteMemoryManual(string path, ManualFileName file, ref List<ReplaceText> replacements)
+        private void WriteMemoryManual(string path, ManualFileName file, ref List<ReplaceText> replacements, bool outputFile = true)
         {
             var memoryinstructions = string.Empty;
 
@@ -504,10 +565,10 @@ namespace VanillaRuleGenerator
             }
 
             replacements.Add(new ReplaceText { Original = "MEMORYRULES", Replacement = memoryinstructions });
-            file.WriteFile(path, replacements);
+            file.WriteFile(path, replacements, outputFile);
         }
 
-        private void WriteButtonManual(string path, ManualFileName file, ref List<ReplaceText> replacements)
+        private void WriteButtonManual(string path, ManualFileName file, ref List<ReplaceText> replacements, bool outputFile = true)
         {
             var initial = string.Empty;
             var onhold = string.Empty;
@@ -525,52 +586,56 @@ namespace VanillaRuleGenerator
             replacements.Add(new ReplaceText { Original = "APPENDIXCREFERENCE", Replacement = portsused ? "<br />See Appendix C for port identification reference." : "" });
             replacements.Add(new ReplaceText { Original = "INITIALBUTTONRULES", Replacement = initial });
             replacements.Add(new ReplaceText { Original = "ONBUTTONHOLDRULES", Replacement = onhold });
-            file.WriteFile(path, replacements);
+            file.WriteFile(path, replacements, outputFile);
         }
 
-        private void WriteHTML(string path, ManualFileName file, ref List<ReplaceText> replacements)
+        private void WriteHTML(string path, ManualFileName file, ref List<ReplaceText> replacements, bool outputFile=true)
         {
             if (string.IsNullOrEmpty(file.Name))
                 return;
             switch (file.Name)
             {
                 case "The Button.html":
-                    WriteButtonManual(path, file, ref replacements);
+                    WriteButtonManual(path, file, ref replacements, outputFile);
                     break;
                 case "Memory.html":
-                    WriteMemoryManual(path, file, ref replacements);
+                    WriteMemoryManual(path, file, ref replacements, outputFile);
                     break;
                 case "Wires.html":
-                    WriteWiresManual(path, file, ref replacements);
+                    WriteWiresManual(path, file, ref replacements, outputFile);
                     break;
                 case "Wire Sequences.html":
-                    WriteWireSequenceManual(path, file, ref replacements);
+                    WriteWireSequenceManual(path, file, ref replacements, outputFile);
                     break;
                 case "Morse Code.html":
-                    WriteMorseCodeManaul(path, file, ref replacements);
+                    WriteMorseCodeManaul(path, file, ref replacements, outputFile);
                     break;
                 case "Who’s on First.html":
-                    WriteWhosOnFirstManual(path, file, ref replacements);
+                    WriteWhosOnFirstManual(path, file, ref replacements, outputFile);
                     break;
-                case "Knobs.html":
-                    WriteNeedyKnobManual(path, file, ref replacements);
+                case "Knob.html":
+                    WriteNeedyKnobManual(path, file, ref replacements, outputFile);
                     break;
                 case "Passwords.html":
-                    WritePasswordManual(path, file, ref replacements);
+                    WritePasswordManual(path, file, ref replacements, outputFile);
                     break;
                 case "Simon Says.html":
-                    WriteSimonSaysManual(path, file, ref replacements);
+                    WriteSimonSaysManual(path, file, ref replacements, outputFile);
                     break;
                 case "Keypads.html":
-                    WriteKeypadsManual(path, file, ref replacements);
+                    WriteKeypadsManual(path, file, ref replacements, outputFile);
+                    break;
+                case "Mazes.html":
+                    WriteMazesManual(path, file, ref replacements, outputFile);
+                    break;
+                case "Complicated Wires.html":
+                    WriteComplicatedWiresManual(path, file, ref replacements, outputFile);
                     break;
                 case "index.html":
-                case "Mazes.html":
-                case "Complicated Wires.html":
-                    file.WriteFile(path, replacements);
+                    file.WriteFile(path, replacements, outputFile);
                     break;
                 default:
-                    file.WriteFile(path);
+                    file.WriteFile(path, outputFile);
                     break;
             }
         }
@@ -578,42 +643,149 @@ namespace VanillaRuleGenerator
         private RuleManager _ruleManager => RuleManager.Instance;
 
         private static readonly List<int> PreviousSeeds = new List<int>();
-        public void WriteManual(int seed)
-        {
-            _currentSeed = seed;
-            if (PreviousSeeds.Contains(seed))
-            {
-                if (seed != 1)
-                    DebugLog($"Manual already written for seed #{seed}.");
-                return; //Seed 1 is the Original Vanilla seed.
-            }
-            PreviousSeeds.Add(seed);
 
-            var path = Path.Combine("ModifiedVanillaManuals", seed.ToString());
+        public static string GetManualPath(int seed)
+        {
+            return Path.Combine("ModifiedVanillaManuals", seed.ToString());
+        }
+
+        private string InitializeManaulWriting(int seed, out List<ReplaceText> replacements, bool forceRewriteSeed=false)
+        {
+            if (!forceRewriteSeed)
+            {
+                if (PreviousSeeds.Contains(seed))
+                {
+                    if (seed != 1)
+                        DebugLog($"Manual already written for seed #{seed}.");
+                    replacements = null;
+                    return null; //Seed 1 is the Original Vanilla seed.
+                }
+                PreviousSeeds.Add(seed);
+            }
+
+            _ruleManager.Initialize(seed);
+
+            var path = GetManualPath(seed);
             //if (Directory.Exists(path))
             //    return;
 
             DebugLog($"Printing the Rules for seed #{seed}");
             _ruleManager.CurrentRules.PrintRules();
 
-            WriteComplicatedWiresManual(path);
-            WriteMazesManual(path);
             if (_manualFileNames == null)
             {
                 DebugLog("Can't write any manuals :(");
-                return;
+                replacements = null;
+                return null;
             }
 
-            var replacements = new List<ReplaceText>
+            replacements = new List<ReplaceText>
+            {
+                new ReplaceText {Original = "VANILLAMODIFICATIONSEED", Replacement = seed.ToString()},
+                new ReplaceText {Original = "<span class=\"page-header-doc-title\">Keep Talking and Nobody Explodes v. 1</span>", Replacement = $"<span class=\"page-header-doc-title\">Keep Talking and Nobody Explodes - Seed #{seed}</span>"},
+                new ReplaceText {Original = "<span class=\"page-header-doc-title\">Keep Talking and Nobody Explodes</span>", Replacement = $"<span class=\"page-header-doc-title\">Keep Talking and Nobody Explodes - Seed #{seed}</span>"}
+            };
+
+            return path;
+        }
+
+        public string GetHTMLManual(int seed, HTMLManualNames name)
         {
-            new ReplaceText {Original = "VANILLAMODIFICATIONSEED", Replacement = seed.ToString()},
-            new ReplaceText {Original = "<span class=\"page-header-doc-title\">Keep Talking and Nobody Explodes v. 1</span>", Replacement = $"<span class=\"page-header-doc-title\">Keep Talking and Nobody Explodes - Seed #{seed}</span>"},
-            new ReplaceText {Original = "<span class=\"page-header-doc-title\">Keep Talking and Nobody Explodes</span>", Replacement = $"<span class=\"page-header-doc-title\">Keep Talking and Nobody Explodes - Seed #{seed}</span>"}
-        };
+            if (name < 0 || name > HTMLManualNames.Index)
+                return null;
+			if (string.IsNullOrEmpty(InitializeManaulWriting(seed, out List<ReplaceText> replacements, true)))
+				return null;
+			for (var i = name == HTMLManualNames.Index ? 0 : (int)name; i <= (int) name; i++)
+            {
+                WriteHTML(null, _manualFileNames[i], ref replacements, false);
+            }
+            return _manualFileNames[(int) name].ToString(replacements);
+        }
+
+        public string GetHTMLManual(int seed, string name)
+        {
+			if (!HTMLManualGenerators.TryGetValue(name, out object generator))
+				return string.Empty;
+
+			if (generator is HTMLManualNames)
+                return GetHTMLManual(seed, (HTMLManualNames) generator);
+            else if (generator is ModRuleGenerator)
+                return ((ModRuleGenerator) generator).GetHTML(seed);
+            else
+                return string.Empty;
+        }
+
+	    public string[] GetHTMLFileNames()
+	    {
+		    return HTMLManualGenerators.Select(x => x.Key).ToArray();
+	    }
+
+
+        public void WriteIndexManaul(int seed)
+        {
+			var path = InitializeManaulWriting(seed, out List<ReplaceText> replacements);
+			if (string.IsNullOrEmpty(path))
+                return;
+            foreach (var manual in _manualFileNames)
+            {
+                WriteHTML(path, manual, ref replacements, !manual.Name.EndsWith(".html") || manual.Name.Equals("index.html") );
+            }
+        }
+
+        public void WriteManual(int seed)
+        {
+			var path = InitializeManaulWriting(seed, out List<ReplaceText> replacements);
+			if (string.IsNullOrEmpty(path))
+                return;
+
             foreach (var manual in _manualFileNames)
             {
                 WriteHTML(path, manual, ref replacements);
             }
         }
+
+        public void WriteModManuals(int seed, bool writeSupportFiles=true)
+        {
+            var path = GetManualPath(seed);
+            var wroteMod = false;
+            foreach (var kvp in HTMLManualGenerators.Where(x => x.Value is ModRuleGenerator))
+            {
+                var modRuleGenerator = kvp.Value as ModRuleGenerator;
+                if (modRuleGenerator == null) continue;
+                wroteMod = true;
+                modRuleGenerator.WriteAllFiles(seed, path);
+            }
+            if (!wroteMod || !writeSupportFiles) return;
+
+            foreach (var manual in _manualFileNames.Where(x => !HTMLManualGenerators.ContainsKey(x.Name)))
+            {
+                manual.WriteFile(path, true);
+            }
+        }
+
+        public void WriteAllManuals(int seed)
+        {
+            WriteManual(seed);
+            WriteModManuals(seed, false);
+        }
+    }
+
+    public enum HTMLManualNames
+    {
+        CapacitorDischarge,
+        ComplicatedWires,
+        Keypads,
+        Knobs,
+        Mazes,
+        Memory,
+        MorseCode,
+        Passwords,
+        SimonSays,
+        TheButton,
+        VentingGas,
+        WhosOnFirst,
+        WireSequences,
+        Wires,
+        Index
     }
 }

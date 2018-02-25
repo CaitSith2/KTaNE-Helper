@@ -15,24 +15,37 @@ namespace VanillaRuleGenerator.Rules
 					list.Add(new MazeRuleSetGenerator.MazePoint(i, j));
 				}
 			}
-			for (int k = 0; k < 9; k++)
-			{
-				Maze maze = MazeBuilder.BuildMaze(6, this.rand);
-				mazeRuleSet.AddMaze(maze);
-				MazeRuleSetGenerator.MazePoint mazePoint = list[this.rand.Next(list.Count)];
-				list.Remove(mazePoint);
-				MazeRuleSetGenerator.MazePoint mazePoint2 = list[this.rand.Next(list.Count)];
-				list.Remove(mazePoint2);
-				maze.SetIndicators(mazePoint.x, mazePoint.y, mazePoint2.x, mazePoint2.y);
-			}
+		    MakeMazes(mazeRuleSet, list);
 			return mazeRuleSet;
 		}
+
+	    public void MakeMazes(MazeRuleSet mazeRuleSet, List<MazeRuleSetGenerator.MazePoint> list=null)
+	    {
+	        for (int k = 0; k < 9; k++)
+	        {
+	            Maze maze = MazeBuilder.BuildMaze(6, this.rand);
+	            mazeRuleSet.AddMaze(maze);
+	            if (list != null)
+	            {
+	                MazeRuleSetGenerator.MazePoint mazePoint = list[this.rand.Next(list.Count)];
+	                list.Remove(mazePoint);
+	                MazeRuleSetGenerator.MazePoint mazePoint2 = list[this.rand.Next(list.Count)];
+	                list.Remove(mazePoint2);
+	                maze.SetIndicators(mazePoint.x, mazePoint.y, mazePoint2.x, mazePoint2.y);
+	            }
+	            else
+	            {
+	                rand.Next();
+	                rand.Next();
+	            }
+	        }
+        }
 
 		private const int NUM_MAZES = 9;
 
 		private const int MAZE_SIZE = 6;
 
-		private class MazePoint
+		public class MazePoint
 		{
 			public MazePoint(int a, int b)
 			{

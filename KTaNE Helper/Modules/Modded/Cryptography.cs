@@ -61,10 +61,9 @@ namespace KTaNE_Helper.Modules.Modded
             var lens = new List<int>();
             foreach (var x in inputs)
             {
-                int y;
-                if (int.TryParse(x, out y))
-                    lens.Add(y);
-            }
+				if (int.TryParse(x, out int y))
+					lens.Add(y);
+			}
             if (lens.Count == 0) return result;
 
             var matched = 0;

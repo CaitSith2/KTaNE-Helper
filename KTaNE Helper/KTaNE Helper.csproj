@@ -78,6 +78,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Modules\Modded\LightCycle.cs" />
+    <Compile Include="Modules\Modded\MorseAMaze.cs" />
     <Compile Include="Modules\Modded\MorseMatics.cs" />
     <Compile Include="Modules\Modded\PianoKeys.cs" />
     <Compile Include="Modules\Modded\RockPaperScissorsLizardSpock.cs" />

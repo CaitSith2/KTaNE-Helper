@@ -25,6 +25,11 @@ namespace VanillaRuleGenerator.Rules
 			return this.mazes;
 		}
 
+	    public void ClearMazes()
+	    {
+	        mazes.Clear();
+	    }
+
 		public override string ToString()
 		{
 			string text = string.Empty;

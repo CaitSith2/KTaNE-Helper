@@ -18,9 +18,8 @@ namespace VanillaRuleGenerator.Edgework
 
             public bool IsOn()
             {
-                bool isOn = false;
-                bool.TryParse(on, out isOn);
-                return isOn;
+				bool.TryParse(on, out bool isOn);
+				return isOn;
             }
         }
 

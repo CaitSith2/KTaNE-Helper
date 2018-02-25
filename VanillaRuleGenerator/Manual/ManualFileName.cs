@@ -43,8 +43,31 @@ namespace VanillaRuleGenerator.Helpers
             CommonReflectedTypeInfo.DebugLog(message, args);
         }
 
-        public void WriteFile(string path, List<ReplaceText> textReplacements = null)
+        public void WriteFile(string path, bool outputFile)
         {
+            WriteFile(path, null, outputFile);
+        }
+
+        public string ToString(List<ReplaceText> replacements = null)
+        {
+            if(!IsText)
+                return base.ToString();
+            try
+            {
+                if (replacements == null)
+                    replacements = new List<ReplaceText>();
+                return replacements.Aggregate(Text, (current, replacement) => current.Replace(replacement.Original, replacement.Replacement));
+            }
+            catch
+            {
+                return base.ToString();
+            }
+        }
+
+        public void WriteFile(string path, List<ReplaceText> textReplacements = null, bool outputFile = true)
+        {
+            if (!outputFile)
+                return;
             DebugLog("Writing Manaul file: {0}", Name);
             var manualpath = Path.Combine(path, Name);
             if (string.IsNullOrEmpty(manualpath))

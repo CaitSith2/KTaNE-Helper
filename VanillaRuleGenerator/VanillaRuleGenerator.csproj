@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssemblyExtension.cs" />
     <Compile Include="Edgework\Batteries.cs" />
     <Compile Include="Edgework\Indicators.cs" />
     <Compile Include="Edgework\KMBombInfo.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Extensions\Util.cs" />
     <Compile Include="Manual\ManualFileName.cs" />
     <Compile Include="ManualGenerator.cs" />
+    <Compile Include="ModRuleGenerator.cs" />
     <Compile Include="MonoRandom.cs" />
     <Compile Include="Modules\BombComponent.cs" />
     <Compile Include="Modules\ButtonComponent.cs" />

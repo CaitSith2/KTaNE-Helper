@@ -22,10 +22,9 @@ namespace VanillaRuleGenerator.Edgework
 
             foreach (var battery in split)
             {
-                int batteryInt;
-                if(int.TryParse(battery,out batteryInt))
-                    BatteryHolders.Add(batteryInt);
-            }
+				if (int.TryParse(battery, out int batteryInt))
+					BatteryHolders.Add(batteryInt);
+			}
         }
     }
 }

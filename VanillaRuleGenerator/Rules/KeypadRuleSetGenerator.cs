@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+// ReSharper disable SuggestVarOrType_Elsewhere
+// ReSharper disable SuggestVarOrType_BuiltInTypes
 
 namespace VanillaRuleGenerator.Rules
 {
@@ -7,8 +9,8 @@ namespace VanillaRuleGenerator.Rules
 		protected override AbstractRuleSet CreateRules(bool useDefault)
 		{
 			KeypadRuleSet keypadRuleSet = new KeypadRuleSet();
-			this.PopulatePLists(keypadRuleSet.PrecedenceLists);
-			this.PopulateFileNames(keypadRuleSet.PrecedenceLists, keypadRuleSet.FileNames);
+			PopulatePLists(keypadRuleSet.PrecedenceLists);
+			PopulateFileNames(keypadRuleSet.PrecedenceLists, keypadRuleSet.FileNames);
 			return keypadRuleSet;
 		}
 
@@ -27,35 +29,35 @@ namespace VanillaRuleGenerator.Rules
 
 		private void PopulatePLists(List<List<string>> pLists)
 		{
-			List<string> list = new List<string>(SymbolPool.Symbols);
-			List<string> list2 = new List<string>();
-			for (int i = 0; i < 6; i++)
+			List<string> unusedSymbols = new List<string>(SymbolPool.Symbols);
+			List<string> unusedOverlappingSymbols = new List<string>();
+			for (int i = 0; i < MAX_LISTS; i++)
 			{
-				List<string> list3 = new List<string>();
-				pLists.Add(list3);
+				List<string> pList = new List<string>();
+				pLists.Add(pList);
 				int j = 0;
 				if (i > 0)
 				{
-					while (j < 3)
+					while (j < OVERLAP)
 					{
-						if (list2.Count == 0)
+						if (unusedOverlappingSymbols.Count == 0)
 						{
 							break;
 						}
-						int index = this.rand.Next(list2.Count);
-						list3.Add(list2[index]);
-						list2.RemoveAt(index);
+						int index = rand.Next(unusedOverlappingSymbols.Count);
+						pList.Add(unusedOverlappingSymbols[index]);
+						unusedOverlappingSymbols.RemoveAt(index);
 						j++;
 					}
 				}
-				while (j < 7)
+				while (j < MAX_SYMBOLS)
 				{
-					if (list.Count > 0)
+					if (unusedSymbols.Count > 0)
 					{
-						int index2 = this.rand.Next(list.Count);
-						list3.Add(list[index2]);
-						list2.Add(list[index2]);
-						list.RemoveAt(index2);
+						int index2 = rand.Next(unusedSymbols.Count);
+						pList.Add(unusedSymbols[index2]);
+						unusedOverlappingSymbols.Add(unusedSymbols[index2]);
+						unusedSymbols.RemoveAt(index2);
 					}
 					else
 					{
@@ -63,7 +65,7 @@ namespace VanillaRuleGenerator.Rules
 					}
 					j++;
 				}
-				this.RandomizePList(list3);
+				RandomizePList(pList);
 			}
 		}
 
@@ -72,7 +74,7 @@ namespace VanillaRuleGenerator.Rules
 			for (int i = 0; i < pList.Count; i++)
 			{
 				string value = pList[i];
-				int index = this.rand.Next(pList.Count);
+				int index = rand.Next(pList.Count);
 				pList[i] = pList[index];
 				pList[index] = value;
 			}

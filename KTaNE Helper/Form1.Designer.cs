@@ -265,13 +265,11 @@
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.pbMaze = new System.Windows.Forms.PictureBox();
             this.mazeOutput = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.mazeStart = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.mazeSelection = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.mazeEnd = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.flpMorseAMazeParameters = new System.Windows.Forms.FlowLayoutPanel();
+            this.txtMorseAMazeParams = new System.Windows.Forms.TextBox();
+            this.lblMorseAMazeParameters = new System.Windows.Forms.Label();
+            this.label60 = new System.Windows.Forms.Label();
             this.txtMorseAMaze = new System.Windows.Forms.TextBox();
             this.cbAutoAdvance = new System.Windows.Forms.CheckBox();
             this.rbEnd = new System.Windows.Forms.RadioButton();
@@ -646,6 +644,7 @@
             this.groupBox16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaze)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.flpMorseAMazeParameters.SuspendLayout();
             this.tpModCollection3.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
             this.groupBox33.SuspendLayout();
@@ -2106,7 +2105,7 @@
             // 
             this.scPasswordMorseCode.Panel2.Controls.Add(this.groupBox14);
             this.scPasswordMorseCode.Size = new System.Drawing.Size(650, 379);
-            this.scPasswordMorseCode.SplitterDistance = 212;
+            this.scPasswordMorseCode.SplitterDistance = 211;
             this.scPasswordMorseCode.TabIndex = 0;
             // 
             // groupBox13
@@ -2115,7 +2114,7 @@
             this.groupBox13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox13.Location = new System.Drawing.Point(0, 0);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(650, 212);
+            this.groupBox13.Size = new System.Drawing.Size(650, 211);
             this.groupBox13.TabIndex = 11;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Password";
@@ -2134,8 +2133,8 @@
             // splitContainerPasswordHorizontal.Panel2
             // 
             this.splitContainerPasswordHorizontal.Panel2.Controls.Add(this.passResults);
-            this.splitContainerPasswordHorizontal.Size = new System.Drawing.Size(644, 193);
-            this.splitContainerPasswordHorizontal.SplitterDistance = 91;
+            this.splitContainerPasswordHorizontal.Size = new System.Drawing.Size(644, 192);
+            this.splitContainerPasswordHorizontal.SplitterDistance = 90;
             this.splitContainerPasswordHorizontal.TabIndex = 11;
             // 
             // splitContainer6
@@ -2155,7 +2154,7 @@
             this.splitContainer6.Panel2.Controls.Add(this.passwordClear);
             this.splitContainer6.Panel2.Controls.Add(this.label15);
             this.splitContainer6.Panel2.Controls.Add(this.fpPasswordLettersNotPresent);
-            this.splitContainer6.Size = new System.Drawing.Size(644, 91);
+            this.splitContainer6.Size = new System.Drawing.Size(644, 90);
             this.splitContainer6.SplitterDistance = 84;
             this.splitContainer6.TabIndex = 0;
             // 
@@ -2169,7 +2168,7 @@
             this.fpPassword.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fpPassword.Location = new System.Drawing.Point(0, 0);
             this.fpPassword.Name = "fpPassword";
-            this.fpPassword.Size = new System.Drawing.Size(84, 91);
+            this.fpPassword.Size = new System.Drawing.Size(84, 90);
             this.fpPassword.TabIndex = 7;
             // 
             // pass1
@@ -2246,7 +2245,7 @@
             this.passwordClear.Dock = System.Windows.Forms.DockStyle.Left;
             this.passwordClear.Location = new System.Drawing.Point(392, 39);
             this.passwordClear.Name = "passwordClear";
-            this.passwordClear.Size = new System.Drawing.Size(50, 52);
+            this.passwordClear.Size = new System.Drawing.Size(50, 51);
             this.passwordClear.TabIndex = 6;
             this.passwordClear.Text = "Clear";
             this.passwordClear.UseVisualStyleBackColor = true;
@@ -2273,7 +2272,7 @@
             this.fpPasswordLettersNotPresent.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.fpPasswordLettersNotPresent.Location = new System.Drawing.Point(0, 0);
             this.fpPasswordLettersNotPresent.Name = "fpPasswordLettersNotPresent";
-            this.fpPasswordLettersNotPresent.Size = new System.Drawing.Size(392, 91);
+            this.fpPasswordLettersNotPresent.Size = new System.Drawing.Size(392, 90);
             this.fpPasswordLettersNotPresent.TabIndex = 9;
             this.fpPasswordLettersNotPresent.Enter += new System.EventHandler(this.MaskTextBox_Enter);
             // 
@@ -2343,7 +2342,7 @@
             this.groupBox14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox14.Location = new System.Drawing.Point(0, 0);
             this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(650, 163);
+            this.groupBox14.Size = new System.Drawing.Size(650, 164);
             this.groupBox14.TabIndex = 2;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "Morse Code";
@@ -2363,7 +2362,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.MorseCodeOutput);
-            this.splitContainer3.Size = new System.Drawing.Size(644, 144);
+            this.splitContainer3.Size = new System.Drawing.Size(644, 145);
             this.splitContainer3.SplitterDistance = 31;
             this.splitContainer3.TabIndex = 0;
             // 
@@ -2384,7 +2383,7 @@
             this.MorseCodeOutput.Location = new System.Drawing.Point(0, 0);
             this.MorseCodeOutput.Multiline = true;
             this.MorseCodeOutput.Name = "MorseCodeOutput";
-            this.MorseCodeOutput.Size = new System.Drawing.Size(644, 109);
+            this.MorseCodeOutput.Size = new System.Drawing.Size(644, 110);
             this.MorseCodeOutput.TabIndex = 1;
             // 
             // tpButtonV1
@@ -3410,19 +3409,13 @@
             this.tpMaze.Name = "tpMaze";
             this.tpMaze.Size = new System.Drawing.Size(650, 379);
             this.tpMaze.TabIndex = 12;
-            this.tpMaze.Text = "Mazes";
+            this.tpMaze.Text = "Mazes|Morse A-Maze";
             this.tpMaze.UseVisualStyleBackColor = true;
             // 
             // groupBox16
             // 
             this.groupBox16.Controls.Add(this.pbMaze);
             this.groupBox16.Controls.Add(this.mazeOutput);
-            this.groupBox16.Controls.Add(this.label2);
-            this.groupBox16.Controls.Add(this.mazeStart);
-            this.groupBox16.Controls.Add(this.label3);
-            this.groupBox16.Controls.Add(this.mazeSelection);
-            this.groupBox16.Controls.Add(this.label4);
-            this.groupBox16.Controls.Add(this.mazeEnd);
             this.groupBox16.Controls.Add(this.groupBox2);
             this.groupBox16.Location = new System.Drawing.Point(3, 4);
             this.groupBox16.Name = "groupBox16";
@@ -3446,71 +3439,13 @@
             this.mazeOutput.Location = new System.Drawing.Point(292, 133);
             this.mazeOutput.Multiline = true;
             this.mazeOutput.Name = "mazeOutput";
-            this.mazeOutput.Size = new System.Drawing.Size(187, 168);
+            this.mazeOutput.Size = new System.Drawing.Size(346, 168);
             this.mazeOutput.TabIndex = 8;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(393, 26);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Green Circle";
-            this.label2.Visible = false;
-            // 
-            // mazeStart
-            // 
-            this.mazeStart.Location = new System.Drawing.Point(385, 22);
-            this.mazeStart.MaxLength = 2;
-            this.mazeStart.Name = "mazeStart";
-            this.mazeStart.Size = new System.Drawing.Size(79, 20);
-            this.mazeStart.TabIndex = 2;
-            this.mazeStart.Visible = false;
-            this.mazeStart.TextChanged += new System.EventHandler(this.mazeSelection_TextChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(393, 25);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Start";
-            this.label3.Visible = false;
-            // 
-            // mazeSelection
-            // 
-            this.mazeSelection.Location = new System.Drawing.Point(385, 19);
-            this.mazeSelection.MaxLength = 2;
-            this.mazeSelection.Name = "mazeSelection";
-            this.mazeSelection.Size = new System.Drawing.Size(79, 20);
-            this.mazeSelection.TabIndex = 1;
-            this.mazeSelection.Visible = false;
-            this.mazeSelection.TextChanged += new System.EventHandler(this.mazeSelection_TextChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(406, 26);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(26, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "End";
-            this.label4.Visible = false;
-            // 
-            // mazeEnd
-            // 
-            this.mazeEnd.Location = new System.Drawing.Point(385, 22);
-            this.mazeEnd.MaxLength = 2;
-            this.mazeEnd.Name = "mazeEnd";
-            this.mazeEnd.Size = new System.Drawing.Size(79, 20);
-            this.mazeEnd.TabIndex = 3;
-            this.mazeEnd.Visible = false;
-            this.mazeEnd.TextChanged += new System.EventHandler(this.mazeSelection_TextChanged);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.flpMorseAMazeParameters);
+            this.groupBox2.Controls.Add(this.label60);
             this.groupBox2.Controls.Add(this.txtMorseAMaze);
             this.groupBox2.Controls.Add(this.cbAutoAdvance);
             this.groupBox2.Controls.Add(this.rbEnd);
@@ -3518,15 +3453,55 @@
             this.groupBox2.Controls.Add(this.rbGreenCircle);
             this.groupBox2.Location = new System.Drawing.Point(291, 19);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(188, 108);
+            this.groupBox2.Size = new System.Drawing.Size(347, 108);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             // 
+            // flpMorseAMazeParameters
+            // 
+            this.flpMorseAMazeParameters.Controls.Add(this.txtMorseAMazeParams);
+            this.flpMorseAMazeParameters.Controls.Add(this.lblMorseAMazeParameters);
+            this.flpMorseAMazeParameters.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flpMorseAMazeParameters.Location = new System.Drawing.Point(9, 50);
+            this.flpMorseAMazeParameters.Name = "flpMorseAMazeParameters";
+            this.flpMorseAMazeParameters.Size = new System.Drawing.Size(332, 26);
+            this.flpMorseAMazeParameters.TabIndex = 11;
+            this.flpMorseAMazeParameters.Visible = false;
+            // 
+            // txtMorseAMazeParams
+            // 
+            this.txtMorseAMazeParams.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtMorseAMazeParams.Location = new System.Drawing.Point(253, 3);
+            this.txtMorseAMazeParams.MaxLength = 8;
+            this.txtMorseAMazeParams.Name = "txtMorseAMazeParams";
+            this.txtMorseAMazeParams.Size = new System.Drawing.Size(76, 20);
+            this.txtMorseAMazeParams.TabIndex = 9;
+            this.txtMorseAMazeParams.TextChanged += new System.EventHandler(this.txtMorseAMaze_TextChanged);
+            // 
+            // lblMorseAMazeParameters
+            // 
+            this.lblMorseAMazeParameters.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblMorseAMazeParameters.AutoSize = true;
+            this.lblMorseAMazeParameters.Location = new System.Drawing.Point(63, 6);
+            this.lblMorseAMazeParameters.Name = "lblMorseAMazeParameters";
+            this.lblMorseAMazeParameters.Size = new System.Drawing.Size(184, 13);
+            this.lblMorseAMazeParameters.TabIndex = 10;
+            this.lblMorseAMazeParameters.Text = "Two Factor LSD / Unsolved Modules";
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Location = new System.Drawing.Point(6, 85);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(67, 13);
+            this.label60.TabIndex = 9;
+            this.label60.Text = "Morse Code:";
+            // 
             // txtMorseAMaze
             // 
-            this.txtMorseAMaze.Location = new System.Drawing.Point(6, 82);
+            this.txtMorseAMaze.Location = new System.Drawing.Point(76, 82);
             this.txtMorseAMaze.Name = "txtMorseAMaze";
-            this.txtMorseAMaze.Size = new System.Drawing.Size(176, 20);
+            this.txtMorseAMaze.Size = new System.Drawing.Size(265, 20);
             this.txtMorseAMaze.TabIndex = 4;
             this.txtMorseAMaze.TextChanged += new System.EventHandler(this.txtMorseAMaze_TextChanged);
             // 
@@ -3535,7 +3510,7 @@
             this.cbAutoAdvance.AutoSize = true;
             this.cbAutoAdvance.Checked = true;
             this.cbAutoAdvance.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbAutoAdvance.Location = new System.Drawing.Point(6, 39);
+            this.cbAutoAdvance.Location = new System.Drawing.Point(194, 17);
             this.cbAutoAdvance.Name = "cbAutoAdvance";
             this.cbAutoAdvance.Size = new System.Drawing.Size(94, 17);
             this.cbAutoAdvance.TabIndex = 3;
@@ -7034,6 +7009,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbMaze)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.flpMorseAMazeParameters.ResumeLayout(false);
+            this.flpMorseAMazeParameters.PerformLayout();
             this.tpModCollection3.ResumeLayout(false);
             this.flowLayoutPanel4.ResumeLayout(false);
             this.groupBox33.ResumeLayout(false);
@@ -7295,17 +7272,11 @@
         private System.Windows.Forms.TextBox wofOutput;
         private System.Windows.Forms.TabPage tpMaze;
         private System.Windows.Forms.TextBox mazeOutput;
-        private System.Windows.Forms.TextBox mazeStart;
-        private System.Windows.Forms.TextBox mazeSelection;
-        private System.Windows.Forms.TextBox mazeEnd;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox cbAutoAdvance;
         private System.Windows.Forms.RadioButton rbEnd;
         private System.Windows.Forms.RadioButton rbStart;
         private System.Windows.Forms.RadioButton rbGreenCircle;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pbMaze;
         private System.Windows.Forms.TabPage tpWires;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
@@ -7694,6 +7665,10 @@
         private System.Windows.Forms.Button button45;
         private System.Windows.Forms.Button button46;
         private System.Windows.Forms.Button button47;
+        private System.Windows.Forms.Label lblMorseAMazeParameters;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.TextBox txtMorseAMazeParams;
+        private System.Windows.Forms.FlowLayoutPanel flpMorseAMazeParameters;
     }
 }
 
