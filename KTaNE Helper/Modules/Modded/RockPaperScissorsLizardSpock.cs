@@ -32,7 +32,9 @@ namespace KTaNE_Helper.Modules.Modded
 
         private int GetWinner(int _decoy)
         {
+	        if (!SerialNumber.IsSerialValid) return -1;
             var serial = Bomb.GetSerialNumber();
+			
 
             var scores = newArray(
                 // Row 1: serial number letter
@@ -121,7 +123,7 @@ namespace KTaNE_Helper.Modules.Modded
 
         private string GetAnswer(int winner, int decoy)
         {
-            if (Bomb.GetSerialNumber().Length != 6) return "";
+            if (!SerialNumber.IsSerialValid) return "";
             if (winner == -1)
             {
                 switch (decoy)
