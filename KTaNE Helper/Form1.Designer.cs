@@ -2105,7 +2105,7 @@
 			// 
 			this.scPasswordMorseCode.Panel2.Controls.Add(this.groupBox14);
 			this.scPasswordMorseCode.Size = new System.Drawing.Size(650, 379);
-			this.scPasswordMorseCode.SplitterDistance = 211;
+			this.scPasswordMorseCode.SplitterDistance = 210;
 			this.scPasswordMorseCode.TabIndex = 0;
 			// 
 			// groupBox13
@@ -2114,7 +2114,7 @@
 			this.groupBox13.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.groupBox13.Location = new System.Drawing.Point(0, 0);
 			this.groupBox13.Name = "groupBox13";
-			this.groupBox13.Size = new System.Drawing.Size(650, 211);
+			this.groupBox13.Size = new System.Drawing.Size(650, 210);
 			this.groupBox13.TabIndex = 11;
 			this.groupBox13.TabStop = false;
 			this.groupBox13.Text = "Password";
@@ -2133,8 +2133,8 @@
 			// splitContainerPasswordHorizontal.Panel2
 			// 
 			this.splitContainerPasswordHorizontal.Panel2.Controls.Add(this.passResults);
-			this.splitContainerPasswordHorizontal.Size = new System.Drawing.Size(644, 192);
-			this.splitContainerPasswordHorizontal.SplitterDistance = 90;
+			this.splitContainerPasswordHorizontal.Size = new System.Drawing.Size(644, 191);
+			this.splitContainerPasswordHorizontal.SplitterDistance = 89;
 			this.splitContainerPasswordHorizontal.TabIndex = 11;
 			// 
 			// splitContainer6
@@ -2154,7 +2154,7 @@
 			this.splitContainer6.Panel2.Controls.Add(this.passwordClear);
 			this.splitContainer6.Panel2.Controls.Add(this.label15);
 			this.splitContainer6.Panel2.Controls.Add(this.fpPasswordLettersNotPresent);
-			this.splitContainer6.Size = new System.Drawing.Size(644, 90);
+			this.splitContainer6.Size = new System.Drawing.Size(644, 89);
 			this.splitContainer6.SplitterDistance = 84;
 			this.splitContainer6.TabIndex = 0;
 			// 
@@ -2168,7 +2168,7 @@
 			this.fpPassword.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.fpPassword.Location = new System.Drawing.Point(0, 0);
 			this.fpPassword.Name = "fpPassword";
-			this.fpPassword.Size = new System.Drawing.Size(84, 90);
+			this.fpPassword.Size = new System.Drawing.Size(84, 89);
 			this.fpPassword.TabIndex = 7;
 			// 
 			// pass1
@@ -2245,7 +2245,7 @@
 			this.passwordClear.Dock = System.Windows.Forms.DockStyle.Left;
 			this.passwordClear.Location = new System.Drawing.Point(392, 39);
 			this.passwordClear.Name = "passwordClear";
-			this.passwordClear.Size = new System.Drawing.Size(50, 51);
+			this.passwordClear.Size = new System.Drawing.Size(50, 50);
 			this.passwordClear.TabIndex = 6;
 			this.passwordClear.Text = "Clear";
 			this.passwordClear.UseVisualStyleBackColor = true;
@@ -2272,7 +2272,7 @@
 			this.fpPasswordLettersNotPresent.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
 			this.fpPasswordLettersNotPresent.Location = new System.Drawing.Point(0, 0);
 			this.fpPasswordLettersNotPresent.Name = "fpPasswordLettersNotPresent";
-			this.fpPasswordLettersNotPresent.Size = new System.Drawing.Size(392, 90);
+			this.fpPasswordLettersNotPresent.Size = new System.Drawing.Size(392, 89);
 			this.fpPasswordLettersNotPresent.TabIndex = 9;
 			this.fpPasswordLettersNotPresent.Enter += new System.EventHandler(this.MaskTextBox_Enter);
 			// 
@@ -2342,7 +2342,7 @@
 			this.groupBox14.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.groupBox14.Location = new System.Drawing.Point(0, 0);
 			this.groupBox14.Name = "groupBox14";
-			this.groupBox14.Size = new System.Drawing.Size(650, 164);
+			this.groupBox14.Size = new System.Drawing.Size(650, 165);
 			this.groupBox14.TabIndex = 2;
 			this.groupBox14.TabStop = false;
 			this.groupBox14.Text = "Morse Code";
@@ -2362,7 +2362,7 @@
 			// splitContainer3.Panel2
 			// 
 			this.splitContainer3.Panel2.Controls.Add(this.MorseCodeOutput);
-			this.splitContainer3.Size = new System.Drawing.Size(644, 145);
+			this.splitContainer3.Size = new System.Drawing.Size(644, 146);
 			this.splitContainer3.SplitterDistance = 31;
 			this.splitContainer3.TabIndex = 0;
 			// 
@@ -2383,7 +2383,7 @@
 			this.MorseCodeOutput.Location = new System.Drawing.Point(0, 0);
 			this.MorseCodeOutput.Multiline = true;
 			this.MorseCodeOutput.Name = "MorseCodeOutput";
-			this.MorseCodeOutput.Size = new System.Drawing.Size(644, 110);
+			this.MorseCodeOutput.Size = new System.Drawing.Size(644, 111);
 			this.MorseCodeOutput.TabIndex = 1;
 			// 
 			// tpButtonV1
@@ -6263,7 +6263,7 @@
 			// txtFizzBuzz3IN
 			// 
 			this.txtFizzBuzz3IN.Location = new System.Drawing.Point(12, 71);
-			this.txtFizzBuzz3IN.Mask = ">#######";
+			this.txtFizzBuzz3IN.Mask = ">#######?";
 			this.txtFizzBuzz3IN.Name = "txtFizzBuzz3IN";
 			this.txtFizzBuzz3IN.Size = new System.Drawing.Size(83, 20);
 			this.txtFizzBuzz3IN.TabIndex = 34;
@@ -6274,7 +6274,7 @@
 			// txtFizzBuzz2IN
 			// 
 			this.txtFizzBuzz2IN.Location = new System.Drawing.Point(12, 45);
-			this.txtFizzBuzz2IN.Mask = ">#######";
+			this.txtFizzBuzz2IN.Mask = ">#######?";
 			this.txtFizzBuzz2IN.Name = "txtFizzBuzz2IN";
 			this.txtFizzBuzz2IN.Size = new System.Drawing.Size(83, 20);
 			this.txtFizzBuzz2IN.TabIndex = 33;
@@ -6285,7 +6285,7 @@
 			// txtFizzBuzz1IN
 			// 
 			this.txtFizzBuzz1IN.Location = new System.Drawing.Point(12, 19);
-			this.txtFizzBuzz1IN.Mask = ">#######";
+			this.txtFizzBuzz1IN.Mask = ">#######?";
 			this.txtFizzBuzz1IN.Name = "txtFizzBuzz1IN";
 			this.txtFizzBuzz1IN.Size = new System.Drawing.Size(83, 20);
 			this.txtFizzBuzz1IN.TabIndex = 32;
@@ -6438,8 +6438,8 @@
 			this.flowLayoutPanel7.Controls.Add(this.groupBox49);
 			this.flowLayoutPanel7.Controls.Add(this.groupBox51);
 			this.flowLayoutPanel7.Controls.Add(this.groupBox50);
-			this.flowLayoutPanel7.Controls.Add(this.groupBox52);
 			this.flowLayoutPanel7.Controls.Add(this.groupBox53);
+			this.flowLayoutPanel7.Controls.Add(this.groupBox52);
 			this.flowLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.flowLayoutPanel7.Location = new System.Drawing.Point(0, 0);
 			this.flowLayoutPanel7.Name = "flowLayoutPanel7";
@@ -6743,9 +6743,9 @@
 			this.groupBox52.Controls.Add(this.label99);
 			this.groupBox52.Controls.Add(this.txtMorseMaticsOut);
 			this.groupBox52.Controls.Add(this.label100);
-			this.groupBox52.Location = new System.Drawing.Point(3, 252);
+			this.groupBox52.Location = new System.Drawing.Point(3, 335);
 			this.groupBox52.Name = "groupBox52";
-			this.groupBox52.Size = new System.Drawing.Size(216, 77);
+			this.groupBox52.Size = new System.Drawing.Size(238, 77);
 			this.groupBox52.TabIndex = 24;
 			this.groupBox52.TabStop = false;
 			this.groupBox52.Text = "MorseMatics";
@@ -6790,18 +6790,18 @@
 			this.groupBox53.Controls.Add(this.label49);
 			this.groupBox53.Controls.Add(this.txtCruelPianoOutput);
 			this.groupBox53.Controls.Add(this.label53);
-			this.groupBox53.Location = new System.Drawing.Point(225, 252);
+			this.groupBox53.Location = new System.Drawing.Point(3, 252);
 			this.groupBox53.Name = "groupBox53";
-			this.groupBox53.Size = new System.Drawing.Size(347, 77);
+			this.groupBox53.Size = new System.Drawing.Size(631, 77);
 			this.groupBox53.TabIndex = 25;
 			this.groupBox53.TabStop = false;
-			this.groupBox53.Text = "Cruel Piano Keys";
+			this.groupBox53.Text = "Piano Keys";
 			// 
 			// txtCruelPianoInput
 			// 
 			this.txtCruelPianoInput.Location = new System.Drawing.Point(54, 19);
 			this.txtCruelPianoInput.Name = "txtCruelPianoInput";
-			this.txtCruelPianoInput.Size = new System.Drawing.Size(280, 20);
+			this.txtCruelPianoInput.Size = new System.Drawing.Size(571, 20);
 			this.txtCruelPianoInput.TabIndex = 17;
 			this.txtCruelPianoInput.TextChanged += new System.EventHandler(this.TxtCruelPianoInput_TextChanged);
 			// 
@@ -6816,11 +6816,14 @@
 			// 
 			// txtCruelPianoOutput
 			// 
+			this.txtCruelPianoOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtCruelPianoOutput.Location = new System.Drawing.Point(54, 45);
 			this.txtCruelPianoOutput.Name = "txtCruelPianoOutput";
 			this.txtCruelPianoOutput.ReadOnly = true;
-			this.txtCruelPianoOutput.Size = new System.Drawing.Size(280, 20);
+			this.txtCruelPianoOutput.Size = new System.Drawing.Size(571, 20);
 			this.txtCruelPianoOutput.TabIndex = 1;
+			this.txtCruelPianoOutput.Text = "Bb A Bb G Bb A Bb G Bb A Bb G Bb A Bb G Bb A Bb G Bb A Bb G Bb A Bb G Bb A Bb G B" +
+    "b A Bb G Bb A Bb G";
 			// 
 			// label53
 			// 

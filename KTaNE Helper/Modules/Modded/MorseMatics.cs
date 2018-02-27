@@ -261,7 +261,7 @@ namespace KTaNE_Helper.Modules.Modded
             }
             var morsecode = Morsify(answer);
             answer += ": ";
-            return morsecode.Aggregate(answer, (current, dit) => current + (dit == 1 ? "-" : "."));
+            return morsecode.Aggregate($"{string.Join("", displayCharsRaw)}:{answer}" , (current, dit) => current + (dit == 1 ? "-" : "."));
         }
 
         private static int[] Morsify(string text)

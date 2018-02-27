@@ -3496,143 +3496,16 @@ namespace KTaNE_Helper
             }
         }
 
-        private string ComputeFizzBuzz(string text)
-        {
-            
-            if (text.Trim().Length != 7) return "";
-            var fizzBuzzTable = new[]
-            {
-                new[] {7, 3, 2, 4, 5},
-                new[] {3, 4, 9, 2, 8},
-                new[] {4, 5, 8, 8, 2},
-                new[] {2, 3, 7, 9, 1},
-                new[] {6, 6, 1, 2, 8},
-                new[] {1, 2, 2, 5, 3},
-                new[] {3, 1, 8, 3, 4}
-            };
-            var colors = new[] {0, 0, 0, 0, 0};
-            for (var i = 0; i < 5; i++)
-            {
-                if (Batteries.Holders.Length >= 3)
-                    colors[i] += fizzBuzzTable[0][i];
-                if (IsPortPresent(PortTypes.Parallel) && IsPortPresent(PortTypes.Serial))
-                    colors[i] += fizzBuzzTable[1][i];
-                if (SerialNumberDigits.Length == 3 && SerialNumberLetters.Length == 3)
-                    colors[i] += fizzBuzzTable[2][i];
-                if (IsPortPresent(PortTypes.DVI) && IsPortPresent(PortTypes.StereoRCA))
-                    colors[i] += fizzBuzzTable[3][i];
-                if (facts_strike.SelectedIndex == 2)
-                    colors[i] += fizzBuzzTable[4][i];
-                if (Batteries.TotalBatteries >= 5)
-                    colors[i] += fizzBuzzTable[5][i];
-                if (colors[i] == 0)
-                    colors[i] = fizzBuzzTable[6][i];
-                colors[i] %= 10;
-            }
-            var colorText = new[] {"Red", "Green", "Blue", "Yellow", "White"};
-            string result = "";
-            for (var i = 0; i < 5; i++)
-            {
-                int number = 0;
-                foreach (var digit in text)
-                {
-                    int x = int.Parse(digit.ToString());
-                    x += colors[i];
-                    x %= 10;
-                    number *= 10;
-                    number += x;
-                }
-                result += colorText[i] + @":";
-                var fizz = number % 3 == 0;
-                var buzz = number % 5 == 0;
-                if (!fizz && !buzz)
-                    result += "Number";
-                if (fizz)
-                    result += "Fizz";
-                if (buzz)
-                    result += "Buzz";
-                if (i != 4)
-                    result += " - ";
-            }
-            return result;
-        }
-
         private void TxtFizzBuzz1IN_TextChanged(object sender, EventArgs e)
         {
-            txtFizzBuzz1OUT.Text = ComputeFizzBuzz(txtFizzBuzz1IN.Text);
-            txtFizzBuzz2OUT.Text = ComputeFizzBuzz(txtFizzBuzz2IN.Text);
-            txtFizzBuzz3OUT.Text = ComputeFizzBuzz(txtFizzBuzz3IN.Text);
+            txtFizzBuzz1OUT.Text = FizzBuzz.ComputeFizzBuzz(txtFizzBuzz1IN.Text, facts_strike.SelectedIndex);
+            txtFizzBuzz2OUT.Text = FizzBuzz.ComputeFizzBuzz(txtFizzBuzz2IN.Text, facts_strike.SelectedIndex);
+            txtFizzBuzz3OUT.Text = FizzBuzz.ComputeFizzBuzz(txtFizzBuzz3IN.Text, facts_strike.SelectedIndex);
         }
 
         private void TxtLaundryIn_TextChanged(object sender, EventArgs e)
         {
-            if (LitIndicators.Contains("BOB") && Batteries.Holders.Sum() == 4 &&
-                Batteries.Holders.Length == 2)
-            {
-                txtLaundryOut.Text = @"Praise our one true lord and savior BOB, Bestower of Bleach";
-                return;
-            }
-
-			if (!int.TryParse(txtLaundryIn.Text, out int x))
-			{
-				txtLaundryOut.Text = "";
-				return;
-			}
-
-			var item = GetModuleCount - x + UnlitIndicators.Length + LitIndicators.Length;
-            var material = PortCount(PortTypes.ALL) + x - Batteries.Holders.Length;
-            var color = LastSerialDigit + Batteries.TotalBatteries;
-
-            while (item < 0)
-            {
-	            item += 6;
-            }
-	        while (material < 0)
-	        {
-		        material += 6;
-	        }
-	        item %= 6;
-            material %= 6;
-            color %= 6;
-
-            var materialNames = new[] {"POLYESTER", "COTTON", "WOOL", "NYLON", "CORDUROY", "LEATHER"};
-            bool serialMatchesMaterial = SerialNumberLetters.Any(letter => materialNames[material].Contains(letter));
-
-            var washing = new[] {6, 9, 2, 4, 5, 4};
-            var materialSpecial = new[] {6, 8, 10, 11, 7, 5};
-            var drying = new[] {3, 3, 0, 10, 1, 2};
-            var colorSpecial = new[] {4, 11, 9, 12, 2, 2};
-            var ironing = new[] {3, 5, 0, 4, 3, 2};
-            var itemSpecial = new[] {0, 5, 10, 10, 1, 8};
-
-            var specialtInstructionsText = "Item";
-            var specialInstructions = itemSpecial[item];
-            if (color == 4)
-            {
-                specialInstructions = 2;
-                specialtInstructionsText = "Color==4";
-            }
-            else if (item == 0 || material == 4)
-            {
-                specialInstructions = materialSpecial[material];
-                specialtInstructionsText = "Material";
-            }
-            else if (serialMatchesMaterial)
-            {
-                specialInstructions = colorSpecial[color];
-                specialtInstructionsText = "Color";
-            }
-
-            var washingInstructions = color == 3 ? 4 : washing[material];
-            var washingOverride = color == 3 ? "Washing" : "";
-            var dryingInstructions = material == 2 ? 3 : drying[color];
-            var dryingOverride = material == 2 ? "Drying" : "";
-            var ironingInstructions = ironing[item];
-            var overrideText = washingOverride == "" && dryingOverride == "" ? "" : " Override:";
-            var overrideSeperator = washingOverride != "" && dryingOverride != "" ? "," : "";
-
-            txtLaundryOut.Text = $@"set all {washingInstructions},{dryingInstructions},{ironingInstructions},{specialInstructions}";
-            txtLaundryOut.Text += $@" -- I:{item}, M:{material}, C:{color}, Special:{specialtInstructionsText}{overrideText}{washingOverride}{overrideSeperator}{dryingOverride}";
+	        txtLaundryOut.Text = Laundry.GetLaundrySolution(txtLaundryIn.Text, GetModuleCount);
         }
 
         private void TxtAdjacentLettersIN_TextChanged(object sender, EventArgs e)
@@ -3715,7 +3588,10 @@ namespace KTaNE_Helper
                         notes = MelodyDatabase.ZeldasLullaby.Notes;
                         break;
                     default:
-                        notes = (from melody in MelodyDatabase.StandardMelodies where melody.Name.ToLowerInvariant().Contains(txtCruelPianoInput.Text.ToLowerInvariant()) select melody.Notes).FirstOrDefault();
+	                    List<Melody> melodies = new List<Melody>(MelodyDatabase.StandardMelodies);
+	                    melodies.AddRange(MelodyDatabase.FestiveMelodies);
+	                    melodies.Add(MelodyDatabase.GenerateCarolOfTheBells(SerialNumberDigits.Length > 0 ? SerialNumberDigits.Max() : 0));
+						notes = (from melody in melodies where melody.Name.ToLowerInvariant().Contains(txtCruelPianoInput.Text.ToLowerInvariant()) select melody.Notes).FirstOrDefault();
                         if (notes == null) return;
                         break;
                 }

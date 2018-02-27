@@ -109,7 +109,7 @@ namespace KTaNE_Helper.Modules.Modded
         public static readonly Melody FinalFantasyVictory = new Melody()
         {
             Name = "Final Fantasy Victory Fanfare",
-            Notes = new Note[] { new Note(Semitone.ASharp, 3, true),
+            Notes = new[] { new Note(Semitone.ASharp, 3, true),
                 new Note(Semitone.ASharp, 3, true),
                 new Note(Semitone.ASharp, 3, true),
                 new Note(Semitone.ASharp, 3, true),
@@ -124,7 +124,7 @@ namespace KTaNE_Helper.Modules.Modded
         public static readonly Melody GuilesTheme = new Melody()
         {
             Name = "Guile's Theme",
-            Notes = new Note[] { new Note(Semitone.DSharp, 3, true),
+            Notes = new[] { new Note(Semitone.DSharp, 3, true),
                 new Note(Semitone.DSharp, 3, true),
                 new Note(Semitone.D, 3),
                 new Note(Semitone.D, 3),
@@ -142,7 +142,7 @@ namespace KTaNE_Helper.Modules.Modded
         public static readonly Melody JamesBond = new Melody()
         {
             Name = "James Bond Theme",
-            Notes = new Note[] { new Note(Semitone.E, 3),
+            Notes = new[] { new Note(Semitone.E, 3),
                 new Note(Semitone.FSharp, 3),
                 new Note(Semitone.FSharp, 3),
                 new Note(Semitone.FSharp, 3),
@@ -156,7 +156,7 @@ namespace KTaNE_Helper.Modules.Modded
         public static readonly Melody JurrasicPark = new Melody()
         {
             Name = "Jurassic Park Theme",
-            Notes = new Note[] { new Note(Semitone.ASharp, 3, true),
+            Notes = new[] { new Note(Semitone.ASharp, 3, true),
                 new Note(Semitone.A, 3),
                 new Note(Semitone.ASharp, 3, true),
                 new Note(Semitone.F, 3),
@@ -172,7 +172,7 @@ namespace KTaNE_Helper.Modules.Modded
         public static readonly Melody SuperMarioBros = new Melody()
         {
             Name = "Mario Bros. Overworld Theme",
-            Notes = new Note[] { new Note(Semitone.E, 3),
+            Notes = new[] { new Note(Semitone.E, 3),
                 new Note(Semitone.E, 3),
                 new Note(Semitone.E, 3),
                 new Note(Semitone.C, 3),
@@ -185,7 +185,7 @@ namespace KTaNE_Helper.Modules.Modded
         public static readonly Melody PinkPanther = new Melody()
         {
             Name = "The Pink Panther Theme",
-            Notes = new Note[] { new Note(Semitone.CSharp, 3),
+            Notes = new[] { new Note(Semitone.CSharp, 3),
                 new Note(Semitone.D, 3),
                 new Note(Semitone.E, 3),
                 new Note(Semitone.F, 3),
@@ -201,7 +201,7 @@ namespace KTaNE_Helper.Modules.Modded
         public static readonly Melody Superman = new Melody()
         {
             Name = "Superman Theme",
-            Notes = new Note[] { new Note(Semitone.G, 3),
+            Notes = new[] { new Note(Semitone.G, 3),
                 new Note(Semitone.G, 3),
                 new Note(Semitone.C, 3),
                 new Note(Semitone.G, 3),
@@ -215,7 +215,7 @@ namespace KTaNE_Helper.Modules.Modded
         public static readonly Melody TetrisA = new Melody()
         {
             Name = "Tetris Mode-A Theme",
-            Notes = new Note[] { new Note(Semitone.A, 3),
+            Notes = new[] { new Note(Semitone.A, 3),
                 new Note(Semitone.E, 3),
                 new Note(Semitone.F, 3),
                 new Note(Semitone.G, 3),
@@ -231,7 +231,7 @@ namespace KTaNE_Helper.Modules.Modded
         public static readonly Melody EmpireStrikesBack = new Melody()
         {
             Name = "The Empire Strikes Back Theme",
-            Notes = new Note[] { new Note(Semitone.G, 3),
+            Notes = new[] { new Note(Semitone.G, 3),
                 new Note(Semitone.G, 3),
                 new Note(Semitone.G, 3),
                 new Note(Semitone.DSharp, 3, true),
@@ -246,7 +246,7 @@ namespace KTaNE_Helper.Modules.Modded
         public static readonly Melody ZeldasLullaby = new Melody()
         {
             Name = "Zelda's Lullaby Theme",
-            Notes = new Note[] { new Note(Semitone.B, 3),
+            Notes = new[] { new Note(Semitone.B, 3),
                 new Note(Semitone.D, 4),
                 new Note(Semitone.A, 3),
                 new Note(Semitone.G, 3),
@@ -265,13 +265,181 @@ namespace KTaNE_Helper.Modules.Modded
             EmpireStrikesBack, ZeldasLullaby
         };
 
-        #region Serialism Melodies
-        public static readonly Melody[] SerialismMelodies =
+		#region Festive Melodies
+
+		public static readonly Melody Rudolph = new Melody()
+		{
+			Name = "Rudolph The Red-Nosed Reindeer",
+			Notes = new[] { new Note(Semitone.DSharp, 3, true),
+								new Note(Semitone.F, 3),
+								new Note(Semitone.DSharp, 3, true),
+								new Note(Semitone.C, 3),
+								new Note(Semitone.GSharp, 3, true),
+								new Note(Semitone.F, 3),
+								new Note(Semitone.DSharp, 3, true),
+		}
+		};
+
+		public static readonly Melody WeThreeKings = new Melody()
+		{
+			Name = "We Three Kings Of Orient Are",
+			Notes = new[] { new Note(Semitone.CSharp, 4),
+								new Note(Semitone.B, 3),
+								new Note(Semitone.A, 3),
+								new Note(Semitone.FSharp, 3),
+								new Note(Semitone.GSharp, 3),
+								new Note(Semitone.A, 3),
+								new Note(Semitone.GSharp, 3),
+								new Note(Semitone.FSharp, 3),
+		}
+		};
+
+		public static readonly Melody SilentNight = new Melody()
+		{
+			Name = "Silent Night",
+			Notes = new[] { new Note(Semitone.G, 3),
+								new Note(Semitone.A, 3),
+								new Note(Semitone.G, 3),
+								new Note(Semitone.E, 3),
+								new Note(Semitone.G, 3),
+								new Note(Semitone.A, 3),
+								new Note(Semitone.G, 3),
+								new Note(Semitone.E, 3),
+		}
+		};
+
+		public static readonly Melody LastChristmas = new Melody()
+		{
+			Name = "Last Christmas",
+			Notes = new[] { new Note(Semitone.DSharp, 3, true),
+								new Note(Semitone.DSharp, 3, true),
+								new Note(Semitone.CSharp, 3, true),
+								new Note(Semitone.GSharp, 2, true),
+								new Note(Semitone.DSharp, 3, true),
+								new Note(Semitone.DSharp, 3, true),
+								new Note(Semitone.F, 3),
+								new Note(Semitone.CSharp, 3, true),
+		}
+		};
+
+		public static readonly Melody AllIWantForChristmas = new Melody()
+		{
+			Name = "All I Want For Christmas Is You",
+			Notes = new[] { new Note(Semitone.B, 3),
+								new Note(Semitone.A, 3),
+								new Note(Semitone.G, 3),
+								new Note(Semitone.DSharp, 3, true),
+								new Note(Semitone.D, 3),
+								new Note(Semitone.A, 3),
+								new Note(Semitone.B, 3),
+								new Note(Semitone.A, 3),
+								new Note(Semitone.G, 3),
+		}
+		};
+
+		public static readonly Melody FrostyTheSnowman = new Melody()
+		{
+			Name = "Frosty The Snowman",
+			Notes = new[] { new Note(Semitone.G, 3),
+								new Note(Semitone.E, 3),
+								new Note(Semitone.F, 3),
+								new Note(Semitone.G, 3),
+								new Note(Semitone.C, 4),
+								new Note(Semitone.B, 3),
+								new Note(Semitone.C, 4),
+								new Note(Semitone.D, 4),
+								new Note(Semitone.C, 4),
+								new Note(Semitone.B, 3),
+								new Note(Semitone.A, 3),
+								new Note(Semitone.G, 3),
+		}
+		};
+
+		public static readonly Melody MostWonderfulTime = new Melody()
+		{
+			Name = "It's The Most Wonderful Time Of The Year",
+			Notes = new[] { new Note(Semitone.FSharp, 3),
+								new Note(Semitone.G, 3),
+								new Note(Semitone.A, 3),
+								new Note(Semitone.A, 3),
+								new Note(Semitone.D, 4),
+								new Note(Semitone.B, 3),
+								new Note(Semitone.A, 3),
+								new Note(Semitone.G, 3),
+								new Note(Semitone.E, 3),
+								new Note(Semitone.D, 3),
+		}
+		};
+
+		public static readonly Melody JingleBells = new Melody()
+		{
+			Name = "Jingle Bells",
+			Notes = new[] { new Note(Semitone.G, 3),
+								new Note(Semitone.G, 3),
+								new Note(Semitone.G, 3),
+								new Note(Semitone.G, 3),
+								new Note(Semitone.G, 3),
+								new Note(Semitone.G, 3),
+								new Note(Semitone.G, 3),
+								new Note(Semitone.ASharp, 3, true),
+								new Note(Semitone.DSharp, 3, true),
+								new Note(Semitone.F, 3),
+								new Note(Semitone.G, 3),
+		}
+		};
+
+		public static readonly Melody JingleBellRock = new Melody()
+		{
+			Name = "Jingle Bell Rock",
+			Notes = new[] { new Note(Semitone.D, 4),
+								new Note(Semitone.D, 4),
+								new Note(Semitone.D, 4),
+								new Note(Semitone.CSharp, 4),
+								new Note(Semitone.CSharp, 4),
+								new Note(Semitone.CSharp, 4),
+								new Note(Semitone.B, 3),
+								new Note(Semitone.CSharp, 4),
+								new Note(Semitone.B, 3),
+								new Note(Semitone.FSharp, 3),
+		}
+		};
+
+		public static Melody GenerateCarolOfTheBells(int repetitions)
+		{
+			List<Note> fullNoteList = new List<Note>();
+			Note[] oneRepeat = new[] { new Note(Semitone.ASharp, 3, true),
+										new Note(Semitone.A, 3),
+										new Note(Semitone.ASharp, 3, true),
+										new Note(Semitone.G, 3),
+		};
+
+			for (int repetition = 0; repetition <= repetitions; ++repetition)
+			{
+				fullNoteList.AddRange(oneRepeat);
+			}
+
+			return new Melody()
+			{
+				Name = string.Format("Carol Of The Bells (x{0})", repetitions+1),
+				Notes = fullNoteList.ToArray()
+			};
+		}
+		#endregion
+
+		public static readonly Melody[] FestiveMelodies =
+	    {
+			Rudolph, WeThreeKings, SilentNight,
+			LastChristmas, AllIWantForChristmas, FrostyTheSnowman,
+			MostWonderfulTime, JingleBells, JingleBellRock
+	    };
+
+		#region Serialism Melodies
+		public static readonly Melody[] SerialismMelodies =
         {
             new Melody()
             {
                 Name = "Serialism Tone Row 0",
-                Notes = new Note[] { new Note(Semitone.F, 3),
+                Notes = new[] { new Note(Semitone.F, 3),
                     new Note(Semitone.D, 3),
                     new Note(Semitone.FSharp, 3),
                     new Note(Semitone.GSharp, 3),
@@ -289,7 +457,7 @@ namespace KTaNE_Helper.Modules.Modded
             new Melody()
             {
                 Name = "Serialism Tone Row 1",
-                Notes = new Note[] { new Note(Semitone.ASharp, 3),
+                Notes = new[] { new Note(Semitone.ASharp, 3),
                     new Note(Semitone.A, 3),
                     new Note(Semitone.C, 3),
                     new Note(Semitone.E, 3),
@@ -307,7 +475,7 @@ namespace KTaNE_Helper.Modules.Modded
             new Melody()
             {
                 Name = "Serialism Tone Row 2",
-                Notes = new Note[] { new Note(Semitone.FSharp, 3),
+                Notes = new[] { new Note(Semitone.FSharp, 3),
                     new Note(Semitone.B, 3),
                     new Note(Semitone.A, 3),
                     new Note(Semitone.GSharp, 3),
@@ -325,7 +493,7 @@ namespace KTaNE_Helper.Modules.Modded
             new Melody()
             {
                 Name = "Serialism Tone Row 3",
-                Notes = new Note[] { new Note(Semitone.E, 3),
+                Notes = new[] { new Note(Semitone.E, 3),
                     new Note(Semitone.DSharp, 3),
                     new Note(Semitone.D, 3),
                     new Note(Semitone.FSharp, 3),
@@ -343,7 +511,7 @@ namespace KTaNE_Helper.Modules.Modded
             new Melody()
             {
                 Name = "Serialism Tone Row 4",
-                Notes = new Note[] { new Note(Semitone.D, 3),
+                Notes = new[] { new Note(Semitone.D, 3),
                     new Note(Semitone.E, 3),
                     new Note(Semitone.A, 3),
                     new Note(Semitone.ASharp, 3),
@@ -361,7 +529,7 @@ namespace KTaNE_Helper.Modules.Modded
             new Melody()
             {
                 Name = "Serialism Tone Row 5",
-                Notes = new Note[] { new Note(Semitone.C, 3),
+                Notes = new[] { new Note(Semitone.C, 3),
                     new Note(Semitone.DSharp, 3),
                     new Note(Semitone.FSharp, 3),
                     new Note(Semitone.D, 3),
@@ -379,7 +547,7 @@ namespace KTaNE_Helper.Modules.Modded
             new Melody()
             {
                 Name = "Serialism Tone Row 6",
-                Notes = new Note[] { new Note(Semitone.GSharp, 3),
+                Notes = new[] { new Note(Semitone.GSharp, 3),
                     new Note(Semitone.C, 3),
                     new Note(Semitone.ASharp, 3),
                     new Note(Semitone.CSharp, 3),
@@ -397,7 +565,7 @@ namespace KTaNE_Helper.Modules.Modded
             new Melody()
             {
                 Name = "Serialism Tone Row 7",
-                Notes = new Note[] { new Note(Semitone.E, 3),
+                Notes = new[] { new Note(Semitone.E, 3),
                     new Note(Semitone.A, 3),
                     new Note(Semitone.CSharp, 3),
                     new Note(Semitone.B, 3),
@@ -415,7 +583,7 @@ namespace KTaNE_Helper.Modules.Modded
             new Melody()
             {
                 Name = "Serialism Tone Row 8",
-                Notes = new Note[] { new Note(Semitone.GSharp, 3),
+                Notes = new[] { new Note(Semitone.GSharp, 3),
                     new Note(Semitone.DSharp, 3),
                     new Note(Semitone.D, 3),
                     new Note(Semitone.E, 3),
@@ -433,7 +601,7 @@ namespace KTaNE_Helper.Modules.Modded
             new Melody()
             {
                 Name = "Serialism Tone Row 9",
-                Notes = new Note[] { new Note(Semitone.DSharp, 3),
+                Notes = new[] { new Note(Semitone.DSharp, 3),
                     new Note(Semitone.GSharp, 3),
                     new Note(Semitone.C, 3),
                     new Note(Semitone.B, 3),

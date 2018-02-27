@@ -73,6 +73,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Modded\FizzBuzz.cs" />
+    <Compile Include="Modules\Modded\Laundry.cs" />
     <Compile Include="Modules\Modded\LightCycle.cs" />
     <Compile Include="Modules\Modded\MorseAMaze.cs" />
     <Compile Include="Modules\Modded\MorseMatics.cs" />
