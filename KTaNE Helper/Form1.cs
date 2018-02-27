@@ -45,7 +45,7 @@ namespace KTaNE_Helper
             Instance = this;
         }
 
-        private void wsReset_Click(object sender, EventArgs e)
+        private void WsReset_Click(object sender, EventArgs e)
         {
             ws_input.Text = "";
         }
@@ -182,7 +182,7 @@ namespace KTaNE_Helper
             ManualGenerator.Instance.WriteManual((int)nudVanillaSeed.Value);
         }
 
-        private void nudVanillaSeed_ValueChanged(object sender, EventArgs e)
+        private void NudVanillaSeed_ValueChanged(object sender, EventArgs e)
         {
             switch ((int) nudVanillaSeed.Value)
             {
@@ -205,19 +205,19 @@ namespace KTaNE_Helper
 
             RuleManager.Instance.Initialize((int)nudVanillaSeed.Value);
             _initLettersNotPresent = false;
-            keypadReset_Click(sender, e);
+            KeypadReset_Click(sender, e);
             Needy_Knob_CheckedChanged(sender, e);
             Simon_Says_Event();
             Button_Event(sender, e);
             Complicated_Wires_Event(sender, e);
-            wsReset_Click(sender, e);
-            simpleWires_Event(sender, e);
+            WsReset_Click(sender, e);
+            SimpleWires_Event(sender, e);
             Password_TextChanged(sender, e);
             MemoryReset_Click(sender, e);
             MorseCodeInput_TextChanged(sender, e);
-            mazeSelection_TextChanged();
+            MazeSelection_TextChanged();
             wofStep1.Checked = true;
-            wofStep1_CheckedChanged(sender, e);
+            WofStep1_CheckedChanged(sender, e);
             Refresh();
         }
 
@@ -232,8 +232,8 @@ namespace KTaNE_Helper
 
             ManualVersionSelect.SelectedIndex = 0;
             ManualVersionSelect_SelectedIndexChanged(sender, e);
-            nudVanillaSeed_ValueChanged(sender, e);
-            wireReset_Click(sender, e);
+            NudVanillaSeed_ValueChanged(sender, e);
+            WireReset_Click(sender, e);
             PasswordClear_Click(sender, e);
 
             var tt = new ToolTip
@@ -300,18 +300,18 @@ namespace KTaNE_Helper
             _moduleNames.Insert(0, "----- Add on Modules -----");
             _moduleNames.Insert(0, "");
 
-            checkBox1_CheckedChanged(null, null);
-            btnSillySlotsReset_Click(null, null);
+            CheckBox1_CheckedChanged(null, null);
+            BtnSillySlotsReset_Click(null, null);
         }
 
-        private void wireReset_Click(object sender, EventArgs e)
+        private void WireReset_Click(object sender, EventArgs e)
         {
             wires_input.Text = "";
         }
 
-        private void simpleWires_Event(object sender, EventArgs e)
+        private void SimpleWires_Event(object sender, EventArgs e)
         {
-            wires_Input_TextChanged(sender, e);
+            Wires_Input_TextChanged(sender, e);
         }
 
         private bool _initLettersNotPresent;
@@ -558,7 +558,7 @@ namespace KTaNE_Helper
 
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(linkLabel1.Text);
         }
@@ -608,12 +608,12 @@ namespace KTaNE_Helper
             }
         }
 
-        private void wires_Input_TextChanged(object sender, EventArgs e)
+        private void Wires_Input_TextChanged(object sender, EventArgs e)
         {
             txtSimpleWireOutput.Text = WireSetComponent.Instance.GetSolution(wires_input.Text.Trim());
         }
 
-        private void ws_input_TextChanged(object sender, EventArgs e)
+        private void Ws_input_TextChanged(object sender, EventArgs e)
         {
             WireSequenceRuleSet ruleSet = RuleManager.Instance.CurrentRules.WireSequenceRuleSet;
             ws_input.Text = ws_input.Text.ToUpper();
@@ -655,7 +655,7 @@ namespace KTaNE_Helper
         private string _mazeStartText = Empty;
         private string _mazeEndText = Empty;
         private bool _mazeRefreshing;
-        private void mazeSelection_TextChanged()
+        private void MazeSelection_TextChanged()
         {
             if (_mazeRefreshing) return;
             var ruleSet = RuleManager.Instance.MazeRuleSet.GetMazes();
@@ -760,7 +760,7 @@ namespace KTaNE_Helper
             }
         }
         private bool _useMorseAMaze;
-        private void pbMaze_Paint(object sender, PaintEventArgs e)
+        private void PbMaze_Paint(object sender, PaintEventArgs e)
         {
             var mazes = _useMorseAMaze ? MorseAMazeSet : RuleManager.Instance.MazeRuleSet.GetMazes();
 
@@ -870,7 +870,7 @@ namespace KTaNE_Helper
             return false;
         }
 
-        private void pbMaze_Click(object sender, EventArgs e)
+        private void PbMaze_Click(object sender, EventArgs e)
         {
             var me = (MouseEventArgs) e;
             var coordinates = me.Location;
@@ -894,10 +894,10 @@ namespace KTaNE_Helper
                 _mazeEndText = xy.ToString();
                 rbGreenCircle.Checked = cbAutoAdvance.Checked;
             }
-            mazeSelection_TextChanged();
+            MazeSelection_TextChanged();
         }
 
-        private void wofStep1_CheckedChanged(object sender, EventArgs e)
+        private void WofStep1_CheckedChanged(object sender, EventArgs e)
         {
             whosOnFirstStep1.Visible = !wofStep1.Checked;
             wofOutput.Visible = wofStep1.Checked;
@@ -905,7 +905,7 @@ namespace KTaNE_Helper
 
             _whosOnFirstLookIndex = 6;
             wofStep1Label.Text = "";
-            rbWOF_CheckedChanged(sender, e);
+            RbWOF_CheckedChanged(sender, e);
             for (var i = 0; i < 28; i++)
             {
                 ((Button) wofButtons.Controls[i]).Text = WhosOnFirstComponent.Instance.WhosOnFirstStep1WordList[i];
@@ -913,7 +913,7 @@ namespace KTaNE_Helper
             }
         }
 
-        private void wofStep2_CheckedChanged(object sender, EventArgs e)
+        private void WofStep2_CheckedChanged(object sender, EventArgs e)
         {
             if (!wofStep2.Checked) return;
             wofOutput.Text = "";
@@ -925,7 +925,7 @@ namespace KTaNE_Helper
             }
         }
 
-        private void wofButton_Click(object sender, EventArgs e)
+        private void WofButton_Click(object sender, EventArgs e)
         {
             var text = ((Button)sender).Text;
             var tag = ((Button) sender).Tag;
@@ -933,7 +933,7 @@ namespace KTaNE_Helper
             if (wofStep1.Checked)
             {
                 _whosOnFirstLookIndex = (int) tag;
-                rbWOF_CheckedChanged(sender, e);
+                RbWOF_CheckedChanged(sender, e);
                 wofStep1Label.Text = text;
                 wofStep2.Checked = true;
             }
@@ -950,18 +950,18 @@ namespace KTaNE_Helper
             } 
         }
 
-        private void rbWOF_CheckedChanged(object sender, EventArgs e)
+        private void RbWOF_CheckedChanged(object sender, EventArgs e)
         {
             var buttons = new[] {rbWOF1, rbWOF2, rbWOF3, rbWOF4, rbWOF5, rbWOF6, rbWOF6};
             buttons[_whosOnFirstLookIndex].Checked = true;
         }
 
-        private void cw_reset_Click(object sender, EventArgs e)
+        private void Cw_reset_Click(object sender, EventArgs e)
         {
             cw_input.Text = "";
         }
 
-        private void cw_all_wires_Click(object sender, EventArgs e)
+        private void Cw_all_wires_Click(object sender, EventArgs e)
         {
             cw_input.Text = @"W WS WL WSL\R RS RL RSL\B BS BL BSL\RB RBS RBL RBSL";
         }
@@ -970,7 +970,7 @@ namespace KTaNE_Helper
 	    private readonly string[] _keypadSelection = {"","","","","","","",""};
         private readonly Bitmap[] _keypadImages = {new Bitmap(1, 1), new Bitmap(1, 1), new Bitmap(1, 1), new Bitmap(1, 1), new Bitmap(1, 1), new Bitmap(1, 1), new Bitmap(1, 1), new Bitmap(1, 1)};
 
-        private void keypadReset_Click(object sender, EventArgs e)
+        private void KeypadReset_Click(object sender, EventArgs e)
         {
             for (var i = 0; i < 31; i++)
             {
@@ -1001,7 +1001,7 @@ namespace KTaNE_Helper
             for (var i = 0; i < max; i++)
             {
                 if ((string) (((Button) sender).Tag) != _keypadSelection[i]) continue;
-                keypadSelection_Click(fpKeypadSelection.Controls[i], e);
+                KeypadSelection_Click(fpKeypadSelection.Controls[i], e);
                 break;
             }
 
@@ -1095,12 +1095,12 @@ namespace KTaNE_Helper
             
         }
 
-        private void keypadOrder_Click(object sender, EventArgs e)
+        private void KeypadOrder_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void keypadSelection_Click(object sender, EventArgs e)
+        private void KeypadSelection_Click(object sender, EventArgs e)
         {
             var i = 0;
             var selection = new string[7];
@@ -1255,7 +1255,7 @@ namespace KTaNE_Helper
 
         
 
-        private void txtTwoBitsIN_TextChanged(object sender, EventArgs e)
+        private void TxtTwoBitsIN_TextChanged(object sender, EventArgs e)
         {
             var lookup = GetDigitFromCharacter(txtTwoBitsIN.Text);
             txtTwoBitsOUT.Text = TwoBits.Instance.TwoBitsLookup(lookup);
@@ -1269,7 +1269,7 @@ namespace KTaNE_Helper
             return new Regex(pattern).IsMatch(input);
         }
 
-        private void txtConnections_TextChanged(object sender, EventArgs e)
+        private void TxtConnections_TextChanged(object sender, EventArgs e)
         {
             txtConnectionCheckOut.Text = "";
             if (!IsInputValid(txtConnections.Text, "[1-8]{2} [1-8]{2} [1-8]{2} [1-8]{2}",true)) return;
@@ -1469,7 +1469,7 @@ namespace KTaNE_Helper
             //Nothing on this tab depends on bomb information
 
             //--- Simple Wires, Complicated wires, Wire Sequences ---//
-            simpleWires_Event(null, null);
+            SimpleWires_Event(null, null);
             Complicated_Wires_Event(null, null);
             //Wire sequences does not depend on bomb information
 
@@ -1479,36 +1479,36 @@ namespace KTaNE_Helper
             MorseCodeInput_TextChanged(null, null);
 
             //--- Caesar Cipher, Combination Lock, Number Pads, Resistors, Semaphore ---//
-            txtCaesarCipherIn_TextChanged(null, null);
-            txtCombinationLockIn_TextChanged(null, null);
-            txtNumberPadIn_TextChanged(null, null);
-            txtResistorsIn_TextChanged(null, null);
-            txtSemaphoreIn_TextChanged(null, null);
+            TxtCaesarCipherIn_TextChanged(null, null);
+            TxtCombinationLockIn_TextChanged(null, null);
+            TxtNumberPadIn_TextChanged(null, null);
+            TxtResistorsIn_TextChanged(null, null);
+            TxtSemaphoreIn_TextChanged(null, null);
 
             //--- Battleship, Blind Alley, Chess, Connection Check, Emoji Math, Flashing Colors, Lettered Keys, Logic, Plumbing, Safety Safe, Two Bits ---//
-            txtChessInput_TextChanged(null, null);
-            txtConnections_TextChanged(null, null);
+            TxtChessInput_TextChanged(null, null);
+            TxtConnections_TextChanged(null, null);
             //Emoji Math does not depend on bomb information
             //Flashing Colors does not depend on bomb information
-            txtLetteredKeysIn_TextChanged(null, null);
-            txtLogicAND_TextChanged(txtLogicAND, null); txtLogicAND_TextChanged(txtLogicOR, null);
-            cbPlumbingRedIn_CheckedChanged();
+            TxtLetteredKeysIn_TextChanged(null, null);
+            TxtLogicAND_TextChanged(txtLogicAND, null); TxtLogicAND_TextChanged(txtLogicOR, null);
+            CbPlumbingRedIn_CheckedChanged();
             CalculateSafetySafe();
             txtTwoBitsInitialValue.Text = TwoBits.Instance.CalculateInitialTwoBitsCode();
-            cbBlindAlleyTM_CheckedChanged();
-            txtBattleShipSafeSpots_TextChanged();
+            CbBlindAlleyTM_CheckedChanged();
+            TxtBattleShipSafeSpots_TextChanged();
 
             //--- Adventure Game, Alphabet, Anagram, Silly Slots, Word Scramble ---//
-            txtAdventureGameSTR_TextChanged(null, null);
+            TxtAdventureGameSTR_TextChanged(null, null);
 
             //--- Cryptography, Gamepad, Light Cycle, Microcontrollers, Murder, Skewed Slots ---//
-            cbMurderRoom_SelectedIndexChanged(null, null);
-            cbMicrocontroller_SelectedIndexChanged(null, null);
-            txtGamePadX_TextChanged(null, null);
-            txtLightCycleIn_TextChanged(null, null);
-            txtSkewedIn_TextChanged(null, null);
+            CbMurderRoom_SelectedIndexChanged(null, null);
+            CbMicrocontroller_SelectedIndexChanged(null, null);
+            TxtGamePadX_TextChanged(null, null);
+            TxtLightCycleIn_TextChanged(null, null);
+            TxtSkewedIn_TextChanged(null, null);
             ComputeBitWiseOperators();
-            txtFizzBuzz1IN_TextChanged(null, null);
+            TxtFizzBuzz1IN_TextChanged(null, null);
 
             //--- Forget Me Not ---//
             ForgetMeNot_Event(null, null);
@@ -1517,11 +1517,11 @@ namespace KTaNE_Helper
             if(lbModules.SelectedItem?.ToString().Trim() == "3D Maze")
                 Refresh();
 
-            txtTwoBitsIN_TextChanged(null, null);
+            TxtTwoBitsIN_TextChanged(null, null);
 
             //--- Laundry ---//
-            txtLaundryIn_TextChanged(null, null);
-            cbAcidColor_SelectedIndexChanged(null, null);
+            TxtLaundryIn_TextChanged(null, null);
+            CbAcidColor_SelectedIndexChanged(null, null);
 
 	        // ReSharper disable once InconsistentNaming
             var RPSLS = new RockPaperScissorsLizardSpock();
@@ -1529,11 +1529,11 @@ namespace KTaNE_Helper
             txtRPSLSSecondary.Text = RPSLS.GetSecondaryAnswer();
             txtRPSLSDecoy.Text = RPSLS.GetPrimaryDecoy();
 
-            txtRubiksCubeIn_TextChanged(null, null);
-            txtMorseMaticsIN_TextChanged(null, null);
+            TxtRubiksCubeIn_TextChanged(null, null);
+            TxtMorseMaticsIN_TextChanged(null, null);
         }
 
-        private void cbPlumbingRedIn_CheckedChanged()
+        private void CbPlumbingRedIn_CheckedChanged()
         {
             var countFor = 0;
             var countAgainst = 0;
@@ -1662,7 +1662,7 @@ namespace KTaNE_Helper
         }
 
         private bool _resetBomb;
-        private void button42_Click(object sender, EventArgs e)
+        private void Button42_Click(object sender, EventArgs e)
         {
             _resetBomb = true;
             txtPortPlates.Text = Empty;
@@ -1709,7 +1709,7 @@ namespace KTaNE_Helper
             };
         }
 
-        private void txtLogicAND_TextChanged(object sender, EventArgs e)
+        private void TxtLogicAND_TextChanged(object sender, EventArgs e)
         {
             if (!(sender is MaskedTextBox)) return;
             MaskedTextBox maskedTextBox = (MaskedTextBox) sender;
@@ -1736,7 +1736,7 @@ namespace KTaNE_Helper
             maskedTextBox.BackColor = andOr ? Color.Green : Color.Red;
         }
 
-        private void txtChessInput_TextChanged(object sender, EventArgs e)
+        private void TxtChessInput_TextChanged(object sender, EventArgs e)
         {
             var positionsLetters = "ABCDEF";
             var positionNumbers = "123456";
@@ -1902,7 +1902,7 @@ namespace KTaNE_Helper
             }
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             foreach (var d in gbBombInformation.Controls)
             {
@@ -1949,7 +1949,7 @@ namespace KTaNE_Helper
 
             var index = lbModules.Items.IndexOf(selected);
             lbModules.SelectedIndex = index == -1 ? 0 : index;
-            lbModules_SelectedIndexChanged(null, null);
+            LbModules_SelectedIndexChanged(null, null);
 
             //Keypad specific mod
             for (var i = 4; i < 8; i++)
@@ -1958,7 +1958,7 @@ namespace KTaNE_Helper
             }
 	        while (!cbShowAddonModules.Checked && _keypadSelection[4] != "")
 	        {
-		        keypadSelection_Click(fpKeypadSelection.Controls[4], e);
+		        KeypadSelection_Click(fpKeypadSelection.Controls[4], e);
 	        }
 	        if (cbShowStockModules.Checked && cbShowAddonModules.Checked)
                 gbKeypads.Text = @"Keypads, Round Keypads";
@@ -1971,7 +1971,7 @@ namespace KTaNE_Helper
 
         }
 
-        private void txtLetteredKeysIn_TextChanged(object sender, EventArgs e)
+        private void TxtLetteredKeysIn_TextChanged(object sender, EventArgs e)
         {
             txtLetteredKeysOut.Text = "";
             var num = GetDigitFromCharacter(txtLetteredKeysIn.Text);
@@ -1988,7 +1988,7 @@ namespace KTaNE_Helper
             else txtLetteredKeysOut.Text = num < 46 ? "D" : "A";
         }
 
-        private void txtEmojiMathIn_TextChanged(object sender, EventArgs e)
+        private void TxtEmojiMathIn_TextChanged(object sender, EventArgs e)
         {
             const string numbers = ":) =( (: )= :( ): =) (= :| |:";
             var num1 = 0;
@@ -2040,12 +2040,12 @@ namespace KTaNE_Helper
             txtEmojiMathOut.Text = (sign > 0 ? num1 + num2 : num1 - num2).ToString();
         }
 
-        private void txtStroopColors_TextChanged(object sender, EventArgs e)
+        private void TxtStroopColors_TextChanged(object sender, EventArgs e)
         {
             txtStroopAnswer.Text = new Stroop().GetAnswer(txtStroopColors.Text, txtStroopWords.Text);
         }
 
-        private void txtNumberPadIn_TextChanged(object sender, EventArgs e)
+        private void TxtNumberPadIn_TextChanged(object sender, EventArgs e)
         {
             var pad = new NumberPad(txtNumberPadIn.Text);
             txtNumberPadOut.Text = "";
@@ -2061,7 +2061,7 @@ namespace KTaNE_Helper
             }
         }
 
-        private void txtCombinationLockIn_TextChanged(object sender, EventArgs e)
+        private void TxtCombinationLockIn_TextChanged(object sender, EventArgs e)
         {
             var input = txtCombinationLockIn.Text.ToUpper();
             var twoFactor = input.Split(' ');
@@ -2092,12 +2092,12 @@ namespace KTaNE_Helper
                                         @", Right " + (((step1%20) + (step2%20))%20);
         }
 
-        private void txtSemaphoreIn_TextChanged(object sender, EventArgs e)
+        private void TxtSemaphoreIn_TextChanged(object sender, EventArgs e)
         {
             txtSemaphoreOut.Text = new Semaphore().GetAnswer(txtSemaphoreIn.Text);
         }
 
-        private void txtCaesarCipherIn_TextChanged(object sender, EventArgs e)
+        private void TxtCaesarCipherIn_TextChanged(object sender, EventArgs e)
         {
             const string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             var offset = Batteries.TotalBatteries;
@@ -2143,7 +2143,7 @@ namespace KTaNE_Helper
             return ((((x * 0.95) <= y) && (y <= (x * 1.0526315789473684))) || (((x - 0.1) <= y) && (y <= (x + 0.1))));
         }
 
-        private void txtResistorsIn_TextChanged(object sender, EventArgs e)
+        private void TxtResistorsIn_TextChanged(object sender, EventArgs e)
         {
             const string digits = "0123456789";
             const string ohm = "Ω";
@@ -2366,7 +2366,7 @@ namespace KTaNE_Helper
         }
 
 
-        private void txtProbing12_TextChanged(object sender, EventArgs e)
+        private void TxtProbing12_TextChanged(object sender, EventArgs e)
         {
             var wires = new[]
             {
@@ -2540,19 +2540,19 @@ namespace KTaNE_Helper
 
         }
 
-        private void btnResetAll2_Click(object sender, EventArgs e)
+        private void BtnResetAll2_Click(object sender, EventArgs e)
         {
-            btnResetCombinationLock_Click(sender, e);
-            btnResetSemaphore_Click(sender, e);
-            btnResetResistors_Click(sender, e);
-            btnResetProbing_Click(sender, e);
-            btnResetCaesar_Click(sender, e);
-            btnResetNumberPads_Click(sender, e);
+            BtnResetCombinationLock_Click(sender, e);
+            BtnResetSemaphore_Click(sender, e);
+            BtnResetResistors_Click(sender, e);
+            BtnResetProbing_Click(sender, e);
+            BtnResetCaesar_Click(sender, e);
+            BtnResetNumberPads_Click(sender, e);
         }
 
 
         private SillySlots _sillyslots = new SillySlots();
-        private void btnSillySlotsReset_Click(object sender, EventArgs e)
+        private void BtnSillySlotsReset_Click(object sender, EventArgs e)
         {
             Slots.PopulateSubstitionTable();
             _sillyslots = new SillySlots();
@@ -2563,7 +2563,7 @@ namespace KTaNE_Helper
             txtSillySlotsResult.Text = "";
         }
 
-        private void txtSillySlotsInput_TextChanged(object sender, EventArgs e)
+        private void TxtSillySlotsInput_TextChanged(object sender, EventArgs e)
         {
             var keywords = new List<string> {"SAS","SIL","SOG","SAL","SIM","SAU","STE"};
             var color = new List<string> {"R", "B", "G"};
@@ -2597,7 +2597,7 @@ namespace KTaNE_Helper
         }
 
 
-        private void btnSillySlotsSubmit_Click(object sender, EventArgs e)
+        private void BtnSillySlotsSubmit_Click(object sender, EventArgs e)
         {
             txtSillySlotsResult.Text = "";
             if (cboSillySlotsKeyWord.SelectedIndex < 1
@@ -2620,12 +2620,12 @@ namespace KTaNE_Helper
             cboSillySlotsSlot3.SelectedIndex = 0;
         }
 
-        private void btnSillySlotsDebugDump_Click(object sender, EventArgs e)
+        private void BtnSillySlotsDebugDump_Click(object sender, EventArgs e)
         {
             _sillyslots.DumpStateToClipboard();
         }
 
-        private void txtWordScrambleIn_TextChanged(object sender, EventArgs e)
+        private void TxtWordScrambleIn_TextChanged(object sender, EventArgs e)
         {
             var wordsAnagram = new List<IList<string>>()
             {
@@ -2670,12 +2670,12 @@ namespace KTaNE_Helper
 
         
 
-        private void txtAlphabetIn_TextChanged(object sender, EventArgs e)
+        private void TxtAlphabetIn_TextChanged(object sender, EventArgs e)
         {
             txtAlphabetOut.Text = Alphabet.GetOrder(txtAlphabetIn.Text);
         }
 
-        private void txtAdventureGameSTR_TextChanged(object sender, EventArgs e)
+        private void TxtAdventureGameSTR_TextChanged(object sender, EventArgs e)
         {
             txtAdventureGameOut.Text = "";
             if (txtAdventrueGameDEX.TextLength == 0
@@ -2740,16 +2740,16 @@ namespace KTaNE_Helper
             txtAdventureGameOut.Text = ag.GetAdventrueGameResults(stats, monster, weapons, items);
         }
 
-        private void btnResetAll3_Click(object sender, EventArgs e)
+        private void BtnResetAll3_Click(object sender, EventArgs e)
         {
-            btnResetAdventureGame_Click(sender, e);
-            btnResetAlphabet_Click(sender,e);
-            btnResetWordScramble_Click(sender, e);
-            btnResetSwitches_Click(sender, e);
+            BtnResetAdventureGame_Click(sender, e);
+            BtnResetAlphabet_Click(sender,e);
+            BtnResetWordScramble_Click(sender, e);
+            BtnResetSwitches_Click(sender, e);
         }
 
         [SuppressMessage("ReSharper", "LocalizableElement")]
-        private void lbModules_SelectedIndexChanged(object sender, EventArgs e)
+        private void LbModules_SelectedIndexChanged(object sender, EventArgs e)
         {
             Text = @"Keep Talking and Nobody Explodes Helper";
             var name = lbModules.SelectedItem.ToString().Trim();
@@ -2778,7 +2778,7 @@ namespace KTaNE_Helper
 
         
 
-        private void cbSwitchesCurrent1_CheckedChanged(object sender, EventArgs e)
+        private void CbSwitchesCurrent1_CheckedChanged(object sender, EventArgs e)
         {
             txtSwitchesOut.Text = "";
 
@@ -2830,7 +2830,7 @@ namespace KTaNE_Helper
             }
         }
 
-        private void btnResetProbing_Click(object sender, EventArgs e)
+        private void BtnResetProbing_Click(object sender, EventArgs e)
         {
             txtProbing12.Text = "";
             txtProbing14.Text = "";
@@ -2839,32 +2839,32 @@ namespace KTaNE_Helper
             txtProbing56.Text = "";
         }
 
-        private void btnResetNumberPads_Click(object sender, EventArgs e)
+        private void BtnResetNumberPads_Click(object sender, EventArgs e)
         {
             txtNumberPadIn.Text = "";
         }
 
-        private void btnResetCaesar_Click(object sender, EventArgs e)
+        private void BtnResetCaesar_Click(object sender, EventArgs e)
         {
             txtCaesarCipherIn.Text = "";
         }
 
-        private void btnResetCombinationLock_Click(object sender, EventArgs e)
+        private void BtnResetCombinationLock_Click(object sender, EventArgs e)
         {
             txtCombinationLockIn.Text = "";
         }
 
-        private void btnResetSemaphore_Click(object sender, EventArgs e)
+        private void BtnResetSemaphore_Click(object sender, EventArgs e)
         {
             txtSemaphoreIn.Text = "";
         }
 
-        private void btnResetResistors_Click(object sender, EventArgs e)
+        private void BtnResetResistors_Click(object sender, EventArgs e)
         {
             txtResistorsIn.Text = "";
         }
 
-        private void btnResetAdventureGame_Click(object sender, EventArgs e)
+        private void BtnResetAdventureGame_Click(object sender, EventArgs e)
         {
             txtAdventrueGamePressure.Text = "";
             txtAdventrueGameGravity.Text = "";
@@ -2879,17 +2879,17 @@ namespace KTaNE_Helper
             }
         }
 
-        private void btnResetAlphabet_Click(object sender, EventArgs e)
+        private void BtnResetAlphabet_Click(object sender, EventArgs e)
         {
             txtAlphabetIn.Text = "";
         }
 
-        private void btnResetWordScramble_Click(object sender, EventArgs e)
+        private void BtnResetWordScramble_Click(object sender, EventArgs e)
         {
             txtWordScrambleIn.Text = "";
         }
 
-        private void btnResetSwitches_Click(object sender, EventArgs e)
+        private void BtnResetSwitches_Click(object sender, EventArgs e)
         {
             cbSwitchesCurrent1.Checked = false;
             cbSwitchesCurrent2.Checked = false;
@@ -2903,7 +2903,7 @@ namespace KTaNE_Helper
             cbSwitchesDesired5.Checked = false;
         }
 
-        private void cbMurderRoom_SelectedIndexChanged(object sender, EventArgs e)
+        private void CbMurderRoom_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtMurderOut.Text = "";
             if (cbMurderRoom.SelectedIndex < 1) return;
@@ -2994,7 +2994,7 @@ namespace KTaNE_Helper
             }
         }
 
-        private void cbMicrocontroller_SelectedIndexChanged(object sender, EventArgs e)
+        private void CbMicrocontroller_SelectedIndexChanged(object sender, EventArgs e)
         {
             var index = cbMicrocontroller.SelectedIndex - 1;
             txtMicrocontrollerOut.Text = "";
@@ -3069,7 +3069,7 @@ namespace KTaNE_Helper
             return new string(chArray);
         }
 
-        private void txtGamePadX_TextChanged(object sender, EventArgs e)
+        private void TxtGamePadX_TextChanged(object sender, EventArgs e)
         {
             txtGamePadOut.Text = "";
             if (txtGamePadX.Text.Trim().Length < 2 || txtGamePadY.Text.Trim().Length < 2) return;
@@ -3204,31 +3204,31 @@ namespace KTaNE_Helper
 
         }
 
-        private void btnGamepadReset_Click(object sender, EventArgs e)
+        private void BtnGamepadReset_Click(object sender, EventArgs e)
         {
             txtGamePadY.Text = "";
             txtGamePadX.Text = "";
         }
 
-        private void btnMicroControllerReset_Click(object sender, EventArgs e)
+        private void BtnMicroControllerReset_Click(object sender, EventArgs e)
         {
             txtMicrocontrollerLastDigit.Text = "";
             txtMicrocontrollerSecondDigit.Text = "";
             cbMicrocontroller.SelectedIndex = 0;
         }
 
-        private void btnResetMurder_Click(object sender, EventArgs e)
+        private void BtnResetMurder_Click(object sender, EventArgs e)
         {
             cbMurderRoom.SelectedIndex = 0;
         }
 
-        private void txtCryptograpyLengths_TextChanged(object sender, EventArgs e)
+        private void TxtCryptograpyLengths_TextChanged(object sender, EventArgs e)
         {
             txtCryptographyOut.Text = new Cryptography().GetLetterOrder(txtCryptograpyLengths.Text,
                 txtCryptographyLetters.Text);
         }
 
-        private void pb3DMaze_Paint(object sender, PaintEventArgs e)
+        private void Pb3DMaze_Paint(object sender, PaintEventArgs e)
         {
             
             var maze = _3Dmaze.GetMaze(txt3DMazeLetters.Text);
@@ -3357,35 +3357,35 @@ namespace KTaNE_Helper
         }
 
         private readonly _3DMaze _3Dmaze = new _3DMaze();
-        private void txt3DMazeLetters_TextChanged(object sender, EventArgs e)
+        private void Txt3DMazeLetters_TextChanged(object sender, EventArgs e)
         {
             Refresh();
             txt3DMazeOut.Text = _3Dmaze.FindLocation(txt3DMazeLine.Text, txt3DMazeLetters.Text);
         }
 
-        private void txt3DMazeLine_TextChanged(object sender, EventArgs e)
+        private void Txt3DMazeLine_TextChanged(object sender, EventArgs e)
         {
             Refresh();
             txt3DMazeOut.Text = _3Dmaze.FindLocation(txt3DMazeLine.Text, txt3DMazeLetters.Text);
         }
 
-        private void txtPasswordSubmitID_TextChanged(object sender, EventArgs e)
+        private void TxtPasswordSubmitID_TextChanged(object sender, EventArgs e)
         {
             Password_TextChanged(sender, e);
             MorseCodeInput_TextChanged(sender, e);
         }
 
-        private void txtSkewedIn_TextChanged(object sender, EventArgs e)
+        private void TxtSkewedIn_TextChanged(object sender, EventArgs e)
         {
             txtSkewedOut.Text = new SkewedSlots().GetAnswer(txtSkewedIn.Text);
         }
 
-        private void txtLightCycleIn_TextChanged(object sender, EventArgs e)
+        private void TxtLightCycleIn_TextChanged(object sender, EventArgs e)
         {
             txtLightCycleOut.Text = LightCycle.GetAnswer(txtLightCycleIn.Text.Trim().ToCharArray());
         }
 
-        private void cbBlindAlleyTM_CheckedChanged()
+        private void CbBlindAlleyTM_CheckedChanged()
         {
             var score = new int[10];
             var indicatorNames = new[]
@@ -3434,7 +3434,7 @@ namespace KTaNE_Helper
             }
         }
 
-        private void txtBattleShipSafeSpots_TextChanged()
+        private void TxtBattleShipSafeSpots_TextChanged()
         {
             const string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             const string numbers = "1234567890";
@@ -3557,14 +3557,14 @@ namespace KTaNE_Helper
             return result;
         }
 
-        private void txtFizzBuzz1IN_TextChanged(object sender, EventArgs e)
+        private void TxtFizzBuzz1IN_TextChanged(object sender, EventArgs e)
         {
             txtFizzBuzz1OUT.Text = ComputeFizzBuzz(txtFizzBuzz1IN.Text);
             txtFizzBuzz2OUT.Text = ComputeFizzBuzz(txtFizzBuzz2IN.Text);
             txtFizzBuzz3OUT.Text = ComputeFizzBuzz(txtFizzBuzz3IN.Text);
         }
 
-        private void txtLaundryIn_TextChanged(object sender, EventArgs e)
+        private void TxtLaundryIn_TextChanged(object sender, EventArgs e)
         {
             if (LitIndicators.Contains("BOB") && Batteries.Holders.Sum() == 4 &&
                 Batteries.Holders.Length == 2)
@@ -3635,27 +3635,27 @@ namespace KTaNE_Helper
             txtLaundryOut.Text += $@" -- I:{item}, M:{material}, C:{color}, Special:{specialtInstructionsText}{overrideText}{washingOverride}{overrideSeperator}{dryingOverride}";
         }
 
-        private void txtAdjacentLettersIN_TextChanged(object sender, EventArgs e)
+        private void TxtAdjacentLettersIN_TextChanged(object sender, EventArgs e)
         {
             txtAdjacentLettersOUT.Text = AdjacentLetters.GetAnswer(txtAdjacentLettersIN.Text.Replace(" ","").ToUpperInvariant());
         }
 
-        private void cbAcidColor_SelectedIndexChanged(object sender, EventArgs e)
+        private void CbAcidColor_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtNeutralizationOut.Text = new Neutralization(cbAcidColor.SelectedIndex, cbAcidVolume.SelectedIndex).GetAnswer();
         }
 
-        private void txtRubiksCubeIn_TextChanged(object sender, EventArgs e)
+        private void TxtRubiksCubeIn_TextChanged(object sender, EventArgs e)
         {
             txtRubiksCubeOut.Text = new RubiksCube().GetAnswer(txtRubiksCubeIn.Text);
         }
 
-        private void txtMorseMaticsIN_TextChanged(object sender, EventArgs e)
+        private void TxtMorseMaticsIN_TextChanged(object sender, EventArgs e)
         {
             txtMorseMaticsOut.Text = new MorseMatics().GenSolution(txtMorseMaticsIN.Text);
         }
 
-        private void txtMorseAMaze_TextChanged(object sender, EventArgs e)
+        private void TxtMorseAMaze_TextChanged(object sender, EventArgs e)
         {
             if (_mazeRefreshing) return;
             
@@ -3672,7 +3672,7 @@ namespace KTaNE_Helper
             Refresh();
         }
 
-        private void txtCruelPianoInput_TextChanged(object sender, EventArgs e)
+        private void TxtCruelPianoInput_TextChanged(object sender, EventArgs e)
         {
             txtCruelPianoOutput.Text = Empty;
             var input = txtCruelPianoInput.Text.Trim().ToLowerInvariant().Split(new [] {" "},StringSplitOptions.RemoveEmptyEntries);
@@ -3755,17 +3755,17 @@ namespace KTaNE_Helper
             }
         }
 
-        private void nkReset_Click(object sender, EventArgs e)
+        private void NkReset_Click(object sender, EventArgs e)
         {
             foreach (var cb in fpKnob.Controls.Cast<Control>().Select(x => (x as CheckBox)).Where(y => y != null).ToList())
             {
                 cb.CheckState = CheckState.Indeterminate;
             }
         }
-    }
+	}
 
 
-    public enum ProbingFrequencies
+	public enum ProbingFrequencies
     {
         Unknown = -1,
         TenHz,

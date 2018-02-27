@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Windows.Forms;
 using VanillaRuleGenerator;
 
@@ -12,7 +11,7 @@ namespace VanillaRuleManualGenerator
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             var manager = RuleManager.Instance;
             manager.Initialize((int) numericUpDown1.Value);
