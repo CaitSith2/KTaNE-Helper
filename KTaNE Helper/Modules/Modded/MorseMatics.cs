@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using VanillaRuleGenerator.Edgework;
 using VanillaRuleGenerator.Extensions;
-using Newtonsoft.Json;
 
 namespace KTaNE_Helper.Modules.Modded
 {
@@ -76,35 +75,10 @@ namespace KTaNE_Helper.Modules.Modded
             int disp2Base = displayCharsRaw[1][0] - 'A' + 1;
             int disp3Base = displayCharsRaw[2][0] - 'A' + 1;
 
-            string serial = "AB1CD2";
-            List<string> data = _info.QueryWidgets(KMBombInfo.QUERYKEY_GET_SERIAL_NUMBER, null);
-            foreach (string response in data)
-            {
-                Dictionary<string, string> responseDict = JsonConvert.DeserializeObject<Dictionary<string, string>>(response);
-                serial = responseDict["serial"];
-                break;
-            }
-
-            List<string> indOn = new List<string>();
-            List<string> indOff = new List<string>();
-
-            data = _info.QueryWidgets(KMBombInfo.QUERYKEY_GET_INDICATOR, null);
-            foreach (string response in data)
-            {
-                Dictionary<string, string> responseDict = JsonConvert.DeserializeObject<Dictionary<string, string>>(response);
-
-                if (responseDict["on"].Equals("True")) indOn.Add(responseDict["label"]);
-                else indOff.Add(responseDict["label"]);
-            }
-
-            int batteries = 0;
-
-            data = _info.QueryWidgets(KMBombInfo.QUERYKEY_GET_BATTERIES, null);
-            foreach (string response in data)
-            {
-                Dictionary<string, int> responseDict = JsonConvert.DeserializeObject<Dictionary<string, int>>(response);
-                batteries += responseDict["numbatteries"];
-            }
+            string serial = _info.GetSerialNumber();
+            List<string> indOn = new List<string>(_info.GetOnIndicators());
+            List<string> indOff = new List<string>(_info.GetOffIndicators());
+            int batteries = _info.GetBatteryCount();
 
             char firstChar = serial[3];
             char secondChar = serial[4];
